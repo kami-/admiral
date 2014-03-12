@@ -143,7 +143,7 @@ adm_cqc_fnc_getTriggerBuildings = {
     private ["_triggerRadius", "_triggerBuildings"];
     _triggerRadius = ((triggerArea _trigger) select 0) max ((triggerArea _trigger) select 1);
     _triggerBuildings = [nearestObjects [getPosATL _trigger, ["house"], _triggerRadius], {[_trigger, getPosATL _x] call adm_common_fnc_isPosInsideTrigger}] call BIS_fnc_conditionalSelect;
-    [_triggerBuildings] call CBA_fnc_shuffle;
+    [_triggerBuildings] call adm_common_fnc_shuffle;
 };
 
 // Returns the newly created cqc groups
