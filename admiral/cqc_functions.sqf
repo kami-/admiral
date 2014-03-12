@@ -17,7 +17,7 @@ adm_cqc_fnc_placeMan = {
 
     _grp enableAttack false;
 
-    _wp = [_grp, [getPosATL _unit, 0], 'GUARD', 'AWARE', 'RED'] call adm_patrol_fnc_createWaypoint;
+    _wp = [_grp, [getPosATL _unit, 0], 'GUARD', 'AWARE', 'RED'] call adm_common_fnc_createWaypoint;
 
     _unit setDir (random 360);
     _unit setPosATL (_pos);
