@@ -1,7 +1,9 @@
 #include "settings.sqf"
 
-// Necessary for ai spawn
-createCenter adm_ai_enemySide;
+// Necessary for AI spawn
+{
+    createCenter adm_ai_enemySide;
+} foreach SIDE_ARRAY;
 
 // Set side relations
 WEST setFriend [EAST, 0];
