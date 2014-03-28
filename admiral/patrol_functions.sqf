@@ -1,12 +1,13 @@
 #include "admiral_defines.h"
 
 adm_patrol_fnc_placeMan = {
-    private ["_unit"];
+    FUN_ARGS_4(_pos,_grp,_unitTemplate,_unitType);
 
+    private "_unit";
     _unit = [
-        _this select 0,
-        _this select 1,
-        adm_patrol_unitTypes select adm_ai_enemySideIndex select adm_ai_enemyFaction  select adm_ai_enemyCammo select (_this select 2),
+        _pos,
+        _grp,
+        [_unitTemplate, _unitType] call adm_common_fnc_getUnitTemplateArray,
         adm_patrol_skillBoundary,
         adm_patrol_aimingSpeed,
         adm_patrol_aimingAccuracy
@@ -42,7 +43,7 @@ adm_patrol_fnc_spawnTechGroup = {
     FUN_ARGS_1(_trigger);
 
     private ["_group"];
-    _group = [_trigger, adm_patrol_techFireteamSize, GROUP_TYPE_TECH, adm_patrol_fnc_placeMan, UNIT_TYPE_INF, adm_patrol_techTypes] call adm_camp_fnc_spawnVehicleGroup;
+    _group = [_trigger, adm_patrol_techFireteamSize, GROUP_TYPE_TECH, adm_patrol_fnc_placeMan, UNIT_TYPE_INF] call adm_camp_fnc_spawnVehicleGroup;
     [_group, typeOf vehicle leader _group, _trigger, adm_patrol_techWaypointAmount] call adm_patrol_fnc_createWaypoints;
 
     _group;
@@ -52,7 +53,7 @@ adm_patrol_fnc_spawnArmorGroup = {
     FUN_ARGS_1(_trigger);
 
     private ["_group"];
-    _group = [_trigger, adm_patrol_armourFireteamSize, GROUP_TYPE_ARMOUR, adm_patrol_fnc_placeMan, UNIT_TYPE_CREW, adm_patrol_armourTypes] call adm_camp_fnc_spawnVehicleGroup;
+    _group = [_trigger, adm_patrol_armourFireteamSize, GROUP_TYPE_ARMOUR, adm_patrol_fnc_placeMan, UNIT_TYPE_CREW] call adm_camp_fnc_spawnVehicleGroup;
     [_group, typeOf vehicle leader _group, _trigger, adm_patrol_armourWaypointAmount] call adm_patrol_fnc_createWaypoints;
 
     _group;
@@ -201,6 +202,7 @@ adm_patrol_fnc_init = {
             };
 
             private ["_pool", "_spawnedGroups"];
+            [_trigger] call adm_common_initUnitTemplate;
             _pool = _trigger getVariable "adm_zone_pool";
 
             // Spawn infantry groups
