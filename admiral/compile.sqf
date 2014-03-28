@@ -13,6 +13,11 @@ RESISTANCE setFriend [EAST, 0];
 EAST setFriend [WEST, 0];
 EAST setFriend [RESISTANCE, 0];
 
+// Wait for BIS functions to be compiled
+waitUntil {
+    BIS_fnc_init;
+};
+
 // Compile functions
 call compile preProcessFileLineNumbers "admiral\common_functions.sqf";
 
