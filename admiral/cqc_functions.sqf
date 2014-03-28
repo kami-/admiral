@@ -150,19 +150,17 @@ adm_cqc_fnc_getTriggerBuildings = {
 adm_cqc_fnc_spawnGarrison = {
     FUN_ARGS_1(_trigger);
     
-    private ["_buildings", "_maxAmount", "_spawnedGroups"];
+    private ["_buildings", "_maxAmount", "_currentAmount", "_spawnedGroups"];
     _buildings = [_trigger] call adm_cqc_fnc_getTriggerBuildings;
     _maxAmount = _trigger getVariable ["adm_zone_pool", 0];
-
-    adm_cqc_currentAmount = 0;
-
+    _currentAmount = 0;
     _spawnedGroups = [];
-    for [{private ["_i"]; _i = 0}, {_i < count _buildings && {adm_cqc_currentAmount < _maxAmount}}, {INC(_i)}] do {
+    for [{private ["_i"]; _i = 0}, {_i < count _buildings && {_currentAmount < _maxAmount}}, {INC(_i)}] do {
         private ["_building", "_possiblePositions"];
         _building = _buildings select _i;
         _possiblePositions = [_building, _trigger getVariable "adm_cqc_minHeight"] call adm_cqc_fnc_getPossiblePositions;
 
-        if((!([_possiblePositions, []] call BIS_fnc_areEqual)) && {adm_cqc_currentAmount < _maxAmount}) then {
+        if((!([_possiblePositions, []] call BIS_fnc_areEqual)) && {_currentAmount < _maxAmount}) then {
             private ["_buildingCapacity", "_posCount", "_numOfUnits", "_group"];
             _buildingCapacity = [_building] call adm_cqc_fnc_getBuildingCapacity;
             _posCount = count _possiblePositions;
@@ -175,6 +173,7 @@ adm_cqc_fnc_spawnGarrison = {
                 case (_posCount == 1): { 1 };
                 default { 0 };
             };
+            _currentAmount = _currentAmount + _numOfUnits;
 
             _group = [_trigger, _numOfUnits, _possiblePositions, _building] call adm_cqc_fnc_spawnGarrisonGroup;
 
