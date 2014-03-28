@@ -15,6 +15,8 @@ adm_ai_factions = [
 adm_ai_enemyFaction = 0; // Russian
 adm_ai_enemyCammo = CAMMO_WOODLAND;
 
+adm_ai_default_unitTemplate = "TK_Army_Woodland";
+
 adm_ai_caching = true;
 
 adm_ai_NVGs = true;
