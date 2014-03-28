@@ -235,7 +235,6 @@ adm_cqc_fnc_forceFire = {
 // Initializes cqc
 adm_cqc_fnc_init = {
     adm_cqc_triggers = [allMissionObjects "EmptyDetector", {triggerText _x == "cqc"}] call BIS_fnc_conditionalSelect;
-    adm_cqc_players = [] call adm_common_fnc_getPlayerUnits;
     adm_cqc_groups = [];
     {
         [_x] spawn {
