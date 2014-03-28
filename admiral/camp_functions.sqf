@@ -443,7 +443,7 @@ adm_camp_fnc_init = {
                 [_trigger] call adm_error_fnc_validateZone;
             };
 
-            [_trigger] call adm_common_initUnitTemplate;
+            [_trigger, adm_default_camp_unitTemplate] call adm_common_initUnitTemplate;
             [_trigger] call ([_trigger] call adm_camp_fnc_getSpawnFunction);
         };
     } foreach adm_camp_triggers;

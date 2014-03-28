@@ -249,7 +249,7 @@ adm_cqc_fnc_init = {
             };
             // Spawn CQC
             private ["_spawnedGroups"];
-            [_trigger] call adm_common_initUnitTemplate;
+            [_trigger, adm_default_cqc_unitTemplate] call adm_common_initUnitTemplate;
             _spawnedGroups = [_trigger] call adm_cqc_fnc_spawnGarrison;
             PUSH_ALL(adm_cqc_groups, _spawnedGroups);
             [_spawnedGroups] call adm_rupture_fnc_initGroups;

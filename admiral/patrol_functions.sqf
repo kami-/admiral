@@ -202,7 +202,7 @@ adm_patrol_fnc_init = {
             };
 
             private ["_pool", "_spawnedGroups"];
-            [_trigger] call adm_common_initUnitTemplate;
+            [_trigger, adm_default_patrol_unitTemplate] call adm_common_initUnitTemplate;
             _pool = _trigger getVariable "adm_zone_pool";
 
             // Spawn infantry groups

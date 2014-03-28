@@ -34,10 +34,10 @@ adm_common_fnc_setGear = {
 };
 
 adm_common_initUnitTemplate = {
-    FUN_ARGS_1(_trigger);
+    FUN_ARGS_2(_trigger,_defaultTemplate);
 
     if (isNil {_trigger getVariable "adm_zone_unitTemplate"}) then {
-        _trigger setVariable ["adm_zone_unitTemplate", adm_ai_default_unitTemplate, false];
+        _trigger setVariable ["adm_zone_unitTemplate", _defaultTemplate, false];
     };
 };
 
