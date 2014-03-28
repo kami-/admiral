@@ -47,7 +47,7 @@ adm_rupture_fnc_checkUnits = {
                 if (_elapsedTime > adm_rupture_length) then {
                     _unit setDamage 1;
                 }
-            } foreach ([] call adm_common_fnc_getEnemyFactionUnits);
+            } foreach ([] call adm_common_fnc_getAdmiralUnits);
             sleep adm_rupture_updateTick;
             false;
         };

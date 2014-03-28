@@ -65,8 +65,24 @@ adm_common_fnc_createWaypoint = {
     _wp;
 };
 
-adm_common_fnc_getEnemyFactionUnits = {
-    [allUnits, {local _x && {toLower faction _x == toLower (adm_ai_factions select adm_ai_enemySideIndex select adm_ai_enemyFaction)}}] call BIS_fnc_conditionalSelect;
+adm_common_fnc_getAdmiralUnits = {
+    private ["_group_arrays", "_admiralUnits"];
+    _group_arrays = [adm_cqc_groups, adm_patrol_infGroups, adm_patrol_techGroups, adm_patrol_armourGroups, adm_camp_infGroups, adm_camp_techGroups, adm_camp_armourGroups];
+    _admiralUnits = [];
+    {
+        private "_groups";
+        _groups = _x;
+        {
+            private "_group";
+            _group = _x;
+            {
+                if (alive _x) then {
+                    PUSH(_admiralUnits,_x);
+                };
+            } foreach units _group;
+        } foreach _groups;
+    } foreach _group_arrays;
+    _admiralUnits;
 };
 
 adm_common_fnc_createLocalMarker = {
