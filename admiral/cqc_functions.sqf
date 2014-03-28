@@ -4,8 +4,7 @@
 adm_cqc_fnc_placeMan = {
     FUN_ARGS_3(_pos,_grp,_unitTemplate);
 
-    private["_unit", "_wp"];
-
+    private ["_unit", "_wp"];
     _unit = [
         _pos,
         _grp,
