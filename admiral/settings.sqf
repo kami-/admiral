@@ -4,18 +4,9 @@
 adm_ai_debugging = true;
 
 // General
-adm_ai_enemySideIndex = SIDE_EAST;
-adm_ai_enemySide = SIDE_ARRAY select adm_ai_enemySideIndex;
-adm_ai_factions = [
-    ["RU", "INS", "BIS_TK", "BIS_TK_INS"], // OPFOR
-    ["USMC", "CDF", "BIS_US", "BIS_CZ", "BIS_GER", "BIS_BAF"], // BLUFOR
-    ["GUE", "BIS_TK_GUE", "BIS_UN", "PMC_BAF"], // INDFOR
-    ["CIV", "CIV_RU", "BIS_TK_CIV", "BIS_CIV_special"] // CIV
-];
-adm_ai_enemyFaction = 0; // Russian
-adm_ai_enemyCammo = CAMMO_WOODLAND;
-
-adm_ai_default_unitTemplate = "TK_Army_Woodland";
+adm_default_cqc_unitTemplate = "TK_Army_Woodland_TEST";
+adm_default_patrol_unitTemplate = "TK_Army_Woodland_TEST";
+adm_default_camp_unitTemplate = "TK_Army_Woodland_TEST";
 
 adm_ai_caching = true;
 
@@ -66,6 +57,4 @@ adm_rupture_updateTick = 30;
 adm_rupture_length = 120;
 
 // unitTypes
-#include "cqc_unitTypes.sqf"
 #include "cqc_buildings.sqf"
-#include "patrol_unitTypes.sqf"
