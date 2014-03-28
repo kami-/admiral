@@ -336,11 +336,9 @@ adm_error_fnc_init = {
     private ["_settingsVariables"];
     _settingsVariables = [
         ["adm_ai_debugging",                [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("BOOL")]],
-        ["adm_ai_enemySideIndex",           [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("SCALAR"), DEF_ASSERT_BETWEEN(0,3)]],
-        ["adm_ai_enemySide",                [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("SIDE")]],
-        ["adm_ai_factions",                 [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("ARRAY"), DEF_ASSERT_NOTEMPTY]],
-        ["adm_ai_enemyFaction",             [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("SCALAR")], [adm_error_fnc_validateFactions]],
-        ["adm_ai_enemyCammo",               [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("SCALAR"), DEF_ASSERT_BETWEEN(0,2)]],
+        ["adm_default_cqc_unitTemplate",    [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("STRING")]],
+        ["adm_default_patrol_unitTemplate", [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("STRING")]],
+        ["adm_default_camp_unitTemplate",   [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("STRING")]],
         ["adm_ai_caching",                  [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("BOOL")]],
         ["adm_ai_NVGs",                     [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("BOOL")]],
         ["adm_camp_infFireteamSize",        [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("SCALAR"), DEF_ASSERT_MIN(1)]],
@@ -370,13 +368,7 @@ adm_error_fnc_init = {
         ["adm_rupture_length",              [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("SCALAR"), DEF_ASSERT_MIN(1)]],
 
         ["adm_cqc_buildingBlacklist",       [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("ARRAY")], [adm_error_fnc_validateCQCBuildings]],
-        ["adm_cqc_buildingCapacity",        [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("ARRAY")], [adm_error_fnc_validateCQCBuildings]],
-        
-        ["adm_patrol_techTypes",            [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("ARRAY")], [adm_error_fnc_validatePatrolTechnicals]],
-        ["adm_patrol_armourTypes",          [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("ARRAY")], [adm_error_fnc_validatePatrolArmour]],
-        ["adm_patrol_unitTypes",            [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("ARRAY")], [adm_error_fnc_validatePatrolUnits]],
-
-        ["adm_patrol_unitTypes",            [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("ARRAY")], [adm_error_fnc_validatePatrolUnits]]
+        ["adm_cqc_buildingCapacity",        [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("ARRAY")], [adm_error_fnc_validateCQCBuildings]]
     ];
 
     [_settingsVariables] call adm_error_fnc_validateVariables;
