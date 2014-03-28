@@ -33,6 +33,26 @@ adm_common_fnc_setGear = {
     };
 };
 
+adm_common_initUnitTemplate = {
+    FUN_ARGS_1(_trigger);
+
+    if (isNil {_trigger getVariable "adm_zone_unitTemplate"}) then {
+        _trigger setVariable ["adm_zone_unitTemplate", adm_ai_default_unitTemplate, false];
+    };
+};
+
+adm_common_fnc_getUnitTemplateArray = {
+    FUN_ARGS_2(_unitTemplate,_field);
+
+    getArray(TEMPLATE_CONFIGFILE >> TEMPLATE_CONTAINER_CLASS >> _unitTemplate >> _field);
+};
+
+adm_common_fnc_getUnitTemplateSide = {
+    FUN_ARGS_1(_unitTemplate);
+
+    SIDE_ARRAY select getNumber(TEMPLATE_CONFIGFILE >> TEMPLATE_CONTAINER_CLASS >> _unitTemplate >> "side");
+};
+
 adm_common_fnc_createWaypoint = {
     FUN_ARGS_5(_grp,_wpArray,_type,_behaviour,_mode);
     
@@ -230,6 +250,7 @@ adm_common_fnc_getRealConfig = {
         if (_configName == "campDelay") exitWith {"adm_camp_campDelay"};
         if (_configName == "groupDelay") exitWith {"adm_camp_groupDelay"};
         if (_configName == "spawnChance") exitWith {"adm_camp_spawnChance"};
+        if (_configName == "unitTemplate") exitWith {"adm_zone_unitTemplate"};
     };
 };
 
