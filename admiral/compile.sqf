@@ -2,7 +2,7 @@
 
 // Necessary for AI spawn
 {
-    createCenter adm_ai_enemySide;
+    createCenter _x;
 } foreach SIDE_ARRAY;
 
 // Set side relations
