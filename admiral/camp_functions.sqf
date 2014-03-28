@@ -124,6 +124,7 @@ adm_camp_fnc_spawnInfGroup = {
         [_pos, _group, _unitTemplate, UNIT_TYPE_ARRAY select _unitType] call _placeManFunc;
     };
     [_group] call adm_reduce_fnc_setGroupExpandCount;
+    _group setVariable ["adm_zone_parent", _trigger];
     _group setVariable ["adm_ai_type", _groupType, false]; // TODO remove?
 
     if (adm_ai_debugging) then {

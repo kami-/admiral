@@ -2,13 +2,13 @@
 
 // Returns a newly created cqc unit
 adm_cqc_fnc_placeMan = {
-    FUN_ARGS_3(_pos,_grp,_unitTemplate);
+    FUN_ARGS_4(_pos,_grp,_unitTemplate,_unitType);
 
     private ["_unit", "_wp"];
     _unit = [
         _pos,
         _grp,
-        [_unitTemplate, "infantry"] call adm_common_fnc_getUnitTemplateArray,
+        [_unitTemplate, _unitType] call adm_common_fnc_getUnitTemplateArray,
         adm_cqc_skillBoundary,
         adm_cqc_aimingSpeed,
         adm_cqc_aimingAccuracy
@@ -123,16 +123,16 @@ adm_cqc_fnc_spawnGarrisonGroup = {
     private ["_unitTemplate", "_grp"];
     _unitTemplate = _trigger getVariable "adm_zone_unitTemplate";
     _grp = createGroup ([_unitTemplate] call adm_common_fnc_getUnitTemplateSide);
-    for "_x" from 1 to _numOfUnits do {
+    for "_i" from 1 to _numOfUnits do {
         private ["_pos"];
         _pos = SELECT_RAND(_possiblePositions);
         _possiblePositions = _possiblePositions - [_pos];
-        adm_cqc_currentAmount = adm_cqc_currentAmount + 1;
-        [_building buildingPos _pos, _grp, _unitTemplate] call adm_cqc_fnc_placeMan;
+        [_building buildingPos _pos, _grp, _unitTemplate, UNIT_TYPE_ARRAY select UNIT_TYPE_INF] call adm_cqc_fnc_placeMan;
     };
 
     [_grp] call adm_reduce_fnc_setGroupExpandCount;
     [_grp] call adm_reduce_fnc_setCqcInitPositions;
+    _grp setVariable ["adm_zone_parent", _trigger];
 
     _grp;
 };

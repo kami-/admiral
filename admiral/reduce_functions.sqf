@@ -35,8 +35,11 @@ adm_reduce_fnc_expandGroup = {
     FUN_ARGS_3(_group,_positions,_placeManFunc);
 
     {
-        // CQC doesn't use 3rd param so this will work for now
-        [_x, _group, UNIT_TYPE_INF] call _placeManFunc;
+        private ["_trigger", "_unitTemplate", "_unitType"];
+        _trigger = _group getVariable "adm_zone_parent";
+        _unitTemplate = _trigger getVariable "adm_zone_unitTemplate";
+        _unitType = UNIT_TYPE_ARRAY select UNIT_TYPE_INF;
+        [_x, _group, _unitTemplate, _unitType] call _placeManFunc;
     } foreach _positions;
     _group setVariable ["adm_reduce_isReduced", false, false];
 };
