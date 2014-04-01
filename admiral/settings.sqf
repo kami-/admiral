@@ -4,9 +4,9 @@
 adm_ai_debugging = true;
 
 // General
-adm_default_cqc_unitTemplate = "TK_Army_Woodland_TEST";
-adm_default_patrol_unitTemplate = "TK_Army_Woodland_TEST";
-adm_default_camp_unitTemplate = "TK_Army_Woodland_TEST";
+adm_default_cqc_unitTemplate = "Base";
+adm_default_patrol_unitTemplate = "Base";
+adm_default_camp_unitTemplate = "Base";
 
 adm_ai_caching = true;
 
