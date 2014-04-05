@@ -6,7 +6,7 @@ class AdmiralUnitTemplates {
         infantry[]={"Cow02", "Cow03", "Cow04", "Fin", "Goat", "Cock", "Pastor", "Rabbit", "Sheep", "WildBoar"};
         crewmen[]={"Cow02", "Cow03", "Cow04", "Fin", "Goat", "Cock", "Pastor", "Rabbit", "Sheep", "WildBoar"};
         pilots[]={};
-        technical[]={"Ikarus"};
+        technicals[]={"Ikarus"};
         armour[]={"Ikarus"};
     };
 
@@ -14,7 +14,7 @@ class AdmiralUnitTemplates {
         infantry[] = {"US_Soldier_EP1"};
         crewmen[] = {"US_Soldier_Pilot_EP1"};
         pilots[] = {"US_Soldier_Crew_EP1"};
-        technical[] = {"HMMWV_M1151_M2_DES_EP1"};
+        technicals[] = {"HMMWV_M1151_M2_DES_EP1"};
         armour[] = {"M1A2_US_TUSK_MG_EP1"};
     };
 
@@ -23,7 +23,7 @@ class AdmiralUnitTemplates {
         infantry[] = {"TK_Soldier_EP1"};
         crewmen[] = {"TK_Soldier_Crew_EP1"};
         pilots[] = {"TK_Soldier_Pilot_EP1"};
-        technical[] = {"UAZ_MG_TK_EP1"};
+        technicals[] = {"UAZ_MG_TK_EP1"};
         armour[] = {"T72_TK_EP1"};
     };
 
@@ -32,7 +32,7 @@ class AdmiralUnitTemplates {
         infantry[] = {"RU_Soldier", "RU_Soldier", "RU_Soldier", "RU_Soldier", "RU_Soldier", "RU_Soldier", "RU_Soldier_GL", "RU_Soldier_GL", "RU_Soldier_MG", "RU_Soldier_AR", "RU_Soldier_AR", "RU_Soldier_AR", "RU_Soldier_LAT"};
         crewmen[] = {"RU_Soldier_Crew"};
         pilots[] = {"RU_Soldier_Pilot"};
-        technical[] = {"ACE_UAZ_MG_RU"};
+        technicals[] = {"ACE_UAZ_MG_RU"};
         armour[] = {"ACE_T72B_Base"};
     };
 
