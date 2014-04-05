@@ -22,15 +22,10 @@
 #define UNIT_TYPE_CREW                      1
 #define UNIT_TYPE_PILOT                     2
 
-#define GROUP_TYPE_ARRAY                    ["infantry", "technical", "armour"]
+#define GROUP_TYPE_ARRAY                    ["infantry", "technicals", "armour"]
 #define GROUP_TYPE_INF                      0
 #define GROUP_TYPE_TECH                     1
 #define GROUP_TYPE_ARMOUR                   2
-
-#define CAMMO_ARRAY                         ["woodland", "desert", "winter"]
-#define CAMMO_WOODLAND                      0
-#define CAMMO_DESERT                        1
-#define CAMMO_WINTER                        2
 
 #define CAMP_TYPE_ARRAY                     ["periodic", "ondemand", "random"]
 #define CAMP_DEFAULT_DELAY                  60
