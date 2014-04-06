@@ -307,3 +307,9 @@ adm_common_fnc_shuffle = {
 
     _shuffledArray;
 };
+
+adm_common_fnc_isFriendlySide = {
+    FUN_ARGS_2(_side,_otherSide);
+
+    _side == _otherSide;
+};
