@@ -1,3 +1,11 @@
+#define MULTIPLE_SIDES
+#ifdef MULTIPLE_SIDES
+    #define ALL_UNITS       allUnits
+#endif
+#ifndef MULTIPLE_SIDES
+    #define ALL_UNITS       ([] call adm_common_fnc_getPlayerUnits)
+#endif
+
 #define TEMPLATE_CONFIGFILE                 missionConfigFile
 #define TEMPLATE_CONTAINER_CLASS            "AdmiralUnitTemplates"
 
