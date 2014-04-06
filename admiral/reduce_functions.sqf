@@ -100,7 +100,7 @@ adm_reduce_fnc_canReduceGroup = {
     if (!_isReduced) then {
         private ["_i", "_players"];
         _i = 0;
-        _players = [] call adm_common_fnc_getPlayerUnits;
+        _players = [side _group] call adm_reduce_fnc_getMonitoredUnits;
         _canReduce = true;
         while {_canReduce && _i < count _players} do {
             _canReduce = [_players select _i, _group, REDUCE_DISTANCE] call gfn_reduce_fnc_unitOutsideReduceDistance;
@@ -121,7 +121,7 @@ adm_reduce_fnc_canExpandGroup = {
     if (_isReduced) then {
         private ["_i", "_players"];
         _i = 0;
-        _players = [] call adm_common_fnc_getPlayerUnits;
+        _players = [side _group] call adm_reduce_fnc_getMonitoredUnits;
         while {!_canExpand && _i < count _players} do {
             _canExpand = !([_players select _i, _group, EXPAND_DISTANCE] call gfn_reduce_fnc_unitOutsideReduceDistance);
             INC(_i);
@@ -181,4 +181,13 @@ adm_reduce_fnc_init = {
     if (adm_ai_caching) then {
         [] spawn adm_reduce_fnc_monitorGroups;
     };
+};
+
+adm_reduce_fnc_getMonitoredUnits = {
+    FUN_ARGS_1(_side);
+
+    private "_units";
+    _units = [];
+    FILTER_PUSH_ALL(_units, ALL_UNITS, {!(AS_ARRAY_2(side _x, _side) call adm_common_fnc_isFriendlySide) || {isPlayer _x}});
+    _units;
 };
