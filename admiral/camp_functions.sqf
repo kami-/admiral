@@ -440,7 +440,7 @@ adm_camp_fnc_init = {
             waitUntil { triggerActivated _trigger };
 
             if (adm_ai_debugging) then {
-                [_trigger, "ColorGreen"] call adm_debug_fnc_createTriggerLocalMarker;
+                [_trigger] call adm_debug_fnc_createTriggerLocalMarker;
                 [_trigger] call adm_error_fnc_validateZone;
             };
 

@@ -123,10 +123,12 @@ adm_debug_fnc_createTriggerLocalMarker = {
     FUN_ARGS_2(_trigger,_color);
 
     private ["_shape", "_marker"];
-
     _shape = "RECTANGLE";
     if (!((triggerArea _trigger) select 3)) then {
         _shape = "ELLIPSE";
+    };
+    if (isNil {_color}) then {
+        _color = [[_trigger getVariable "adm_zone_unitTemplate"] call adm_common_fnc_getUnitTemplateSide] call adm_debug_fnc_getSideColor;
     };
 
     _marker = [format["%1", _trigger], getPosATL _trigger, _shape, "DOT", _color] call adm_common_fnc_createLocalMarker;
@@ -139,7 +141,6 @@ adm_debug_fnc_updateTriggerLocalMarker = {
     FUN_ARGS_1(_trigger);
 
     private ["_shape", "_marker"];
-
     _shape = "RECTANGLE";
     if (!((triggerArea _trigger) select 3)) then {
         _shape = "ELLIPSE";
@@ -161,9 +162,9 @@ adm_debug_fnc_createMarkersForCampLogic = {
         private ["_wpPosFrom", "_wpPosTo", "_marker"];
         _wpPosFrom = getWPPos (_waypoints select _i);
         _wpPosTo = getWPPos (_waypoints select (_i + 1));
-        [format["%1", _wpPosFrom], _wpPosFrom, _wpPosTo, "ColorRed", 3] call adm_debug_fnc_createLineMarker;
+        [format["%1", _wpPosFrom], _wpPosFrom, _wpPosTo, "ColorOrange", 3] call adm_debug_fnc_createLineMarker;
     };
-    [_logic getVariable "adm_camp_endTrigger", "ColorBlue"] call adm_debug_fnc_createTriggerLocalMarker;
+    [_logic getVariable "adm_camp_endTrigger", "ColorOrange"] call adm_debug_fnc_createTriggerLocalMarker;
 };
 
 adm_debug_fnc_createLineMarker = {
