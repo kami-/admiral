@@ -240,14 +240,13 @@ adm_cqc_fnc_init = {
         [_x] spawn {
             FUN_ARGS_1(_trigger);
             waitUntil { triggerActivated _trigger };
-
+            [_trigger, adm_default_cqc_unitTemplate] call adm_common_initUnitTemplate;
             if (adm_ai_debugging) then {
                 [_trigger] call adm_debug_fnc_createTriggerLocalMarker;
                 [_trigger] call adm_error_fnc_validateZone;
             };
             // Spawn CQC
             private ["_spawnedGroups"];
-            [_trigger, adm_default_cqc_unitTemplate] call adm_common_initUnitTemplate;
             _spawnedGroups = [_trigger] call adm_cqc_fnc_spawnGarrison;
             PUSH_ALL(adm_cqc_groups, _spawnedGroups);
             [_spawnedGroups] call adm_rupture_fnc_initGroups;

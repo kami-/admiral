@@ -195,14 +195,13 @@ adm_patrol_fnc_init = {
 
             waitUntil { triggerActivated _trigger };
             waitUntil { !([_trigger getVariable ["adm_zone_pool",[]], []] call BIS_fnc_areEqual) };
-
+            [_trigger, adm_default_patrol_unitTemplate] call adm_common_initUnitTemplate;
             if (adm_ai_debugging) then {
                 [_trigger] call adm_debug_fnc_createTriggerLocalMarker;
                 [_trigger] call adm_error_fnc_validateZone;
             };
 
             private ["_pool", "_spawnedGroups"];
-            [_trigger, adm_default_patrol_unitTemplate] call adm_common_initUnitTemplate;
             _pool = _trigger getVariable "adm_zone_pool";
 
             // Spawn infantry groups
