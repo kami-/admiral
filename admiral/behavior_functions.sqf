@@ -43,7 +43,7 @@ adm_behavior_fnc_stateEnemyFound = {
     private "_enemyPos";
     _enemyPos = _group getVariable "adm_behavior_enemyPos";
     if ([_enemyPos] call adm_behavior_fnc_canCallReinforcement) then {
-        [_group, _enemyPos, [_enemyPos] call adm_behavior_fnc_getEnemyNumbers] call adm_behavior_fnc_callReinforcement;
+        [_group, _enemyPos, [side _group, _enemyPos] call adm_behavior_fnc_getEnemyNumbers] call adm_behavior_fnc_callReinforcement;
         PUSH(adm_behavior_foundEnemies, AS_ARRAY_2(time,_enemyPos));
     };
     _group setVariable ["adm_behavior_state", STATE_SADENEMY, false];
@@ -78,7 +78,7 @@ adm_behavior_fnc_stateCombat = {
                 diag_log LOG_MSG_2("DEBUG","Behavior - Group '%1' tries to call additinal reinforcement, becasue reinforced group '%2' died.", _group, _reinfGroup);
             };
             private "_enemyNumbers";
-            _enemyNumbers = [_enemyPos] call adm_behavior_fnc_getEnemyNumbers;
+            _enemyNumbers = [side _group, _enemyPos] call adm_behavior_fnc_getEnemyNumbers;
             _group setVariable ["adm_behavior_reinfGroup", nil];
             [_group, _enemyPos, [ceil random (_enemyNumbers select 0), floor random (_enemyNumbers select 1), floor random (_enemyNumbers select 2)]] call adm_behavior_fnc_callReinforcement;
         } else {
@@ -108,10 +108,11 @@ adm_behavior_fnc_continueMoving = {
 };
 
 adm_behavior_fnc_getEnemyNumbers = {
-    FUN_ARGS_1(_enemyPos);
+    FUN_ARGS_2(_side,_enemyPos);
 
-    private "_enemyNumbers";
+    private ["_enemyNumbers", "_enemyUnits"];
     _enemyNumbers = [1, 0, 0];
+    _enemyUnits = [_side] call adm_behavior_getEnemyUnits;
     {
         if (_x distance _enemyPos <= BEHAVIOR_ENEMY_CHECK_RADIUS && {alive _x}) then {
             _enemyNumbers set [0, (_enemyNumbers select 0) + 1];
@@ -122,7 +123,7 @@ adm_behavior_fnc_getEnemyNumbers = {
                 };
             };
         };
-    } foreach playableUnits;
+    } foreach _enemyUnits;
 
     _enemyNumbers;
 };
@@ -159,7 +160,7 @@ adm_behavior_fnc_callReinforcementGroups = {
     FUN_ARGS_4(_group,_enemyPos,_count,_groupFunc);
 
     private "_groups";
-    _groups = [_enemyPos, _count, [_enemyPos] call _groupFunc] call adm_behavior_fnc_getReinforcementGroups;
+    _groups = [_enemyPos, _count, [side _group, _enemyPos] call _groupFunc] call adm_behavior_fnc_getReinforcementGroups;
     {
         if ([_x] call adm_behavior_fnc_canReinforce) then {
             _x setVariable ["adm_behavior_enemyPos", _enemyPos, false];
@@ -192,7 +193,7 @@ adm_behavior_fnc_canReinforce = {
 };
 
 adm_behavior_fnc_getAllGroups = {
-    private ["_groups"];
+    private "_groups";
     _groups = [];
     FILTER_PUSH_ALL(_groups, adm_patrol_infGroups, {alive leader _x});
     FILTER_PUSH_ALL(_groups, adm_patrol_techGroups, {alive leader _x});
