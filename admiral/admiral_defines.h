@@ -47,6 +47,26 @@
 #define CQC_DEBUG_MARKER                    "mil_triangle"
 #define SIDE_DEBUG_MARKER_COLORS            ["ColorRed", "ColorBlue", "ColorGreen", "ColorPink"]
 
+#define BEHAVIOR_MAX_REINFORCEMENT_DIST         750
+#define BEHAVIOR_REINF_TURNAROUND_DIST          300
+#define BEHAVIOR_ENEMY_CHECK_RADIUS             200
+#define BEHAVIOR_REINF_COOLDOWN                 600
+#define BEHAVIOR_CANCALL_PERCENT_CHANCE         25
+
+#define BEHAVIOR_AVG_FT_SIZE                    4
+#define BEHAVIOR_AVG_CAR_SIZE                   2.5
+#define BEHAVIOR_AVG_AIR_SIZE                   2
+
+#define BEHAVIOR_REINF_NUM(NUMS,INF,CAR,AIR)    \
+    round (((NUMS) select 0) / BEHAVIOR_AVG_FT_SIZE / (INF)) \
+    + round (((NUMS) select 1) / BEHAVIOR_AVG_CAR_SIZE / (CAR)) \
+    + round (((NUMS) select 2) / BEHAVIOR_AVG_AIR_SIZE / (AIR))
+
+#define STATE_INIT                              0
+#define STATE_MOVING                            1
+#define STATE_ENEMYFOUND                        2
+#define STATE_SADENEMY                          3
+#define STATE_COMBAT                            4
 
 #define ASSERT_NOTNIL(VARNAME,MSG)                  {if (!isNil (VARNAME)) then {""} else {call (MSG)}}
 #define ASSERT_TYPE(VAR,TYPE,MSG)                   {if (typename (VAR) == toUpper (TYPE)) then {""} else {call (MSG)}}
@@ -79,27 +99,6 @@
 #define DEF_MAX_MSG                                 {format ["Variable '%1' can not be greater, than %2!", _variableName, (MAXVAL)]}
 #define DEF_BETWEEN_MSG                             {format ["Variable '%1' must be between values %2 and %3!", _variableName, (MINVAL), (MAXVAL)]}
 #define DEF_BOUNDARY                                {format ["Variable '%1's first value '%2' must be less, than the second value '%3'!", _variableName, CC_VAR select 0, CC_VAR select 1]}
-
-#define BEHAVIOR_MAX_REINFORCEMENT_DIST         750
-#define BEHAVIOR_REINF_TURNAROUND_DIST          300
-#define BEHAVIOR_ENEMY_CHECK_RADIUS             200
-#define BEHAVIOR_REINF_COOLDOWN                 600
-#define BEHAVIOR_CANCALL_PERCENT_CHANCE         25
-
-#define BEHAVIOR_AVG_FT_SIZE                    4
-#define BEHAVIOR_AVG_CAR_SIZE                   2.5
-#define BEHAVIOR_AVG_AIR_SIZE                   2
-
-#define BEHAVIOR_REINF_NUM(NUMS,INF,CAR,AIR)    \
-    round (((NUMS) select 0) / BEHAVIOR_AVG_FT_SIZE / (INF)) \
-    + round (((NUMS) select 1) / BEHAVIOR_AVG_CAR_SIZE / (CAR)) \
-    + round (((NUMS) select 2) / BEHAVIOR_AVG_AIR_SIZE / (AIR))
-
-#define STATE_INIT                              0
-#define STATE_MOVING                            1
-#define STATE_ENEMYFOUND                        2
-#define STATE_SADENEMY                          3
-#define STATE_COMBAT                            4
 
 // WARNING
 // Macros are sensitive for "," (comma), "(", ")" (parenthese) and " " (space).
