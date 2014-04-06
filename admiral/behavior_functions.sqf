@@ -239,3 +239,12 @@ adm_behavior_fnc_init = {
     adm_behavior_foundEnemies = [];
     [] spawn adm_behavior_fnc_changeAllGroupState;
 };
+
+adm_behavior_getEnemyUnits = {
+    FUN_ARGS_1(_side);
+
+    private "_units";
+    _units = [];
+    FILTER_PUSH_ALL(_units, ALL_UNITS, {!(AS_ARRAY_2(side _x, _side) call adm_common_fnc_isFriendlySide)});
+    _units;
+};
