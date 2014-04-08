@@ -2,7 +2,7 @@
 
 class AdmiralUnitTemplates {
     class Base {
-        side=SIDE_WEST;
+        side=SIDE_CIV;
         infantry[]={"Cow02", "Cow03", "Cow04", "Fin", "Goat", "Cock", "Pastor", "Rabbit", "Sheep", "WildBoar"};
         crewmen[]={"Cow02", "Cow03", "Cow04", "Fin", "Goat", "Cock", "Pastor", "Rabbit", "Sheep", "WildBoar"};
         pilots[]={};
@@ -11,6 +11,7 @@ class AdmiralUnitTemplates {
     };
 
     class US_Army_Woodland_TEST : Base {
+        side=SIDE_WEST;
         infantry[] = {"US_Soldier_EP1"};
         crewmen[] = {"US_Soldier_Pilot_EP1"};
         pilots[] = {"US_Soldier_Crew_EP1"};
