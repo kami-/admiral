@@ -253,6 +253,7 @@ adm_common_fnc_setConfig = {
     {
         _trigger setVariable [[_x select 0] call adm_common_fnc_getRealConfig, _x select 1];
     } foreach _configArray;
+    [_trigger] call adm_common_fnc_initZone;
 };
 
 adm_common_fnc_getRealConfig = {
@@ -267,6 +268,33 @@ adm_common_fnc_getRealConfig = {
         if (_configName == "groupDelay") exitWith {"adm_camp_groupDelay"};
         if (_configName == "spawnChance") exitWith {"adm_camp_spawnChance"};
         if (_configName == "unitTemplate") exitWith {"adm_zone_unitTemplate"};
+    };
+};
+
+adm_common_fnc_initZone = {
+    FUN_ARGS_1(_trigger);
+
+    private ["_defaultTemplate", "_initFunc", "_triggerText"];
+    _defaultTemplate = "";
+    _initFunc = {};
+    _triggerText = triggerText _trigger;
+    call {
+        if (_triggerText == "cqc") exitWith {
+            _defaultTemplate = adm_default_cqc_unitTemplate;
+            _initFunc = adm_cqc_fnc_initZone;
+        };
+        if (_triggerText == "patrol") exitWith {
+            _defaultTemplate = adm_default_patrol_unitTemplate;
+            _initFunc = adm_patrol_fnc_initZone;
+        };
+        if (_triggerText == "camp") exitWith {
+            _defaultTemplate = adm_default_camp_unitTemplate;
+            _initFunc = adm_camp_fnc_initZone;
+        };
+    };
+    if (_defaultTemplate != "") then {
+        [_trigger, _defaultTemplate] call adm_common_initUnitTemplate;
+        [_trigger] spawn _initFunc;
     };
 };
 
