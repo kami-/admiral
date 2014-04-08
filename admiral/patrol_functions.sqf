@@ -183,51 +183,50 @@ adm_patrol_fnc_updateEnemyWaypoint = {
     };
 };
 
+adm_patrol_fnc_initZone = {
+    FUN_ARGS_1(_trigger);
+
+    waitUntil {
+        adm_isInitialized;
+    };
+    if (adm_ai_debugging) then {
+        [_trigger] call adm_debug_fnc_createTriggerLocalMarker;
+        [_trigger] call adm_error_fnc_validateZone;
+    };
+
+    private ["_pool", "_spawnedGroups"];
+    _pool = _trigger getVariable "adm_zone_pool";
+
+    // Spawn infantry groups
+    _spawnedGroups = [];
+    for "_i" from 1 to (_pool select 0) do {
+        PUSH(_spawnedGroups, [_trigger] call adm_patrol_fnc_spawnInfGroup);
+    };
+    _trigger setVariable ["adm_zone_infGroups", _spawnedGroups, false];
+    PUSH_ALL(adm_patrol_infGroups, _spawnedGroups);
+    [adm_patrol_infGroups] call adm_rupture_fnc_initGroups;
+
+    // Spawn technical groups
+    _spawnedGroups = [];
+    for "_i" from 1 to (_pool select 1) do {
+        PUSH(_spawnedGroups, [_trigger] call adm_patrol_fnc_spawnTechGroup);
+    };
+    _trigger setVariable ["adm_zone_techGroups", _spawnedGroups, false];
+    PUSH_ALL(adm_patrol_techGroups, _spawnedGroups);
+
+    // Spawn armour groups
+    _spawnedGroups = [];
+    for "_i" from 1 to (_pool select 2) do {
+        PUSH(_spawnedGroups, [_trigger] call adm_patrol_fnc_spawnArmorGroup);
+    };
+    _trigger setVariable ["adm_zone_armourGroups", _spawnedGroups, false];
+    PUSH_ALL(adm_patrol_armourGroups, _spawnedGroups);
+    PUSH(adm_patrol_triggers, _trigger);
+};
+
 adm_patrol_fnc_init = {
     adm_patrol_infGroups = [];
     adm_patrol_techGroups = [];
     adm_patrol_armourGroups = [];
-
-    adm_patrol_triggers = [allMissionObjects "EmptyDetector", {triggerText _x == "patrol"}] call BIS_fnc_conditionalSelect;
-    {
-        [_x] spawn {
-            FUN_ARGS_1(_trigger);
-
-            waitUntil { triggerActivated _trigger };
-            waitUntil { !([_trigger getVariable ["adm_zone_pool",[]], []] call BIS_fnc_areEqual) };
-            [_trigger, adm_default_patrol_unitTemplate] call adm_common_initUnitTemplate;
-            if (adm_ai_debugging) then {
-                [_trigger] call adm_debug_fnc_createTriggerLocalMarker;
-                [_trigger] call adm_error_fnc_validateZone;
-            };
-
-            private ["_pool", "_spawnedGroups"];
-            _pool = _trigger getVariable "adm_zone_pool";
-
-            // Spawn infantry groups
-            _spawnedGroups = [];
-            for "_i" from 1 to (_pool select 0) do {
-                PUSH(_spawnedGroups, [_trigger] call adm_patrol_fnc_spawnInfGroup);
-            };
-            _trigger setVariable ["adm_zone_infGroups", _spawnedGroups, false];
-            PUSH_ALL(adm_patrol_infGroups, _spawnedGroups);
-            [adm_patrol_infGroups] call adm_rupture_fnc_initGroups;
-
-            // Spawn technical groups
-            _spawnedGroups = [];
-            for "_i" from 1 to (_pool select 1) do {
-                PUSH(_spawnedGroups, [_trigger] call adm_patrol_fnc_spawnTechGroup);
-            };
-            _trigger setVariable ["adm_zone_techGroups", _spawnedGroups, false];
-            PUSH_ALL(adm_patrol_techGroups, _spawnedGroups);
-            
-            // Spawn armour groups
-            _spawnedGroups = [];
-            for "_i" from 1 to (_pool select 2) do {
-                PUSH(_spawnedGroups, [_trigger] call adm_patrol_fnc_spawnArmorGroup);
-            };
-            _trigger setVariable ["adm_zone_armourGroups", _spawnedGroups, false];
-            PUSH_ALL(adm_patrol_armourGroups, _spawnedGroups);
-        };
-    } foreach adm_patrol_triggers;
+    adm_patrol_triggers = [];
 };
