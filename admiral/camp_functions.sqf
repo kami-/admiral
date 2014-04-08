@@ -426,24 +426,24 @@ adm_camp_fnc_randomSpawn = {
     };
 };
 
+adm_camp_fnc_initZone = {
+    FUN_ARGS_1(_trigger);
+
+    waitUntil {
+        adm_isInitialized;
+    };
+    if (adm_ai_debugging) then {
+        [_trigger] call adm_debug_fnc_createTriggerLocalMarker;
+        [_trigger] call adm_error_fnc_validateZone;
+    };
+    [_trigger] call ([_trigger] call adm_camp_fnc_getSpawnFunction);
+};
+
 adm_camp_fnc_init = {
     adm_camp_infGroups = [];
     adm_camp_techGroups = [];
     adm_camp_armourGroups = [];
-
+    // Needs to collect camp, so we can initialize logics once and don't risk doing it twice.
     adm_camp_triggers = [allMissionObjects "EmptyDetector", {triggerText _x == "camp"}] call BIS_fnc_conditionalSelect;
     [adm_camp_triggers] call adm_camp_fnc_processTiggerLogics;
-    {
-        [_x] spawn {
-            FUN_ARGS_1(_trigger);
-
-            waitUntil { triggerActivated _trigger };
-            [_trigger, adm_default_camp_unitTemplate] call adm_common_initUnitTemplate;
-            if (adm_ai_debugging) then {
-                [_trigger] call adm_debug_fnc_createTriggerLocalMarker;
-                [_trigger] call adm_error_fnc_validateZone;
-            };
-            [_trigger] call ([_trigger] call adm_camp_fnc_getSpawnFunction);
-        };
-    } foreach adm_camp_triggers;
 };
