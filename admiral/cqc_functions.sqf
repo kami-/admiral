@@ -232,25 +232,27 @@ adm_cqc_fnc_forceFire = {
     };
 };
 
-// Initializes cqc
+adm_cqc_fnc_initZone = {
+    FUN_ARGS_1(_trigger);
+
+    waitUntil {
+        adm_isInitialized;
+    };
+    if (adm_ai_debugging) then {
+        [_trigger] call adm_debug_fnc_createTriggerLocalMarker;
+        [_trigger] call adm_error_fnc_validateZone;
+    };
+
+    private "_spawnedGroups";
+    _spawnedGroups = [_trigger] call adm_cqc_fnc_spawnGarrison;
+    PUSH_ALL(adm_cqc_groups, _spawnedGroups);
+    [_spawnedGroups] call adm_rupture_fnc_initGroups;
+    [_spawnedGroups] call adm_cqc_fnc_forceFire;
+    PUSH(adm_cqc_groups, _trigger);
+};
+
+
 adm_cqc_fnc_init = {
-    adm_cqc_triggers = [allMissionObjects "EmptyDetector", {triggerText _x == "cqc"}] call BIS_fnc_conditionalSelect;
+    adm_cqc_triggers = [];
     adm_cqc_groups = [];
-    {
-        [_x] spawn {
-            FUN_ARGS_1(_trigger);
-            waitUntil { triggerActivated _trigger };
-            [_trigger, adm_default_cqc_unitTemplate] call adm_common_initUnitTemplate;
-            if (adm_ai_debugging) then {
-                [_trigger] call adm_debug_fnc_createTriggerLocalMarker;
-                [_trigger] call adm_error_fnc_validateZone;
-            };
-            // Spawn CQC
-            private ["_spawnedGroups"];
-            _spawnedGroups = [_trigger] call adm_cqc_fnc_spawnGarrison;
-            PUSH_ALL(adm_cqc_groups, _spawnedGroups);
-            [_spawnedGroups] call adm_rupture_fnc_initGroups;
-            [_spawnedGroups] call adm_cqc_fnc_forceFire;
-        };
-    } foreach adm_cqc_triggers;
 };
