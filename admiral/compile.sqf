@@ -1,3 +1,4 @@
+#include "admiral_defines.h"
 #include "settings.sqf"
 
 // Necessary for AI spawn
@@ -35,7 +36,6 @@ call compile preProcessFileLineNumbers "admiral\rupture_functions.sqf";
 call compile preProcessFileLineNumbers "admiral\behavior_functions.sqf";
 
 //Calling init functions
-
 [] call adm_cqc_fnc_init;
 [] call adm_camp_fnc_init;
 [] call adm_patrol_fnc_init;
@@ -48,3 +48,5 @@ if (adm_ai_debugging) then {
     [] call adm_error_fnc_init;
     [] call adm_debug_fnc_init;
 };
+
+adm_isInitialized = true;
