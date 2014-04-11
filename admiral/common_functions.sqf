@@ -65,24 +65,40 @@ adm_common_fnc_createWaypoint = {
     _wp;
 };
 
-adm_common_fnc_getAdmiralUnits = {
-    private ["_group_arrays", "_admiralUnits"];
-    _group_arrays = [adm_cqc_groups, adm_patrol_infGroups, adm_patrol_techGroups, adm_patrol_armourGroups, adm_camp_infGroups, adm_camp_techGroups, adm_camp_armourGroups];
-    _admiralUnits = [];
+adm_common_fnc_getAliveGroups = {
+    FUN_ARGS_1(_groupsArray);
+
+    private "_aliveGroups";
+    _aliveGroups = [];
+    {
+         private "_groups";
+        _groups = _x;
+        FILTER_PUSH_ALL(_aliveGroups,_groups,{{alive _x} count units _x > 0});
+    } foreach _groupsArray;
+
+    _aliveGroups;
+};
+
+adm_common_fnc_getAliveUnits = {
+    FUN_ARGS_1(_groupsArray);
+
+    private "_aliveUnits";
+    _aliveUnits = [];
     {
         private "_groups";
         _groups = _x;
         {
-            private "_group";
-            _group = _x;
-            {
-                if (alive _x) then {
-                    PUSH(_admiralUnits,_x);
-                };
-            } foreach units _group;
+            private "_groupUnits";
+            _groupUnits = units _x;
+            FILTER_PUSH_ALL(_aliveUnits,_groupUnits,{alive _x});
         } foreach _groups;
-    } foreach _group_arrays;
-    _admiralUnits;
+    } foreach _groupsArray;
+
+    _aliveUnits;
+};
+
+adm_common_fnc_getAdmiralUnits = {
+    [[adm_cqc_groups, adm_patrol_infGroups, adm_patrol_techGroups, adm_patrol_armourGroups, adm_camp_infGroups, adm_camp_techGroups, adm_camp_armourGroups]] call adm_common_fnc_getAliveUnits
 };
 
 adm_common_fnc_createLocalMarker = {
