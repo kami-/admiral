@@ -98,7 +98,7 @@ adm_common_fnc_getAliveUnits = {
 };
 
 adm_common_fnc_getAdmiralUnits = {
-    [[adm_cqc_groups, adm_patrol_infGroups, adm_patrol_techGroups, adm_patrol_armourGroups, adm_camp_infGroups, adm_camp_techGroups, adm_camp_armourGroups]] call adm_common_fnc_getAliveUnits
+    [[adm_cqc_groups, adm_patrol_infGroups, adm_patrol_techGroups, adm_patrol_armourGroups, adm_camp_infGroups, adm_camp_techGroups, adm_camp_armourGroups]] call adm_common_fnc_getAliveUnits;
 };
 
 adm_common_fnc_createLocalMarker = {

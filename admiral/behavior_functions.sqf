@@ -193,15 +193,7 @@ adm_behavior_fnc_canReinforce = {
 };
 
 adm_behavior_fnc_getAllGroups = {
-    private "_groups";
-    _groups = [];
-    FILTER_PUSH_ALL(_groups, adm_patrol_infGroups, {alive leader _x});
-    FILTER_PUSH_ALL(_groups, adm_patrol_techGroups, {alive leader _x});
-    FILTER_PUSH_ALL(_groups, adm_patrol_armourGroups, {alive leader _x});
-    FILTER_PUSH_ALL(_groups, adm_camp_infGroups, {alive leader _x});
-    FILTER_PUSH_ALL(_groups, adm_camp_techGroups, {alive leader _x});
-    FILTER_PUSH_ALL(_groups, adm_camp_armourGroups, {alive leader _x});
-    _groups;
+    [[adm_patrol_infGroups, adm_patrol_techGroups, adm_patrol_armourGroups, adm_camp_infGroups, adm_camp_techGroups, adm_camp_armourGroups]] call adm_common_fnc_getAliveGroups;
 };
 
 adm_behavior_fnc_getAvailableInfGroups = {
