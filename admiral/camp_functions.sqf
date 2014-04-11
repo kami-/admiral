@@ -439,6 +439,38 @@ adm_camp_fnc_initZone = {
     [_trigger] call ([_trigger] call adm_camp_fnc_getSpawnFunction);
 };
 
+adm_camp_fnc_getAliveInfGroups = {
+    [[adm_camp_infGroups]] call adm_common_fnc_getAliveGroups;
+};
+
+adm_camp_fnc_getAliveTechGroups = {
+    [[adm_camp_techGroups]] call adm_common_fnc_getAliveGroups;
+};
+
+adm_camp_fnc_getAliveArmGroups = {
+    [[adm_camp_armourGroups]] call adm_common_fnc_getAliveGroups;
+};
+
+adm_camp_fnc_getAliveGroups = {
+   [[adm_camp_infGroups, adm_camp_techGroups, adm_camp_armourGroups]] call adm_common_fnc_getAliveGroups;
+};
+
+adm_camp_fnc_getAliveInfUnits = {
+   [[adm_camp_infGroups]] call adm_common_fnc_getAliveUnits;
+};
+
+adm_camp_fnc_getAliveTechUnits = {
+   [[adm_camp_techGroups]] call adm_common_fnc_getAliveUnits;
+};
+
+adm_camp_fnc_getAliveArmUnits = {
+   [[adm_camp_armourGroups]] call adm_common_fnc_getAliveUnits;
+};
+
+adm_camp_fnc_getAliveUnits = {
+   [[adm_camp_infGroups, adm_camp_techGroups, adm_camp_armourGroups]] call adm_common_fnc_getAliveUnits;
+};
+
 adm_camp_fnc_init = {
     adm_camp_infGroups = [];
     adm_camp_techGroups = [];
