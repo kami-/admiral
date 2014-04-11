@@ -251,6 +251,13 @@ adm_cqc_fnc_initZone = {
     PUSH(adm_cqc_groups, _trigger);
 };
 
+adm_cqc_fnc_getAliveGroups = {
+    [[adm_cqc_groups]] call adm_common_fnc_getAliveGroups;
+};
+
+adm_cqc_fnc_getAliveUnits = {
+   [[adm_cqc_groups]] call adm_common_fnc_getAliveUnits;
+};
 
 adm_cqc_fnc_init = {
     adm_cqc_triggers = [];
