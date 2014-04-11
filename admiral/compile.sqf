@@ -34,6 +34,7 @@ call compile preProcessFileLineNumbers "admiral\camp_functions.sqf";
 call compile preProcessFileLineNumbers "admiral\patrol_functions.sqf";
 call compile preProcessFileLineNumbers "admiral\rupture_functions.sqf";
 call compile preProcessFileLineNumbers "admiral\behavior_functions.sqf";
+call compile preProcessFileLineNumbers "admiral\api_functions.sqf";
 
 //Calling init functions
 [] call adm_cqc_fnc_init;
