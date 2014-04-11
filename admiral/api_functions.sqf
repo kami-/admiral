@@ -43,3 +43,78 @@ adm_api_fnc_disableCamp = {
 
     [_trigger] call adm_camp_fnc_disableCamp;
 };
+
+//CQC groups and units
+adm_api_fnc_getCqcGroups = {
+    [] call adm_cqc_fnc_getAliveGroups;
+};
+
+adm_api_fnc_getCqcUnits = {
+    [] call adm_cqc_fnc_getAliveUnits;
+};
+
+//Patrol groups and units
+adm_api_fnc_getPatrolInfGroups = {
+    [] call adm_patrol_fnc_getAliveInfGroups;
+};
+
+adm_api_fnc_getPatrolTechGroups = {
+    [] call adm_patrol_fnc_getAliveTechGroups;
+};
+
+adm_api_fnc_getPatrolArmGroups = {
+    [] call adm_patrol_fnc_getAliveArmGroups;
+};
+
+adm_api_fnc_getPatrolGroups = {
+    [] call adm_patrol_fnc_getAliveGroups;
+};
+
+adm_api_fnc_getPatrolInfUnits = {
+    [] call adm_patrol_fnc_getAliveInfUnits;
+};
+
+adm_api_fnc_getPatrolTechUnits = {
+    [] call adm_patrol_fnc_getAliveTechUnits;
+};
+
+adm_api_fnc_getPatrolArmUnits = {
+    [] call adm_patrol_fnc_getAliveArmUnits;
+};
+
+adm_api_fnc_getPatrolUnits = {
+    [] call adm_patrol_fnc_getAliveUnits;
+};
+
+// Camp groups and units
+adm_api_fnc_getCampInfGroups = {
+    [] call adm_camp_fnc_getAliveInfGroups;
+};
+
+adm_api_fnc_getCampTechGroups = {
+    [] call adm_camp_fnc_getAliveTechGroups;
+};
+
+adm_api_fnc_getCampArmGroups = {
+    [] call adm_camp_fnc_getAliveArmGroups;
+};
+
+adm_api_fnc_getCampGroups = {
+    [] call adm_camp_fnc_getAliveGroups;
+};
+
+adm_api_fnc_getCampInfUnits = {
+    [] call adm_camp_fnc_getAliveInfUnits;
+};
+
+adm_api_fnc_getCampTechUnits = {
+    [] call adm_camp_fnc_getAliveTechUnits;
+};
+
+adm_api_fnc_getCampArmUnits = {
+    [] call adm_camp_fnc_getAliveArmUnits;
+};
+
+adm_api_fnc_getCampUnits = {
+    [] call adm_camp_fnc_getAliveUnits;
+};
