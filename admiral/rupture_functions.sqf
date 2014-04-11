@@ -40,14 +40,16 @@ adm_rupture_fnc_initGroups = {
 adm_rupture_fnc_checkUnits = {
     [] spawn { 
         waitUntil {
+            private "_infUnits";
+            _infUnits = [[adm_cqc_groups, adm_patrol_infGroups, adm_camp_infGroups]] call adm_common_fnc_getAliveUnits;
             {
                 private ["_unit", "_elapsedTime"];
                 _unit = _x;
                 _elapsedTime = diag_tickTime - (_unit getVariable ["adm_rupture_lastHitTime", diag_tickTime]);
                 if (_elapsedTime > adm_rupture_length) then {
                     _unit setDamage 1;
-                }
-            } foreach ([] call adm_common_fnc_getAdmiralUnits);
+                };
+            } foreach _infUnits;
             sleep adm_rupture_updateTick;
             false;
         };
