@@ -224,6 +224,38 @@ adm_patrol_fnc_initZone = {
     PUSH(adm_patrol_triggers, _trigger);
 };
 
+adm_patrol_fnc_getAliveInfGroups = {
+    [[adm_patrol_infGroups]] call adm_common_fnc_getAliveGroups;
+};
+
+adm_patrol_fnc_getAliveTechGroups = {
+    [[adm_patrol_techGroups]] call adm_common_fnc_getAliveGroups;
+};
+
+adm_patrol_fnc_getAliveArmGroups = {
+    [[adm_patrol_armourGroups]] call adm_common_fnc_getAliveGroups;
+};
+
+adm_patrol_fnc_getAliveGroups = {
+   [[adm_patrol_infGroups, adm_patrol_techGroups, adm_patrol_armourGroups]] call adm_common_fnc_getAliveGroups;
+};
+
+adm_patrol_fnc_getAliveInfUnits = {
+   [[adm_patrol_infGroups]] call adm_common_fnc_getAliveUnits;
+};
+
+adm_patrol_fnc_getAliveTechUnits = {
+   [[adm_patrol_techGroups]] call adm_common_fnc_getAliveUnits;
+};
+
+adm_patrol_fnc_getAliveArmUnits = {
+   [[adm_patrol_armourGroups]] call adm_common_fnc_getAliveUnits;
+};
+
+adm_patrol_fnc_getAliveUnits = {
+   [[adm_patrol_infGroups, adm_patrol_techGroups, adm_patrol_armourGroups]] call adm_common_fnc_getAliveUnits;
+};
+
 adm_patrol_fnc_init = {
     adm_patrol_infGroups = [];
     adm_patrol_techGroups = [];
