@@ -7,6 +7,7 @@
 #endif
 
 #define TEMPLATE_CONFIGFILE                 missionConfigFile
+#define STR_TEMPLATE_CONFIGFILE             "missionConfigFile"
 #define TEMPLATE_CONTAINER_CLASS            "AdmiralUnitTemplates"
 
 #define CAMP_SPAWN_CIRCLE_MAX_DIST          30
@@ -79,6 +80,9 @@
 #define ASSERT_BOUNDARY(VAR,MSG)                    {if ((VAR) select 0 <= (VAR) select 1) then {""} else {call (MSG)}}
 #define ASSERT_ISKINDOF(CLASSNAME,BASETYPE,MSG)     {if ((CLASSNAME) isKindOf (BASETYPE)) then {""} else {call (MSG)}}
 #define ASSERT_INARRAY(VAR,ARRAY,MSG)               {if ((VAR) in (ARRAY)) then {""} else {call (MSG)}}
+#define ASSERT_ISCLASS(SELECTOR,MSG)                {if (isClass (SELECTOR)) then {""} else {call (MSG)}}
+#define ASSERT_ISNUMBER(SELECTOR,MSG)               {if (isNumber (SELECTOR)) then {""} else {call (MSG)}}
+#define ASSERT_ISARRAY(SELECTOR,MSG)                {if (isArray (SELECTOR)) then {""} else {call (MSG)}}
 
 #define CC_VAR                                      (call compile _variableName)
 

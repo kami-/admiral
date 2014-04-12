@@ -13,6 +13,7 @@ adm_error_fnc_validateVariables = {
 
 adm_error_fnc_processAsserts = {
     FUN_ARGS_1(_asserts);
+
     private ["_i", "_noError"];
     _i = 0;
     _noError = true;
@@ -20,7 +21,7 @@ adm_error_fnc_processAsserts = {
         private "_assertResult";
         _assertResult = call (_asserts select _i);
         if (_assertResult != "") then {
-            PUSH(adm_error_errorMessages, call (_asserts select _i));
+            PUSH(adm_error_errorMessages,_assertResult);
             diag_log LOG_MSG_1("ERROR","Validation - %1",_assertResult);;
             _noError = false;
         };
@@ -30,27 +31,113 @@ adm_error_fnc_processAsserts = {
     _noError;
 };
 
-adm_error_fnc_validateFactions = {
-    private ["_errorMessages", "_asserts"];
+adm_error_fnc_validateUnitTemplate = {
+    FUN_ARGS_2(_unitTemplate,_arrayFields);
+
+    private ["_errorMessages", "_asserts", "_noError"];
     _errorMessages = [
-        {format ["'adm_ai_factions[%1]' is not type of array!", adm_ai_enemySideIndex + 1]},
-        {format ["Array 'adm_ai_factions' must have minimum size of %1!", adm_ai_enemySideIndex + 1]},
-        {format ["'adm_ai_factions[%1][%2]' is not type of 'STRING'!", adm_ai_enemySideIndex + 1, adm_ai_enemyFaction + 1]}
+        {format ["Unit template '%1' is not type of 'STRING'!", _unitTemplate]}
     ];
     _asserts = [
-        ASSERT_TYPE(adm_ai_factions select adm_ai_enemySideIndex,"ARRAY",_errorMessages select 0), 
-        ASSERT_ARRAYMINSIZE(adm_ai_factions select adm_ai_enemySideIndex,adm_ai_enemySideIndex + 1,_errorMessages select 1),
-        ASSERT_TYPE(adm_ai_factions select adm_ai_enemySideIndex select adm_ai_enemyFaction,"STRING",_errorMessages select 2)
+        ASSERT_TYPE(_unitTemplate,"STRING",_errorMessages select 0)
+    ];
+    _noError = [_asserts] call adm_error_fnc_processAsserts;
+
+    if (_noError) then {
+        private ["_configEntry", "_configEntryString"];
+        _configEntry = TEMPLATE_CONFIGFILE >> TEMPLATE_CONTAINER_CLASS >> _unitTemplate;
+        _configEntryString = format ["%1 >> %2 >> %3", STR_TEMPLATE_CONFIGFILE, TEMPLATE_CONTAINER_CLASS, _unitTemplate];
+        _errorMessages = [
+            {format ["Class '%1' was not found, at '%2'!", _unitTemplate, _configEntryString]}
+        ];
+        _asserts = [
+            ASSERT_ISCLASS(_configEntry,_errorMessages select 0)
+        ];
+        _noError = [_asserts] call adm_error_fnc_processAsserts;
+
+        if (_noError) then {
+            [_configEntry, _configEntryString, _arrayFields] call adm_error_fnc_validateUnitTemplateFields;
+        };
+    };
+};
+
+adm_error_fnc_validateUnitTemplateFields = {
+    FUN_ARGS_3(_configEntry,_configEntryString,_arrayFields);
+
+    [_configEntry >> "side", _configEntryString + " >> side", "side"] call adm_error_fnc_validateUnitTemplateNumberField;
+    {
+        private ["_field", "_fieldConfigEntry", "_fieldConfigEntryString", "_noError"];
+        _field = _x select 0;
+        _fieldConfigEntryString = format ["%1 >> %2", _configEntryString, _field];
+        _fieldConfigEntry = _configEntry >> _field;
+        _noError = [_fieldConfigEntry, _fieldConfigEntryString, _field] call adm_error_fnc_validateUnitTemplateArrayField;
+        if (_noError) then {
+            [_fieldConfigEntryString, getArray (_fieldConfigEntry), _x select 1] call adm_error_fnc_validateUnitTemplateClassNames;
+        };
+    } foreach _arrayFields;
+};
+
+adm_error_fnc_validateUnitTemplateNumberField = {
+    FUN_ARGS_3(_configEntry,_configEntryString,_field);
+
+    private ["_errorMessages", "_asserts"];
+    _errorMessages = [
+        {format ["Field '%1' is not a number (or not defined), in unit template '%2'!", _field, _configEntryString]}
+    ];
+    _asserts = [
+        ASSERT_ISNUMBER(_configEntry,_errorMessages select 0)
     ];
 
     [_asserts] call adm_error_fnc_processAsserts;
 };
 
+adm_error_fnc_validateUnitTemplateArrayField = {
+    FUN_ARGS_3(_configEntry,_configEntryString,_field);
+
+    private ["_errorMessages", "_asserts", "_noError"];
+    _errorMessages = [
+        {format ["Field '%1' is not an array (or not defined), in unit template '%2'!", _field, _configEntryString]}
+    ];
+    _asserts = [
+        ASSERT_ISARRAY(_configEntry,_errorMessages select 0)
+    ];
+    _noError = [_asserts] call adm_error_fnc_processAsserts;
+
+    if (_noError) then {
+        _errorMessages = [
+            {format ["Field '%1' cannot be empty, in unit template '%2'!", _field, _configEntryString]}
+        ];
+        _asserts = [
+            ASSERT_NOTEMPTY(getArray (_configEntry),_errorMessages select 0)
+        ];
+        _noError = [_asserts] call adm_error_fnc_processAsserts;
+    };
+
+    _noError;
+};
+
+adm_error_fnc_validateUnitTemplateClassNames = {
+    FUN_ARGS_3(_configEntryString,_classNames,_baseClass);
+
+    private ["_errorMessages", "_asserts"];
+    _errorMessages = [
+        {format ["Class name '%1' is not type of 'STRING', in unit template '%2' at index '%3'!", _x, _configEntryString, _forEachIndex + 1]},
+        {format ["Class name '%1' is not kind of '%2', in unit template '%3' at index '%4'!", _x, _baseClass, _configEntryString, _forEachIndex + 1]}
+    ];
+    _asserts = [
+        ASSERT_TYPE(_x,"STRING",_errorMessages select 0),
+        ASSERT_ISKINDOF(_x,_baseClass,_errorMessages select 1)
+    ];
+    {
+        [_asserts] call adm_error_fnc_processAsserts;
+    } foreach _classNames;
+};
+
 adm_error_fnc_validateCQCBuildings = {
     private ["_errorMessages", "_asserts"];
     _errorMessages = [
-        {format ["'adm_cqc_buildingBlacklist[%1]' is not type of 'STRING'!", _forEachIndex + 1]},
-        {format ["'adm_cqc_buildingBlacklist[%1]' is not a building classname!", _forEachIndex + 1]}
+        {format ["Class name '%1' is not type of 'STRING', in array 'adm_cqc_buildingBlacklist' at index '%2'!", _x, _forEachIndex + 1]},
+        {format ["Class name '%1' is not kind of '%2', in array 'adm_cqc_buildingBlacklist' at index '%3'!", _x, "house", _forEachIndex + 1]}
     ];
     _asserts = [
         ASSERT_TYPE(_x,"STRING",_errorMessages select 0),
@@ -61,12 +148,12 @@ adm_error_fnc_validateCQCBuildings = {
     } foreach adm_cqc_buildingBlacklist;
 
     _errorMessages = [
-        {format ["'adm_cqc_buildingCapacity[%1]' is not type of 'ARRAY'!", _forEachIndex + 1]},
-        {format ["Array 'adm_cqc_buildingCapacity[%1]' size must be %2!", _forEachIndex + 1, 2]},
-        {format ["'adm_cqc_buildingBlacklist[%1][%2]' is not type of 'STRING'!", _forEachIndex + 1, 1]},
-        {format ["'adm_cqc_buildingBlacklist[%1][%2]' is not a building classname!", _forEachIndex + 1, 1]},
-        {format ["'adm_cqc_buildingBlacklist[%1][%2]' is not type of 'SCALAR'!", _forEachIndex + 1, 2]},
-        {format ["'adm_cqc_buildingBlacklist[%1][%2]' can not be less, than %3!", _forEachIndex + 1, 2, 1]}
+        {format ["Entry '%1' is not type of 'ARRAY', in 'adm_cqc_buildingCapacity' at index '%2'!", _x, _forEachIndex + 1]},
+        {format ["Array '%1' size must be '%2', in 'adm_cqc_buildingCapacity' at index '%3'!", _x, _forEachIndex + 1, 2]},
+        {format ["Class name '%1' is not type of 'STRING', in array 'adm_cqc_buildingCapacity' at index '%2'!", _x select 0, _forEachIndex + 1]},
+        {format ["Class name '%1' is not kind of '%2', in array 'adm_cqc_buildingCapacity' at index '%3'!", _x select 0, "house", _forEachIndex + 1]},
+        {format ["Capacity '%1' is not type of 'SCALAR', in array 'adm_cqc_buildingCapacity' at index '%2'!", _x select 1, _forEachIndex + 1]},
+        {format ["Capacity '%1' cannot be less, than %2, in array 'adm_cqc_buildingCapacity' at index '%3'!", _x select 1, 1, _forEachIndex + 1]}
     ];
     _asserts = [
         ASSERT_TYPE(_x,"ARRAY",_errorMessages select 0),
@@ -79,124 +166,6 @@ adm_error_fnc_validateCQCBuildings = {
     {
         [_asserts] call adm_error_fnc_processAsserts;
     } foreach adm_cqc_buildingCapacity;
-};
-
-adm_error_fnc_validateUnitTypes = {
-    FUN_ARGS_4(_variable,_variableName,_classFunc,_baseClass);
-
-    private ["_side", "_sideSelector", "_faction", "_factionSelector", "_cammo", "_cammoSelector", "_errorMessages", "_asserts", "_noError"];
-    _side = SIDE_TEXT_ARRAY select adm_ai_enemySideIndex;
-    _sideSelector = format["%1[%2]", _variableName, adm_ai_enemySideIndex + 1];
-    _faction = adm_ai_factions select adm_ai_enemySideIndex select adm_ai_enemyFaction;
-    _factionSelector = format["%1[%2][%3]", _variableName, adm_ai_enemySideIndex + 1, adm_ai_enemyFaction + 1];
-    _cammo = CAMMO_ARRAY select adm_ai_enemyCammo;
-    _cammoSelector = format["%1[%2][%3][%4]", _variableName, adm_ai_enemySideIndex + 1, adm_ai_enemyFaction + 1, adm_ai_enemyCammo + 1];
-
-    _errorMessages = [
-        {format ["In %1, side '%2' ('%3') is not type of 'ARRAY'!", _variableName, _side, _sideSelector]},
-        {format ["In %1, side '%2' ('%3') array is missing!", _variableName, _side, _sideSelector]},
-        {format ["In %1, side '%2', faction '%3' ('%4') is not type of 'ARRAY'!", _variableName, _side, _faction, _factionSelector]},
-        {format ["In %1, side '%2', faction '%3' ('%4') array is missing!", _variableName, _side, _faction, _factionSelector]},
-        {format ["In %1, side '%2', faction '%3' cammo '%4' ('%5') is not type of 'ARRAY'!", _variableName, _side, _faction, _cammo, _cammoSelector]},
-        {format ["In %1, side '%2', faction '%3' cammo '%4' ('%5') array is missing!", _variableName, _side, _faction, _cammo, _cammoSelector]}
-    ];
-    _asserts = [
-        ASSERT_ARRAYMINSIZE(_variable,adm_ai_enemySideIndex + 1,_errorMessages select 0),
-        ASSERT_TYPE(_variable select adm_ai_enemySideIndex,"ARRAY",_errorMessages select 1),
-        ASSERT_ARRAYMINSIZE(_variable select adm_ai_enemySideIndex,adm_ai_enemyFaction + 1,_errorMessages select 2),
-        ASSERT_TYPE(_variable select adm_ai_enemySideIndex select adm_ai_enemyFaction,"ARRAY",_errorMessages select 3),
-        ASSERT_ARRAYMINSIZE(_variable select adm_ai_enemySideIndex select adm_ai_enemyFaction,adm_ai_enemyCammo + 1,_errorMessages select 4),
-        ASSERT_TYPE(_variable select adm_ai_enemySideIndex select adm_ai_enemyFaction select adm_ai_enemyCammo,"ARRAY",_errorMessages select 5)
-    ];
-
-    _noError = [_asserts] call adm_error_fnc_processAsserts;
-    if (_noError) then {
-        [_variable select adm_ai_enemySideIndex select adm_ai_enemyFaction select adm_ai_enemyCammo, _baseClass] call _classFunc;
-    };
-    
-};
-
-adm_error_fnc_validateUnitTypeClassNames = {
-    FUN_ARGS_2(_classNames,_baseClass);
-
-    private ["_errorMessages", "_asserts", "_noError"];
-    _errorMessages = [
-        {format ["In %1, side '%2', faction '%3' cammo '%4', element ('%5[%6]') is not type of 'STRING'!", _variableName, _side, _faction, _cammo, _cammoSelector, _forEachIndex + 1]},
-        {format ["In %1, side '%2', faction '%3' cammo '%4' element ('%5[%6]') is not a '%7' classname!", _variableName, _side, _faction, _cammo, _cammoSelector, _forEachIndex + 1, _baseClass]}
-    ];
-    _asserts = [
-        ASSERT_TYPE(_x,"STRING",_errorMessages select 0),
-        ASSERT_ISKINDOF(_x,_baseClass,_errorMessages select 1)
-    ];
-
-    _noError = true;
-    {
-        _noError = _noError && ([_asserts] call adm_error_fnc_processAsserts);
-    } foreach _classNames;
-
-    _noError;
-};
-
-adm_error_fnc_validatePatrolMen = {
-    FUN_ARGS_2(_unitTypesArray,_baseClass);
-
-    private "_noError";
-    _noError = true;
-    {
-        private ["_menArray", "_errorMessages", "_asserts"];
-        _menArray = _x;
-        _errorMessages = [
-            {format ["In %1, side '%2', faction '%3' cammo '%4' %6 ('%5[%7]') is not type of 'ARRAY'!", _variableName, _side, _faction, _cammo, _cammoSelector, UNIT_TYPE_ARRAY select _forEachIndex, _forEachIndex + 1]},
-            {format ["In %1, side '%2', faction '%3' cammo '%4' %6 ('%5[%7]') array can not be empty!", _variableName, _side, _faction, _cammo, _cammoSelector, UNIT_TYPE_ARRAY select _forEachIndex, _forEachIndex + 1]}
-        ];
-        _asserts = [
-            ASSERT_TYPE(_menArray,"ARRAY",_errorMessages select 0),
-            ASSERT_NOTEMPTY(_menArray,_errorMessages select 1)
-        ];
-        _noError = _noError && ([_asserts] call adm_error_fnc_processAsserts);
-
-        if (_noError) then {
-            _errorMessages = [
-                {format ["In %1, side '%2', faction '%3' cammo '%4' %6 element ('%5[%7]') is not type of 'STRING'!", _variableName, _side, _faction, _cammo, _cammoSelector, UNIT_TYPE_ARRAY select _forEachIndex, _forEachIndex + 1]},
-                {format ["In %1, side '%2', faction '%3' cammo '%4' %6 element ('%5[%7]') is not a '%8' classname!", _variableName, _side, _faction, _cammo, _cammoSelector, UNIT_TYPE_ARRAY select _forEachIndex, _forEachIndex + 1, _baseClass]}
-            ];
-            _asserts = [
-                ASSERT_TYPE(_x,"STRING",_errorMessages select 0),
-                ASSERT_ISKINDOF(_x,_baseClass,_errorMessages select 1)
-            ];
-
-            _noError = true;
-            {
-                _noError = _noError && ([_asserts] call adm_error_fnc_processAsserts);
-            } foreach _menArray;
-        };
-    } foreach _unitTypesArray;
-
-    _noError;
-};
-
-adm_error_fnc_validatePatrolUnits = {
-    [adm_patrol_unitTypes, "adm_patrol_unitTypes", adm_error_fnc_validatePatrolMen, "CAManBase"] call adm_error_fnc_validateUnitTypes;
-};
-
-adm_error_fnc_validatePatrolTechnicals = {
-    [adm_patrol_techTypes, "adm_patrol_techTypes", adm_error_fnc_validateUnitTypeClassNames, "LandVehicle"] call adm_error_fnc_validateUnitTypes;
-};
-
-adm_error_fnc_validatePatrolArmour = {
-    [adm_patrol_armourTypes, "adm_patrol_armourTypes", adm_error_fnc_validateUnitTypeClassNames, "LandVehicle"] call adm_error_fnc_validateUnitTypes;
-};
-
-adm_error_fnc_validateCQCUnits = {
-    [adm_cqc_unitTypes, "adm_cqc_unitTypes", adm_error_fnc_validateUnitTypeClassNames, "CAManBase"] call adm_error_fnc_validateUnitTypes;
-};
-
-adm_error_fnc_validateZones = {
-    private "_triggers";
-    _triggers = [allMissionObjects "EmptyDetector", {triggerText _x == "cqc" || {triggerText _x == "patrol"} || {triggerText _x == "camp"}}] call BIS_fnc_conditionalSelect;
-    {
-        [_x] call adm_error_fnc_validateZone;
-    } foreach _triggers;
 };
 
 adm_error_fnc_validateZone = {
@@ -218,11 +187,11 @@ adm_error_fnc_validateCQCZone = {
 
     private ["_errorMessages","_asserts"];
     _errorMessages = [
-        {format ["CQC zone '%1', 'Axis a' can not be greater, than 500!", _trigger]},
-        {format ["CQC zone '%1', 'Axis b' can not be greater, than 500!", _trigger]},
-        {format ["CQC zone '%1', is missing the 'pool' configuration value!", _trigger]},
-        {format ["CQC zone '%1', 'pool' configuration value is not type of 'SCALAR'!", _trigger]},
-        {format ["CQC zone '%1', 'pool' configuration value can not be less, than 0!", _trigger]}
+        {format ["Axis a='%1' cannot be greater, than 500, on CQC zone '%2'!", (triggerArea _trigger) select 0, _trigger]},
+        {format ["Axis b='%1' cannot be greater, than 500, on CQC zone '%2'!", (triggerArea _trigger) select 1, _trigger]},
+        {format ["Config entry 'pool' is missing, on CQC zone '%1'!", _trigger]},
+        {format ["Config entry 'pool'='%1' is not type of 'SCALAR', on CQC zone '%2'!", _trigger getVariable "adm_zone_pool", _trigger]},
+        {format ["Config entry 'pool'='%1' cannot be less, than 0, on CQC zone '%2'!", _trigger getVariable "adm_zone_pool", _trigger]}
     ];
     _asserts = [
         ASSERT_MAX((triggerArea _trigger) select 0,500,_errorMessages select 0),
@@ -235,37 +204,41 @@ adm_error_fnc_validateCQCZone = {
 
     if (!isNil {_trigger getVariable "adm_cqc_minHeight"}) then {
         _errorMessages = [
-            {format ["CQC zone '%1', 'minHeight' configuration value is not type of 'SCALAR'!", _trigger]}
+            {format ["Config entry 'minHeight'='%1' is not type of 'SCALAR', on CQC zone '%2'!", _trigger getVariable "adm_cqc_minHeight", _trigger]}
         ];
         _asserts = [
             ASSERT_TYPE(_trigger getVariable "adm_cqc_minHeight","SCALAR",_errorMessages select 0)
         ];
         [_asserts] call adm_error_fnc_processAsserts;
     };
+    [_trigger getVariable ["adm_zone_unitTemplate", "TEMPLATE_MISSING"], [["infantry", "Man"]]] call adm_error_fnc_validateUnitTemplate;
 };
 
 adm_error_fnc_validatePatrolZone = {
     FUN_ARGS_1(_trigger);
 
-    [_trigger, "Patrol", "adm_zone_pool", "SCALAR", ASSERT_MIN(_x,0,_errorMessages select 1), "%1 zone '%2', number of %3 groups ('%4[%5]') can not be less, than 0!"] call adm_error_fnc_validateGroupConfigArray;
+    [_trigger, "Patrol", "pool", "adm_zone_pool", "SCALAR", ASSERT_MIN(_x,0,_errorMessages select 1), "Number of %1 groups '%2' cannot be less, than 0, in config entry '%3' at index '%4', on '%5' zone '%6'!"]
+        call adm_error_fnc_validateGroupConfigArray;
+    [_trigger getVariable ["adm_zone_unitTemplate", "TEMPLATE_MISSING"], [["infantry", "Man"], ["crewmen", "Man"], ["technicals", "LandVehicle"], ["technicals", "LandVehicle"]]] call adm_error_fnc_validateUnitTemplate;
 };
 
 adm_error_fnc_validateCampZone = {
     FUN_ARGS_1(_trigger);
 
     private ["_errorMessages","_asserts", "_noError"];
+
     _errorMessages = [
-        {format ["Camp zone '%1', is missing the 'type' configuration value!", _trigger]},
-        {format ["Camp zone '%1', 'type' configuration value is not type of 'STRING'!", _trigger]},
-        {format ["Camp zone '%1', 'type' configuration value must be one of theese: %2!", _trigger, CAMP_TYPE_ARRAY]},
-        {format ["Camp zone '%1', is missing the 'campDelay' configuration value!", _trigger]},
-        {format ["Camp zone '%1', 'campDelay' configuration value is not type of 'SCALAR'!", _trigger]},
-        {format ["Camp zone '%1', 'campDelay' configuration value can not be less, than 1!", _trigger]}
+        {format ["Config entry 'type' is missing, on Camp zone '%1'!", _trigger]},
+        {format ["Config entry 'type'='%1' is not type of 'STRING', on Camp zone '%2'!", _trigger getVariable "adm_camp_type", _trigger]},
+        {format ["Config entry 'type'='%1' must be one of theese '%2', on Camp zone '%3'!", _trigger getVariable "adm_camp_type", CAMP_TYPE_ARRAY, _trigger]},
+        {format ["Config entry 'campDelay' is missing, on Camp zone '%1'!", _trigger]},
+        {format ["Config entry 'campDelay'='%1' is not type of 'SCALAR', on Camp zone '%2'!", _trigger getVariable "adm_camp_campDelay", _trigger]},
+        {format ["Config entry 'campDelay'='%1' cannot be less, than 1, on Camp zone '%2'!", _trigger getVariable "adm_camp_campDelay", _trigger]}
     ];
 
     _asserts = [
-        ASSERT_NOTNIL({_trigger getVariable "adm_zone_pool"},_errorMessages select 0),
-        ASSERT_TYPE(_trigger getVariable "adm_zone_pool","ARRAY",_errorMessages select 1),
+        ASSERT_NOTNIL({_trigger getVariable "adm_camp_type"},_errorMessages select 0),
+        ASSERT_TYPE(_trigger getVariable "adm_camp_type","STRING",_errorMessages select 1),
         ASSERT_INARRAY(_trigger getVariable "adm_camp_type", CAMP_TYPE_ARRAY, _errorMessages select 2),
         ASSERT_NOTNIL({_trigger getVariable "adm_camp_campDelay"},_errorMessages select 3),
         ASSERT_TYPE(_trigger getVariable "adm_camp_campDelay","SCALAR",_errorMessages select 4),
@@ -273,9 +246,12 @@ adm_error_fnc_validateCampZone = {
     ];
     [_asserts] call adm_error_fnc_processAsserts;
 
-    [_trigger, "Camp", "adm_zone_pool", "SCALAR", ASSERT_MIN(_x,-1,_errorMessages select 1), "%1 zone '%2', number of %3 groups ('%4[%5]') can not be less, than -1!"] call adm_error_fnc_validateGroupConfigArray;
-    [_trigger, "Camp", "adm_camp_wave", "SCALAR", ASSERT_MIN(_x,0,_errorMessages select 1), "%1 zone '%2', number of %3 groups ('%4[%5]') can not be less, than 0!"] call adm_error_fnc_validateGroupConfigArray;
+    [_trigger, "Camp", "pool", "adm_zone_pool", "SCALAR", ASSERT_MIN(_x,-1,_errorMessages select 1), "Number of %1 groups '%2' cannot be less, than -1, in config entry '%3' at index '%4', on '%5' zone '%6'!"]
+        call adm_error_fnc_validateGroupConfigArray;
+    [_trigger, "Camp", "wave", "adm_camp_wave", "SCALAR", ASSERT_MIN(_x,0,_errorMessages select 1), "Number of %1 groups '%2' cannot be less, than 0, in config entry '%3' at index '%4', on '%5' zone '%6'!"]
+        call adm_error_fnc_validateGroupConfigArray;
     [_trigger] call adm_error_fnc_validateCampZoneType;
+    [_trigger getVariable ["adm_zone_unitTemplate", "TEMPLATE_MISSING"], [["infantry", "Man"], ["crewmen", "Man"], ["technicals", "LandVehicle"], ["technicals", "LandVehicle"]]] call adm_error_fnc_validateUnitTemplate;
 };
 
 adm_error_fnc_validateCampZoneType = {
@@ -284,13 +260,15 @@ adm_error_fnc_validateCampZoneType = {
     private "_validateFunc";
     _validateFunc = call {
         if (_trigger getVariable "adm_camp_type" == "periodic") exitWith {
-            {[_trigger, "Periodic camp", "adm_camp_groupDelay", "SCALAR", ASSERT_MIN(_x,0,_errorMessages select 1), "%1 zone '%2', delay of %3 groups ('%4[%5]') can not be less, than 0!"] call adm_error_fnc_validateGroupConfigArray;}
+            {[_trigger, "Periodic camp", "groupDelay", "adm_camp_groupDelay", "SCALAR", ASSERT_MIN(_x,0,_errorMessages select 1), "Number of %1 groups '%2' cannot be less, than 0, in config entry '%3' at index '%4', on '%5' zone '%6'!"]
+                call adm_error_fnc_validateGroupConfigArray;}
         };
         if (_trigger getVariable "adm_camp_type" == "ondemand") exitWith {
             {}
         };
         if (_trigger getVariable "adm_camp_type" == "random") exitWith {
-            {[_trigger, "Random camp", "adm_camp_spawnChance", "SCALAR", ASSERT_BETWEEN(_x,0,100,_errorMessages select 1), "%1 zone '%2', spawning chance of %3 groups ('%4[%5]') can must be between 0 and 100!"] call adm_error_fnc_validateGroupConfigArray;}
+            {[_trigger, "Random camp", "spawnChance", "adm_camp_spawnChance", "SCALAR", ASSERT_BETWEEN(_x,0,100,_errorMessages select 1), "Spawning chance of %1 groups '%2' must be between 0 and 100, in config entry '%3' at index '%4', on '%5' zone '%6'!"]
+                call adm_error_fnc_validateGroupConfigArray;}
         };
     };
 
@@ -298,13 +276,13 @@ adm_error_fnc_validateCampZoneType = {
 };
 
 adm_error_fnc_validateGroupConfigArray = {
-    FUN_ARGS_6(_trigger,_zoneType,_varName,_elementType,_elementAssert,_assertMsg);
+    FUN_ARGS_7(_trigger,_zoneType,_prettyVarName,_varName,_elementType,_elementAssert,_assertMsg);
 
     private ["_errorMessages","_asserts", "_noError"];
     _errorMessages = [
-        {format ["%1 zone '%2', is missing the '%3' configuration value!", _zoneType, _trigger, _varName]},
-        {format ["%1 zone '%2', '%3' configuration value is not type of 'ARRAY'!", _zoneType, _trigger, _varName]},
-        {format ["%1 zone '%2', '%3' configuration array's size must be 3!", _zoneType, _trigger, _varName]}
+        {format ["Config entry '%1' is missing, on %2 zone '%3'!", _prettyVarName, _zoneType, _trigger]},
+        {format ["Config entry '%1'='%2' is not type of 'ARRAY', on '%3' zone '%4'!", _prettyVarName, _trigger getVariable _varName, _zoneType, _trigger]},
+        {format ["Config entry '%1'='%2' size must be 3, on '%3' zone '%4'!", _prettyVarName, _trigger getVariable _varName, _zoneType, _trigger]}
     ];
     _asserts = [
         ASSERT_NOTNIL({_trigger getVariable _varName},_errorMessages select 0),
@@ -315,8 +293,8 @@ adm_error_fnc_validateGroupConfigArray = {
 
     if (_noError) then {
         _errorMessages = [
-            {format ["%1 zone '%2', number of %3 groups ('%4[%5]') is not type of '%6'!", _zoneType, _trigger, GROUP_TYPE_ARRAY select _forEachIndex, _varName, _forEachIndex + 1, _elementType]},
-            {format [_assertMsg, _zoneType, _trigger, GROUP_TYPE_ARRAY select _forEachIndex, _varName, _forEachIndex + 1]}
+            {format ["Number of %1 groups '%2' is not type of '%3', in config entry '%4' at index '%5', on '%6' zone '%7'!", GROUP_TYPE_ARRAY select _forEachIndex, (_trigger getVariable _varName) select _forEachIndex, _elementType, _prettyVarName,_forEachIndex + 1, _zoneType, _trigger]},
+            {format [_assertMsg, GROUP_TYPE_ARRAY select _forEachIndex, (_trigger getVariable _varName) select _forEachIndex, _prettyVarName,_forEachIndex + 1, _zoneType, _trigger]}
         ];
         _asserts = [
             ASSERT_TYPE(_x,_elementType,_errorMessages select 0),
