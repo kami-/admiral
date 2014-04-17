@@ -167,9 +167,13 @@ adm_camp_fnc_spawnVehicleGroup = {
 adm_camp_fnc_trySpawnGroups = {
     FUN_ARGS_4(_trigger,_groupType,_canSpawnFunc,_spawnFunc);
 
+    private "_spawnedGroups";
+    _spawnedGroups = [];
     if ([_trigger, _groupType] call _canSpawnFunc) then {
-        [_trigger, _groupType] call _spawnFunc;
-    }
+        _spawnedGroups = [_trigger, _groupType] call _spawnFunc;
+    };
+
+    _spawnedGroups;
 };
 
 adm_camp_fnc_spawnGroups = {
@@ -271,14 +275,14 @@ adm_camp_fnc_periodicSpawn = {
         private "_spawnedGroups";
         _spawnedGroups = [];
         _spawnedGroups = [_trigger, GROUP_TYPE_INF, adm_camp_fnc_periodicCanSpawnGroups, adm_camp_fnc_periodicSpawnInfGroups] call adm_camp_fnc_trySpawnGroups;
-        PUSH_ALL(adm_camp_infGroups, _spawnedGroups);
+        PUSH_ALL(adm_camp_infGroups,_spawnedGroups);
         [_spawnedGroups] call adm_rupture_fnc_initGroups;
         _spawnedGroups = [];
         _spawnedGroups = [_trigger, GROUP_TYPE_TECH, adm_camp_fnc_periodicCanSpawnGroups, adm_camp_fnc_periodicSpawnTechGroups] call adm_camp_fnc_trySpawnGroups;
-        PUSH_ALL(adm_camp_techGroups, _spawnedGroups);
+        PUSH_ALL(adm_camp_techGroups,_spawnedGroups);
         _spawnedGroups = [];
         _spawnedGroups = [_trigger, GROUP_TYPE_ARMOUR, adm_camp_fnc_periodicCanSpawnGroups, adm_camp_fnc_periodicSpawnArmourGroups] call adm_camp_fnc_trySpawnGroups;
-        PUSH_ALL(adm_camp_armourGroups, _spawnedGroups);
+        PUSH_ALL(adm_camp_armourGroups,_spawnedGroups);
 
         sleep (_trigger getVariable ["adm_camp_campDelay", CAMP_DEFAULT_DELAY]);
         [_trigger] call adm_camp_fnc_isPoolEmpty || {_trigger getVariable ["adm_camp_isDisabled", false]};
