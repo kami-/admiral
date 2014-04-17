@@ -96,16 +96,26 @@ adm_behavior_fnc_stateCombat = {
 adm_behavior_fnc_continueMoving = {
     FUN_ARGS_1(_group);
 
-    _group setCurrentWaypoint [_group, _group getVariable "adm_behavior_lastWp"];
-    _group setVariable ["adm_behavior_state", STATE_MOVING, false];
-    _group setVariable ["adm_behavior_enemyPos", nil, false];
-    _group setVariable ["adm_behavior_reinfGroup", nil, false];
-    deleteWaypoint [_group, (count waypoints _group) - 1];
-    if (adm_ai_debugging) then {
-        player groupChat LOG_MSG_1("DEBUG","Behavior - Group '%1' returns patrolling.", _group);
-        diag_log LOG_MSG_1("DEBUG","Behavior - Group '%1' returns patrolling.", _group);
+    _group setVariable ["adm_behavior_state", STATE_CONTINUEMOVING, false];
+};
+
+adm_behavior_fnc_updateWaypointsAndMoving = {
+    FUN_ARGS_1(_group);
+
+    if (_group getVariable "adm_behavior_state" == STATE_CONTINUEMOVING) then {
+        _group setCurrentWaypoint [_group, _group getVariable "adm_behavior_lastWp"];
+        _group setVariable ["adm_behavior_state", STATE_MOVING, false];
+        _group setVariable ["adm_behavior_enemyPos", nil, false];
+        _group setVariable ["adm_behavior_reinfGroup", nil, false];
+        deleteWaypoint [_group, (count waypoints _group) - 1];
+        if (adm_ai_debugging) then {
+            player groupChat LOG_MSG_1("DEBUG","Behavior - Group '%1' returns patrolling.", _group);
+            diag_log LOG_MSG_1("DEBUG","Behavior - Group '%1' returns patrolling.", _group);
+        };
     };
 };
+
+
 
 adm_behavior_fnc_getEnemyNumbers = {
     FUN_ARGS_2(_side,_enemyPos);
@@ -228,7 +238,7 @@ adm_behavior_fnc_getAvailableArmourGroups = {
 
 
 adm_behavior_fnc_init = {
-    adm_behavior_states = [adm_behavior_fnc_stateInit, adm_behavior_fnc_stateMoving, adm_behavior_fnc_stateEnemyFound, adm_behavior_fnc_stateSeekAndDestroyEnemy, adm_behavior_fnc_stateCombat, {}];
+    adm_behavior_states = [adm_behavior_fnc_stateInit, adm_behavior_fnc_stateMoving, adm_behavior_fnc_stateEnemyFound, adm_behavior_fnc_stateSeekAndDestroyEnemy, adm_behavior_fnc_stateCombat, adm_behavior_fnc_updateWaypointsAndMoving, {}];
     adm_behavior_foundEnemies = [];
     [] spawn adm_behavior_fnc_changeAllGroupState;
 };

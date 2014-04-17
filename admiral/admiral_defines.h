@@ -68,6 +68,7 @@
 #define STATE_ENEMYFOUND                        2
 #define STATE_SADENEMY                          3
 #define STATE_COMBAT                            4
+#define STATE_CONTINUEMOVING                    5
 
 #define ASSERT_NOTNIL(VARNAME,MSG)                  {if (!isNil (VARNAME)) then {""} else {call (MSG)}}
 #define ASSERT_TYPE(VAR,TYPE,MSG)                   {if (typename (VAR) == toUpper (TYPE)) then {""} else {call (MSG)}}
