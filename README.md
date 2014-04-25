@@ -1,4 +1,1 @@
-admiral
-=======
-
-Admiral is an AI suite for ArmA
+![Admiral](http://i.imgur.com/GarqHaf.jpg)
