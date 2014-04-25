@@ -1,1 +1,1 @@
-![Admiral](http://i.imgur.com/GarqHaf.jpg)
+![Admiral](http://i.imgur.com/80SsNcD.jpg)
