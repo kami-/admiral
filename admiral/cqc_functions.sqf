@@ -2,27 +2,25 @@
 
 // Returns a newly created cqc unit
 adm_cqc_fnc_placeMan = {
-    FUN_ARGS_4(_pos,_grp,_unitTemplate,_unitType);
+    FUN_ARGS_4(_position,_group,_unitTemplate,_unitType);
 
     private ["_unit", "_wp"];
     _unit = [
-        _pos,
-        _grp,
+        _position,
+        _group,
         [_unitTemplate, _unitType] call adm_common_fnc_getUnitTemplateArray,
-        adm_cqc_skillBoundary,
-        adm_cqc_aimingSpeed,
-        adm_cqc_aimingAccuracy
+        CQC_SKILL_ARRAY
     ] call adm_common_fnc_placeMan;
 
-    _grp enableAttack false;
+    _group enableAttack false;
 
-    _wp = [_grp, [getPosATL _unit, 0], 'GUARD', 'AWARE', 'RED'] call adm_common_fnc_createWaypoint;
+    _wp = [_group, [getPosATL _unit, 0], 'GUARD', 'AWARE', 'RED'] call adm_common_fnc_createWaypoint;
 
     _unit setDir (random 360);
-    _unit setPosATL (_pos);
+    _unit setPosATL (_position);
     doStop _unit;
     _unit setUnitPos 'UP';
-    _grp setCurrentWaypoint _wp;
+    _group setCurrentWaypoint _wp;
 
     _unit;
 };

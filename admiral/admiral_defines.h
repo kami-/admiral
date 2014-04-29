@@ -19,6 +19,19 @@
 
 #define ZONE_ACTIVATION_DIST                1800
 
+#define CAMP_SKILL_ARRAY                    [["aimingAccuracy", adm_camp_aimingAccuracy],["aimingShake", adm_camp_aimingShake],["aimingSpeed", adm_camp_aimingSpeed], \
+                                            ["endurance", adm_camp_endurance],["spotDistance", adm_camp_spotDistance],["spotTime", adm_camp_spotTime], \
+                                            ["courage", adm_camp_courage],["reloadSpeed", adm_camp_reloadSpeed],["commanding", adm_camp_commanding], \
+                                            ["general", adm_camp_general]]
+#define PATROL_SKILL_ARRAY                  [["aimingAccuracy", adm_patrol_aimingAccuracy],["aimingShake", adm_patrol_aimingShake],["aimingSpeed", adm_patrol_aimingSpeed], \
+                                            ["endurance", adm_patrol_endurance],["spotDistance", adm_patrol_spotDistance],["spotTime", adm_patrol_spotTime], \
+                                            ["courage", adm_patrol_courage],["reloadSpeed", adm_patrol_reloadSpeed],["commanding", adm_patrol_commanding], \
+                                            ["general", adm_patrol_general]]
+#define CQC_SKILL_ARRAY                     [["aimingAccuracy", adm_cqc_aimingAccuracy],["aimingShake", adm_cqc_aimingShake],["aimingSpeed", adm_cqc_aimingSpeed], \
+                                            ["endurance", adm_cqc_endurance],["spotDistance", adm_cqc_spotDistance],["spotTime", adm_cqc_spotTime], \
+                                            ["courage", adm_cqc_courage],["reloadSpeed", adm_cqc_reloadSpeed],["commanding", adm_cqc_commanding], \
+                                            ["general", adm_cqc_general]]
+
 #define SIDE_ARRAY                          [EAST, WEST, RESISTANCE, CIVILIAN]
 #define SIDE_TEXT_ARRAY                     ["EAST", "WEST", "RESISTANCE", "CIVILIAN"]
 #define SIDE_EAST                           0

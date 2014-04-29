@@ -1,20 +1,14 @@
 #include "admiral_defines.h"
 
 adm_common_fnc_placeMan = {
-    FUN_ARGS_6(_pos,_grp,_units,_skillBoundary,_aimingSpeed,_aimingAccuracy);
+    FUN_ARGS_4(_pos,_grp,_units,_skillArray);
 
     private ["_unit"];
     _unit = _grp createUnit [SELECT_RAND(_units), _pos, [], 0, "NONE"];
-
-    _unit setSkill ((_skillBoundary select 0) + ((_skillBoundary select 1) - (_skillBoundary select 0)));                       
-    _unit setSkill ['aimingSpeed', _aimingSpeed];
-    _unit setSkill ['aimingAccuracy', _aimingAccuracy];
-    _unit setSkill ['spotDistance', 1];
-    _unit setSkill ['spotTime', 1];
-    _unit setSkill ['commanding', 1];
-
+    {
+        _unit setSkill _x;
+    } foreach _skillArray;
     _unit allowFleeing 0;
-
     [_unit] call adm_common_fnc_setGear;
 
     _unit;

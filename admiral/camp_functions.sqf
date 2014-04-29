@@ -1,16 +1,14 @@
 #include "admiral_defines.h"
 
 adm_camp_fnc_placeMan = {
-    FUN_ARGS_4(_pos,_grp,_unitTemplate,_unitType);
+    FUN_ARGS_4(_position,_group,_unitTemplate,_unitType);
 
     private "_unit";
     _unit = [
-        _this select 0,
-        _this select 1,
+        _position,
+        _group,
         [_unitTemplate, _unitType] call adm_common_fnc_getUnitTemplateArray,
-        adm_camp_skillBoundary,
-        adm_camp_aimingSpeed,
-        adm_camp_aimingAccuracy
+        CAMP_SKILL_ARRAY
     ] call adm_common_fnc_placeMan;
 
     _unit;
