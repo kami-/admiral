@@ -28,6 +28,7 @@ if (adm_ai_debugging) then {
     call compile preProcessFileLineNumbers "admiral\debug_functions.sqf";
 };
 
+call compile preProcessFileLineNumbers "admiral\net_functions.sqf";
 call compile preProcessFileLineNumbers "admiral\reduce_functions.sqf";
 call compile preProcessFileLineNumbers "admiral\cqc_functions.sqf";
 call compile preProcessFileLineNumbers "admiral\camp_functions.sqf";

@@ -10,6 +10,9 @@
 #define STR_TEMPLATE_CONFIGFILE             "missionConfigFile"
 #define TEMPLATE_CONTAINER_CLASS            "AdmiralUnitTemplates"
 
+#define SEND_CLIENT(SENDER,ARGS,OP) [objNull, SENDER, ARGS, OP] call CE_fnc_sendPacket
+#define SEND_SERVER(ARGS,OP) [player, objNull, ARGS, OP] call CE_fnc_sendPacket
+
 #define CAMP_SPAWN_CIRCLE_MAX_DIST          30
 
 #define CQC_MAX_ENGAGE_DIST                 50
