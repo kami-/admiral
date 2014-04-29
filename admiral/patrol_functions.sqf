@@ -154,8 +154,7 @@ adm_patrol_fnc_followUpdateGroupWaypoints = {
 adm_patrol_fnc_deleteGroupWaypoints = {
     FUN_ARGS_1(_group);
 
-    while {count (waypoints _group) > 1} do
-    {
+    while {count (waypoints _group) > 1} do {
         deleteWaypoint ((waypoints _group) select 0);
     };
 };
