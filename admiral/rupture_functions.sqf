@@ -21,10 +21,15 @@ adm_rupture_fnc_hitEH = {
 adm_rupture_fnc_killedEH = {
     FUN_ARGS_1(_unit);
 
-    _unit removeEventHandler ["Hit", _unit getVariable "adm_rupture_eh_hit"];
-    _unit removeEventHandler ["Killed", _unit getVariable "adm_rupture_eh_killed"];
-    _unit setVariable ["adm_rupture_eh_hit", nil];
-    _unit setVariable ["adm_rupture_eh_killed", nil];
+    private "_ehId";
+    _ehId = _unit getVariable ["adm_rupture_eh_hit", nil];
+    if (!isNil {_ehId}) then {
+        _unit removeEventHandler ["Hit", _ehId];
+    };
+    _ehId = _unit getVariable ["adm_rupture_eh_killed", nil];
+    if (!isNil {_ehId}) then {
+        _unit removeEventHandler ["Killed", _ehId];
+    };
 };
 
 adm_rupture_fnc_initGroups = {
