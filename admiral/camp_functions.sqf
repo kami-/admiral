@@ -10,7 +10,15 @@ adm_camp_fnc_placeMan = {
         [_unitTemplate, _unitType] call adm_common_fnc_getUnitTemplateArray,
         adm_camp_skillBoundary,
         adm_camp_aimingSpeed,
-        adm_camp_aimingAccuracy
+        adm_camp_aimingAccuracy,
+        adm_camp_aimingShake,
+        adm_camp_endurance,
+        adm_camp_spotDistance,
+        adm_camp_spotTime,
+        adm_camp_courage,
+        adm_camp_reloadSpeed,
+        adm_camp_commanding,
+        adm_camp_general
     ] call adm_common_fnc_placeMan;
 
     _unit;

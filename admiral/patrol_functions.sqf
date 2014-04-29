@@ -8,9 +8,17 @@ adm_patrol_fnc_placeMan = {
         _pos,
         _grp,
         [_unitTemplate, _unitType] call adm_common_fnc_getUnitTemplateArray,
-        adm_patrol_skillBoundary,
-        adm_patrol_aimingSpeed,
-        adm_patrol_aimingAccuracy
+        adm_cqc_skillBoundary,
+        adm_cqc_aimingSpeed,
+        adm_cqc_aimingAccuracy,
+        adm_cqc_aimingShake,
+        adm_cqc_endurance,
+        adm_cqc_spotDistance,
+        adm_cqc_spotTime,
+        adm_cqc_courage,
+        adm_cqc_reloadSpeed,
+        adm_cqc_commanding,
+        adm_cqc_general
     ] call adm_common_fnc_placeMan;
 
     _unit;
