@@ -5,7 +5,7 @@
  * @param _trigger Trigger object representing a zone
  * @param _configEntries Array of config entries that configure the zone
  */
-adm_api_initZone = {
+adm_api_fnc_initZone = {
     FUN_ARGS_2(_trigger,_configEntries);
 
     [_trigger, _configEntries] call adm_common_fnc_setConfig;
