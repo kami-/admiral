@@ -1,56 +1,20 @@
 #include "admiral_defines.h"
 
-adm_api_createCqcZone = {
-    FUN_ARGS_4(_position,_area,_condition,_configEntries);
-
-    [_position,_area,_condition,"cqc",_configEntries] call adm_api_createZone;
-};
-
-adm_api_createPatrolZone = {
-    FUN_ARGS_4(_position,_area,_condition,_configEntries);
-
-    [_position,_area,_condition,"patrol",_configEntries] call adm_api_createZone;
-};
-
-adm_api_createZone = {
-    FUN_ARGS_5(_position,_area,_condition,_text,_configEntries);
-
-    private "_trigger";
-    _trigger = createTrigger ["NONE", _position];
-    
-};
-
-adm_api_fnc_moveZone = {
-    FUN_ARGS_3(_trigger,_position,_triggerArea);
-
-    [_trigger, _position, _triggerArea] call adm_patrol_fnc_moveZone;
-};
-
-adm_api_fnc_followZone = {
-    FUN_ARGS_4(_trigger,_object,_delay,_triggerArea);
-
-    [_trigger, _object, _delay, _triggerArea] call dm_patrol_fnc_followZone;
-};
-
-adm_api_fnc_stopFollowZone = {
-    FUN_ARGS_1(_trigger);
-
-    [_trigger] call adm_patrol_fnc_stopFollowZone;
-};
-
 /**
- * Disables a Camp zone.
- * @param Trigger object representing a zone
+ * Initializes a zone with the given config entries.
+ * @param _trigger Trigger object representing a zone
+ * @param _configEntries Array of config entries that configure the zone
  */
-adm_api_fnc_disableCamp = {
-    FUN_ARGS_1(_trigger);
+adm_api_initZone = {
+    FUN_ARGS_2(_trigger,_configEntries);
 
-    [_trigger] call adm_camp_fnc_disableCamp;
+    [_trigger, _configEntries] call adm_common_fnc_setConfig;
 };
 
 
 
-//CQC groups and units
+// CQC
+
 /**
  * Returns all infantry groups spawned by Patrol zones.
  * @return Array of infantry groups
@@ -69,7 +33,45 @@ adm_api_fnc_getCqcUnits = {
 
 
 
-//Patrol groups and units
+// Patrol
+
+/**
+ * Moves a Patrol zone to a given position. Optional triggerArea parameter will resize the zone.
+ * The zone's groups will move to the new position and patrol there.
+ * @param _trigger Trigger object representing a Patrol zone
+ * @param _position Position where the zone will be moved
+ * @param _triggerArea (optional) TriggerArea array containing the new size and shape of the zone
+ */
+adm_api_fnc_moveZone = {
+    FUN_ARGS_3(_trigger,_position,_triggerArea);
+
+    [_trigger, _position, _triggerArea] call adm_patrol_fnc_moveZone;
+};
+
+/**
+ * Makes the groups of a Patrol zone to follow a given object. Optional triggerArea parameter will resize the zone.
+ * The waypoints of the groups will be updated with the objects new position every _delay seconds.
+ * @param _trigger Trigger object representing a Patrol zone
+ * @param _object An object that has a position
+ * @param _delay The delay in seconds between updating group waypoints
+ * @param _triggerArea (optional) TriggerArea array containing the new size and shape of the zone
+ */
+adm_api_fnc_followZone = {
+    FUN_ARGS_4(_trigger,_object,_delay,_triggerArea);
+
+    [_trigger, _object, _delay, _triggerArea] call adm_patrol_fnc_followZone;
+};
+
+/**
+ * Stops a follow Patrol zone. Groups waypoints will be updated one more time.
+ * @param _trigger Trigger object representing a Patrol zone
+ */
+adm_api_fnc_stopFollowZone = {
+    FUN_ARGS_1(_trigger);
+
+    [_trigger] call adm_patrol_fnc_stopFollowZone;
+};
+
 /**
  * Returns all infantry groups spawned by Patrol zones.
  * @return Array of infantry groups
@@ -138,7 +140,18 @@ adm_api_fnc_getPatrolUnits = {
 
 
 
-// Camp groups and units
+// Camp
+
+/**
+ * Disables a Camp zone, stopping it from spawning new groups. It's not possible to reenable it after.
+ * @param _trigger Trigger object representing a Camp zone
+ */
+adm_api_fnc_disableCamp = {
+    FUN_ARGS_1(_trigger);
+
+    [_trigger] call adm_camp_fnc_disableCamp;
+};
+
 /**
  * Returns all infantry groups spawned by Camp zones.
  * @return Array of infantry groups
