@@ -1,18 +1,23 @@
 #include "admiral_defines.h"
 
+// Side Relations
+adm_settings_fnc_setSideRelations = {
+    [] call adm_settings_fnc_defaultSideRelations;
+
+    [SIDE_IND, SIDE_WEST] call adm_settings_fnc_setSideFriendly;
+    [SIDE_IND, SIDE_EAST] call adm_settings_fnc_setSideEnemy;
+};
+
 // Debug
-adm_ai_debugging = true;
+adm_isDebuggingEnabled = true;
 
 // General
-adm_default_cqc_unitTemplate = "Base";
-adm_default_patrol_unitTemplate = "Base";
-adm_default_camp_unitTemplate = "Base";
-
-adm_ai_caching = true;
-
-adm_ai_NVGs = true;
+adm_isCachingEnabled = true;
+adm_areNVGsEnabled = true;
 
 // Camp
+adm_camp_defaultUnitTemplate = "Base";
+
 adm_camp_infFireteamSize = 4;
 adm_camp_infWaypointAmount = 4;
 
@@ -35,6 +40,8 @@ adm_camp_general = 0.7;
 
 
 // Patrol
+adm_patrol_defaultUnitTemplate = "Base";
+
 adm_patrol_infFireteamSize = 4;
 adm_patrol_infWaypointAmount = 4;
 
@@ -57,6 +64,8 @@ adm_patrol_general = 0.7;
 
 
 // CQC
+adm_cqc_defaultUnitTemplate = "Base";
+
 adm_cqc_infFireteamSize = 4;
 
 adm_cqc_forceFireEnabled = true;

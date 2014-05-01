@@ -22,7 +22,7 @@ adm_common_fnc_placeVehicle = {
 adm_common_fnc_setGear = {
     FUN_ARGS_1(_unit);
 
-    if (!adm_ai_NVGs) then {
+    if (!adm_areNVGsEnabled) then {
         _unit removeWeapon "NVGoggles";
     };
 };
@@ -290,15 +290,15 @@ adm_common_fnc_initZone = {
     _triggerText = triggerText _trigger;
     call {
         if (_triggerText == "cqc") exitWith {
-            _defaultTemplate = adm_default_cqc_unitTemplate;
+            _defaultTemplate = adm_cqc_defaultUnitTemplate;
             _initFunc = adm_cqc_fnc_initZone;
         };
         if (_triggerText == "patrol") exitWith {
-            _defaultTemplate = adm_default_patrol_unitTemplate;
+            _defaultTemplate = adm_patrol_defaultUnitTemplate;
             _initFunc = adm_patrol_fnc_initZone;
         };
         if (_triggerText == "camp") exitWith {
-            _defaultTemplate = adm_default_camp_unitTemplate;
+            _defaultTemplate = adm_camp_defaultUnitTemplate;
             _initFunc = adm_camp_fnc_initZone;
         };
     };
@@ -349,5 +349,9 @@ adm_common_fnc_shuffle = {
 adm_common_fnc_isFriendlySide = {
     FUN_ARGS_2(_side,_otherSide);
 
-    _side == _otherSide;
+    private ["_sideIndex", "_otherSideIndex"];
+    _sideIndex = SIDE_ARRAY find _side;
+    _otherSideIndex = SIDE_ARRAY find _otherSide;
+
+    _sideIndex >= 0 && {_otherSideIndex >= 0} && {!(_otherSideIndex in (adm_sideRelations select _sideIndex))};
 };

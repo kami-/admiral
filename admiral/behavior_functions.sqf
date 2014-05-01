@@ -14,7 +14,7 @@ adm_behavior_fnc_stateInit = {
     FUN_ARGS_1(_group);
 
     _group setVariable ["adm_behavior_state", STATE_MOVING, false];
-    if (adm_ai_debugging) then {
+    if (adm_isDebuggingEnabled) then {
         player groupChat LOG_MSG_1("DEBUG","Behavior - Group '%1' initialized.", _group);
         diag_log LOG_MSG_1("DEBUG","Behavior - Group '%1' initialized.", _group);
     };
@@ -29,7 +29,7 @@ adm_behavior_fnc_stateMoving = {
     if (!isNull _enemy && {!((vehicle _enemy) isKindOf "Air")}) then {
         _nextState = STATE_ENEMYFOUND;
         _group setVariable ["adm_behavior_enemyPos", getPosATL _enemy, false];
-        if (adm_ai_debugging) then {
+        if (adm_isDebuggingEnabled) then {
             player groupChat LOG_MSG_2("DEBUG","Behavior - Group '%1' found enemy '%2'!", _group, _enemy);
             diag_log LOG_MSG_2("DEBUG","Behavior - Group '%1' found enemy '%2'!", _group, _enemy);
         };
@@ -58,7 +58,7 @@ adm_behavior_fnc_stateSeekAndDestroyEnemy = {
     _group setVariable ["adm_behavior_lastWp", currentWaypoint _group, false];
     _group setVariable ["adm_behavior_state", STATE_COMBAT, false];
     _group setCurrentWaypoint _sadWp;
-    if (adm_ai_debugging) then {
+    if (adm_isDebuggingEnabled) then {
         player groupChat LOG_MSG_1("DEBUG","Behavior - Group '%1' moves to SAD waypoint.", _group);
         diag_log LOG_MSG_1("DEBUG","Behavior - Group '%1' moves to SAD waypoint.", _group);
     };
@@ -73,7 +73,7 @@ adm_behavior_fnc_stateCombat = {
         private "_enemyPos";
         _enemyPos = _group getVariable "adm_behavior_enemyPos";
         if (!alive leader _reinfGroup) then {
-            if (adm_ai_debugging) then {
+            if (adm_isDebuggingEnabled) then {
                 player groupChat LOG_MSG_2("DEBUG","Behavior - Group '%1' tries to call additinal reinforcement, becasue reinforced group '%2' died.", _group, _reinfGroup);
                 diag_log LOG_MSG_2("DEBUG","Behavior - Group '%1' tries to call additinal reinforcement, becasue reinforced group '%2' died.", _group, _reinfGroup);
             };
@@ -84,7 +84,7 @@ adm_behavior_fnc_stateCombat = {
         } else {
             if (_reinfGroup getVariable "adm_behavior_state" == STATE_MOVING && {leader _group distance _enemyPos > BEHAVIOR_REINF_TURNAROUND_DIST}) then {
                 [_group] call adm_behavior_fnc_continueMoving;
-                if (adm_ai_debugging) then {
+                if (adm_isDebuggingEnabled) then {
                     player groupChat LOG_MSG_2("DEBUG","Behavior - Group '%1' returns patrolling, becasue reinforced group '%2' is not in combat.", _group, _reinfGroup);
                     diag_log LOG_MSG_2("DEBUG","Behavior - Group '%1' returns patrolling, becasue reinforced group '%2' is not in combat.", _group, _reinfGroup);
                 };
@@ -108,7 +108,7 @@ adm_behavior_fnc_updateWaypointsAndMoving = {
         _group setVariable ["adm_behavior_enemyPos", nil, false];
         _group setVariable ["adm_behavior_reinfGroup", nil, false];
         deleteWaypoint [_group, (count waypoints _group) - 1];
-        if (adm_ai_debugging) then {
+        if (adm_isDebuggingEnabled) then {
             player groupChat LOG_MSG_1("DEBUG","Behavior - Group '%1' returns patrolling.", _group);
             diag_log LOG_MSG_1("DEBUG","Behavior - Group '%1' returns patrolling.", _group);
         };
@@ -155,7 +155,7 @@ adm_behavior_fnc_canCallReinforcement = {
 adm_behavior_fnc_callReinforcement = {
     FUN_ARGS_3(_group,_enemyPos,_enemyNumbers);
 
-    if (adm_ai_debugging) then {
+    if (adm_isDebuggingEnabled) then {
         private "_callNumbers";
         _callNumbers = [BEHAVIOR_REINF_NUM(_enemyNumbers,1,1,1) + 1, BEHAVIOR_REINF_NUM(_enemyNumbers,3,1,1), BEHAVIOR_REINF_NUM(_enemyNumbers,4,2,1)];
         player groupChat LOG_MSG_4("DEBUG","Behavior - Group '%1' found %2 number of enemies and tries to call %3 number of reinforcements at position %4.", _group, _enemyNumbers, _callNumbers, _enemyPos);

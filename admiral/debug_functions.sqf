@@ -197,7 +197,7 @@ adm_debug_fnc_getSideColor = {
 };
 
 adm_debug_fnc_init = {
-    if (adm_ai_debugging) then {
+    if (adm_isDebuggingEnabled) then {
         [] call adm_debug_fnc_debugSpawnedGroups;
     };
 };

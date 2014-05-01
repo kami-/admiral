@@ -177,7 +177,7 @@ adm_cqc_fnc_spawnGarrison = {
 
             PUSH(_spawnedGroups, _group);
             
-            if (adm_ai_debugging) then {
+            if (adm_isDebuggingEnabled) then {
                 [_group] call adm_debug_fnc_createMarkersForCqcGroup;
             };
         };
@@ -236,7 +236,7 @@ adm_cqc_fnc_initZone = {
     waitUntil {
         adm_isInitialized;
     };
-    if (adm_ai_debugging) then {
+    if (adm_isDebuggingEnabled) then {
         [_trigger] call adm_debug_fnc_createTriggerLocalMarker;
         [_trigger] call adm_error_fnc_validateZone;
     };

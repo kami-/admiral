@@ -149,22 +149,22 @@ adm_reduce_fnc_monitorGroups = {
         [adm_patrol_infGroups, adm_reduce_fnc_getPatrolGroupPositions, adm_patrol_fnc_placeMan] call adm_reduce_fnc_checkGroups;
         [adm_camp_infGroups, adm_reduce_fnc_getPatrolGroupPositions, adm_patrol_fnc_placeMan] call adm_reduce_fnc_checkGroups;
         sleep 1;
-        !adm_ai_caching;
+        !adm_isCachingEnabled;
     };
     sleep 1;
     [] call adm_reduce_fnc_expandAllGroups;
 };
 
 adm_reduce_fnc_enableCaching = {
-    if (!adm_ai_caching) then {
-        adm_ai_caching = true;
+    if (!adm_isCachingEnabled) then {
+        adm_isCachingEnabled = true;
         [] call adm_reduce_fnc_init;
     };
 };
 
 adm_reduce_fnc_disableCaching = {
-    if (adm_ai_caching) then {
-        adm_ai_caching = false;
+    if (adm_isCachingEnabled) then {
+        adm_isCachingEnabled = false;
         [] call adm_reduce_fnc_expandAllGroups;
     };
 };
@@ -185,7 +185,7 @@ adm_reduce_fnc_getMonitoredUnits = {
 };
 
 adm_reduce_fnc_init = {
-    if (adm_ai_caching) then {
+    if (adm_isCachingEnabled) then {
         [] spawn adm_reduce_fnc_monitorGroups;
     };
 };

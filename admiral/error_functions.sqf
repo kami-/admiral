@@ -313,12 +313,10 @@ adm_error_fnc_init = {
 
     private ["_settingsVariables"];
     _settingsVariables = [
-        ["adm_ai_debugging",                [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("BOOL")]],
-        ["adm_default_cqc_unitTemplate",    [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("STRING")]],
-        ["adm_default_patrol_unitTemplate", [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("STRING")]],
-        ["adm_default_camp_unitTemplate",   [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("STRING")]],
-        ["adm_ai_caching",                  [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("BOOL")]],
-        ["adm_ai_NVGs",                     [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("BOOL")]],
+        ["adm_isDebuggingEnabled",          [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("BOOL")]],
+        ["adm_isCachingEnabled",            [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("BOOL")]],
+        ["adm_areNVGsEnabled",              [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("BOOL")]],
+        ["adm_camp_defaultUnitTemplate",    [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("STRING")]],
         ["adm_camp_infFireteamSize",        [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("SCALAR"), DEF_ASSERT_MIN(1)]],
         ["adm_camp_infWaypointAmount",      [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("SCALAR"), DEF_ASSERT_MIN(1)]],
         ["adm_camp_techFireteamSize",       [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("SCALAR"), DEF_ASSERT_MIN(1)]],
@@ -335,6 +333,7 @@ adm_error_fnc_init = {
         ["adm_camp_reloadSpeed",            [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("SCALAR"), DEF_ASSERT_BETWEEN(0,1)]],
         ["adm_camp_commanding",             [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("SCALAR"), DEF_ASSERT_BETWEEN(0,1)]],
         ["adm_camp_general",                [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("SCALAR"), DEF_ASSERT_BETWEEN(0,1)]],
+        ["adm_patrol_defaultUnitTemplate",  [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("STRING")]],
         ["adm_patrol_infFireteamSize",      [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("SCALAR"), DEF_ASSERT_MIN(1)]],
         ["adm_patrol_infWaypointAmount",    [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("SCALAR"), DEF_ASSERT_MIN(1)]],
         ["adm_patrol_techFireteamSize",     [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("SCALAR"), DEF_ASSERT_MIN(1)]],
@@ -351,6 +350,7 @@ adm_error_fnc_init = {
         ["adm_patrol_reloadSpeed",          [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("SCALAR"), DEF_ASSERT_BETWEEN(0,1)]],
         ["adm_patrol_commanding",           [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("SCALAR"), DEF_ASSERT_BETWEEN(0,1)]],
         ["adm_patrol_general",              [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("SCALAR"), DEF_ASSERT_BETWEEN(0,1)]],
+        ["adm_cqc_defaultUnitTemplate",     [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("STRING")]],
         ["adm_cqc_infFireteamSize",         [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("SCALAR"), DEF_ASSERT_MIN(1)]],
         ["adm_cqc_forceFireEnabled",        [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("BOOL")]],
         ["adm_cqc_aimingAccuracy",          [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("SCALAR"), DEF_ASSERT_BETWEEN(0,1)]],
