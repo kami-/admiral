@@ -290,15 +290,15 @@ adm_common_fnc_initZone = {
     _triggerText = triggerText _trigger;
     call {
         if (_triggerText == "cqc") exitWith {
-            _defaultTemplate = adm_default_cqc_unitTemplate;
+            _defaultTemplate = adm_cqc_defaultUnitTemplate;
             _initFunc = adm_cqc_fnc_initZone;
         };
         if (_triggerText == "patrol") exitWith {
-            _defaultTemplate = adm_default_patrol_unitTemplate;
+            _defaultTemplate = adm_patrol_defaultUnitTemplate;
             _initFunc = adm_patrol_fnc_initZone;
         };
         if (_triggerText == "camp") exitWith {
-            _defaultTemplate = adm_default_camp_unitTemplate;
+            _defaultTemplate = adm_camp_defaultUnitTemplate;
             _initFunc = adm_camp_fnc_initZone;
         };
     };
