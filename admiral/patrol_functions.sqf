@@ -140,7 +140,6 @@ adm_patrol_fnc_moveUpdateGroupWaypoints = {
     [_group] call adm_patrol_fnc_deleteGroupWaypoints;
     [_group, _unitType, _trigger, _noOfWaypoints] call adm_patrol_fnc_createWaypoints;
     [_group, [_trigger, _unitType] call adm_common_fnc_randomFlatEmptyPosInTrigger] call adm_patrol_fnc_updateDefaultWaypoint;
-    [_group] call adm_patrol_fnc_updateEnemyWaypoint;
 };
 
 adm_patrol_fnc_followUpdateGroupWaypoints = {
@@ -148,7 +147,6 @@ adm_patrol_fnc_followUpdateGroupWaypoints = {
 
     [_group] call adm_patrol_fnc_deleteGroupWaypoints;
     [_group, _position] call adm_patrol_fnc_updateDefaultWaypoint;
-    [_group] call adm_patrol_fnc_updateEnemyWaypoint;
 };
 
 adm_patrol_fnc_deleteGroupWaypoints = {
@@ -166,18 +164,8 @@ adm_patrol_fnc_updateDefaultWaypoint = {
     _defultWp = (waypoints _group) select 0;
     _defultWp setWaypointPosition [_position, 0];
     _group setCurrentWaypoint _defultWp;
-};
-
-adm_patrol_fnc_updateEnemyWaypoint = {
-    FUN_ARGS_1(_group);
-
-    private "_enemy";
-    _enemy = _group getVariable ["target", objNull]; // TODO wtf?
-    if (!isNull _enemy) then {
-        private "_wp";
-        _wp = [_group, [getPosATL _enemy, 0], 'MOVE', 'AWARE', 'RED'] call adm_common_fnc_createWaypoint;
-        _group setCurrentWaypoint _wp;
-    };
+    _defultWp setWaypointStatements ["true", "(group this) setVariable ['adm_patrol_hasTarget', false, false];"];
+    _group setVariable ["adm_patrol_hasTarget", true, false];
 };
 
 adm_patrol_fnc_initZone = {
