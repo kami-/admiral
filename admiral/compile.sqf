@@ -1,18 +1,4 @@
 #include "admiral_defines.h"
-#include "settings.sqf"
-
-// Necessary for AI spawn
-{
-    createCenter _x;
-} foreach SIDE_ARRAY;
-
-// Set side relations
-WEST setFriend [EAST, 0];
-WEST setFriend [RESISTANCE, 0];
-RESISTANCE setFriend [WEST, 0];
-RESISTANCE setFriend [EAST, 0];
-EAST setFriend [WEST, 0];
-EAST setFriend [RESISTANCE, 0];
 
 // Wait for BIS functions to be compiled
 waitUntil {
@@ -20,10 +6,11 @@ waitUntil {
 };
 
 // Compile functions
+call compile preProcessFileLineNumbers "admiral\settings_functions.sqf";
 call compile preProcessFileLineNumbers "admiral\common_functions.sqf";
 
 // Don't compile, if we don't want to debug
-if (adm_ai_debugging) then {
+if (adm_isDebuggingEnabled) then {
     call compile preProcessFileLineNumbers "admiral\error_functions.sqf";
     call compile preProcessFileLineNumbers "admiral\debug_functions.sqf";
 };
@@ -37,6 +24,7 @@ call compile preProcessFileLineNumbers "admiral\behavior_functions.sqf";
 call compile preProcessFileLineNumbers "admiral\api_functions.sqf";
 
 //Calling init functions
+[] call adm_settings_fnc_init;
 [] call adm_cqc_fnc_init;
 [] call adm_camp_fnc_init;
 [] call adm_patrol_fnc_init;
@@ -45,7 +33,7 @@ call compile preProcessFileLineNumbers "admiral\api_functions.sqf";
 [] call adm_behavior_fnc_init;
 
 // Don't initialize, if we don't want to debug
-if (adm_ai_debugging) then {
+if (adm_isDebuggingEnabled) then {
     [] call adm_error_fnc_init;
     [] call adm_debug_fnc_init;
 };
