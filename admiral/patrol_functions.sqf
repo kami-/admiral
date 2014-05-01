@@ -97,7 +97,7 @@ adm_patrol_fnc_moveTrigger = {
     };
     _trigger setPos _position;
 
-    if (adm_ai_debugging) then {
+    if (adm_isDebuggingEnabled) then {
         [_trigger] call adm_debug_fnc_updateTriggerLocalMarker;
     };
 };
@@ -186,7 +186,7 @@ adm_patrol_fnc_initZone = {
     waitUntil {
         adm_isInitialized;
     };
-    if (adm_ai_debugging) then {
+    if (adm_isDebuggingEnabled) then {
         [_trigger] call adm_debug_fnc_createTriggerLocalMarker;
         [_trigger] call adm_error_fnc_validateZone;
     };

@@ -22,7 +22,7 @@ adm_common_fnc_placeVehicle = {
 adm_common_fnc_setGear = {
     FUN_ARGS_1(_unit);
 
-    if (!adm_ai_NVGs) then {
+    if (!adm_areNVGsEnabled) then {
         _unit removeWeapon "NVGoggles";
     };
 };

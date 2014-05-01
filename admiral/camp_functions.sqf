@@ -40,7 +40,7 @@ adm_camp_fnc_processTiggerLogics = {
         } foreach _triggers;
         _logic setVariable ["adm_camp_endTrigger", [getWPPos ((waypoints _logic) select (count (waypoints _logic) - 1))] call adm_camp_fnc_getLogicEndTrigger, false];
 
-        if (_isInsideTrigger && {adm_ai_debugging}) then {
+        if (_isInsideTrigger && {adm_isDebuggingEnabled}) then {
             [_logic] call adm_debug_fnc_createMarkersForCampLogic;
         };
     } foreach _logics;
@@ -125,7 +125,7 @@ adm_camp_fnc_spawnInfGroup = {
     _group setVariable ["adm_zone_parent", _trigger];
     _group setVariable ["adm_ai_type", _groupType, false]; // TODO remove?
 
-    if (adm_ai_debugging) then {
+    if (adm_isDebuggingEnabled) then {
         [_group, _groupType] call adm_debug_fnc_createMarkersForPatrolGroup;
     };
 
@@ -155,7 +155,7 @@ adm_camp_fnc_spawnVehicleGroup = {
     };
     _group setVariable ["adm_ai_type", _groupType, false]; // TODO remove?
 
-    if (adm_ai_debugging) then {
+    if (adm_isDebuggingEnabled) then {
         [_group, _groupType] call adm_debug_fnc_createMarkersForPatrolGroup;
     };
 
@@ -434,7 +434,7 @@ adm_camp_fnc_initZone = {
     waitUntil {
         adm_isInitialized;
     };
-    if (adm_ai_debugging) then {
+    if (adm_isDebuggingEnabled) then {
         [_trigger] call adm_debug_fnc_createTriggerLocalMarker;
         [_trigger] call adm_error_fnc_validateZone;
     };
