@@ -349,5 +349,9 @@ adm_common_fnc_shuffle = {
 adm_common_fnc_isFriendlySide = {
     FUN_ARGS_2(_side,_otherSide);
 
-    _side == _otherSide;
+    private ["_sideIndex", "_otherSideIndex"];
+    _sideIndex = SIDE_ARRAY find _side;
+    _otherSideIndex = SIDE_ARRAY find _otherSide;
+
+    _sideIndex >= 0 && {_otherSideIndex >= 0} && {!(_otherSideIndex in (adm_sideRelations select _sideIndex))};
 };
