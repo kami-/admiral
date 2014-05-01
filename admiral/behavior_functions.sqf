@@ -217,8 +217,8 @@ adm_behavior_fnc_getAvailableInfGroups = {
 
     private "_groups";
     _groups = [];
-    FILTER_PUSH_ALL(_groups, adm_patrol_infGroups, {AS_ARRAY_2(side _x, _side) call adm_common_fnc_isFriendlySide && {alive leader _x} && {leader _x distance _enemyPos <= BEHAVIOR_MAX_REINFORCEMENT_DIST} && {[_x] call adm_behavior_fnc_canReinforce}});
-    FILTER_PUSH_ALL(_groups, adm_camp_infGroups, {AS_ARRAY_2(side _x, _side) call adm_common_fnc_isFriendlySide && {alive leader _x} && {leader _x distance _enemyPos <= BEHAVIOR_MAX_REINFORCEMENT_DIST} && {[_x] call adm_behavior_fnc_canReinforce}});
+    FILTER_PUSH_ALL(_groups, adm_patrol_infGroups, adm_behavior_fnc_isAvailableGroup);
+    FILTER_PUSH_ALL(_groups, adm_camp_infGroups, adm_behavior_fnc_isAvailableGroup);
     _groups;
 };
 
@@ -227,8 +227,8 @@ adm_behavior_fnc_getAvailableTechGroups = {
 
     private "_groups";
     _groups = [];
-    FILTER_PUSH_ALL(_groups, adm_patrol_techGroups, {AS_ARRAY_2(side _x, _side) call adm_common_fnc_isFriendlySide && {alive leader _x} && {leader _x distance _enemyPos <= BEHAVIOR_MAX_REINFORCEMENT_DIST} && {[_x] call adm_behavior_fnc_canReinforce}});
-    FILTER_PUSH_ALL(_groups, adm_camp_techGroups, {AS_ARRAY_2(side _x, _side) call adm_common_fnc_isFriendlySide && {alive leader _x} && {leader _x distance _enemyPos <= BEHAVIOR_MAX_REINFORCEMENT_DIST} && {[_x] call adm_behavior_fnc_canReinforce}});
+    FILTER_PUSH_ALL(_groups, adm_patrol_techGroups, adm_behavior_fnc_isAvailableGroup);
+    FILTER_PUSH_ALL(_groups, adm_camp_techGroups, adm_behavior_fnc_isAvailableGroup);
     _groups;
 };
 
@@ -237,11 +237,17 @@ adm_behavior_fnc_getAvailableArmourGroups = {
 
     private "_groups";
     _groups = [];
-    FILTER_PUSH_ALL(_groups, adm_patrol_armourGroups, {AS_ARRAY_2(side _x, _side) call adm_common_fnc_isFriendlySide && {alive leader _x} && {leader _x distance _enemyPos <= BEHAVIOR_MAX_REINFORCEMENT_DIST} && {[_x] call adm_behavior_fnc_canReinforce}});
-    FILTER_PUSH_ALL(_groups, adm_camp_armourGroups, {AS_ARRAY_2(side _x, _side) call adm_common_fnc_isFriendlySide && {alive leader _x} && {leader _x distance _enemyPos <= BEHAVIOR_MAX_REINFORCEMENT_DIST} && {[_x] call adm_behavior_fnc_canReinforce}});
+    FILTER_PUSH_ALL(_groups, adm_patrol_armourGroups, adm_behavior_fnc_isAvailableGroup);
+    FILTER_PUSH_ALL(_groups, adm_camp_armourGroups, adm_behavior_fnc_isAvailableGroup);
     _groups;
 };
 
+adm_behavior_fnc_isAvailableGroup = {
+    [side _x, _side] call adm_common_fnc_isFriendlySide
+        && {alive leader _x}
+        && {leader _x distance _enemyPos <= BEHAVIOR_MAX_REINFORCEMENT_DIST}
+        && {[_x] call adm_behavior_fnc_canReinforce};
+};
 
 adm_behavior_fnc_init = {
     adm_behavior_states = [adm_behavior_fnc_stateInit, adm_behavior_fnc_stateMoving, adm_behavior_fnc_stateEnemyFound, adm_behavior_fnc_stateSeekAndDestroyEnemy, adm_behavior_fnc_stateCombat, adm_behavior_fnc_updateWaypointsAndMoving, {}];
