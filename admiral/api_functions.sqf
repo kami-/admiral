@@ -11,6 +11,29 @@ adm_api_fnc_initZone = {
     [_trigger, _configEntries] call adm_common_fnc_setConfig;
 };
 
+// Settings
+
+/**
+ * Sets the _enemySide as enemy of _side.
+ * @param _side The side to set the enemy of
+ * @param _enemySide The side that will be the enemy
+ */
+adm_api_setEnemy = {
+    FUN_ARGS_2(_side,_enemySide);
+
+    [_side, _enemySide] call adm_settings_fnc_setEnemy;
+};
+
+/**
+ * Sets the _friendlySide as friend of _side.
+ * @param _side The side to set the friend of
+ * @param _enemySide The side that will be the friend
+ */
+adm_api_setFriendly = {
+    FUN_ARGS_2(_side,_friendlySide);
+
+    [_side, _friendlySide] call adm_settings_fnc_setFriendly;
+};
 
 
 // CQC
