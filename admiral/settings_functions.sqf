@@ -8,19 +8,14 @@ adm_settings_fnc_initSideRelations = {
 };
 
 adm_settings_fnc_defaultSideRelations = {
-    [SIDE_WEST, SIDE_ENEMY] call adm_settings_fnc_setEnemy;
     [SIDE_WEST, SIDE_EAST] call adm_settings_fnc_setEnemy;
     [SIDE_WEST, SIDE_IND] call adm_settings_fnc_setEnemy;
      
-    [SIDE_EAST, SIDE_ENEMY] call adm_settings_fnc_setEnemy;
     [SIDE_EAST, SIDE_WEST] call adm_settings_fnc_setEnemy;
     [SIDE_EAST, SIDE_IND] call adm_settings_fnc_setEnemy;
      
-    [SIDE_IND, SIDE_ENEMY] call adm_settings_fnc_setEnemy;
     [SIDE_IND, SIDE_WEST] call adm_settings_fnc_setEnemy;
     [SIDE_IND, SIDE_EAST] call adm_settings_fnc_setEnemy;
-    
-    [SIDE_CIV, SIDE_ENEMY] call adm_settings_fnc_setEnemy;
 };
 
 adm_settings_fnc_setEnemy = {

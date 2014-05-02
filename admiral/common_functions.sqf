@@ -349,9 +349,16 @@ adm_common_fnc_shuffle = {
 adm_common_fnc_isFriendlySide = {
     FUN_ARGS_2(_side,_otherSide);
 
-    private ["_sideIndex", "_otherSideIndex"];
-    _sideIndex = SIDE_ARRAY find _side;
-    _otherSideIndex = SIDE_ARRAY find _otherSide;
+    private "_isFriendly";
+    _isFriendly = true;
+    if (_side == sideEnemy || {_otherSide == sideEnemy}) then {
+        _isFriendly = false;
+    } else {
+        private ["_sideIndex", "_otherSideIndex"];
+        _sideIndex = SIDE_ARRAY find _side;
+        _otherSideIndex = SIDE_ARRAY find _otherSide;
+        _isFriendly = _sideIndex >= 0 && {_otherSideIndex >= 0} && {!(_otherSideIndex in (adm_sideRelations select _sideIndex))};
+    };
 
-    _sideIndex >= 0 && {_otherSideIndex >= 0} && {!(_otherSideIndex in (adm_sideRelations select _sideIndex))};
+    _isFriendly;
 };

@@ -32,13 +32,12 @@
                                             ["courage", adm_cqc_courage],["reloadSpeed", adm_cqc_reloadSpeed],["commanding", adm_cqc_commanding], \
                                             ["general", adm_cqc_general]]
 
-#define SIDE_ARRAY                          [EAST, WEST, RESISTANCE, CIVILIAN, sideEnemy]
-#define SIDE_TEXT_ARRAY                     ["EAST", "WEST", "RESISTANCE", "CIVILIAN", "ENEMY"]
+#define SIDE_ARRAY                          [EAST, WEST, RESISTANCE, CIVILIAN]
+#define SIDE_TEXT_ARRAY                     ["EAST", "WEST", "RESISTANCE", "CIVILIAN"]
 #define SIDE_EAST                           0
 #define SIDE_WEST                           1
 #define SIDE_IND                            2
 #define SIDE_CIV                            3
-#define SIDE_ENEMY                          4
 
 #define UNIT_TYPE_ARRAY                     ["infantry", "crewmen", "pilots"]
 #define UNIT_TYPE_INF                       0
