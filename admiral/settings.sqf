@@ -4,8 +4,8 @@
 adm_settings_fnc_setSideRelations = {
     [] call adm_settings_fnc_defaultSideRelations;
 
-    [SIDE_IND, SIDE_WEST] call adm_settings_fnc_setSideFriendly;
-    [SIDE_IND, SIDE_EAST] call adm_settings_fnc_setSideEnemy;
+    [SIDE_IND, SIDE_WEST] call adm_settings_fnc_setFriendly;
+    [SIDE_IND, SIDE_EAST] call adm_settings_fnc_setEnemy;
 };
 
 // Debug
