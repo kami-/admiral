@@ -29,10 +29,10 @@ adm_api_setEnemy = {
  * @param _side The side to set the friend of
  * @param _enemySide The side that will be the friend
  */
-adm_api_setFriendly = {
+adm_api_setFriend = {
     FUN_ARGS_2(_side,_friendlySide);
 
-    [_side, _friendlySide] call adm_settings_fnc_setFriendly;
+    [_side, _friendlySide] call adm_settings_fnc_setFriend;
 };
 
 

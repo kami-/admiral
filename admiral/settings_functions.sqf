@@ -7,14 +7,14 @@ adm_settings_fnc_initSideRelations = {
     } foreach SIDE_ARRAY;
 };
 
-adm_settings_fnc_defaultSideRelations = {
+adm_settings_fnc_setDefaultSideRelations = {
     [SIDE_WEST, SIDE_EAST] call adm_settings_fnc_setEnemy;
-    [SIDE_WEST, SIDE_IND] call adm_settings_fnc_setEnemy;
-     
+    [SIDE_WEST, SIDE_IND] call adm_settings_fnc_setFriend;
+
     [SIDE_EAST, SIDE_WEST] call adm_settings_fnc_setEnemy;
     [SIDE_EAST, SIDE_IND] call adm_settings_fnc_setEnemy;
-     
-    [SIDE_IND, SIDE_WEST] call adm_settings_fnc_setEnemy;
+
+    [SIDE_IND, SIDE_WEST] call adm_settings_fnc_setFriend;
     [SIDE_IND, SIDE_EAST] call adm_settings_fnc_setEnemy;
 };
 
@@ -29,7 +29,7 @@ adm_settings_fnc_setEnemy = {
     };
 };
 
-adm_settings_fnc_setFriendly = {
+adm_settings_fnc_setFriend = {
     FUN_ARGS_2(_side,_friendlySide);
 
     private "_sideEnemies";
@@ -50,5 +50,6 @@ adm_settings_fnc_createCenters = {
 adm_settings_fnc_init = {
     [] call adm_settings_fnc_createCenters;
     [] call adm_settings_fnc_initSideRelations;
+    [] call adm_settings_fnc_setDefaultSideRelations
     [] call adm_settings_fnc_setSideRelations;
 };
