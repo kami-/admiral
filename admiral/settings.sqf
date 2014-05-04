@@ -12,6 +12,9 @@ adm_isDebuggingEnabled = true;
 adm_isCachingEnabled = true;
 adm_areNVGsEnabled = true;
 
+// Behavior
+adm_isBehaviorEnabled = true;
+
 // Camp
 adm_camp_defaultUnitTemplate = "Base";
 

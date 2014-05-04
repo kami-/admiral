@@ -20,8 +20,11 @@ call compile preProcessFileLineNumbers "admiral\cqc_functions.sqf";
 call compile preProcessFileLineNumbers "admiral\camp_functions.sqf";
 call compile preProcessFileLineNumbers "admiral\patrol_functions.sqf";
 call compile preProcessFileLineNumbers "admiral\rupture_functions.sqf";
-call compile preProcessFileLineNumbers "admiral\behavior_functions.sqf";
 call compile preProcessFileLineNumbers "admiral\api_functions.sqf";
+
+if (adm_isBehaviorEnabled) then {
+    call compile preProcessFileLineNumbers "admiral\behavior_functions.sqf";
+};
 
 //Calling init functions
 [] call adm_settings_fnc_init;
@@ -30,7 +33,10 @@ call compile preProcessFileLineNumbers "admiral\api_functions.sqf";
 [] call adm_patrol_fnc_init;
 [] call adm_rupture_fnc_checkUnits;
 [] call adm_reduce_fnc_init;
-[] call adm_behavior_fnc_init;
+
+if (adm_isBehaviorEnabled) then {
+    [] call adm_behavior_fnc_init;
+};
 
 // Don't initialize, if we don't want to debug
 if (adm_isDebuggingEnabled) then {
