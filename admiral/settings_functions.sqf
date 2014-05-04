@@ -50,6 +50,6 @@ adm_settings_fnc_createCenters = {
 adm_settings_fnc_init = {
     [] call adm_settings_fnc_createCenters;
     [] call adm_settings_fnc_initSideRelations;
-    [] call adm_settings_fnc_setDefaultSideRelations
+    [] call adm_settings_fnc_setDefaultSideRelations;
     [] call adm_settings_fnc_setSideRelations;
 };
