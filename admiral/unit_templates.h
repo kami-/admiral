@@ -1,12 +1,13 @@
 #include "admiral_defines.h"
 
-class AdmiralUnitTemplates {
+class Admiral {
+  class UnitTemplates {
     class Base {
-        side=SIDE_CIV;
-        infantry[]={"Cow02", "Cow03", "Cow04", "Fin", "Goat", "Cock", "Pastor", "Rabbit", "Sheep", "WildBoar"};
-        crewmen[]={"Cow02", "Cow03", "Cow04", "Fin", "Goat", "Cock", "Pastor", "Rabbit", "Sheep", "WildBoar"};
-        technicals[]={"Ikarus"};
-        armour[]={"Ikarus"};
+        side = SIDE_CIV;
+        infantry[] = {"Cow02", "Cow03", "Cow04", "Fin", "Goat", "Cock", "Pastor", "Rabbit", "Sheep", "WildBoar"};
+        crewmen[] = {"Cow02", "Cow03", "Cow04", "Fin", "Goat", "Cock", "Pastor", "Rabbit", "Sheep", "WildBoar"};
+        technicals[] = {"Ikarus"};
+        armour[] = {"Ikarus"};
     };
 
     class US_Army_Woodland_TEST : Base {
@@ -43,4 +44,5 @@ class AdmiralUnitTemplates {
         crewmen[] = {"RW_RU_Soldier_Crew"};
         armour[] = {"RW_T72_RU"};
     };
+  };
 };

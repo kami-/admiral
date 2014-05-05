@@ -46,7 +46,7 @@ adm_error_fnc_validateUnitTemplate = {
     if (_noError) then {
         private ["_configEntry", "_configEntryString"];
         _configEntry = TEMPLATE_CONFIGFILE >> TEMPLATE_CONTAINER_CLASS >> _unitTemplate;
-        _configEntryString = format ["%1 >> %2 >> %3", STR_TEMPLATE_CONFIGFILE, TEMPLATE_CONTAINER_CLASS, _unitTemplate];
+        _configEntryString = format ["%1 >> %2 >> %3", STR_TEMPLATE_CONFIGFILE, STR_TEMPLATE_CONTAINER_CLASS, _unitTemplate];
         _errorMessages = [
             {format ["Class '%1' was not found, at '%2'!", _unitTemplate, _configEntryString]}
         ];

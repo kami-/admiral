@@ -8,7 +8,8 @@
 
 #define TEMPLATE_CONFIGFILE                 missionConfigFile
 #define STR_TEMPLATE_CONFIGFILE             "missionConfigFile"
-#define TEMPLATE_CONTAINER_CLASS            "AdmiralUnitTemplates"
+#define TEMPLATE_CONTAINER_CLASS            "Admiral" >> "UnitTemplates"
+#define STR_TEMPLATE_CONTAINER_CLASS        "Admiral >> UnitTemplates"
 
 #define CAMP_SPAWN_CIRCLE_MAX_DIST          30
 
