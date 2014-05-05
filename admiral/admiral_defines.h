@@ -17,8 +17,6 @@
 #define REDUCE_DISTANCE                     1200
 #define EXPAND_DISTANCE                     1000
 
-#define ZONE_ACTIVATION_DIST                1800
-
 #define CAMP_SKILL_ARRAY                    [["aimingAccuracy", adm_camp_aimingAccuracy],["aimingShake", adm_camp_aimingShake],["aimingSpeed", adm_camp_aimingSpeed], \
                                             ["endurance", adm_camp_endurance],["spotDistance", adm_camp_spotDistance],["spotTime", adm_camp_spotTime], \
                                             ["courage", adm_camp_courage],["reloadSpeed", adm_camp_reloadSpeed],["commanding", adm_camp_commanding], \

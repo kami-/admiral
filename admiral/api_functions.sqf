@@ -11,6 +11,21 @@ adm_api_fnc_initZone = {
     [_trigger, _configEntries] call adm_common_fnc_setConfig;
 };
 
+/**
+ * Returns if a player is closer to the zone, than the given distance.
+ * The zone's longest axis is added to the distance.
+ * @param _trigger Trigger object representing a zone
+ * @param _distance The distance to check for players
+ * @return Wether a player is close enough to the zone or not
+ */
+adm_api_fnc_isPlayerNearZone = {
+    FUN_ARGS_2(_trigger,_distance);
+
+    [_trigger, _range] call adm_common_fnc_isPlayerNearZone;
+};
+
+
+
 // Settings
 
 /**

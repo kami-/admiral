@@ -181,14 +181,14 @@ adm_common_fnc_randomPosInEllipse = {
 };
 
 adm_common_fnc_isPlayerNearZone = {
-    FUN_ARGS_1(_trigger);
+    FUN_ARGS_2(_trigger,_distance);
 
     private ["_width", "_height", "_longestAxis"];
     _width = triggerArea _trigger select 0;
     _height = triggerArea _trigger select 1;
     _longestAxis = if (_width > _height) then {_width} else {_height};
 
-    [_trigger, _longestAxis + ZONE_ACTIVATION_DIST] call adm_common_fnc_isPlayersInRange;
+    [_trigger, _longestAxis + _range] call adm_common_fnc_isPlayersInRange;
 };
 
 adm_common_fnc_isPlayersInRange = {
