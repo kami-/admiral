@@ -51,6 +51,25 @@ adm_api_setFriend = {
 };
 
 
+
+// Caching
+
+/**
+ * Enables caching of AI.
+ */
+adm_api_enableCaching = {
+    [] call adm_reduce_fnc_enableCaching;
+};
+
+/**
+ * Disables caching of AI.
+ */
+adm_api_disableCaching = {
+    [] call adm_reduce_fnc_disableCaching;
+};
+
+
+
 // CQC
 
 /**
