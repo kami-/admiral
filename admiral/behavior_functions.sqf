@@ -242,12 +242,6 @@ adm_behavior_fnc_isAvailableGroup = {
         && {[_x] call adm_behavior_fnc_canReinforce};
 };
 
-adm_behavior_fnc_init = {
-    adm_behavior_states = [adm_behavior_fnc_stateInit, adm_behavior_fnc_stateMoving, adm_behavior_fnc_stateEnemyFound, adm_behavior_fnc_stateSeekAndDestroyEnemy, adm_behavior_fnc_stateCombat, adm_behavior_fnc_updateWaypointsAndMoving, {}];
-    adm_behavior_foundEnemies = [];
-    [] spawn adm_behavior_fnc_changeAllGroupState;
-};
-
 adm_behavior_getEnemyUnits = {
     FUN_ARGS_1(_side);
 
@@ -255,4 +249,10 @@ adm_behavior_getEnemyUnits = {
     _units = [];
     FILTER_PUSH_ALL(_units, ALL_UNITS, {!(AS_ARRAY_2(side _x, _side) call adm_common_fnc_isFriendlySide)});
     _units;
+};
+
+adm_behavior_fnc_init = {
+    adm_behavior_states = [adm_behavior_fnc_stateInit, adm_behavior_fnc_stateMoving, adm_behavior_fnc_stateEnemyFound, adm_behavior_fnc_stateSeekAndDestroyEnemy, adm_behavior_fnc_stateCombat, adm_behavior_fnc_updateWaypointsAndMoving, {}];
+    adm_behavior_foundEnemies = [];
+    [] spawn adm_behavior_fnc_changeAllGroupState;
 };
