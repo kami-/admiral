@@ -2,28 +2,25 @@
 
 // Returns a newly created cqc unit
 adm_cqc_fnc_placeMan = {
-    FUN_ARGS_2(_pos,_grp);
+    FUN_ARGS_4(_position,_group,_unitTemplate,_unitType);
 
-    private["_unit", "_wp"];
-
+    private ["_unit", "_wp"];
     _unit = [
-        _pos,
-        _grp,
-        adm_cqc_unitTypes select adm_ai_enemySideIndex select adm_ai_enemyFaction select adm_ai_enemyCammo,
-        adm_cqc_skillBoundary,
-        adm_cqc_aimingSpeed,
-        adm_cqc_aimingAccuracy
+        _position,
+        _group,
+        [_unitTemplate, _unitType] call adm_common_fnc_getUnitTemplateArray,
+        CQC_SKILL_ARRAY
     ] call adm_common_fnc_placeMan;
 
-    _grp enableAttack false;
+    _group enableAttack false;
 
-    _wp = [_grp, [getPosATL _unit, 0], 'GUARD', 'AWARE', 'RED'] call adm_common_fnc_createWaypoint;
+    _wp = [_group, [getPosATL _unit, 0], 'GUARD', 'AWARE', 'RED'] call adm_common_fnc_createWaypoint;
 
     _unit setDir (random 360);
-    _unit setPosATL (_pos);
+    _unit setPosATL (_position);
     doStop _unit;
     _unit setUnitPos 'UP';
-    _grp setCurrentWaypoint _wp;
+    _group setCurrentWaypoint _wp;
 
     _unit;
 };
@@ -119,20 +116,21 @@ adm_cqc_fnc_getPossiblePositions = {
 
 // Returns a newly created cqc group
 adm_cqc_fnc_spawnGarrisonGroup = {
-    FUN_ARGS_4(_numOfUnits,_side,_possiblePositions,_building);
+    FUN_ARGS_4(_trigger,_numOfUnits,_possiblePositions,_building);
 
-    private["_trigger", "_grp"];
-    _grp = createGroup _side;
-    for "_x" from 1 to _numOfUnits do {
+    private ["_unitTemplate", "_grp"];
+    _unitTemplate = _trigger getVariable "adm_zone_unitTemplate";
+    _grp = createGroup ([_unitTemplate] call adm_common_fnc_getUnitTemplateSide);
+    for "_i" from 1 to _numOfUnits do {
         private ["_pos"];
         _pos = SELECT_RAND(_possiblePositions);
         _possiblePositions = _possiblePositions - [_pos];
-        adm_cqc_currentAmount = adm_cqc_currentAmount + 1;
-        [_building buildingPos _pos, _grp] call adm_cqc_fnc_placeMan;
+        [_building buildingPos _pos, _grp, _unitTemplate, UNIT_TYPE_ARRAY select UNIT_TYPE_INF] call adm_cqc_fnc_placeMan;
     };
 
     [_grp] call adm_reduce_fnc_setGroupExpandCount;
     [_grp] call adm_reduce_fnc_setCqcInitPositions;
+    _grp setVariable ["adm_zone_parent", _trigger];
 
     _grp;
 };
@@ -150,19 +148,17 @@ adm_cqc_fnc_getTriggerBuildings = {
 adm_cqc_fnc_spawnGarrison = {
     FUN_ARGS_1(_trigger);
     
-    private ["_buildings", "_maxAmount", "_spawnedGroups"];
+    private ["_buildings", "_maxAmount", "_currentAmount", "_spawnedGroups"];
     _buildings = [_trigger] call adm_cqc_fnc_getTriggerBuildings;
     _maxAmount = _trigger getVariable ["adm_zone_pool", 0];
-
-    adm_cqc_currentAmount = 0;
-
+    _currentAmount = 0;
     _spawnedGroups = [];
-    for [{private ["_i"]; _i = 0}, {_i < count _buildings && {adm_cqc_currentAmount < _maxAmount}}, {INC(_i)}] do {
+    for [{private ["_i"]; _i = 0}, {_i < count _buildings && {_currentAmount < _maxAmount}}, {INC(_i)}] do {
         private ["_building", "_possiblePositions"];
         _building = _buildings select _i;
         _possiblePositions = [_building, _trigger getVariable "adm_cqc_minHeight"] call adm_cqc_fnc_getPossiblePositions;
 
-        if((!([_possiblePositions, []] call BIS_fnc_areEqual)) && {adm_cqc_currentAmount < _maxAmount}) then {
+        if((!([_possiblePositions, []] call BIS_fnc_areEqual)) && {_currentAmount < _maxAmount}) then {
             private ["_buildingCapacity", "_posCount", "_numOfUnits", "_group"];
             _buildingCapacity = [_building] call adm_cqc_fnc_getBuildingCapacity;
             _posCount = count _possiblePositions;
@@ -175,12 +171,13 @@ adm_cqc_fnc_spawnGarrison = {
                 case (_posCount == 1): { 1 };
                 default { 0 };
             };
+            _currentAmount = _currentAmount + _numOfUnits;
 
-            _group = [_numOfUnits, adm_ai_enemySide, _possiblePositions, _building] call adm_cqc_fnc_spawnGarrisonGroup;
+            _group = [_trigger, _numOfUnits, _possiblePositions, _building] call adm_cqc_fnc_spawnGarrisonGroup;
 
             PUSH(_spawnedGroups, _group);
             
-            if (adm_ai_debugging) then {
+            if (adm_isDebuggingEnabled) then {
                 [_group] call adm_debug_fnc_createMarkersForCqcGroup;
             };
         };
@@ -192,7 +189,7 @@ adm_cqc_fnc_spawnGarrison = {
 adm_cqc_fnc_canForceFire = {
     FUN_ARGS_2(_ai,_unit);
 
-    (side _ai != side _unit) && {!terrainIntersect [eyePos _ai, eyePos _unit]} && {!lineIntersects [eyePos _ai, eyePos _unit]} && {alive _ai} && {alive _unit};
+    !([side _ai, side _unit] call adm_common_fnc_isFriendlySide) && {!terrainIntersect [eyePos _ai, eyePos _unit]} && {!lineIntersects [eyePos _ai, eyePos _unit]} && {alive _ai} && {alive _unit};
 };
 
 adm_cqc_fnc_getForceFireEnemy = {
@@ -233,29 +230,34 @@ adm_cqc_fnc_forceFire = {
     };
 };
 
-// Initializes cqc
+adm_cqc_fnc_initZone = {
+    FUN_ARGS_1(_trigger);
+
+    waitUntil {
+        adm_isInitialized;
+    };
+    if (adm_isDebuggingEnabled) then {
+        [_trigger] call adm_debug_fnc_createTriggerLocalMarker;
+        [_trigger] call adm_error_fnc_validateZone;
+    };
+
+    private "_spawnedGroups";
+    _spawnedGroups = [_trigger] call adm_cqc_fnc_spawnGarrison;
+    PUSH_ALL(adm_cqc_groups, _spawnedGroups);
+    [_spawnedGroups] call adm_rupture_fnc_initGroups;
+    [_spawnedGroups] call adm_cqc_fnc_forceFire;
+    PUSH(adm_cqc_groups, _trigger);
+};
+
+adm_cqc_fnc_getAliveGroups = {
+    [[adm_cqc_groups]] call adm_common_fnc_getAliveGroups;
+};
+
+adm_cqc_fnc_getAliveUnits = {
+   [[adm_cqc_groups]] call adm_common_fnc_getAliveUnits;
+};
+
 adm_cqc_fnc_init = {
-    adm_cqc_triggers = [allMissionObjects "EmptyDetector", {triggerText _x == "cqc"}] call BIS_fnc_conditionalSelect;
-    adm_cqc_players = [] call adm_common_fnc_getPlayerUnits;
+    adm_cqc_triggers = [];
     adm_cqc_groups = [];
-
-    {
-        [_x] spawn {
-            FUN_ARGS_1(_trigger);
-
-            waitUntil { triggerActivated _trigger };
-
-            if (adm_ai_debugging) then {
-                [_trigger, "ColorRed"] call adm_debug_fnc_createTriggerLocalMarker;
-                [_trigger] call adm_error_fnc_validateZone;
-            };
-
-            // Spawn CQC
-            private ["_spawnedGroups"];
-            _spawnedGroups = [_trigger] call adm_cqc_fnc_spawnGarrison;
-            PUSH_ALL(adm_cqc_groups, _spawnedGroups);
-            [_spawnedGroups] call adm_rupture_fnc_initGroups;
-            [_spawnedGroups] call adm_cqc_fnc_forceFire;
-        };
-    } foreach adm_cqc_triggers;
 };

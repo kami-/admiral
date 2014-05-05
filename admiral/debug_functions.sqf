@@ -30,8 +30,8 @@ adm_debug_fnc_debugSpawnedGroups = {
 adm_debug_fnc_createMarkersForPatrolGroup = {
     FUN_ARGS_2(_group,_groupType);
 
-    [format["%1", _group], getPosATL leader _group, "ICON", GROUP_TYPE_DEBUG_MARKERS select _groupType, adm_debug_sideColor, GROUP_TYPE_DEBUG_MARKER_SIZES select _groupType] call adm_common_fnc_createLocalMarker;
-    [format["WP_%1", _group], getWPPos [_group, currentWaypoint _group], "ICON", "waypoint", adm_debug_sideColor, WAYPOINT_DEBUG_MARKER_SIZE] call adm_common_fnc_createLocalMarker;
+    [format["%1", _group], getPosATL leader _group, "ICON", GROUP_TYPE_DEBUG_MARKERS select _groupType, [side _group] call adm_debug_fnc_getSideColor, GROUP_TYPE_DEBUG_MARKER_SIZES select _groupType] call adm_common_fnc_createLocalMarker;
+    [format["WP_%1", _group], getWPPos [_group, currentWaypoint _group], "ICON", "waypoint", [side _group] call adm_debug_fnc_getSideColor, WAYPOINT_DEBUG_MARKER_SIZE] call adm_common_fnc_createLocalMarker;
     [format["LINE_%1", _group], getPosATL leader _group, getWPPos [_group, currentWaypoint _group], "ColorBlack", 1] call adm_debug_fnc_createLineMarker;
     [format["STATE_LINE_%1", _group], getPosATL leader _group, getPosATL leader _group, "ColorBlack", 1] call adm_debug_fnc_createLineMarker;
     format["STATE_LINE_%1", _group] setMarkerAlphaLocal 0;
@@ -95,7 +95,7 @@ adm_debug_fnc_createMarkersForCqcGroup = {
     FUN_ARGS_1(_group);
 
     {
-        [format["%1", _x], getPosATL _x, "ICON", CQC_DEBUG_MARKER, adm_debug_sideColor, CQC_DEBUG_MARKER_SIZE] call adm_common_fnc_createLocalMarker;
+        [format["%1", _x], getPosATL _x, "ICON", CQC_DEBUG_MARKER, [side _group] call adm_debug_fnc_getSideColor, CQC_DEBUG_MARKER_SIZE] call adm_common_fnc_createLocalMarker;
     } foreach units _group;
 };
 
@@ -123,10 +123,12 @@ adm_debug_fnc_createTriggerLocalMarker = {
     FUN_ARGS_2(_trigger,_color);
 
     private ["_shape", "_marker"];
-
     _shape = "RECTANGLE";
     if (!((triggerArea _trigger) select 3)) then {
         _shape = "ELLIPSE";
+    };
+    if (isNil {_color}) then {
+        _color = [[_trigger getVariable "adm_zone_unitTemplate"] call adm_common_fnc_getUnitTemplateSide] call adm_debug_fnc_getSideColor;
     };
 
     _marker = [format["%1", _trigger], getPosATL _trigger, _shape, "DOT", _color] call adm_common_fnc_createLocalMarker;
@@ -139,7 +141,6 @@ adm_debug_fnc_updateTriggerLocalMarker = {
     FUN_ARGS_1(_trigger);
 
     private ["_shape", "_marker"];
-
     _shape = "RECTANGLE";
     if (!((triggerArea _trigger) select 3)) then {
         _shape = "ELLIPSE";
@@ -161,9 +162,9 @@ adm_debug_fnc_createMarkersForCampLogic = {
         private ["_wpPosFrom", "_wpPosTo", "_marker"];
         _wpPosFrom = getWPPos (_waypoints select _i);
         _wpPosTo = getWPPos (_waypoints select (_i + 1));
-        [format["%1", _wpPosFrom], _wpPosFrom, _wpPosTo, "ColorRed", 3] call adm_debug_fnc_createLineMarker;
+        [format["%1", _wpPosFrom], _wpPosFrom, _wpPosTo, "ColorOrange", 3] call adm_debug_fnc_createLineMarker;
     };
-    [_logic getVariable "adm_camp_endTrigger", "ColorBlue"] call adm_debug_fnc_createTriggerLocalMarker;
+    [_logic getVariable "adm_camp_endTrigger", "ColorOrange"] call adm_debug_fnc_createTriggerLocalMarker;
 };
 
 adm_debug_fnc_createLineMarker = {
@@ -182,10 +183,21 @@ adm_debug_fnc_updateLineMarker = {
     _markerName setMarkerDirLocal ([_posFrom, _posTo] call BIS_fnc_dirTo);
 };
 
-adm_debug_fnc_init = {
-    adm_debug_sideColor = SIDE_DEBUG_MARKER_COLORS select adm_ai_enemySideIndex;
+adm_debug_fnc_getSideColor = {
+    FUN_ARGS_1(_side);
 
-    if (adm_ai_debugging) then {
+    private "_index";
+    _index = SIDE_ARRAY find _side;
+
+    if (_index >= 0) then {
+        SIDE_DEBUG_MARKER_COLORS select _index;
+    } else {
+        "ColorWhite";
+    };
+};
+
+adm_debug_fnc_init = {
+    if (adm_isDebuggingEnabled) then {
         [] call adm_debug_fnc_debugSpawnedGroups;
     };
 };

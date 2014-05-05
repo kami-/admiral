@@ -35,8 +35,11 @@ adm_reduce_fnc_expandGroup = {
     FUN_ARGS_3(_group,_positions,_placeManFunc);
 
     {
-        // CQC doesn't use 3rd param so this will work for now
-        [_x, _group, UNIT_TYPE_INF] call _placeManFunc;
+        private ["_trigger", "_unitTemplate", "_unitType"];
+        _trigger = _group getVariable "adm_zone_parent";
+        _unitTemplate = _trigger getVariable "adm_zone_unitTemplate";
+        _unitType = UNIT_TYPE_ARRAY select UNIT_TYPE_INF;
+        [_x, _group, _unitTemplate, _unitType] call _placeManFunc;
     } foreach _positions;
     _group setVariable ["adm_reduce_isReduced", false, false];
 };
@@ -97,14 +100,13 @@ adm_reduce_fnc_canReduceGroup = {
     if (!_isReduced) then {
         private ["_i", "_players"];
         _i = 0;
-        _players = [] call adm_common_fnc_getPlayerUnits;
+        _players = [side _group] call adm_reduce_fnc_getMonitoredUnits;
         _canReduce = true;
         while {_canReduce && _i < count _players} do {
             _canReduce = [_players select _i, _group, REDUCE_DISTANCE] call gfn_reduce_fnc_unitOutsideReduceDistance;
             INC(_i);
         };
     };
-
     _canReduce;
 };
 
@@ -114,11 +116,10 @@ adm_reduce_fnc_canExpandGroup = {
     private ["_canExpand", "_isReduced"];
     _canExpand = false;
     _isReduced = _group getVariable ["adm_reduce_isReduced", false];
-
     if (_isReduced) then {
         private ["_i", "_players"];
         _i = 0;
-        _players = [] call adm_common_fnc_getPlayerUnits;
+        _players = [side _group] call adm_reduce_fnc_getMonitoredUnits;
         while {!_canExpand && _i < count _players} do {
             _canExpand = !([_players select _i, _group, EXPAND_DISTANCE] call gfn_reduce_fnc_unitOutsideReduceDistance);
             INC(_i);
@@ -148,22 +149,22 @@ adm_reduce_fnc_monitorGroups = {
         [adm_patrol_infGroups, adm_reduce_fnc_getPatrolGroupPositions, adm_patrol_fnc_placeMan] call adm_reduce_fnc_checkGroups;
         [adm_camp_infGroups, adm_reduce_fnc_getPatrolGroupPositions, adm_patrol_fnc_placeMan] call adm_reduce_fnc_checkGroups;
         sleep 1;
-        !adm_ai_caching;
+        !adm_isCachingEnabled;
     };
     sleep 1;
     [] call adm_reduce_fnc_expandAllGroups;
 };
 
 adm_reduce_fnc_enableCaching = {
-    if (!adm_ai_caching) then {
-        adm_ai_caching = true;
+    if (!adm_isCachingEnabled) then {
+        adm_isCachingEnabled = true;
         [] call adm_reduce_fnc_init;
     };
 };
 
 adm_reduce_fnc_disableCaching = {
-    if (adm_ai_caching) then {
-        adm_ai_caching = false;
+    if (adm_isCachingEnabled) then {
+        adm_isCachingEnabled = false;
         [] call adm_reduce_fnc_expandAllGroups;
     };
 };
@@ -174,8 +175,17 @@ gfn_reduce_fnc_unitOutsideReduceDistance = {
     (getPosATL _unit) distance (getPosATL leader _group) > _distance;
 };
 
+adm_reduce_fnc_getMonitoredUnits = {
+    FUN_ARGS_1(_side);
+
+    private "_units";
+    _units = [];
+    FILTER_PUSH_ALL(_units, ALL_UNITS, {!(AS_ARRAY_2(side _x, _side) call adm_common_fnc_isFriendlySide) || {isPlayer _x}});
+    _units;
+};
+
 adm_reduce_fnc_init = {
-    if (adm_ai_caching) then {
+    if (adm_isCachingEnabled) then {
         [] spawn adm_reduce_fnc_monitorGroups;
     };
 };

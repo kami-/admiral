@@ -224,7 +224,7 @@ class Mission
 			text="patrol";
 			name="patrol1";
 			expCond="true";
-			expActiv="[thisTrigger, [[""pool"",[6,2,1]]]] call adm_common_fnc_setConfig;";
+			expActiv="[thisTrigger, [[""pool"",[6,2,1]]]] call adm_api_fnc_initZone;";
 			class Effects
 			{
 			};
@@ -241,7 +241,7 @@ class Mission
 			text="cqc";
 			name="cqc1";
 			expCond="true";
-			expActiv="[thisTrigger, [[""pool"", 40]]] call adm_common_fnc_setConfig;";
+			expActiv="[thisTrigger, [[""pool"", 40]]] call adm_api_fnc_initZone;";
 			class Effects
 			{
 			};
@@ -256,7 +256,7 @@ class Mission
 			text="camp";
 			name="camp1";
 			expCond="true";
-			expActiv="[thisTrigger, [[""type"", ""periodic""],[""pool"", [10,3,2]],[""wave"", [2,1,1]],[""campDelay"", 60], [""groupDelay"", [60,60,60]]]] call adm_common_fnc_setConfig;";
+			expActiv="[thisTrigger, [[""type"", ""periodic""],[""pool"", [10,3,2]],[""wave"", [2,1,1]],[""campDelay"", 60], [""groupDelay"", [60,60,60]]]] call adm_api_fnc_initZone;";
 			class Effects
 			{
 			};

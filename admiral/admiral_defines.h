@@ -1,3 +1,16 @@
+#define MULTIPLE_SIDES
+#ifdef MULTIPLE_SIDES
+    #define ALL_UNITS       allUnits
+#endif
+#ifndef MULTIPLE_SIDES
+    #define ALL_UNITS       ([] call adm_common_fnc_getPlayerUnits)
+#endif
+
+#define TEMPLATE_CONFIGFILE                 missionConfigFile
+#define STR_TEMPLATE_CONFIGFILE             "missionConfigFile"
+#define TEMPLATE_CONTAINER_CLASS            "Admiral" >> "UnitTemplates"
+#define STR_TEMPLATE_CONTAINER_CLASS        "Admiral >> UnitTemplates"
+
 #define CAMP_SPAWN_CIRCLE_MAX_DIST          30
 
 #define CQC_MAX_ENGAGE_DIST                 50
@@ -5,7 +18,18 @@
 #define REDUCE_DISTANCE                     1200
 #define EXPAND_DISTANCE                     1000
 
-#define ZONE_ACTIVATION_DIST                1800
+#define CAMP_SKILL_ARRAY                    [["aimingAccuracy", adm_camp_aimingAccuracy],["aimingShake", adm_camp_aimingShake],["aimingSpeed", adm_camp_aimingSpeed], \
+                                            ["endurance", adm_camp_endurance],["spotDistance", adm_camp_spotDistance],["spotTime", adm_camp_spotTime], \
+                                            ["courage", adm_camp_courage],["reloadSpeed", adm_camp_reloadSpeed],["commanding", adm_camp_commanding], \
+                                            ["general", adm_camp_general]]
+#define PATROL_SKILL_ARRAY                  [["aimingAccuracy", adm_patrol_aimingAccuracy],["aimingShake", adm_patrol_aimingShake],["aimingSpeed", adm_patrol_aimingSpeed], \
+                                            ["endurance", adm_patrol_endurance],["spotDistance", adm_patrol_spotDistance],["spotTime", adm_patrol_spotTime], \
+                                            ["courage", adm_patrol_courage],["reloadSpeed", adm_patrol_reloadSpeed],["commanding", adm_patrol_commanding], \
+                                            ["general", adm_patrol_general]]
+#define CQC_SKILL_ARRAY                     [["aimingAccuracy", adm_cqc_aimingAccuracy],["aimingShake", adm_cqc_aimingShake],["aimingSpeed", adm_cqc_aimingSpeed], \
+                                            ["endurance", adm_cqc_endurance],["spotDistance", adm_cqc_spotDistance],["spotTime", adm_cqc_spotTime], \
+                                            ["courage", adm_cqc_courage],["reloadSpeed", adm_cqc_reloadSpeed],["commanding", adm_cqc_commanding], \
+                                            ["general", adm_cqc_general]]
 
 #define SIDE_ARRAY                          [EAST, WEST, RESISTANCE, CIVILIAN]
 #define SIDE_TEXT_ARRAY                     ["EAST", "WEST", "RESISTANCE", "CIVILIAN"]
@@ -19,15 +43,10 @@
 #define UNIT_TYPE_CREW                      1
 #define UNIT_TYPE_PILOT                     2
 
-#define GROUP_TYPE_ARRAY                    ["infantry", "technical", "armour"]
+#define GROUP_TYPE_ARRAY                    ["infantry", "technicals", "armour"]
 #define GROUP_TYPE_INF                      0
 #define GROUP_TYPE_TECH                     1
 #define GROUP_TYPE_ARMOUR                   2
-
-#define CAMMO_ARRAY                         ["woodland", "desert", "winter"]
-#define CAMMO_WOODLAND                      0
-#define CAMMO_DESERT                        1
-#define CAMMO_WINTER                        2
 
 #define CAMP_TYPE_ARRAY                     ["periodic", "ondemand", "random"]
 #define CAMP_DEFAULT_DELAY                  60
@@ -40,39 +59,6 @@
 #define CQC_DEBUG_MARKER_SIZE               [0.5,0.5]
 #define CQC_DEBUG_MARKER                    "mil_triangle"
 #define SIDE_DEBUG_MARKER_COLORS            ["ColorRed", "ColorBlue", "ColorGreen", "ColorPink"]
-
-
-#define ASSERT_NOTNIL(VARNAME,MSG)                  {if (!isNil (VARNAME)) then {""} else {call (MSG)}}
-#define ASSERT_TYPE(VAR,TYPE,MSG)                   {if (typename (VAR) == toUpper (TYPE)) then {""} else {call (MSG)}}
-#define ASSERT_NOTEMPTY(VAR,MSG)                    {if (count (VAR) > 0) then {""} else {call (MSG)}}
-#define ASSERT_ARRAYSIZE(VAR,SIZE,MSG)              {if (count (VAR) == (SIZE)) then {""} else {call (MSG)}}
-#define ASSERT_ARRAYMINSIZE(VAR,MIN,MSG)            {if (count (VAR) >= (MIN)) then {""} else {call (MSG)}}
-#define ASSERT_MIN(VAR,MINVAL,MSG)                  {if ((VAR) >= (MINVAL)) then {""} else {call (MSG)}}
-#define ASSERT_MAX(VAR,MAXVAL,MSG)                  {if ((VAR) <= (MAXVAL)) then {""} else {call (MSG)}}
-#define ASSERT_BETWEEN(VAR,MINVAL,MAXVAL,MSG)       {if ((VAR) >= (MINVAL) && (VAR) <= (MAXVAL)) then {""} else {call (MSG)}}
-#define ASSERT_BOUNDARY(VAR,MSG)                    {if ((VAR) select 0 <= (VAR) select 1) then {""} else {call (MSG)}}
-#define ASSERT_ISKINDOF(CLASSNAME,BASETYPE,MSG)     {if ((CLASSNAME) isKindOf (BASETYPE)) then {""} else {call (MSG)}}
-#define ASSERT_INARRAY(VAR,ARRAY,MSG)               {if ((VAR) in (ARRAY)) then {""} else {call (MSG)}}
-
-#define CC_VAR                                      (call compile _variableName)
-
-#define DEF_ASSERT_NOTNIL                           ASSERT_NOTNIL(_variableName,DEF_NOTNIL_MSG)
-#define DEF_ASSERT_TYPE(TYPE)                       ASSERT_TYPE(CC_VAR,TYPE,DEF_TYPE_MSG)
-#define DEF_ASSERT_NOTEMPTY                         ASSERT_NOTEMPTY(CC_VAR,DEF_NOTEMPTY_MSG)
-#define DEF_ASSERT_ARRAYSIZE(SIZE)                  ASSERT_ARRAYSIZE(CC_VAR,SIZE,DEF_ARRAYSIZE_MSG)
-#define DEF_ASSERT_MIN(MINVAL)                      ASSERT_MIN(CC_VAR,MINVAL,DEF_MIN_MSG)
-#define DEF_ASSERT_MAX(MAXVAL)                      ASSERT_MAX(CC_VAR,MAXVAL,DEF_MAX_MSG)
-#define DEF_ASSERT_BETWEEN(MINVAL,MAXVAL)           ASSERT_BETWEEN(CC_VAR,MINVAL,MAXVAL,DEF_BETWEEN_MSG)
-#define DEF_ASSERT_BOUNDARY                         ASSERT_BOUNDARY(CC_VAR,DEF_BOUNDARY)
-
-#define DEF_NOTNIL_MSG                              {format ["Variable '%1' can not be nil!", _variableName]}
-#define DEF_TYPE_MSG                                {format ["Variable '%1' is not type of %2!", _variableName, (TYPE)]}
-#define DEF_NOTEMPTY_MSG                            {format ["Array '%1' can not be empty!", _variableName]}
-#define DEF_ARRAYSIZE_MSG                           {format ["Array '%1' size must be %2!", _variableName, (SIZE)]}
-#define DEF_MIN_MSG                                 {format ["Variable '%1' can not be less, than %2!", _variableName, (MINVAL)]}
-#define DEF_MAX_MSG                                 {format ["Variable '%1' can not be greater, than %2!", _variableName, (MAXVAL)]}
-#define DEF_BETWEEN_MSG                             {format ["Variable '%1' must be between values %2 and %3!", _variableName, (MINVAL), (MAXVAL)]}
-#define DEF_BOUNDARY                                {format ["Variable '%1's first value '%2' must be less, than the second value '%3'!", _variableName, CC_VAR select 0, CC_VAR select 1]}
 
 #define BEHAVIOR_MAX_REINFORCEMENT_DIST         750
 #define BEHAVIOR_REINF_TURNAROUND_DIST          300
@@ -94,6 +80,42 @@
 #define STATE_ENEMYFOUND                        2
 #define STATE_SADENEMY                          3
 #define STATE_COMBAT                            4
+#define STATE_CONTINUEMOVING                    5
+
+#define ASSERT_NOTNIL(VARNAME,MSG)                  {if (!isNil (VARNAME)) then {""} else {call (MSG)}}
+#define ASSERT_TYPE(VAR,TYPE,MSG)                   {if (typename (VAR) == toUpper (TYPE)) then {""} else {call (MSG)}}
+#define ASSERT_NOTEMPTY(VAR,MSG)                    {if (count (VAR) > 0) then {""} else {call (MSG)}}
+#define ASSERT_ARRAYSIZE(VAR,SIZE,MSG)              {if (count (VAR) == (SIZE)) then {""} else {call (MSG)}}
+#define ASSERT_ARRAYMINSIZE(VAR,MIN,MSG)            {if (count (VAR) >= (MIN)) then {""} else {call (MSG)}}
+#define ASSERT_MIN(VAR,MINVAL,MSG)                  {if ((VAR) >= (MINVAL)) then {""} else {call (MSG)}}
+#define ASSERT_MAX(VAR,MAXVAL,MSG)                  {if ((VAR) <= (MAXVAL)) then {""} else {call (MSG)}}
+#define ASSERT_BETWEEN(VAR,MINVAL,MAXVAL,MSG)       {if ((VAR) >= (MINVAL) && (VAR) <= (MAXVAL)) then {""} else {call (MSG)}}
+#define ASSERT_BOUNDARY(VAR,MSG)                    {if ((VAR) select 0 <= (VAR) select 1) then {""} else {call (MSG)}}
+#define ASSERT_ISKINDOF(CLASSNAME,BASETYPE,MSG)     {if ((CLASSNAME) isKindOf (BASETYPE)) then {""} else {call (MSG)}}
+#define ASSERT_INARRAY(VAR,ARRAY,MSG)               {if ((VAR) in (ARRAY)) then {""} else {call (MSG)}}
+#define ASSERT_ISCLASS(SELECTOR,MSG)                {if (isClass (SELECTOR)) then {""} else {call (MSG)}}
+#define ASSERT_ISNUMBER(SELECTOR,MSG)               {if (isNumber (SELECTOR)) then {""} else {call (MSG)}}
+#define ASSERT_ISARRAY(SELECTOR,MSG)                {if (isArray (SELECTOR)) then {""} else {call (MSG)}}
+
+#define CC_VAR                                      (call compile _variableName)
+
+#define DEF_ASSERT_NOTNIL                           ASSERT_NOTNIL(_variableName,DEF_NOTNIL_MSG)
+#define DEF_ASSERT_TYPE(TYPE)                       ASSERT_TYPE(CC_VAR,TYPE,DEF_TYPE_MSG)
+#define DEF_ASSERT_NOTEMPTY                         ASSERT_NOTEMPTY(CC_VAR,DEF_NOTEMPTY_MSG)
+#define DEF_ASSERT_ARRAYSIZE(SIZE)                  ASSERT_ARRAYSIZE(CC_VAR,SIZE,DEF_ARRAYSIZE_MSG)
+#define DEF_ASSERT_MIN(MINVAL)                      ASSERT_MIN(CC_VAR,MINVAL,DEF_MIN_MSG)
+#define DEF_ASSERT_MAX(MAXVAL)                      ASSERT_MAX(CC_VAR,MAXVAL,DEF_MAX_MSG)
+#define DEF_ASSERT_BETWEEN(MINVAL,MAXVAL)           ASSERT_BETWEEN(CC_VAR,MINVAL,MAXVAL,DEF_BETWEEN_MSG)
+#define DEF_ASSERT_BOUNDARY                         ASSERT_BOUNDARY(CC_VAR,DEF_BOUNDARY)
+
+#define DEF_NOTNIL_MSG                              {format ["Variable '%1' can not be nil!", _variableName]}
+#define DEF_TYPE_MSG                                {format ["Variable '%1' is not type of %2!", _variableName, (TYPE)]}
+#define DEF_NOTEMPTY_MSG                            {format ["Array '%1' can not be empty!", _variableName]}
+#define DEF_ARRAYSIZE_MSG                           {format ["Array '%1' size must be %2!", _variableName, (SIZE)]}
+#define DEF_MIN_MSG                                 {format ["Variable '%1' can not be less, than %2!", _variableName, (MINVAL)]}
+#define DEF_MAX_MSG                                 {format ["Variable '%1' can not be greater, than %2!", _variableName, (MAXVAL)]}
+#define DEF_BETWEEN_MSG                             {format ["Variable '%1' must be between values %2 and %3!", _variableName, (MINVAL), (MAXVAL)]}
+#define DEF_BOUNDARY                                {format ["Variable '%1's first value '%2' must be less, than the second value '%3'!", _variableName, CC_VAR select 0, CC_VAR select 1]}
 
 // WARNING
 // Macros are sensitive for "," (comma), "(", ")" (parenthese) and " " (space).

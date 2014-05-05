@@ -1,20 +1,14 @@
 #include "admiral_defines.h"
 
 adm_common_fnc_placeMan = {
-    FUN_ARGS_6(_pos,_grp,_units,_skillBoundary,_aimingSpeed,_aimingAccuracy);
+    FUN_ARGS_4(_pos,_grp,_units,_skillArray);
 
     private ["_unit"];
     _unit = _grp createUnit [SELECT_RAND(_units), _pos, [], 0, "NONE"];
-
-    _unit setSkill ((_skillBoundary select 0) + ((_skillBoundary select 1) - (_skillBoundary select 0)));                       
-    _unit setSkill ['aimingSpeed', _aimingSpeed];
-    _unit setSkill ['aimingAccuracy', _aimingAccuracy];
-    _unit setSkill ['spotDistance', 1];
-    _unit setSkill ['spotTime', 1];
-    _unit setSkill ['commanding', 1];
-
+    {
+        _unit setSkill _x;
+    } foreach _skillArray;
     _unit allowFleeing 0;
-
     [_unit] call adm_common_fnc_setGear;
 
     _unit;
@@ -28,9 +22,29 @@ adm_common_fnc_placeVehicle = {
 adm_common_fnc_setGear = {
     FUN_ARGS_1(_unit);
 
-    if (!adm_ai_NVGs) then {
+    if (!adm_areNVGsEnabled) then {
         _unit removeWeapon "NVGoggles";
     };
+};
+
+adm_common_initUnitTemplate = {
+    FUN_ARGS_2(_trigger,_defaultTemplate);
+
+    if (isNil {_trigger getVariable "adm_zone_unitTemplate"}) then {
+        _trigger setVariable ["adm_zone_unitTemplate", _defaultTemplate, false];
+    };
+};
+
+adm_common_fnc_getUnitTemplateArray = {
+    FUN_ARGS_2(_unitTemplate,_field);
+
+    getArray(TEMPLATE_CONFIGFILE >> TEMPLATE_CONTAINER_CLASS >> _unitTemplate >> _field);
+};
+
+adm_common_fnc_getUnitTemplateSide = {
+    FUN_ARGS_1(_unitTemplate);
+
+    SIDE_ARRAY select getNumber(TEMPLATE_CONFIGFILE >> TEMPLATE_CONTAINER_CLASS >> _unitTemplate >> "side");
 };
 
 adm_common_fnc_createWaypoint = {
@@ -45,8 +59,40 @@ adm_common_fnc_createWaypoint = {
     _wp;
 };
 
-adm_common_fnc_getEnemyFactionUnits = {
-    [allUnits, {local _x && {toLower faction _x == toLower (adm_ai_factions select adm_ai_enemySideIndex select adm_ai_enemyFaction)}}] call BIS_fnc_conditionalSelect;
+adm_common_fnc_getAliveGroups = {
+    FUN_ARGS_1(_groupsArray);
+
+    private "_aliveGroups";
+    _aliveGroups = [];
+    {
+         private "_groups";
+        _groups = _x;
+        FILTER_PUSH_ALL(_aliveGroups,_groups,{{alive _x} count units _x > 0});
+    } foreach _groupsArray;
+
+    _aliveGroups;
+};
+
+adm_common_fnc_getAliveUnits = {
+    FUN_ARGS_1(_groupsArray);
+
+    private "_aliveUnits";
+    _aliveUnits = [];
+    {
+        private "_groups";
+        _groups = _x;
+        {
+            private "_groupUnits";
+            _groupUnits = units _x;
+            FILTER_PUSH_ALL(_aliveUnits,_groupUnits,{alive _x});
+        } foreach _groups;
+    } foreach _groupsArray;
+
+    _aliveUnits;
+};
+
+adm_common_fnc_getAdmiralUnits = {
+    [[adm_cqc_groups, adm_patrol_infGroups, adm_patrol_techGroups, adm_patrol_armourGroups, adm_camp_infGroups, adm_camp_techGroups, adm_camp_armourGroups]] call adm_common_fnc_getAliveUnits;
 };
 
 adm_common_fnc_createLocalMarker = {
@@ -135,14 +181,14 @@ adm_common_fnc_randomPosInEllipse = {
 };
 
 adm_common_fnc_isPlayerNearZone = {
-    FUN_ARGS_1(_trigger);
+    FUN_ARGS_2(_trigger,_distance);
 
     private ["_width", "_height", "_longestAxis"];
     _width = triggerArea _trigger select 0;
     _height = triggerArea _trigger select 1;
     _longestAxis = if (_width > _height) then {_width} else {_height};
 
-    [_trigger, _longestAxis + ZONE_ACTIVATION_DIST] call adm_common_fnc_isPlayersInRange;
+    [_trigger, _longestAxis + _distance] call adm_common_fnc_isPlayersInRange;
 };
 
 adm_common_fnc_isPlayersInRange = {
@@ -217,6 +263,7 @@ adm_common_fnc_setConfig = {
     {
         _trigger setVariable [[_x select 0] call adm_common_fnc_getRealConfig, _x select 1];
     } foreach _configArray;
+    [_trigger] call adm_common_fnc_initZone;
 };
 
 adm_common_fnc_getRealConfig = {
@@ -230,6 +277,34 @@ adm_common_fnc_getRealConfig = {
         if (_configName == "campDelay") exitWith {"adm_camp_campDelay"};
         if (_configName == "groupDelay") exitWith {"adm_camp_groupDelay"};
         if (_configName == "spawnChance") exitWith {"adm_camp_spawnChance"};
+        if (_configName == "unitTemplate") exitWith {"adm_zone_unitTemplate"};
+    };
+};
+
+adm_common_fnc_initZone = {
+    FUN_ARGS_1(_trigger);
+
+    private ["_defaultTemplate", "_initFunc", "_triggerText"];
+    _defaultTemplate = "";
+    _initFunc = {};
+    _triggerText = triggerText _trigger;
+    call {
+        if (_triggerText == "cqc") exitWith {
+            _defaultTemplate = adm_cqc_defaultUnitTemplate;
+            _initFunc = adm_cqc_fnc_initZone;
+        };
+        if (_triggerText == "patrol") exitWith {
+            _defaultTemplate = adm_patrol_defaultUnitTemplate;
+            _initFunc = adm_patrol_fnc_initZone;
+        };
+        if (_triggerText == "camp") exitWith {
+            _defaultTemplate = adm_camp_defaultUnitTemplate;
+            _initFunc = adm_camp_fnc_initZone;
+        };
+    };
+    if (_defaultTemplate != "") then {
+        [_trigger, _defaultTemplate] call adm_common_initUnitTemplate;
+        [_trigger] spawn _initFunc;
     };
 };
 
@@ -269,4 +344,21 @@ adm_common_fnc_shuffle = {
     };
 
     _shuffledArray;
+};
+
+adm_common_fnc_isFriendlySide = {
+    FUN_ARGS_2(_side,_otherSide);
+
+    private "_isFriendly";
+    _isFriendly = true;
+    if (_side == sideEnemy || {_otherSide == sideEnemy}) then {
+        _isFriendly = false;
+    } else {
+        private ["_sideIndex", "_otherSideIndex"];
+        _sideIndex = SIDE_ARRAY find _side;
+        _otherSideIndex = SIDE_ARRAY find _otherSide;
+        _isFriendly = _sideIndex >= 0 && {_otherSideIndex >= 0} && {!(_otherSideIndex in (adm_sideRelations select _sideIndex))};
+    };
+
+    _isFriendly;
 };

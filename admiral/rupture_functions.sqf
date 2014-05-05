@@ -21,10 +21,15 @@ adm_rupture_fnc_hitEH = {
 adm_rupture_fnc_killedEH = {
     FUN_ARGS_1(_unit);
 
-    _unit removeEventHandler ["Hit", _unit getVariable "adm_rupture_eh_hit"];
-    _unit removeEventHandler ["Killed", _unit getVariable "adm_rupture_eh_killed"];
-    _unit setVariable ["adm_rupture_eh_hit", nil];
-    _unit setVariable ["adm_rupture_eh_killed", nil];
+    private "_ehId";
+    _ehId = _unit getVariable ["adm_rupture_eh_hit", nil];
+    if (!isNil {_ehId}) then {
+        _unit removeEventHandler ["Hit", _ehId];
+    };
+    _ehId = _unit getVariable ["adm_rupture_eh_killed", nil];
+    if (!isNil {_ehId}) then {
+        _unit removeEventHandler ["Killed", _ehId];
+    };
 };
 
 adm_rupture_fnc_initGroups = {
@@ -40,14 +45,16 @@ adm_rupture_fnc_initGroups = {
 adm_rupture_fnc_checkUnits = {
     [] spawn { 
         waitUntil {
+            private "_infUnits";
+            _infUnits = [[adm_cqc_groups, adm_patrol_infGroups, adm_camp_infGroups]] call adm_common_fnc_getAliveUnits;
             {
                 private ["_unit", "_elapsedTime"];
                 _unit = _x;
                 _elapsedTime = diag_tickTime - (_unit getVariable ["adm_rupture_lastHitTime", diag_tickTime]);
                 if (_elapsedTime > adm_rupture_length) then {
                     _unit setDamage 1;
-                }
-            } foreach ([] call adm_common_fnc_getEnemyFactionUnits);
+                };
+            } foreach _infUnits;
             sleep adm_rupture_updateTick;
             false;
         };
