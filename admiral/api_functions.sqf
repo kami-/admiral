@@ -21,7 +21,7 @@ adm_api_fnc_initZone = {
 adm_api_fnc_isPlayerNearZone = {
     FUN_ARGS_2(_trigger,_distance);
 
-    [_trigger, _range] call adm_common_fnc_isPlayerNearZone;
+    [_trigger, _distance] call adm_common_fnc_isPlayerNearZone;
 };
 
 
