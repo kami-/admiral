@@ -40,9 +40,9 @@ adm_behavior_fnc_stateEnemyFound = {
 
     private "_enemyPos";
     _enemyPos = _group getVariable "adm_behavior_enemyPos";
-    if ([_enemyPos] call adm_behavior_fnc_canCallReinforcement) then {
+    if ([_enemyPos, side _group] call adm_behavior_fnc_canCallReinforcement) then {
         [_group, _enemyPos, [side _group, _enemyPos] call adm_behavior_fnc_getEnemyNumbers] call adm_behavior_fnc_callReinforcement;
-        PUSH(adm_behavior_foundEnemies, AS_ARRAY_2(time,_enemyPos));
+        [_enemyPos, side _group] call adm_behavior_fnc_addToFoundEnemyArray
     };
     _group setVariable ["adm_behavior_state", STATE_SADENEMY, false];
 };
@@ -133,7 +133,7 @@ adm_behavior_fnc_getEnemyNumbers = {
 };
 
 adm_behavior_fnc_canCallReinforcement = {
-    FUN_ARGS_1(_enemyPos);
+    FUN_ARGS_2(_enemyPos,_side);
 
     private "_canCall";
     _canCall = true;
@@ -141,7 +141,7 @@ adm_behavior_fnc_canCallReinforcement = {
         if ((_x select 0) + BEHAVIOR_REINF_COOLDOWN > time || {(_x select 1) distance _enemyPos < BEHAVIOR_ENEMY_CHECK_RADIUS}) exitWith {
             _canCall = false;
         };
-    } foreach adm_behavior_foundEnemies;
+    } foreach ([_side] call adm_behavior_fnc_getFoundEnemyArray);
 
     _canCall || {floor random 100 < BEHAVIOR_CANCALL_PERCENT_CHANCE};
 };
@@ -242,12 +242,6 @@ adm_behavior_fnc_isAvailableGroup = {
         && {[_x] call adm_behavior_fnc_canReinforce};
 };
 
-adm_behavior_fnc_init = {
-    adm_behavior_states = [adm_behavior_fnc_stateInit, adm_behavior_fnc_stateMoving, adm_behavior_fnc_stateEnemyFound, adm_behavior_fnc_stateSeekAndDestroyEnemy, adm_behavior_fnc_stateCombat, adm_behavior_fnc_updateWaypointsAndMoving, {}];
-    adm_behavior_foundEnemies = [];
-    [] spawn adm_behavior_fnc_changeAllGroupState;
-};
-
 adm_behavior_getEnemyUnits = {
     FUN_ARGS_1(_side);
 
@@ -255,4 +249,40 @@ adm_behavior_getEnemyUnits = {
     _units = [];
     FILTER_PUSH_ALL(_units, ALL_UNITS, {!(AS_ARRAY_2(side _x, _side) call adm_common_fnc_isFriendlySide)});
     _units;
+};
+
+adm_behavior_fnc_addToFoundEnemyArray = {
+    FUN_ARGS_2(_enemyPos,_side);
+
+    private "_sideIndex";
+    _sideIndex = SIDE_ARRAY find _side;
+    if (_sideIndex >= 0) then {
+        PUSH((adm_behavior_foundEnemies select _sideIndex), AS_ARRAY_2(time,_enemyPos));
+    };
+};
+
+adm_behavior_fnc_getFoundEnemyArray = {
+    FUN_ARGS_1(_side);
+
+    private ["_result", "_sideIndex"];
+    _result = [];
+    _sideIndex = SIDE_ARRAY find _side;
+    if (_sideIndex >= 0) then {
+        _result = adm_behavior_foundEnemies select _sideIndex;
+    };
+
+    _result;
+};
+
+adm_behavior_fnc_initFoundEnemies = {
+    adm_behavior_foundEnemies = [];
+    {
+        PUSH(adm_behavior_foundEnemies,[]);
+    } foreach SIDE_ARRAY;
+};
+
+adm_behavior_fnc_init = {
+    adm_behavior_states = [adm_behavior_fnc_stateInit, adm_behavior_fnc_stateMoving, adm_behavior_fnc_stateEnemyFound, adm_behavior_fnc_stateSeekAndDestroyEnemy, adm_behavior_fnc_stateCombat, adm_behavior_fnc_updateWaypointsAndMoving, {}];
+    [] call adm_behavior_fnc_initFoundEnemies;
+    [] spawn adm_behavior_fnc_changeAllGroupState;
 };
