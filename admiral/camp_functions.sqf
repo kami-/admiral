@@ -57,11 +57,12 @@ adm_camp_fnc_getLogicEndTrigger = {
 
     private "_trigger";
     _trigger = [nearestObjects [_wpPos, [], 50], {typeof _x == "EmptyDetector"}] call adm_common_fnc_filterFirst;
-    if (count _trigger > 0) then {
-        _trigger = _trigger select 0;
+    if (count _trigger == 0) then {
         _trigger = createTrigger ["EmptyDetector", _wpPos];
         _trigger setTriggerArea CAMP_DEFAULT_ENDTRIGGER_AREA;
         _trigger setTriggerActivation["NONE", "PRESENT", false];
+    } else {
+        _trigger = _trigger select 0;
     };
 
     _trigger;
