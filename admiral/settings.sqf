@@ -69,6 +69,7 @@ adm_cqc_defaultUnitTemplate = "Base";
 adm_cqc_infFireteamSize = 4;
 
 adm_cqc_forceFireEnabled = true;
+adm_cqc_forceFireDelay = 5;
 
 adm_cqc_aimingAccuracy = 0.2;
 adm_cqc_aimingShake = 0.1;
