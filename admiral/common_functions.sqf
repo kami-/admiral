@@ -251,7 +251,7 @@ adm_common_fnc_filterFirst = {
     private ["_result"];
     _result = [];
     {
-        if (call _filterFunc) exitWith { _result = _x };
+        if (call _filterFunc) exitWith { _result = [_x] };
     } foreach _array;
 
     _result;

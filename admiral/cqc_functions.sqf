@@ -189,13 +189,13 @@ adm_cqc_fnc_spawnGarrison = {
 adm_cqc_fnc_canForceFire = {
     FUN_ARGS_2(_ai,_unit);
 
-    !([side _ai, side _unit] call adm_common_fnc_isFriendlySide) && {!terrainIntersect [eyePos _ai, eyePos _unit]} && {!lineIntersects [eyePos _ai, eyePos _unit]} && {alive _ai} && {alive _unit};
+    alive _unit && {!([side _ai, side _unit] call adm_common_fnc_isFriendlySide)} && {!terrainIntersect [eyePos _ai, eyePos _unit]} && {!lineIntersects [eyePos _ai, eyePos _unit]};
 };
 
 adm_cqc_fnc_getForceFireEnemy = {
     FUN_ARGS_1(_ai);
 
-    private ["_enemies"];
+    private "_enemies";
     _enemies= [];
     if (!isNull _ai) then {
         _enemies = [getPosATL _ai nearEntities  ["Man", CQC_MAX_ENGAGE_DIST], {[_ai, _x] call adm_cqc_fnc_canForceFire}] call adm_common_fnc_filterFirst;
@@ -208,25 +208,28 @@ adm_cqc_fnc_forceFire = {
     FUN_ARGS_1(_groups);
     
     waitUntil {
+        private "_aliveGroupLeft";
+        _aliveGroupLeft = false;
         {
-            private ["_group"];
+            private "_group";
             _group = _x;
             {
-                private ["_unit", "_enemy"];
+                private "_unit";
                 _unit = _x;
-                _enemy = [_unit] call adm_cqc_fnc_getForceFireEnemy;
-                if (!([_enemy, []] call BIS_fnc_areEqual)) then {
-                    _unit lookAt _enemy;
-                    _unit doFire _enemy;
+                if (alive _unit) then {
+                    private "_enemy";
+                    _enemy = [_unit] call adm_cqc_fnc_getForceFireEnemy;
+                    if (count _enemy > 0) then {
+                        _enemy = _enemy select 0;
+                        _unit lookAt _enemy;
+                        _unit doFire _enemy;
+                    };
+                    _aliveGroupLeft = true;
                 };
             } foreach (units _group);
-            
-            if (count (units _group) == 0) then {
-                _groups = _groups - [_group];
-            }
         } foreach _groups;
-
-        !(count _groups > 0 && adm_cqc_forceFireEnabled);
+        sleep adm_cqc_forceFireDelay;
+        !(_aliveGroupLeft && adm_cqc_forceFireEnabled);
     };
 };
 
