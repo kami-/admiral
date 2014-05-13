@@ -176,8 +176,7 @@ adm_common_fnc_isPlayerNearZone = {
     FUN_ARGS_2(_trigger,_distance);
 
     private ["_width", "_height", "_longestAxis"];
-    _width = triggerArea _trigger select 0;
-    _height = triggerArea _trigger select 1;
+    SELECT_2(triggerArea _trigger,_width,_height)
     _longestAxis = if (_width > _height) then {_width} else {_height};
 
     [_trigger, _longestAxis + _distance] call adm_common_fnc_isPlayersInRange;
