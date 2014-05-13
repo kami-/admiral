@@ -121,7 +121,6 @@ adm_camp_fnc_spawnInfGroup = {
     };
     [_group] call adm_reduce_fnc_setGroupExpandCount;
     _group setVariable ["adm_zone_parent", _trigger];
-    _group setVariable ["adm_ai_type", _groupType, false]; // TODO remove?
 
     if (adm_isDebuggingEnabled) then {
         [_group, _groupType] call adm_debug_fnc_createMarkersForPatrolGroup;
@@ -151,7 +150,6 @@ adm_camp_fnc_spawnVehicleGroup = {
             if (_i == 3) exitWith { _unit moveInCommander _veh; };
         };
     };
-    _group setVariable ["adm_ai_type", _groupType, false]; // TODO remove?
 
     if (adm_isDebuggingEnabled) then {
         [_group, _groupType] call adm_debug_fnc_createMarkersForPatrolGroup;
