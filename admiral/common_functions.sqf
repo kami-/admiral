@@ -1,10 +1,9 @@
 #include "admiral_defines.h"
 
 adm_common_fnc_placeMan = {
-    FUN_ARGS_4(_pos,_grp,_units,_skillArray);
+    FUN_ARGS_4(_position,_group,_units,_skillArray);
 
-    private ["_unit"];
-    _unit = _grp createUnit [SELECT_RAND(_units), _pos, [], 0, "NONE"];
+    DECLARE(_unit) = _group createUnit [SELECT_RAND(_units), _position, [], 0, "NONE"];
     {
         _unit setSkill _x;
     } foreach _skillArray;
@@ -16,6 +15,7 @@ adm_common_fnc_placeMan = {
 
 adm_common_fnc_placeVehicle = {
     FUN_ARGS_2(_vehType,_vehPos);
+
     createVehicle [_vehType, _vehPos, [], 0, "NONE"];
 };
 
@@ -48,15 +48,14 @@ adm_common_fnc_getUnitTemplateSide = {
 };
 
 adm_common_fnc_createWaypoint = {
-    FUN_ARGS_5(_grp,_wpArray,_type,_behaviour,_mode);
+    FUN_ARGS_5(_group,_wpArray,_type,_behaviour,_mode);
     
-    private ["_wp"];
-    _wp = _grp addWaypoint _wpArray;
-    _wp setWaypointType _type;
-    _wp setWaypointBehaviour _behaviour;
-    _wp setWaypointCombatMode _mode;
+    DECLARE(_waypoint) = _group addWaypoint _wpArray;
+    _waypoint setWaypointType _type;
+    _waypoint setWaypointBehaviour _behaviour;
+    _waypoint setWaypointCombatMode _mode;
 
-    _wp;
+    _waypoint;
 };
 
 adm_common_fnc_getAliveGroups = {
