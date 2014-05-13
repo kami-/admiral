@@ -13,6 +13,22 @@ adm_camp_fnc_placeMan = {
     _unit;
 };
 
+adm_camp_fnc_addLogicToTriggerLogics = {
+    FUN_ARGS_1(_logic);
+
+    _logic setVariable ["adm_camp_usedBy", _logic getVariable ["usedBy", [true,true,true]]];
+    DECLARE(_isInsideTrigger) = false;
+    {
+        DECLARE(_trigger) = _x;
+        if ([_trigger, getWPPos (waypoints _logic select 0)] call adm_common_fnc_isPosInsideTrigger) then {
+            DECLARE(_triggerLogics) = _trigger getVariable ["adm_camp_logics", []];
+            PUSH(_triggerLogics,_logic);
+            _isInsideTrigger = true;
+        };
+    } foreach _triggers;
+    _logic setVariable ["adm_camp_endTrigger", [getWPPos ((waypoints _logic) select (count (waypoints _logic) - 1))] call adm_camp_fnc_getLogicEndTrigger, false];
+};
+
 adm_camp_fnc_processTiggerLogics = {
     FUN_ARGS_1(_triggers);
 
@@ -20,24 +36,9 @@ adm_camp_fnc_processTiggerLogics = {
         _x setVariable ["adm_camp_logics", []];
     } foreach _triggers;
 
-    private "_logics";
-    _logics = [allMissionObjects "Logic", {count waypoints _x > 1}] call BIS_fnc_conditionalSelect;
+    DECLARE(_logics) = [allMissionObjects "Logic", {count waypoints _x > 1}] call BIS_fnc_conditionalSelect;
     {
-        private ["_logic", "_isInsideTrigger"];
-        _logic = _x;
-        _logic setVariable ["adm_camp_usedBy", _logic getVariable ["usedBy", [true,true,true]]];
-        _isInsideTrigger = false;
-        {
-            private "_trigger";
-            _trigger = _x;
-            if ([_trigger, getWPPos (waypoints _logic select 0)] call adm_common_fnc_isPosInsideTrigger) then {
-                private "_triggerLogics";
-                _triggerLogics = _trigger getVariable ["adm_camp_logics", []];
-                PUSH(_triggerLogics,_logic);
-                _isInsideTrigger = true;
-            };
-        } foreach _triggers;
-        _logic setVariable ["adm_camp_endTrigger", [getWPPos ((waypoints _logic) select (count (waypoints _logic) - 1))] call adm_camp_fnc_getLogicEndTrigger, false];
+        [_x] call adm_camp_fnc_addLogicToTriggerLogics;
 
         if (_isInsideTrigger && {adm_isDebuggingEnabled}) then {
             [_logic] call adm_debug_fnc_createMarkersForCampLogic;
