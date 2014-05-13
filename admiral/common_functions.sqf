@@ -185,14 +185,13 @@ adm_common_fnc_isPlayerNearZone = {
 adm_common_fnc_isPlayersInRange = {
     FUN_ARGS_2(_position,_distance);
 
-    private ["_i", "_players", "_inRange"];
-    _i = 0;
+    private ["_players", "_inRange"];
     _players = [] call adm_common_fnc_getPlayerUnits;
     _inRange = false;
-    while {!_inRange && _i < count _players} do {
-        _inRange = _position distance (_players select _i) <= _distance;
-        INC(_i);
-    };
+    {
+        _inRange = _position distance _x <= _distance;
+        if (_inRange) exitWith {};
+    } foreach _players;
 
     _inRange;
 };
