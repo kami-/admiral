@@ -161,8 +161,7 @@ adm_camp_fnc_spawnVehicleGroup = {
 adm_camp_fnc_trySpawnGroups = {
     FUN_ARGS_4(_trigger,_groupType,_canSpawnFunc,_spawnFunc);
 
-    private "_spawnedGroups";
-    _spawnedGroups = [];
+    DECLARE(_spawnedGroups) = [];
     if ([_trigger, _groupType] call _canSpawnFunc) then {
         _spawnedGroups = [_trigger, _groupType] call _spawnFunc;
     };
@@ -173,11 +172,9 @@ adm_camp_fnc_trySpawnGroups = {
 adm_camp_fnc_spawnGroups = {
     FUN_ARGS_7(_trigger,_spawnFunc,_groupSize,_groupType,_noOfWaypoints,_unitType,_groupCount);
 
-    private "_spawnedGroups";
-    _spawnedGroups = [];
+    DECLARE(_spawnedGroups) = [];
     for "_i" from 1 to _groupCount do {
-        private "_group";
-        _group = [_trigger, _groupSize, _groupType, adm_camp_fnc_placeMan, _unitType] call _spawnFunc;
+        DECLARE(_group) = [_trigger, _groupSize, _groupType, adm_camp_fnc_placeMan, _unitType] call _spawnFunc;
         [_group, typeof vehicle leader _group, _trigger, _noOfWaypoints, _groupType] call adm_camp_fnc_createCampWaypoints;
         PUSH(_spawnedGroups, _group);
     };
@@ -188,8 +185,7 @@ adm_camp_fnc_spawnGroups = {
 adm_camp_fnc_getGroupCount = {
     FUN_ARGS_4(_initialGroupCount,_waveSize,_pool,_groupType);
 
-    private "_groupCount";
-    _groupCount = _initialGroupCount;
+    DECLARE(_groupCount) = _initialGroupCount;
     if (_pool select _groupType != -1) then {
         if ((_pool select _groupType) < _waveSize) then {
             _groupCount = _pool select _groupType;
@@ -205,8 +201,7 @@ adm_camp_fnc_getGroupCount = {
 adm_camp_fnc_getSpawnFunction = {
     FUN_ARGS_1(_trigger);
 
-    private "_campType";
-    _campType = _trigger getVariable "adm_camp_type";
+    DECLARE(_campType) = _trigger getVariable "adm_camp_type";
     call {
         if (_campType == "random") exitWith {adm_camp_fnc_randomSpawn};
         if (_campType == "periodic") exitWith {adm_camp_fnc_periodicSpawn};
@@ -266,8 +261,7 @@ adm_camp_fnc_periodicSpawn = {
 
     _trigger setVariable ["adm_camp_lastSpawnTime", [diag_tickTime, diag_tickTime, diag_tickTime]];
     waitUntil {
-        private "_spawnedGroups";
-        _spawnedGroups = [];
+        DECLARE(_spawnedGroups) = [];
         _spawnedGroups = [_trigger, GROUP_TYPE_INF, adm_camp_fnc_periodicCanSpawnGroups, adm_camp_fnc_periodicSpawnInfGroups] call adm_camp_fnc_trySpawnGroups;
         PUSH_ALL(adm_camp_infGroups,_spawnedGroups);
         [_spawnedGroups] call adm_rupture_fnc_initGroups;
@@ -339,8 +333,7 @@ adm_camp_fnc_onDemandSpawn = {
     _triggerArmourGroups = [];
     _trigger setVariable ["adm_camp_spawnedGroups", [_triggerInfGroups, _triggerTechGroups, _triggerArmourGroups], false];
     waitUntil {
-        private "_spawnedGroups";
-        _spawnedGroups = [];
+        DECLARE(_spawnedGroups) = [];
         _spawnedGroups = [_trigger, GROUP_TYPE_INF, adm_camp_fnc_onDemandCanSpawnGroups, adm_camp_fnc_onDemandSpawnInfGroups] call adm_camp_fnc_trySpawnGroups;
         PUSH_ALL(adm_camp_infGroups, _spawnedGroups);
         PUSH_ALL(_triggerInfGroups, _spawnedGroups);
@@ -407,8 +400,7 @@ adm_camp_fnc_randomSpawn = {
     FUN_ARGS_1(_trigger);
 
     waitUntil {
-        private "_spawnedGroups";
-        _spawnedGroups = [];
+        DECLARE(_spawnedGroups) = [];
         _spawnedGroups = [_trigger, GROUP_TYPE_INF, adm_camp_fnc_randomCanSpawnGroups, adm_camp_fnc_randomSpawnInfGroups] call adm_camp_fnc_trySpawnGroups;
         PUSH_ALL(adm_camp_infGroups, _spawnedGroups);
         [_spawnedGroups] call adm_rupture_fnc_initGroups;
