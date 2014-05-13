@@ -235,8 +235,7 @@ adm_common_fnc_isPosInsideEllipse = {
 adm_common_fnc_filterFirst = {
     FUN_ARGS_2(_array,_filterFunc);
 
-    private ["_result"];
-    _result = [];
+    DECLARE(_result) = [];
     {
         if (call _filterFunc) exitWith { _result = [_x] };
     } foreach _array;
@@ -257,14 +256,14 @@ adm_common_fnc_getRealConfig = {
     FUN_ARGS_1(_configName);
 
     call {
-        if (_configName == "pool") exitWith {"adm_zone_pool"};
-        if (_configName == "minHeight") exitWith {"adm_cqc_minHeight"};
-        if (_configName == "type") exitWith {"adm_camp_type"};
-        if (_configName == "wave") exitWith {"adm_camp_wave"};
-        if (_configName == "campDelay") exitWith {"adm_camp_campDelay"};
-        if (_configName == "groupDelay") exitWith {"adm_camp_groupDelay"};
-        if (_configName == "spawnChance") exitWith {"adm_camp_spawnChance"};
-        if (_configName == "unitTemplate") exitWith {"adm_zone_unitTemplate"};
+        if (_configName == "pool")          exitWith {"adm_zone_pool"};
+        if (_configName == "minHeight")     exitWith {"adm_cqc_minHeight"};
+        if (_configName == "type")          exitWith {"adm_camp_type"};
+        if (_configName == "wave")          exitWith {"adm_camp_wave"};
+        if (_configName == "campDelay")     exitWith {"adm_camp_campDelay"};
+        if (_configName == "groupDelay")    exitWith {"adm_camp_groupDelay"};
+        if (_configName == "spawnChance")   exitWith {"adm_camp_spawnChance"};
+        if (_configName == "unitTemplate")  exitWith {"adm_zone_unitTemplate"};
     };
 };
 
@@ -295,12 +294,10 @@ adm_common_fnc_initZone = {
     };
 };
 
-// Compare function must return true if _x is bigger, than _y, else return false
 adm_common_fnc_insertionSort = {
     FUN_ARGS_2(_array,_compareFunc);
 
-    private "_sortArray";
-    _sortArray = +_array;
+    DECLARE(_sortArray) = +_array;
     for "_i" from 1 to (count _sortArray) - 1 do {
         private ["_x", "_j", "_y"];
         _x = _sortArray select _i;
