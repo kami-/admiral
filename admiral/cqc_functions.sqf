@@ -29,13 +29,10 @@ adm_cqc_fnc_initMan = {
 adm_cqc_fnc_getBuildingPositions = {
     FUN_ARGS_1(_building);
 
-    private["_buildingPositions"];
-    _buildingPositions = [];
-
+    DECLARE(_buildingPositions) = [];
     if (!((typeOf _building) in adm_cqc_buildingBlacklist)) then {
-        private ["_i"];
-        _i = 0;
-        while { !([_building buildingPos _i, [0,0,0]] call BIS_fnc_areEqual) } do {
+        DECLARE(_i) = 0;
+        while {!([_building buildingPos _i, [0,0,0]] call BIS_fnc_areEqual)} do {
             if([_building buildingPos _i] call adm_cqc_fnc_isPositionInBuilding) then {
                 PUSH(_buildingPositions, _i);
             };
