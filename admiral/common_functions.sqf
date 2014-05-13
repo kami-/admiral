@@ -61,11 +61,9 @@ adm_common_fnc_createWaypoint = {
 adm_common_fnc_getAliveGroups = {
     FUN_ARGS_1(_groupsArray);
 
-    private "_aliveGroups";
-    _aliveGroups = [];
+    DECLARE(_aliveGroups) = [];
     {
-         private "_groups";
-        _groups = _x;
+        DECLARE(_groups) = _x;
         FILTER_PUSH_ALL(_aliveGroups,_groups,{{alive _x} count units _x > 0});
     } foreach _groupsArray;
 
@@ -75,14 +73,11 @@ adm_common_fnc_getAliveGroups = {
 adm_common_fnc_getAliveUnits = {
     FUN_ARGS_1(_groupsArray);
 
-    private "_aliveUnits";
-    _aliveUnits = [];
+    DECLARE(_aliveUnits) = [];
     {
-        private "_groups";
-        _groups = _x;
+        DECLARE(_groups) = _x;
         {
-            private "_groupUnits";
-            _groupUnits = units _x;
+            DECLARE(_groupUnits) = units _x;
             FILTER_PUSH_ALL(_aliveUnits,_groupUnits,{alive _x});
         } foreach _groups;
     } foreach _groupsArray;
@@ -95,10 +90,9 @@ adm_common_fnc_getAdmiralUnits = {
 };
 
 adm_common_fnc_createLocalMarker = {
-    FUN_ARGS_6(_name,_pos,_shape,_type,_color,_size);
+    FUN_ARGS_6(_name,_position,_shape,_type,_color,_size);
 
-    private ["_marker"];
-    _marker = createMarkerLocal [_name, _pos];
+    DECLARE(_marker) = createMarkerLocal [_name, _position];
     _marker setMarkerShapeLocal _shape;
     _name setMarkerTypeLocal _type;
     _name setMarkerColorLocal _color;
@@ -115,8 +109,8 @@ adm_common_fnc_getPlayerUnits = {
 
 adm_common_fnc_randomFlatEmptyPosInTrigger = {
     FUN_ARGS_3(_trigger,_unitType,_canBeWater);
-    if (isNil "_canBeWater") then { _canBeWater = false; };
 
+    if (isNil "_canBeWater") then {_canBeWater = false;};
     private ["_position", "_emptyPosition"];
     _position = [_trigger, _canBeWater] call adm_common_fnc_randomPosInTrigger;
     _emptyPosition = _position findEmptyPosition [0, CAMP_SPAWN_CIRCLE_MAX_DIST, _unitType];
