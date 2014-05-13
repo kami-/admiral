@@ -156,14 +156,16 @@ adm_behavior_fnc_callReinforcement = {
 adm_behavior_fnc_callReinforcementGroups = {
     FUN_ARGS_4(_group,_enemyPos,_count,_groupFunc);
 
-    DECLARE(_groups) = [_enemyPos, _count, [side _group, _enemyPos] call _groupFunc] call adm_behavior_fnc_getReinforcementGroups;
-    {
-        if ([_x] call adm_behavior_fnc_canReinforce) then {
-            _x setVariable ["adm_behavior_enemyPos", _enemyPos, false];
-            _x setVariable ["adm_behavior_reinfGroup", _group, false];
-            _x setVariable ["adm_behavior_state", STATE_SADENEMY, false];
-        };
-    } foreach _groups;
+    if (_count > 0) then {
+        DECLARE(_groups) = [_enemyPos, _count, [side _group, _enemyPos] call _groupFunc] call adm_behavior_fnc_getReinforcementGroups;
+        {
+            if ([_x] call adm_behavior_fnc_canReinforce) then {
+                _x setVariable ["adm_behavior_enemyPos", _enemyPos, false];
+                _x setVariable ["adm_behavior_reinfGroup", _group, false];
+                _x setVariable ["adm_behavior_state", STATE_SADENEMY, false];
+            };
+        } foreach _groups;
+    };
 };
 
 adm_behavior_fnc_getReinforcementGroups = {
