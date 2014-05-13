@@ -170,8 +170,7 @@ gfn_reduce_fnc_unitOutsideReduceDistance = {
 adm_reduce_fnc_getMonitoredUnits = {
     FUN_ARGS_1(_side);
 
-    private "_units";
-    _units = [];
+    DECLARE(_units) = [];
     FILTER_PUSH_ALL(_units, ALL_UNITS, {!(AS_ARRAY_2(side _x, _side) call adm_common_fnc_isFriendlySide) || {isPlayer _x}});
     _units;
 };
