@@ -416,12 +416,27 @@ adm_camp_fnc_randomSpawn = {
     };
 };
 
+adm_camp_setDefaultVariables = {
+    FUN_ARGS_1(_trigger);
+
+    private ["_campDelay", "_groupDelay"];
+    if (isNil {_trigger getVariable "adm_camp_campDelay"}) then {
+        _trigger setVariable ["adm_camp_campDelay", CAMP_DEFAULT_DELAY, false];
+    };
+    _campDelay = _trigger getVariable "adm_camp_campDelay";
+    _groupDelay = _trigger getVariable "adm_camp_groupDelay";
+    for "_i" from 0 to (count _groupDelay) - 1 do {
+        _groupDelay set [_i, (_groupDelay select _i) * _campDelay];
+    };
+};
+
 adm_camp_fnc_initZone = {
     FUN_ARGS_1(_trigger);
 
     waitUntil {
         adm_isInitialized;
     };
+    [_trigger] call adm_camp_setDefaultVariables;
     if (adm_isDebuggingEnabled) then {
         [_trigger] call adm_debug_fnc_createTriggerLocalMarker;
         [_trigger] call adm_error_fnc_validateZone;
