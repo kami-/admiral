@@ -27,6 +27,10 @@ adm_camp_fnc_addLogicToTriggerLogics = {
         };
     } foreach _triggers;
     _logic setVariable ["adm_camp_endTrigger", [getWPPos ((waypoints _logic) select (count (waypoints _logic) - 1))] call adm_camp_fnc_getLogicEndTrigger, false];
+
+    if (_isInsideTrigger && {adm_isDebuggingEnabled}) then {
+        [_logic] call adm_debug_fnc_createMarkersForCampLogic;
+    };
 };
 
 adm_camp_fnc_processTiggerLogics = {
@@ -39,10 +43,6 @@ adm_camp_fnc_processTiggerLogics = {
     DECLARE(_logics) = [allMissionObjects "Logic", {count waypoints _x > 1}] call BIS_fnc_conditionalSelect;
     {
         [_x] call adm_camp_fnc_addLogicToTriggerLogics;
-
-        if (_isInsideTrigger && {adm_isDebuggingEnabled}) then {
-            [_logic] call adm_debug_fnc_createMarkersForCampLogic;
-        };
     } foreach _logics;
 };
 
