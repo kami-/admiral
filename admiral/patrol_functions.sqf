@@ -3,8 +3,7 @@
 adm_patrol_fnc_placeMan = {
     FUN_ARGS_4(_position,_group,_unitTemplate,_unitType);
 
-    private "_unit";
-    _unit = [
+    DECLARE(_unit) = [
         _position,
         _group,
         [_unitTemplate, _unitType] call adm_common_fnc_getUnitTemplateArray,
@@ -19,8 +18,7 @@ adm_patrol_fnc_createWaypoints = {
 
     [_group, _unitType, _trigger, _noOfWaypoints] call adm_camp_fnc_createPatrolWaypoints;
 
-    private "_defultWp";
-    _defultWp = (waypoints _group) select 0;
+    DECLARE(_defultWp) = (waypoints _group) select 0;
     _defultWp setWaypointPosition [getPosATL (leader _group), 0];
     _defultWp setWaypointType 'MOVE';
     _defultWp setWaypointBehaviour (SELECT_RAND(AS_ARRAY_2('AWARE','SAFE')));
@@ -30,8 +28,7 @@ adm_patrol_fnc_createWaypoints = {
 adm_patrol_fnc_spawnInfGroup = {
     FUN_ARGS_1(_trigger);
 
-    private "_group";
-    _group = [_trigger, adm_patrol_infFireteamSize, GROUP_TYPE_INF, adm_patrol_fnc_placeMan, UNIT_TYPE_INF] call adm_camp_fnc_spawnInfGroup;
+    DECLARE(_group) = [_trigger, adm_patrol_infFireteamSize, GROUP_TYPE_INF, adm_patrol_fnc_placeMan, UNIT_TYPE_INF] call adm_camp_fnc_spawnInfGroup;
     [_group, "SoldierWB", _trigger, adm_patrol_infWaypointAmount] call adm_patrol_fnc_createWaypoints;
 
     _group;
@@ -40,8 +37,7 @@ adm_patrol_fnc_spawnInfGroup = {
 adm_patrol_fnc_spawnTechGroup = {
     FUN_ARGS_1(_trigger);
 
-    private ["_group"];
-    _group = [_trigger, adm_patrol_techFireteamSize, GROUP_TYPE_TECH, adm_patrol_fnc_placeMan, UNIT_TYPE_INF] call adm_camp_fnc_spawnVehicleGroup;
+    DECLARE(_group) = [_trigger, adm_patrol_techFireteamSize, GROUP_TYPE_TECH, adm_patrol_fnc_placeMan, UNIT_TYPE_INF] call adm_camp_fnc_spawnVehicleGroup;
     [_group, typeOf vehicle leader _group, _trigger, adm_patrol_techWaypointAmount] call adm_patrol_fnc_createWaypoints;
 
     _group;
@@ -50,8 +46,7 @@ adm_patrol_fnc_spawnTechGroup = {
 adm_patrol_fnc_spawnArmorGroup = {
     FUN_ARGS_1(_trigger);
 
-    private ["_group"];
-    _group = [_trigger, adm_patrol_armourFireteamSize, GROUP_TYPE_ARMOUR, adm_patrol_fnc_placeMan, UNIT_TYPE_CREW] call adm_camp_fnc_spawnVehicleGroup;
+    DECLARE(_group) = [_trigger, adm_patrol_armourFireteamSize, GROUP_TYPE_ARMOUR, adm_patrol_fnc_placeMan, UNIT_TYPE_CREW] call adm_camp_fnc_spawnVehicleGroup;
     [_group, typeOf vehicle leader _group, _trigger, adm_patrol_armourWaypointAmount] call adm_patrol_fnc_createWaypoints;
 
     _group;
@@ -160,8 +155,7 @@ adm_patrol_fnc_deleteGroupWaypoints = {
 adm_patrol_fnc_updateDefaultWaypoint = {
     FUN_ARGS_2(_group,_position);
 
-    private "_defultWp";
-    _defultWp = (waypoints _group) select 0;
+    DECLARE(_defultWp) = (waypoints _group) select 0;
     _defultWp setWaypointPosition [_position, 0];
     _group setCurrentWaypoint _defultWp;
     _defultWp setWaypointStatements ["true", "(group this) setVariable ['adm_patrol_hasTarget', false, false];"];
