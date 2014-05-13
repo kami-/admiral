@@ -317,7 +317,7 @@ adm_common_fnc_insertionSort = {
 adm_common_fnc_shuffle = {
     FUN_ARGS_1(_array);
 
-    _shuffledArray = [];
+    DECLARE(_shuffledArray) = [];
     if (count _array > 0) then {
         _shuffledArray set [0, _array select 0];
         for "_i" from 1 to (count _array) - 1 do {
