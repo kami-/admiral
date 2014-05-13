@@ -9,8 +9,7 @@ adm_reduce_fnc_setGroupExpandCount = {
 adm_reduce_fnc_setCqcInitPositions = {
     FUN_ARGS_1(_group);
 
-    private ["_initPositions"];
-    _initPositions = [];
+    DECLARE(_initPositions) = [];
     {
         if (leader _group != _x) then { 
             PUSH(_initPositions, getPosATL _x);
