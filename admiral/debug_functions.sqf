@@ -30,11 +30,11 @@ adm_debug_fnc_debugSpawnedGroups = {
 adm_debug_fnc_createMarkersForPatrolGroup = {
     FUN_ARGS_2(_group,_groupType);
 
-    [format["%1", _group], getPosATL leader _group, "ICON", GROUP_TYPE_DEBUG_MARKERS select _groupType, [side _group] call adm_debug_fnc_getSideColor, GROUP_TYPE_DEBUG_MARKER_SIZES select _groupType] call adm_common_fnc_createLocalMarker;
-    [format["WP_%1", _group], getWPPos [_group, currentWaypoint _group], "ICON", "waypoint", [side _group] call adm_debug_fnc_getSideColor, WAYPOINT_DEBUG_MARKER_SIZE] call adm_common_fnc_createLocalMarker;
-    [format["LINE_%1", _group], getPosATL leader _group, getWPPos [_group, currentWaypoint _group], "ColorBlack", 1] call adm_debug_fnc_createLineMarker;
-    [format["STATE_LINE_%1", _group], getPosATL leader _group, getPosATL leader _group, "ColorBlack", 1] call adm_debug_fnc_createLineMarker;
-    format["STATE_LINE_%1", _group] setMarkerAlphaLocal 0;
+    [format ["%1", _group], getPosATL leader _group, "ICON", GROUP_TYPE_DEBUG_MARKERS select _groupType, [side _group] call adm_debug_fnc_getSideColor, GROUP_TYPE_DEBUG_MARKER_SIZES select _groupType] call adm_common_fnc_createLocalMarker;
+    [format ["WP_%1", _group], getWPPos [_group, currentWaypoint _group], "ICON", "waypoint", [side _group] call adm_debug_fnc_getSideColor, WAYPOINT_DEBUG_MARKER_SIZE] call adm_common_fnc_createLocalMarker;
+    [format ["LINE_%1", _group], getPosATL leader _group, getWPPos [_group, currentWaypoint _group], "ColorBlack", 1] call adm_debug_fnc_createLineMarker;
+    [format ["STATE_LINE_%1", _group], getPosATL leader _group, getPosATL leader _group, "ColorBlack", 1] call adm_debug_fnc_createLineMarker;
+    format ["STATE_LINE_%1", _group] setMarkerAlphaLocal 0;
 };
 
 adm_debug_fnc_updateWaypointMarkersForPatrolGroups = {
@@ -43,14 +43,14 @@ adm_debug_fnc_updateWaypointMarkersForPatrolGroups = {
     {
         private ["_leaderMarker", "_waypointMarker", "_lineMarker", "_group", "_unit"];
         _group = _x;
-        _leaderMarker = format["%1", _group];
-        _waypointMarker = format["WP_%1", _group];
-        _lineMarker = format["LINE_%1", _group];
+        _leaderMarker = format ["%1", _group];
+        _waypointMarker = format ["WP_%1", _group];
+        _lineMarker = format ["LINE_%1", _group];
         _unit = leader _group;
 
         if (count units _group > 0) then {
             _leaderMarker setMarkerPosLocal (getPosATL _unit);
-            _leaderMarker setMarkerTextLocal format["%1", count units _group];
+            _leaderMarker setMarkerTextLocal format ["%1", count units _group];
             _waypointMarker setMarkerPosLocal (getWPPos [_group , currentWaypoint _group]);
             [_lineMarker, getPosATL _unit, getWPPos [_group , currentWaypoint _group]] call adm_debug_fnc_updateLineMarker
         } else {
@@ -67,7 +67,7 @@ adm_debug_fnc_updateStateMarkersForPatrolGroups = {
     {
         private ["_group", "_lineMarker", "_state"];
         _group = _x;
-        _lineMarker = format["STATE_LINE_%1", _group];
+        _lineMarker = format ["STATE_LINE_%1", _group];
         _state = _group getVariable ["adm_behavior_state", STATE_INIT];
         if (count units _group > 0) then {
             call {
@@ -95,7 +95,7 @@ adm_debug_fnc_createMarkersForCqcGroup = {
     FUN_ARGS_1(_group);
 
     {
-        [format["%1", _x], getPosATL _x, "ICON", CQC_DEBUG_MARKER, [side _group] call adm_debug_fnc_getSideColor, CQC_DEBUG_MARKER_SIZE] call adm_common_fnc_createLocalMarker;
+        [format ["%1", _x], getPosATL _x, "ICON", CQC_DEBUG_MARKER, [side _group] call adm_debug_fnc_getSideColor, CQC_DEBUG_MARKER_SIZE] call adm_common_fnc_createLocalMarker;
     } foreach units _group;
 };
 
@@ -103,12 +103,9 @@ adm_debug_fnc_updateMarkersForCqcGroups = {
     FUN_ARGS_1(_groups);
 
     {
-        private "_group";
-        _group = _x;
+        DECLARE(_group) = _x;
         {
-            private "_marker";
-            _marker = format["%1", _x];
-
+            DECLARE(_marker) = format ["%1", _x];
             if (alive _x) then {
                 _marker setMarkerPosLocal (getPosATL _x);
                 _marker setMarkerDirLocal getDir _x;
@@ -131,7 +128,7 @@ adm_debug_fnc_createTriggerLocalMarker = {
         _color = [[_trigger getVariable "adm_zone_unitTemplate"] call adm_common_fnc_getUnitTemplateSide] call adm_debug_fnc_getSideColor;
     };
 
-    _marker = [format["%1", _trigger], getPosATL _trigger, _shape, "DOT", _color] call adm_common_fnc_createLocalMarker;
+    _marker = [format ["%1", _trigger], getPosATL _trigger, _shape, "DOT", _color] call adm_common_fnc_createLocalMarker;
     _marker setMarkerSizeLocal [(triggerArea _trigger) select 0, (triggerArea _trigger) select 1];
     _marker setMarkerDirLocal ((triggerArea _trigger) select 2);
     _marker setMarkerBrushLocal "Border";
@@ -146,7 +143,7 @@ adm_debug_fnc_updateTriggerLocalMarker = {
         _shape = "ELLIPSE";
     };
 
-    _marker = format["%1", _trigger];
+    _marker = format ["%1", _trigger];
     _marker setMarkerShapeLocal _shape;
     _marker setMarkerPosLocal getPosATL _trigger;
     _marker setMarkerSizeLocal [(triggerArea _trigger) select 0, (triggerArea _trigger) select 1];
@@ -156,13 +153,12 @@ adm_debug_fnc_updateTriggerLocalMarker = {
 adm_debug_fnc_createMarkersForCampLogic = {
     FUN_ARGS_1(_logic);
 
-    private "_waypoints";
-    _waypoints = waypoints _logic;
+    DECLARE(_waypoints) = waypoints _logic;
     for "_i" from 0 to count _waypoints - 2 do {
-        private ["_wpPosFrom", "_wpPosTo", "_marker"];
+        private ["_wpPosFrom", "_wpPosTo"];
         _wpPosFrom = getWPPos (_waypoints select _i);
         _wpPosTo = getWPPos (_waypoints select (_i + 1));
-        [format["%1", _wpPosFrom], _wpPosFrom, _wpPosTo, "ColorOrange", 3] call adm_debug_fnc_createLineMarker;
+        [format ["%1", _wpPosFrom], _wpPosFrom, _wpPosTo, "ColorOrange", 3] call adm_debug_fnc_createLineMarker;
     };
     [_logic getVariable "adm_camp_endTrigger", "ColorOrange"] call adm_debug_fnc_createTriggerLocalMarker;
 };
@@ -186,9 +182,7 @@ adm_debug_fnc_updateLineMarker = {
 adm_debug_fnc_getSideColor = {
     FUN_ARGS_1(_side);
 
-    private "_index";
-    _index = SIDE_ARRAY find _side;
-
+    DECLARE(_index) = SIDE_ARRAY find _side;
     if (_index >= 0) then {
         SIDE_DEBUG_MARKER_COLORS select _index;
     } else {
