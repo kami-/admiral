@@ -125,11 +125,10 @@ adm_common_fnc_randomFlatEmptyPosInTrigger = {
 adm_common_fnc_randomPosInTrigger = {
     FUN_ARGS_2(_trigger,_canBeWater);
 
-    private ["_width", "_height", "_angle", "_isRectangle", "_triggerPosition", "_position", "_shapeFunc"];
-    _width = triggerArea _trigger select 0;
-    _height = triggerArea _trigger select 1;
-    _angle = 180 - (triggerArea _trigger select 2);
-    _isRectangle = triggerArea _trigger select 3;
+    private ["_triggerArea", "_width", "_height", "_angle", "_isRectangle", "_triggerPosition", "_position", "_shapeFunc"];
+    _triggerArea = triggerArea _trigger;
+    SELECT_4(_triggerArea,_width,_height,_angle,_isRectangle)
+    _angle = 180 - _angle;
     _triggerPosition = getPosATL _trigger;
 
     if (_isRectangle) then {
