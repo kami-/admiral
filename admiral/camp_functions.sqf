@@ -233,7 +233,7 @@ adm_camp_fnc_periodicSpawnGroups = {
     _pool = _trigger getVariable ["adm_zone_pool", [0, 0, 0]];
     _waveSize = _trigger getVariable ["adm_camp_wave", [0, 0, 0]] select _groupType;
     _lastSpawnTime = _trigger getVariable ["adm_camp_lastSpawnTime", [diag_tickTime, diag_tickTime, diag_tickTime]];
-    _lastSpawnTime set [GROUP_TYPE_INF, floor diag_tickTime];
+    _lastSpawnTime set [_groupType, floor diag_tickTime];
 
     [_trigger, _spawnFunc, _groupSize, _groupType, _noOfWaypoints, _unitType, [_waveSize, _waveSize, _pool, _groupType] call adm_camp_fnc_getGroupCount] call adm_camp_fnc_spawnGroups;
 };
