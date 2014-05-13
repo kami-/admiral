@@ -21,8 +21,7 @@ adm_settings_fnc_setDefaultSideRelations = {
 adm_settings_fnc_setEnemy = {
     FUN_ARGS_2(_side,_enemySide);
 
-    private "_sideEnemies";
-    _sideEnemies = adm_sideRelations select _side;
+    DECLARE(_sideEnemies) = adm_sideRelations select _side;
     if (!(_enemySide in _sideEnemies)) then {
         PUSH(_sideEnemies,_enemySide);
         (SIDE_ARRAY select _side) setFriend [(SIDE_ARRAY select _enemySide), 0];
