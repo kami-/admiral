@@ -113,7 +113,7 @@ adm_reduce_fnc_canExpandGroup = {
     if (_isReduced) then {
         DECLARE(_players) = [side _group] call adm_reduce_fnc_getMonitoredUnits;
         {
-            _canExpand = !([__x, _group, EXPAND_DISTANCE] call adm_reduce_fnc_unitOutsideReduceDistance);
+            _canExpand = !([_x, _group, EXPAND_DISTANCE] call adm_reduce_fnc_unitOutsideReduceDistance);
             if (_canExpand) exitWith {};
         } foreach _players;
     };
