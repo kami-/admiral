@@ -127,7 +127,7 @@ adm_common_fnc_randomPosInTrigger = {
 
     private ["_triggerArea", "_width", "_height", "_angle", "_isRectangle", "_triggerPosition", "_position", "_shapeFunc"];
     _triggerArea = triggerArea _trigger;
-    SELECT_4(_triggerArea,_width,_height,_angle,_isRectangle)
+    SELECT_4(_triggerArea,_width,_height,_angle,_isRectangle);
     _angle = 180 - _angle;
     _triggerPosition = getPosATL _trigger;
 
@@ -176,7 +176,7 @@ adm_common_fnc_isPlayerNearZone = {
     FUN_ARGS_2(_trigger,_distance);
 
     private ["_width", "_height", "_longestAxis"];
-    SELECT_2(triggerArea _trigger,_width,_height)
+    SELECT_2(triggerArea _trigger,_width,_height);
     _longestAxis = if (_width > _height) then {_width} else {_height};
 
     [_trigger, _longestAxis + _distance] call adm_common_fnc_isPlayersInRange;
@@ -199,11 +199,10 @@ adm_common_fnc_isPlayersInRange = {
 adm_common_fnc_isPosInsideTrigger = {
     FUN_ARGS_2(_trigger,_position);
 
-    private ["_width", "_height", "_angle", "_isRectangle", "_triggerPosition", "_shapeFunc"];
-    _width = triggerArea _trigger select 0;
-    _height = triggerArea _trigger select 1;
-    _angle = 180 - (triggerArea _trigger select 2);
-    _isRectangle = triggerArea _trigger select 3;
+    private ["_triggerArea", "_width", "_height", "_angle", "_isRectangle", "_triggerPosition", "_shapeFunc"];
+    _triggerArea = triggerArea _trigger;
+    SELECT_4(_triggerArea,_width,_height,_angle,_isRectangle);
+    _angle = 180 - _angle;
     _triggerPosition = getPosATL _trigger;
 
     if (_isRectangle) then {
@@ -213,10 +212,8 @@ adm_common_fnc_isPosInsideTrigger = {
     };
 
     private ["_px", "_py", "_tx", "_ty", "_rotatedPx", "_rotatedPy"];
-    _px = _position select 0;
-    _py = _position select 1;
-    _tx = _triggerPosition select 0;
-    _ty = _triggerPosition select 1;
+    SELECT_2(_position,_px,_py);
+    SELECT_2(_triggerPosition,_tx,_ty);
     _rotatedPx = (_px - _tx) * cos (_angle) + (_py - _ty) * sin (_angle) + _tx;
     _rotatedPy = (_py - _ty) * cos (_angle) - (_px - _tx) * sin (_angle) + _ty;
 
