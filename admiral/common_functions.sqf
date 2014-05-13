@@ -333,8 +333,7 @@ adm_common_fnc_shuffle = {
 adm_common_fnc_isFriendlySide = {
     FUN_ARGS_2(_side,_otherSide);
 
-    private "_isFriendly";
-    _isFriendly = true;
+    DECLARE(_isFriendly) = true;
     if (_side == sideEnemy || {_otherSide == sideEnemy}) then {
         _isFriendly = false;
     } else {
