@@ -49,7 +49,7 @@
 #define GROUP_TYPE_ARMOUR                   2
 
 #define CAMP_TYPE_ARRAY                     ["periodic", "ondemand", "random"]
-#define CAMP_DEFAULT_DELAY                  60
+#define CAMP_DEFAULT_DELAY                  10
 
 #define CAMP_DEFAULT_ENDTRIGGER_AREA        [400,400,0,false]
 
