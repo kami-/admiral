@@ -107,24 +107,28 @@ adm_cqc_fnc_getPossiblePositions = {
     [_building, _buildingPositions] call adm_cqc_fnc_getBuildingCapacityPositions;
 };
 
+adm_cqc_fnc_spawnGarrisonGroupUnits = {
+    FUN_ARGS_5(_group,_numOfUnits,_unitTemplate,_possiblePositions,_building);
+
+    for "_i" from 1 to _numOfUnits do {
+        DECLARE(_position) = SELECT_RAND(_possiblePositions);
+        _possiblePositions = _possiblePositions - [_position];
+        [_building buildingPos _position, _group, _unitTemplate, UNIT_TYPE_ARRAY select UNIT_TYPE_INF] call adm_cqc_fnc_placeMan;
+    };
+};
+
 adm_cqc_fnc_spawnGarrisonGroup = {
     FUN_ARGS_4(_trigger,_numOfUnits,_possiblePositions,_building);
 
-    private ["_unitTemplate", "_grp"];
+    private ["_unitTemplate", "_group"];
     _unitTemplate = _trigger getVariable "adm_zone_unitTemplate";
-    _grp = createGroup ([_unitTemplate] call adm_common_fnc_getUnitTemplateSide);
-    for "_i" from 1 to _numOfUnits do {
-        private ["_pos"];
-        _pos = SELECT_RAND(_possiblePositions);
-        _possiblePositions = _possiblePositions - [_pos];
-        [_building buildingPos _pos, _grp, _unitTemplate, UNIT_TYPE_ARRAY select UNIT_TYPE_INF] call adm_cqc_fnc_placeMan;
-    };
+    _group = createGroup ([_unitTemplate] call adm_common_fnc_getUnitTemplateSide);
+    [_group, _numOfUnits, _unitTemplate, _possiblePositions, _building] call adm_cqc_fnc_spawnGarrisonGroupUnits;
+    [_group] call adm_reduce_fnc_setGroupExpandCount;
+    [_group] call adm_reduce_fnc_setCqcInitPositions;
+    _group setVariable ["adm_zone_parent", _trigger];
 
-    [_grp] call adm_reduce_fnc_setGroupExpandCount;
-    [_grp] call adm_reduce_fnc_setCqcInitPositions;
-    _grp setVariable ["adm_zone_parent", _trigger];
-
-    _grp;
+    _group;
 };
 
 adm_cqc_fnc_getTriggerBuildings = {
