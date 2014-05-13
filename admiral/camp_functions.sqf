@@ -55,8 +55,7 @@ adm_camp_fnc_getGroupLogics = {
 adm_camp_fnc_getLogicEndTrigger = {
     FUN_ARGS_1(_wpPos);
 
-    private "_trigger";
-    _trigger = [nearestObjects [_wpPos, [], 50], {typeof _x == "EmptyDetector"}] call adm_common_fnc_filterFirst;
+    DECLARE(_trigger) = [nearestObjects [_wpPos, [], 50], {typeof _x == "EmptyDetector"}] call adm_common_fnc_filterFirst;
     if (count _trigger == 0) then {
         _trigger = createTrigger ["EmptyDetector", _wpPos];
         _trigger setTriggerArea CAMP_DEFAULT_ENDTRIGGER_AREA;
@@ -71,8 +70,7 @@ adm_camp_fnc_getLogicEndTrigger = {
 adm_camp_fnc_createPatrolWaypoints = {
     FUN_ARGS_4(_group,_unitType,_trigger,_noOfWaypoints);
 
-    private "_initialWaypointIndex";
-    _initialWaypointIndex = 0;
+    DECLARE(_initialWaypointIndex) = 0;
     if (count waypoints _group > 0) then {
         _initialWaypointIndex = (count waypoints _group) - 1;
     };
@@ -98,8 +96,7 @@ adm_camp_fnc_createCampWaypoints = {
 adm_camp_fnc_isPoolEmpty = {
     FUN_ARGS_1(_trigger);
 
-    private "_pool";
-    _pool = _trigger getVariable ["adm_zone_pool", [0, 0, 0]];
+    DECLARE(_pool) = _trigger getVariable ["adm_zone_pool", [0, 0, 0]];
 
     _pool select 0 == 0 && {_pool select 1 == 0} && {_pool select 2 == 0};
 };
@@ -119,9 +116,8 @@ adm_camp_fnc_spawnInfGroup = {
     _group = createGroup ([_unitTemplate] call adm_common_fnc_getUnitTemplateSide);
 
     for "_i" from 1 to _groupSize do {
-        private ["_pos"];
-        _pos = _initialPos findEmptyPosition [1, CAMP_SPAWN_CIRCLE_MAX_DIST, "SoldierWB"];
-        [_pos, _group, _unitTemplate, UNIT_TYPE_ARRAY select _unitType] call _placeManFunc;
+        DECLARE(_position) = _initialPos findEmptyPosition [1, CAMP_SPAWN_CIRCLE_MAX_DIST, "SoldierWB"];
+        [_position, _group, _unitTemplate, UNIT_TYPE_ARRAY select _unitType] call _placeManFunc;
     };
     [_group] call adm_reduce_fnc_setGroupExpandCount;
     _group setVariable ["adm_zone_parent", _trigger];
