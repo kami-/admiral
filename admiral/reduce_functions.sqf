@@ -79,7 +79,6 @@ adm_reduce_fnc_getPatrolGroupPositions = {
     private ["_poitions", "_expandCount"];
     _positions = [];
     _expandCount = _group getVariable ["adm_reduce_expandCount", 0];
-
     for "_i" from 1 to _expandCount do {
        PUSH(_positions, getPosATL leader _group);
     };
@@ -94,16 +93,13 @@ adm_reduce_fnc_canReduceGroup = {
     private ["_canReduce", "_isReduced"];
     _canReduce = false;
     _isReduced = _group getVariable ["adm_reduce_isReduced", false];
-
     if (!_isReduced) then {
-        private ["_i", "_players"];
-        _i = 0;
-        _players = [side _group] call adm_reduce_fnc_getMonitoredUnits;
+        DECLARE(_players) = [side _group] call adm_reduce_fnc_getMonitoredUnits;
         _canReduce = true;
-        while {_canReduce && _i < count _players} do {
-            _canReduce = [_players select _i, _group, REDUCE_DISTANCE] call gfn_reduce_fnc_unitOutsideReduceDistance;
-            INC(_i);
-        };
+        {
+            _canReduce = [_x, _group, REDUCE_DISTANCE] call gfn_reduce_fnc_unitOutsideReduceDistance;
+            if (!_canReduce) exitWith {};
+        } foreach _players;
     };
     _canReduce;
 };
