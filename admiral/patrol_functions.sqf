@@ -162,6 +162,35 @@ adm_patrol_fnc_updateDefaultWaypoint = {
     _group setVariable ["adm_patrol_hasTarget", true, false];
 };
 
+
+adm_patrol_fnc_spawnGroups = {
+    FUN_ARGS_1(_trigger);
+
+    private ["_pool", "_spawnedGroups"];
+    _pool = _trigger getVariable "adm_zone_pool";
+    _spawnedGroups = [];
+    for "_i" from 1 to (_pool select 0) do {
+        PUSH(_spawnedGroups, [_trigger] call adm_patrol_fnc_spawnInfGroup);
+    };
+    _trigger setVariable ["adm_zone_infGroups", _spawnedGroups, false];
+    PUSH_ALL(adm_patrol_infGroups, _spawnedGroups);
+    [adm_patrol_infGroups] call adm_rupture_fnc_initGroups;
+
+    _spawnedGroups = [];
+    for "_i" from 1 to (_pool select 1) do {
+        PUSH(_spawnedGroups, [_trigger] call adm_patrol_fnc_spawnTechGroup);
+    };
+    _trigger setVariable ["adm_zone_techGroups", _spawnedGroups, false];
+    PUSH_ALL(adm_patrol_techGroups, _spawnedGroups);
+
+    _spawnedGroups = [];
+    for "_i" from 1 to (_pool select 2) do {
+        PUSH(_spawnedGroups, [_trigger] call adm_patrol_fnc_spawnArmorGroup);
+    };
+    _trigger setVariable ["adm_zone_armourGroups", _spawnedGroups, false];
+    PUSH_ALL(adm_patrol_armourGroups, _spawnedGroups);
+};
+
 adm_patrol_fnc_initZone = {
     FUN_ARGS_1(_trigger);
 
@@ -173,33 +202,7 @@ adm_patrol_fnc_initZone = {
         [_trigger] call adm_error_fnc_validateZone;
     };
 
-    private ["_pool", "_spawnedGroups"];
-    _pool = _trigger getVariable "adm_zone_pool";
-
-    // Spawn infantry groups
-    _spawnedGroups = [];
-    for "_i" from 1 to (_pool select 0) do {
-        PUSH(_spawnedGroups, [_trigger] call adm_patrol_fnc_spawnInfGroup);
-    };
-    _trigger setVariable ["adm_zone_infGroups", _spawnedGroups, false];
-    PUSH_ALL(adm_patrol_infGroups, _spawnedGroups);
-    [adm_patrol_infGroups] call adm_rupture_fnc_initGroups;
-
-    // Spawn technical groups
-    _spawnedGroups = [];
-    for "_i" from 1 to (_pool select 1) do {
-        PUSH(_spawnedGroups, [_trigger] call adm_patrol_fnc_spawnTechGroup);
-    };
-    _trigger setVariable ["adm_zone_techGroups", _spawnedGroups, false];
-    PUSH_ALL(adm_patrol_techGroups, _spawnedGroups);
-
-    // Spawn armour groups
-    _spawnedGroups = [];
-    for "_i" from 1 to (_pool select 2) do {
-        PUSH(_spawnedGroups, [_trigger] call adm_patrol_fnc_spawnArmorGroup);
-    };
-    _trigger setVariable ["adm_zone_armourGroups", _spawnedGroups, false];
-    PUSH_ALL(adm_patrol_armourGroups, _spawnedGroups);
+    [_trigger] call adm_patrol_fnc_spawnGroups;
     PUSH(adm_patrol_triggers, _trigger);
 };
 
