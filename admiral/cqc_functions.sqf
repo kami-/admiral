@@ -1,6 +1,5 @@
 #include "admiral_defines.h"
 
-// Returns a newly created cqc unit
 adm_cqc_fnc_placeMan = {
     FUN_ARGS_4(_position,_group,_unitTemplate,_unitType);
 
@@ -25,7 +24,6 @@ adm_cqc_fnc_placeMan = {
     _unit;
 };
 
-// Returns positions that are inside the building
 adm_cqc_fnc_getBuildingPositions = {
     FUN_ARGS_1(_building);
 
@@ -46,7 +44,6 @@ adm_cqc_fnc_getBuildingPositions = {
     _buildingPositions;
 };
 
-// Returns if a building position has "roof" above and is valid
 adm_cqc_fnc_isPositionInBuilding = {
     FUN_ARGS_1(_pos);
 
@@ -114,7 +111,6 @@ adm_cqc_fnc_getPossiblePositions = {
     [_building, _buildingPositions] call adm_cqc_fnc_getBuildingCapacityPositions;
 };
 
-// Returns a newly created cqc group
 adm_cqc_fnc_spawnGarrisonGroup = {
     FUN_ARGS_4(_trigger,_numOfUnits,_possiblePositions,_building);
 
@@ -144,7 +140,6 @@ adm_cqc_fnc_getTriggerBuildings = {
     [_triggerBuildings] call adm_common_fnc_shuffle;
 };
 
-// Returns the newly created cqc groups
 adm_cqc_fnc_spawnGarrison = {
     FUN_ARGS_1(_trigger);
     
