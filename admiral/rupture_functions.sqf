@@ -3,8 +3,7 @@
 adm_rupture_fnc_initUnit = {
     FUN_ARGS_1(_unit);
 
-    private "_ehId";
-    _ehId = _unit addEventHandler ["Hit", {_this call adm_rupture_fnc_hitEH;}];
+    DECLARE(_ehId) = _unit addEventHandler ["Hit", {_this call adm_rupture_fnc_hitEH;}];
     _unit setVariable ["adm_rupture_eh_hit", _ehId];
     _ehId = _unit addEventHandler ["Killed", {_this call adm_rupture_fnc_killedEH;}];
     _unit setVariable ["adm_rupture_eh_killed", _ehId];
@@ -21,8 +20,7 @@ adm_rupture_fnc_hitEH = {
 adm_rupture_fnc_killedEH = {
     FUN_ARGS_1(_unit);
 
-    private "_ehId";
-    _ehId = _unit getVariable ["adm_rupture_eh_hit", nil];
+    DECLARE(_ehId) = _unit getVariable ["adm_rupture_eh_hit", nil];
     if (!isNil {_ehId}) then {
         _unit removeEventHandler ["Hit", _ehId];
     };
@@ -34,8 +32,7 @@ adm_rupture_fnc_killedEH = {
 
 adm_rupture_fnc_initGroups = {
     {
-        private "_group";
-        _group = _x;
+        DECLARE(_group) = _x;
         {
             [_x] call adm_rupture_fnc_initUnit;
         } foreach (units _group)
@@ -45,8 +42,7 @@ adm_rupture_fnc_initGroups = {
 adm_rupture_fnc_checkUnits = {
     [] spawn { 
         waitUntil {
-            private "_infUnits";
-            _infUnits = [[adm_cqc_groups, adm_patrol_infGroups, adm_camp_infGroups]] call adm_common_fnc_getAliveUnits;
+            DECLARE(_infUnits) = [[adm_cqc_groups, adm_patrol_infGroups, adm_camp_infGroups]] call adm_common_fnc_getAliveUnits;
             {
                 private ["_unit", "_elapsedTime"];
                 _unit = _x;
