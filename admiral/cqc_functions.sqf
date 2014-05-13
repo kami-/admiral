@@ -9,7 +9,7 @@ adm_cqc_fnc_placeMan = {
         [_unitTemplate, _unitType] call adm_common_fnc_getUnitTemplateArray,
         CQC_SKILL_ARRAY
     ] call adm_common_fnc_placeMan;
-    [_unit, _group] call adm_cqc_fnc_initMan
+    [_unit, _group] call adm_cqc_fnc_initMan;
 
     _unit;
 };
