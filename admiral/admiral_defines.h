@@ -135,7 +135,7 @@
 //          PVT_3(_unit,_group,_trigger); 
 //      THEN:
 //          private ["_unit","_group","_trigger"];
-#define PVT_1(VAR1) private [#VAR1]
+#define PVT_1(VAR1) private #VAR1
 #define PVT_2(VAR1,VAR2) private [#VAR1,#VAR2]
 #define PVT_3(VAR1,VAR2,VAR3) private [#VAR1,#VAR2,#VAR3]
 #define PVT_4(VAR1,VAR2,VAR3,VAR4) private [#VAR1,#VAR2,#VAR3,#VAR4]
