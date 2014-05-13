@@ -111,13 +111,11 @@ adm_reduce_fnc_canExpandGroup = {
     _canExpand = false;
     _isReduced = _group getVariable ["adm_reduce_isReduced", false];
     if (_isReduced) then {
-        private ["_i", "_players"];
-        _i = 0;
-        _players = [side _group] call adm_reduce_fnc_getMonitoredUnits;
-        while {!_canExpand && _i < count _players} do {
-            _canExpand = !([_players select _i, _group, EXPAND_DISTANCE] call gfn_reduce_fnc_unitOutsideReduceDistance);
-            INC(_i);
-        };
+        DECLARE(_players) = [side _group] call adm_reduce_fnc_getMonitoredUnits;
+        {
+            _canExpand = !([__x, _group, EXPAND_DISTANCE] call gfn_reduce_fnc_unitOutsideReduceDistance);
+            if (_canExpand) exitWith {};
+        } foreach _players;
     };
 
     _canExpand;
