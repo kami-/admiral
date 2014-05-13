@@ -190,8 +190,7 @@ adm_cqc_fnc_canForceFire = {
 adm_cqc_fnc_getForceFireEnemy = {
     FUN_ARGS_1(_ai);
 
-    private "_enemies";
-    _enemies= [];
+    DECLARE(_enemies) = [];
     if (!isNull _ai) then {
         _enemies = [getPosATL _ai nearEntities  ["Man", CQC_MAX_ENGAGE_DIST], {[_ai, _x] call adm_cqc_fnc_canForceFire}] call adm_common_fnc_filterFirst;
     };
@@ -203,17 +202,13 @@ adm_cqc_fnc_forceFire = {
     FUN_ARGS_1(_groups);
     
     waitUntil {
-        private "_aliveGroupLeft";
-        _aliveGroupLeft = false;
+        DECLARE(_aliveGroupLeft) = false;
         {
-            private "_group";
-            _group = _x;
+            DECLARE(_group) = _x;
             {
-                private "_unit";
-                _unit = _x;
+                DECLARE(_unit) = _x;
                 if (alive _unit) then {
-                    private "_enemy";
-                    _enemy = [_unit] call adm_cqc_fnc_getForceFireEnemy;
+                    DECLARE(_enemy) = [_unit] call adm_cqc_fnc_getForceFireEnemy;
                     if (count _enemy > 0) then {
                         _enemy = _enemy select 0;
                         _unit lookAt _enemy;
@@ -239,8 +234,7 @@ adm_cqc_fnc_initZone = {
         [_trigger] call adm_error_fnc_validateZone;
     };
 
-    private "_spawnedGroups";
-    _spawnedGroups = [_trigger] call adm_cqc_fnc_spawnGarrison;
+    DECLARE(_spawnedGroups) = [_trigger] call adm_cqc_fnc_spawnGarrison;
     PUSH_ALL(adm_cqc_groups, _spawnedGroups);
     [_spawnedGroups] call adm_rupture_fnc_initGroups;
     [_spawnedGroups] call adm_cqc_fnc_forceFire;
