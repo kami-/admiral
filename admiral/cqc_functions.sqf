@@ -76,8 +76,7 @@ adm_cqc_fnc_getBuildingCapacityPositions = {
     };
     _newPositions = [];
     for "_i" from 1 to _capacity do {
-        private "_randomPos";
-        _randomPos = SELECT_RAND(_buildingPositions);
+        DECLARE(_randomPos) = SELECT_RAND(_buildingPositions);
         PUSH(_newPositions, _randomPos);
         _buildingPositions = _buildingPositions - [_randomPos];
     };
@@ -88,8 +87,7 @@ adm_cqc_fnc_getBuildingCapacityPositions = {
 adm_cqc_fnc_getBuildingCapacity = {
     FUN_ARGS_1(_building);
 
-    private "_capacity";
-    _capacity = -1;
+    DECLARE(_capacity) = -1;
     {
         if (typeof _building == _x select 0) exitWith { _capacity = _x select 1; };
     } foreach adm_cqc_buildingCapacity;
@@ -100,8 +98,7 @@ adm_cqc_fnc_getBuildingCapacity = {
 adm_cqc_fnc_getPossiblePositions = {
     FUN_ARGS_2(_building,_minHeight);
 
-    private ["_buildingPositions"];
-    _buildingPositions = if (isNil "_minHeight") then {
+    DECLARE(_buildingPositions) = if (isNil "_minHeight") then {
         [_building] call adm_cqc_fnc_getBuildingPositions
     } else {
         [_building, [_building] call adm_cqc_fnc_getBuildingPositions, _minHeight] call adm_cqc_fnc_getMinHeightBuildingPositions
