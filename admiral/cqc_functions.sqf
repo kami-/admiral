@@ -140,6 +140,19 @@ adm_cqc_fnc_getTriggerBuildings = {
     [_triggerBuildings] call adm_common_fnc_shuffle;
 };
 
+adm_cqc_fnc_getGarrisonGroupSize = {
+    FUN_ARGS_2(_buildingCapacity,_posCount);
+
+    call {
+        if (_buildingCapacity != -1 && {_buildingCapacity <= _posCount})    exitWith {_buildingCapacity};
+        if (_buildingCapacity != -1 && {_buildingCapacity > _posCount})     exitWith {_posCount};
+        if (_posCount >= adm_cqc_infFireteamSize)                           exitWith {adm_cqc_infFireteamSize};
+        if (_posCount < adm_cqc_infFireteamSize && {_posCount >= 2})        exitWith {2};
+        if (_posCount == 1)                                                 exitWith {1};
+                                                                            0;
+    };
+};
+
 adm_cqc_fnc_spawnGarrison = {
     FUN_ARGS_1(_trigger);
     
@@ -148,35 +161,22 @@ adm_cqc_fnc_spawnGarrison = {
     _maxAmount = _trigger getVariable ["adm_zone_pool", 0];
     _currentAmount = 0;
     _spawnedGroups = [];
-    for [{private ["_i"]; _i = 0}, {_i < count _buildings && {_currentAmount < _maxAmount}}, {INC(_i)}] do {
+    {
+        if (_currentAmount < _maxAmount) then exitWith {};
         private ["_building", "_possiblePositions"];
-        _building = _buildings select _i;
+        _building = _x;
         _possiblePositions = [_building, _trigger getVariable "adm_cqc_minHeight"] call adm_cqc_fnc_getPossiblePositions;
-
-        if((!([_possiblePositions, []] call BIS_fnc_areEqual)) && {_currentAmount < _maxAmount}) then {
-            private ["_buildingCapacity", "_posCount", "_numOfUnits", "_group"];
-            _buildingCapacity = [_building] call adm_cqc_fnc_getBuildingCapacity;
-            _posCount = count _possiblePositions;
-            _numOfUnits = switch (true) do
-            {
-                case (_buildingCapacity != -1 && _buildingCapacity <= _posCount): { _buildingCapacity };
-                case (_buildingCapacity != -1 && _buildingCapacity > _posCount): { _posCount };
-                case (_posCount >= adm_cqc_infFireteamSize): { adm_cqc_infFireteamSize };
-                case (_posCount < adm_cqc_infFireteamSize && {_posCount >= 2}): { 2 };
-                case (_posCount == 1): { 1 };
-                default { 0 };
-            };
+        if (count _possiblePositions > 0) then {
+            private ["_numOfUnits", "_group"];
+            _numOfUnits = [[_building] call adm_cqc_fnc_getBuildingCapacity, count _possiblePositions] call adm_cqc_fnc_getGarrisonGroupSize;
             _currentAmount = _currentAmount + _numOfUnits;
-
             _group = [_trigger, _numOfUnits, _possiblePositions, _building] call adm_cqc_fnc_spawnGarrisonGroup;
-
             PUSH(_spawnedGroups, _group);
-            
             if (adm_isDebuggingEnabled) then {
                 [_group] call adm_debug_fnc_createMarkersForCqcGroup;
             };
         };
-    };
+    } foreach _buildings;
 
     _spawnedGroups;
 };
