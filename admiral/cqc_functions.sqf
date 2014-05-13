@@ -162,7 +162,7 @@ adm_cqc_fnc_spawnGarrison = {
     _currentAmount = 0;
     _spawnedGroups = [];
     {
-        if (_currentAmount < _maxAmount) exitWith {};
+        if (_currentAmount >= _maxAmount) exitWith {};
         private ["_building", "_possiblePositions"];
         _building = _x;
         _possiblePositions = [_building, _trigger getVariable "adm_cqc_minHeight"] call adm_cqc_fnc_getPossiblePositions;
