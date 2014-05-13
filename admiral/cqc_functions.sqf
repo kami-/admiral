@@ -3,25 +3,27 @@
 adm_cqc_fnc_placeMan = {
     FUN_ARGS_4(_position,_group,_unitTemplate,_unitType);
 
-    private ["_unit", "_wp"];
-    _unit = [
+    DECLARE(_unit) = [
         _position,
         _group,
         [_unitTemplate, _unitType] call adm_common_fnc_getUnitTemplateArray,
         CQC_SKILL_ARRAY
     ] call adm_common_fnc_placeMan;
+    [_unit, _group] call adm_cqc_fnc_initMan
+
+    _unit;
+};
+
+adm_cqc_fnc_initMan = {
+    FUN_ARGS_2(_unit,_group);
 
     _group enableAttack false;
-
-    _wp = [_group, [getPosATL _unit, 0], 'GUARD', 'AWARE', 'RED'] call adm_common_fnc_createWaypoint;
-
+    DECLARE(_wp) = [_group, [getPosATL _unit, 0], 'GUARD', 'AWARE', 'RED'] call adm_common_fnc_createWaypoint;
+    _group setCurrentWaypoint _wp;
     _unit setDir (random 360);
     _unit setPosATL (_position);
     doStop _unit;
     _unit setUnitPos 'UP';
-    _group setCurrentWaypoint _wp;
-
-    _unit;
 };
 
 adm_cqc_fnc_getBuildingPositions = {
