@@ -9,8 +9,7 @@ adm_hc_fnc_initDefaultNames = {
 adm_hc_fnc_findHCPlayer = {
     adm_hc_name = "NOONE";
     adm_hc_isPresent = false;
-    private "_unitsHC";
-    _unitsHC = [playableUnits, {isPlayer _x && {name _x in adm_hc_defaultNames}}] call BIS_fnc_conditionalSelect;
+    DECLARE(_unitsHC) = [playableUnits, {isPlayer _x && {name _x in adm_hc_defaultNames}}] call BIS_fnc_conditionalSelect;
     if (count _unitsHC > 0) then {
         adm_hc_name = name (_unitsHC select 0);
         adm_hc_isPresent = true;
