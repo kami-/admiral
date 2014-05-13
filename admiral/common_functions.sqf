@@ -114,7 +114,7 @@ adm_common_fnc_randomFlatEmptyPosInTrigger = {
     private ["_position", "_emptyPosition"];
     _position = [_trigger, _canBeWater] call adm_common_fnc_randomPosInTrigger;
     _emptyPosition = _position findEmptyPosition [0, CAMP_SPAWN_CIRCLE_MAX_DIST, _unitType];
-    while {count _emptyPosition > 0} do {
+    while {count _emptyPosition == 0} do {
         _position = [_trigger, _canBeWater] call adm_common_fnc_randomPosInTrigger;
         _emptyPosition = _position findEmptyPosition [0, CAMP_SPAWN_CIRCLE_MAX_DIST, _unitType];
     };
