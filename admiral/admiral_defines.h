@@ -323,3 +323,12 @@
 #define LOG_MSG_6(LVL,FORMAT,MSG1,MSG2,MSG3,MSG4,MSG5,MSG6) (format ["[ADMIRAL] %1 [%2] ", time, LVL] + format [FORMAT, MSG1, MSG2, MSG3, MSG4, MSG5, MSG6])
 #define LOG_MSG_7(LVL,FORMAT,MSG1,MSG2,MSG3,MSG4,MSG5,MSG6,MSG7) (format ["[ADMIRAL] %1 [%2] ", time, LVL] + format [FORMAT, MSG1, MSG2, MSG3, MSG4, MSG5, MSG6, MSG7])
 #define LOG_MSG_8(LVL,FORMAT,MSG1,MSG2,MSG3,MSG4,MSG5,MSG6,MSG7,MSG8) (format ["[ADMIRAL] %1 [%2] ", time, LVL] + format [FORMAT, MSG1, MSG2, MSG3, MSG4, MSG5, MSG6, MSG7, MSG8])
+
+// Creates a private declaration for a variable and enables instant assigment.
+// Example:
+//      GIVEN:
+//      WHEN:
+//          DECLARE(_group) = _x;
+//      THEN:
+//          private "_group"; _group = _x;
+#define DECLARE(VAR) private #VAR; VAR 
