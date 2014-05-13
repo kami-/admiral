@@ -57,9 +57,9 @@ adm_cqc_fnc_isPositionInBuilding = {
 adm_cqc_fnc_getMinHeightBuildingPositions = {
     FUN_ARGS_3(_building,_positions,_minHeight);
 
-    private "_buildingHeight";
-    _buildingHeight = (getPosASL _building) select 2;
-    [_positions, {((ATLToASL (_building buildingPos _x)) select 2) - _buildingHeight >= _minHeight}] call BIS_fnc_conditionalSelect
+    DECLARE(_buildingHeight) = (getPosASL _building) select 2;
+
+    [_positions, {((ATLToASL (_building buildingPos _x)) select 2) - _buildingHeight >= _minHeight}] call BIS_fnc_conditionalSelect;
 };
 
 adm_cqc_fnc_getBuildingCapacityPositions = {
