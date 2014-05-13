@@ -97,7 +97,7 @@ adm_reduce_fnc_canReduceGroup = {
         DECLARE(_players) = [side _group] call adm_reduce_fnc_getMonitoredUnits;
         _canReduce = true;
         {
-            _canReduce = [_x, _group, REDUCE_DISTANCE] call gfn_reduce_fnc_unitOutsideReduceDistance;
+            _canReduce = [_x, _group, REDUCE_DISTANCE] call adm_reduce_fnc_unitOutsideReduceDistance;
             if (!_canReduce) exitWith {};
         } foreach _players;
     };
@@ -113,7 +113,7 @@ adm_reduce_fnc_canExpandGroup = {
     if (_isReduced) then {
         DECLARE(_players) = [side _group] call adm_reduce_fnc_getMonitoredUnits;
         {
-            _canExpand = !([__x, _group, EXPAND_DISTANCE] call gfn_reduce_fnc_unitOutsideReduceDistance);
+            _canExpand = !([__x, _group, EXPAND_DISTANCE] call adm_reduce_fnc_unitOutsideReduceDistance);
             if (_canExpand) exitWith {};
         } foreach _players;
     };
@@ -161,7 +161,7 @@ adm_reduce_fnc_disableCaching = {
     };
 };
 
-gfn_reduce_fnc_unitOutsideReduceDistance = {
+adm_reduce_fnc_unitOutsideReduceDistance = {
     FUN_ARGS_3(_unit,_group,_distance);
 
     (getPosATL _unit) distance (getPosATL leader _group) > _distance;
