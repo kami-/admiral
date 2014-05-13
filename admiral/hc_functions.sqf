@@ -1,8 +1,8 @@
 #include "admiral_defines.h"
 
 adm_hc_fnc_initDefaultNames = {
-    if (isNil {adm_hc_defaultNames} || {count adm_hc_defaultNames == 0}) then {
-        adm_hc_defaultNames = ["HC", "HeadlessClient"];
+    if (isNil {adm_hc_defaultNames}) then {
+        adm_hc_defaultNames = [];
     };
 };
 
