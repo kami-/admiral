@@ -38,8 +38,7 @@ adm_behavior_fnc_stateMoving = {
 adm_behavior_fnc_stateEnemyFound = {
     FUN_ARGS_1(_group);
 
-    private "_enemyPos";
-    _enemyPos = _group getVariable "adm_behavior_enemyPos";
+    DECLARE(_enemyPos) = _group getVariable "adm_behavior_enemyPos";
     if ([_enemyPos, side _group] call adm_behavior_fnc_canCallReinforcement) then {
         [_group, _enemyPos, [side _group, _enemyPos] call adm_behavior_fnc_getEnemyNumbers] call adm_behavior_fnc_callReinforcement;
         [_enemyPos, side _group] call adm_behavior_fnc_addToFoundEnemyArray
@@ -50,8 +49,7 @@ adm_behavior_fnc_stateEnemyFound = {
 adm_behavior_fnc_stateSeekAndDestroyEnemy = {
     FUN_ARGS_1(_group);
 
-    private "_sadWp";
-    _sadWp = [_group, [_group getVariable "adm_behavior_enemyPos", 0], 'SAD', 'AWARE', 'RED'] call adm_common_fnc_createWaypoint;
+    DECLARE(_sadWp) = [_group, [_group getVariable "adm_behavior_enemyPos", 0], 'SAD', 'AWARE', 'RED'] call adm_common_fnc_createWaypoint;
     _sadWp setWaypointStatements ["true", "[group this] call adm_behavior_fnc_continueMoving;"];
     _group setVariable ["adm_behavior_lastWp", currentWaypoint _group, false];
     _group setVariable ["adm_behavior_state", STATE_COMBAT, false];
@@ -64,17 +62,14 @@ adm_behavior_fnc_stateSeekAndDestroyEnemy = {
 adm_behavior_fnc_stateCombat = {
     FUN_ARGS_1(_group);
 
-    private "_reinfGroup";
-    _reinfGroup = _group getVariable "adm_behavior_reinfGroup";
+    DECLARE(_reinfGroup) = _group getVariable "adm_behavior_reinfGroup";
     if (!isNil {_reinfGroup}) then {
-        private "_enemyPos";
-        _enemyPos = _group getVariable "adm_behavior_enemyPos";
+        DECLARE(_enemyPos) = _group getVariable "adm_behavior_enemyPos";
         if (!alive leader _reinfGroup) then {
             if (adm_isDebuggingEnabled) then {
                 diag_log LOG_MSG_2("DEBUG","Behavior - Group '%1' tries to call additinal reinforcement, becasue reinforced group '%2' died.", _group, _reinfGroup);
             };
-            private "_enemyNumbers";
-            _enemyNumbers = [side _group, _enemyPos] call adm_behavior_fnc_getEnemyNumbers;
+            DECLARE(_enemyNumbers) = [side _group, _enemyPos] call adm_behavior_fnc_getEnemyNumbers;
             _group setVariable ["adm_behavior_reinfGroup", nil];
             [_group, _enemyPos, [ceil random (_enemyNumbers select 0), floor random (_enemyNumbers select 1), floor random (_enemyNumbers select 2)]] call adm_behavior_fnc_callReinforcement;
         } else {
@@ -135,8 +130,7 @@ adm_behavior_fnc_getEnemyNumbers = {
 adm_behavior_fnc_canCallReinforcement = {
     FUN_ARGS_2(_enemyPos,_side);
 
-    private "_canCall";
-    _canCall = true;
+    DECLARE(_canCall) = true;
     {
         if ((_x select 0) + BEHAVIOR_REINF_COOLDOWN > time || {(_x select 1) distance _enemyPos < BEHAVIOR_ENEMY_CHECK_RADIUS}) exitWith {
             _canCall = false;
@@ -162,8 +156,7 @@ adm_behavior_fnc_callReinforcement = {
 adm_behavior_fnc_callReinforcementGroups = {
     FUN_ARGS_4(_group,_enemyPos,_count,_groupFunc);
 
-    private "_groups";
-    _groups = [_enemyPos, _count, [side _group, _enemyPos] call _groupFunc] call adm_behavior_fnc_getReinforcementGroups;
+    DECLARE(_groups) = [_enemyPos, _count, [side _group, _enemyPos] call _groupFunc] call adm_behavior_fnc_getReinforcementGroups;
     {
         if ([_x] call adm_behavior_fnc_canReinforce) then {
             _x setVariable ["adm_behavior_enemyPos", _enemyPos, false];
@@ -176,11 +169,9 @@ adm_behavior_fnc_callReinforcementGroups = {
 adm_behavior_fnc_getReinforcementGroups = {
     FUN_ARGS_3(_enemyPos,_numberOfGroups,_groups);
 
-    private "_reinforcementGroups";
-    _reinforcementGroups = [];
+    DECLARE(_reinforcementGroups) = [];
     if (_numberOfGroups > 0) then {
-        private "_closestGroups";
-        _closestGroups = [_groups, {leader _x distance _enemyPos > leader _y distance _enemyPos}] call adm_common_fnc_insertionSort;
+        DECLARE(_closestGroups) = [_groups, {leader _x distance _enemyPos > leader _y distance _enemyPos}] call adm_common_fnc_insertionSort;
         for "_i" from 0 to (_numberOfGroups min (count _closestGroups)) - 1 do {
             PUSH(_reinforcementGroups, _closestGroups select _i);
         };
@@ -197,8 +188,7 @@ adm_behavior_fnc_canReinforce = {
 };
 
 adm_behavior_fnc_getAllGroups = {
-    private "_patrolGroups";
-    _patrolGroups = [];
+    DECLARE(_patrolGroups) = [];
     FILTER_PUSH_ALL(_patrolGroups, adm_patrol_infGroups, {!(_x getVariable AS_ARRAY_2("adm_patrol_hasTarget",false))});
     FILTER_PUSH_ALL(_patrolGroups, adm_patrol_techGroups, {!(_x getVariable AS_ARRAY_2("adm_patrol_hasTarget",false))});
     FILTER_PUSH_ALL(_patrolGroups, adm_patrol_armourGroups, {!(_x getVariable AS_ARRAY_2("adm_patrol_hasTarget",false))});
@@ -208,8 +198,7 @@ adm_behavior_fnc_getAllGroups = {
 adm_behavior_fnc_getAvailableInfGroups = {
     FUN_ARGS_2(_side,_enemyPos);
 
-    private "_groups";
-    _groups = [];
+    DECLARE(_groups) = [];
     FILTER_PUSH_ALL(_groups, adm_patrol_infGroups, adm_behavior_fnc_isAvailableGroup);
     FILTER_PUSH_ALL(_groups, adm_camp_infGroups, adm_behavior_fnc_isAvailableGroup);
     _groups;
@@ -218,8 +207,7 @@ adm_behavior_fnc_getAvailableInfGroups = {
 adm_behavior_fnc_getAvailableTechGroups = {
     FUN_ARGS_2(_side,_enemyPos);
 
-    private "_groups";
-    _groups = [];
+    DECLARE(_groups) = [];
     FILTER_PUSH_ALL(_groups, adm_patrol_techGroups, adm_behavior_fnc_isAvailableGroup);
     FILTER_PUSH_ALL(_groups, adm_camp_techGroups, adm_behavior_fnc_isAvailableGroup);
     _groups;
@@ -228,8 +216,7 @@ adm_behavior_fnc_getAvailableTechGroups = {
 adm_behavior_fnc_getAvailableArmourGroups = {
     FUN_ARGS_2(_side,_enemyPos);
 
-    private "_groups";
-    _groups = [];
+    DECLARE(_groups) = [];
     FILTER_PUSH_ALL(_groups, adm_patrol_armourGroups, adm_behavior_fnc_isAvailableGroup);
     FILTER_PUSH_ALL(_groups, adm_camp_armourGroups, adm_behavior_fnc_isAvailableGroup);
     _groups;
@@ -245,8 +232,7 @@ adm_behavior_fnc_isAvailableGroup = {
 adm_behavior_getEnemyUnits = {
     FUN_ARGS_1(_side);
 
-    private "_units";
-    _units = [];
+    DECLARE(_units) = [];
     FILTER_PUSH_ALL(_units, ALL_UNITS, {!(AS_ARRAY_2(side _x, _side) call adm_common_fnc_isFriendlySide)});
     _units;
 };
@@ -254,8 +240,7 @@ adm_behavior_getEnemyUnits = {
 adm_behavior_fnc_addToFoundEnemyArray = {
     FUN_ARGS_2(_enemyPos,_side);
 
-    private "_sideIndex";
-    _sideIndex = SIDE_ARRAY find _side;
+    DECLARE(_sideIndex) = SIDE_ARRAY find _side;
     if (_sideIndex >= 0) then {
         PUSH((adm_behavior_foundEnemies select _sideIndex), AS_ARRAY_2(time,_enemyPos));
     };
