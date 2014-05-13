@@ -66,8 +66,7 @@ adm_reduce_fnc_getCqcGroupPositions = {
     _positions = [];
     _expandCount = _group getVariable ["adm_reduce_expandCount", 0];
     _initPositions = _group getVariable "adm_reduce_initPositions";
-
-    for [{private ["_i"]; _i = 0}, {_i < _expandCount}, {INC(_i)}] do {
+    for "_i" from 0 to  _expandCount - 1 do {
         PUSH(_positions, _initPositions select _i);
     };
 
