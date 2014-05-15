@@ -1,6 +1,5 @@
 #include "admiral_defines.h"
 
-#define LOGGING_ENABLED
 #define LOGGING_LEVEL_INFO
 #define LOGGING_TO_RPT
 #include "log_macros.h"
