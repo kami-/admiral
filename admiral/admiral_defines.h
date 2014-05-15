@@ -1,4 +1,4 @@
-#ifdef ADMIRAL_DEFINES_H
+#ifndef ADMIRAL_DEFINES_H
 #define ADMIRAL_DEFINES_H
 
 #define ADMIRAL_VERSION                     0.6.1
