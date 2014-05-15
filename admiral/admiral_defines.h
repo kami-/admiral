@@ -1,3 +1,6 @@
+#ifdef ADMIRAL_DEFINES_H
+#define ADMIRAL_DEFINES_H
+
 #define MULTIPLE_SIDES
 #ifdef MULTIPLE_SIDES
     #define ALL_UNITS       allUnits
@@ -331,4 +334,6 @@
 //          DECLARE(_group) = _x;
 //      THEN:
 //          private "_group"; _group = _x;
-#define DECLARE(VAR) private #VAR; VAR 
+#define DECLARE(VAR) private #VAR; VAR
+
+#endif //ADMIRAL_DEFINES_H
