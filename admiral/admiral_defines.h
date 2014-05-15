@@ -1,12 +1,14 @@
 #ifdef ADMIRAL_DEFINES_H
 #define ADMIRAL_DEFINES_H
 
+#define ADMIRAL_VERSION                     0.6.1
+
 #define MULTIPLE_SIDES
 #ifdef MULTIPLE_SIDES
-    #define ALL_UNITS       allUnits
+    #define ALL_UNITS                       allUnits
 #endif
 #ifndef MULTIPLE_SIDES
-    #define ALL_UNITS       ([] call adm_common_fnc_getPlayerUnits)
+    #define ALL_UNITS                       ([] call adm_common_fnc_getPlayerUnits)
 #endif
 
 #define TEMPLATE_CONFIGFILE                 missionConfigFile
