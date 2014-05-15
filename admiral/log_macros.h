@@ -3,6 +3,7 @@
 
 #define LOG_FORMAT(CTX,LVL,MESSG)
 #define LOG(CTX,LVL,MESSG)
+#define TRACE(CTX,MESSG)
 #define DEBUG(CTX,MESSG)
 #define INFO(CTX,MESSG)
 #define WARN(CTX,MESSG)
@@ -30,10 +31,11 @@
 #define DUMP_9(V1,V2,V3,V4,V5,V6,V7,V8,V9)
 
 #ifdef LOGGING_ENABLED
-    #define DEBUG_LVL                   0
-    #define INFO_LVL                    1
-    #define WARN_LVL                    2
-    #define ERROR_LVL                   3
+    #define TRACE_LVL                   0
+    #define DEBUG_LVL                   1
+    #define INFO_LVL                    2
+    #define WARN_LVL                    3
+    #define ERROR_LVL                   4
     #define DISABLE_LVL                 99
  
     #define FMT_0(FMT) format [FMT]
@@ -149,25 +151,36 @@
             }
     #endif
 
+    #ifdef LOGGING_LEVEL_TRACE
+        #define TRACE(CTX,MESSG)        LOG(CTX,"TRACE",TRACE_LVL,(MESSG))
+        #define DEBUG(CTX,MESSG)        LOG(CTX,"DEBUG",DEBUG_LVL,(MESSG))
+        #define INFO(CTX,MESSG)         LOG(CTX,"INFO",INFO_LVL,(MESSG))
+        #define WARN(CTX,MESSG)         LOG(CTX,"WARN",WARN_LVL,(MESSG))
+        #define ERROR(CTX,MESSG)        LOG(CTX,"ERROR",ERROR_LVL,(MESSG))
+    #endif //LOGGING_LEVEL_TRACE
     #ifdef LOGGING_LEVEL_DEBUG
+        #define TRACE(CTX,MESSG)
         #define DEBUG(CTX,MESSG)        LOG(CTX,"DEBUG",DEBUG_LVL,(MESSG))
         #define INFO(CTX,MESSG)         LOG(CTX,"INFO",INFO_LVL,(MESSG))
         #define WARN(CTX,MESSG)         LOG(CTX,"WARN",WARN_LVL,(MESSG))
         #define ERROR(CTX,MESSG)        LOG(CTX,"ERROR",ERROR_LVL,(MESSG))
     #endif //LOGGING_LEVEL_DEBUG
     #ifdef LOGGING_LEVEL_INFO
+        #define TRACE(CTX,MESSG)
         #define DEBUG(CTX,MESSG)
         #define INFO(CTX,MESSG)         LOG(CTX,"INFO",INFO_LVL,(MESSG))
         #define WARN(CTX,MESSG)         LOG(CTX,"WARN",WARN_LVL,(MESSG))
         #define ERROR(CTX,MESSG)        LOG(CTX,"ERROR",ERROR_LVL,(MESSG))
     #endif //LOGGING_LEVEL_INFO
     #ifdef LOGGING_LEVEL_WARN
+        #define TRACE(CTX,MESSG)
         #define DEBUG(CTX,MESSG)
         #define INFO(CTX,MESSG)
         #define WARN(CTX,MESSG)         LOG(CTX,"WARN",WARN_LVL,(MESSG))
         #define ERROR(CTX,MESSG)        LOG(CTX,"ERROR",ERROR_LVL,(MESSG))
     #endif //LOGGING_LEVEL_WARN
     #ifdef LOGGING_LEVEL_ERROR
+        #define TRACE(CTX,MESSG)
         #define DEBUG(CTX,MESSG)
         #define INFO(CTX,MESSG)
         #define WARN(CTX,MESSG)
