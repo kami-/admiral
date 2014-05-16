@@ -13,7 +13,7 @@ call compile preProcessFileLineNumbers "admiral\common_functions.sqf"; DEBUG("ad
 
 // Don't compile, if we don't want to debug
 if (adm_isDebuggingEnabled) then {
-    DEBUG("admiral.debug","Admiral debugging is enabled.");
+    INFO("admiral.debug","Admiral debugging is enabled.");
     call compile preProcessFileLineNumbers "admiral\error_functions.sqf"; DEBUG("admiral.compile","Compiled 'admiral\error_functions.sqf'.");
     call compile preProcessFileLineNumbers "admiral\debug_functions.sqf"; DEBUG("admiral.compile","Compiled 'admiral\debug_functions.sqf'.");
 };
@@ -26,7 +26,7 @@ call compile preProcessFileLineNumbers "admiral\rupture_functions.sqf"; DEBUG("a
 call compile preProcessFileLineNumbers "admiral\api_functions.sqf"; DEBUG("admiral.compile","Compiled 'admiral\api_functions.sqf'.");
 
 if (adm_isBehaviorEnabled) then {
-    DEBUG("admiral.behavior","Admiral Behavior system is enabled.");
+    INFO("admiral.behavior","Admiral Behavior system is enabled.");
     call compile preProcessFileLineNumbers "admiral\behavior_functions.sqf"; DEBUG("admiral.compile","Compiled 'admiral\behavior_functions.sqf'.");
 };
 
