@@ -1,5 +1,7 @@
 #include "admiral_defines.h"
 
+#include "log_macros.h"
+
 adm_error_fnc_validateVariables = {
     FUN_ARGS_1(_variableArray);
 
@@ -20,7 +22,7 @@ adm_error_fnc_processAsserts = {
         DECLARE(_assertResult) = call (_asserts select _i);
         if (_assertResult != "") then {
             PUSH(adm_error_errorMessages,_assertResult);
-            diag_log LOG_MSG_1("ERROR","Validation - %1",_assertResult);;
+            ERROR("admiral.error",FMT_1("Validation error: %1",_assertResult));
             _noError = false;
         };
         INC(_i);
