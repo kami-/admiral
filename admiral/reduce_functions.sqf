@@ -31,7 +31,7 @@ adm_reduce_fnc_reduceGroup = {
             deleteVehicle _x;
         };
     } foreach units _group;
-    DEBUG("admiral.reduce",FMT_2("Reduced group '%1', removed '%2' unit(s).",_group,_group setVariable "adm_reduce_expandCount"));
+    DEBUG("admiral.reduce",FMT_2("Reduced group '%1', removed '%2' unit(s).",_group,_group getVariable "adm_reduce_expandCount"));
 };
 
 adm_reduce_fnc_expandGroup = {
