@@ -1,5 +1,7 @@
 #include "admiral_defines.h"
 
+#include "log_macros.h"
+
 adm_camp_fnc_placeMan = {
     FUN_ARGS_4(_position,_group,_unitTemplate,_unitType);
 
@@ -9,6 +11,7 @@ adm_camp_fnc_placeMan = {
         [_unitTemplate, _unitType] call adm_common_fnc_getUnitTemplateArray,
         CAMP_SKILL_ARRAY
     ] call adm_common_fnc_placeMan;
+    DEBUG("admiral.cqc.create",FMT_5("Created unit '%1' at position '%2', in group '%3' with type '%4' and classname '%5'.",_unit,_position,_group,UNIT_TYPE_ARRAY select _unitType,typeOf _unit));
 
     _unit;
 };
