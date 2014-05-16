@@ -81,6 +81,7 @@
     + round (((NUMS) select 1) / BEHAVIOR_AVG_CAR_SIZE / (CAR)) \
     + round (((NUMS) select 2) / BEHAVIOR_AVG_AIR_SIZE / (AIR))
 
+#define STATE_TEXT_ARRAY                        ["INIT", "MOVING", "ENEMY FOUND", "SAD ENEMY", "COMBAT", "CONTINUE MOVING"]
 #define STATE_INIT                              0
 #define STATE_MOVING                            1
 #define STATE_ENEMYFOUND                        2
