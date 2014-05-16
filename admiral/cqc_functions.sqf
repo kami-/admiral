@@ -1,5 +1,7 @@
 #include "admiral_defines.h"
 
+#include "log_macros.h"
+
 adm_cqc_fnc_placeMan = {
     FUN_ARGS_4(_position,_group,_unitTemplate,_unitType);
 
@@ -10,6 +12,7 @@ adm_cqc_fnc_placeMan = {
         CQC_SKILL_ARRAY
     ] call adm_common_fnc_placeMan;
     [_unit, _group] call adm_cqc_fnc_initMan;
+    DEBUG("admiral.cqc.create",FMT_4("Created unit '%1' at position '%2', in group '%3' with classname '%4'.",_unit,_position,_group,typeOf _unit));
 
     _unit;
 };
@@ -115,6 +118,7 @@ adm_cqc_fnc_spawnGarrisonGroupUnits = {
         _possiblePositions = _possiblePositions - [_position];
         [_building buildingPos _position, _group, _unitTemplate, UNIT_TYPE_ARRAY select UNIT_TYPE_INF] call adm_cqc_fnc_placeMan;
     };
+    DEBUG("admiral.cqc.create",FMT_3("Created '%1' CQC units for group '%2' in building '%3'.",_numOfUnits,_group,_building));
 };
 
 adm_cqc_fnc_spawnGarrisonGroup = {
@@ -158,6 +162,7 @@ adm_cqc_fnc_spawnGarrison = {
     
     private ["_buildings", "_maxAmount", "_currentAmount", "_spawnedGroups"];
     _buildings = [_trigger] call adm_cqc_fnc_getTriggerBuildings;
+    DEBUG("admiral.cqc",FMT_2("CQC Zone '%1' found '%2' suitable building(s).",_trigger,count _buildings));
     _maxAmount = _trigger getVariable ["adm_zone_pool", 0];
     _currentAmount = 0;
     _spawnedGroups = [];
@@ -177,6 +182,7 @@ adm_cqc_fnc_spawnGarrison = {
             };
         };
     } foreach _buildings;
+    INFO("admiral.cqc",FMT_3("CQC Zone '%1' spawned '%2' unit(s) in '%3' group(s).",_trigger,_currentAmount,count _spawnedGroups));
 
     _spawnedGroups;
 };
@@ -199,7 +205,7 @@ adm_cqc_fnc_getForceFireEnemy = {
 };
 
 adm_cqc_fnc_forceFire = {
-    FUN_ARGS_1(_groups);
+    FUN_ARGS_2(_trigger,_groups);
     
     waitUntil {
         DECLARE(_aliveGroupLeft) = false;
@@ -213,6 +219,7 @@ adm_cqc_fnc_forceFire = {
                         _enemy = _enemy select 0;
                         _unit lookAt _enemy;
                         _unit doFire _enemy;
+                        TRACE("admiral.cqc.forcefire",FMT_4("CQC unit '%1' in group '%2', in CQC Zone '%3' has found an enemy '%4' and is being forced to fire at it.",_unit,_group,_trigger,_enemy));
                     };
                     _aliveGroupLeft = true;
                 };
@@ -221,6 +228,7 @@ adm_cqc_fnc_forceFire = {
         sleep adm_cqc_forceFireDelay;
         !(_aliveGroupLeft && adm_cqc_forceFireEnabled);
     };
+    DEBUG("admiral.cqc.forcefire",FMT_1("ForceFire has been disabled for CQC Zone '%1'.",_trigger));
 };
 
 adm_cqc_fnc_initZone = {
@@ -237,8 +245,9 @@ adm_cqc_fnc_initZone = {
     DECLARE(_spawnedGroups) = [_trigger] call adm_cqc_fnc_spawnGarrison;
     PUSH_ALL(adm_cqc_groups, _spawnedGroups);
     [_spawnedGroups] call adm_rupture_fnc_initGroups;
-    [_spawnedGroups] call adm_cqc_fnc_forceFire;
+    [_trigger, _spawnedGroups] call adm_cqc_fnc_forceFire;
     PUSH(adm_cqc_groups, _trigger);
+    INFO("admiral.cqc",FMT_1("CQC Zone '%1' has been succesfully initialized.",_trigger));
 };
 
 adm_cqc_fnc_getAliveGroups = {
