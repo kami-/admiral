@@ -118,7 +118,7 @@ adm_cqc_fnc_spawnGarrisonGroupUnits = {
         _possiblePositions = _possiblePositions - [_position];
         [_building buildingPos _position, _group, _unitTemplate, UNIT_TYPE_ARRAY select UNIT_TYPE_INF] call adm_cqc_fnc_placeMan;
     };
-    DEBUG("admiral.cqc.create",FMT_3("Created '%1' CQC units for group '%2' in building '%3'.",_numOfUnits,_group,_building));
+    DEBUG("admiral.cqc.create",FMT_3("Created '%1' CQC unit(s) for group '%2' in building '%3'.",_numOfUnits,_group,_building));
 };
 
 adm_cqc_fnc_spawnGarrisonGroup = {
