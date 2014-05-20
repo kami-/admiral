@@ -311,26 +311,6 @@
 //          _longestAxis == 400;
 #define LONGEST_AXIS(TRG) (if ((triggerArea (TRG)) select 0 > (triggerArea (TRG)) select 1) then {(triggerArea (TRG)) select 0} else {(triggerArea (TRG)) select 1})
 
-// Return log message iwith given logging level.
-// Example:
-//      GIVEN:
-//          _gearClass = "FTL";
-//          _gearTemplate = "M4SOC";
-//          (time == 12.341)
-//      WHEN:
-//          _logMessage = LOG_2("WARN","Template '%1' is missing class '%2'!", _gearClass, _gearTemplate);
-//      THEN:
-//          _logMessage == "[ADMIRAL] 12.341 [WARN] Template 'M4SOC' is missing class 'FTL'!";
-#define LOG_MSG_0(LVL,FORMAT) (format ["[ADMIRAL] %1 [%2] ", time, LVL] + FORMAT)
-#define LOG_MSG_1(LVL,FORMAT,MSG1) (format ["[ADMIRAL] %1 [%2] ", time, LVL] + format [FORMAT, MSG1])
-#define LOG_MSG_2(LVL,FORMAT,MSG1,MSG2) (format ["[ADMIRAL] %1 [%2] ", time, LVL] + format [FORMAT, MSG1, MSG2])
-#define LOG_MSG_3(LVL,FORMAT,MSG1,MSG2,MSG3) (format ["[ADMIRAL] %1 [%2] ", time, LVL] + format [FORMAT, MSG1, MSG2, MSG3])
-#define LOG_MSG_4(LVL,FORMAT,MSG1,MSG2,MSG3,MSG4) (format ["[ADMIRAL] %1 [%2] ", time, LVL] + format [FORMAT, MSG1, MSG2, MSG3, MSG4])
-#define LOG_MSG_5(LVL,FORMAT,MSG1,MSG2,MSG3,MSG4,MSG5) (format ["[ADMIRAL] %1 [%2] ", time, LVL] + format [FORMAT, MSG1, MSG2, MSG3, MSG4, MSG5])
-#define LOG_MSG_6(LVL,FORMAT,MSG1,MSG2,MSG3,MSG4,MSG5,MSG6) (format ["[ADMIRAL] %1 [%2] ", time, LVL] + format [FORMAT, MSG1, MSG2, MSG3, MSG4, MSG5, MSG6])
-#define LOG_MSG_7(LVL,FORMAT,MSG1,MSG2,MSG3,MSG4,MSG5,MSG6,MSG7) (format ["[ADMIRAL] %1 [%2] ", time, LVL] + format [FORMAT, MSG1, MSG2, MSG3, MSG4, MSG5, MSG6, MSG7])
-#define LOG_MSG_8(LVL,FORMAT,MSG1,MSG2,MSG3,MSG4,MSG5,MSG6,MSG7,MSG8) (format ["[ADMIRAL] %1 [%2] ", time, LVL] + format [FORMAT, MSG1, MSG2, MSG3, MSG4, MSG5, MSG6, MSG7, MSG8])
-
 // Creates a private declaration for a variable and enables instant assigment.
 // Example:
 //      GIVEN:
