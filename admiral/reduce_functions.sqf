@@ -1,6 +1,6 @@
 #include "admiral_defines.h"
 
-#include "log_macros.h"
+#include "logbook.h"
 
 adm_reduce_fnc_setGroupExpandCount = {
     FUN_ARGS_1(_group);

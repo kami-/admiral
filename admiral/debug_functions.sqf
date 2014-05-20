@@ -1,6 +1,6 @@
 #include "admiral_defines.h"
 
-#include "log_macros.h"
+#include "logbook.h"
 
 adm_debug_fnc_debugSpawnedGroups = {
     [] spawn {

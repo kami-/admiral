@@ -1,6 +1,6 @@
 #include "admiral_defines.h"
 
-#include "log_macros.h"
+#include "logbook.h"
 
 adm_rupture_fnc_initUnit = {
     FUN_ARGS_1(_unit);

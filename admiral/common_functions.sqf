@@ -1,6 +1,6 @@
 #include "admiral_defines.h"
 
-#include "log_macros.h"
+#include "logbook.h"
 
 adm_common_fnc_placeMan = {
     FUN_ARGS_4(_position,_group,_units,_skillArray);

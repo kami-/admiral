@@ -1,6 +1,6 @@
 #include "admiral_defines.h"
 
-#include "log_macros.h"
+#include "logbook.h"
 
 adm_behavior_fnc_changeAllGroupState = {
     waitUntil {

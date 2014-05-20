@@ -1,6 +1,6 @@
 #include "settings.sqf"
 
-#include "log_macros.h"
+#include "logbook.h"
 
 adm_settings_fnc_initSideRelations = {
     adm_sideRelations = [];
