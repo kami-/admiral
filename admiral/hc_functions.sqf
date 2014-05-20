@@ -2,7 +2,7 @@
 
 #define LOGGING_LEVEL_INFO
 #define LOGGING_TO_RPT
-#include "log_macros.h"
+#include "logbook.h"
 
 adm_hc_fnc_initDefaultNames = {
     if (isNil {adm_hc_defaultNames}) then {
