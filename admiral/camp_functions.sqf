@@ -11,7 +11,7 @@ adm_camp_fnc_placeMan = {
         [_unitTemplate, _unitType] call adm_common_fnc_getUnitTemplateArray,
         CAMP_SKILL_ARRAY
     ] call adm_common_fnc_placeMan;
-    DEBUG("admiral.camp.create",FMT_5("Created unit '%1' at position '%2', in group '%3' with type '%4' and classname '%5'.",_unit,_position,_group,UNIT_TYPE_ARRAY select _unitType,typeOf _unit));
+    DEBUG("admiral.camp.create",FMT_5("Created unit '%1' at position '%2', in group '%3' with type '%4' and classname '%5'.",_unit,_position,_group,_unitType,typeOf _unit));
 
     _unit;
 };
@@ -464,8 +464,8 @@ adm_camp_fnc_initZone = {
         [_trigger] call adm_debug_fnc_createTriggerLocalMarker;
         [_trigger] call adm_error_fnc_validateZone;
     };
-    [_trigger] call ([_trigger] call adm_camp_fnc_getSpawnFunction);
     INFO("admiral.camp",FMT_1("Camp Zone '%1' has been succesfully initialized.",_trigger));
+    [_trigger] call ([_trigger] call adm_camp_fnc_getSpawnFunction);
 };
 
 adm_camp_fnc_getAliveInfGroups = {

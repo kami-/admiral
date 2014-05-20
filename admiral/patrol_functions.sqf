@@ -11,7 +11,7 @@ adm_patrol_fnc_placeMan = {
         [_unitTemplate, _unitType] call adm_common_fnc_getUnitTemplateArray,
         PATROL_SKILL_ARRAY
     ] call adm_common_fnc_placeMan;
-    DEBUG("admiral.patrol.create",FMT_5("Created unit '%1' at position '%2', in group '%3' with type '%4' and classname '%5'.",_unit,_position,_group,UNIT_TYPE_ARRAY select _unitType,typeOf _unit));
+    DEBUG("admiral.patrol.create",FMT_5("Created unit '%1' at position '%2', in group '%3' with type '%4' and classname '%5'.",_unit,_position,_group,_unitType,typeOf _unit));
 
     _unit;
 };
