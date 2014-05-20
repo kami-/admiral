@@ -1,11 +1,15 @@
-#include "admiral_defines.h"
+#include "admiral_macros.h"
+
+#include "logbook.h"
 
 adm_common_fnc_placeMan = {
     FUN_ARGS_4(_position,_group,_units,_skillArray);
 
     DECLARE(_unit) = _group createUnit [SELECT_RAND(_units), _position, [], 0, "NONE"];
+    DEBUG("admiral.common.create",FMT_4("Created unit '%1' at position '%2', in group '%3' with classname '%4'.",_unit,_position,_group,typeOf _unit));
     {
         _unit setSkill _x;
+        TRACE("admiral.common.create",FMT_3("Set unit '%1' skill '%2' to '%3'.",_unit,_x select 0,_x select 1));
     } foreach _skillArray;
     _unit allowFleeing 0;
     [_unit] call adm_common_fnc_setGear;
@@ -16,6 +20,7 @@ adm_common_fnc_placeMan = {
 adm_common_fnc_placeVehicle = {
     FUN_ARGS_2(_vehType,_vehPos);
 
+    DEBUG("admiral.common.create",FMT_2("Created vehicle at position '%1', with classname '%2'.",_vehPos,_vehType));
     createVehicle [_vehType, _vehPos, [], 0, "NONE"];
 };
 
@@ -32,6 +37,7 @@ adm_common_initUnitTemplate = {
 
     if (isNil {_trigger getVariable "adm_zone_unitTemplate"}) then {
         _trigger setVariable ["adm_zone_unitTemplate", _defaultTemplate, false];
+        DEBUG("admiral.common.zone",FMT_2("No unitTemplate was givven for trigger '%1'. Set it to '%2' default template.",_trigger,_defaultTemplate));
     };
 };
 
@@ -54,6 +60,7 @@ adm_common_fnc_createWaypoint = {
     _waypoint setWaypointType _type;
     _waypoint setWaypointBehaviour _behaviour;
     _waypoint setWaypointCombatMode _mode;
+    DEBUG("admiral.common.create",FMT_6("Created waypoint '%1' at position '%2' for group '%3', with type '%4', behaviour '%5' and combat mode '%6'.",_waypoint,_wpArray,_group,_type,_behaviour,_mode));
 
     _waypoint;
 };
@@ -99,6 +106,7 @@ adm_common_fnc_createLocalMarker = {
     if (!isNil "_size") then {
         _name setMarkerSizeLocal _size;
     };
+    DEBUG("admiral.common.create",FMT_6("Created local marker '%1' at position '%2' with shape '%3', type '%4', color '%5' and size '%6'.",_marker,_position,_shape,_type,_color,_size));
 
     _name;
 };
@@ -248,6 +256,7 @@ adm_common_fnc_setConfig = {
 
     {
         _trigger setVariable [[_x select 0] call adm_common_fnc_getRealConfig, _x select 1];
+        TRACE("admiral.common.zone", FMT_3("Set trigger '%1' config variable '%2' to '%3'.",_trigger,[_x select 0] call adm_common_fnc_getRealConfig,_x select 1));
     } foreach _configArray;
     [_trigger] call adm_common_fnc_initZone;
 };

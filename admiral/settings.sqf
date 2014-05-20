@@ -1,4 +1,4 @@
-#include "admiral_defines.h"
+#include "admiral_macros.h"
 
 // Side Relations
 adm_settings_fnc_setSideRelations = {
