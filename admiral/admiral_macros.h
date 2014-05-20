@@ -1,5 +1,5 @@
-#ifndef ADMIRAL_DEFINES_H
-#define ADMIRAL_DEFINES_H
+#ifndef ADMIRAL_MACROS_H
+#define ADMIRAL_MACROS_H
 
 #define ADMIRAL_VERSION                     0.6.1
 #define STR_ADMIRAL_VERSION                 "0.6.1"
@@ -320,4 +320,4 @@
 //          private "_group"; _group = _x;
 #define DECLARE(VAR) private #VAR; VAR
 
-#endif //ADMIRAL_DEFINES_H
+#endif //ADMIRAL_MACROS_H

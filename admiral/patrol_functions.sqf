@@ -1,4 +1,4 @@
-#include "admiral_defines.h"
+#include "admiral_macros.h"
 
 #include "logbook.h"
 

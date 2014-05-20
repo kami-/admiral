@@ -1,4 +1,4 @@
-#include "admiral_defines.h"
+#include "admiral_macros.h"
 
 #define LOGGING_LEVEL_INFO
 #define LOGGING_TO_RPT
