@@ -1,5 +1,7 @@
 #include "admiral_defines.h"
 
+#include "logbook.h"
+
 adm_patrol_fnc_placeMan = {
     FUN_ARGS_4(_position,_group,_unitTemplate,_unitType);
 
