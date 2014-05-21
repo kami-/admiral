@@ -1,8 +1,8 @@
 #ifndef ADMIRAL_MACROS_H
 #define ADMIRAL_MACROS_H
 
-#define ADMIRAL_VERSION                     0.6.1
-#define STR_ADMIRAL_VERSION                 "0.6.1"
+#define ADMIRAL_VERSION                     0.7.0
+#define STR_ADMIRAL_VERSION                 "0.7.0"
 
 #define MULTIPLE_SIDES
 #ifdef MULTIPLE_SIDES
