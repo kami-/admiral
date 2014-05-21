@@ -1,11 +1,12 @@
-#include "admiral_defines.h"
+#include "admiral_macros.h"
+
+#include "logbook.h"
 
 adm_error_fnc_validateVariables = {
     FUN_ARGS_1(_variableArray);
 
     {
-        private "_variableName";
-        _variableName = _x select 0;
+        DECLARE(_variableName) = _x select 0;
         [_x select 1] call adm_error_fnc_processAsserts;
         { call _x } foreach (_x select 2);
     } foreach _variableArray;
@@ -18,11 +19,10 @@ adm_error_fnc_processAsserts = {
     _i = 0;
     _noError = true;
     while {_noError && _i < count _asserts} do {
-        private "_assertResult";
-        _assertResult = call (_asserts select _i);
+        DECLARE(_assertResult) = call (_asserts select _i);
         if (_assertResult != "") then {
             PUSH(adm_error_errorMessages,_assertResult);
-            diag_log LOG_MSG_1("ERROR","Validation - %1",_assertResult);;
+            ERROR("admiral.error",FMT_1("Validation error: %1",_assertResult));
             _noError = false;
         };
         INC(_i);
@@ -171,8 +171,7 @@ adm_error_fnc_validateCQCBuildings = {
 adm_error_fnc_validateZone = {
     FUN_ARGS_1(_trigger);
 
-    private "_validateFunc";
-    _validateFunc = call {
+    DECLARE(_validateFunc) = call {
         if (triggerText _trigger == "cqc") exitWith { adm_error_fnc_validateCQCZone };
         if (triggerText _trigger == "patrol") exitWith { adm_error_fnc_validatePatrolZone };
         if (triggerText _trigger == "camp") exitWith { adm_error_fnc_validateCampZone };
@@ -257,8 +256,7 @@ adm_error_fnc_validateCampZone = {
 adm_error_fnc_validateCampZoneType = {
     FUN_ARGS_1(_trigger);
 
-    private "_validateFunc";
-    _validateFunc = call {
+    DECLARE(_validateFunc) = call {
         if (_trigger getVariable "adm_camp_type" == "periodic") exitWith {
             {[_trigger, "Periodic camp", "groupDelay", "adm_camp_groupDelay", "SCALAR", ASSERT_MIN(_x,0,_errorMessages select 1), "Number of %1 groups '%2' cannot be less, than 0, in config entry '%3' at index '%4', on '%5' zone '%6'!"]
                 call adm_error_fnc_validateGroupConfigArray;}
@@ -311,8 +309,7 @@ adm_error_fnc_validateGroupConfigArray = {
 adm_error_fnc_init = {
     adm_error_errorMessages = [];
 
-    private ["_settingsVariables"];
-    _settingsVariables = [
+    DECLARE(_settingsVariables) = [
         ["adm_isDebuggingEnabled",          [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("BOOL")]],
         ["adm_isCachingEnabled",            [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("BOOL")]],
         ["adm_areNVGsEnabled",              [DEF_ASSERT_NOTNIL, DEF_ASSERT_TYPE("BOOL")]],

@@ -1,15 +1,17 @@
-#include "admiral_defines.h"
+#include "admiral_macros.h"
+
+#include "logbook.h"
 
 adm_patrol_fnc_placeMan = {
     FUN_ARGS_4(_position,_group,_unitTemplate,_unitType);
 
-    private "_unit";
-    _unit = [
+    DECLARE(_unit) = [
         _position,
         _group,
         [_unitTemplate, _unitType] call adm_common_fnc_getUnitTemplateArray,
         PATROL_SKILL_ARRAY
     ] call adm_common_fnc_placeMan;
+    DEBUG("admiral.patrol.create",FMT_5("Created unit '%1' at position '%2', in group '%3' with type '%4' and classname '%5'.",_unit,_position,_group,_unitType,typeOf _unit));
 
     _unit;
 };
@@ -18,21 +20,20 @@ adm_patrol_fnc_createWaypoints = {
     FUN_ARGS_4(_group,_unitType,_trigger,_noOfWaypoints);
 
     [_group, _unitType, _trigger, _noOfWaypoints] call adm_camp_fnc_createPatrolWaypoints;
-
-    private "_defultWp";
-    _defultWp = (waypoints _group) select 0;
+    DECLARE(_defultWp) = (waypoints _group) select 0;
     _defultWp setWaypointPosition [getPosATL (leader _group), 0];
     _defultWp setWaypointType 'MOVE';
     _defultWp setWaypointBehaviour (SELECT_RAND(AS_ARRAY_2('AWARE','SAFE')));
     _defultWp setWaypointCombatMode 'RED';
+    DEBUG("admiral.patrol.create",FMT_3("Created '%1' patrol waypoint(s) for group '%2' in Camp Zone '%3'.",_noOfWaypoints,_group,_trigger));
 };
 
 adm_patrol_fnc_spawnInfGroup = {
     FUN_ARGS_1(_trigger);
 
-    private "_group";
-    _group = [_trigger, adm_patrol_infFireteamSize, GROUP_TYPE_INF, adm_patrol_fnc_placeMan, UNIT_TYPE_INF] call adm_camp_fnc_spawnInfGroup;
+    DECLARE(_group) = [_trigger, adm_patrol_infFireteamSize, GROUP_TYPE_INF, adm_patrol_fnc_placeMan, UNIT_TYPE_INF] call adm_camp_fnc_spawnInfGroup;
     [_group, "SoldierWB", _trigger, adm_patrol_infWaypointAmount] call adm_patrol_fnc_createWaypoints;
+    DEBUG("admiral.patrol.create",FMT_4("Created '%1' Patrol unit(s) for group '%2' of type '%3' in Camp Zone '%4'.",adm_patrol_infFireteamSize,_group,GROUP_TYPE_ARRAY select _groupType,_trigger));
 
     _group;
 };
@@ -40,9 +41,9 @@ adm_patrol_fnc_spawnInfGroup = {
 adm_patrol_fnc_spawnTechGroup = {
     FUN_ARGS_1(_trigger);
 
-    private ["_group"];
-    _group = [_trigger, adm_patrol_techFireteamSize, GROUP_TYPE_TECH, adm_patrol_fnc_placeMan, UNIT_TYPE_INF] call adm_camp_fnc_spawnVehicleGroup;
+    DECLARE(_group) = [_trigger, adm_patrol_techFireteamSize, GROUP_TYPE_TECH, adm_patrol_fnc_placeMan, UNIT_TYPE_INF] call adm_camp_fnc_spawnVehicleGroup;
     [_group, typeOf vehicle leader _group, _trigger, adm_patrol_techWaypointAmount] call adm_patrol_fnc_createWaypoints;
+    DEBUG("admiral.patrol.create",FMT_5("Created '%1' crew for vehicle type of '%2' for group '%3' of type '%4' in Patrol Zone '%5'.",adm_patrol_techFireteamSize,typeOf vehicle leader _group,_group,GROUP_TYPE_ARRAY select GROUP_TYPE_TECH,_trigger));
 
     _group;
 };
@@ -50,9 +51,9 @@ adm_patrol_fnc_spawnTechGroup = {
 adm_patrol_fnc_spawnArmorGroup = {
     FUN_ARGS_1(_trigger);
 
-    private ["_group"];
-    _group = [_trigger, adm_patrol_armourFireteamSize, GROUP_TYPE_ARMOUR, adm_patrol_fnc_placeMan, UNIT_TYPE_CREW] call adm_camp_fnc_spawnVehicleGroup;
+    DECLARE(_group) = [_trigger, adm_patrol_armourFireteamSize, GROUP_TYPE_ARMOUR, adm_patrol_fnc_placeMan, UNIT_TYPE_CREW] call adm_camp_fnc_spawnVehicleGroup;
     [_group, typeOf vehicle leader _group, _trigger, adm_patrol_armourWaypointAmount] call adm_patrol_fnc_createWaypoints;
+    DEBUG("admiral.patrol.create",FMT_5("Created '%1' crew for vehicle type of '%2' for group '%3' of type '%4' in Patrol Zone '%5'.",adm_patrol_armourFireteamSize,typeOf vehicle leader _group,_group,GROUP_TYPE_ARRAY select GROUP_TYPE_ARMOUR,_trigger));
 
     _group;
 };
@@ -62,11 +63,13 @@ adm_patrol_fnc_moveZone = {
 
     [_trigger, _position, _triggerArea] call adm_patrol_fnc_moveTrigger;
     [_trigger] call adm_patrol_fnc_moveUpdateAllGroupWaypoints;
+    INFO("admiral.patrol.move",FMT_2("Patrol zone '%1' was moved to position '%2'.",_trigger,_position));
 };
 
 adm_patrol_fnc_followZone = {
     FUN_ARGS_4(_trigger,_object,_delay,_triggerArea);
 
+    INFO("admiral.patrol.follow",FMT_3("Patrol zone '%1' has started following object '%2' with update delay '%3'.",_trigger,_object,_delay));
     _trigger setVariable ["adm_patrol_following", true, false];
     [_trigger, _object, _delay, _triggerArea] spawn {
         FUN_ARGS_4(_trigger,_object,_delay,_triggerArea);
@@ -74,9 +77,11 @@ adm_patrol_fnc_followZone = {
         waitUntil {
             [_trigger, getPosATL _object, _triggerArea] call adm_patrol_fnc_moveTrigger;
             [_trigger, getPosATL _object] call adm_patrol_fnc_followUpdateAllGroupWaypoints;
+            DEBUG("admiral.patrol.follow",FMT_3("Updated follow position for Patrol zone '%1' on object '%2' with position '%3'.",_trigger,_object,getPosATL _object));
             sleep _delay;
             !(_trigger getVariable ["adm_patrol_following", false]);
         };
+        INFO("admiral.patrol.follow",FMT_2("Patrol zone '%1' has stopped following object '%2'.",_trigger,_object));
     };
 };
 
@@ -87,6 +92,7 @@ adm_patrol_fnc_stopFollowZone = {
         _trigger setVariable ["adm_patrol_following", false, false];
         [_trigger] call adm_patrol_fnc_moveUpdateAllGroupWaypoints;
     };
+    INFO("admiral.patrol.follow",FMT_1("Patrol zone '%1' has stopped following.",_trigger));
 };
 
 adm_patrol_fnc_moveTrigger = {
@@ -96,7 +102,7 @@ adm_patrol_fnc_moveTrigger = {
         _trigger setTriggerArea _triggerArea;
     };
     _trigger setPos _position;
-
+    DEBUG("admiral.patrol.move",FMT_3("Trigger '%1' moved to position '%2' with area '%3'.",_trigger,_position,_triggerArea));
     if (adm_isDebuggingEnabled) then {
         [_trigger] call adm_debug_fnc_updateTriggerLocalMarker;
     };
@@ -160,12 +166,43 @@ adm_patrol_fnc_deleteGroupWaypoints = {
 adm_patrol_fnc_updateDefaultWaypoint = {
     FUN_ARGS_2(_group,_position);
 
-    private "_defultWp";
-    _defultWp = (waypoints _group) select 0;
+    DECLARE(_defultWp) = (waypoints _group) select 0;
     _defultWp setWaypointPosition [_position, 0];
     _group setCurrentWaypoint _defultWp;
     _defultWp setWaypointStatements ["true", "(group this) setVariable ['adm_patrol_hasTarget', false, false];"];
     _group setVariable ["adm_patrol_hasTarget", true, false];
+};
+
+
+adm_patrol_fnc_spawnGroups = {
+    FUN_ARGS_1(_trigger);
+
+    private ["_pool", "_spawnedGroups"];
+    _pool = _trigger getVariable "adm_zone_pool";
+    _spawnedGroups = [];
+    for "_i" from 1 to (_pool select 0) do {
+        PUSH(_spawnedGroups, [_trigger] call adm_patrol_fnc_spawnInfGroup);
+    };
+    _trigger setVariable ["adm_zone_infGroups", _spawnedGroups, false];
+    PUSH_ALL(adm_patrol_infGroups, _spawnedGroups);
+    [adm_patrol_infGroups] call adm_rupture_fnc_initGroups;
+    INFO("admiral.patrol",FMT_2("Patrol Zone '%1' spawned '%2' infantry group(s).",_trigger,count _spawnedGroups));
+
+    _spawnedGroups = [];
+    for "_i" from 1 to (_pool select 1) do {
+        PUSH(_spawnedGroups, [_trigger] call adm_patrol_fnc_spawnTechGroup);
+    };
+    _trigger setVariable ["adm_zone_techGroups", _spawnedGroups, false];
+    PUSH_ALL(adm_patrol_techGroups, _spawnedGroups);
+    INFO("admiral.patrol",FMT_2("Patrol Zone '%1' spawned '%2' technical group(s).",_trigger,count _spawnedGroups));
+
+    _spawnedGroups = [];
+    for "_i" from 1 to (_pool select 2) do {
+        PUSH(_spawnedGroups, [_trigger] call adm_patrol_fnc_spawnArmorGroup);
+    };
+    _trigger setVariable ["adm_zone_armourGroups", _spawnedGroups, false];
+    PUSH_ALL(adm_patrol_armourGroups, _spawnedGroups);
+    INFO("admiral.patrol",FMT_2("Patrol Zone '%1' spawned '%2' armour group(s).",_trigger,count _spawnedGroups));
 };
 
 adm_patrol_fnc_initZone = {
@@ -179,34 +216,9 @@ adm_patrol_fnc_initZone = {
         [_trigger] call adm_error_fnc_validateZone;
     };
 
-    private ["_pool", "_spawnedGroups"];
-    _pool = _trigger getVariable "adm_zone_pool";
-
-    // Spawn infantry groups
-    _spawnedGroups = [];
-    for "_i" from 1 to (_pool select 0) do {
-        PUSH(_spawnedGroups, [_trigger] call adm_patrol_fnc_spawnInfGroup);
-    };
-    _trigger setVariable ["adm_zone_infGroups", _spawnedGroups, false];
-    PUSH_ALL(adm_patrol_infGroups, _spawnedGroups);
-    [adm_patrol_infGroups] call adm_rupture_fnc_initGroups;
-
-    // Spawn technical groups
-    _spawnedGroups = [];
-    for "_i" from 1 to (_pool select 1) do {
-        PUSH(_spawnedGroups, [_trigger] call adm_patrol_fnc_spawnTechGroup);
-    };
-    _trigger setVariable ["adm_zone_techGroups", _spawnedGroups, false];
-    PUSH_ALL(adm_patrol_techGroups, _spawnedGroups);
-
-    // Spawn armour groups
-    _spawnedGroups = [];
-    for "_i" from 1 to (_pool select 2) do {
-        PUSH(_spawnedGroups, [_trigger] call adm_patrol_fnc_spawnArmorGroup);
-    };
-    _trigger setVariable ["adm_zone_armourGroups", _spawnedGroups, false];
-    PUSH_ALL(adm_patrol_armourGroups, _spawnedGroups);
+    [_trigger] call adm_patrol_fnc_spawnGroups;
     PUSH(adm_patrol_triggers, _trigger);
+    INFO("admiral.patrol",FMT_1("Patrol Zone '%1' has been succesfully initialized.",_trigger));
 };
 
 adm_patrol_fnc_getAliveInfGroups = {

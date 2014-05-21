@@ -1,4 +1,4 @@
-#include "admiral_defines.h"
+#include "admiral_macros.h"
 
 /**
  * Initializes a zone with the given config entries.

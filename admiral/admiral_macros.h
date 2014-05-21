@@ -1,9 +1,15 @@
+#ifndef ADMIRAL_MACROS_H
+#define ADMIRAL_MACROS_H
+
+#define ADMIRAL_VERSION                     0.6.1
+#define STR_ADMIRAL_VERSION                 "0.6.1"
+
 #define MULTIPLE_SIDES
 #ifdef MULTIPLE_SIDES
-    #define ALL_UNITS       allUnits
+    #define ALL_UNITS                       allUnits
 #endif
 #ifndef MULTIPLE_SIDES
-    #define ALL_UNITS       ([] call adm_common_fnc_getPlayerUnits)
+    #define ALL_UNITS                       ([] call adm_common_fnc_getPlayerUnits)
 #endif
 
 #define TEMPLATE_CONFIGFILE                 missionConfigFile
@@ -49,7 +55,7 @@
 #define GROUP_TYPE_ARMOUR                   2
 
 #define CAMP_TYPE_ARRAY                     ["periodic", "ondemand", "random"]
-#define CAMP_DEFAULT_DELAY                  60
+#define CAMP_DEFAULT_DELAY                  10
 
 #define CAMP_DEFAULT_ENDTRIGGER_AREA        [400,400,0,false]
 
@@ -75,6 +81,7 @@
     + round (((NUMS) select 1) / BEHAVIOR_AVG_CAR_SIZE / (CAR)) \
     + round (((NUMS) select 2) / BEHAVIOR_AVG_AIR_SIZE / (AIR))
 
+#define STATE_TEXT_ARRAY                        ["INIT", "MOVING", "ENEMY FOUND", "SAD ENEMY", "COMBAT", "CONTINUE MOVING"]
 #define STATE_INIT                              0
 #define STATE_MOVING                            1
 #define STATE_ENEMYFOUND                        2
@@ -135,7 +142,7 @@
 //          PVT_3(_unit,_group,_trigger); 
 //      THEN:
 //          private ["_unit","_group","_trigger"];
-#define PVT_1(VAR1) private [#VAR1]
+#define PVT_1(VAR1) private #VAR1
 #define PVT_2(VAR1,VAR2) private [#VAR1,#VAR2]
 #define PVT_3(VAR1,VAR2,VAR3) private [#VAR1,#VAR2,#VAR3]
 #define PVT_4(VAR1,VAR2,VAR3,VAR4) private [#VAR1,#VAR2,#VAR3,#VAR4]
@@ -304,22 +311,13 @@
 //          _longestAxis == 400;
 #define LONGEST_AXIS(TRG) (if ((triggerArea (TRG)) select 0 > (triggerArea (TRG)) select 1) then {(triggerArea (TRG)) select 0} else {(triggerArea (TRG)) select 1})
 
-// Return log message iwith given logging level.
+// Creates a private declaration for a variable and enables instant assigment.
 // Example:
 //      GIVEN:
-//          _gearClass = "FTL";
-//          _gearTemplate = "M4SOC";
-//          (time == 12.341)
 //      WHEN:
-//          _logMessage = LOG_2("WARN","Template '%1' is missing class '%2'!", _gearClass, _gearTemplate);
+//          DECLARE(_group) = _x;
 //      THEN:
-//          _logMessage == "[ADMIRAL] 12.341 [WARN] Template 'M4SOC' is missing class 'FTL'!";
-#define LOG_MSG_0(LVL,FORMAT) (format ["[ADMIRAL] %1 [%2] ", time, LVL] + FORMAT)
-#define LOG_MSG_1(LVL,FORMAT,MSG1) (format ["[ADMIRAL] %1 [%2] ", time, LVL] + format [FORMAT, MSG1])
-#define LOG_MSG_2(LVL,FORMAT,MSG1,MSG2) (format ["[ADMIRAL] %1 [%2] ", time, LVL] + format [FORMAT, MSG1, MSG2])
-#define LOG_MSG_3(LVL,FORMAT,MSG1,MSG2,MSG3) (format ["[ADMIRAL] %1 [%2] ", time, LVL] + format [FORMAT, MSG1, MSG2, MSG3])
-#define LOG_MSG_4(LVL,FORMAT,MSG1,MSG2,MSG3,MSG4) (format ["[ADMIRAL] %1 [%2] ", time, LVL] + format [FORMAT, MSG1, MSG2, MSG3, MSG4])
-#define LOG_MSG_5(LVL,FORMAT,MSG1,MSG2,MSG3,MSG4,MSG5) (format ["[ADMIRAL] %1 [%2] ", time, LVL] + format [FORMAT, MSG1, MSG2, MSG3, MSG4, MSG5])
-#define LOG_MSG_6(LVL,FORMAT,MSG1,MSG2,MSG3,MSG4,MSG5,MSG6) (format ["[ADMIRAL] %1 [%2] ", time, LVL] + format [FORMAT, MSG1, MSG2, MSG3, MSG4, MSG5, MSG6])
-#define LOG_MSG_7(LVL,FORMAT,MSG1,MSG2,MSG3,MSG4,MSG5,MSG6,MSG7) (format ["[ADMIRAL] %1 [%2] ", time, LVL] + format [FORMAT, MSG1, MSG2, MSG3, MSG4, MSG5, MSG6, MSG7])
-#define LOG_MSG_8(LVL,FORMAT,MSG1,MSG2,MSG3,MSG4,MSG5,MSG6,MSG7,MSG8) (format ["[ADMIRAL] %1 [%2] ", time, LVL] + format [FORMAT, MSG1, MSG2, MSG3, MSG4, MSG5, MSG6, MSG7, MSG8])
+//          private "_group"; _group = _x;
+#define DECLARE(VAR) private #VAR; VAR
+
+#endif //ADMIRAL_MACROS_H

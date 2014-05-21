@@ -1,12 +1,15 @@
-#include "admiral_defines.h"
+#include "admiral_macros.h"
+
+#include "logbook.h"
 
 adm_common_fnc_placeMan = {
-    FUN_ARGS_4(_pos,_grp,_units,_skillArray);
+    FUN_ARGS_4(_position,_group,_units,_skillArray);
 
-    private ["_unit"];
-    _unit = _grp createUnit [SELECT_RAND(_units), _pos, [], 0, "NONE"];
+    DECLARE(_unit) = _group createUnit [SELECT_RAND(_units), _position, [], 0, "NONE"];
+    DEBUG("admiral.common.create",FMT_4("Created unit '%1' at position '%2', in group '%3' with classname '%4'.",_unit,_position,_group,typeOf _unit));
     {
         _unit setSkill _x;
+        TRACE("admiral.common.create",FMT_3("Set unit '%1' skill '%2' to '%3'.",_unit,_x select 0,_x select 1));
     } foreach _skillArray;
     _unit allowFleeing 0;
     [_unit] call adm_common_fnc_setGear;
@@ -16,6 +19,8 @@ adm_common_fnc_placeMan = {
 
 adm_common_fnc_placeVehicle = {
     FUN_ARGS_2(_vehType,_vehPos);
+
+    DEBUG("admiral.common.create",FMT_2("Created vehicle at position '%1', with classname '%2'.",_vehPos,_vehType));
     createVehicle [_vehType, _vehPos, [], 0, "NONE"];
 };
 
@@ -32,6 +37,7 @@ adm_common_initUnitTemplate = {
 
     if (isNil {_trigger getVariable "adm_zone_unitTemplate"}) then {
         _trigger setVariable ["adm_zone_unitTemplate", _defaultTemplate, false];
+        DEBUG("admiral.common.zone",FMT_2("No unitTemplate was givven for trigger '%1'. Set it to '%2' default template.",_trigger,_defaultTemplate));
     };
 };
 
@@ -48,25 +54,23 @@ adm_common_fnc_getUnitTemplateSide = {
 };
 
 adm_common_fnc_createWaypoint = {
-    FUN_ARGS_5(_grp,_wpArray,_type,_behaviour,_mode);
+    FUN_ARGS_5(_group,_wpArray,_type,_behaviour,_mode);
     
-    private ["_wp"];
-    _wp = _grp addWaypoint _wpArray;
-    _wp setWaypointType _type;
-    _wp setWaypointBehaviour _behaviour;
-    _wp setWaypointCombatMode _mode;
+    DECLARE(_waypoint) = _group addWaypoint _wpArray;
+    _waypoint setWaypointType _type;
+    _waypoint setWaypointBehaviour _behaviour;
+    _waypoint setWaypointCombatMode _mode;
+    DEBUG("admiral.common.create",FMT_6("Created waypoint '%1' at position '%2' for group '%3', with type '%4', behaviour '%5' and combat mode '%6'.",_waypoint,_wpArray,_group,_type,_behaviour,_mode));
 
-    _wp;
+    _waypoint;
 };
 
 adm_common_fnc_getAliveGroups = {
     FUN_ARGS_1(_groupsArray);
 
-    private "_aliveGroups";
-    _aliveGroups = [];
+    DECLARE(_aliveGroups) = [];
     {
-         private "_groups";
-        _groups = _x;
+        DECLARE(_groups) = _x;
         FILTER_PUSH_ALL(_aliveGroups,_groups,{{alive _x} count units _x > 0});
     } foreach _groupsArray;
 
@@ -76,14 +80,11 @@ adm_common_fnc_getAliveGroups = {
 adm_common_fnc_getAliveUnits = {
     FUN_ARGS_1(_groupsArray);
 
-    private "_aliveUnits";
-    _aliveUnits = [];
+    DECLARE(_aliveUnits) = [];
     {
-        private "_groups";
-        _groups = _x;
+        DECLARE(_groups) = _x;
         {
-            private "_groupUnits";
-            _groupUnits = units _x;
+            DECLARE(_groupUnits) = units _x;
             FILTER_PUSH_ALL(_aliveUnits,_groupUnits,{alive _x});
         } foreach _groups;
     } foreach _groupsArray;
@@ -96,16 +97,16 @@ adm_common_fnc_getAdmiralUnits = {
 };
 
 adm_common_fnc_createLocalMarker = {
-    FUN_ARGS_6(_name,_pos,_shape,_type,_color,_size);
+    FUN_ARGS_6(_name,_position,_shape,_type,_color,_size);
 
-    private ["_marker"];
-    _marker = createMarkerLocal [_name, _pos];
+    DECLARE(_marker) = createMarkerLocal [_name, _position];
     _marker setMarkerShapeLocal _shape;
     _name setMarkerTypeLocal _type;
     _name setMarkerColorLocal _color;
     if (!isNil "_size") then {
         _name setMarkerSizeLocal _size;
     };
+    DEBUG("admiral.common.create",FMT_6("Created local marker '%1' at position '%2' with shape '%3', type '%4', color '%5' and size '%6'.",_marker,_position,_shape,_type,_color,_size));
 
     _name;
 };
@@ -116,12 +117,12 @@ adm_common_fnc_getPlayerUnits = {
 
 adm_common_fnc_randomFlatEmptyPosInTrigger = {
     FUN_ARGS_3(_trigger,_unitType,_canBeWater);
-    if (isNil "_canBeWater") then { _canBeWater = false; };
 
+    if (isNil "_canBeWater") then {_canBeWater = false;};
     private ["_position", "_emptyPosition"];
     _position = [_trigger, _canBeWater] call adm_common_fnc_randomPosInTrigger;
     _emptyPosition = _position findEmptyPosition [0, CAMP_SPAWN_CIRCLE_MAX_DIST, _unitType];
-    while {[_emptyPosition, []] call BIS_fnc_areEqual} do {
+    while {count _emptyPosition == 0} do {
         _position = [_trigger, _canBeWater] call adm_common_fnc_randomPosInTrigger;
         _emptyPosition = _position findEmptyPosition [0, CAMP_SPAWN_CIRCLE_MAX_DIST, _unitType];
     };
@@ -132,11 +133,10 @@ adm_common_fnc_randomFlatEmptyPosInTrigger = {
 adm_common_fnc_randomPosInTrigger = {
     FUN_ARGS_2(_trigger,_canBeWater);
 
-    private ["_width", "_height", "_angle", "_isRectangle", "_triggerPosition", "_position", "_shapeFunc"];
-    _width = triggerArea _trigger select 0;
-    _height = triggerArea _trigger select 1;
-    _angle = 180 - (triggerArea _trigger select 2);
-    _isRectangle = triggerArea _trigger select 3;
+    private ["_triggerArea", "_width", "_height", "_angle", "_isRectangle", "_triggerPosition", "_position", "_shapeFunc"];
+    _triggerArea = triggerArea _trigger;
+    SELECT_4(_triggerArea,_width,_height,_angle,_isRectangle);
+    _angle = 180 - _angle;
     _triggerPosition = getPosATL _trigger;
 
     if (_isRectangle) then {
@@ -184,8 +184,7 @@ adm_common_fnc_isPlayerNearZone = {
     FUN_ARGS_2(_trigger,_distance);
 
     private ["_width", "_height", "_longestAxis"];
-    _width = triggerArea _trigger select 0;
-    _height = triggerArea _trigger select 1;
+    SELECT_2(triggerArea _trigger,_width,_height);
     _longestAxis = if (_width > _height) then {_width} else {_height};
 
     [_trigger, _longestAxis + _distance] call adm_common_fnc_isPlayersInRange;
@@ -194,14 +193,13 @@ adm_common_fnc_isPlayerNearZone = {
 adm_common_fnc_isPlayersInRange = {
     FUN_ARGS_2(_position,_distance);
 
-    private ["_i", "_players", "_inRange"];
-    _i = 0;
+    private ["_players", "_inRange"];
     _players = [] call adm_common_fnc_getPlayerUnits;
     _inRange = false;
-    while {!_inRange && _i < count _players} do {
-        _inRange = _position distance (_players select _i) <= _distance;
-        INC(_i);
-    };
+    {
+        _inRange = _position distance _x <= _distance;
+        if (_inRange) exitWith {};
+    } foreach _players;
 
     _inRange;
 };
@@ -209,11 +207,10 @@ adm_common_fnc_isPlayersInRange = {
 adm_common_fnc_isPosInsideTrigger = {
     FUN_ARGS_2(_trigger,_position);
 
-    private ["_width", "_height", "_angle", "_isRectangle", "_triggerPosition", "_shapeFunc"];
-    _width = triggerArea _trigger select 0;
-    _height = triggerArea _trigger select 1;
-    _angle = 180 - (triggerArea _trigger select 2);
-    _isRectangle = triggerArea _trigger select 3;
+    private ["_triggerArea", "_width", "_height", "_angle", "_isRectangle", "_triggerPosition", "_shapeFunc"];
+    _triggerArea = triggerArea _trigger;
+    SELECT_4(_triggerArea,_width,_height,_angle,_isRectangle);
+    _angle = 180 - _angle;
     _triggerPosition = getPosATL _trigger;
 
     if (_isRectangle) then {
@@ -223,10 +220,8 @@ adm_common_fnc_isPosInsideTrigger = {
     };
 
     private ["_px", "_py", "_tx", "_ty", "_rotatedPx", "_rotatedPy"];
-    _px = _position select 0;
-    _py = _position select 1;
-    _tx = _triggerPosition select 0;
-    _ty = _triggerPosition select 1;
+    SELECT_2(_position,_px,_py);
+    SELECT_2(_triggerPosition,_tx,_ty);
     _rotatedPx = (_px - _tx) * cos (_angle) + (_py - _ty) * sin (_angle) + _tx;
     _rotatedPy = (_py - _ty) * cos (_angle) - (_px - _tx) * sin (_angle) + _ty;
 
@@ -248,8 +243,7 @@ adm_common_fnc_isPosInsideEllipse = {
 adm_common_fnc_filterFirst = {
     FUN_ARGS_2(_array,_filterFunc);
 
-    private ["_result"];
-    _result = [];
+    DECLARE(_result) = [];
     {
         if (call _filterFunc) exitWith { _result = [_x] };
     } foreach _array;
@@ -262,6 +256,7 @@ adm_common_fnc_setConfig = {
 
     {
         _trigger setVariable [[_x select 0] call adm_common_fnc_getRealConfig, _x select 1];
+        TRACE("admiral.common.zone", FMT_3("Set trigger '%1' config variable '%2' to '%3'.",_trigger,[_x select 0] call adm_common_fnc_getRealConfig,_x select 1));
     } foreach _configArray;
     [_trigger] call adm_common_fnc_initZone;
 };
@@ -270,14 +265,14 @@ adm_common_fnc_getRealConfig = {
     FUN_ARGS_1(_configName);
 
     call {
-        if (_configName == "pool") exitWith {"adm_zone_pool"};
-        if (_configName == "minHeight") exitWith {"adm_cqc_minHeight"};
-        if (_configName == "type") exitWith {"adm_camp_type"};
-        if (_configName == "wave") exitWith {"adm_camp_wave"};
-        if (_configName == "campDelay") exitWith {"adm_camp_campDelay"};
-        if (_configName == "groupDelay") exitWith {"adm_camp_groupDelay"};
-        if (_configName == "spawnChance") exitWith {"adm_camp_spawnChance"};
-        if (_configName == "unitTemplate") exitWith {"adm_zone_unitTemplate"};
+        if (_configName == "pool")          exitWith {"adm_zone_pool"};
+        if (_configName == "minHeight")     exitWith {"adm_cqc_minHeight"};
+        if (_configName == "type")          exitWith {"adm_camp_type"};
+        if (_configName == "wave")          exitWith {"adm_camp_wave"};
+        if (_configName == "campDelay")     exitWith {"adm_camp_campDelay"};
+        if (_configName == "groupDelay")    exitWith {"adm_camp_groupDelay"};
+        if (_configName == "spawnChance")   exitWith {"adm_camp_spawnChance"};
+        if (_configName == "unitTemplate")  exitWith {"adm_zone_unitTemplate"};
     };
 };
 
@@ -308,12 +303,10 @@ adm_common_fnc_initZone = {
     };
 };
 
-// Compare function must return true if _x is bigger, than _y, else return false
 adm_common_fnc_insertionSort = {
     FUN_ARGS_2(_array,_compareFunc);
 
-    private "_sortArray";
-    _sortArray = +_array;
+    DECLARE(_sortArray) = +_array;
     for "_i" from 1 to (count _sortArray) - 1 do {
         private ["_x", "_j", "_y"];
         _x = _sortArray select _i;
@@ -333,7 +326,7 @@ adm_common_fnc_insertionSort = {
 adm_common_fnc_shuffle = {
     FUN_ARGS_1(_array);
 
-    _shuffledArray = [];
+    DECLARE(_shuffledArray) = [];
     if (count _array > 0) then {
         _shuffledArray set [0, _array select 0];
         for "_i" from 1 to (count _array) - 1 do {
@@ -349,8 +342,7 @@ adm_common_fnc_shuffle = {
 adm_common_fnc_isFriendlySide = {
     FUN_ARGS_2(_side,_otherSide);
 
-    private "_isFriendly";
-    _isFriendly = true;
+    DECLARE(_isFriendly) = true;
     if (_side == sideEnemy || {_otherSide == sideEnemy}) then {
         _isFriendly = false;
     } else {

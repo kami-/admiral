@@ -1,4 +1,6 @@
-#include "admiral_defines.h"
+#include "admiral_macros.h"
+
+#include "logbook.h"
 
 adm_reduce_fnc_setGroupExpandCount = {
     FUN_ARGS_1(_group);
@@ -9,8 +11,7 @@ adm_reduce_fnc_setGroupExpandCount = {
 adm_reduce_fnc_setCqcInitPositions = {
     FUN_ARGS_1(_group);
 
-    private ["_initPositions"];
-    _initPositions = [];
+    DECLARE(_initPositions) = [];
     {
         if (leader _group != _x) then { 
             PUSH(_initPositions, getPosATL _x);
@@ -26,9 +27,11 @@ adm_reduce_fnc_reduceGroup = {
     _group setVariable ["adm_reduce_isReduced", true, false];
     {
         if (leader _group != _x) then { 
-            deleteVehicle _x 
+            TRACE("admiral.reduce",FMT_2("Removing unit '%1' from group '%2'.",_x,_group));
+            deleteVehicle _x;
         };
     } foreach units _group;
+    DEBUG("admiral.reduce",FMT_2("Reduced group '%1', removed '%2' unit(s).",_group,_group getVariable "adm_reduce_expandCount"));
 };
 
 adm_reduce_fnc_expandGroup = {
@@ -40,8 +43,10 @@ adm_reduce_fnc_expandGroup = {
         _unitTemplate = _trigger getVariable "adm_zone_unitTemplate";
         _unitType = UNIT_TYPE_ARRAY select UNIT_TYPE_INF;
         [_x, _group, _unitTemplate, _unitType] call _placeManFunc;
+        TRACE("admiral.reduce",FMT_1("Created unit for group '%1'.",_group));
     } foreach _positions;
     _group setVariable ["adm_reduce_isReduced", false, false];
+    DEBUG("admiral.reduce",FMT_2("Expanded group '%1', created '%2' unit(s).",_group,count _positions));
 };
 
 adm_reduce_fnc_expandGroups = {
@@ -55,6 +60,7 @@ adm_reduce_fnc_expandGroups = {
 };
 
 adm_reduce_fnc_expandAllGroups = {
+    DEBUG("admiral.reduce","Expanding all groups.");
     [adm_cqc_groups, adm_reduce_fnc_getCqcGroupPositions, adm_cqc_fnc_placeMan] call adm_reduce_fnc_expandGroups;
     [adm_patrol_infGroups, adm_reduce_fnc_getPatrolGroupPositions, adm_patrol_fnc_placeMan] call adm_reduce_fnc_expandGroups;
     [adm_camp_infGroups, adm_reduce_fnc_getPatrolGroupPositions, adm_patrol_fnc_placeMan] call adm_reduce_fnc_expandGroups;
@@ -67,8 +73,7 @@ adm_reduce_fnc_getCqcGroupPositions = {
     _positions = [];
     _expandCount = _group getVariable ["adm_reduce_expandCount", 0];
     _initPositions = _group getVariable "adm_reduce_initPositions";
-
-    for [{private ["_i"]; _i = 0}, {_i < _expandCount}, {INC(_i)}] do {
+    for "_i" from 0 to  _expandCount - 1 do {
         PUSH(_positions, _initPositions select _i);
     };
 
@@ -81,7 +86,6 @@ adm_reduce_fnc_getPatrolGroupPositions = {
     private ["_poitions", "_expandCount"];
     _positions = [];
     _expandCount = _group getVariable ["adm_reduce_expandCount", 0];
-
     for "_i" from 1 to _expandCount do {
        PUSH(_positions, getPosATL leader _group);
     };
@@ -96,16 +100,13 @@ adm_reduce_fnc_canReduceGroup = {
     private ["_canReduce", "_isReduced"];
     _canReduce = false;
     _isReduced = _group getVariable ["adm_reduce_isReduced", false];
-
     if (!_isReduced) then {
-        private ["_i", "_players"];
-        _i = 0;
-        _players = [side _group] call adm_reduce_fnc_getMonitoredUnits;
+        DECLARE(_players) = [side _group] call adm_reduce_fnc_getMonitoredUnits;
         _canReduce = true;
-        while {_canReduce && _i < count _players} do {
-            _canReduce = [_players select _i, _group, REDUCE_DISTANCE] call gfn_reduce_fnc_unitOutsideReduceDistance;
-            INC(_i);
-        };
+        {
+            _canReduce = [_x, _group, REDUCE_DISTANCE] call adm_reduce_fnc_unitOutsideReduceDistance;
+            if (!_canReduce) exitWith {};
+        } foreach _players;
     };
     _canReduce;
 };
@@ -117,13 +118,11 @@ adm_reduce_fnc_canExpandGroup = {
     _canExpand = false;
     _isReduced = _group getVariable ["adm_reduce_isReduced", false];
     if (_isReduced) then {
-        private ["_i", "_players"];
-        _i = 0;
-        _players = [side _group] call adm_reduce_fnc_getMonitoredUnits;
-        while {!_canExpand && _i < count _players} do {
-            _canExpand = !([_players select _i, _group, EXPAND_DISTANCE] call gfn_reduce_fnc_unitOutsideReduceDistance);
-            INC(_i);
-        };
+        DECLARE(_players) = [side _group] call adm_reduce_fnc_getMonitoredUnits;
+        {
+            _canExpand = !([_x, _group, EXPAND_DISTANCE] call adm_reduce_fnc_unitOutsideReduceDistance);
+            if (_canExpand) exitWith {};
+        } foreach _players;
     };
 
     _canExpand;
@@ -134,9 +133,11 @@ adm_reduce_fnc_checkGroups = {
 
     {
         if ([_x] call adm_reduce_fnc_canReduceGroup) then {
+            DEBUG("admiral.reduce",FMT_1("Group '%1' can be reduced.",_x));
             [_x] call adm_reduce_fnc_reduceGroup;
         } else {
             if ([_x] call adm_reduce_fnc_canExpandGroup) then {
+                DEBUG("admiral.reduce",FMT_1("Group '%1' can be expanded.",_x));
                 [_x, [_x] call _getPositionsFunc, _placeManFunc] call adm_reduce_fnc_expandGroup;
             };
         };
@@ -151,12 +152,14 @@ adm_reduce_fnc_monitorGroups = {
         sleep 1;
         !adm_isCachingEnabled;
     };
+    DEBUG("admiral.reduce","Monitoring has been stopped.");
     sleep 1;
     [] call adm_reduce_fnc_expandAllGroups;
 };
 
 adm_reduce_fnc_enableCaching = {
     if (!adm_isCachingEnabled) then {
+        INFO("admiral.reduce","Enabling caching.");
         adm_isCachingEnabled = true;
         [] call adm_reduce_fnc_init;
     };
@@ -164,12 +167,13 @@ adm_reduce_fnc_enableCaching = {
 
 adm_reduce_fnc_disableCaching = {
     if (adm_isCachingEnabled) then {
+        INFO("admiral.reduce","Disabling caching.");
         adm_isCachingEnabled = false;
         [] call adm_reduce_fnc_expandAllGroups;
     };
 };
 
-gfn_reduce_fnc_unitOutsideReduceDistance = {
+adm_reduce_fnc_unitOutsideReduceDistance = {
     FUN_ARGS_3(_unit,_group,_distance);
 
     (getPosATL _unit) distance (getPosATL leader _group) > _distance;
@@ -178,8 +182,7 @@ gfn_reduce_fnc_unitOutsideReduceDistance = {
 adm_reduce_fnc_getMonitoredUnits = {
     FUN_ARGS_1(_side);
 
-    private "_units";
-    _units = [];
+    DECLARE(_units) = [];
     FILTER_PUSH_ALL(_units, ALL_UNITS, {!(AS_ARRAY_2(side _x, _side) call adm_common_fnc_isFriendlySide) || {isPlayer _x}});
     _units;
 };
