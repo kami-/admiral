@@ -6,7 +6,7 @@
 
 adm_hc_fnc_initDefaultNames = {
     if (isNil {adm_hc_defaultNames}) then {
-        adm_hc_defaultNames = [];
+        adm_hc_defaultNames = ["HC", "HeadlessClient"];
         DEBUG("admiral.hc","'adm_hc_defaultNames' was not defined. HC won't be used.");
     };
 };
