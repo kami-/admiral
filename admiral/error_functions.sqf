@@ -1,5 +1,8 @@
 #include "admiral_macros.h"
 
+#define LOGGING_LEVEL_ERROR
+#define LOGGING_TO_CHAT
+#define LOGGING_TO_RPT
 #include "logbook.h"
 
 adm_error_fnc_validateVariables = {
