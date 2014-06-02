@@ -446,11 +446,13 @@ adm_camp_setDefaultVariables = {
         DEBUG("admiral.camp",FMT_2("No value was given for variable 'adm_camp_campDelay' in Camp Zone '%1'. Set default value '%2' instead.",_trigger,CAMP_DEFAULT_DELAY));
     };
     _campDelay = _trigger getVariable "adm_camp_campDelay";
-    _groupDelay = _trigger getVariable "adm_camp_groupDelay";
-    for "_i" from 0 to (count _groupDelay) - 1 do {
-        _groupDelay set [_i, (_groupDelay select _i) * _campDelay];
+    if (!isNil {_trigger getVariable "adm_camp_groupDelay"}) then {
+        _groupDelay = _trigger getVariable "adm_camp_groupDelay";
+        for "_i" from 0 to (count _groupDelay) - 1 do {
+            _groupDelay set [_i, (_groupDelay select _i) * _campDelay];
+        };
+        DEBUG("admiral.camp",FMT_1("Multiplied variable 'adm_camp_groupDelay' with variable 'adm_camp_campDelay' in Camp Zone '%1'.",_trigger));
     };
-    DEBUG("admiral.camp",FMT_1("Multiplied variable 'adm_camp_groupDelay' with variable 'adm_camp_campDelay' in Camp Zone '%1'.",_trigger));
 };
 
 adm_camp_fnc_initZone = {
