@@ -1,7 +1,6 @@
 #include "admiral_macros.h"
 
-class Admiral {
-  class UnitTemplates {
+class UnitTemplates {
     class Base {
         side = SIDE_CIV;
         infantry[] = {"Cow02", "Cow03", "Cow04", "Fin", "Goat", "Cock", "Pastor", "Rabbit", "Sheep", "WildBoar"};
@@ -44,5 +43,4 @@ class Admiral {
         crewmen[] = {"RW_RU_Soldier_Crew"};
         armour[] = {"RW_T72_RU"};
     };
-  };
 };
