@@ -2,10 +2,20 @@
 
 #include "logbook.h"
 
-// Wait for BIS functions to be compiled
+// Initialize BIS functions for only Arma 2, if not done already
+if (isNil {call compile "blufor"}) then {
+    if (isNil {BIS_fnc_init} || {!BIS_fnc_init}) then {
+        createCenter sideLogic;
+        (createGroup sideLogic) createUnit ["FunctionsManager", [0, 0, 0], [], 0, "NONE"];
+        DEBUG("admiral.bis","Manually initializing BIS functions.");
+    };
+};
+
+// Wait for BIS functions to be initialized
 waitUntil {
     BIS_fnc_init;
 };
+DEBUG("admiral.bis","BIS functions are initialized.");
 
 // Compile functions
 call compile preProcessFileLineNumbers "admiral\settings_functions.sqf"; DEBUG("admiral.compile","Compiled 'admiral\settings_functions.sqf'.");
