@@ -25,6 +25,13 @@ class Admiral {
         armour[] = {""};
     };
 
+    class CIV_Russia : Base {
+        infantry[] = {"Assistant", "RU_Assistant", "Citizen1", "Citizen2", "Citizen3", "Citizen4", "RU_Citizen1", "RU_Citizen2", "RU_Citizen3", "RU_Citizen4", "Priest", "RU_Priest", "Pilot", "RU_Pilot", "Policeman", "RU_Policeman", "Doctor", "RU_Doctor", "Teacher", "RU_Teacher", "Functionary1", "Functionary2", "RU_Functionary1", "RU_Functionary2", "Rocker1", "Rocker2" , "Rocker3", "Rocker4", "RU_Rocker1", "RU_Rocker2", "RU_Rocker3", "RU_Rocker4", "Profiteer1", "Profiteer2", "Profiteer3", "Profiteer4", "RU_Profiteer1", "RU_Profiteer2", "RU_Profiteer3", "RU_Profiteer4", "Villager1", "Villager2", "Villager3", "Villager4", "RU_Villager1", "RU_Villager2", "RU_Villager3", "RU_Villager4", "RU_Woodlander1", "RU_Woodlander2", "RU_Woodlander3", "RU_Woodlander4", "Worker1", "Worker2", "Worker3", "Worker4", "Secretary1", "Secretary2", "Secretary3", "Secretary4", "RU_Secretary1", "RU_Secretary2", "RU_Secretary3", "RU_Secretary4", "Damsel1", "Damsel2", "Damsel3", "Damsel4", "RU_Damsel1", "RU_Damsel2", "RU_Damsel3", "RU_Damsel4", "Hooker1", "Hooker2", "Hooker3", "Hooker4", "RU_Hooker1", "RU_Hooker2", "RU_Hooker3", "RU_Hooker4", "Madam1", "Madam2", "Madam3", "Madam4", "Ru_Madam1", "Ru_Madam2", "Ru_Madam3", "Ru_Madam4", "WorkWoman1", "WorkWoman2", "WorkWoman3", "WorkWoman4", "RU_WorkWoman1", "RU_WorkWoman2", "RU_WorkWoman3", "RU_WorkWoman4", "HouseWife1", "HouseWife2", "HouseWife3", "HouseWife4", "RU_HouseWife1", "RU_HouseWife2", "RU_HouseWife3", "RU_HouseWife4", "Farmwife1", "Farmwife2", "Farmwife3", "Farmwife4","RU_Farmwife1","RU_Farmwife2","RU_Farmwife3","RU_Farmwife4","Sportswoman1","Sportswoman2","Sportswoman3","Sportswoman4","RU_Sportswoman1","RU_Sportswoman2","RU_Sportswoman3","RU_Sportswoman4"};
+        crewmen[] = {""};
+        technicals[] = {""};
+        armour[] = {""};
+    };
+
     class US_Army_Multicam : Base {
         side=SIDE_WEST;
         infantry[] = {"US_Soldier_EP1", "US_Soldier_AR_EP1", "US_Soldier_AT_EP1", "US_Soldier_AAR_EP1", "US_Soldier_AAT_EP1", "US_Soldier_B_EP1", "US_Soldier_GL_EP1", "US_Soldier_LAT_EP1", "US_Soldier_Light_EP1", "US_Soldier_Medic_EP1", "US_Soldier_Officer_EP1", "US_Soldier_TL_EP1"};
