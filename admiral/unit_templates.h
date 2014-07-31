@@ -30,7 +30,7 @@ class Admiral {
         infantry[] = {"US_Soldier_EP1"};
         crewmen[] = {"US_Soldier_Crew_EP1"};
         technicals[] = {"HMMWV_DES_EP1", "MTVR_DES_EP1", "HMMWV_M1151_M2_DES_EP1", "HMMWV_MK19_DES_EP1", "HMMWV_M998_crows_M2_DES_EP1", "HMMWV_M998_crows_MK19_DES_EP1", "HMMWV_Terminal_EP1", "HMMWV_M1035_DES_EP1", "HMMWV_Avenger_DES_EP1"};
-        armour[] = {"M1A1_US_DES_EP1", "M1A2_US_TUSK_MG_EP1", "M2A2_EP1", "M2A3_EP1", "M1126_ICV_M2_EP1", "M1126_ICV_mk19_EP1", "M1130_CV_EP1", "M1129_MC_EP1", "M1128_MGS_EP1", "M6_EP1","LAV25", "LAV25_HQ"};
+        armour[] = {"M1A1_US_DES_EP1", "M1A2_US_TUSK_MG_EP1", "M2A2_EP1", "M2A3_EP1", "M1126_ICV_M2_EP1", "M1126_ICV_mk19_EP1", "M1130_CV_EP1", "M1129_MC_EP1", "M1128_MGS_EP1", "M6_EP1"};
     };
 
     class USMC_Woodland : US_Army_Multicam {
@@ -40,7 +40,7 @@ class Admiral {
         armour[] = {"M1Abrams", "M1A2_TUSK_MG", "AAV", "MLRS", "LAV25", "LAV25_HQ"};
     };
 
-    class USMC_Desert : US_ARMY_Multicam {
+    class USMC_Desert : US_Army_Multicam {
         infantry[] = {"ACE_USMC_Soldier_AR_D", "ACE_USMC_Soldier_Medic_D", "ACE_USMC_Soldier_TL_D", "ACE_USMC_Soldier_GL_D", "ACE_USMC_Soldier_MG_D", "ACE_USMC_Soldier_Officer_D", "ACE_USMC_Soldier_D", "ACE_USMC_Soldier_SL_D"};
         crewman[] = {"ACE_USMC_Soldier_Crew_D"};
     };
