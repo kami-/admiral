@@ -36,8 +36,16 @@ class Admiral {
         infantry[] = {"GER_Soldier_EP1", "GER_Soldier_MG_EP1", "GER_Soldier_Medic_EP1", "GER_Soldier_TL_EP1"};
         crewmen[] = {"GER_Soldier_EP1"};
         technicals[] = {"HMMWV_M2", "HMMWV_MK19"};
-        armour[] = {"M1128_MGS_EP1"};
+        armour[] = {""};
     };
+
+    class CZ_Army : Base {
+        side=SIDE_WEST;
+        infantry[] = {"CZ_Soldier_AT_DES_EP1", "CZ_Soldier_DES_EP1", "CZ_Soldier_AMG_DES_EP1", "CZ_Soldier_B_DES_EP1", "CZ_Soldier_MG_DES_EP1", "CZ_Soldier_SL_DES_EP1", "CZ_Soldier_Office_DES_EP1", "CZ_Soldier_Light_DES_EP1", "CZ_Soldier_medik_DES_EP1"};
+        crewmen[] = {"CZ_Soldier_Pilot_DES_EP1"};
+        technicals[] = {"HMMWV_Ambulance_CZ_DES_EP1", "LandRover_CZ_EP1", "HMMWV_M1151_M2_CZ_DES_EP1", "LandRover_Special_CZ_EP1"};
+        armour[] = {""};
+	};
 
     class BAF_Woodland : Base {
         side=SIDE_WEST;
