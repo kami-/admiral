@@ -36,8 +36,12 @@ class Admiral {
     class USMC_Woodland : US_Army_Multicam {
         infantry[] = {"USMC_Soldier", "USMC_Soldier2", "USMC_SoldierS", "USMC_Soldier_AR", "USMC_Soldier_AT", "USMC_Soldier_GL", "USMC_Soldier_MG", "USMC_Soldier_Medic", "USMC_Soldier_Officer", "USMC_Soldier_TL"};
         crewmen[] = {"USMC_Soldier_Crew"};
-        technicals[] = {"ACE_HMMWV_GMV", "ACE_HMMWV_GMV_MK19", "HMMWV", "HMMWV_M2", "HMMWV_MK19", "HMMWV_TOW", "HMMWV_Armored", "HMMWV_Avenger", "ACE_Truck5tMG", "ACE_Truck5tMGOpen", };
+        technicals[] = {"ACE_HMMWV_GMV", "ACE_HMMWV_GMV_MK19", "HMMWV", "HMMWV_M2", "HMMWV_MK19", "HMMWV_TOW", "HMMWV_Armored", "HMMWV_Avenger", "ACE_Truck5tMG", "ACE_Truck5tMGOpen"};
         armour[] = {"M1Abrams", "M1A2_TUSK_MG", "AAV", "MLRS", "LAV25", "LAV25_HQ"};
+    };
+
+    class USMC_FR : USMC_Woodland {
+    	infantry[] = {"FR_AR", "FR_Assault_GL", "FR_Assault_R", "FR_Commander", "FR_Corpsman", "FR_GL", "FR_Sapper", "FR_TL"};
     };
 
     class USMC_Desert : US_Army_Multicam {
