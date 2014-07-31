@@ -30,7 +30,14 @@ class Admiral {
         infantry[] = {"US_Soldier_EP1"};
         crewmen[] = {"US_Soldier_Crew_EP1"};
         technicals[] = {"HMMWV_DES_EP1", "MTVR_DES_EP1", "HMMWV_M1151_M2_DES_EP1", "HMMWV_MK19_DES_EP1", "HMMWV_M998_crows_M2_DES_EP1", "HMMWV_M998_crows_MK19_DES_EP1", "HMMWV_Terminal_EP1", "HMMWV_M1035_DES_EP1", "HMMWV_Avenger_DES_EP1"};
-        armour[] = {"M1A1_US_DES_EP1", "M1A2_US_TUSK_MG_EP1", "M2A2_EP1", "M2A3_EP1", "M1126_ICV_M2_EP1", "M1126_ICV_mk19_EP1", "M1130_CV_EP1", "M1129_MC_EP1", "M1128_MGS_EP1", "M6_EP1"};
+        armour[] = {"M1A1_US_DES_EP1", "M1A2_US_TUSK_MG_EP1", "M2A2_EP1", "M2A3_EP1", "M1126_ICV_M2_EP1", "M1126_ICV_mk19_EP1", "M1130_CV_EP1", "M1129_MC_EP1", "M1128_MGS_EP1", "M6_EP1","LAV25", "LAV25_HQ"};
+    };
+
+    class USMC_Woodland : US_Army_Multicam {
+        infantry[] = {"USMC_Soldier", "USMC_Soldier2", "USMC_SoldierS", "USMC_Soldier_AR", "USMC_Soldier_AT", "USMC_Soldier_GL", "USMC_Soldier_MG", "USMC_Soldier_Medic", "USMC_Soldier_Officer", "USMC_Soldier_TL"};
+        crewman[] = {"USMC_Soldier_Crew"};
+        technicals[] = {"ACE_HMMWV_GMV", "ACE_HMMWV_GMV_MK19", "HMMWV", "HMMWV_M2", "HMMWV_MK19", "HMMWV_TOW", "HMMWV_Armored", "HMMWV_Avenger", "ACE_Truck5tMG", "ACE_Truck5tMGOpen", };
+    armour[] = {"M1Abrams", "M1A2_TUSK_MG", "AAV", "MLRS", "LAV25", "LAV25_HQ"};
     };
 
     class US_80s_Regular_Desert : US_Army_Multicam {
@@ -38,11 +45,10 @@ class Admiral {
         crewmen[] = {"usm_soldier_80s_d_h_crew1"};
     };
 
-    class US_80s_Regular_Woodland : US_80s_Regular_Desert {
+    class US_80s_Regular_Woodland : USMC_Woodland {
         infantry[] = {"usm_soldier_80s_w_h_rm1", "usm_soldier_80s_w_h_rm2", "usm_soldier_80s_w_h_at4", "usm_soldier_80s_w_h_medic", "usm_soldier_80s_w_h_ftl", "usm_soldier_80s_w_h_ar"};
         crewmen[] = {"usm_soldier_80s_w_h_crew1"};
-        technicals[] = {"ACE_HMMWV_GMV", "ACE_HMMWV_GMV_MK19", "HMMWV", "HMMWV_M2", "HMMWV_MK19", "HMMWV_TOW", "HMMWV_Armored", "HMMWV_Avenger", "ACE_Truck5tMG", "ACE_Truck5tMGOpen", };
-        armour[] = {"ACE_Stryker_ICV_M2", "ACE_Stryker_ICV_MK19", "ACE_Stryker_MGS", "ACE_Stryker_TOW", "ACE_M113A3", "ACE_Vulcan", "ACE_M1A1_NATO", "ACE_M1A1HA_TUSK", "ACE_M2A2_W", "ACE_M2A3_W", "ACE_M6A1_W"};
+        armour[] = {"ACE_Stryker_ICV_M2", "ACE_Stryker_ICV_MK19", "ACE_Stryker_MGS", "ACE_Stryker_TOW", "ACE_M113A3", "ACE_Vulcan", "ACE_M1A1_NATO", "ACE_M1A1HA_TUSK", "ACE_M2A2_W", "ACE_M2A3_W", "ACE_M6A1_W","LAV25"};
     };
 
     class GER_KSK : Base {
