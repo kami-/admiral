@@ -11,6 +11,20 @@ class Admiral {
         armour[] = {"Ikarus"};
     };
 
+    class CIV_Takistan : Base {
+        infantry[] = {"TK_CIV_Takistani01_EP1", "TK_CIV_Takistani02_EP1", "TK_CIV_Takistani03_EP1", "TK_CIV_Takistani04_EP1", "TK_CIV_Takistani05_EP1", "TK_CIV_Takistani06_EP1", "TK_CIV_Woman01_EP1", "TK_CIV_Woman02_EP1", "TK_CIV_Woman03_EP1", "TK_CIV_Worker01_EP1", "TK_CIV_Worker02_EP1"};
+        crewmen[] = {"TK_CIV_Takistani01_EP1", "TK_CIV_Takistani02_EP1", "TK_CIV_Takistani03_EP1", "TK_CIV_Takistani04_EP1", "TK_CIV_Takistani05_EP1", "TK_CIV_Takistani06_EP1", "TK_CIV_Woman01_EP1", "TK_CIV_Woman02_EP1", "TK_CIV_Woman03_EP1", "TK_CIV_Worker01_EP1", "TK_CIV_Worker02_EP1"};
+        technicals[] = {"S1203_TK_CIV_EP1", "VolhaLimo_TK_CIV_EP1", "Ikarus_TK_CIV_EP1", "Old_moto_TK_Civ_EP1", "Lada1_TK_CIV_EP1", "Lada2_TK_CIV_EP1", "LandRover_TK_CIV_EP1", "Old_bike_TK_CIV_EP1", "hilux1_civil_3_open_EP1", "V3S_Open_TK_CIV_EP1", "SUV_TK_CIV_EP1", "UAZ_Unarmed_TK_CIV_EP1", "Ural_TK_CIV_EP1", "Volha_1_TK_CIV_EP1", "Volha_2_TK_CIV_EP1", "TT650_TK_CIV_EP1"}; // Did not spawn when tested
+        armour[] = {""};
+    };
+
+    class CIV_European : Base {
+        infantry[] = {"CIV_EuroMan01_EP1", "CIV_EuroMan02_EP1", "CIV_EuroWoman01_EP1", "CIV_EuroWoman02_EP1", "Citizen2_EP1", "Citizen3_EP1", "Dr_Annie_Baker_EP1", "Dr_Hladik_EP1", "Functionay1_EP1", "Functionay2_EP1", "Haris_Press_EP1", "Pilot_EP1", "Profiteer1_EP1", "Rita_Ensler_EP1"};
+        crewmen[] = {""};
+        technicals[] = {""};
+        armour[] = {""};
+    };
+
     class US_Army_Multicam : Base {
         side=SIDE_WEST;
         infantry[] = {"US_Soldier_EP1"};
@@ -49,14 +63,14 @@ class Admiral {
 
     class BAF_Woodland : Base {
         side=SIDE_WEST;
-        infantry[] = {"BAF_Soldier_L_W", "BAF_Soldier_Officer_W", "BAF_Soldier_Medic_W", "BAF_Soldier_AR_W", "BAF_Soldier_AT_W", "BAF_Soldier_AAT_W", "BAF_Soldier_AAR_W"};
+        infantry[] = {"BAF_Soldier_L_W", "BAF_Soldier_Officer_W", "BAF_Soldier_Medic_W", "BAF_Soldier_AR_W", "BAF_Soldier_AT_W", "BAF_Soldier_AAT_W", "BAF_Soldier_AAR_W", "BAF_Soldier_GL_W"};
         crewmen[] = {"BAF_creWman_W"};
         technicals[] = {"BAF_Jackal2_L2A1_W", "BAF_Jackal2_GMG_W", "BAF_Offroad_W"};
         armour[] = {"BAF_FV510_W"};
     };
 
     class BAF_Desert : BAF_Woodland {
-        infantry[] = {"BAF_Soldier_L_DDPM", "BAF_Soldier_Officer_DDPM", "BAF_Soldier_Medic_DDPM", "BAF_Soldier_AR_DDPM", "BAF_Soldier_AT_DDPM", "BAF_Soldier_AAT_DDPM", "BAF_Soldier_AAR_DDPM"};
+        infantry[] = {"BAF_Soldier_L_DDPM", "BAF_Soldier_Officer_DDPM", "BAF_Soldier_Medic_DDPM", "BAF_Soldier_AR_DDPM", "BAF_Soldier_AT_DDPM", "BAF_Soldier_AAT_DDPM", "BAF_Soldier_AAR_DDPM", "BAF_Soldier_GL_DDPM"};
         crewmen[] = {"BAF_crewman_DDPM"};
         technicals[] = {"BAF_Jackal2_GMG_D", "BAF_Jackal2_L2A1_D", "BAF_Offroad_D"};
         armour[] = {"BAF_FV510_D"};
