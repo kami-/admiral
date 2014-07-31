@@ -30,14 +30,22 @@ class Admiral {
         technicals[] = {"ACE_HMMWV_GMV", "ACE_HMMWV_GMV_MK19", "HMMWV", "HMMWV_M2", "HMMWV_MK19", "HMMWV_TOW", "HMMWV_Armored", "HMMWV_Avenger", "ACE_Truck5tMG", "ACE_Truck5tMGOpen", };
         armour[] = {"ACE_Stryker_ICV_M2", "ACE_Stryker_ICV_MK19", "ACE_Stryker_MGS", "ACE_Stryker_TOW", "ACE_M113A3", "ACE_Vulcan", "ACE_M1A1_NATO", "ACE_M1A1HA_TUSK", "ACE_M2A2_W", "ACE_M2A3_W", "ACE_M6A1_W"};
     };
-	
+
+    class GER_KSK : Base {
+        side=SIDE_WEST;
+        infantry[] = {"GER_Soldier_EP1", "GER_Soldier_MG_EP1", "GER_Soldier_Medic_EP1", "GER_Soldier_TL_EP1"};
+        crewmen[] = {"GER_Soldier_EP1"};
+        technicals[] = {"HMMWV_M2", "HMMWV_MK19"};
+        armour[] = {"M1128_MGS_EP1"};
+    };
+
     class BAF_Woodland : Base {
         side=SIDE_WEST;
         infantry[] = {"BAF_Soldier_L_W", "BAF_Soldier_Officer_W", "BAF_Soldier_Medic_W", "BAF_Soldier_AR_W", "BAF_Soldier_AT_W", "BAF_Soldier_AAT_W", "BAF_Soldier_AAR_W"};
         crewmen[] = {"BAF_creWman_W"};
         technicals[] = {"BAF_Jackal2_L2A1_W", "BAF_Jackal2_GMG_W", "BAF_Offroad_W"};
         armour[] = {"BAF_FV510_W"};
-        };
+    };
 
     class BAF_Desert : BAF_Woodland {
         infantry[] = {"BAF_Soldier_L_DDPM", "BAF_Soldier_Officer_DDPM", "BAF_Soldier_Medic_DDPM", "BAF_Soldier_AR_DDPM", "BAF_Soldier_AT_DDPM", "BAF_Soldier_AAT_DDPM", "BAF_Soldier_AAR_DDPM"};
