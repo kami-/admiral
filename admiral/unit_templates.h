@@ -55,6 +55,10 @@ class Admiral {
         technicals[] = {"RW_HMMWV", "RW_HMMWV_M2", "RW_HMMWV_Armored", "RW_HMMWV_MK19", "RW_HMMWV_TOW", "RW_HMMWV_Avenger"};
         armour[] = {"RW_AAV", "RW_LAV25", "RW_LAV25_HQ", "RW_M1A1", "RW_MLRS"};
     };
+	
+    class USMC_FR_Snow : USMC_Snow {
+        infantry[] = {"RW_FR_Assault_GL", "RW_FR_Assault_R", "RW_FR_AR", "RW_FR_Commander", "RW_FR_Corpsman", "RW_FR_Sapper", "RW_FR_GL", "RW_FR_TL"};
+    };
 
     class US_80s_Regular_Desert : US_Army_Multicam {
         infantry[] = {"usm_soldier_80s_d_h_rm1", "usm_soldier_80s_d_h_at4", "usm_soldier_80s_d_h_medic", "usm_soldier_80s_d_h_ftl", "usm_soldier_80s_d_h_ar"};
