@@ -118,7 +118,15 @@ class Admiral {
         technicals[] = {"Offroad_DSHKM_TK_GUE_EP1", "Offroad_SPG9_TK_GUE_EP1", "Pickup_PK_TK_GUE_EP1"};
         armour[] = {"BRDM2_TK_GUE_EP1", "BTR40_TK_GUE_EP1", "BTR40_MG_TK_GUE_EP1", "T34_TK_GUE_EP1", "T55_TK_GUE_EP1"};		
     };
-
+	
+    class United_Nations : Base {
+        side=SIDE_IND;
+        infantry[]={"UN_CDF_Soldier_AT_EP1", "UN_CDF_Soldier_EP1", "UN_CDF_Soldier_Light_EP1", "UN_CDF_Soldier_Officer_EP1", "UN_CDF_Soldier_SL_EP1", "UN_CDF_Soldier_MG_EP1", "UN_CDF_Soldier_AAT_EP1", "UN_CDF_Soldier_AMG_EP1", "UN_CDF_Soldier_B_EP1"};
+        crewmen[]={"UN_CDF_Soldier_Crew_EP1"};
+        technicals[]={"BMP2_UN_EP1", "M113Ambul_UN_EP1"};
+        armour[]={"T72_CDF"};
     };
+
+};
 
 };
