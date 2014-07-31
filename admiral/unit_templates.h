@@ -40,6 +40,11 @@ class Admiral {
         armour[] = {"M1Abrams", "M1A2_TUSK_MG", "AAV", "MLRS", "LAV25", "LAV25_HQ"};
     };
 
+    class USMC_Desert : US_ARMY_Multicam {
+        infantry[] = {"ACE_USMC_Soldier_AR_D", "ACE_USMC_Soldier_Medic_D", "ACE_USMC_Soldier_TL_D", "ACE_USMC_Soldier_GL_D", "ACE_USMC_Soldier_MG_D", "ACE_USMC_Soldier_Officer_D", "ACE_USMC_Soldier_D", "ACE_USMC_Soldier_SL_D"};
+        crewman[] = {"ACE_USMC_Soldier_Crew_D"};
+    };
+
     class US_80s_Regular_Desert : US_Army_Multicam {
         infantry[] = {"usm_soldier_80s_d_h_rm1", "usm_soldier_80s_d_h_at4", "usm_soldier_80s_d_h_medic", "usm_soldier_80s_d_h_ftl", "usm_soldier_80s_d_h_ar"};
         crewmen[] = {"usm_soldier_80s_d_h_crew1"};
