@@ -64,28 +64,6 @@ class Admiral {
         crewmen[] = {"ACE_USMC_Soldier_Crew_D"};
     };
 
-   class USMC_Snow : US_Army_Multicam {
-        infantry[] = {"RW_USMC_Soldier_AR", "RW_USMC_Soldier_Medic", "RW_USMC_Soldier_TL", "RW_USMC_Soldier_GL", "RW_USMC_Soldier_Officer", "RW_USMC_Soldier", "RW_USMC_Soldier_SL"};
-        crewmen[] = {"RW_USMC_Soldier_Crew"};
-        technicals[] = {"RW_HMMWV", "RW_HMMWV_M2", "RW_HMMWV_Armored", "RW_HMMWV_MK19", "RW_HMMWV_TOW", "RW_HMMWV_Avenger"};
-        armour[] = {"RW_AAV", "RW_LAV25", "RW_LAV25_HQ", "RW_M1A1", "RW_MLRS"};
-    };
-	
-    class USMC_FR_Snow : USMC_Snow {
-        infantry[] = {"RW_FR_Assault_GL", "RW_FR_Assault_R", "RW_FR_AR", "RW_FR_Commander", "RW_FR_Corpsman", "RW_FR_Sapper", "RW_FR_GL", "RW_FR_TL"};
-    };
-
-    class US_80s_Regular_Desert : US_Army_Multicam {
-        infantry[] = {"usm_soldier_80s_d_h_rm1", "usm_soldier_80s_d_h_at4", "usm_soldier_80s_d_h_medic", "usm_soldier_80s_d_h_ftl", "usm_soldier_80s_d_h_ar"};
-        crewmen[] = {"usm_soldier_80s_d_h_crew1"};
-    };
-
-    class US_80s_Regular_Woodland : USMC_Woodland {
-        infantry[] = {"usm_soldier_80s_w_h_rm1", "usm_soldier_80s_w_h_rm2", "usm_soldier_80s_w_h_at4", "usm_soldier_80s_w_h_medic", "usm_soldier_80s_w_h_ftl", "usm_soldier_80s_w_h_ar"};
-        crewmen[] = {"usm_soldier_80s_w_h_crew1"};
-        armour[] = {"ACE_Stryker_ICV_M2", "ACE_Stryker_ICV_MK19", "ACE_Stryker_MGS", "ACE_Stryker_TOW", "ACE_M113A3", "ACE_Vulcan", "ACE_M1A1_NATO", "ACE_M1A1HA_TUSK", "ACE_M2A2_W", "ACE_M2A3_W", "ACE_M6A1_W","LAV25"};
-    };
-
     class GER_KSK : Base {
         side=SIDE_WEST;
         infantry[] = {"GER_Soldier_EP1", "GER_Soldier_MG_EP1", "GER_Soldier_Medic_EP1", "GER_Soldier_TL_EP1"};
@@ -162,12 +140,6 @@ class Admiral {
         crewmen[] = {"ACE_RU_Soldier_Crew_D"};
     };
 
-    class RU_Winter : RU_Woodland {
-        infantry[] = {"RW_RU_Soldier", "RW_RU_Soldier", "RW_RU_Soldier", "RW_RU_Soldier", "RW_RU_Soldier", "RW_RU_Soldier", "RW_RU_Soldier_GL", "RW_RU_Soldier_GL", "RW_RU_Soldier_MG", "RW_RU_Soldier_AR", "RW_RU_Soldier_AR", "RW_RU_Soldier_AR", "RW_RU_Soldier_LAT"};
-        crewmen[] = {"RW_RU_Soldier_Crew"};
-        armour[] = {"RW_T72_RU"};
-    };
-
     class INS_Woodland : RU_Woodland {
         infantry[] = {"Ins_Soldier_CO", "Ins_Soldier_1", "Ins_Soldier_GL", "Ins_Soldier_MG", "Ins_Soldier_1", "Ins_Soldier_AT", "Ins_Soldier_Medic", "Ins_Soldier_2", "Ins_Soldier_AR", "Ins_Soldier_1", "Ins_Soldier_1", "Ins_Soldier_2", "Ins_Soldier_AT"};
         crewmen[] = {"Ins_Soldier_Crew"};
@@ -181,13 +153,6 @@ class Admiral {
         crewmen[] = {"TK_INS_Soldier_EP1"};
         technicals[] = {"LandRover_MG_TK_INS_EP1", "LandRover_SPG9_TK_INS_EP1"};
         armour[] = {"BTR40_TK_INS_EP1", "BTR40_MG_TK_INS_EP1"};
-    };
-
-    class African_Rebels : Base {
-        side=SIDE_EAST;
-        infantry[] = {"ibr_rebel11","ibr_rebel102","ibr_rebel22","ibr_rebel83","ibr_rebel33","ibr_rebel125","ibr_rebel77","ibr_rebel77","ibr_rebel77","ibr_rebel11","ibr_rebel44","ibr_rebel55"};
-        crewmen[] = {"ibr_rebel11"};
-        technicals[] = {"Offroad_DSHKM_Gue", "Pickup_PK_GUE", "Pickup_PK_GUE", "Pickup_PK_GUE"};
     };
 
     class NAPA_Woodland : Base {
