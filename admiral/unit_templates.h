@@ -130,6 +130,14 @@ class Admiral {
         armour[] = {"BMP2_RU", "BMP2_RU", "T72_RU", "T72_RU", "BMP2_RU", "ACE_T72B_Base", "ACE_BRDM2_RU", "ACE_BTR70_RU", "ACE_BRDM2_RU", "ACE_BTR70_RU", "ACE_BRDM2_RU"};
     };
 
+    class RU_Spetsnaz_NoSD : RU_Woodland {
+        infantry[] = {"RUS_Commander", "RUS_Soldier1", "RUS_Soldier_GL", "RUS_Soldier_TL"};
+    };
+
+    class RU_Spetsnaz_SD : RU_Spetsnaz_NoSD {
+        infantry[] = {"RUS_Soldier2", "RUS_Soldier3", "RUS_Soldier_Sab"};
+    };
+
     class RU_Desert : RU_Woodland {
         infantry[] = {"ACE_RU_Soldier_D", "ACE_RU_Soldier_D", "ACE_RU_Soldier_D", "ACE_RU_Soldier_D", "ACE_RU_Soldier_D", "ACE_RU_Soldier_D", "ACE_RU_Soldier_GL_D", "ACE_RU_Soldier_GL_D", "ACE_RU_Soldier_MG_D", "ACE_RU_Soldier_AR_D", "ACE_RU_Soldier_AR_D", "ACE_RU_Soldier_AR_D", "ACE_RU_Soldier_LAT_D"};
         crewmen[] = {"ACE_RU_Soldier_Crew_D"};
