@@ -35,14 +35,21 @@ class Admiral {
 
     class USMC_Woodland : US_Army_Multicam {
         infantry[] = {"USMC_Soldier", "USMC_Soldier2", "USMC_SoldierS", "USMC_Soldier_AR", "USMC_Soldier_AT", "USMC_Soldier_GL", "USMC_Soldier_MG", "USMC_Soldier_Medic", "USMC_Soldier_Officer", "USMC_Soldier_TL"};
-        crewman[] = {"USMC_Soldier_Crew"};
+        crewmen[] = {"USMC_Soldier_Crew"};
         technicals[] = {"ACE_HMMWV_GMV", "ACE_HMMWV_GMV_MK19", "HMMWV", "HMMWV_M2", "HMMWV_MK19", "HMMWV_TOW", "HMMWV_Armored", "HMMWV_Avenger", "ACE_Truck5tMG", "ACE_Truck5tMGOpen", };
         armour[] = {"M1Abrams", "M1A2_TUSK_MG", "AAV", "MLRS", "LAV25", "LAV25_HQ"};
     };
 
     class USMC_Desert : US_Army_Multicam {
         infantry[] = {"ACE_USMC_Soldier_AR_D", "ACE_USMC_Soldier_Medic_D", "ACE_USMC_Soldier_TL_D", "ACE_USMC_Soldier_GL_D", "ACE_USMC_Soldier_MG_D", "ACE_USMC_Soldier_Officer_D", "ACE_USMC_Soldier_D", "ACE_USMC_Soldier_SL_D"};
-        crewman[] = {"ACE_USMC_Soldier_Crew_D"};
+        crewmen[] = {"ACE_USMC_Soldier_Crew_D"};
+    };
+
+   class USMC_Snow : US_Army_Multicam {
+        infantry[] = {"RW_USMC_Soldier_AR", "RW_USMC_Soldier_Medic", "RW_USMC_Soldier_TL", "RW_USMC_Soldier_GL", "RW_USMC_Soldier_Officer", "RW_USMC_Soldier", "RW_USMC_Soldier_SL"};
+        crewmen[] = {"RW_USMC_Soldier_Crew"};
+        technicals[] = {"RW_HMMWV", "RW_HMMWV_M2", "RW_HMMWV_Armored", "RW_HMMWV_MK19", "RW_HMMWV_TOW", "RW_HMMWV_Avenger"};
+        armour[] = {"RW_AAV", "RW_LAV25", "RW_LAV25_HQ", "RW_M1A1", "RW_MLRS"};
     };
 
     class US_80s_Regular_Desert : US_Army_Multicam {
