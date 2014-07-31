@@ -40,6 +40,14 @@ class Admiral {
         armour[] = {"M1Abrams", "M1A2_TUSK_MG", "AAV", "MLRS", "LAV25", "LAV25_HQ"};
     };
 
+    class US_SOF : USMC_Woodland {
+        infantry[] = {"US_Delta_Force_AR_EP1", "US_Delta_Force_MG_EP1", "US_Delta_Force_Assault_EP1", "US_Delta_Force_EP1", "US_Delta_Force_M14_EP1", "US_Delta_Force_Medic_EP1", "US_Delta_Force_TL_EP1"};
+    };
+
+    class US_SOF_SD : US_SOF {
+        infantry[] = {"US_Delta_Force_SD_EP1"};
+    };
+
     class USMC_FR : USMC_Woodland {
     	infantry[] = {"FR_AR", "FR_Assault_GL", "FR_Assault_R", "FR_Commander", "FR_Corpsman", "FR_GL", "FR_Sapper", "FR_TL"};
     };
@@ -134,11 +142,11 @@ class Admiral {
         infantry[] = {"MVD_Soldier", "MVD_Soldier_AT", "MVD_Soldier_GL", "MVD_Soldier_GL", "MVD_Soldier_TL"};
     };
 
-    class RU_Spetsnaz_NoSD : RU_Woodland {
+    class RU_Spetsnaz : RU_Woodland {
         infantry[] = {"RUS_Commander", "RUS_Soldier1", "RUS_Soldier_GL", "RUS_Soldier_TL"};
     };
 
-    class RU_Spetsnaz_SD : RU_Spetsnaz_NoSD {
+    class RU_Spetsnaz_SD : RU_Spetsnaz {
         infantry[] = {"RUS_Soldier2", "RUS_Soldier3", "RUS_Soldier_Sab"};
     };
 
