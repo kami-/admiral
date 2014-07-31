@@ -130,6 +130,10 @@ class Admiral {
         armour[] = {"BMP2_RU", "BMP2_RU", "T72_RU", "T72_RU", "BMP2_RU", "ACE_T72B_Base", "ACE_BRDM2_RU", "ACE_BTR70_RU", "ACE_BRDM2_RU", "ACE_BTR70_RU", "ACE_BRDM2_RU"};
     };
 
+    class RU_MVD : RU_Woodland {
+        infantry[] = {"MVD_Soldier", "MVD_Soldier_AT", "MVD_Soldier_GL", "MVD_Soldier_GL", "MVD_Soldier_TL"};
+    };
+
     class RU_Spetsnaz_NoSD : RU_Woodland {
         infantry[] = {"RUS_Commander", "RUS_Soldier1", "RUS_Soldier_GL", "RUS_Soldier_TL"};
     };
