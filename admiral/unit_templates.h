@@ -27,7 +27,7 @@ class Admiral {
 
     class US_Army_Multicam : Base {
         side=SIDE_WEST;
-        infantry[] = {"US_Soldier_EP1"};
+        infantry[] = {"US_Soldier_EP1", "US_Soldier_AR_EP1", "US_Soldier_AT_EP1", "US_Soldier_AAR_EP1", "US_Soldier_AAT_EP1", "US_Soldier_B_EP1", "US_Soldier_GL_EP1", "US_Soldier_LAT_EP1", "US_Soldier_Light_EP1", "US_Soldier_Medic_EP1", "US_Soldier_Officer_EP1", "US_Soldier_TL_EP1"};
         crewmen[] = {"US_Soldier_Crew_EP1"};
         technicals[] = {"HMMWV_DES_EP1", "MTVR_DES_EP1", "HMMWV_M1151_M2_DES_EP1", "HMMWV_MK19_DES_EP1", "HMMWV_M998_crows_M2_DES_EP1", "HMMWV_M998_crows_MK19_DES_EP1", "HMMWV_Terminal_EP1", "HMMWV_M1035_DES_EP1", "HMMWV_Avenger_DES_EP1"};
         armour[] = {"M1A1_US_DES_EP1", "M1A2_US_TUSK_MG_EP1", "M2A2_EP1", "M2A3_EP1", "M1126_ICV_M2_EP1", "M1126_ICV_mk19_EP1", "M1130_CV_EP1", "M1129_MC_EP1", "M1128_MGS_EP1", "M6_EP1"};
