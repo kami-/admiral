@@ -61,6 +61,10 @@ class Admiral {
         armour[] = {""};
 	};
 
+    class CZ_SOF : CZ_Army {
+        infantry[] = {"CZ_Special_Forces_DES_EP1", "CZ_Special_Forces_GL_DES_EP1", "CZ_Special_Forces_MG_DES_EP1", "CZ_Special_Forces_Scout_DES_EP1", "CZ_Special_Forces_TL_DES_EP1"};
+    };
+
     class BAF_Woodland : Base {
         side=SIDE_WEST;
         infantry[] = {"BAF_Soldier_L_W", "BAF_Soldier_Officer_W", "BAF_Soldier_Medic_W", "BAF_Soldier_AR_W", "BAF_Soldier_AT_W", "BAF_Soldier_AAT_W", "BAF_Soldier_AAR_W", "BAF_Soldier_GL_W"};
