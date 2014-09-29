@@ -33,7 +33,7 @@ adm_api_fnc_isPlayerNearZone = {
  * @param _side The side to set the enemy of
  * @param _enemySide The side that will be the enemy
  */
-adm_api_setEnemy = {
+adm_api_fnc_setEnemy = {
     FUN_ARGS_2(_side,_enemySide);
 
     [_side, _enemySide] call adm_settings_fnc_setEnemy;
@@ -44,7 +44,7 @@ adm_api_setEnemy = {
  * @param _side The side to set the friend of
  * @param _enemySide The side that will be the friend
  */
-adm_api_setFriend = {
+adm_api_fnc_setFriend = {
     FUN_ARGS_2(_side,_friendlySide);
 
     [_side, _friendlySide] call adm_settings_fnc_setFriend;
@@ -57,14 +57,14 @@ adm_api_setFriend = {
 /**
  * Enables caching of AI.
  */
-adm_api_enableCaching = {
+adm_api_fnc_enableCaching = {
     [] call adm_reduce_fnc_enableCaching;
 };
 
 /**
  * Disables caching of AI.
  */
-adm_api_disableCaching = {
+adm_api_fnc_disableCaching = {
     [] call adm_reduce_fnc_disableCaching;
 };
 
