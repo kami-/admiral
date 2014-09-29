@@ -132,7 +132,7 @@ adm_camp_fnc_spawnInfGroup = {
     _group setVariable ["adm_zone_parent", _trigger];
 
     if (adm_isDebuggingEnabled) then {
-        [_group, _groupType] call adm_debug_fnc_createMarkersForPatrolGroup;
+        [_group, _groupType] call adm_debug_fnc_createMovingGroupMarkers;
     };
 
     _group;
@@ -161,7 +161,7 @@ adm_camp_fnc_spawnVehicleGroup = {
     };
     DEBUG("admiral.camp.create",FMT_5("Created '%1' crew for vehicle type of '%2' for group '%3' of type '%4' in Camp Zone '%5'.",_groupSize,_vehTpye,_group,GROUP_TYPE_ARRAY select _groupType,_trigger));
     if (adm_isDebuggingEnabled) then {
-        [_group, _groupType] call adm_debug_fnc_createMarkersForPatrolGroup;
+        [_group, _groupType] call adm_debug_fnc_createMovingGroupMarkers;
     };
 
     _group;

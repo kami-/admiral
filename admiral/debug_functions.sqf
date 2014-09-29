@@ -5,24 +5,15 @@
 adm_debug_fnc_debugSpawnedGroups = {
     [] spawn {
         waitUntil {
-            [adm_patrol_infGroups] call adm_debug_fnc_updateWaypointMarkersForPatrolGroups;
-            [adm_patrol_techGroups] call adm_debug_fnc_updateWaypointMarkersForPatrolGroups;
-            [adm_patrol_armourGroups] call adm_debug_fnc_updateWaypointMarkersForPatrolGroups;
-
-            [adm_patrol_infGroups] call adm_debug_fnc_updateStateMarkersForPatrolGroups;
-            [adm_patrol_techGroups] call adm_debug_fnc_updateStateMarkersForPatrolGroups;
-            [adm_patrol_armourGroups] call adm_debug_fnc_updateStateMarkersForPatrolGroups;
-
-            [adm_camp_infGroups] call adm_debug_fnc_updateWaypointMarkersForPatrolGroups;
-            [adm_camp_techGroups] call adm_debug_fnc_updateWaypointMarkersForPatrolGroups;
-            [adm_camp_armourGroups] call adm_debug_fnc_updateWaypointMarkersForPatrolGroups;
-
-            [adm_camp_infGroups] call adm_debug_fnc_updateStateMarkersForPatrolGroups;
-            [adm_camp_techGroups] call adm_debug_fnc_updateStateMarkersForPatrolGroups;
-            [adm_camp_armourGroups] call adm_debug_fnc_updateStateMarkersForPatrolGroups;
-
-            [adm_cqc_groups] call adm_debug_fnc_updateMarkersForCqcGroups;
-
+            {
+                DECLARE(_groups) = _x;
+                {
+                    [_x] call adm_debug_fnc_updateMovingGroupMarkers;
+                } foreach _groups;
+            } foreach [adm_patrol_infGroups, adm_patrol_techGroups, adm_patrol_armourGroups, adm_camp_infGroups, adm_camp_techGroups, adm_camp_armourGroups];
+            {
+                [_x] call adm_debug_fnc_updateCqcGroupMarkers;
+            } foreach adm_cqc_groups;
             DEBUG("admiral.debug","Updated debug markers.");
             sleep 2;
             false;
@@ -30,100 +21,104 @@ adm_debug_fnc_debugSpawnedGroups = {
     };
 };
 
-adm_debug_fnc_createMarkersForPatrolGroup = {
+adm_debug_fnc_createMovingGroupMarkers = {
     FUN_ARGS_2(_group,_groupType);
 
-    [format ["%1", _group], getPosATL leader _group, "ICON", GROUP_TYPE_DEBUG_MARKERS select _groupType, [side _group] call adm_debug_fnc_getSideColor, GROUP_TYPE_DEBUG_MARKER_SIZES select _groupType] call adm_common_fnc_createLocalMarker;
-    [format ["WP_%1", _group], getWPPos [_group, currentWaypoint _group], "ICON", "waypoint", [side _group] call adm_debug_fnc_getSideColor, WAYPOINT_DEBUG_MARKER_SIZE] call adm_common_fnc_createLocalMarker;
-    [format ["LINE_%1", _group], getPosATL leader _group, getWPPos [_group, currentWaypoint _group], "ColorBlack", 1] call adm_debug_fnc_createLineMarker;
-    [format ["STATE_LINE_%1", _group], getPosATL leader _group, getPosATL leader _group, "ColorBlack", 1] call adm_debug_fnc_createLineMarker;
-    format ["STATE_LINE_%1", _group] setMarkerAlphaLocal 0;
-    DEBUG("admiral.debug",FMT_5("Created waypoint markers '[%1, %2, %3]' and behavior marker '%4' for dead patrol group '%5'.",_group,format AS_ARRAY_2("WP_%1", _group),format AS_ARRAY_2("LINE_%1", _group),format AS_ARRAY_2("STATE_LINE_%1", _group),_group));
+    private ["_debugMarkers", "_marker"];
+    _debugMarkers = [];
+    _marker = [format ["adm_group_%1", _group], getPosATL leader _group, "ICON", GROUP_TYPE_DEBUG_MARKERS select _groupType, [side _group] call adm_debug_fnc_getSideColor, GROUP_TYPE_DEBUG_MARKER_SIZES select _groupType] call adm_common_fnc_createLocalMarker;
+    PUSH(_debugMarkers,_marker);
+    _marker = [format ["adm_group_WP_%1", _group], getWPPos [_group, currentWaypoint _group], "ICON", "waypoint", [side _group] call adm_debug_fnc_getSideColor, WAYPOINT_DEBUG_MARKER_SIZE] call adm_common_fnc_createLocalMarker;
+    PUSH(_debugMarkers,_marker);
+    _marker = [format ["adm_group_LINE_%1", _group], getPosATL leader _group, getWPPos [_group, currentWaypoint _group], "ColorBlack", 1] call adm_debug_fnc_createLineMarker;
+    PUSH(_debugMarkers,_marker);
+    _marker = [format ["adm_group_STATE_LINE_%1", _group], getPosATL leader _group, getPosATL leader _group, "ColorBlack", 1] call adm_debug_fnc_createLineMarker;
+    PUSH(_debugMarkers,_marker);
+    _marker setMarkerAlphaLocal 0;
+    _group setVariable ["adm_group_debugMarkers", _debugMarkers, false];
+    DEBUG("admiral.debug",FMT_2("Created waypoint markers '%1' for patrol group '%2'.",_debugMarkers,_group));
 };
 
-adm_debug_fnc_updateWaypointMarkersForPatrolGroups = {
-    FUN_ARGS_1(_groups);
+adm_debug_fnc_updateMovingGroupMarkers = {
+    FUN_ARGS_1(_group);
+
+    DECLARE(_debugMarkers) = _group getVariable "adm_group_debugMarkers";
+    if (!isNil {_debugMarkers}) exitWith {
+        if (IS_GROUP_ALIVE(_group)) then {
+            [_group, _debugMarkers] call adm_debug_fnc_updateMovingGroupWaypointMarkers;
+            [_group, _debugMarkers select 3] call adm_debug_fnc_updateMovingGroupsStateMarkers;
+        } else {
+            [_group, _debugMarkers] call adm_debug_fnc_deletePatrolGroupMarkers;
+        };
+    }
+};
+
+adm_debug_fnc_updateMovingGroupWaypointMarkers = {
+    FUN_ARGS_2(_group,_debugMarkers);
+
+    (_debugMarkers select 0) setMarkerPosLocal (getPosATL leader _group);
+    (_debugMarkers select 0) setMarkerTextLocal format ["%1", count units _group];
+    (_debugMarkers select 1) setMarkerPosLocal (getWPPos [_group , currentWaypoint _group]);
+    [_debugMarkers select 2, getPosATL leader _group, getWPPos [_group , currentWaypoint _group]] call adm_debug_fnc_updateLineMarker
+};
+
+adm_debug_fnc_updateMovingGroupsStateMarkers = {
+    FUN_ARGS_2(_group,_lineMarker);
+
+    DECLARE(_state) = _group getVariable ["adm_behavior_state", STATE_INIT];
+    call {
+        if (_state in [STATE_INIT, STATE_MOVING]) exitwith {
+            _lineMarker setMarkerAlphaLocal 0;
+        };
+        if (isNil {_group getVariable "adm_behavior_reinfGroup"} && {_state in [STATE_ENEMYFOUND, STATE_SADENEMY, STATE_COMBAT]}) exitwith {
+            _lineMarker setMarkerAlphaLocal 1;
+            [_lineMarker, getPosATL leader _group, _group getVariable "adm_behavior_enemyPos"] call adm_debug_fnc_updateLineMarker;
+            _lineMarker setMarkerColorLocal "ColorRed";
+        };
+        if (!isNil {_group getVariable "adm_behavior_reinfGroup"} && {_state in [STATE_ENEMYFOUND, STATE_SADENEMY, STATE_COMBAT]}) exitwith {
+            _lineMarker setMarkerAlphaLocal 1;
+            [_lineMarker, getPosATL leader _group, getPosATL leader (_group getVariable "adm_behavior_reinfGroup")] call adm_debug_fnc_updateLineMarker;
+            _lineMarker setMarkerColorLocal "ColorOrange";
+        };
+    };
+    DEBUG("admiral.debug",FMT_3("Updated behavior line marker '%1' for group '%2' with state '%3'.",_lineMarker,_group,STATE_TEXT_ARRAY select _state));
+};
+
+adm_debug_fnc_deleteMovingGroupMarkers = {
+    FUN_ARGS_2(_group,_debugMarkers);
 
     {
-        private ["_leaderMarker", "_waypointMarker", "_lineMarker", "_group", "_unit"];
-        _group = _x;
-        _leaderMarker = format ["%1", _group];
-        _waypointMarker = format ["WP_%1", _group];
-        _lineMarker = format ["LINE_%1", _group];
-        _unit = leader _group;
-
-        if (count units _group > 0) then {
-            _leaderMarker setMarkerPosLocal (getPosATL _unit);
-            _leaderMarker setMarkerTextLocal format ["%1", count units _group];
-            _waypointMarker setMarkerPosLocal (getWPPos [_group , currentWaypoint _group]);
-            [_lineMarker, getPosATL _unit, getWPPos [_group , currentWaypoint _group]] call adm_debug_fnc_updateLineMarker
-        } else {
-            deleteMarkerLocal _leaderMarker;
-            deleteMarkerLocal _waypointMarker;
-            deleteMarkerLocal _lineMarker;
-            DEBUG("admiral.debug",FMT_4("Deleted waypoint markers '[%1, %2, %3]' for dead patrol group '%4'.",_leaderMarker,_waypointMarker,_lineMarker,_group));
-        };
-    } foreach _groups;
+        deleteMarkerLocal _x;
+    } foreach _debugMarkers;
+    _group setVariable ["adm_group_debugMarkers", nil, false];
+    DEBUG("admiral.debug",FMT_2("Deleted waypoint markers '%1' for dead patrol group '%2'.",_debugMarkers,_group));
 };
 
-adm_debug_fnc_updateStateMarkersForPatrolGroups = {
-    FUN_ARGS_1(_groups);
-
-    {
-        private ["_group", "_lineMarker", "_state"];
-        _group = _x;
-        _lineMarker = format ["STATE_LINE_%1", _group];
-        _state = _group getVariable ["adm_behavior_state", STATE_INIT];
-        if (count units _group > 0) then {
-            call {
-                if (_state == STATE_INIT || {_state == STATE_MOVING}) exitwith {
-                    _lineMarker setMarkerAlphaLocal 0;
-                };
-                if (isNil {_group getVariable "adm_behavior_reinfGroup"} && {_state == STATE_ENEMYFOUND || {_state == STATE_SADENEMY} || {_state == STATE_COMBAT}}) exitwith {
-                    _lineMarker setMarkerAlphaLocal 1;
-                    [_lineMarker, getPosATL leader _group, _group getVariable "adm_behavior_enemyPos"] call adm_debug_fnc_updateLineMarker;
-                    _lineMarker setMarkerColorLocal "ColorRed";
-                };
-                if (!isNil {_group getVariable "adm_behavior_reinfGroup"} && {_state == STATE_ENEMYFOUND || {_state == STATE_SADENEMY} || {_state == STATE_COMBAT}}) exitwith {
-                    _lineMarker setMarkerAlphaLocal 1;
-                    [_lineMarker, getPosATL leader _group, getPosATL leader (_group getVariable "adm_behavior_reinfGroup")] call adm_debug_fnc_updateLineMarker;
-                    _lineMarker setMarkerColorLocal "ColorOrange";
-                };
-            };
-            DEBUG("admiral.debug",FMT_3("Updated behavior line marker '%1' for group '%2' with state '%3'.",_lineMarker,_group,STATE_TEXT_ARRAY select _state));
-        } else {
-            deleteMarkerLocal _lineMarker;
-            DEBUG("admiral.debug",FMT_2("Deleted behavior line marker '%1' for dead group '%2'.",_lineMarker,_group));
-        };
-    } foreach _groups;
-};
-
-adm_debug_fnc_createMarkersForCqcGroup = {
+adm_debug_fnc_createCqcGroupMarkers = {
     FUN_ARGS_1(_group);
 
     {
-        [format ["%1", _x], getPosATL _x, "ICON", CQC_DEBUG_MARKER, [side _group] call adm_debug_fnc_getSideColor, CQC_DEBUG_MARKER_SIZE] call adm_common_fnc_createLocalMarker;
-        DEBUG("admiral.debug",FMT_3("Created CQC unit marker '%1' for unit '%2' in group '%3'.",_x,_x,_group));
+        DECLARE(_marker) = [format ["adm_unit_cqc_%1", _x], getPosATL _x, "ICON", CQC_DEBUG_MARKER, [side _group] call adm_debug_fnc_getSideColor, CQC_DEBUG_MARKER_SIZE] call adm_common_fnc_createLocalMarker;
+        _x setVariable ["adm_unit_debugMarker", _marker, false];
+        DEBUG("admiral.debug",FMT_3("Created CQC unit marker '%1' for unit '%2' in group '%3'.",_marker,_x,_group));
     } foreach units _group;
 };
 
-adm_debug_fnc_updateMarkersForCqcGroups = {
-    FUN_ARGS_1(_groups);
+adm_debug_fnc_updateCqcGroupMarkers = {
+    FUN_ARGS_1(_group);
 
     {
-        DECLARE(_group) = _x;
-        {
-            DECLARE(_marker) = format ["%1", _x];
-            if (alive _x) then {
-                _marker setMarkerPosLocal (getPosATL _x);
-                _marker setMarkerDirLocal getDir _x;
-                DEBUG("admiral.debug",FMT_3("Updated CQC unit marker '%1' of unit '%2' in group '%3'.",_marker,_x,_group));
-            } else {
-                deleteMarkerLocal _marker;
-                DEBUG("admiral.debug",FMT_3("Deleted CQC unit marker '%1' of dead unit '%2' in group '%3'.",_marker,_x,_group));
-            };
-        } foreach units _group;
-    } foreach _groups;
+        DECLARE(_marker) = _x getVariable ["adm_unit_debugMarker", ""];
+        if (_marker != "" && {alive _x}) then {
+            _marker setMarkerPosLocal (getPosATL _x);
+            _marker setMarkerDirLocal getDir _x;
+            DEBUG("admiral.debug",FMT_3("Updated CQC unit marker '%1' of unit '%2' in group '%3'.",_marker,_x,_group));
+        } else {
+            deleteMarkerLocal _marker;
+            _x setVariable ["adm_unit_debugMarker", nil, false];
+            DEBUG("admiral.debug",FMT_3("Deleted CQC unit marker '%1' of dead unit '%2' in group '%3'.",_marker,_x,_group));
+        };
+    } foreach units _group;
 };
 
 adm_debug_fnc_createTriggerLocalMarker = {
@@ -184,6 +179,8 @@ adm_debug_fnc_createLineMarker = {
     _markerName setMarkerSizeLocal [_markerWidth, (_posFrom distance _posTo) / 2];
     _markerName setMarkerDirLocal ([_posFrom, _posTo] call BIS_fnc_dirTo);
     DEBUG("admiral.debug",FMT_5("Created line marker '%1' from position '%2' to '%3' with color '%4' and width '%5'.",_markerName,_posFrom,_posTo,_markerColor,_markerWidth));
+
+    _markerName;
 };
 
 adm_debug_fnc_updateLineMarker = {

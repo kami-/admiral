@@ -124,6 +124,8 @@
 #define DEF_BETWEEN_MSG                             {format ["Variable '%1' must be between values %2 and %3!", _variableName, (MINVAL), (MAXVAL)]}
 #define DEF_BOUNDARY                                {format ["Variable '%1's first value '%2' must be less, than the second value '%3'!", _variableName, CC_VAR select 0, CC_VAR select 1]}
 
+#define IS_GROUP_ALIVE(GROUP)                       ({alive _x} count units GROUP > 0)
+
 // WARNING
 // Macros are sensitive for "," (comma), "(", ")" (parenthese) and " " (space).
 // Provide only the asked numbers of arguments, without additional commas and without spaces beetween commas.
