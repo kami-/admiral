@@ -12,11 +12,12 @@ adm_hc_fnc_initDefaultNames = {
 };
 
 adm_hc_fnc_findHCPlayer = {
-    adm_hc_name = "NOONE";
+    adm_hc_name = "";
     adm_hc_isPresent = false;
-    DECLARE(_unitsHC) = [playableUnits, {isPlayer _x && {name _x in adm_hc_defaultNames}}] call BIS_fnc_conditionalSelect;
-    if (count _unitsHC > 0) then {
-        adm_hc_name = name (_unitsHC select 0);
+    DECLARE(_units) = [];
+    FILTER_PUSH_ALL(_units,playableUnits,{isPlayer _x && {name _x in adm_hc_defaultNames}});
+    if (count _units > 0) then {
+        adm_hc_name = name (_units select 0);
         adm_hc_isPresent = true;
         DEBUG("admiral.hc",FMT_1("Found player '%1' in HC list.",adm_hc_name));
     };
@@ -32,16 +33,25 @@ adm_hc_fnc_waitForHCInit = {
 };
 
 adm_hc_fnc_startAdmiral = {
-    if (adm_hc_isPresent) then {
-        if (name player == adm_hc_name && {!isServer}) then { 
-            [] call compile preProcessFileLineNumbers "admiral\compile.sqf";
+    [{
+        [] call compile preProcessFileLineNumbers "admiral\compile.sqf";
+        if (isServer) then {
+            INFO("admiral.hc",FMT_1("Admiral version '%1' started successfully on server!",STR_ADMIRAL_VERSION));
+        } else {
             INFO("admiral.hc",FMT_2("Admiral version '%1' started successfully on player '%1' as Headless Client!",STR_ADMIRAL_VERSION,adm_hc_name));
         };
-    } else {
-        if (isServer) then {
-            [] call compile preProcessFileLineNumbers "admiral\compile.sqf";
-            INFO("admiral.hc",FMT_1("Admiral version '%1' started successfully on server!",STR_ADMIRAL_VERSION));
-        };
+    }] call adm_hc_fnc_executeIfAdmiralMachine;
+};
+
+adm_hc_fnc_isHc = {
+    adm_hc_isPresent && {name player == adm_hc_name};
+};
+
+adm_hc_fnc_executeIfAdmiralMachine = {
+    FUN_ARGS_1(_code);
+
+    if (([] call adm_hc_fnc_isHc) || {!adm_hc_isPresent && {isServer}}) then {
+        call _code;
     };
 };
 

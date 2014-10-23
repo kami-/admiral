@@ -1,5 +1,28 @@
 #include "admiral_macros.h"
 
+// HC
+
+/**
+ * Executes code if the current machine is the server or HC player's machine, depending on the presence of HC.
+ * @param _code The code to be executed
+ */
+adm_api_fnc_executeIfAdmiralMachine = {
+    FUN_ARGS_1(_code);
+
+    [_code] call adm_hc_fnc_executeIfAdmiralMachine;
+};
+
+/*
+ * Returns if HC exists and the current machine is HC.
+ */
+adm_hc_fnc_isHc = {
+    [] call adm_hc_fnc_isHc;
+};
+
+
+
+// Zone
+
 /**
  * Initializes a zone with the given config entries.
  * @param _trigger Trigger object representing a zone
