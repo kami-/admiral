@@ -114,14 +114,11 @@ adm_debug_fnc_updateCqcGroupMarkers = {
     {
         DECLARE(_debugMarker) = _x getVariable "adm_unit_debugMarker";
         if (alive _x) then {
-            player sideChat format ["CQC unit '%1' is alive with marker '%2'", _x, _debugMarker];
             if (!isNil {_debugMarker}) then {
-                player sideChat format ["CQC unit marker '%1' exists", _debugMarker];
                 _debugMarker setMarkerPosLocal (getPosATL _x);
                 _debugMarker setMarkerDirLocal getDir _x;
                 DEBUG("admiral.debug",FMT_3("Updated CQC unit marker '%1' of unit '%2' in group '%3'.",_debugMarker,_x,_group));
             } else {
-                player sideChat format ["CQC unit '%1' marker created", _x];
                 [_x, _group] call adm_debug_fnc_createCqcUnitMarker;
             };
         } else {
