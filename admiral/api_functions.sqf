@@ -70,6 +70,24 @@ adm_api_fnc_disableCaching = {
 
 
 
+// Debugging
+
+/**
+ * Enables debugging of AI.
+ */
+adm_api_fnc_enableDebugging = {
+    [] call adm_debug_fnc_enableDebugging;
+};
+
+/**
+ * Disables debugging of AI.
+ */
+adm_api_fnc_disableDebugging = {
+    [] call adm_debug_fnc_disableDebugging;
+};
+
+
+
 // CQC
 
 /**

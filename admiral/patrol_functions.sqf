@@ -212,7 +212,6 @@ adm_patrol_fnc_initZone = {
         adm_isInitialized;
     };
     if (adm_isDebuggingEnabled) then {
-        [_trigger] call adm_debug_fnc_createTriggerLocalMarker;
         [_trigger] call adm_error_fnc_validateZone;
     };
 

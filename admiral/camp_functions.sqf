@@ -31,10 +31,6 @@ adm_camp_fnc_addLogicToTriggerLogics = {
         };
     } foreach _triggers;
     _logic setVariable ["adm_camp_endTrigger", [getWPPos ((waypoints _logic) select (count (waypoints _logic) - 1))] call adm_camp_fnc_getLogicEndTrigger, false];
-
-    if (_isInsideTrigger && {adm_isDebuggingEnabled}) then {
-        [_logic] call adm_debug_fnc_createMarkersForCampLogic;
-    };
 };
 
 adm_camp_fnc_processTiggerLogics = {
@@ -130,10 +126,7 @@ adm_camp_fnc_spawnInfGroup = {
     DEBUG("admiral.camp.create",FMT_4("Created '%1' Camp unit(s) for group '%2' of type '%3' in Patrol Zone '%4'.",_groupSize,_group,GROUP_TYPE_ARRAY select _groupType,_trigger));
     [_group] call adm_reduce_fnc_setGroupExpandCount;
     _group setVariable ["adm_zone_parent", _trigger];
-
-    if (adm_isDebuggingEnabled) then {
-        [_group, _groupType] call adm_debug_fnc_createMovingGroupMarkers;
-    };
+    _group setVariable ["adm_group_type", _groupType, false];
 
     _group;
 };
@@ -148,6 +141,7 @@ adm_camp_fnc_spawnVehicleGroup = {
     _vehPos = [_trigger, _vehTpye] call adm_common_fnc_randomFlatEmptyPosInTrigger;
     _veh = [_vehTpye, _vehPos] call adm_common_fnc_placeVehicle;
     _group = createGroup ([_unitTemplate] call adm_common_fnc_getUnitTemplateSide);
+    _group setVariable ["adm_group_type", _groupType, false];
 
     for "_i" from 1 to _groupSize do {
         private ["_pos", "_unit"];
@@ -160,9 +154,6 @@ adm_camp_fnc_spawnVehicleGroup = {
         };
     };
     DEBUG("admiral.camp.create",FMT_5("Created '%1' crew for vehicle type of '%2' for group '%3' of type '%4' in Camp Zone '%5'.",_groupSize,_vehTpye,_group,GROUP_TYPE_ARRAY select _groupType,_trigger));
-    if (adm_isDebuggingEnabled) then {
-        [_group, _groupType] call adm_debug_fnc_createMovingGroupMarkers;
-    };
 
     _group;
 };
@@ -463,7 +454,6 @@ adm_camp_fnc_initZone = {
     };
     [_trigger] call adm_camp_setDefaultVariables;
     if (adm_isDebuggingEnabled) then {
-        [_trigger] call adm_debug_fnc_createTriggerLocalMarker;
         [_trigger] call adm_error_fnc_validateZone;
     };
     INFO("admiral.camp",FMT_1("Camp Zone '%1' has been succesfully initialized.",_trigger));

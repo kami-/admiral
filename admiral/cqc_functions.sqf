@@ -238,15 +238,14 @@ adm_cqc_fnc_initZone = {
         adm_isInitialized;
     };
     if (adm_isDebuggingEnabled) then {
-        [_trigger] call adm_debug_fnc_createTriggerLocalMarker;
         [_trigger] call adm_error_fnc_validateZone;
     };
 
     DECLARE(_spawnedGroups) = [_trigger] call adm_cqc_fnc_spawnGarrison;
     PUSH_ALL(adm_cqc_groups, _spawnedGroups);
     [_spawnedGroups] call adm_rupture_fnc_initGroups;
-    [_trigger, _spawnedGroups] call adm_cqc_fnc_forceFire;
-    PUSH(adm_cqc_groups, _trigger);
+    [_trigger, _spawnedGroups] spawn adm_cqc_fnc_forceFire;
+    PUSH(adm_cqc_triggers,_trigger);
     INFO("admiral.cqc",FMT_1("CQC Zone '%1' has been succesfully initialized.",_trigger));
 };
 
