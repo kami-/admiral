@@ -206,7 +206,8 @@ adm_cqc_fnc_getForceFireEnemy = {
 
 adm_cqc_fnc_forceFire = {
     FUN_ARGS_2(_trigger,_groups);
-    
+
+    _trigger setVariable ["adm_cqc_isForceFireRunning", true, false];
     waitUntil {
         DECLARE(_aliveGroupLeft) = false;
         {
@@ -224,11 +225,27 @@ adm_cqc_fnc_forceFire = {
                     _aliveGroupLeft = true;
                 };
             } foreach (units _group);
-        } foreach _groups;
+        } foreach (_trigger getVariable ["adm_zone_infGroups", []]);
         sleep adm_cqc_forceFireDelay;
-        !(_aliveGroupLeft && adm_cqc_forceFireEnabled);
+        !(_aliveGroupLeft && {_trigger getVariable ["adm_cqc_isForceFireEnabled", true]});
     };
+    _trigger setVariable ["adm_cqc_isForceFireRunning", false, false];
     DEBUG("admiral.cqc.forcefire",FMT_1("ForceFire has been disabled for CQC Zone '%1'.",_trigger));
+};
+
+adm_cqc_fnc_disableForceFire = {
+    FUN_ARGS_1(_trigger);
+
+    _trigger setVariable ["adm_cqc_isForceFireEnabled", false, false];
+};
+
+adm_cqc_fnc_enableForceFire = {
+    FUN_ARGS_1(_trigger);
+
+    if (!(_trigger getVariable ["adm_cqc_isForceFireRunning", true])) then {
+        _trigger setVariable ["adm_cqc_isForceFireEnabled", true, false];
+        [_trigger] spawn adm_cqc_fnc_forceFire;
+    };
 };
 
 adm_cqc_fnc_initZone = {
@@ -244,7 +261,10 @@ adm_cqc_fnc_initZone = {
     DECLARE(_spawnedGroups) = [_trigger] call adm_cqc_fnc_spawnGarrison;
     PUSH_ALL(adm_cqc_groups, _spawnedGroups);
     [_spawnedGroups] call adm_rupture_fnc_initGroups;
-    [_trigger, _spawnedGroups] spawn adm_cqc_fnc_forceFire;
+    _trigger setVariable ["adm_zone_infGroups", _spawnedGroups, false];
+    _trigger setVariable ["adm_cqc_isForceFireEnabled", adm_cqc_forceFireEnabled, false];
+    _trigger setVariable ["adm_cqc_isForceFireRunning", false, false];
+    [_trigger] spawn adm_cqc_fnc_forceFire;
     PUSH(adm_cqc_triggers,_trigger);
     INFO("admiral.cqc",FMT_1("CQC Zone '%1' has been succesfully initialized.",_trigger));
 };

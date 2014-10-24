@@ -114,6 +114,24 @@ adm_api_fnc_disableDebugging = {
 // CQC
 
 /**
+ * Disables force fire of a CQC zone.
+ */
+adm_api_fnc_disableForceFire = {
+    FUN_ARGS_1(_trigger);
+
+    [_trigger] call adm_cqc_fnc_disableForceFire;
+};
+
+/**
+ * Enables force fire of a CQC zone.
+ */
+adm_api_fnc_enableForceFire = {
+    FUN_ARGS_1(_trigger);
+
+    [_trigger] call adm_cqc_fnc_enableForceFire;
+};
+
+/**
  * Returns all infantry groups spawned by Patrol zones.
  * @return Array of infantry groups
  */
