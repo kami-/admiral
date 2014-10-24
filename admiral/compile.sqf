@@ -13,7 +13,7 @@ if (isNil {call compile "blufor"}) then {
 
 // Wait for BIS functions to be initialized
 waitUntil {
-    BIS_fnc_init;
+    !isNil {BIS_fnc_init} && {BIS_fnc_init};
 };
 DEBUG("admiral.bis","BIS functions are initialized.");
 
