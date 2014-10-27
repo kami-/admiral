@@ -24,7 +24,6 @@ adm_cqc_fnc_initMan = {
     DECLARE(_wp) = [_group, [getPosATL _unit, 0], 'GUARD', 'AWARE', 'RED'] call adm_common_fnc_createWaypoint;
     _group setCurrentWaypoint _wp;
     _unit setDir (random 360);
-    _unit setPosATL (_position);
     doStop _unit;
     _unit setUnitPos 'UP';
 };
@@ -122,26 +121,26 @@ adm_cqc_fnc_spawnGarrisonGroupUnits = {
 };
 
 adm_cqc_fnc_spawnGarrisonGroup = {
-    FUN_ARGS_4(_trigger,_numOfUnits,_possiblePositions,_building);
+    FUN_ARGS_4(_zone,_numOfUnits,_possiblePositions,_building);
 
     private ["_unitTemplate", "_group"];
-    _unitTemplate = _trigger getVariable "adm_zone_unitTemplate";
+    _unitTemplate = GET_ZONE_UNIT_TEMPLATE(_zone);
     _group = createGroup ([_unitTemplate] call adm_common_fnc_getUnitTemplateSide);
     [_group, _numOfUnits, _unitTemplate, _possiblePositions, _building] call adm_cqc_fnc_spawnGarrisonGroupUnits;
     [_group] call adm_reduce_fnc_setGroupExpandCount;
     [_group] call adm_reduce_fnc_setCqcInitPositions;
-    _group setVariable ["adm_zone_parent", _trigger];
+    _group setVariable ["adm_zone_parent", _zone];
 
     _group;
 };
 
-adm_cqc_fnc_getTriggerBuildings = {
-    FUN_ARGS_1(_trigger);
+adm_cqc_fnc_getZoneBuildings = {
+    FUN_ARGS_1(_zone);
 
-    private ["_triggerRadius", "_triggerBuildings"];
-    _triggerRadius = ((triggerArea _trigger) select 0) max ((triggerArea _trigger) select 1);
-    _triggerBuildings = [nearestObjects [getPosATL _trigger, ["house"], _triggerRadius], {[_trigger, getPosATL _x] call adm_common_fnc_isPosInsideTrigger}] call BIS_fnc_conditionalSelect;
-    [_triggerBuildings] call adm_common_fnc_shuffle;
+    private ["_zoneRadius", "_buildings"];
+    _zoneRadius = (GET_ZONE_AREA(_zone) select 0) max (GET_ZONE_AREA(_zone) select 1);
+    _buildings = [nearestObjects [GET_ZONE_POSITION(_zone), ["house"], _zoneRadius], {[getPosATL _x, GET_ZONE_AREA(_zone), GET_ZONE_POSITION(_zone)] call adm_common_fnc_isPositionInArea}] call BIS_fnc_conditionalSelect;
+    [_buildings] call adm_common_fnc_shuffle;
 };
 
 adm_cqc_fnc_getGarrisonGroupSize = {
@@ -158,31 +157,28 @@ adm_cqc_fnc_getGarrisonGroupSize = {
 };
 
 adm_cqc_fnc_spawnGarrison = {
-    FUN_ARGS_1(_trigger);
+    FUN_ARGS_1(_zone);
     
     private ["_buildings", "_maxAmount", "_currentAmount", "_spawnedGroups"];
-    _buildings = [_trigger] call adm_cqc_fnc_getTriggerBuildings;
-    DEBUG("admiral.cqc",FMT_2("CQC Zone '%1' found '%2' suitable building(s).",_trigger,count _buildings));
-    _maxAmount = _trigger getVariable ["adm_zone_pool", 0];
+    _buildings = [_zone] call adm_cqc_fnc_getZoneBuildings;
+    DEBUG("admiral.cqc",FMT_2("CQC Zone '%1' found '%2' suitable building(s).",GET_ZONE_ID(_zone),count _buildings));
+    _maxAmount = GET_ZONE_POOL(_zone);
     _currentAmount = 0;
     _spawnedGroups = [];
     {
         if (_currentAmount >= _maxAmount) exitWith {};
         private ["_building", "_possiblePositions"];
         _building = _x;
-        _possiblePositions = [_building, _trigger getVariable "adm_cqc_minHeight"] call adm_cqc_fnc_getPossiblePositions;
+        _possiblePositions = [_building, GET_CQC_MIN_HEIGHT(_zone)] call adm_cqc_fnc_getPossiblePositions;
         if (count _possiblePositions > 0) then {
             private ["_numOfUnits", "_group"];
             _numOfUnits = [[_building] call adm_cqc_fnc_getBuildingCapacity, count _possiblePositions] call adm_cqc_fnc_getGarrisonGroupSize;
             _currentAmount = _currentAmount + _numOfUnits;
-            _group = [_trigger, _numOfUnits, _possiblePositions, _building] call adm_cqc_fnc_spawnGarrisonGroup;
+            _group = [_zone, _numOfUnits, _possiblePositions, _building] call adm_cqc_fnc_spawnGarrisonGroup;
             PUSH(_spawnedGroups, _group);
-            if (adm_isDebuggingEnabled) then {
-                [_group] call adm_debug_fnc_createMarkersForCqcGroup;
-            };
         };
     } foreach _buildings;
-    INFO("admiral.cqc",FMT_3("CQC Zone '%1' spawned '%2' unit(s) in '%3' group(s).",_trigger,_currentAmount,count _spawnedGroups));
+    INFO("admiral.cqc",FMT_3("CQC Zone '%1' spawned '%2' unit(s) in '%3' group(s).",GET_ZONE_ID(_zone),_currentAmount,count _spawnedGroups));
 
     _spawnedGroups;
 };
@@ -205,9 +201,9 @@ adm_cqc_fnc_getForceFireEnemy = {
 };
 
 adm_cqc_fnc_forceFire = {
-    FUN_ARGS_2(_trigger,_groups);
+    FUN_ARGS_1(_zone);
 
-    _trigger setVariable ["adm_cqc_isForceFireRunning", true, false];
+    SET_CQC_FORCE_FIRE_RUNNING(_zone,true);
     waitUntil {
         DECLARE(_aliveGroupLeft) = false;
         {
@@ -220,53 +216,53 @@ adm_cqc_fnc_forceFire = {
                         _enemy = _enemy select 0;
                         _unit lookAt _enemy;
                         _unit doFire _enemy;
-                        TRACE("admiral.cqc.forcefire",FMT_4("CQC unit '%1' in group '%2', in CQC Zone '%3' has found an enemy '%4' and is being forced to fire at it.",_unit,_group,_trigger,_enemy));
+                        TRACE("admiral.cqc.forcefire",FMT_4("CQC unit '%1' in group '%2', in CQC Zone '%3' has found an enemy '%4' and is being forced to fire at it.",_unit,_group,GET_ZONE_ID(_zone),_enemy));
                     };
                     _aliveGroupLeft = true;
                 };
             } foreach (units _group);
-        } foreach (_trigger getVariable ["adm_zone_infGroups", []]);
+        } foreach (GET_ZONE_SPAWNED_GROUPS(_zone));
         sleep adm_cqc_forceFireDelay;
-        !(_aliveGroupLeft && {_trigger getVariable ["adm_cqc_isForceFireEnabled", true]});
+        !(_aliveGroupLeft && {IS_CQC_FORCE_FIRE_ENABLED(_zone)});
     };
-    _trigger setVariable ["adm_cqc_isForceFireRunning", false, false];
-    DEBUG("admiral.cqc.forcefire",FMT_1("ForceFire has been disabled for CQC Zone '%1'.",_trigger));
+    SET_CQC_FORCE_FIRE_RUNNING(_zone,false);
+    DEBUG("admiral.cqc.forcefire",FMT_1("ForceFire has been disabled for CQC Zone '%1'.",GET_ZONE_ID(_zone)));
 };
 
 adm_cqc_fnc_disableForceFire = {
-    FUN_ARGS_1(_trigger);
+    FUN_ARGS_1(_zone);
 
-    _trigger setVariable ["adm_cqc_isForceFireEnabled", false, false];
+    SET_CQC_FORCE_FIRE_ENABLED(_zone,false);
 };
 
 adm_cqc_fnc_enableForceFire = {
-    FUN_ARGS_1(_trigger);
+    FUN_ARGS_1(_zone);
 
-    if (!(_trigger getVariable ["adm_cqc_isForceFireRunning", true])) then {
-        _trigger setVariable ["adm_cqc_isForceFireEnabled", true, false];
-        [_trigger] spawn adm_cqc_fnc_forceFire;
+    if (!IS_CQC_FORCE_FIRE_RUNNING(_zone)) then {
+        SET_CQC_FORCE_FIRE_ENABLED(_zone,true);
+        [_zone] spawn adm_cqc_fnc_forceFire;
     };
 };
 
 adm_cqc_fnc_initZone = {
-    FUN_ARGS_1(_trigger);
+    FUN_ARGS_1(_zone);
 
     waitUntil {
         adm_isInitialized;
     };
     if (adm_isDebuggingEnabled) then {
-        [_trigger] call adm_error_fnc_validateZone;
+        //[_zone] call adm_error_fnc_validateZone;
     };
 
-    DECLARE(_spawnedGroups) = [_trigger] call adm_cqc_fnc_spawnGarrison;
+    DECLARE(_spawnedGroups) = [_zone] call adm_cqc_fnc_spawnGarrison;
     PUSH_ALL(adm_cqc_groups, _spawnedGroups);
     [_spawnedGroups] call adm_rupture_fnc_initGroups;
-    _trigger setVariable ["adm_zone_infGroups", _spawnedGroups, false];
-    _trigger setVariable ["adm_cqc_isForceFireEnabled", adm_cqc_forceFireEnabled, false];
-    _trigger setVariable ["adm_cqc_isForceFireRunning", false, false];
-    [_trigger] spawn adm_cqc_fnc_forceFire;
-    PUSH(adm_cqc_triggers,_trigger);
-    INFO("admiral.cqc",FMT_1("CQC Zone '%1' has been succesfully initialized.",_trigger));
+    SET_ZONE_SPAWNED_GROUPS(_zone,_spawnedGroups);
+    SET_CQC_FORCE_FIRE_ENABLED(_zone,adm_cqc_forceFireEnabled);
+    SET_CQC_FORCE_FIRE_RUNNING(_zone,false);
+    [_zone] spawn adm_cqc_fnc_forceFire;
+    PUSH(adm_cqc_zones,_zone);
+    INFO("admiral.cqc",FMT_1("CQC Zone '%1' has been succesfully initialized.",GET_ZONE_ID(_zone)));
 };
 
 adm_cqc_fnc_getAliveGroups = {
@@ -278,6 +274,6 @@ adm_cqc_fnc_getAliveUnits = {
 };
 
 adm_cqc_fnc_init = {
-    adm_cqc_triggers = [];
+    adm_cqc_zones = [];
     adm_cqc_groups = [];
 };
