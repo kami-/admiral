@@ -18,6 +18,7 @@ waitUntil {
 DEBUG("admiral.bis","BIS functions are initialized.");
 
 // Compile functions
+call compile preProcessFileLineNumbers "admiral\id_functions.sqf"; DEBUG("admiral.compile","Compiled 'admiral\id_functions.sqf'.");
 call compile preProcessFileLineNumbers "admiral\settings_functions.sqf"; DEBUG("admiral.compile","Compiled 'admiral\settings_functions.sqf'.");
 call compile preProcessFileLineNumbers "admiral\common_functions.sqf"; DEBUG("admiral.compile","Compiled 'admiral\common_functions.sqf'.");
 
@@ -28,6 +29,7 @@ if (adm_isDebuggingEnabled) then {
     call compile preProcessFileLineNumbers "admiral\debug_functions.sqf"; DEBUG("admiral.compile","Compiled 'admiral\debug_functions.sqf'.");
 };
 
+call compile preProcessFileLineNumbers "admiral\zone_functions.sqf"; DEBUG("admiral.compile","Compiled 'admiral\zone_functions.sqf'.");
 call compile preProcessFileLineNumbers "admiral\reduce_functions.sqf"; DEBUG("admiral.compile","Compiled 'admiral\reduce_functions.sqf'.");
 call compile preProcessFileLineNumbers "admiral\cqc_functions.sqf"; DEBUG("admiral.compile","Compiled 'admiral\cqc_functions.sqf'.");
 call compile preProcessFileLineNumbers "admiral\camp_functions.sqf"; DEBUG("admiral.compile","Compiled 'admiral\camp_functions.sqf'.");
@@ -41,7 +43,9 @@ if (adm_isBehaviorEnabled) then {
 };
 
 //Calling init functions
+[] call adm_id_fnc_init; DEBUG("admiral.id","Init function 'adm_id_fnc_init' called.");
 [] call adm_settings_fnc_init; DEBUG("admiral.settings","Init function 'adm_settings_fnc_init' called.");
+[] call adm_zone_fnc_init; DEBUG("admiral.settings","Init function 'adm_zone_fnc_init' called.");
 [] call adm_cqc_fnc_init; DEBUG("admiral.cqc","Init function 'adm_cqc_fnc_init' called.");
 [] call adm_camp_fnc_init; DEBUG("admiral.camp","Init function 'adm_camp_fnc_init' called.");
 [] call adm_patrol_fnc_init; DEBUG("admiral.patrol","Init function 'adm_patrol_fnc_init' called.");
