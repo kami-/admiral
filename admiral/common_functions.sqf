@@ -204,40 +204,44 @@ adm_common_fnc_isPlayersInRange = {
     _inRange;
 };
 
+adm_common_fnc_isPositionInArea = {
+    FUN_ARGS_3(_position,_area,_areaPosition);
+
+    DECLARE_4(_area,_width,_height,_angle,_isRectangle);
+    _angle = 180 - _angle;
+
+    private "_shapeFunc";
+    if (_isRectangle) then {
+        _shapeFunc = adm_common_fnc_isPositionInRectangle;
+    } else {
+        _shapeFunc = adm_common_fnc_isPositionInEllipse;
+    };
+
+    DECLARE_2(_position,_px,_py);
+    DECLARE_2(_areaPosition,_ax,_ay);
+    private ["_rotatedPx", "_rotatedPy"];
+    _rotatedPx = (_px - _ax) * cos (_angle) + (_py - _ay) * sin (_angle) + _ax;
+    _rotatedPy = (_py - _ay) * cos (_angle) - (_px - _ax) * sin (_angle) + _ay;
+
+    [_width, _height, _rotatedPx, _rotatedPy, _ax, _ay] call _shapeFunc;
+};
+
 adm_common_fnc_isPosInsideTrigger = {
     FUN_ARGS_2(_trigger,_position);
 
-    private ["_triggerArea", "_width", "_height", "_angle", "_isRectangle", "_triggerPosition", "_shapeFunc"];
-    _triggerArea = triggerArea _trigger;
-    SELECT_4(_triggerArea,_width,_height,_angle,_isRectangle);
-    _angle = 180 - _angle;
-    _triggerPosition = getPosATL _trigger;
-
-    if (_isRectangle) then {
-        _shapeFunc = adm_common_fnc_isPosInsideRectangle;
-    } else {
-        _shapeFunc = adm_common_fnc_isPosInsideEllipse;
-    };
-
-    private ["_px", "_py", "_tx", "_ty", "_rotatedPx", "_rotatedPy"];
-    SELECT_2(_position,_px,_py);
-    SELECT_2(_triggerPosition,_tx,_ty);
-    _rotatedPx = (_px - _tx) * cos (_angle) + (_py - _ty) * sin (_angle) + _tx;
-    _rotatedPy = (_py - _ty) * cos (_angle) - (_px - _tx) * sin (_angle) + _ty;
-
-    [_width, _height, _rotatedPx, _rotatedPy, _tx, _ty] call _shapeFunc;
+    [_position,triggerArea _trigger, getPosATL _trigger] call adm_common_fnc_isPositionInArea;
 };
 
-adm_common_fnc_isPosInsideRectangle = {
-    FUN_ARGS_6(_width,_height,_rotatedPx,_rotatedPy,_tx,_ty);
+adm_common_fnc_isPositionInRectangle = {
+    FUN_ARGS_6(_width,_height,_rotatedPx,_rotatedPy,_ax,_ay);
 
-    _rotatedPx <= _tx + _width && {_rotatedPx >= _tx - _width} && {_rotatedPy <= _ty + _height} && {_rotatedPy >= _ty - _height};
+    _rotatedPx <= _ax + _width && {_rotatedPx >= _ax - _width} && {_rotatedPy <= _ay + _height} && {_rotatedPy >= _ay - _height};
 };
 
-adm_common_fnc_isPosInsideEllipse = {
-    FUN_ARGS_6(_width,_height,_rotatedPx,_rotatedPy,_tx,_ty);
+adm_common_fnc_isPositionInEllipse = {
+    FUN_ARGS_6(_width,_height,_rotatedPx,_rotatedPy,_ax,_ay);
  
-     (_rotatedPx - _tx) ^ 2 / _width ^ 2 + (_rotatedPy - _ty) ^ 2 / _height ^ 2 <= 1;
+     (_rotatedPx - _ax) ^ 2 / _width ^ 2 + (_rotatedPy - _ay) ^ 2 / _height ^ 2 <= 1;
 };
 
 adm_common_fnc_filterFirst = {
