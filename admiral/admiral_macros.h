@@ -140,6 +140,7 @@
 #define IDX_ZONE_SPAWNED_GROUPS                     8
 #define IDX_ZONE_POOL                               9
 #define IDX_ZONE_SPECIFIC_VALUES                    10
+#define IDX_ZONE_INIT_FUNCTION                      11
 
 #define GET_ZONE_VALUE(ZONE,IDX)                    ((ZONE) select IDX)
 #define SET_ZONE_VALUE(ZONE,IDX,VAL)                ((ZONE) set [IDX,VAL])
@@ -154,6 +155,7 @@
 #define GET_ZONE_UNIT_TEMPLATE(ZONE)                GET_ZONE_VALUE(ZONE,IDX_ZONE_UNIT_TEMPLATE)
 #define GET_ZONE_SPAWNED_GROUPS(ZONE)               GET_ZONE_VALUE(ZONE,IDX_ZONE_SPAWNED_GROUPS)
 #define GET_ZONE_POOL(ZONE)                         GET_ZONE_VALUE(ZONE,IDX_ZONE_POOL)
+#define GET_ZONE_INIT_FUNCTION(ZONE)                GET_ZONE_VALUE(ZONE,IDX_ZONE_INIT_FUNCTION)
 
 #define SET_ZONE_ID(ZONE,VAL)                       SET_ZONE_VALUE(ZONE,IDX_ZONE_ID,VAL)
 #define SET_ZONE_NAME(ZONE,VAL)                     SET_ZONE_VALUE(ZONE,IDX_ZONE_NAME,VAL)
@@ -165,6 +167,7 @@
 #define SET_ZONE_UNIT_TEMPLATE(ZONE,VAL)            SET_ZONE_VALUE(ZONE,IDX_ZONE_UNIT_TEMPLATE,VAL)
 #define SET_ZONE_SPAWNED_GROUPS(ZONE,VAL)           SET_ZONE_VALUE(ZONE,IDX_ZONE_SPAWNED_GROUPS,VAL)
 #define SET_ZONE_POOL(ZONE,VAL)                     SET_ZONE_VALUE(ZONE,IDX_ZONE_POOL,VAL)
+#define SET_ZONE_INIT_FUNCTION(ZONE,VAL)            SET_ZONE_VALUE(ZONE,IDX_ZONE_INIT_FUNCTION,VAL)
 
 
 #define IDX_CAMP_TYPE                               0
@@ -212,9 +215,9 @@
 #define SET_CQC_FORCE_FIRE_ENABLED(ZONE,VAL)        SET_ZONE_SPECIFIC_VALUE(ZONE,IDX_CQC_FORCE_FIRE_ENABLED,VAL)
 #define SET_CQC_FORCE_FIRE_RUNNING(ZONE,VAL)        SET_ZONE_SPECIFIC_VALUE(ZONE,IDX_CQC_FORCE_FIRE_RUNNING,VAL)
 
-#define DEFAULT_CAMP_VALUES                         [-1,"","camp",[0,0,0],[0,0,0,false],true,"",adm_camp_defaultUnitTemplate,[[],[],[]],[0,0,0],["ondemand",[0,0,0],[],[0,0,0],10,[10,10,10],[100,100,100]]]
-#define DEFAULT_PATROL_VALUES                       [-1,"","patrol",[0,0,0],[0,0,0,false],true,"",adm_patrol_defaultUnitTemplate,[[],[],[]],[0,0,0],[false]]
-#define DEFAULT_CQC_VALUES                          [-1,"","cqc",[0,0,0],[0,0,0,false],true,"",adm_cqc_defaultUnitTemplate,[],0,[0,adm_cqc_forceFireEnabled,false]]
+#define DEFAULT_CAMP_VALUES                         [-1,"","camp",[0,0,0],[0,0,0,false],true,"",adm_camp_defaultUnitTemplate,[[],[],[]],[0,0,0],["ondemand",[0,0,0],[],[0,0,0],10,[10,10,10],[100,100,100]],adm_camp_fnc_initZone]
+#define DEFAULT_PATROL_VALUES                       [-1,"","patrol",[0,0,0],[0,0,0,false],true,"",adm_patrol_defaultUnitTemplate,[[],[],[]],[0,0,0],[false],adm_patrol_fnc_initZone]
+#define DEFAULT_CQC_VALUES                          [-1,"","cqc",[0,0,0],[0,0,0,false],true,"",adm_cqc_defaultUnitTemplate,[],0,[0,adm_cqc_forceFireEnabled,false],adm_cqc_fnc_initZone]
 
 
 

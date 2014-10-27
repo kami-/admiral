@@ -12,6 +12,7 @@ adm_zone_fnc_initZone = {
     } else {
         _this call adm_zone_fnc_createZone;
     };
+    [_zone] spawn GET_ZONE_INIT_FUNCTION(_zone);
 
     _zone;
 };
