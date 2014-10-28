@@ -3,16 +3,11 @@
 #include "logbook.h"
 
 adm_common_fnc_placeMan = {
-    FUN_ARGS_4(_position,_group,_units,_skillArray);
+    FUN_ARGS_4(_position,_group,_unitClassNames,_skillArray);
 
-    DECLARE(_unit) = _group createUnit [SELECT_RAND(_units), _position, [], 0, "NONE"];
+    DECLARE(_unit) = _group createUnit [SELECT_RAND(_unitClassNames), _position, [], 0, "NONE"];
     DEBUG("admiral.common.create",FMT_4("Created unit '%1' at position '%2', in group '%3' with classname '%4'.",_unit,_position,_group,typeOf _unit));
-    {
-        _unit setSkill _x;
-        TRACE("admiral.common.create",FMT_3("Set unit '%1' skill '%2' to '%3'.",_unit,_x select 0,_x select 1));
-    } foreach _skillArray;
-    _unit allowFleeing 0;
-    [_unit] call adm_common_fnc_setGear;
+    [_unit, _skillArray] call adm_common_fnc_initUnit;
 
     _unit;
 };
@@ -22,6 +17,29 @@ adm_common_fnc_placeVehicle = {
 
     DEBUG("admiral.common.create",FMT_2("Created vehicle at position '%1', with classname '%2'.",_vehPos,_vehType));
     createVehicle [_vehType, _vehPos, [], 0, "NONE"];
+};
+
+adm_common_fnc_spawnCrew = {
+    FUN_ARGS_4(_vehicle,_group,_crewClassNames,_skillArray);
+
+    DECLARE(_crew) = [_vehicle, _group, false, "", SELECT_RAND(_crewClassNames)] call BIS_fnc_spawnCrew;
+    DEBUG("admiral.common.create",FMT_3("Created crew '%1' for vehicle '%2', in group '%3'.",_crew,_vehicle,_group));
+    {
+        [_x, _skillArray] call adm_common_fnc_initUnit;
+    } foreach _crew;
+
+    _crew
+};
+
+adm_common_fnc_initUnit = {
+    FUN_ARGS_2(_unit,_skillArray);
+
+    {
+        _unit setSkill _x;
+        TRACE("admiral.common.create",FMT_3("Set unit '%1' skill '%2' to '%3'.",_unit,_x select 0,_x select 1));
+    } foreach _skillArray;
+    _unit allowFleeing 0;
+    [_unit] call adm_common_fnc_setGear;
 };
 
 adm_common_fnc_setGear = {
