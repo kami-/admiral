@@ -137,41 +137,46 @@ adm_common_fnc_randomFlatEmptyPosInTrigger = {
     FUN_ARGS_3(_trigger,_unitType,_canBeWater);
 
     if (isNil "_canBeWater") then {_canBeWater = false;};
-    private ["_position", "_emptyPosition"];
-    _position = [_trigger, _canBeWater] call adm_common_fnc_randomPosInTrigger;
-    _emptyPosition = _position findEmptyPosition [0, CAMP_SPAWN_CIRCLE_MAX_DIST, _unitType];
+    [triggerArea _trigger, getPosATL _trigger, _unitType, _canBeWater] call adm_common_fnc_getRandomEmptyPositionInArea;
+};
+
+adm_common_fnc_getRandomEmptyPositionInArea = {
+    FUN_ARGS_4(_area,_areaPosition,_unitType,_canBeWater);
+
+    if (isNil "_canBeWater") then {_canBeWater = false;};
+    private ["_randomPosition", "_emptyPosition"];
+    _randomPosition = [_area, _areaPosition, _canBeWater] call adm_common_fnc_getRandomPositionInArea;
+    _emptyPosition = _randomPosition findEmptyPosition [0, CAMP_SPAWN_CIRCLE_MAX_DIST, _unitType];
     while {count _emptyPosition == 0} do {
-        _position = [_trigger, _canBeWater] call adm_common_fnc_randomPosInTrigger;
-        _emptyPosition = _position findEmptyPosition [0, CAMP_SPAWN_CIRCLE_MAX_DIST, _unitType];
+        _randomPosition = [_area, _areaPosition, _canBeWater] call adm_common_fnc_getRandomPositionInArea;
+        _emptyPosition = _randomPosition findEmptyPosition [0, CAMP_SPAWN_CIRCLE_MAX_DIST, _unitType];
     };
 
     _emptyPosition;
 };
 
-adm_common_fnc_randomPosInTrigger = {
-    FUN_ARGS_2(_trigger,_canBeWater);
+adm_common_fnc_getRandomPositionInArea = {
+    FUN_ARGS_3(_area,_areaPosition,_canBeWater);
 
-    private ["_triggerArea", "_width", "_height", "_angle", "_isRectangle", "_triggerPosition", "_position", "_shapeFunc"];
-    _triggerArea = triggerArea _trigger;
-    SELECT_4(_triggerArea,_width,_height,_angle,_isRectangle);
+    private ["_randomPosition", "_shapeFunc"];
+    DECLARE_4(_area,_width,_height,_angle,_isRectangle);
     _angle = 180 - _angle;
-    _triggerPosition = getPosATL _trigger;
 
     if (_isRectangle) then {
-        _shapeFunc = adm_common_fnc_randomPosInRectangle;
+        _shapeFunc = adm_common_fnc_getRandomPositionInRectangle;
     } else {
-        _shapeFunc = adm_common_fnc_randomPosInEllipse;
+        _shapeFunc = adm_common_fnc_getRandomPositionInEllipse;
     };
 
-    _position = [_width, _height, _angle, _triggerPosition] call _shapeFunc;
-    while {!_canBeWater && {surfaceIsWater _position}} do {
-        _position = [_width, _height, _angle, _triggerPosition] call _shapeFunc;
+    _randomPosition = [_width, _height, _angle, _areaPosition] call _shapeFunc;
+    while {!_canBeWater && {surfaceIsWater _randomPosition}} do {
+        _randomPosition = [_width, _height, _angle, _areaPosition] call _shapeFunc;
     };
 
-    _position;
+    _randomPosition;
 };
 
-adm_common_fnc_randomPosInRectangle = {
+adm_common_fnc_getRandomPositionInRectangle = {
     FUN_ARGS_4(_width,_height,_angle,_position);
 
     private ["_px", "_py"];
@@ -184,7 +189,7 @@ adm_common_fnc_randomPosInRectangle = {
     ];
 };
 
-adm_common_fnc_randomPosInEllipse = {
+adm_common_fnc_getRandomPositionInEllipse = {
     FUN_ARGS_4(_width,_height,_angle,_position);
 
     private ["_ellipseAngle", "_px", "_py"];
