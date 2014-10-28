@@ -461,6 +461,7 @@ adm_camp_fnc_initZone = {
     };
     INFO("admiral.camp",FMT_1("Camp Zone '%1' has been succesfully initialized.",GET_ZONE_ID(_zone)));
     SET_CAMP_ENABLED(_zone,true);
+    PUSH(adm_camp_zones,_zone);
     [_zone] call ([_zone] call adm_camp_fnc_getSpawnFunction);
 };
 
