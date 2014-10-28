@@ -171,12 +171,13 @@
 
 
 #define IDX_CAMP_TYPE                               0
-#define IDX_CAMP_WAVE                               1
-#define IDX_CAMP_PATHS                              2
-#define IDX_CAMP_LAST_SPAWN_TIME                    3
-#define IDX_CAMP_DELAY                              4
-#define IDX_CAMP_GROUP_DELAY                        5
-#define IDX_CAMP_SPAWN_CHANCE                       6
+#define IDX_CAMP_ENABLED                            1
+#define IDX_CAMP_WAVE                               2
+#define IDX_CAMP_PATHS                              3
+#define IDX_CAMP_LAST_SPAWN_TIME                    4
+#define IDX_CAMP_DELAY                              5
+#define IDX_CAMP_GROUP_DELAY                        6
+#define IDX_CAMP_SPAWN_CHANCE                       7
 
 #define IDX_PATROL_FOLLOWING                        0
 
@@ -188,6 +189,7 @@
 #define SET_ZONE_SPECIFIC_VALUE(ZONE,IDX,VAL)       ((ZONE) select IDX_ZONE_SPECIFIC_VALUES set [IDX,VAL])
 
 #define GET_CAMP_TYPE(ZONE)                         GET_ZONE_SPECIFIC_VALUE(ZONE,IDX_CAMP_TYPE)
+#define IS_CAMP_ENABLED(ZONE)                       GET_ZONE_SPECIFIC_VALUE(ZONE,IDX_CAMP_ENABLED)
 #define GET_CAMP_WAVE(ZONE)                         GET_ZONE_SPECIFIC_VALUE(ZONE,IDX_CAMP_WAVE)
 #define GET_CAMP_PATHS(ZONE)                        GET_ZONE_SPECIFIC_VALUE(ZONE,IDX_CAMP_PATHS)
 #define GET_CAMP_LAST_SPAWN_TIME(ZONE)              GET_ZONE_SPECIFIC_VALUE(ZONE,IDX_CAMP_LAST_SPAWN_TIME)
@@ -202,6 +204,7 @@
 #define IS_CQC_FORCE_FIRE_RUNNING(ZONE)             GET_ZONE_SPECIFIC_VALUE(ZONE,IDX_CQC_FORCE_FIRE_RUNNING)
 
 #define SET_CAMP_TYPE(ZONE,VAL)                     SET_ZONE_SPECIFIC_VALUE(ZONE,IDX_CAMP_TYPE,VAL)
+#define SET_CAMP_ENABLED(ZONE,VAL)                  SET_ZONE_SPECIFIC_VALUE(ZONE,IDX_CAMP_ENABLED,VAL)
 #define SET_CAMP_WAVE(ZONE,VAL)                     SET_ZONE_SPECIFIC_VALUE(ZONE,IDX_CAMP_WAVE,VAL)
 #define SET_CAMP_PATHS(ZONE,VAL)                    SET_ZONE_SPECIFIC_VALUE(ZONE,IDX_CAMP_PATHS,VAL)
 #define SET_CAMP_LAST_SPAWN_TIME(ZONE,VAL)          SET_ZONE_SPECIFIC_VALUE(ZONE,IDX_CAMP_LAST_SPAWN_TIME,VAL)
@@ -215,7 +218,7 @@
 #define SET_CQC_FORCE_FIRE_ENABLED(ZONE,VAL)        SET_ZONE_SPECIFIC_VALUE(ZONE,IDX_CQC_FORCE_FIRE_ENABLED,VAL)
 #define SET_CQC_FORCE_FIRE_RUNNING(ZONE,VAL)        SET_ZONE_SPECIFIC_VALUE(ZONE,IDX_CQC_FORCE_FIRE_RUNNING,VAL)
 
-#define DEFAULT_CAMP_VALUES                         [-1,"","camp",[0,0,0],[0,0,0,false],true,"",adm_camp_defaultUnitTemplate,[[],[],[]],[0,0,0],["ondemand",[0,0,0],[],[0,0,0],10,[10,10,10],[100,100,100]],adm_camp_fnc_initZone]
+#define DEFAULT_CAMP_VALUES                         [-1,"","camp",[0,0,0],[0,0,0,false],true,"",adm_camp_defaultUnitTemplate,[[],[],[]],[0,0,0],["ondemand",false,[0,0,0],[],[0,0,0],CAMP_DEFAULT_DELAY,[10,10,10],[100,100,100]],adm_camp_fnc_initZone]
 #define DEFAULT_PATROL_VALUES                       [-1,"","patrol",[0,0,0],[0,0,0,false],true,"",adm_patrol_defaultUnitTemplate,[[],[],[]],[0,0,0],[false],adm_patrol_fnc_initZone]
 #define DEFAULT_CQC_VALUES                          [-1,"","cqc",[0,0,0],[0,0,0,false],true,"",adm_cqc_defaultUnitTemplate,[],0,[0,adm_cqc_forceFireEnabled,false],adm_cqc_fnc_initZone]
 
