@@ -143,13 +143,13 @@ adm_debug_fnc_deleteAllCqcGroupMarkers = {
 adm_debug_fnc_updateZoneMarkers = {
     FUN_ARGS_1(_zone);
 
-    DECLARE(_debugMarker) = _zone getVariable "adm_zone_debugMarker";
-    if (!isNil {_debugMarker}) then {
+    DECLARE(_debugMarker) = GET_ZONE_DEBUG_MARKER(_zone);
+    if (_debugMarker != "") then {
 
     } else {
-        [_zone] call adm_debug_fnc_createTriggerMarker;
-        if (triggerText _zone == "camp") then {
-            [_zone] call adm_debug_fnc_createAllCampLogicMarkers;
+        [_zone] call adm_debug_fnc_createZoneMarker;
+        if (GET_ZONE_TYPE(_zone) == "camp") then {
+            [_zone] call adm_debug_fnc_createAllCampPathMarkers;
         };
     };
 };
@@ -157,16 +157,16 @@ adm_debug_fnc_updateZoneMarkers = {
 adm_debug_fnc_deleteZoneMarkers = {
     FUN_ARGS_1(_zone);
 
-    DECLARE(_debugMarker) = _zone getVariable "adm_zone_debugMarker";
-    if (!isNil {_debugMarker}) then {
+    DECLARE(_debugMarker) = GET_ZONE_DEBUG_MARKER(_zone);
+    if (_debugMarker != "") then {
         deleteMarkerLocal _debugMarker;
-        if (triggerText _zone == "camp") then {
+        if (GET_ZONE_TYPE(_zone) == "camp") then {
             {
-                [_x] call adm_debug_fnc_deleteCampLogicMarkers
-            } foreach (_zone getVariable ["adm_camp_logics", []]);
+                [_x] call adm_debug_fnc_deleteCampPathMarkers
+            } foreach GET_CAMP_PATHS(_zone);
         };
     };
-    _zone setVariable ["adm_zone_debugMarker", nil, false];
+    SET_ZONE_DEBUG_MARKER(_zone,"");;
 };
 
 adm_debug_fnc_deleteAllZoneMarkers = {
@@ -175,64 +175,65 @@ adm_debug_fnc_deleteAllZoneMarkers = {
         {
             [_x] call adm_debug_fnc_deleteZoneMarkers;
         } foreach _zones;
-    } foreach [adm_cqc_triggers, adm_patrol_triggers, adm_camp_triggers];
+    } foreach [adm_cqc_zones, adm_patrol_zones, adm_camp_zones];
+};
+
+adm_debug_fnc_createZoneMarker = {
+    FUN_ARGS_2(_zone,_color);
+
+    private ["_shape", "_debugMarker"];
+    _shape = "RECTANGLE";
+    if (!(GET_ZONE_AREA(_zone) select 3)) then {
+        _shape = "ELLIPSE";
+    };
+    if (isNil {_color}) then {
+        _color = [[GET_ZONE_UNIT_TEMPLATE(_zone)] call adm_common_fnc_getUnitTemplateSide] call adm_debug_fnc_getSideColor;
+    };
+
+    _debugMarker = [format ["adm_zone_%1", GET_ZONE_ID(_zone)], GET_ZONE_POSITION(_zone), _shape, "DOT", _color] call adm_common_fnc_createLocalMarker;
+    _debugMarker setMarkerSizeLocal [GET_ZONE_AREA(_zone) select 0, GET_ZONE_AREA(_zone) select 1];
+    _debugMarker setMarkerDirLocal (GET_ZONE_AREA(_zone) select 2);
+    _debugMarker setMarkerBrushLocal "Border";
+    SET_ZONE_DEBUG_MARKER(_zone,_debugMarker);
+    DEBUG("admiral.debug",FMT_6("Created marker '%1' for zone '%2' at position '%3' with shape '%4', color '%4', size '%5' and direction '%6'.",_debugMarker,GET_ZONE_ID(_zone),GET_ZONE_POSITION(_zone),_shape,_color,AS_ARRAY_2(GET_ZONE_AREA(_zone) select 0, GET_ZONE_AREA(_zone) select 1),GET_ZONE_AREA(_zone) select 2));
+
+    _debugMarker;
 };
 
 adm_debug_fnc_createTriggerMarker = {
     FUN_ARGS_2(_trigger,_color);
 
-    private ["_shape", "_marker"];
-    _shape = "RECTANGLE";
-    if (!((triggerArea _trigger) select 3)) then {
-        _shape = "ELLIPSE";
-    };
-    if (isNil {_color}) then {
-        _color = [[_trigger getVariable "adm_zone_unitTemplate"] call adm_common_fnc_getUnitTemplateSide] call adm_debug_fnc_getSideColor;
-    };
-
-    _marker = [format ["adm_zone_%1", _trigger], getPosATL _trigger, _shape, "DOT", _color] call adm_common_fnc_createLocalMarker;
-    _marker setMarkerSizeLocal [(triggerArea _trigger) select 0, (triggerArea _trigger) select 1];
-    _marker setMarkerDirLocal ((triggerArea _trigger) select 2);
-    _marker setMarkerBrushLocal "Border";
-    _trigger setVariable ["adm_zone_debugMarker", _marker, false];
-    DEBUG("admiral.debug",FMT_6("Created marker '%1' for trigger '%2' at position '%3' with shape '%4', color '%4', size '%5' and direction '%6'.",_marker,_trigger,getPosATL _trigger,_shape,_color,AS_ARRAY_2((triggerArea _trigger) select 0, (triggerArea _trigger) select 1),(triggerArea _trigger) select 2));
-
-    _marker;
-};
-
-adm_debug_fnc_updateTriggerLocalMarker = {
-    FUN_ARGS_1(_trigger);
-
-    private ["_shape", "_marker"];
+    private ["_shape", "_debugMarker"];
     _shape = "RECTANGLE";
     if (!((triggerArea _trigger) select 3)) then {
         _shape = "ELLIPSE";
     };
 
-    _marker = _trigger getVariable "adm_zone_debugMarker";
-    _marker setMarkerShapeLocal _shape;
-    _marker setMarkerPosLocal getPosATL _trigger;
-    _marker setMarkerSizeLocal [(triggerArea _trigger) select 0, (triggerArea _trigger) select 1];
-    _marker setMarkerDirLocal ((triggerArea _trigger) select 2);
-    DEBUG("admiral.debug",FMT_2("Updated marker '%1' for trigger '%2'.",_marker,_trigger));
+    _debugMarker = [format ["adm_trigger_debugMarker_%1", _trigger], getPosATL _trigger, _shape, "DOT", _color] call adm_common_fnc_createLocalMarker;
+    _debugMarker setMarkerSizeLocal [(triggerArea _trigger) select 0, (triggerArea _trigger) select 1];
+    _debugMarker setMarkerDirLocal ((triggerArea _trigger) select 2);
+    _debugMarker setMarkerBrushLocal "Border";
+    DEBUG("admiral.debug",FMT_6("Created marker '%1' for trigger '%2' at position '%3' with shape '%4', color '%4', size '%5' and direction '%6'.",_debugMarker,_trigger,getPosATL _trigger,_shape,_color,AS_ARRAY_2((triggerArea _trigger) select 0, (triggerArea _trigger) select 1),(triggerArea _trigger) select 2));
+
+    _debugMarker;
 };
 
-adm_debug_fnc_createAllCampLogicMarkers = {
-    FUN_ARGS_1(_trigger);
+adm_debug_fnc_createAllCampPathMarkers = {
+    FUN_ARGS_1(_zone);
 
-    DECLARE(_logics) = _trigger getVariable ["adm_camp_logics", []];
+    DECLARE(_paths) = GET_CAMP_PATHS(_zone);
     {
         if (isNil {_x getVariable "adm_logic_debugMarkers"}) then {
-            [_x] call adm_debug_fnc_createCampLogicMarkers;
+            [_x] call adm_debug_fnc_createCampPathMarkers;
         };
-    } foreach _logics;
+    } foreach _paths;
 };
 
-adm_debug_fnc_createCampLogicMarkers = {
-    FUN_ARGS_1(_logic);
+adm_debug_fnc_createCampPathMarkers = {
+    FUN_ARGS_1(_path);
 
     private ["_waypoints", "_lineMarkers", "_endTriggerMarker"];
-    _waypoints = waypoints _logic;
+    _waypoints = waypoints _path;
     _lineMarkers = [];
     for "_i" from 0 to count _waypoints - 2 do {
         private ["_wpPosFrom", "_wpPosTo", "_lineMarker"];
@@ -240,22 +241,24 @@ adm_debug_fnc_createCampLogicMarkers = {
         _wpPosTo = getWPPos (_waypoints select (_i + 1));
         _lineMarker = [format ["adm_logic_lineMarker_%1", _wpPosFrom], _wpPosFrom, _wpPosTo, "ColorOrange", 3] call adm_debug_fnc_createLineMarker;
         PUSH(_lineMarkers,_lineMarker);
-        DEBUG("admiral.debug",FMT_2("Created line marker between '%1' and '%2' waypoints for camp path '%3'.",_waypoints select _i,_waypoints select (_i + 1),_logic));
+        DEBUG("admiral.debug",FMT_2("Created line marker between '%1' and '%2' waypoints for camp path '%3'.",_waypoints select _i,_waypoints select (_i + 1),_path));
     };
-    _endTriggerMarker = [_logic getVariable "adm_camp_endTrigger", "ColorOrange"] call adm_debug_fnc_createTriggerMarker;
-    _logic setVariable ["adm_logic_debugMarkers", [_lineMarkers, _endTriggerMarker], false];
-    DEBUG("admiral.debug",FMT_1("Created end trigger marker for camp path '%1'.",_logic));
+    _endTriggerMarker = [_path getVariable "adm_camp_endTrigger", "ColorOrange"] call adm_debug_fnc_createTriggerMarker;
+    _path setVariable ["adm_logic_debugMarkers", [_lineMarkers, _endTriggerMarker], false];
+    DEBUG("admiral.debug",FMT_1("Created end trigger marker for camp path '%1'.",_path));
 };
 
-adm_debug_fnc_deleteCampLogicMarkers = {
-    FUN_ARGS_1(_logic);
+adm_debug_fnc_deleteCampPathMarkers = {
+    FUN_ARGS_1(_path);
 
-    DECLARE(_debugMarkers) = _logic getVariable "adm_logic_debugMarkers";
-    {
-        deleteMarkerLocal _x;
-    } foreach (_debugMarkers select 0);
-    deleteMarkerLocal (_debugMarkers select 1);
-    _logic setVariable ["adm_logic_debugMarkers", nil, false];
+    DECLARE(_debugMarkers) = _path getVariable "adm_logic_debugMarkers";
+    if (!isNil {_debugMarkers}) then {
+        {
+            deleteMarkerLocal _x;
+        } foreach (_debugMarkers select 0);
+        deleteMarkerLocal (_debugMarkers select 1);
+        _path setVariable ["adm_logic_debugMarkers", nil, false];
+    };
 };
 
 adm_debug_fnc_createLineMarker = {
@@ -321,7 +324,7 @@ adm_debug_fnc_debugZones = {
         {
             [_x] call adm_debug_fnc_updateZoneMarkers;
         } foreach _zones;
-    } foreach [adm_cqc_triggers, adm_patrol_triggers, adm_camp_triggers];
+    } foreach [adm_cqc_zones, adm_patrol_zones, adm_camp_zones];
 };
 
 adm_debug_fnc_enableDebugging = {
