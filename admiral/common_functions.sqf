@@ -50,15 +50,6 @@ adm_common_fnc_setGear = {
     };
 };
 
-adm_common_initUnitTemplate = {
-    FUN_ARGS_2(_trigger,_defaultTemplate);
-
-    if (isNil {_trigger getVariable "adm_zone_unitTemplate"}) then {
-        _trigger setVariable ["adm_zone_unitTemplate", _defaultTemplate, false];
-        DEBUG("admiral.common.zone",FMT_2("No unitTemplate was givven for trigger '%1'. Set it to '%2' default template.",_trigger,_defaultTemplate));
-    };
-};
-
 adm_common_fnc_getUnitTemplateArray = {
     FUN_ARGS_2(_unitTemplate,_field);
 
@@ -276,58 +267,6 @@ adm_common_fnc_filterFirst = {
     } foreach _array;
 
     _result;
-};
-
-adm_common_fnc_setConfig = {
-    FUN_ARGS_2(_trigger,_configArray);
-
-    {
-        _trigger setVariable [[_x select 0] call adm_common_fnc_getRealConfig, _x select 1];
-        TRACE("admiral.common.zone", FMT_3("Set trigger '%1' config variable '%2' to '%3'.",_trigger,[_x select 0] call adm_common_fnc_getRealConfig,_x select 1));
-    } foreach _configArray;
-    [_trigger] call adm_common_fnc_initZone;
-};
-
-adm_common_fnc_getRealConfig = {
-    FUN_ARGS_1(_configName);
-
-    call {
-        if (_configName == "pool")          exitWith {"adm_zone_pool"};
-        if (_configName == "minHeight")     exitWith {"adm_cqc_minHeight"};
-        if (_configName == "type")          exitWith {"adm_camp_type"};
-        if (_configName == "wave")          exitWith {"adm_camp_wave"};
-        if (_configName == "campDelay")     exitWith {"adm_camp_campDelay"};
-        if (_configName == "groupDelay")    exitWith {"adm_camp_groupDelay"};
-        if (_configName == "spawnChance")   exitWith {"adm_camp_spawnChance"};
-        if (_configName == "unitTemplate")  exitWith {"adm_zone_unitTemplate"};
-    };
-};
-
-adm_common_fnc_initZone = {
-    FUN_ARGS_1(_trigger);
-
-    private ["_defaultTemplate", "_initFunc", "_triggerText"];
-    _defaultTemplate = "";
-    _initFunc = {};
-    _triggerText = triggerText _trigger;
-    call {
-        if (_triggerText == "cqc") exitWith {
-            _defaultTemplate = adm_cqc_defaultUnitTemplate;
-            _initFunc = adm_cqc_fnc_initZone;
-        };
-        if (_triggerText == "patrol") exitWith {
-            _defaultTemplate = adm_patrol_defaultUnitTemplate;
-            _initFunc = adm_patrol_fnc_initZone;
-        };
-        if (_triggerText == "camp") exitWith {
-            _defaultTemplate = adm_camp_defaultUnitTemplate;
-            _initFunc = adm_camp_fnc_initZone;
-        };
-    };
-    if (_defaultTemplate != "") then {
-        [_trigger, _defaultTemplate] call adm_common_initUnitTemplate;
-        [_trigger] spawn _initFunc;
-    };
 };
 
 adm_common_fnc_insertionSort = {
