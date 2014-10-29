@@ -71,6 +71,15 @@ adm_cqc_infFireteamSize = 4;
 adm_cqc_forceFireEnabled = true;
 adm_cqc_forceFireDelay = 5;
 
+adm_cqc_buildingBlacklist = [
+    "Land_dum_mesto2l", "Land_dum_mesto3"
+];
+
+adm_cqc_buildingCapacity = [
+    ["Land_House_C_2_EP1", 4], ["Land_House_K_6_EP1", 4], ["Land_House_K_7_EP1", 4]
+    , ["Land_A_GeneralStore_01", 4]
+];
+
 adm_cqc_aimingAccuracy = 0.2;
 adm_cqc_aimingShake = 0.1;
 adm_cqc_aimingSpeed = 1;
@@ -86,6 +95,3 @@ adm_cqc_general = 1;
 // Rupture
 adm_rupture_updateTick = 30;
 adm_rupture_length = 120;
-
-// unitTypes
-#include "cqc_buildings.sqf"
