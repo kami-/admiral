@@ -128,8 +128,7 @@ adm_camp_fnc_spawnInfGroup = {
         DECLARE(_position) = _initialPos findEmptyPosition [1, CAMP_SPAWN_CIRCLE_MAX_DIST, "SoldierWB"];
         [_position, _group, _unitTemplate, UNIT_TYPE_ARRAY select _unitType] call _placeManFunc;
     };
-    DEBUG("admiral.camp.create",FMT_4("Created '%1' Camp unit(s) for group '%2' of type '%3' in Patrol Zone '%4'.",_groupSize,_group,GROUP_TYPE_ARRAY select _groupType,GET_ZONE_ID(_zone)));
-    [_group] call adm_reduce_fnc_setGroupExpandCount;
+    DEBUG("admiral.camp.create",FMT_4("Spawned '%1' unit(s) for group '%2' of type '%3' in Zone '%4'.",_groupSize,_group,GROUP_TYPE_ARRAY select _groupType,GET_ZONE_ID(_zone)));
     _group setVariable ["adm_zone_parent", _zone];
     _group setVariable ["adm_group_type", _groupType, false];
 

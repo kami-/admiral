@@ -9,7 +9,6 @@ adm_settings_fnc_setSideRelations = {
 adm_isDebuggingEnabled = true;
 
 // General
-adm_isCachingEnabled = true;
 adm_areNVGsEnabled = true;
 
 // Behavior

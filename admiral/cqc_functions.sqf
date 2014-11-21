@@ -126,9 +126,7 @@ adm_cqc_fnc_spawnGarrisonGroup = {
     private ["_unitTemplate", "_group"];
     _unitTemplate = GET_ZONE_UNIT_TEMPLATE(_zone);
     _group = createGroup ([_unitTemplate] call adm_common_fnc_getUnitTemplateSide);
-    [_group, _numOfUnits, _unitTemplate, _possiblePositions, _building] call adm_cqc_fnc_spawnGarrisonGroupUnits;
-    [_group] call adm_reduce_fnc_setGroupExpandCount;
-    [_group] call adm_reduce_fnc_setCqcInitPositions;
+    [_group, _numOfUnits, _unitTemplate, GET_ZONE_TEMPLATE(_zone), _possiblePositions, _building] call adm_cqc_fnc_spawnGarrisonGroupUnits;
     _group setVariable ["adm_zone_parent", _zone];
 
     _group;

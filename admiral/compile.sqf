@@ -24,7 +24,6 @@ call compile preProcessFileLineNumbers "admiral\settings_functions.sqf"; DEBUG("
 call compile preProcessFileLineNumbers "admiral\common_functions.sqf"; DEBUG("admiral.compile","Compiled 'admiral\common_functions.sqf'.");
 call compile preProcessFileLineNumbers "admiral\debug_functions.sqf"; DEBUG("admiral.compile","Compiled 'admiral\debug_functions.sqf'.");
 call compile preProcessFileLineNumbers "admiral\zone_functions.sqf"; DEBUG("admiral.compile","Compiled 'admiral\zone_functions.sqf'.");
-call compile preProcessFileLineNumbers "admiral\reduce_functions.sqf"; DEBUG("admiral.compile","Compiled 'admiral\reduce_functions.sqf'.");
 call compile preProcessFileLineNumbers "admiral\cqc_functions.sqf"; DEBUG("admiral.compile","Compiled 'admiral\cqc_functions.sqf'.");
 call compile preProcessFileLineNumbers "admiral\camp_functions.sqf"; DEBUG("admiral.compile","Compiled 'admiral\camp_functions.sqf'.");
 call compile preProcessFileLineNumbers "admiral\patrol_functions.sqf"; DEBUG("admiral.compile","Compiled 'admiral\patrol_functions.sqf'.");
@@ -44,7 +43,6 @@ if (adm_isBehaviorEnabled) then {
 [] call adm_camp_fnc_init; DEBUG("admiral.camp","Init function 'adm_camp_fnc_init' called.");
 [] call adm_patrol_fnc_init; DEBUG("admiral.patrol","Init function 'adm_patrol_fnc_init' called.");
 [] call adm_rupture_fnc_checkUnits; DEBUG("admiral.rupture","Init function 'adm_rupture_fnc_checkUnits' called.");
-[] call adm_reduce_fnc_init; DEBUG("admiral.reduce","Init function 'adm_reduce_fnc_init' called.");
 
 if (adm_isBehaviorEnabled) then {
     [] call adm_behavior_fnc_init; DEBUG("admiral.behavior","Init function 'adm_behavior_fnc_init' called.");

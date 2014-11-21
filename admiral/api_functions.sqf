@@ -75,24 +75,6 @@ adm_api_fnc_setFriend = {
 
 
 
-// Caching
-
-/**
- * Enables caching of AI.
- */
-adm_api_fnc_enableCaching = {
-    [] call adm_reduce_fnc_enableCaching;
-};
-
-/**
- * Disables caching of AI.
- */
-adm_api_fnc_disableCaching = {
-    [] call adm_reduce_fnc_disableCaching;
-};
-
-
-
 // Debugging
 
 /**
