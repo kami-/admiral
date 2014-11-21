@@ -107,7 +107,7 @@ adm_common_fnc_getAliveGroups = {
     DECLARE(_aliveGroups) = [];
     {
         DECLARE(_groups) = _x;
-        FILTER_PUSH_ALL(_aliveGroups,_groups,{{alive _x} count units _x > 0});
+        FILTER_PUSH_ALL(_aliveGroups,_groups,{IS_GROUP_ALIVE(_x)});
     } foreach _groupsArray;
 
     _aliveGroups;
