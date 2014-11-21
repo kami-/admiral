@@ -78,7 +78,7 @@ adm_behavior_fnc_stateCombat = {
 adm_behavior_fnc_continueMoving = {
     FUN_ARGS_1(_group);
 
-    DEBUG("admiral.behavior",FMT_2("Group '%1' is in '%2' state.",_group,STATE_TEXT_ARRAY select _group getVariable "adm_behavior_state"));
+    DEBUG("admiral.behavior",FMT_2("Group '%1' is in '%2' state.",_group,STATE_TEXT_ARRAY select (_group getVariable "adm_behavior_state")));
     _group setVariable ["adm_behavior_state", STATE_CONTINUEMOVING, false];
 };
 
