@@ -2,6 +2,7 @@
 
 #include "logbook.h"
 
+
 // Initialize BIS functions for only Arma 2, if not done already
 if (isNil {call compile "blufor"}) then {
     if (isNil {BIS_fnc_init} || {!BIS_fnc_init}) then {
@@ -29,6 +30,10 @@ call compile preProcessFileLineNumbers "admiral\camp_functions.sqf"; DEBUG("admi
 call compile preProcessFileLineNumbers "admiral\patrol_functions.sqf"; DEBUG("admiral.compile","Compiled 'admiral\patrol_functions.sqf'.");
 call compile preProcessFileLineNumbers "admiral\rupture_functions.sqf"; DEBUG("admiral.compile","Compiled 'admiral\rupture_functions.sqf'.");
 call compile preProcessFileLineNumbers "admiral\api_functions.sqf"; DEBUG("admiral.compile","Compiled 'admiral\api_functions.sqf'.");
+
+if (isMultiplayer) then {
+    adm_isDebuggingEnabled = false;
+};
 
 if (adm_isBehaviorEnabled) then {
     INFO("admiral.behavior","Admiral Behavior system is enabled.");
