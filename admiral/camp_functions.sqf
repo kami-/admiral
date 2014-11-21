@@ -456,9 +456,6 @@ adm_camp_fnc_initZone = {
     };
     [_zone] call adm_camp_setGroupDelay;
     [_zone, adm_camp_possiblePaths] call adm_camp_fnc_tryAddPossiblePaths;
-    if (adm_isDebuggingEnabled) then {
-        //[_zone] call adm_error_fnc_validateZone;
-    };
     INFO("admiral.camp",FMT_1("Camp Zone '%1' has been succesfully initialized.",GET_ZONE_ID(_zone)));
     SET_CAMP_ENABLED(_zone,true);
     PUSH(adm_camp_zones,_zone);

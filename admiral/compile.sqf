@@ -22,14 +22,7 @@ call compile preProcessFileLineNumbers "admiral\config_functions.sqf"; DEBUG("ad
 call compile preProcessFileLineNumbers "admiral\id_functions.sqf"; DEBUG("admiral.compile","Compiled 'admiral\id_functions.sqf'.");
 call compile preProcessFileLineNumbers "admiral\settings_functions.sqf"; DEBUG("admiral.compile","Compiled 'admiral\settings_functions.sqf'.");
 call compile preProcessFileLineNumbers "admiral\common_functions.sqf"; DEBUG("admiral.compile","Compiled 'admiral\common_functions.sqf'.");
-
-// Don't compile, if we don't want to debug
-if (adm_isDebuggingEnabled) then {
-    INFO("admiral.debug","Admiral debugging is enabled.");
-    call compile preProcessFileLineNumbers "admiral\error_functions.sqf"; DEBUG("admiral.compile","Compiled 'admiral\error_functions.sqf'.");
-    call compile preProcessFileLineNumbers "admiral\debug_functions.sqf"; DEBUG("admiral.compile","Compiled 'admiral\debug_functions.sqf'.");
-};
-
+call compile preProcessFileLineNumbers "admiral\debug_functions.sqf"; DEBUG("admiral.compile","Compiled 'admiral\debug_functions.sqf'.");
 call compile preProcessFileLineNumbers "admiral\zone_functions.sqf"; DEBUG("admiral.compile","Compiled 'admiral\zone_functions.sqf'.");
 call compile preProcessFileLineNumbers "admiral\reduce_functions.sqf"; DEBUG("admiral.compile","Compiled 'admiral\reduce_functions.sqf'.");
 call compile preProcessFileLineNumbers "admiral\cqc_functions.sqf"; DEBUG("admiral.compile","Compiled 'admiral\cqc_functions.sqf'.");
@@ -59,7 +52,6 @@ if (adm_isBehaviorEnabled) then {
 
 // Don't initialize, if we don't want to debug
 if (adm_isDebuggingEnabled) then {
-    [] call adm_error_fnc_init; DEBUG("admiral.error","Init function 'adm_error_fnc_init' called.");
     [] call adm_debug_fnc_init; DEBUG("admiral.debug","Init function 'adm_debug_fnc_init' called.");
 };
 

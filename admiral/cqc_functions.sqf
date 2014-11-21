@@ -250,9 +250,6 @@ adm_cqc_fnc_initZone = {
     waitUntil {
         adm_isInitialized;
     };
-    if (adm_isDebuggingEnabled) then {
-        //[_zone] call adm_error_fnc_validateZone;
-    };
 
     DECLARE(_spawnedGroups) = [_zone] call adm_cqc_fnc_spawnGarrison;
     PUSH_ALL(adm_cqc_groups, _spawnedGroups);

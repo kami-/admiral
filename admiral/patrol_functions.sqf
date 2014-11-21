@@ -212,9 +212,6 @@ adm_patrol_fnc_initZone = {
     waitUntil {
         adm_isInitialized;
     };
-    if (adm_isDebuggingEnabled) then {
-        //[_zone] call adm_error_fnc_validateZone;
-    };
 
     [_zone] call adm_patrol_fnc_spawnGroups;
     PUSH(adm_patrol_zones, _zone);
