@@ -61,7 +61,7 @@ adm_behavior_fnc_stateCombat = {
     DECLARE(_reinfGroup) = _group getVariable "adm_behavior_reinfGroup";
     if (!isNil {_reinfGroup}) then {
         DECLARE(_enemyPos) = _group getVariable "adm_behavior_enemyPos";
-        if (!alive leader _reinfGroup) then {
+        if (!IS_GROUP_ALIVE(_reinfGroup)) then {
             DEBUG("admiral.behavior",FMT_2("Group '%1' tries to call additinal reinforcement, becasue reinforced group '%2' died.",_group,_reinfGroup));
             DECLARE(_enemyNumbers) = [side _group, _enemyPos] call adm_behavior_fnc_getEnemyNumbers;
             _group setVariable ["adm_behavior_reinfGroup", nil];
@@ -214,7 +214,7 @@ adm_behavior_fnc_getAvailableArmourGroups = {
 
 adm_behavior_fnc_isAvailableGroup = {
     [side _x, _side] call adm_common_fnc_isFriendlySide
-        && {alive leader _x}
+        && {IS_GROUP_ALIVE(_x)}
         && {leader _x distance _enemyPos <= BEHAVIOR_MAX_REINFORCEMENT_DIST}
         && {[_x] call adm_behavior_fnc_canReinforce};
 };

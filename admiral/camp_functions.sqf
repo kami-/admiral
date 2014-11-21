@@ -316,8 +316,7 @@ adm_camp_fnc_onDemandCanSpawnGroups = {
     _poolCount = GET_ZONE_POOL(_zone) select _groupType;
     _waveSize = GET_CAMP_WAVE(_zone) select _groupType;
     _groups = GET_ZONE_SPAWNED_GROUPS(_zone) select _groupType;
-    _aliveGroups = {alive leader _x} count _groups;
-
+    _aliveGroups = {IS_GROUP_ALIVE(_x)} count _groups;
     (_poolCount == -1 || {_poolCount > 0}) && {_aliveGroups < _waveSize};
 };
 
@@ -328,8 +327,7 @@ adm_camp_fnc_onDemandSpawnGroups = {
     _pool = GET_ZONE_POOL(_zone);
     _waveSize = GET_CAMP_WAVE(_zone) select _groupType;
     _groups = GET_ZONE_SPAWNED_GROUPS(_zone) select _groupType;
-    _aliveGroups = {alive leader _x} count _groups;
-
+    _aliveGroups = {IS_GROUP_ALIVE(_x)} count _groups;
     [_zone, _groupType, _unitType, [_waveSize - _aliveGroups, _waveSize - _aliveGroups, _pool, _groupType] call adm_camp_fnc_getGroupCount, _placeManFunc] call adm_camp_fnc_spawnGroups;
 };
 
