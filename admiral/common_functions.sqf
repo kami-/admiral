@@ -45,14 +45,24 @@ adm_common_fnc_initUnit = {
 adm_common_fnc_setGear = {
     FUN_ARGS_1(_unit);
 
+    [_unit] call adm_common_fnc_tryRemoveNVGs;
+};
+
+adm_common_fnc_tryRemoveNVGs = {
+    FUN_ARGS_1(_unit);
+
     if (!adm_areNVGsEnabled) then {
         if (isNil {call compile "blufor"}) then {
             _unit removeWeapon "NVGoggles";
         } else {
+            [_unit, ARMA3_NVGS] call compile "
+            private ['_unit', '_nvgs'];
+            _unit = _this select 0;
+            _nvg = _this select 1;
             {
                 _unit unassignItem _x;
                 _unit removeItem _x;
-            } foreach ARMA3_NVGS;
+            } foreach _nvg;";
         };
     };
 };
