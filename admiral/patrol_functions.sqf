@@ -3,13 +3,13 @@
 #include "logbook.h"
 
 adm_patrol_fnc_placeMan = {
-    FUN_ARGS_4(_position,_group,_unitTemplate,_unitType);
+    FUN_ARGS_5(_position,_group,_unitTemplate,_zoneTemplate,_unitType);
 
     DECLARE(_unit) = [
         _position,
         _group,
         [_unitTemplate, _unitType] call adm_common_fnc_getUnitTemplateArray,
-        PATROL_SKILL_ARRAY
+        [_zoneTemplate] call adm_common_fnc_getZoneTemplateSkillValues
     ] call adm_common_fnc_placeMan;
     DEBUG("admiral.patrol.create",FMT_5("Created unit '%1' at position '%2', in group '%3' with type '%4' and classname '%5'.",_unit,_position,_group,_unitType,typeOf _unit));
 
@@ -19,21 +19,23 @@ adm_patrol_fnc_placeMan = {
 adm_patrol_fnc_createWaypoints = {
     FUN_ARGS_4(_group,_unitType,_zone,_noOfWaypoints);
 
-    [_group, _unitType, GET_ZONE_AREA(_zone), GET_ZONE_POSITION(_zone), _noOfWaypoints] call adm_camp_fnc_createPatrolWaypoints;
-    DECLARE(_defultWp) = (waypoints _group) select 0;
-    _defultWp setWaypointPosition [getPosATL (leader _group), 0];
-    _defultWp setWaypointType 'MOVE';
-    _defultWp setWaypointBehaviour (SELECT_RAND(AS_ARRAY_2('AWARE','SAFE')));
-    _defultWp setWaypointCombatMode 'RED';
+    private ["_waypointBehaviours", "_defaultWp"];
+    _waypointBehaviours = ["ZoneTemplates", GET_ZONE_TEMPLATE(_zone), "waypointBehaviours"] call adm_config_fnc_getArray;
+    [_group, _unitType, GET_ZONE_AREA(_zone), GET_ZONE_POSITION(_zone), _waypointBehaviours, _noOfWaypoints] call adm_camp_fnc_createPatrolWaypoints;
+    _defaultWp = (waypoints _group) select 0;
+    _defaultWp setWaypointPosition [getPosATL (leader _group), 0];
+    _defaultWp setWaypointType 'MOVE';
+    _defaultWp setWaypointBehaviour (SELECT_RAND(_waypointBehaviours));
+    _defaultWp setWaypointCombatMode 'RED';
     DEBUG("admiral.patrol.create",FMT_3("Created '%1' patrol waypoint(s) for group '%2' in Camp Zone '%3'.",_noOfWaypoints,_group,GET_ZONE_ID(_zone)));
 };
 
 adm_patrol_fnc_spawnInfGroup = {
     FUN_ARGS_1(_zone);
 
-    DECLARE(_group) = [_zone, adm_patrol_infFireteamSize, GROUP_TYPE_INF, adm_patrol_fnc_placeMan, UNIT_TYPE_INF] call adm_camp_fnc_spawnInfGroup;
-    [_group, "SoldierWB", _zone, adm_patrol_infWaypointAmount] call adm_patrol_fnc_createWaypoints;
-    DEBUG("admiral.patrol.create",FMT_4("Created '%1' Patrol unit(s) for group '%2' of type '%3' in Camp Zone '%4'.",adm_patrol_infFireteamSize,_group,GROUP_TYPE_ARRAY select _groupType,GET_ZONE_ID(_zone)));
+    DECLARE(_group) = [_zone, GROUP_TYPE_INF, UNIT_TYPE_INF, adm_patrol_fnc_placeMan] call adm_camp_fnc_spawnInfGroup;
+    [_group, "SoldierWB", _zone, ["ZoneTemplates", GET_ZONE_TEMPLATE(_zone), "infWaypointAmount"] call adm_config_fnc_getNumber] call adm_patrol_fnc_createWaypoints;
+    DEBUG("admiral.patrol.create",FMT_3("Created group '%1' of type '%2' in Patrol Zone '%3'.",_group,GROUP_TYPE_ARRAY select _groupType,GET_ZONE_ID(_zone)));
 
     _group;
 };
@@ -41,9 +43,9 @@ adm_patrol_fnc_spawnInfGroup = {
 adm_patrol_fnc_spawnTechGroup = {
     FUN_ARGS_1(_zone);
 
-    DECLARE(_group) = [_zone, adm_patrol_techFireteamSize, GROUP_TYPE_TECH, adm_patrol_fnc_placeMan, UNIT_TYPE_INF] call adm_camp_fnc_spawnVehicleGroup;
-    [_group, typeOf vehicle leader _group, _zone, adm_patrol_techWaypointAmount] call adm_patrol_fnc_createWaypoints;
-    DEBUG("admiral.patrol.create",FMT_5("Created '%1' crew for vehicle type of '%2' for group '%3' of type '%4' in Patrol Zone '%5'.",adm_patrol_techFireteamSize,typeOf vehicle leader _group,_group,GROUP_TYPE_ARRAY select GROUP_TYPE_TECH,GET_ZONE_ID(_zone)));
+    DECLARE(_group) = [_zone, GROUP_TYPE_TECH, UNIT_TYPE_INF, adm_patrol_fnc_placeMan] call adm_camp_fnc_spawnVehicleGroup;
+    [_group, typeOf vehicle leader _group, _zone, ["ZoneTemplates", GET_ZONE_TEMPLATE(_zone), "techWaypointAmount"] call adm_config_fnc_getNumber] call adm_patrol_fnc_createWaypoints;
+    DEBUG("admiral.patrol.create",FMT_4("Created crew for vehicle type of '%1' for group '%2' of type '%3' in Patrol Zone '%4'.",typeOf vehicle leader _group,_group,GROUP_TYPE_ARRAY select GROUP_TYPE_TECH,GET_ZONE_ID(_zone)));
 
     _group;
 };
@@ -51,9 +53,9 @@ adm_patrol_fnc_spawnTechGroup = {
 adm_patrol_fnc_spawnArmorGroup = {
     FUN_ARGS_1(_zone);
 
-    DECLARE(_group) = [_zone, adm_patrol_armourFireteamSize, GROUP_TYPE_ARMOUR, adm_patrol_fnc_placeMan, UNIT_TYPE_CREW] call adm_camp_fnc_spawnVehicleGroup;
-    [_group, typeOf vehicle leader _group, _zone, adm_patrol_armourWaypointAmount] call adm_patrol_fnc_createWaypoints;
-    DEBUG("admiral.patrol.create",FMT_5("Created '%1' crew for vehicle type of '%2' for group '%3' of type '%4' in Patrol Zone '%5'.",adm_patrol_armourFireteamSize,typeOf vehicle leader _group,_group,GROUP_TYPE_ARRAY select GROUP_TYPE_ARMOUR,GET_ZONE_ID(_zone)));
+    DECLARE(_group) = [_zone, GROUP_TYPE_ARMOUR, UNIT_TYPE_CREW, adm_patrol_fnc_placeMan] call adm_camp_fnc_spawnVehicleGroup;
+    [_group, typeOf vehicle leader _group, _zone, ["ZoneTemplates", GET_ZONE_TEMPLATE(_zone), "armourWaypointAmount"] call adm_config_fnc_getNumber] call adm_patrol_fnc_createWaypoints;
+    DEBUG("admiral.patrol.create",FMT_4("Created crew for vehicle type of '%1' for group '%2' of type '%3' in Patrol Zone '%4'.",typeOf vehicle leader _group,_group,GROUP_TYPE_ARRAY select GROUP_TYPE_TECH,GET_ZONE_ID(_zone)));
 
     _group;
 };
@@ -109,15 +111,15 @@ adm_patrol_fnc_moveUpdateAllGroupWaypoints = {
     FUN_ARGS_1(_zone);
 
     {
-        [_zone, _x, "SoldierWB", adm_patrol_infWaypointAmount] call adm_patrol_fnc_moveUpdateGroupWaypoints;
+        [_zone, _x, "SoldierWB", ["ZoneTemplates", GET_ZONE_TEMPLATE(_zone), "infWaypointAmount"] call adm_config_fnc_getNumber] call adm_patrol_fnc_moveUpdateGroupWaypoints;
     } foreach (_zone getVariable ["adm_zone_infGroups", []]);
 
     {
-        [_zone, _x, typeof vehicle leader _x, adm_patrol_techWaypointAmount] call adm_patrol_fnc_moveUpdateGroupWaypoints;
+        [_zone, _x, typeof vehicle leader _x, ["ZoneTemplates", GET_ZONE_TEMPLATE(_zone), "techWaypointAmount"] call adm_config_fnc_getNumber] call adm_patrol_fnc_moveUpdateGroupWaypoints;
     } foreach (_zone getVariable ["adm_zone_techGroups", []]);
 
     {
-        [_zone, _x, typeof vehicle leader _x, adm_patrol_armourWaypointAmount] call adm_patrol_fnc_moveUpdateGroupWaypoints;
+        [_zone, _x, typeof vehicle leader _x, ["ZoneTemplates", GET_ZONE_TEMPLATE(_zone), "armourWaypointAmount"] call adm_config_fnc_getNumber] call adm_patrol_fnc_moveUpdateGroupWaypoints;
     } foreach (_zone getVariable ["adm_zone_armourGroups", []]);
 };
 

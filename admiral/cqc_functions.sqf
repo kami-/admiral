@@ -3,13 +3,13 @@
 #include "logbook.h"
 
 adm_cqc_fnc_placeMan = {
-    FUN_ARGS_4(_position,_group,_unitTemplate,_unitType);
+    FUN_ARGS_5(_position,_group,_unitTemplate,_zoneTemplate,_unitType);
 
     DECLARE(_unit) = [
         _position,
         _group,
         [_unitTemplate, _unitType] call adm_common_fnc_getUnitTemplateArray,
-        CQC_SKILL_ARRAY
+        [_zoneTemplate] call adm_common_fnc_getZoneTemplateSkillValues
     ] call adm_common_fnc_placeMan;
     [_unit, _group] call adm_cqc_fnc_initMan;
     DEBUG("admiral.cqc.create",FMT_4("Created unit '%1' at position '%2', in group '%3' with classname '%4'.",_unit,_position,_group,typeOf _unit));
@@ -110,12 +110,12 @@ adm_cqc_fnc_getPossiblePositions = {
 };
 
 adm_cqc_fnc_spawnGarrisonGroupUnits = {
-    FUN_ARGS_5(_group,_numOfUnits,_unitTemplate,_possiblePositions,_building);
+    FUN_ARGS_6(_group,_numOfUnits,_unitTemplate,_zoneTemplate,_possiblePositions,_building);
 
     for "_i" from 1 to _numOfUnits do {
         DECLARE(_position) = SELECT_RAND(_possiblePositions);
         _possiblePositions = _possiblePositions - [_position];
-        [_building buildingPos _position, _group, _unitTemplate, UNIT_TYPE_ARRAY select UNIT_TYPE_INF] call adm_cqc_fnc_placeMan;
+        [_building buildingPos _position, _group, _unitTemplate, _zoneTemplate, UNIT_TYPE_ARRAY select UNIT_TYPE_INF] call adm_cqc_fnc_placeMan;
     };
     DEBUG("admiral.cqc.create",FMT_3("Created '%1' CQC unit(s) for group '%2' in building '%3'.",_numOfUnits,_group,_building));
 };
@@ -142,13 +142,14 @@ adm_cqc_fnc_getZoneBuildings = {
 };
 
 adm_cqc_fnc_getGarrisonGroupSize = {
-    FUN_ARGS_2(_buildingCapacity,_posCount);
+    FUN_ARGS_3(_buildingCapacity,_posCount,_zone);
 
+    DECLARE(_fireTeamSize) = ["ZoneTemplates", GET_ZONE_TEMPLATE(_zone), "infFireteamSize"] call adm_config_fnc_getNumber;
     call {
         if (_buildingCapacity != -1 && {_buildingCapacity <= _posCount})    exitWith {_buildingCapacity};
         if (_buildingCapacity != -1 && {_buildingCapacity > _posCount})     exitWith {_posCount};
-        if (_posCount >= adm_cqc_infFireteamSize)                           exitWith {adm_cqc_infFireteamSize};
-        if (_posCount < adm_cqc_infFireteamSize && {_posCount >= 2})        exitWith {2};
+        if (_posCount >= _fireTeamSize)                                     exitWith {_fireTeamSize};
+        if (_posCount < _fireTeamSize && {_posCount >= 2})                  exitWith {2};
         if (_posCount == 1)                                                 exitWith {1};
                                                                             0;
     };
@@ -170,7 +171,7 @@ adm_cqc_fnc_spawnGarrison = {
         _possiblePositions = [_building, GET_CQC_MIN_HEIGHT(_zone)] call adm_cqc_fnc_getPossiblePositions;
         if (count _possiblePositions > 0) then {
             private ["_numOfUnits", "_group"];
-            _numOfUnits = [[_building] call adm_cqc_fnc_getBuildingCapacity, count _possiblePositions] call adm_cqc_fnc_getGarrisonGroupSize;
+            _numOfUnits = [[_building] call adm_cqc_fnc_getBuildingCapacity, count _possiblePositions, _zone] call adm_cqc_fnc_getGarrisonGroupSize;
             _currentAmount = _currentAmount + _numOfUnits;
             _group = [_zone, _numOfUnits, _possiblePositions, _building] call adm_cqc_fnc_spawnGarrisonGroup;
             PUSH(_spawnedGroups, _group);

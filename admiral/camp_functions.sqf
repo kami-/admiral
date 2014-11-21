@@ -3,29 +3,29 @@
 #include "logbook.h"
 
 adm_camp_fnc_placeMan = {
-    FUN_ARGS_4(_position,_group,_unitTemplate,_unitType);
+    FUN_ARGS_5(_position,_group,_unitTemplate,_zoneTemplate,_unitType);
 
     DECLARE(_unit) = [
         _position,
         _group,
         [_unitTemplate, _unitType] call adm_common_fnc_getUnitTemplateArray,
-        CAMP_SKILL_ARRAY
+        [_zoneTemplate] call adm_common_fnc_getZoneTemplateSkillValues
     ] call adm_common_fnc_placeMan;
-    DEBUG("admiral.camp.create",FMT_5("Created unit '%1' at position '%2', in group '%3' with type '%4' and classname '%5'.",_unit,_position,_group,_unitType,typeOf _unit));
+    DEBUG("admiral.camp.create",FMT_5("Spawned unit '%1' at position '%2', in group '%3' with type '%4' and classname '%5'.",_unit,_position,_group,_unitType,typeOf _unit));
 
     _unit;
 };
 
 adm_camp_fnc_spawnCrew = {
-    FUN_ARGS_4(_vehicle,_group,_unitTemplate,_unitType);
+    FUN_ARGS_5(_vehicle,_group,_unitTemplate,_zoneTemplate,_unitType);
 
     DECLARE(_crew) = [
         _vehicle,
         _group,
         [_unitTemplate, _unitType] call adm_common_fnc_getUnitTemplateArray,
-        CAMP_SKILL_ARRAY
+        [_zoneTemplate] call adm_common_fnc_getZoneTemplateSkillValues
     ] call adm_common_fnc_spawnCrew;
-    DEBUG("admiral.camp.create",FMT_4("Created crew '%1' for vehicle '%2', in group '%3' with type '%4'.",_crew,_vehicle,_group,_unitType));
+    DEBUG("admiral.camp.create",FMT_4("Spawned crew '%1' for vehicle '%2', in group '%3' with type '%4'.",_crew,_vehicle,_group,_unitType));
 
     _crew;
 };
@@ -73,32 +73,31 @@ adm_camp_fnc_getLogicEndTrigger = {
 };
 
 adm_camp_fnc_createPatrolWaypoints = {
-    FUN_ARGS_5(_group,_unitType,_area,_areaPosition,_noOfWaypoints);
+    FUN_ARGS_6(_group,_unitType,_area,_areaPosition,_waypointBehaviours,_noOfWaypoints);
 
     DECLARE(_initialWaypointIndex) = 0;
     if (count waypoints _group > 0) then {
         _initialWaypointIndex = (count waypoints _group) - 1;
     };
     for "_i" from 1 to _noOfWaypoints do {
-        [_group, [[_area, _areaPosition, _unitType] call adm_common_fnc_getRandomEmptyPositionInArea, 0], 'MOVE', SELECT_RAND(AS_ARRAY_2('AWARE','SAFE')), 'RED'] call adm_common_fnc_createWaypoint;
+        [_group, [[_area, _areaPosition, _unitType] call adm_common_fnc_getRandomEmptyPositionInArea, 0], 'MOVE', SELECT_RAND(_waypointBehaviours), 'RED'] call adm_common_fnc_createWaypoint;
     };
     [_group, (count waypoints _group) - 1] setWaypointStatements ["true", format["(group this) setCurrentWaypoint [group this, %1]", _initialWaypointIndex]];
-    DEBUG("admiral.camp.create",FMT_3("Created '%1' patrol waypoint(s) for group '%2' in Camp End Trigger '%3'.",_noOfWaypoints,_group,_trigger));
+    DEBUG("admiral.camp.create",FMT_2("Created '%1' patrol waypoint(s) for group '%2'.",_noOfWaypoints,_group));
 };
 
 adm_camp_fnc_createCampWaypoints = {
-    FUN_ARGS_5(_group,_unitType,_zone,_noOfWaypoints,_groupType);
+    FUN_ARGS_5(_group,_unitType,_paths,_waypointBehaviours,_noOfWaypoints);
 
-    private ["_paths","_path", "_pathWaypoints", "_endTrigger"];
-    _paths = [_zone, _groupType] call adm_camp_fnc_getGroupPaths;
+    private ["_path", "_pathWaypoints", "_endTrigger"];
     _path = SELECT_RAND(_paths);
     _pathWaypoints = waypoints _path;
     {
-        [_group, [getWPPos _x, 0], 'MOVE', SELECT_RAND(AS_ARRAY_2('AWARE','SAFE')), 'RED'] call adm_common_fnc_createWaypoint;
+        [_group, [getWPPos _x, 0], 'MOVE', SELECT_RAND(_waypointBehaviours), 'RED'] call adm_common_fnc_createWaypoint;
     } foreach _pathWaypoints;
     _endTrigger = _path getVariable "adm_camp_endTrigger";
-    [_group, _unitType, triggerArea _endTrigger, getPosATL _endTrigger, _noOfWaypoints] call adm_camp_fnc_createPatrolWaypoints;
-    DEBUG("admiral.camp.create",FMT_3("Created '%1' path waypoint(s) for group with path logic '%2' in Camp Zone '%3'.",count _pathWaypoints,_group,GET_ZONE_ID(_zone)));
+    [_group, _unitType, triggerArea _endTrigger, getPosATL _endTrigger, _waypointBehaviours, _noOfWaypoints] call adm_camp_fnc_createPatrolWaypoints;
+    DEBUG("admiral.camp.create",FMT_2("Created '%1' path waypoint(s) for group with path logic '%2'.",count _pathWaypoints,_group));
 };
 
 adm_camp_fnc_isPoolEmpty = {
@@ -117,16 +116,17 @@ adm_camp_fnc_disableCamp = {
 };
 
 adm_camp_fnc_spawnInfGroup = {
-    FUN_ARGS_5(_zone,_groupSize,_groupType,_placeManFunc,_unitType);
+    FUN_ARGS_4(_zone,_groupType,_unitType,_placeManFunc);
 
-    private ["_unitTemplate", "_initialPos", "_group"];
+    private ["_unitTemplate", "_zoneTemplate", "_initialPos", "_group","_groupSize"];
     _unitTemplate = GET_ZONE_UNIT_TEMPLATE(_zone);
+    _zoneTemplate = GET_ZONE_TEMPLATE(_zone);
     _initialPos = [GET_ZONE_AREA(_zone), GET_ZONE_POSITION(_zone), "SoldierWB"] call adm_common_fnc_getRandomEmptyPositionInArea;
     _group = createGroup ([_unitTemplate] call adm_common_fnc_getUnitTemplateSide);
-
+    _groupSize = ["ZoneTemplates", _zoneTemplate, "infFireteamSize"] call adm_config_fnc_getNumber;
     for "_i" from 1 to _groupSize do {
         DECLARE(_position) = _initialPos findEmptyPosition [1, CAMP_SPAWN_CIRCLE_MAX_DIST, "SoldierWB"];
-        [_position, _group, _unitTemplate, UNIT_TYPE_ARRAY select _unitType] call _placeManFunc;
+        [_position, _group, _unitTemplate, _zoneTemplate, UNIT_TYPE_ARRAY select _unitType] call _placeManFunc;
     };
     DEBUG("admiral.camp.create",FMT_4("Spawned '%1' unit(s) for group '%2' of type '%3' in Zone '%4'.",_groupSize,_group,GROUP_TYPE_ARRAY select _groupType,GET_ZONE_ID(_zone)));
     _group setVariable ["adm_zone_parent", _zone];
@@ -136,18 +136,19 @@ adm_camp_fnc_spawnInfGroup = {
 };
 
 adm_camp_fnc_spawnVehicleGroup = {
-    FUN_ARGS_5(_zone,_groupSize,_groupType,_placeManFunc,_unitType);
+    FUN_ARGS_4(_zone,_groupType,_unitType,_placeManFunc);
 
-    private ["_unitTemplate", "_vehicleTypes", "_vehicleType", "_vehiclePosition", "_vehicle", "_group"];
+    private ["_unitTemplate", "_zoneTemplate", "_vehicleTypes", "_vehicleType", "_vehiclePosition", "_vehicle", "_group"];
     _unitTemplate = GET_ZONE_UNIT_TEMPLATE(_zone);
+    _zoneTemplate = GET_ZONE_TEMPLATE(_zone);
     _vehicleTypes = [_unitTemplate, GROUP_TYPE_ARRAY select _groupType] call adm_common_fnc_getUnitTemplateArray;
     _vehicleType = SELECT_RAND(_vehicleTypes);
     _vehiclePosition = [GET_ZONE_AREA(_zone), GET_ZONE_POSITION(_zone), _vehicleType] call adm_common_fnc_getRandomEmptyPositionInArea;
     _vehicle = [_vehicleType, _vehiclePosition] call adm_common_fnc_placeVehicle;
     _group = createGroup ([_unitTemplate] call adm_common_fnc_getUnitTemplateSide);
     _group setVariable ["adm_group_type", _groupType, false];
-    [_vehicle, _group, _unitTemplate, UNIT_TYPE_ARRAY select _unitType] call adm_camp_fnc_spawnCrew
-    DEBUG("admiral.camp.create",FMT_4("Created crew for vehicle type of '%1' for group '%2' of type '%3' in Camp Zone '%4'.",_vehicleType,_group,GROUP_TYPE_ARRAY select _groupType,GET_ZONE_ID(_zone)));
+    [_vehicle, _group, _unitTemplate, _zoneTemplate, UNIT_TYPE_ARRAY select _unitType] call adm_camp_fnc_spawnCrew
+    DEBUG("admiral.camp.create",FMT_4("Spawned crew for vehicle type of '%1' for group '%2' of type '%3' in Zone '%4'.",_vehicleType,_group,GROUP_TYPE_ARRAY select _groupType,GET_ZONE_ID(_zone)));
 
     _group;
 };
@@ -164,13 +165,34 @@ adm_camp_fnc_trySpawnGroups = {
 };
 
 adm_camp_fnc_spawnGroups = {
-    FUN_ARGS_7(_zone,_spawnFunc,_groupSize,_groupType,_noOfWaypoints,_unitType,_groupCount);
+    FUN_ARGS_5(_zone,_groupType,_unitType,_groupCount,_placeManFunc);
 
-    DECLARE(_spawnedGroups) = [];
+    private ["_spawnedGroups", "_group", "_waypointAmount"];
+    _spawnedGroups = [];
     for "_i" from 1 to _groupCount do {
-        DECLARE(_group) = [_zone, _groupSize, _groupType, adm_camp_fnc_placeMan, _unitType] call _spawnFunc;
-        [_group, typeof vehicle leader _group, _zone, _noOfWaypoints, _groupType] call adm_camp_fnc_createCampWaypoints;
-        PUSH(_spawnedGroups, _group);
+        call {
+            if (_groupType == GROUP_TYPE_INF) exitWith {
+                _group = [_zone, _groupType, _unitType, _placeManFunc] call adm_camp_fnc_spawnInfGroup;
+                _waypointAmount = "infWaypointAmount";
+            };
+            if (_groupType in [GROUP_TYPE_TECH, GROUP_TYPE_ARMOUR]) exitWith {
+                _group = [_zone, _groupType, _unitType, _placeManFunc] call adm_camp_fnc_spawnVehicleGroup;
+                _waypointAmount = "techWaypointAmount";
+            };
+            if (_groupType in [GROUP_TYPE_TECH, GROUP_TYPE_ARMOUR]) exitWith {
+                _group = [_zone, _groupType, _unitType, _placeManFunc] call adm_camp_fnc_spawnVehicleGroup;
+                _waypointAmount = "armourWaypointAmount";
+            };
+        };
+        DECLARE(_zoneTemplate) = GET_ZONE_TEMPLATE(_zone);
+        [
+            _group,
+            typeof vehicle leader _group,
+            [_zone, _groupType] call adm_camp_fnc_getGroupPaths,
+            ["ZoneTemplates", _zoneTemplate, "waypointBehaviours"] call adm_config_fnc_getArray,
+            ["ZoneTemplates", _zoneTemplate, _waypointAmount] call adm_config_fnc_getNumber
+        ] call adm_camp_fnc_createCampWaypoints;
+        PUSH(_spawnedGroups,_group);
     };
 
     _spawnedGroups
@@ -221,7 +243,7 @@ adm_camp_fnc_periodicCanSpawnGroups = {
 };
 
 adm_camp_fnc_periodicSpawnGroups = {
-    FUN_ARGS_6(_zone,_spawnFunc,_groupSize,_groupType,_noOfWaypoints,_unitType);
+    FUN_ARGS_4(_zone,_groupType,_unitType,_placeManFunc);
 
     private ["_pool", "_waveSize", "_lastSpawnTime"];
     _pool = GET_ZONE_POOL(_zone);
@@ -229,25 +251,25 @@ adm_camp_fnc_periodicSpawnGroups = {
     _lastSpawnTime = GET_CAMP_LAST_SPAWN_TIME(_zone);
     _lastSpawnTime set [_groupType, floor diag_tickTime];
 
-    [_zone, _spawnFunc, _groupSize, _groupType, _noOfWaypoints, _unitType, [_waveSize, _waveSize, _pool, _groupType] call adm_camp_fnc_getGroupCount] call adm_camp_fnc_spawnGroups;
+    [_zone, _groupType, _unitType, [_waveSize, _waveSize, _pool, _groupType] call adm_camp_fnc_getGroupCount, _placeManFunc] call adm_camp_fnc_spawnGroups;
 };
 
 adm_camp_fnc_periodicSpawnInfGroups = {
     FUN_ARGS_1(_zone);
 
-    [_zone, adm_camp_fnc_spawnInfGroup, adm_camp_infFireteamSize, GROUP_TYPE_INF, adm_camp_infWaypointAmount, UNIT_TYPE_INF] call adm_camp_fnc_periodicSpawnGroups;
+    [_zone, GROUP_TYPE_INF, UNIT_TYPE_INF, adm_camp_fnc_placeMan] call adm_camp_fnc_periodicSpawnGroups;
 };
 
 adm_camp_fnc_periodicSpawnTechGroups = {
     FUN_ARGS_1(_zone);
 
-    [_zone, adm_camp_fnc_spawnVehicleGroup, adm_camp_techFireteamSize, GROUP_TYPE_TECH, adm_camp_techWaypointAmount, UNIT_TYPE_INF] call adm_camp_fnc_periodicSpawnGroups;
+    [_zone, GROUP_TYPE_TECH, UNIT_TYPE_INF, adm_camp_fnc_placeMan] call adm_camp_fnc_periodicSpawnGroups;
 };
 
 adm_camp_fnc_periodicSpawnArmourGroups = {
     FUN_ARGS_1(_zone);
 
-    [_zone, adm_camp_fnc_spawnVehicleGroup, adm_camp_armourFireteamSize, GROUP_TYPE_ARMOUR, adm_camp_armourWaypointAmount, UNIT_TYPE_CREW] call adm_camp_fnc_periodicSpawnGroups;
+    [_zone, GROUP_TYPE_ARMOUR, UNIT_TYPE_CREW, adm_camp_fnc_placeMan] call adm_camp_fnc_periodicSpawnGroups;
 };
 
 adm_camp_fnc_periodicSpawn = {
@@ -300,7 +322,7 @@ adm_camp_fnc_onDemandCanSpawnGroups = {
 };
 
 adm_camp_fnc_onDemandSpawnGroups = {
-    FUN_ARGS_6(_zone,_spawnFunc,_groupSize,_groupType,_noOfWaypoints,_unitType);
+    FUN_ARGS_4(_zone,_groupType,_unitType,_placeManFunc);
 
     private ["_pool", "_waveSize", "_groups", "_aliveGroups"];
     _pool = GET_ZONE_POOL(_zone);
@@ -308,25 +330,25 @@ adm_camp_fnc_onDemandSpawnGroups = {
     _groups = GET_ZONE_SPAWNED_GROUPS(_zone) select _groupType;
     _aliveGroups = {alive leader _x} count _groups;
 
-    [_zone, _spawnFunc, _groupSize, _groupType, _noOfWaypoints, _unitType, [_waveSize - _aliveGroups, _waveSize - _aliveGroups, _pool, _groupType] call adm_camp_fnc_getGroupCount] call adm_camp_fnc_spawnGroups;
+    [_zone, _groupType, _unitType, [_waveSize - _aliveGroups, _waveSize - _aliveGroups, _pool, _groupType] call adm_camp_fnc_getGroupCount, _placeManFunc] call adm_camp_fnc_spawnGroups;
 };
 
 adm_camp_fnc_onDemandSpawnInfGroups = {
     FUN_ARGS_1(_zone);
 
-    [_zone, adm_camp_fnc_spawnInfGroup, adm_camp_infFireteamSize, GROUP_TYPE_INF, adm_camp_infWaypointAmount, UNIT_TYPE_INF] call adm_camp_fnc_onDemandSpawnGroups;
+    [_zone, GROUP_TYPE_INF, UNIT_TYPE_INF, adm_camp_fnc_placeMan] call adm_camp_fnc_onDemandSpawnGroups;
 };
 
 adm_camp_fnc_onDemandSpawnTechGroups = {
     FUN_ARGS_1(_zone);
 
-    [_zone, adm_camp_fnc_spawnVehicleGroup, adm_camp_techFireteamSize, GROUP_TYPE_TECH, adm_camp_techWaypointAmount, UNIT_TYPE_INF] call adm_camp_fnc_onDemandSpawnGroups;
+    [_zone, GROUP_TYPE_TECH, UNIT_TYPE_INF, adm_camp_fnc_placeMan] call adm_camp_fnc_onDemandSpawnGroups;
 };
 
 adm_camp_fnc_onDemandSpawnArmourGroups = {
     FUN_ARGS_1(_zone);
 
-    [_zone, adm_camp_fnc_spawnVehicleGroup, adm_camp_armourFireteamSize, GROUP_TYPE_ARMOUR, adm_camp_armourWaypointAmount, UNIT_TYPE_CREW] call adm_camp_fnc_onDemandSpawnGroups;
+    [_zone, GROUP_TYPE_ARMOUR, UNIT_TYPE_CREW, adm_camp_fnc_placeMan] call adm_camp_fnc_onDemandSpawnGroups;
 };
 
 adm_camp_fnc_onDemandSpawn = {
@@ -376,32 +398,32 @@ adm_camp_fnc_randomCanSpawnGroups = {
 };
 
 adm_camp_fnc_randomSpawnGroups = {
-    FUN_ARGS_6(_zone,_spawnFunc,_groupSize,_groupType,_noOfWaypoints,_unitType);
+    FUN_ARGS_4(_zone,_groupType,_unitType,_placeManFunc);
 
     private ["_pool", "_waveSize", "_groupCount"];
     _pool = GET_ZONE_POOL(_zone);
     _waveSize = GET_CAMP_WAVE(_zone) select _groupType;
     _groupCount = floor random (_waveSize + 1);
 
-    [_zone, _spawnFunc, _groupSize, _groupType, _noOfWaypoints, _unitType, [_groupCount, _groupCount, _pool, _groupType] call adm_camp_fnc_getGroupCount] call adm_camp_fnc_spawnGroups;
+    [_zone, _groupType, _unitType, [_groupCount, _groupCount, _pool, _groupType] call adm_camp_fnc_getGroupCount, _placeManFunc] call adm_camp_fnc_spawnGroups;
 };
 
 adm_camp_fnc_randomSpawnInfGroups = {
     FUN_ARGS_1(_zone);
 
-    [_zone, adm_camp_fnc_spawnInfGroup, adm_camp_infFireteamSize, GROUP_TYPE_INF, adm_camp_infWaypointAmount, UNIT_TYPE_INF] call adm_camp_fnc_randomSpawnGroups;
+    [_zone, GROUP_TYPE_INF, UNIT_TYPE_INF, adm_camp_fnc_placeMan] call adm_camp_fnc_randomSpawnGroups;
 };
 
 adm_camp_fnc_randomSpawnTechGroups = {
     FUN_ARGS_1(_zone);
 
-    [_zone, adm_camp_fnc_spawnVehicleGroup, adm_camp_techFireteamSize, GROUP_TYPE_TECH, adm_camp_techWaypointAmount, UNIT_TYPE_INF] call adm_camp_fnc_randomSpawnGroups;
+    [_zone, GROUP_TYPE_TECH, UNIT_TYPE_INF, adm_camp_fnc_placeMan] call adm_camp_fnc_randomSpawnGroups;
 };
 
 adm_camp_fnc_randomSpawnArmourGroups = {
     FUN_ARGS_1(_zone);
 
-    [_zone, adm_camp_fnc_spawnVehicleGroup, adm_camp_armourFireteamSize, GROUP_TYPE_ARMOUR, adm_camp_armourWaypointAmount, UNIT_TYPE_CREW] call adm_camp_fnc_randomSpawnGroups;
+    [_zone, GROUP_TYPE_ARMOUR, UNIT_TYPE_CREW, adm_camp_fnc_placeMan] call adm_camp_fnc_randomSpawnGroups;
 };
 
 adm_camp_fnc_randomSpawn = {

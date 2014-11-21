@@ -20,18 +20,7 @@
 
 #define CQC_MAX_ENGAGE_DIST                 50
 
-#define CAMP_SKILL_ARRAY                    [["aimingAccuracy", adm_camp_aimingAccuracy],["aimingShake", adm_camp_aimingShake],["aimingSpeed", adm_camp_aimingSpeed], \
-                                            ["endurance", adm_camp_endurance],["spotDistance", adm_camp_spotDistance],["spotTime", adm_camp_spotTime], \
-                                            ["courage", adm_camp_courage],["reloadSpeed", adm_camp_reloadSpeed],["commanding", adm_camp_commanding], \
-                                            ["general", adm_camp_general]]
-#define PATROL_SKILL_ARRAY                  [["aimingAccuracy", adm_patrol_aimingAccuracy],["aimingShake", adm_patrol_aimingShake],["aimingSpeed", adm_patrol_aimingSpeed], \
-                                            ["endurance", adm_patrol_endurance],["spotDistance", adm_patrol_spotDistance],["spotTime", adm_patrol_spotTime], \
-                                            ["courage", adm_patrol_courage],["reloadSpeed", adm_patrol_reloadSpeed],["commanding", adm_patrol_commanding], \
-                                            ["general", adm_patrol_general]]
-#define CQC_SKILL_ARRAY                     [["aimingAccuracy", adm_cqc_aimingAccuracy],["aimingShake", adm_cqc_aimingShake],["aimingSpeed", adm_cqc_aimingSpeed], \
-                                            ["endurance", adm_cqc_endurance],["spotDistance", adm_cqc_spotDistance],["spotTime", adm_cqc_spotTime], \
-                                            ["courage", adm_cqc_courage],["reloadSpeed", adm_cqc_reloadSpeed],["commanding", adm_cqc_commanding], \
-                                            ["general", adm_cqc_general]]
+#define ZONE_SKILLS                         ["aimingAccuracy", "aimingShake", "aimingSpeed", "endurance", "spotDistance", "spotTime", "courage", "reloadSpeed", "commanding", "general"]
 
 #define SIDE_ARRAY                          [EAST, WEST, RESISTANCE, CIVILIAN]
 #define SIDE_TEXT_ARRAY                     ["EAST", "WEST", "RESISTANCE", "CIVILIAN"]
@@ -135,8 +124,9 @@
 #define IDX_ZONE_UNIT_TEMPLATE                      7
 #define IDX_ZONE_SPAWNED_GROUPS                     8
 #define IDX_ZONE_POOL                               9
-#define IDX_ZONE_SPECIFIC_VALUES                    10
-#define IDX_ZONE_INIT_FUNCTION                      11
+#define IDX_ZONE_TEMPLATE                           10
+#define IDX_ZONE_SPECIFIC_VALUES                    11
+#define IDX_ZONE_INIT_FUNCTION                      12
 
 #define GET_ZONE_VALUE(ZONE,IDX)                    ((ZONE) select IDX)
 #define SET_ZONE_VALUE(ZONE,IDX,VAL)                ((ZONE) set [IDX,VAL])
@@ -151,6 +141,7 @@
 #define GET_ZONE_UNIT_TEMPLATE(ZONE)                GET_ZONE_VALUE(ZONE,IDX_ZONE_UNIT_TEMPLATE)
 #define GET_ZONE_SPAWNED_GROUPS(ZONE)               GET_ZONE_VALUE(ZONE,IDX_ZONE_SPAWNED_GROUPS)
 #define GET_ZONE_POOL(ZONE)                         GET_ZONE_VALUE(ZONE,IDX_ZONE_POOL)
+#define GET_ZONE_TEMPLATE(ZONE)                     GET_ZONE_VALUE(ZONE,IDX_ZONE_TEMPLATE)
 #define GET_ZONE_INIT_FUNCTION(ZONE)                GET_ZONE_VALUE(ZONE,IDX_ZONE_INIT_FUNCTION)
 
 #define SET_ZONE_ID(ZONE,VAL)                       SET_ZONE_VALUE(ZONE,IDX_ZONE_ID,VAL)
@@ -163,6 +154,7 @@
 #define SET_ZONE_UNIT_TEMPLATE(ZONE,VAL)            SET_ZONE_VALUE(ZONE,IDX_ZONE_UNIT_TEMPLATE,VAL)
 #define SET_ZONE_SPAWNED_GROUPS(ZONE,VAL)           SET_ZONE_VALUE(ZONE,IDX_ZONE_SPAWNED_GROUPS,VAL)
 #define SET_ZONE_POOL(ZONE,VAL)                     SET_ZONE_VALUE(ZONE,IDX_ZONE_POOL,VAL)
+#define SET_ZONE_TEMPLATE(ZONE,VAL)                 SET_ZONE_VALUE(ZONE,IDX_ZONE_TEMPLATE,VAL)
 #define SET_ZONE_INIT_FUNCTION(ZONE,VAL)            SET_ZONE_VALUE(ZONE,IDX_ZONE_INIT_FUNCTION,VAL)
 
 
@@ -214,9 +206,9 @@
 #define SET_CQC_FORCE_FIRE_ENABLED(ZONE,VAL)        SET_ZONE_SPECIFIC_VALUE(ZONE,IDX_CQC_FORCE_FIRE_ENABLED,VAL)
 #define SET_CQC_FORCE_FIRE_RUNNING(ZONE,VAL)        SET_ZONE_SPECIFIC_VALUE(ZONE,IDX_CQC_FORCE_FIRE_RUNNING,VAL)
 
-#define DEFAULT_CAMP_VALUES                         [-1,"","camp",[0,0,0],[0,0,0,false],true,"",adm_camp_defaultUnitTemplate,[[],[],[]],[0,0,0],["ondemand",false,[0,0,0],[],[0,0,0],CAMP_DEFAULT_DELAY,[10,10,10],[100,100,100]],adm_camp_fnc_initZone]
-#define DEFAULT_PATROL_VALUES                       [-1,"","patrol",[0,0,0],[0,0,0,false],true,"",adm_patrol_defaultUnitTemplate,[[],[],[]],[0,0,0],[false],adm_patrol_fnc_initZone]
-#define DEFAULT_CQC_VALUES                          [-1,"","cqc",[0,0,0],[0,0,0,false],true,"",adm_cqc_defaultUnitTemplate,[],0,[0,adm_cqc_forceFireEnabled,false],adm_cqc_fnc_initZone]
+#define DEFAULT_CAMP_VALUES                         [-1,"","camp",[0,0,0],[0,0,0,false],true,"",adm_camp_defaultUnitTemplate,[[],[],[]],[0,0,0],adm_camp_defaultZoneTemplate,["ondemand",false,[0,0,0],[],[0,0,0],CAMP_DEFAULT_DELAY,[10,10,10],[100,100,100]],adm_camp_fnc_initZone]
+#define DEFAULT_PATROL_VALUES                       [-1,"","patrol",[0,0,0],[0,0,0,false],true,"",adm_patrol_defaultUnitTemplate,[[],[],[]],[0,0,0],adm_patrol_defaultZoneTemplate,[false],adm_patrol_fnc_initZone]
+#define DEFAULT_CQC_VALUES                          [-1,"","cqc",[0,0,0],[0,0,0,false],true,"",adm_cqc_defaultUnitTemplate,[],0,adm_cqc_defaultZoneTemplate,[0,adm_cqc_forceFireEnabled,false],adm_cqc_fnc_initZone]
 
 
 

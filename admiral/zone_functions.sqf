@@ -75,6 +75,7 @@ adm_zone_fnc_setZoneValueFromConfig = {
         if (_configName == "enabled")           exitWith {SET_ZONE_ENABLED(_zone,_configValue);};
         if (_configName == "unitTemplate")      exitWith {SET_ZONE_UNIT_TEMPLATE(_zone,_configValue);};
         if (_configName == "pool")              exitWith {SET_ZONE_POOL(_zone,_configValue);};
+        if (_configName == "zoneTemplate")      exitWith {SET_ZONE_TEMPLATE(_zone,_configValue);};
         if (_configName == "campType")          exitWith {SET_CAMP_TYPE(_zone,_configValue);};
         if (_configName == "wave")              exitWith {SET_CAMP_WAVE(_zone,_configValue);};
         if (_configName == "campDelay")         exitWith {SET_CAMP_DELAY(_zone,_configValue);};

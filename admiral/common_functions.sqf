@@ -50,16 +50,26 @@ adm_common_fnc_setGear = {
     };
 };
 
+adm_common_fnc_getZoneTemplateSkillValues = {
+    FUN_ARGS_1(_zoneTemplate);
+
+    _skills = [];
+    {
+        DECLARE(_value) = ["ZoneTemplates", _zoneTemplate, _x] call adm_config_fnc_getNumber;
+        PUSH(_skills,AS_ARRAY_2(_x,_value));
+    } foreach ZONE_SKILLS;
+};
+
 adm_common_fnc_getUnitTemplateArray = {
     FUN_ARGS_2(_unitTemplate,_field);
 
-    getArray(TEMPLATE_CONFIGFILE >> TEMPLATE_CONTAINER_CLASS >> _unitTemplate >> _field);
+    ["UnitTemplates", _unitTemplate, _field] call adm_config_fnc_getArray;
 };
 
 adm_common_fnc_getUnitTemplateSide = {
     FUN_ARGS_1(_unitTemplate);
 
-    SIDE_ARRAY select getNumber(TEMPLATE_CONFIGFILE >> TEMPLATE_CONTAINER_CLASS >> _unitTemplate >> "side");
+    SIDE_ARRAY select (["UnitTemplates", _unitTemplate, "side"] call adm_config_fnc_getNumber);
 };
 
 adm_common_fnc_createWaypoint = {
