@@ -33,7 +33,7 @@ adm_hc_fnc_waitForHCInit = {
 };
 
 adm_hc_fnc_startAdmiral = {
-    [{
+    [[], {
         [] call compile preProcessFileLineNumbers "admiral\compile.sqf";
         if (isServer) then {
             INFO("admiral.hc",FMT_1("Admiral version '%1' started successfully on server!",STR_ADMIRAL_VERSION));
@@ -43,16 +43,32 @@ adm_hc_fnc_startAdmiral = {
     }] call adm_hc_fnc_executeIfAdmiralMachine;
 };
 
-adm_hc_fnc_isHc = {
-    adm_hc_isPresent && {name player == adm_hc_name};
-};
-
 adm_hc_fnc_executeIfAdmiralMachine = {
-    FUN_ARGS_1(_code);
+    FUN_ARGS_2(_arguments,_code);
 
     if (([] call adm_hc_fnc_isHc) || {!adm_hc_isPresent && {isServer}}) then {
-        call _code;
+        _arguments call _code;
     };
+};
+
+adm_hc_fnc_executeIfHc = {
+    FUN_ARGS_2(_arguments,_code);
+
+    if ([] call adm_hc_fnc_isHc) then {
+        _arguments call _code;
+    };
+};
+
+adm_hc_fnc_isHcPresent = {
+    adm_hc_isPresent;
+};
+
+adm_hc_fnc_getHcName = {
+    adm_hc_name;
+};
+
+adm_hc_fnc_isHc = {
+    adm_hc_isPresent && {name player == adm_hc_name};
 };
 
 adm_hc_fnc_init = {

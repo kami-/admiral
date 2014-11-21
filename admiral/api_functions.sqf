@@ -3,19 +3,45 @@
 // HC
 
 /**
- * Executes code if the current machine is the server or HC player's machine, depending on the presence of HC.
+ * Executes code if the current machine is running Admiral. This can be the HC (if present), or the server (if not).
+ * @param _arguments Arguments for the code to be executed
  * @param _code The code to be executed
  */
 adm_api_fnc_executeIfAdmiralMachine = {
-    FUN_ARGS_1(_code);
+    FUN_ARGS_2(_arguments,_code);
 
-    [_code] call adm_hc_fnc_executeIfAdmiralMachine;
+    [_arguments, _code] call adm_hc_fnc_executeIfAdmiralMachine;
+};
+
+/**
+ * Executes code if the current machine is HC. If not present, the code is not executed.
+ * @param _arguments Arguments for the code to be executed
+ * @param _code The code to be executed
+ */
+adm_api_fnc_executeIfHc = {
+    FUN_ARGS_2(_arguments,_code);
+
+    [_arguments, _code] call adm_hc_fnc_adm_api_fnc_executeIfHc;
 };
 
 /*
- * Returns if HC exists and the current machine is HC.
+ * Returns wheter the is HC present or not.
  */
-adm_hc_fnc_isHc = {
+adm_api_fnc_isHcPresent = {
+    [] call adm_hc_fnc_isHcPresent;
+};
+
+/*
+ * Returns the player name of HC.
+ */
+adm_api_fnc_getHcName = {
+    [] call adm_hc_fnc_getHcName;
+};
+
+/*
+ * Returns wheter the current machine is HC or not.
+ */
+adm_api_fnc_isHc = {
     [] call adm_hc_fnc_isHc;
 };
 
