@@ -46,7 +46,14 @@ adm_common_fnc_setGear = {
     FUN_ARGS_1(_unit);
 
     if (!adm_areNVGsEnabled) then {
-        _unit removeWeapon "NVGoggles";
+        if (isNil {call compile "blufor"}) then {
+            _unit removeWeapon "NVGoggles";
+        } else {
+            {
+                _unit unassignItem _x;
+                _unit removeItem _x;
+            } foreach ARMA3_NVGS;
+        };
     };
 };
 
