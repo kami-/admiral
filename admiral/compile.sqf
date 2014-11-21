@@ -18,6 +18,7 @@ waitUntil {
 DEBUG("admiral.bis","BIS functions are initialized.");
 
 // Compile functions
+call compile preProcessFileLineNumbers "admiral\config_functions.sqf"; DEBUG("admiral.compile","Compiled 'admiral\config_functions.sqf'.");
 call compile preProcessFileLineNumbers "admiral\id_functions.sqf"; DEBUG("admiral.compile","Compiled 'admiral\id_functions.sqf'.");
 call compile preProcessFileLineNumbers "admiral\settings_functions.sqf"; DEBUG("admiral.compile","Compiled 'admiral\settings_functions.sqf'.");
 call compile preProcessFileLineNumbers "admiral\common_functions.sqf"; DEBUG("admiral.compile","Compiled 'admiral\common_functions.sqf'.");

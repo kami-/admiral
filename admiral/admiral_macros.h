@@ -12,10 +12,9 @@
     #define ALL_UNITS                       ([] call adm_common_fnc_getPlayerUnits)
 #endif
 
-#define TEMPLATE_CONFIGFILE                 missionConfigFile
-#define STR_TEMPLATE_CONFIGFILE             "missionConfigFile"
-#define TEMPLATE_CONTAINER_CLASS            "Admiral" >> "UnitTemplates"
-#define STR_TEMPLATE_CONTAINER_CLASS        "Admiral >> UnitTemplates"
+#define ADMIRAL_BASE_CONFIG                 "Admiral"
+#define ADMIRAL_MISSION_CONFIG_FILE         missionConfigFile >> ADMIRAL_BASE_CONFIG
+#define ADMIRAL_CONFIG_FILE                 missionConfigFile >> ADMIRAL_BASE_CONFIG
 
 #define CAMP_SPAWN_CIRCLE_MAX_DIST          30
 
