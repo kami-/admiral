@@ -11,6 +11,7 @@ adm_cqc_fnc_placeMan = {
         [_unitTemplate, _unitType] call adm_common_fnc_getUnitTemplateArray,
         [_zoneTemplate] call adm_common_fnc_getZoneTemplateSkillValues
     ] call adm_common_fnc_placeMan;
+    _unit setPos _position;
     [_unit, _group] call adm_cqc_fnc_initMan;
     DEBUG("admiral.cqc.create",FMT_4("Created unit '%1' at position '%2', in group '%3' with classname '%4'.",_unit,_position,_group,typeOf _unit));
 
