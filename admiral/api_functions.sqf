@@ -1,5 +1,9 @@
 #include "admiral_macros.h"
 
+#include "\userconfig\admiral\log\api.h"
+#include "logbook.h"
+
+
 // HC
 
 /**

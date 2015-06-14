@@ -1,8 +1,8 @@
 #include "admiral_macros.h"
 
-#define LOGGING_LEVEL_INFO
-#define LOGGING_TO_RPT
+#include "\userconfig\admiral\log\hc.h"
 #include "logbook.h"
+
 
 adm_hc_fnc_initDefaultNames = {
     if (isNil {adm_hc_defaultNames}) then {
@@ -34,7 +34,7 @@ adm_hc_fnc_waitForHCInit = {
 
 adm_hc_fnc_startAdmiral = {
     [[], {
-        [] call compile preProcessFileLineNumbers "admiral\compile.sqf";
+        [] call compile preProcessFileLineNumbers ADDON_PATH(admiral_postinit_start.sqf);
         if (isServer) then {
             INFO("admiral.hc",FMT_1("Admiral version '%1' started successfully on server!",STR_ADMIRAL_VERSION));
         } else {

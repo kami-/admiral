@@ -1,6 +1,8 @@
 #include "admiral_macros.h"
 
+#include "\userconfig\admiral\log\patrol.h"
 #include "logbook.h"
+
 
 adm_patrol_fnc_placeMan = {
     FUN_ARGS_5(_position,_group,_unitTemplate,_zoneTemplate,_unitType);
@@ -35,7 +37,7 @@ adm_patrol_fnc_spawnInfGroup = {
 
     DECLARE(_group) = [_zone, GROUP_TYPE_INF, UNIT_TYPE_INF, adm_patrol_fnc_placeMan] call adm_camp_fnc_spawnInfGroup;
     [_group, "SoldierWB", _zone, ["ZoneTemplates", GET_ZONE_TEMPLATE(_zone), "infWaypointAmount"] call adm_config_fnc_getNumber] call adm_patrol_fnc_createWaypoints;
-    DEBUG("admiral.patrol.create",FMT_3("Created group '%1' of type '%2' in Patrol Zone '%3'.",_group,GROUP_TYPE_ARRAY select _groupType,GET_ZONE_ID(_zone)));
+    DEBUG("admiral.patrol.create",FMT_3("Created group '%1' of type '%2' in Patrol Zone '%3'.",_group,GROUP_TYPE_ARRAY select GROUP_TYPE_INF,GET_ZONE_ID(_zone)));
 
     _group;
 };

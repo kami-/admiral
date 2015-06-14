@@ -1,6 +1,8 @@
 #include "admiral_macros.h"
 
+#include "\userconfig\admiral\log\debug.h"
 #include "logbook.h"
+
 
 adm_debug_fnc_createMovingGroupMarkers = {
     FUN_ARGS_1(_group);
@@ -33,7 +35,9 @@ adm_debug_fnc_updateMovingGroupMarkers = {
             [_group] call adm_debug_fnc_createMovingGroupMarkers;
         };
     } else {
-        [_group, _debugMarkers] call adm_debug_fnc_deleteMovingGroupMarkers;
+        if (!isNil {_debugMarkers}) then {
+            [_group, _debugMarkers] call adm_debug_fnc_deleteMovingGroupMarkers;
+        };
     };
 };
 
@@ -83,10 +87,10 @@ adm_debug_fnc_deleteAllMovingGroupMarkers = {
 adm_debug_fnc_deleteMovingGroupMarkers = {
     FUN_ARGS_2(_group,_debugMarkers);
 
+    _group setVariable ["adm_group_debugMarkers", nil, false];
     {
         deleteMarkerLocal _x;
     } foreach _debugMarkers;
-    _group setVariable ["adm_group_debugMarkers", nil, false];
     DEBUG("admiral.debug",FMT_2("Deleted waypoint markers '%1' for dead patrol group '%2'.",_debugMarkers,_group));
 };
 

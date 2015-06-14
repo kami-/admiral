@@ -1,20 +1,19 @@
 #ifndef ADMIRAL_MACROS_H
 #define ADMIRAL_MACROS_H
 
+#include "\userconfig\admiral\log\global.h"
+
 #define ADMIRAL_VERSION                     0.8.0
 #define STR_ADMIRAL_VERSION                 "0.8.0"
 
-#define MULTIPLE_SIDES
-#ifdef MULTIPLE_SIDES
-    #define ALL_UNITS                       allUnits
-#endif
-#ifndef MULTIPLE_SIDES
-    #define ALL_UNITS                       ([] call adm_common_fnc_getPlayerUnits)
-#endif
+#define CONCAT_ADDON_PATH(FILE)             x\ark\addons\admiral\FILE
+#define ADDON_PATH(FILE)                    #CONCAT_ADDON_PATH(FILE)
 
 #define ADMIRAL_BASE_CONFIG                 "Admiral"
 #define ADMIRAL_MISSION_CONFIG_FILE         missionConfigFile >> ADMIRAL_BASE_CONFIG
-#define ADMIRAL_CONFIG_FILE                 missionConfigFile >> ADMIRAL_BASE_CONFIG
+#define ADMIRAL_CONFIG_FILE                 configFile >> ADMIRAL_BASE_CONFIG
+
+#define ALL_UNITS                           ([] call adm_common_fnc_getPlayerUnits)
 
 #define CAMP_SPAWN_CIRCLE_MAX_DIST          30
 

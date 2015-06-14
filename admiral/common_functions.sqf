@@ -1,6 +1,8 @@
 #include "admiral_macros.h"
 
+#include "\userconfig\admiral\log\common.h"
 #include "logbook.h"
+
 
 adm_common_fnc_placeMan = {
     FUN_ARGS_4(_position,_group,_unitClassNames,_skillArray);
@@ -75,6 +77,8 @@ adm_common_fnc_getZoneTemplateSkillValues = {
         DECLARE(_value) = ["ZoneTemplates", _zoneTemplate, _x] call adm_config_fnc_getNumber;
         PUSH(_skills,AS_ARRAY_2(_x,_value));
     } foreach ZONE_SKILLS;
+
+    _skills;
 };
 
 adm_common_fnc_getUnitTemplateArray = {
@@ -141,8 +145,10 @@ adm_common_fnc_createLocalMarker = {
     _name setMarkerColorLocal _color;
     if (!isNil "_size") then {
         _name setMarkerSizeLocal _size;
+    } else {
+        _size = [1, 1];
     };
-    DEBUG("admiral.common.create",FMT_6("Created local marker '%1' at position '%2' with shape '%3', type '%4', color '%5' and size '%6'.",_marker,_position,_shape,_type,_color,_size));
+    DEBUG("admiral.common.create",FMT_6("Created local marker '%1' at position '%2' with shape '%3', type '%4', color '%5' and size '%6'.",_marker,_position,_shape,_type,_color,if (!isNil "_size") then {"<no size>"} else {_size}));
 
     _name;
 };

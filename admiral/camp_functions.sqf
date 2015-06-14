@@ -1,6 +1,8 @@
 #include "admiral_macros.h"
 
+#include "\userconfig\admiral\log\camp.h"
 #include "logbook.h"
+
 
 adm_camp_fnc_placeMan = {
     FUN_ARGS_5(_position,_group,_unitTemplate,_zoneTemplate,_unitType);

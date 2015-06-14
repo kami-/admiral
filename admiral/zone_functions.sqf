@@ -1,6 +1,8 @@
 #include "admiral_macros.h"
 
+#include "\userconfig\admiral\log\zone.h"
 #include "logbook.h"
+
 
 adm_zone_fnc_init = {
     adm_zones = [];

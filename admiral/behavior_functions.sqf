@@ -1,6 +1,8 @@
 #include "admiral_macros.h"
 
+#include "\userconfig\admiral\log\behavior.h"
 #include "logbook.h"
+
 
 adm_behavior_fnc_changeAllGroupState = {
     waitUntil {

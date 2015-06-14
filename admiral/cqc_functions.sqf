@@ -1,6 +1,8 @@
 #include "admiral_macros.h"
 
+#include "\userconfig\admiral\log\cqc.h"
 #include "logbook.h"
+
 
 adm_cqc_fnc_placeMan = {
     FUN_ARGS_5(_position,_group,_unitTemplate,_zoneTemplate,_unitType);

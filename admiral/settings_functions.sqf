@@ -1,6 +1,8 @@
 #include "settings.sqf"
 
+#include "\userconfig\admiral\log\settings.h"
 #include "logbook.h"
+
 
 adm_settings_fnc_initSideRelations = {
     adm_sideRelations = [];
