@@ -4,25 +4,10 @@
 #include "logbook.h"
 
 
-[] call compile preProcessFileLineNumbers ADDON_PATH(config_functions.sqf); DEBUG("admiral.compile","Compiled 'config_functions.sqf'.");
-[] call compile preProcessFileLineNumbers ADDON_PATH(id_functions.sqf); DEBUG("admiral.compile","Compiled 'id_functions.sqf'.");
-[] call compile preProcessFileLineNumbers ADDON_PATH(settings_functions.sqf); DEBUG("admiral.compile","Compiled 'settings_functions.sqf'.");
-[] call compile preProcessFileLineNumbers ADDON_PATH(common_functions.sqf); DEBUG("admiral.compile","Compiled 'common_functions.sqf'.");
-[] call compile preProcessFileLineNumbers ADDON_PATH(debug_functions.sqf); DEBUG("admiral.compile","Compiled 'debug_functions.sqf'.");
-[] call compile preProcessFileLineNumbers ADDON_PATH(zone_functions.sqf); DEBUG("admiral.compile","Compiled 'zone_functions.sqf'.");
-[] call compile preProcessFileLineNumbers ADDON_PATH(cqc_functions.sqf); DEBUG("admiral.compile","Compiled 'cqc_functions.sqf'.");
-[] call compile preProcessFileLineNumbers ADDON_PATH(camp_functions.sqf); DEBUG("admiral.compile","Compiled 'camp_functions.sqf'.");
-[] call compile preProcessFileLineNumbers ADDON_PATH(patrol_functions.sqf); DEBUG("admiral.compile","Compiled 'patrol_functions.sqf'.");
-[] call compile preProcessFileLineNumbers ADDON_PATH(rupture_functions.sqf); DEBUG("admiral.compile","Compiled 'rupture_functions.sqf'.");
-[] call compile preProcessFileLineNumbers ADDON_PATH(api_functions.sqf); DEBUG("admiral.compile","Compiled 'api_functions.sqf'.");
+[] call adm_fnc_compile;
 
 if (isMultiplayer) then {
     adm_isDebuggingEnabled = false;
-};
-
-if (adm_isBehaviorEnabled) then {
-    INFO("admiral.behavior","Admiral Behavior system is enabled.");
-    [] call compile preProcessFileLineNumbers ADDON_PATH(behavior_functions.sqf); DEBUG("admiral.compile","Compiled 'behavior_functions.sqf'.");
 };
 
 [] call adm_id_fnc_init; DEBUG("admiral.id","Init function 'adm_id_fnc_init' called.");
@@ -34,6 +19,7 @@ if (adm_isBehaviorEnabled) then {
 [] call adm_rupture_fnc_checkUnits; DEBUG("admiral.rupture","Init function 'adm_rupture_fnc_checkUnits' called.");
 
 if (adm_isBehaviorEnabled) then {
+    INFO("admiral.behavior","Admiral Behavior system is enabled.");
     [] call adm_behavior_fnc_init; DEBUG("admiral.behavior","Init function 'adm_behavior_fnc_init' called.");
 };
 

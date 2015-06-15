@@ -1,4 +1,4 @@
-#include "settings.sqf"
+#include "admiral_macros.h"
 
 #include "\userconfig\admiral\log\settings.h"
 #include "logbook.h"
@@ -12,16 +12,19 @@ adm_settings_fnc_initSideRelations = {
     DEBUG("admiral.settings.siderelation","Initialized side relations.");
 };
 
-adm_settings_fnc_setDefaultSideRelations = {
-    [SIDE_WEST, SIDE_EAST] call adm_settings_fnc_setEnemy;
-    [SIDE_WEST, SIDE_IND] call adm_settings_fnc_setFriend;
-
-    [SIDE_EAST, SIDE_WEST] call adm_settings_fnc_setEnemy;
-    [SIDE_EAST, SIDE_IND] call adm_settings_fnc_setEnemy;
-
-    [SIDE_IND, SIDE_WEST] call adm_settings_fnc_setFriend;
-    [SIDE_IND, SIDE_EAST] call adm_settings_fnc_setEnemy;
-    DEBUG("admiral.settings.siderelation","Set default side relations.");
+adm_settings_fnc_setSideRelations = {
+    DECLARE(_sideRelations) = ["sideRelations"] call adm_config_fnc_getArray;
+    {
+        private ["_oneSide", "_otherSide"];
+        _oneSide = [call compile (_x select 0)] call adm_common_fnc_getAdmiralSide;
+        _otherSide = [call compile (_x select 1)] call adm_common_fnc_getAdmiralSide;
+        if (_x select 2 == "enemy") then {
+            [_oneSide, _otherSide] call adm_settings_fnc_setEnemy;
+        } else {
+            [_oneSide, _otherSide] call adm_settings_fnc_setFriend;
+        };
+    } foreach _sideRelations;
+    DEBUG("admiral.settings.siderelation","Set side relations.");
 };
 
 adm_settings_fnc_setEnemy = {
@@ -56,8 +59,27 @@ adm_settings_fnc_createCenters = {
 };
 
 adm_settings_fnc_init = {
+    adm_isDebuggingEnabled = ["isDebuggingEnabled"] call adm_config_fnc_getBool;
+    adm_areNVGsEnabled = ["areNVGsEnabled"] call adm_config_fnc_getBool;
+    adm_isBehaviorEnabled = ["isBehaviorEnabled"] call adm_config_fnc_getBool;
+
+    adm_camp_defaultUnitTemplate = ["Camp", "defaultUnitTemplate"] call adm_config_fnc_getText;
+    adm_camp_defaultZoneTemplate = ["Camp", "defaultZoneTemplate"] call adm_config_fnc_getText;
+
+    adm_patrol_defaultUnitTemplate = ["Patrol", "defaultUnitTemplate"] call adm_config_fnc_getText;
+    adm_patrol_defaultZoneTemplate = ["Patrol", "defaultZoneTemplate"] call adm_config_fnc_getText;
+
+    adm_cqc_defaultUnitTemplate = ["Cqc", "defaultUnitTemplate"] call adm_config_fnc_getText;
+    adm_cqc_defaultZoneTemplate = ["Cqc", "defaultZoneTemplate"] call adm_config_fnc_getText;
+    adm_cqc_forceFireEnabled = ["Cqc", "forceFireEnabled"] call adm_config_fnc_getBool;
+    adm_cqc_forceFireDelay = ["Cqc", "forceFireDelay"] call adm_config_fnc_getNumber;
+    adm_cqc_buildingBlacklist = ["Cqc", "buildingBlacklist"] call adm_config_fnc_getArray;
+    adm_cqc_buildingCapacity = ["Cqc", "buildingCapacity"] call adm_config_fnc_getArray;
+
+    adm_rupture_updateTick = ["Rupture", "updateTick"] call adm_config_fnc_getNumber;
+    adm_rupture_maxDuration = ["Rupture", "maxDuration"] call adm_config_fnc_getNumber;
+
     [] call adm_settings_fnc_createCenters;
     [] call adm_settings_fnc_initSideRelations;
-    [] call adm_settings_fnc_setDefaultSideRelations;
     [] call adm_settings_fnc_setSideRelations;
 };

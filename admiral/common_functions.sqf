@@ -338,6 +338,15 @@ adm_common_fnc_shuffle = {
     _shuffledArray;
 };
 
+adm_common_fnc_getAdmiralSide = {
+    FUN_ARGS_1(_side);
+
+    DECLARE(_sideIndex) = SIDE_ARRAY find _side;
+    if (_sideIndex == -1) then { _sideIndex = SIDE_CIV; };
+
+    _sideIndex;
+};
+
 adm_common_fnc_isFriendlySide = {
     FUN_ARGS_2(_side,_otherSide);
 
