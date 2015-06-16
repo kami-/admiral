@@ -90,7 +90,7 @@ adm_common_fnc_getUnitTemplateArray = {
 adm_common_fnc_getUnitTemplateSide = {
     FUN_ARGS_1(_unitTemplate);
 
-    SIDE_ARRAY select (["UnitTemplates", _unitTemplate, "side"] call adm_config_fnc_getNumber);
+    call compile (["UnitTemplates", _unitTemplate, "side"] call adm_config_fnc_getText);
 };
 
 adm_common_fnc_createWaypoint = {
