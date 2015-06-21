@@ -83,6 +83,11 @@ FNC_ADD_ALL_EVENTS = {
     ["patrol.spawned.unit", "patrol_spawned_unit"] call FNC_ADD_EVENT;
     ["patrol.spawned.vehicle", "patrol_spawned_vehicle"] call FNC_ADD_EVENT;
     ["patrol.spawned.crew", "patrol_spawned_crew"] call FNC_ADD_EVENT;
+    ["camp.spawned.groups", "camp_spawned_groups"] call FNC_ADD_EVENT;
+    ["camp.spawned.group", "camp_spawned_group"] call FNC_ADD_EVENT;
+    ["camp.spawned.unit", "camp_spawned_unit"] call FNC_ADD_EVENT;
+    ["camp.spawned.vehicle", "camp_spawned_vehicle"] call FNC_ADD_EVENT;
+    ["camp.spawned.crew", "camp_spawned_crew"] call FNC_ADD_EVENT;
 };
 
 FNC_INIT = {
