@@ -88,6 +88,7 @@ FNC_ADD_ALL_EVENTS = {
     ["camp.spawned.unit", "camp_spawned_unit"] call FNC_ADD_EVENT;
     ["camp.spawned.vehicle", "camp_spawned_vehicle"] call FNC_ADD_EVENT;
     ["camp.spawned.crew", "camp_spawned_crew"] call FNC_ADD_EVENT;
+    ["behavior.state.change", "behavior_state_change"] call FNC_ADD_EVENT;
 };
 
 FNC_INIT = {
