@@ -305,6 +305,7 @@ adm_camp_fnc_periodicSpawn = {
         PUSH_ALL(adm_camp_armourGroups,_spawnedGroups);
         PUSH_ALL(_zoneArmourGroups,_spawnedGroups);
         INFO("admiral.camp",FMT_2("Periodic Camp Zone '%1' spawned '%2' armour group(s).",GET_ZONE_ID(_zone),count _spawnedGroups));
+        ["camp.spawned.groups", [_zoneInfGroups, _zoneTechGroups, _zoneArmourGroups, _zone]] call adm_event_fnc_emitEvent;
 
         sleep GET_CAMP_DELAY(_zone);
         [_zone] call adm_camp_fnc_isPoolEmpty || {!IS_CAMP_ENABLED(_zone)};
@@ -381,6 +382,7 @@ adm_camp_fnc_onDemandSpawn = {
         PUSH_ALL(adm_camp_armourGroups, _spawnedGroups);
         PUSH_ALL(_zoneArmourGroups, _spawnedGroups);
         INFO("admiral.camp",FMT_2("On-demand Camp Zone '%1' spawned '%2' armour group(s).",GET_ZONE_ID(_zone),count _spawnedGroups));
+        ["camp.spawned.groups", [_zoneInfGroups, _zoneTechGroups, _zoneArmourGroups, _zone]] call adm_event_fnc_emitEvent;
 
         sleep GET_CAMP_DELAY(_zone);
         [_zone] call adm_camp_fnc_isPoolEmpty || {!IS_CAMP_ENABLED(_zone)};
@@ -456,6 +458,7 @@ adm_camp_fnc_randomSpawn = {
         PUSH_ALL(adm_camp_armourGroups, _spawnedGroups);
         PUSH_ALL(_zoneArmourGroups, _spawnedGroups);
         INFO("admiral.camp",FMT_2("Random Camp Zone '%1' spawned '%2' armour group(s).",GET_ZONE_ID(_zone),count _spawnedGroups));
+        ["camp.spawned.groups", [_zoneInfGroups, _zoneTechGroups, _zoneArmourGroups, _zone]] call adm_event_fnc_emitEvent;
 
         sleep GET_CAMP_DELAY(_zone);
         [_zone] call adm_camp_fnc_isPoolEmpty || {!IS_CAMP_ENABLED(_zone)};
