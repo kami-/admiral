@@ -71,6 +71,9 @@ FNC_FIND_EVENT = {
 FNC_ADD_ALL_EVENTS = {
     ["admiral.initialized", "admiral_initialized"] call FNC_ADD_EVENT;
     ["zone.initialized", "zone_initialized"] call FNC_ADD_EVENT;
+    ["cqc.spawned.group", "cqc_spawned_group"] call FNC_ADD_EVENT;
+    ["cqc.spawned.groups", "cqc_spawned_groups"] call FNC_ADD_EVENT;
+    ["cqc.spawned.unit", "cqc_spawned_unit"] call FNC_ADD_EVENT;
 };
 
 FNC_INIT = {
