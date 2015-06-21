@@ -121,6 +121,7 @@ adm_cqc_fnc_spawnGarrisonGroupUnits = {
         _possiblePositions = _possiblePositions - [_position];
         _unit = [_building buildingPos _position, _group, _unitTemplate, _zoneTemplate, UNIT_TYPE_ARRAY select UNIT_TYPE_INF] call adm_cqc_fnc_placeMan;
         ["cqc.spawned.unit", [_unit, _building, _position, UNIT_TYPE_ARRAY select UNIT_TYPE_INF, _zone]] call adm_event_fnc_emitEvent;
+        ["zone.spawned.unit", [_unit, UNIT_TYPE_ARRAY select UNIT_TYPE_INF, _zone]] call adm_event_fnc_emitEvent;
     };
     DEBUG("admiral.cqc.create",FMT_3("Created '%1' CQC unit(s) for group '%2' in building '%3'.",_numOfUnits,_group,_building));
 };
@@ -180,6 +181,7 @@ adm_cqc_fnc_spawnGarrison = {
             _currentAmount = _currentAmount + _numOfUnits;
             _group = [_zone, _numOfUnits, _possiblePositions, _building] call adm_cqc_fnc_spawnGarrisonGroup;
             ["cqc.spawned.group", [_group, _building, _zone]] call adm_event_fnc_emitEvent;
+            ["zone.spawned.group", [_group, "cqc", _zone]] call adm_event_fnc_emitEvent;
             PUSH(_spawnedGroups, _group);
         };
     } foreach _buildings;

@@ -13,6 +13,9 @@
 #define FNC_INIT                        ADD_ADDON_NS_TO_ID(ADDON_NS,_event_fnc_init)
 #define EVENTS_ARRAY                    ADD_ADDON_NS_TO_ID(ADDON_NS,_event_events)
 
+//#define LOGGING_LEVEL_TRACE
+//#define LOGGING_TO_RPT
+
 FNC_ADD_EVENT_HANDLER = {
     FUN_ARGS_2(_eventName,_code);
 
@@ -75,6 +78,10 @@ FNC_FIND_EVENT = {
 FNC_ADD_ALL_EVENTS = {
     ["admiral.initialized", "admiral_initialized"] call FNC_ADD_EVENT;
     ["zone.initialized", "zone_initialized"] call FNC_ADD_EVENT;
+    ["zone.spawned.group", "zone_spawned_group"] call FNC_ADD_EVENT;
+    ["zone.spawned.unit", "zone_spawned_unit"] call FNC_ADD_EVENT;
+    ["zone.spawned.vehicle", "zone_spawned_vehicle"] call FNC_ADD_EVENT;
+    ["zone.spawned.crew", "zone_spawned_crew"] call FNC_ADD_EVENT;
     ["cqc.spawned.groups", "cqc_spawned_groups"] call FNC_ADD_EVENT;
     ["cqc.spawned.group", "cqc_spawned_group"] call FNC_ADD_EVENT;
     ["cqc.spawned.unit", "cqc_spawned_unit"] call FNC_ADD_EVENT;
