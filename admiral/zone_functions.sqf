@@ -14,6 +14,7 @@ adm_zone_fnc_initZone = {
     } else {
         _this call adm_zone_fnc_createZone;
     };
+    ["zone.initialized", [_zone]] call adm_event_fnc_emitEvent;
     [_zone] spawn GET_ZONE_INIT_FUNCTION(_zone);
 
     _zone;

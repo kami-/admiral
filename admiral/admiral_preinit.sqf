@@ -10,6 +10,9 @@ adm_isInitialized = false;
 adm_isEnabled = ["isEnabled"] call adm_config_fnc_getBool;
 
 if (adm_isEnabled) then {
+    [] call compile preProcessFileLineNumbers ADDON_PATH(event_functions.sqf);
+    [] call hull3_event_fnc_init;
+
     adm_fnc_compile = {
         [] call compile preProcessFileLineNumbers ADDON_PATH(config_functions.sqf); DEBUG("admiral.compile","Compiled 'config_functions.sqf'.");
         [] call compile preProcessFileLineNumbers ADDON_PATH(id_functions.sqf); DEBUG("admiral.compile","Compiled 'id_functions.sqf'.");
