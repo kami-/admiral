@@ -23,7 +23,6 @@ adm_zone_fnc_initZone = {
 adm_zone_fnc_createTriggerZone = {
     FUN_ARGS_2(_trigger,_configs);
 
-    PUSH(_configs,AS_ARRAY_2("type",triggerText _trigger));
     PUSH(_configs,AS_ARRAY_2("position",getPosATL _trigger));
     PUSH(_configs,AS_ARRAY_2("area",triggerArea _trigger));
 
