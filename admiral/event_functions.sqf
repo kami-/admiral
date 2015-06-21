@@ -1,4 +1,4 @@
-#include "hull3_macros.h"
+#include "admiral_macros.h"
 
 #define ADDON_NS                        adm
 #define ADD_ADDON_NS_TO_ID(M,ID)        M##ID
