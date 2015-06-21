@@ -24,13 +24,26 @@ adm_common_fnc_placeVehicle = {
 adm_common_fnc_spawnCrew = {
     FUN_ARGS_4(_vehicle,_group,_crewClassNames,_skillArray);
 
-    DECLARE(_crew) = [_vehicle, _group, false, "", SELECT_RAND(_crewClassNames)] call BIS_fnc_spawnCrew;
-    DEBUG("admiral.common.create",FMT_3("Created crew '%1' for vehicle '%2', in group '%3'.",_crew,_vehicle,_group));
+    private ["_driver", "_allTurrets", "_leader"];
+    _driver = [getPosATL _vehicle, _group, _crewClassNames, _skillArray] call adm_common_fnc_placeMan;
+    _driver assignAsDriver _vehicle;
+    _driver moveInDriver _vehicle;
+    _allTurrets = allTurrets [_vehicle, true];
     {
-        [_x, _skillArray] call adm_common_fnc_initUnit;
-    } foreach _crew;
+        DECLARE(_crewman) = [getPosATL _vehicle, _group, _crewClassNames, _skillArray] call adm_common_fnc_placeMan;
+        _crewman assignAsTurret [_vehicle, _x];
+        _crewman moveInTurret [_vehicle, _x];
+    } foreach _allTurrets;
+    _leader = call {
+        if (!isNull (commander _vehicle)) exitWith { commander _vehicle };
+        if (!isNull (gunner _vehicle)) exitWith { gunner _vehicle };
+        if (count _allTurrets > 0) exitWith { _vehicle turretUnit (_allTurrets select 0) };
+        driver _vehicle;
+    };
+    _group selectLeader _leader;
+    DEBUG("admiral.common.create",FMT_3("Created crew '%1' for vehicle '%2' in group '%3'.",crew _vehicle,_vehicle,_group));
 
-    _crew
+    crew _vehicle;
 };
 
 adm_common_fnc_initUnit = {
