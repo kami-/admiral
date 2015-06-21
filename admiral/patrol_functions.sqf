@@ -38,6 +38,7 @@ adm_patrol_fnc_spawnInfGroup = {
     DECLARE(_group) = [_zone, GROUP_TYPE_INF, UNIT_TYPE_INF, adm_patrol_fnc_placeMan] call adm_camp_fnc_spawnInfGroup;
     [_group, "SoldierWB", _zone, ["ZoneTemplates", GET_ZONE_TEMPLATE(_zone), "infWaypointAmount"] call adm_config_fnc_getNumber] call adm_patrol_fnc_createWaypoints;
     DEBUG("admiral.patrol.create",FMT_3("Created group '%1' of type '%2' in Patrol Zone '%3'.",_group,GROUP_TYPE_ARRAY select GROUP_TYPE_INF,GET_ZONE_ID(_zone)));
+    ["patrol.spawned.group", [_group, GROUP_TYPE_ARRAY select GROUP_TYPE_INF, _zone]] call adm_event_fnc_emitEvent;
 
     _group;
 };
@@ -48,6 +49,7 @@ adm_patrol_fnc_spawnTechGroup = {
     DECLARE(_group) = [_zone, GROUP_TYPE_TECH, UNIT_TYPE_INF, adm_patrol_fnc_placeMan] call adm_camp_fnc_spawnVehicleGroup;
     [_group, typeOf vehicle leader _group, _zone, ["ZoneTemplates", GET_ZONE_TEMPLATE(_zone), "techWaypointAmount"] call adm_config_fnc_getNumber] call adm_patrol_fnc_createWaypoints;
     DEBUG("admiral.patrol.create",FMT_4("Created crew for vehicle type of '%1' for group '%2' of type '%3' in Patrol Zone '%4'.",typeOf vehicle leader _group,_group,GROUP_TYPE_ARRAY select GROUP_TYPE_TECH,GET_ZONE_ID(_zone)));
+    ["patrol.spawned.group", [_group, GROUP_TYPE_ARRAY select GROUP_TYPE_TECH, _zone]] call adm_event_fnc_emitEvent;
 
     _group;
 };
@@ -57,7 +59,8 @@ adm_patrol_fnc_spawnArmorGroup = {
 
     DECLARE(_group) = [_zone, GROUP_TYPE_ARMOUR, UNIT_TYPE_CREW, adm_patrol_fnc_placeMan] call adm_camp_fnc_spawnVehicleGroup;
     [_group, typeOf vehicle leader _group, _zone, ["ZoneTemplates", GET_ZONE_TEMPLATE(_zone), "armourWaypointAmount"] call adm_config_fnc_getNumber] call adm_patrol_fnc_createWaypoints;
-    DEBUG("admiral.patrol.create",FMT_4("Created crew for vehicle type of '%1' for group '%2' of type '%3' in Patrol Zone '%4'.",typeOf vehicle leader _group,_group,GROUP_TYPE_ARRAY select GROUP_TYPE_TECH,GET_ZONE_ID(_zone)));
+    DEBUG("admiral.patrol.create",FMT_4("Created crew for vehicle type of '%1' for group '%2' of type '%3' in Patrol Zone '%4'.",typeOf vehicle leader _group,_group,GROUP_TYPE_ARRAY select GROUP_TYPE_ARMOUR,GET_ZONE_ID(_zone)));
+    ["patrol.spawned.group", [_group, GROUP_TYPE_ARRAY select GROUP_TYPE_ARMOUR, _zone]] call adm_event_fnc_emitEvent;
 
     _group;
 };
@@ -208,6 +211,7 @@ adm_patrol_fnc_spawnGroups = {
     PUSH_ALL(adm_patrol_armourGroups,_spawnedGroups);
     PUSH_ALL(_zoneArmourGroups,_spawnedGroups);
     INFO("admiral.patrol",FMT_2("Patrol Zone '%1' spawned '%2' armour group(s).",GET_ZONE_ID(_zone),count _spawnedGroups));
+    ["patrol.spawned.groups", [_zoneInfGroups, _zoneTechGroups, _zoneArmourGroups, _zone]] call adm_event_fnc_emitEvent;
 };
 
 adm_patrol_fnc_initZone = {

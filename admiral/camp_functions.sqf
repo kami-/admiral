@@ -127,12 +127,15 @@ adm_camp_fnc_spawnInfGroup = {
     _group = createGroup ([_unitTemplate] call adm_common_fnc_getUnitTemplateSide);
     _groupSize = ["ZoneTemplates", _zoneTemplate, "infFireteamSize"] call adm_config_fnc_getNumber;
     for "_i" from 1 to _groupSize do {
-        DECLARE(_position) = _initialPos findEmptyPosition [1, CAMP_SPAWN_CIRCLE_MAX_DIST, "SoldierWB"];
-        [_position, _group, _unitTemplate, _zoneTemplate, UNIT_TYPE_ARRAY select _unitType] call _placeManFunc;
+        private ["_position", "_unit"];
+        _position = _initialPos findEmptyPosition [1, CAMP_SPAWN_CIRCLE_MAX_DIST, "SoldierWB"];
+        _unit = [_position, _group, _unitTemplate, _zoneTemplate, UNIT_TYPE_ARRAY select _unitType] call _placeManFunc;
+        [format ["%1.spawned.unit", GET_ZONE_TYPE(_zone)], [_unit, UNIT_TYPE_ARRAY select _unitType, _zone]] call adm_event_fnc_emitEvent;
     };
     DEBUG("admiral.camp.create",FMT_4("Spawned '%1' unit(s) for group '%2' of type '%3' in Zone '%4'.",_groupSize,_group,GROUP_TYPE_ARRAY select _groupType,GET_ZONE_ID(_zone)));
     _group setVariable ["adm_zone_parent", _zone];
     _group setVariable ["adm_group_type", _groupType, false];
+    [format ["%1.spawned.group", GET_ZONE_TYPE(_zone)], [_group, GROUP_TYPE_ARRAY select _groupType, _zone]] call adm_event_fnc_emitEvent;
 
     _group;
 };
@@ -140,17 +143,20 @@ adm_camp_fnc_spawnInfGroup = {
 adm_camp_fnc_spawnVehicleGroup = {
     FUN_ARGS_4(_zone,_groupType,_unitType,_placeManFunc);
 
-    private ["_unitTemplate", "_zoneTemplate", "_vehicleTypes", "_vehicleType", "_vehiclePosition", "_vehicle", "_group"];
+    private ["_unitTemplate", "_zoneTemplate", "_vehicleTypes", "_vehicleType", "_vehiclePosition", "_vehicle", "_crew", "_group"];
     _unitTemplate = GET_ZONE_UNIT_TEMPLATE(_zone);
     _zoneTemplate = GET_ZONE_TEMPLATE(_zone);
     _vehicleTypes = [_unitTemplate, GROUP_TYPE_ARRAY select _groupType] call adm_common_fnc_getUnitTemplateArray;
     _vehicleType = SELECT_RAND(_vehicleTypes);
     _vehiclePosition = [GET_ZONE_AREA(_zone), GET_ZONE_POSITION(_zone), _vehicleType] call adm_common_fnc_getRandomEmptyPositionInArea;
     _vehicle = [_vehicleType, _vehiclePosition] call adm_common_fnc_placeVehicle;
+    [format ["%1.spawned.vehicle", GET_ZONE_TYPE(_zone)], [_vehicle, GROUP_TYPE_ARRAY select _groupType, _zone]] call adm_event_fnc_emitEvent;
     _group = createGroup ([_unitTemplate] call adm_common_fnc_getUnitTemplateSide);
     _group setVariable ["adm_group_type", _groupType, false];
-    [_vehicle, _group, _unitTemplate, _zoneTemplate, UNIT_TYPE_ARRAY select _unitType] call adm_camp_fnc_spawnCrew
+    _crew = [_vehicle, _group, _unitTemplate, _zoneTemplate, UNIT_TYPE_ARRAY select _unitType] call adm_camp_fnc_spawnCrew;
+    [format ["%1.spawned.crew", GET_ZONE_TYPE(_zone)], [_crew, UNIT_TYPE_ARRAY select _unitType, GROUP_TYPE_ARRAY select _groupType, _zone]] call adm_event_fnc_emitEvent;
     DEBUG("admiral.camp.create",FMT_4("Spawned crew for vehicle type of '%1' for group '%2' of type '%3' in Zone '%4'.",_vehicleType,_group,GROUP_TYPE_ARRAY select _groupType,GET_ZONE_ID(_zone)));
+    [format ["%1.spawned.group", GET_ZONE_TYPE(_zone)], [_group, GROUP_TYPE_ARRAY select _groupType, _zone]] call adm_event_fnc_emitEvent;
 
     _group;
 };

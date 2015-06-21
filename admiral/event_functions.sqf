@@ -1,5 +1,7 @@
 #include "admiral_macros.h"
 
+#include "logbook.h"
+
 #define ADDON_NS                        adm
 #define ADD_ADDON_NS_TO_ID(M,ID)        M##ID
 #define FNC_ADD_EVENT_HANDLER           ADD_ADDON_NS_TO_ID(ADDON_NS,_event_fnc_addEventHandler)
@@ -49,11 +51,13 @@ FNC_EMIT_EVENT = {
     FUN_ARGS_2(_eventName,_arguments);
 
     DECLARE(_eventIndex) = [_eventName] call FNC_FIND_EVENT;
+    TRACE("admiral.event.emit",FMT_3("Emiting event '%1' with arguments '%2' and found index '%3'.",_eventName,_arguments,_eventIndex));
     if (_eventIndex != -1) then {
         {
             _arguments call _x;
         } foreach (EVENTS_ARRAY select _eventIndex select 2);
         [EVENTS_ARRAY select _eventIndex select 1, _arguments] call adm_common_fnc_callEventFile;
+        TRACE("admiral.event.emit",FMT_2("Emitted event '%1' with arguments '%2'.",_eventName,_arguments));
     };
 };
 
@@ -71,9 +75,14 @@ FNC_FIND_EVENT = {
 FNC_ADD_ALL_EVENTS = {
     ["admiral.initialized", "admiral_initialized"] call FNC_ADD_EVENT;
     ["zone.initialized", "zone_initialized"] call FNC_ADD_EVENT;
-    ["cqc.spawned.group", "cqc_spawned_group"] call FNC_ADD_EVENT;
     ["cqc.spawned.groups", "cqc_spawned_groups"] call FNC_ADD_EVENT;
+    ["cqc.spawned.group", "cqc_spawned_group"] call FNC_ADD_EVENT;
     ["cqc.spawned.unit", "cqc_spawned_unit"] call FNC_ADD_EVENT;
+    ["patrol.spawned.groups", "patrol_spawned_groups"] call FNC_ADD_EVENT;
+    ["patrol.spawned.group", "patrol_spawned_group"] call FNC_ADD_EVENT;
+    ["patrol.spawned.unit", "patrol_spawned_unit"] call FNC_ADD_EVENT;
+    ["patrol.spawned.vehicle", "patrol_spawned_vehicle"] call FNC_ADD_EVENT;
+    ["patrol.spawned.crew", "patrol_spawned_crew"] call FNC_ADD_EVENT;
 };
 
 FNC_INIT = {
