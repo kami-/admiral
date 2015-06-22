@@ -7,18 +7,45 @@
 adm_common_fnc_placeMan = {
     FUN_ARGS_4(_position,_group,_unitClassNames,_skillArray);
 
-    DECLARE(_unit) = _group createUnit [SELECT_RAND(_unitClassNames), _position, [], 0, "NONE"];
-    DEBUG("admiral.common.create",FMT_4("Created unit '%1' at position '%2', in group '%3' with classname '%4'.",_unit,_position,_group,typeOf _unit));
+    private ["_classNameData", "_className", "_classNameArguments", "_unit"];
+    _classNameData = SELECT_RAND(_unitClassNames);
+    _classNameArguments = [];
+    if (typeName _classNameData == "ARRAY") then {
+        _className = _classNameData select 0;
+        for "_i" from 1 to (count _classNameData) - 1 do {
+            PUSH(_classNameArguments,_classNameData select _i);
+        };
+    } else {
+        _className = _classNameData;
+    };
+    _unit = _group createUnit [_className, _position, [], 0, "NONE"];
+    _unit setVariable ["adm_classNameArguments", _classNameArguments, false];
+    DEBUG("admiral.common.create",FMT_5("Created unit '%1' at position '%2', in group '%3' with classname '%4' and classNameArguments '%5'.",_unit,_position,_group,_className,_classNameArguments));
     [_unit, _skillArray] call adm_common_fnc_initUnit;
 
     _unit;
 };
 
 adm_common_fnc_placeVehicle = {
-    FUN_ARGS_2(_vehType,_vehPos);
+    FUN_ARGS_2(_vehicleClassNames,_zone);
 
-    DEBUG("admiral.common.create",FMT_2("Created vehicle at position '%1', with classname '%2'.",_vehPos,_vehType));
-    createVehicle [_vehType, _vehPos, [], 0, "NONE"];
+    private ["_classNameData", "_className", "_classNameArguments", "_vehiclePosition", "_vehicle"];
+    _classNameData = SELECT_RAND(_vehicleClassNames);
+    _classNameArguments = [];
+    if (typeName _classNameData == "ARRAY") then {
+        _className = _classNameData select 0;
+        for "_i" from 1 to (count _classNameData) - 1 do {
+            PUSH(_classNameArguments,_classNameData select _i);
+        };
+    } else {
+        _className = _classNameData;
+    };
+    _vehiclePosition = [GET_ZONE_AREA(_zone), GET_ZONE_POSITION(_zone), _className] call adm_common_fnc_getRandomEmptyPositionInArea;
+    _vehicle = createVehicle [_className, _vehiclePosition, [], 0, "NONE"];
+    _vehicle setVariable ["adm_classNameArguments", _classNameArguments, false];
+    DEBUG("admiral.common.create",FMT_4("Created vehicle '%1' at position '%2', with classname '%3' and '%4'.",_vehicle,_vehiclePosition,_className,_classNameArguments));
+
+    _vehicle;
 };
 
 adm_common_fnc_spawnCrew = {
