@@ -55,13 +55,128 @@ adm_api_fnc_isHc = {
 
 /**
  * Initializes a zone with the given config entries.
+ * @param _configEntry1 First config entry
+ * @param _configEntry2 Second config entry
+ * @param _configEntryN Nth config entry
+ * OR
+ * Initializes a zone with the given trigger and config entries.
  * @param _trigger Trigger object representing a zone
- * @param _configEntries Array of config entries that configure the zone
+ * @param _configEntries Array of config entries
  */
 adm_api_fnc_initZone = {
-    FUN_ARGS_2(_trigger,_configEntries);
+    _this call adm_zone_fnc_initZone;
+};
 
-    [_trigger, _configEntries] call adm_common_fnc_setConfig;
+/**
+ * Returns the ID of the zone.
+ * @_zone The array representing a zone
+ * @return ID (number) that uniquely identifies the zone
+ */
+adm_api_fnc_getZoneId = {
+    FUN_ARGS_1(_zone);
+
+    GET_ZONE_ID(_zone);
+};
+
+/**
+ * Returns the zone that has the given ID. If no zone exists
+ * with given ID, return nil.
+ * @_id Number that uniquely identifies the zone
+ * @return Zone or nil if not found
+ */
+adm_api_fnc_getZoneById = {
+    FUN_ARGS_1(_id);
+
+    [_id] call adm_zone_fnc_getZoneById
+};
+
+/**
+ * Returns the name of the zone.
+ * @_zone The array representing a zone
+ * @return Name of the zone, name of global variable in missionNamespace that equals with the zone
+ */
+adm_api_fnc_getZoneName = {
+    FUN_ARGS_1(_zone);
+
+    GET_ZONE_NAME(_zone);
+};
+
+/**
+ * Returns the type (cqc, patrol, camp) of the zone.
+ * @_zone The array representing a zone
+ * @return Type of the zone
+ */
+adm_api_fnc_getZoneType = {
+    FUN_ARGS_1(_zone);
+
+    GET_ZONE_TYPE(_zone);
+};
+
+/**
+ * Returns the center position of the zone's area.
+ * @_zone The array representing a zone
+ * @return Position array
+ */
+adm_api_fnc_getZonePosition = {
+    FUN_ARGS_1(_zone);
+
+    GET_ZONE_POSITION(_zone);
+};
+
+/**
+ * Returns the zone's area array containing the size, angle and shape.
+ * @_zone The array representing a zone
+ * @return Trigger area array
+ */
+adm_api_fnc_getZoneArea = {
+    FUN_ARGS_1(_zone);
+
+    GET_ZONE_AREA(_zone);
+};
+
+/**
+ * Returns if the zone is enabled or not.
+ * @_zone The array representing a zone
+ * @return Wether the zone is enabled or not
+ */
+adm_api_fnc_isZoneEnabled = {
+    FUN_ARGS_1(_zone);
+
+    IS_ZONE_ENABLED(_zone);
+};
+
+/**
+ * Returns the zone's unit template class name.
+ * @_zone The array representing a zone
+ * @return Unit template class name
+ */
+adm_api_fnc_getZoneUnitTemplate = {
+    FUN_ARGS_1(_zone);
+
+    GET_ZONE_UNIT_TEMPLATE(_zone);
+};
+
+/**
+ * Returns the zone's spawned groups. Array of groups for CQC,
+ * array of infantry, technical and armour groups for Patrol and Camp.
+ * @_zone The array representing a zone
+ * @return Unit template class name
+ */
+adm_api_fnc_getZoneSpawnedGroups = {
+    FUN_ARGS_1(_zone);
+
+    GET_ZONE_SPAWNED_GROUPS(_zone);
+};
+
+/**
+ * Returns the zone's zone template class name.
+ * @_zone The array representing a zone
+ * @return Zone template class name
+ */
+adm_api_fnc_getZoneTemplate = {
+    FUN_ARGS_1(_zone);
+
+    GET_ZONE_TEMPLATE(_zone);
 };
 
 
