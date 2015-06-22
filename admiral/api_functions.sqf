@@ -71,7 +71,7 @@ adm_api_fnc_initZone = {
  * @param _distance The distance to check for players
  * @return Wether a player is close enough to the zone or not
  */
-adm_api_fnc_isPlayerNearZone = {
+adm_api_fnc_isPlayerNearTrigger = {
     FUN_ARGS_2(_trigger,_distance);
 
     [_trigger, _distance] call adm_common_fnc_isPlayerNearZone;

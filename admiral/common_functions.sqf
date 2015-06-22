@@ -267,7 +267,7 @@ adm_common_fnc_getRandomPositionInEllipse = {
     ];
 };
 
-adm_common_fnc_isPlayerNearZone = {
+adm_common_fnc_isPlayerNearTrigger = {
     FUN_ARGS_2(_trigger,_distance);
 
     private ["_width", "_height", "_longestAxis"];
