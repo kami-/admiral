@@ -9,10 +9,10 @@ adm_zone_fnc_init = {
 };
 
 adm_zone_fnc_initZone = {
-    DECLARE(_zone) = if (count _this > 1) then {
+    DECLARE(_zone) = if (typeName (_this select 0) == "OBJECT") then {
         _this call adm_zone_fnc_createTriggerZone;
     } else {
-        _this call adm_zone_fnc_createZone;
+        [_this] call adm_zone_fnc_createZone;
     };
     ["zone.initialized", [_zone]] call adm_event_fnc_emitEvent;
     [_zone] spawn GET_ZONE_INIT_FUNCTION(_zone);
