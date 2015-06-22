@@ -1,6 +1,8 @@
 #include "admiral_macros.h"
 
+#include "\userconfig\admiral\log\behavior.h"
 #include "logbook.h"
+
 
 adm_behavior_fnc_changeAllGroupState = {
     waitUntil {
@@ -17,6 +19,7 @@ adm_behavior_fnc_stateInit = {
     FUN_ARGS_1(_group);
 
     _group setVariable ["adm_behavior_state", STATE_MOVING, false];
+    ["behavior.state.change", [_group, STATE_MOVING]] call adm_event_fnc_emitEvent;
 };
 
 adm_behavior_fnc_stateMoving = {
@@ -29,6 +32,7 @@ adm_behavior_fnc_stateMoving = {
         _nextState = STATE_ENEMYFOUND;
         _group setVariable ["adm_behavior_enemyPos", getPosATL _enemy, false];
         DEBUG("admiral.behavior",FMT_2("Group '%1' found enemy '%2'!",_group,_enemy));
+        ["behavior.state.change", [_group, _nextState, _enemy]] call adm_event_fnc_emitEvent;
     };
     _group setVariable ["adm_behavior_state", _nextState, false];
 };
@@ -36,12 +40,15 @@ adm_behavior_fnc_stateMoving = {
 adm_behavior_fnc_stateEnemyFound = {
     FUN_ARGS_1(_group);
 
-    DECLARE(_enemyPos) = _group getVariable "adm_behavior_enemyPos";
+    private ["_enemyPos", "_reinforcementGroups"];
+    _enemyPos = _group getVariable "adm_behavior_enemyPos";
+    _reinforcementGroups = [];
     if ([_enemyPos, side _group] call adm_behavior_fnc_canCallReinforcement) then {
-        [_group, _enemyPos, [side _group, _enemyPos] call adm_behavior_fnc_getEnemyNumbers] call adm_behavior_fnc_callReinforcement;
-        [_enemyPos, side _group] call adm_behavior_fnc_addToFoundEnemyArray
+        _reinforcementGroups = [_group, _enemyPos, [side _group, _enemyPos] call adm_behavior_fnc_getEnemyNumbers] call adm_behavior_fnc_callReinforcement;
+        [_enemyPos, side _group] call adm_behavior_fnc_addToFoundEnemyArray;
     };
     _group setVariable ["adm_behavior_state", STATE_SADENEMY, false];
+    ["behavior.state.change", [_group, STATE_SADENEMY, _reinforcementGroups]] call adm_event_fnc_emitEvent;
 };
 
 adm_behavior_fnc_stateSeekAndDestroyEnemy = {
@@ -51,6 +58,7 @@ adm_behavior_fnc_stateSeekAndDestroyEnemy = {
     _sadWp setWaypointStatements ["true", "[group this] call adm_behavior_fnc_continueMoving;"];
     _group setVariable ["adm_behavior_lastWp", currentWaypoint _group, false];
     _group setVariable ["adm_behavior_state", STATE_COMBAT, false];
+    ["behavior.state.change", [_group, STATE_COMBAT]] call adm_event_fnc_emitEvent;
     _group setCurrentWaypoint _sadWp;
     DEBUG("admiral.behavior",FMT_1("SAD waypoint was assigned to group '%1'.",_group));
 };
@@ -61,7 +69,7 @@ adm_behavior_fnc_stateCombat = {
     DECLARE(_reinfGroup) = _group getVariable "adm_behavior_reinfGroup";
     if (!isNil {_reinfGroup}) then {
         DECLARE(_enemyPos) = _group getVariable "adm_behavior_enemyPos";
-        if (!alive leader _reinfGroup) then {
+        if (!IS_GROUP_ALIVE(_reinfGroup)) then {
             DEBUG("admiral.behavior",FMT_2("Group '%1' tries to call additinal reinforcement, becasue reinforced group '%2' died.",_group,_reinfGroup));
             DECLARE(_enemyNumbers) = [side _group, _enemyPos] call adm_behavior_fnc_getEnemyNumbers;
             _group setVariable ["adm_behavior_reinfGroup", nil];
@@ -78,8 +86,9 @@ adm_behavior_fnc_stateCombat = {
 adm_behavior_fnc_continueMoving = {
     FUN_ARGS_1(_group);
 
-    DEBUG("admiral.behavior",FMT_2("Group '%1' is in '%2' state.",_group,STATE_TEXT_ARRAY select _group getVariable "adm_behavior_state"));
+    DEBUG("admiral.behavior",FMT_2("Group '%1' is in '%2' state.",_group,STATE_TEXT_ARRAY select (_group getVariable "adm_behavior_state")));
     _group setVariable ["adm_behavior_state", STATE_CONTINUEMOVING, false];
+    ["behavior.state.change", [_group, STATE_CONTINUEMOVING]] call adm_event_fnc_emitEvent;
 };
 
 adm_behavior_fnc_updateWaypointsAndMoving = {
@@ -88,6 +97,7 @@ adm_behavior_fnc_updateWaypointsAndMoving = {
     if (_group getVariable "adm_behavior_state" == STATE_CONTINUEMOVING) then {
         _group setCurrentWaypoint [_group, _group getVariable "adm_behavior_lastWp"];
         _group setVariable ["adm_behavior_state", STATE_MOVING, false];
+        ["behavior.state.change", [_group, STATE_MOVING]] call adm_event_fnc_emitEvent;
         _group setVariable ["adm_behavior_enemyPos", nil, false];
         _group setVariable ["adm_behavior_reinfGroup", nil, false];
         deleteWaypoint [_group, (count waypoints _group) - 1];
@@ -134,16 +144,20 @@ adm_behavior_fnc_canCallReinforcement = {
 adm_behavior_fnc_callReinforcement = {
     FUN_ARGS_3(_group,_enemyPos,_enemyNumbers);
 
+    private ["_callNumbers", "_infantryGroups", "_technicalGroups", "_armourGroups"];
     DECLARE(_callNumbers) = [BEHAVIOR_REINF_NUM(_enemyNumbers,1,1,1) + 1, BEHAVIOR_REINF_NUM(_enemyNumbers,3,1,1), BEHAVIOR_REINF_NUM(_enemyNumbers,4,2,1)];
     DEBUG("admiral.behavior",FMT_4("Group '%1' found '%2' number of enemies and tries to call '%3' number of reinforcements at position '%4'.",_group,_enemyNumbers,_callNumbers,_enemyPos));
-    [_group, _enemyPos, _callNumbers select 0, adm_behavior_fnc_getAvailableInfGroups] call adm_behavior_fnc_callReinforcementGroups;
-    [_group, _enemyPos, _callNumbers select 1, adm_behavior_fnc_getAvailableTechGroups] call adm_behavior_fnc_callReinforcementGroups;
-    [_group, _enemyPos, _callNumbers select 2, adm_behavior_fnc_getAvailableArmourGroups] call adm_behavior_fnc_callReinforcementGroups;
+    _infantryGroups = [_group, _enemyPos, _callNumbers select 0, adm_behavior_fnc_getAvailableInfGroups] call adm_behavior_fnc_callReinforcementGroups;
+    _technicalGroups = [_group, _enemyPos, _callNumbers select 1, adm_behavior_fnc_getAvailableTechGroups] call adm_behavior_fnc_callReinforcementGroups;
+    _armourGroups = [_group, _enemyPos, _callNumbers select 2, adm_behavior_fnc_getAvailableArmourGroups] call adm_behavior_fnc_callReinforcementGroups;
+
+    [_infantryGroups, _technicalGroups, _armourGroups];
 };
 
 adm_behavior_fnc_callReinforcementGroups = {
     FUN_ARGS_4(_group,_enemyPos,_count,_groupFunc);
 
+    DECLARE(_reinforcementGroups) = [];
     if (_count > 0) then {
         DECLARE(_groups) = [_enemyPos, _count, [side _group, _enemyPos] call _groupFunc] call adm_behavior_fnc_getReinforcementGroups;
         {
@@ -151,9 +165,12 @@ adm_behavior_fnc_callReinforcementGroups = {
                 _x setVariable ["adm_behavior_enemyPos", _enemyPos, false];
                 _x setVariable ["adm_behavior_reinfGroup", _group, false];
                 _x setVariable ["adm_behavior_state", STATE_SADENEMY, false];
+                PUSH(_reinforcementGroups,_x);
             };
         } foreach _groups;
     };
+
+    _reinforcementGroups;
 };
 
 adm_behavior_fnc_getReinforcementGroups = {
@@ -214,7 +231,7 @@ adm_behavior_fnc_getAvailableArmourGroups = {
 
 adm_behavior_fnc_isAvailableGroup = {
     [side _x, _side] call adm_common_fnc_isFriendlySide
-        && {alive leader _x}
+        && {IS_GROUP_ALIVE(_x)}
         && {leader _x distance _enemyPos <= BEHAVIOR_MAX_REINFORCEMENT_DIST}
         && {[_x] call adm_behavior_fnc_canReinforce};
 };

@@ -1,8 +1,8 @@
 #include "admiral_macros.h"
 
-#define LOGGING_LEVEL_INFO
-#define LOGGING_TO_RPT
+#include "\userconfig\admiral\log\hc.h"
 #include "logbook.h"
+
 
 adm_hc_fnc_initDefaultNames = {
     if (isNil {adm_hc_defaultNames}) then {
@@ -11,46 +11,65 @@ adm_hc_fnc_initDefaultNames = {
     };
 };
 
-adm_hc_fnc_findHCPlayer = {
-    adm_hc_name = "NOONE";
-    adm_hc_isPresent = false;
-    DECLARE(_unitsHC) = [playableUnits, {isPlayer _x && {name _x in adm_hc_defaultNames}}] call BIS_fnc_conditionalSelect;
-    if (count _unitsHC > 0) then {
-        adm_hc_name = name (_unitsHC select 0);
-        adm_hc_isPresent = true;
-        DEBUG("admiral.hc",FMT_1("Found player '%1' in HC list.",adm_hc_name));
+adm_hc_fnc_findHcPlayer = {
+    adm_hc_present = [false, ""];
+    DECLARE(_units) = [];
+    FILTER_PUSH_ALL(_units,playableUnits,{isPlayer _x && {name _x in adm_hc_defaultNames}});
+    if (count _units > 0) then {
+        adm_hc_present = [true, name (_units select 0)]
+        DEBUG("admiral.hc",FMT_2("Found player '%1' with name '%2' in HC list.",_units select 0,adm_hc_present select 0));
     };
-    publicVariable "adm_hc_name";
-    publicVariable "adm_hc_isPresent";
-    DEBUG("admiral.hc",FMT_2("Published HC data adm_hc_name='%1' and adm_hc_isPresent='%2' to server and clients.",adm_hc_name,adm_hc_isPresent));
-};
-
-adm_hc_fnc_waitForHCInit = {
-    waitUntil {
-        !isNil {adm_hc_name} && {!isNil {adm_hc_isPresent}};
-    };
+    publicVariable "adm_hc_present";
+    DEBUG("admiral.hc",FMT_1("Published adm_hc_present='%1'.",adm_hc_present));
 };
 
 adm_hc_fnc_startAdmiral = {
-    if (adm_hc_isPresent) then {
-        if (name player == adm_hc_name && {!isServer}) then { 
-            [] call compile preProcessFileLineNumbers "admiral\compile.sqf";
-            INFO("admiral.hc",FMT_2("Admiral version '%1' started successfully on player '%1' as Headless Client!",STR_ADMIRAL_VERSION,adm_hc_name));
-        };
-    } else {
+    [[], {
+        [] call compile preProcessFileLineNumbers ADDON_PATH(admiral_postinit_start.sqf);
         if (isServer) then {
-            [] call compile preProcessFileLineNumbers "admiral\compile.sqf";
             INFO("admiral.hc",FMT_1("Admiral version '%1' started successfully on server!",STR_ADMIRAL_VERSION));
+        } else {
+            INFO("admiral.hc",FMT_2("Admiral version '%1' started successfully on player '%1' as Headless Client!",STR_ADMIRAL_VERSION,adm_hc_present select 1));
         };
+    }] call adm_hc_fnc_executeIfAdmiralMachine;
+};
+
+adm_hc_fnc_executeIfAdmiralMachine = {
+    FUN_ARGS_2(_arguments,_code);
+
+    if (([] call adm_hc_fnc_isHc) || {!([] call adm_hc_fnc_isHcPresent) && {isServer}}) then {
+        _arguments call _code;
     };
+};
+
+adm_hc_fnc_executeIfHc = {
+    FUN_ARGS_2(_arguments,_code);
+
+    if ([] call adm_hc_fnc_isHc) then {
+        _arguments call _code;
+    };
+};
+
+adm_hc_fnc_isHcPresent = {
+    adm_hc_present select 0;
+};
+
+adm_hc_fnc_getHcName = {
+    adm_hc_present select 1;
+};
+
+adm_hc_fnc_isHc = {
+    adm_hc_present select 0 && {name player == adm_hc_present select 1};
 };
 
 adm_hc_fnc_init = {
     [] call adm_hc_fnc_initDefaultNames;
     if (isServer) then {
-        [] call adm_hc_fnc_findHCPlayer;
+        [] call adm_hc_fnc_findHcPlayer;
+        [] call adm_hc_fnc_startAdmiral;
     } else {
-        [] call adm_hc_fnc_waitForHCInit;
+        "adm_hc_present" addPublicVariableEventHandler {
+            [] call adm_hc_fnc_startAdmiral;
+        };
     };
-    [] call adm_hc_fnc_startAdmiral;
 };

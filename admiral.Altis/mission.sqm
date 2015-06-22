@@ -1,0 +1,263 @@
+version=12;
+class Mission
+{
+	addOns[]=
+	{
+		"A3_Modules_F",
+		"a3_map_altis"
+	};
+	addOnsAuto[]=
+	{
+		"A3_Modules_F",
+		"a3_map_altis"
+	};
+	randomSeed=14408051;
+	class Intel
+	{
+		timeOfChanges=1800.0002;
+		startWeather=0.30000001;
+		startWind=0.1;
+		startWaves=0.1;
+		forecastWeather=0.30000001;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		forecastLightnings=0.1;
+		year=2035;
+		month=6;
+		day=24;
+		hour=12;
+		minute=0;
+		startFogDecay=0.013;
+		forecastFogDecay=0.013;
+	};
+	class Groups
+	{
+		items=1;
+		class Item0
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={13999.957,20.331635,16055.928};
+					id=0;
+					side="LOGIC";
+					vehicle="Logic";
+					leader=1;
+					skill=0.60000002;
+				};
+			};
+			class Waypoints
+			{
+				items=1;
+				class Item0
+				{
+					position[]={13995.039,-77.421608,17206.676};
+					type="AND";
+					class Effects
+					{
+					};
+					showWP="NEVER";
+				};
+			};
+		};
+	};
+	class Markers
+	{
+		items=7;
+		class Item0
+		{
+			position[]={15068.124,36.91259,20420.85};
+			name="patrol";
+			text="This is a patrol zone";
+			type="mil_box";
+		};
+		class Item1
+		{
+			position[]={15062.703,38.712139,18609.973};
+			name="patrol_1";
+			text="This is a cqc zone";
+			type="mil_box";
+		};
+		class Item2
+		{
+			position[]={15066.486,17.91,17119.611};
+			name="patrol_1_1";
+			text="This is a periodic camp";
+			type="mil_box";
+		};
+		class Item3
+		{
+			position[]={14052.72,17.91696,15721.193};
+			name="44";
+			text="Please see Admiral wiki for further information";
+			type="mil_triangle";
+			colorName="ColorRed";
+		};
+		class Item4
+		{
+			position[]={13997.199,19.771606,17213.783};
+			name="123123";
+			markerType="ELLIPSE";
+			type="Empty";
+			colorName="ColorRed";
+			a=200;
+			b=200;
+		};
+		class Item5
+		{
+			position[]={13995.78,25.686144,18701.83};
+			name="123123_1";
+			markerType="ELLIPSE";
+			type="Empty";
+			colorName="ColorWEST";
+			a=300;
+			b=300;
+		};
+		class Item6
+		{
+			position[]={14136.746,42.898689,20415.119};
+			name="123123_1_1";
+			markerType="RECTANGLE";
+			type="Empty";
+			colorName="ColorGUER";
+			a=800;
+			b=400;
+		};
+	};
+	class Sensors
+	{
+		items=3;
+		class Item0
+		{
+			position[]={13997.568,25.810057,18700.156};
+			a=300;
+			b=300;
+			interruptable=1;
+			age="UNKNOWN";
+			expCond="adm_isInitialized";
+			expActiv="[thisTrigger, [[""type"", ""cqc""],[""pool"", 20]]] call adm_zone_fnc_initZone;";
+			class Effects
+			{
+			};
+		};
+		class Item1
+		{
+			position[]={14124.452,43.247616,20414.012};
+			a=800;
+			b=400;
+			rectangular=1;
+			interruptable=1;
+			age="UNKNOWN";
+			expCond="adm_isInitialized";
+			expActiv="[thisTrigger, [[""type"", ""patrol""],[""pool"", [3,2,1]]]] call adm_zone_fnc_initZone;";
+			class Effects
+			{
+			};
+		};
+		class Item2
+		{
+			position[]={14006.121,19.340338,16030.659};
+			rectangular=1;
+			interruptable=1;
+			age="UNKNOWN";
+			expCond="adm_isInitialized";
+			expActiv="[thisTrigger, [[""type"", ""camp""],[""campType"", ""periodic""],[""groupDelay"", [3,6,0]],[""pool"", [6,2,0]],[""wave"",[3,1,0]]]] call adm_zone_fnc_initZone;";
+			class Effects
+			{
+			};
+		};
+	};
+};
+class Intro
+{
+	addOns[]=
+	{
+		"a3_map_altis"
+	};
+	addOnsAuto[]=
+	{
+		"a3_map_altis"
+	};
+	randomSeed=9968122;
+	class Intel
+	{
+		timeOfChanges=1800.0002;
+		startWeather=0.30000001;
+		startWind=0.1;
+		startWaves=0.1;
+		forecastWeather=0.30000001;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		forecastLightnings=0.1;
+		year=2035;
+		month=6;
+		day=24;
+		hour=12;
+		minute=0;
+		startFogDecay=0.013;
+		forecastFogDecay=0.013;
+	};
+};
+class OutroWin
+{
+	addOns[]=
+	{
+		"a3_map_altis"
+	};
+	addOnsAuto[]=
+	{
+		"a3_map_altis"
+	};
+	randomSeed=11235527;
+	class Intel
+	{
+		timeOfChanges=1800.0002;
+		startWeather=0.30000001;
+		startWind=0.1;
+		startWaves=0.1;
+		forecastWeather=0.30000001;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		forecastLightnings=0.1;
+		year=2035;
+		month=6;
+		day=24;
+		hour=12;
+		minute=0;
+		startFogDecay=0.013;
+		forecastFogDecay=0.013;
+	};
+};
+class OutroLoose
+{
+	addOns[]=
+	{
+		"a3_map_altis"
+	};
+	addOnsAuto[]=
+	{
+		"a3_map_altis"
+	};
+	randomSeed=2416718;
+	class Intel
+	{
+		timeOfChanges=1800.0002;
+		startWeather=0.30000001;
+		startWind=0.1;
+		startWaves=0.1;
+		forecastWeather=0.30000001;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		forecastLightnings=0.1;
+		year=2035;
+		month=6;
+		day=24;
+		hour=12;
+		minute=0;
+		startFogDecay=0.013;
+		forecastFogDecay=0.013;
+	};
+};

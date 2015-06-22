@@ -1,6 +1,8 @@
 #include "admiral_macros.h"
 
+#include "\userconfig\admiral\log\rupture.h"
 #include "logbook.h"
+
 
 adm_rupture_fnc_initUnit = {
     FUN_ARGS_1(_unit);
@@ -52,7 +54,7 @@ adm_rupture_fnc_checkUnits = {
                 private ["_unit", "_elapsedTime"];
                 _unit = _x;
                 _elapsedTime = diag_tickTime - (_unit getVariable ["adm_rupture_lastHitTime", diag_tickTime]);
-                if (_elapsedTime > adm_rupture_length) then {
+                if (_elapsedTime > adm_rupture_maxDuration) then {
                     DEBUG("admiral.rupture",FMT_2("Killing unit '%1'. Time elapsed from last hit '%2' excedeed rupture length.",_unit,_elapsedTime));
                     _unit setDamage 1;
                 };

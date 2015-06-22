@@ -1,41 +1,26 @@
 #ifndef ADMIRAL_MACROS_H
 #define ADMIRAL_MACROS_H
 
-#define ADMIRAL_VERSION                     0.7.0
-#define STR_ADMIRAL_VERSION                 "0.7.0"
+#include "\userconfig\admiral\log\global.h"
 
-#define MULTIPLE_SIDES
-#ifdef MULTIPLE_SIDES
-    #define ALL_UNITS                       allUnits
-#endif
-#ifndef MULTIPLE_SIDES
-    #define ALL_UNITS                       ([] call adm_common_fnc_getPlayerUnits)
-#endif
+#define ADMIRAL_VERSION                     0.8.0
+#define STR_ADMIRAL_VERSION                 "0.8.0"
 
-#define TEMPLATE_CONFIGFILE                 missionConfigFile
-#define STR_TEMPLATE_CONFIGFILE             "missionConfigFile"
-#define TEMPLATE_CONTAINER_CLASS            "Admiral" >> "UnitTemplates"
-#define STR_TEMPLATE_CONTAINER_CLASS        "Admiral >> UnitTemplates"
+#define CONCAT_ADDON_PATH(FILE)             x\ark\addons\admiral\FILE
+#define ADDON_PATH(FILE)                    #CONCAT_ADDON_PATH(FILE)
+
+#define ADMIRAL_BASE_CONFIG                 "Admiral"
+#define ADMIRAL_MISSION_CONFIG_FILE         missionConfigFile >> ADMIRAL_BASE_CONFIG
+#define ADMIRAL_CONFIG_FILE                 configFile >> ADMIRAL_BASE_CONFIG
+
+#define ALL_UNITS                           ([] call adm_common_fnc_getPlayerUnits)
 
 #define CAMP_SPAWN_CIRCLE_MAX_DIST          30
 
 #define CQC_MAX_ENGAGE_DIST                 50
 
-#define REDUCE_DISTANCE                     1200
-#define EXPAND_DISTANCE                     1000
-
-#define CAMP_SKILL_ARRAY                    [["aimingAccuracy", adm_camp_aimingAccuracy],["aimingShake", adm_camp_aimingShake],["aimingSpeed", adm_camp_aimingSpeed], \
-                                            ["endurance", adm_camp_endurance],["spotDistance", adm_camp_spotDistance],["spotTime", adm_camp_spotTime], \
-                                            ["courage", adm_camp_courage],["reloadSpeed", adm_camp_reloadSpeed],["commanding", adm_camp_commanding], \
-                                            ["general", adm_camp_general]]
-#define PATROL_SKILL_ARRAY                  [["aimingAccuracy", adm_patrol_aimingAccuracy],["aimingShake", adm_patrol_aimingShake],["aimingSpeed", adm_patrol_aimingSpeed], \
-                                            ["endurance", adm_patrol_endurance],["spotDistance", adm_patrol_spotDistance],["spotTime", adm_patrol_spotTime], \
-                                            ["courage", adm_patrol_courage],["reloadSpeed", adm_patrol_reloadSpeed],["commanding", adm_patrol_commanding], \
-                                            ["general", adm_patrol_general]]
-#define CQC_SKILL_ARRAY                     [["aimingAccuracy", adm_cqc_aimingAccuracy],["aimingShake", adm_cqc_aimingShake],["aimingSpeed", adm_cqc_aimingSpeed], \
-                                            ["endurance", adm_cqc_endurance],["spotDistance", adm_cqc_spotDistance],["spotTime", adm_cqc_spotTime], \
-                                            ["courage", adm_cqc_courage],["reloadSpeed", adm_cqc_reloadSpeed],["commanding", adm_cqc_commanding], \
-                                            ["general", adm_cqc_general]]
+#define ZONE_SKILLS                         ["aimingAccuracy", "aimingShake", "aimingSpeed", "endurance", "spotDistance", "spotTime", "courage", "reloadSpeed", "commanding", "general"]
+#define ARMA3_NVGS                          ["NVGoggles", "NVGoggles_OPFOR", "NVGoggles_INDEP"]
 
 #define SIDE_ARRAY                          [EAST, WEST, RESISTANCE, CIVILIAN]
 #define SIDE_TEXT_ARRAY                     ["EAST", "WEST", "RESISTANCE", "CIVILIAN"]
@@ -124,6 +109,109 @@
 #define DEF_BETWEEN_MSG                             {format ["Variable '%1' must be between values %2 and %3!", _variableName, (MINVAL), (MAXVAL)]}
 #define DEF_BOUNDARY                                {format ["Variable '%1's first value '%2' must be less, than the second value '%3'!", _variableName, CC_VAR select 0, CC_VAR select 1]}
 
+#define IS_GROUP_ALIVE(GROUP)                       ({alive _x} count units GROUP > 0)
+#define MOVING_GROUPS                               [adm_patrol_infGroups, adm_patrol_techGroups, adm_patrol_armourGroups, adm_camp_infGroups, adm_camp_techGroups, adm_camp_armourGroups]
+
+
+
+#define IDX_ZONE_ID                                 0
+#define IDX_ZONE_NAME                               1
+#define IDX_ZONE_TYPE                               2
+#define IDX_ZONE_POSITION                           3
+#define IDX_ZONE_AREA                               4
+#define IDX_ZONE_ENABLED                            5
+#define IDX_ZONE_DEBUG_MARKER                       6
+#define IDX_ZONE_UNIT_TEMPLATE                      7
+#define IDX_ZONE_SPAWNED_GROUPS                     8
+#define IDX_ZONE_POOL                               9
+#define IDX_ZONE_TEMPLATE                           10
+#define IDX_ZONE_SPECIFIC_VALUES                    11
+#define IDX_ZONE_INIT_FUNCTION                      12
+
+#define GET_ZONE_VALUE(ZONE,IDX)                    ((ZONE) select IDX)
+#define SET_ZONE_VALUE(ZONE,IDX,VAL)                ((ZONE) set [IDX,VAL])
+
+#define GET_ZONE_ID(ZONE)                           GET_ZONE_VALUE(ZONE,IDX_ZONE_ID)
+#define GET_ZONE_NAME(ZONE)                         GET_ZONE_VALUE(ZONE,IDX_ZONE_NAME)
+#define GET_ZONE_TYPE(ZONE)                         GET_ZONE_VALUE(ZONE,IDX_ZONE_TYPE)
+#define GET_ZONE_POSITION(ZONE)                     GET_ZONE_VALUE(ZONE,IDX_ZONE_POSITION)
+#define GET_ZONE_AREA(ZONE)                         GET_ZONE_VALUE(ZONE,IDX_ZONE_AREA)
+#define IS_ZONE_ENABLED(ZONE)                       GET_ZONE_VALUE(ZONE,IDX_ZONE_ENABLED)
+#define GET_ZONE_DEBUG_MARKER(ZONE)                 GET_ZONE_VALUE(ZONE,IDX_ZONE_DEBUG_MARKER)
+#define GET_ZONE_UNIT_TEMPLATE(ZONE)                GET_ZONE_VALUE(ZONE,IDX_ZONE_UNIT_TEMPLATE)
+#define GET_ZONE_SPAWNED_GROUPS(ZONE)               GET_ZONE_VALUE(ZONE,IDX_ZONE_SPAWNED_GROUPS)
+#define GET_ZONE_POOL(ZONE)                         GET_ZONE_VALUE(ZONE,IDX_ZONE_POOL)
+#define GET_ZONE_TEMPLATE(ZONE)                     GET_ZONE_VALUE(ZONE,IDX_ZONE_TEMPLATE)
+#define GET_ZONE_INIT_FUNCTION(ZONE)                GET_ZONE_VALUE(ZONE,IDX_ZONE_INIT_FUNCTION)
+
+#define SET_ZONE_ID(ZONE,VAL)                       SET_ZONE_VALUE(ZONE,IDX_ZONE_ID,VAL)
+#define SET_ZONE_NAME(ZONE,VAL)                     SET_ZONE_VALUE(ZONE,IDX_ZONE_NAME,VAL)
+#define SET_ZONE_TYPE(ZONE,VAL)                     SET_ZONE_VALUE(ZONE,IDX_ZONE_TYPE,VAL)
+#define SET_ZONE_POSITION(ZONE,VAL)                 SET_ZONE_VALUE(ZONE,IDX_ZONE_POSITION,VAL)
+#define SET_ZONE_AREA(ZONE,VAL)                     SET_ZONE_VALUE(ZONE,IDX_ZONE_AREA,VAL)
+#define SET_ZONE_ENABLED(ZONE,VAL)                  SET_ZONE_VALUE(ZONE,IDX_ZONE_ENABLED,VAL)
+#define SET_ZONE_DEBUG_MARKER(ZONE,VAL)             SET_ZONE_VALUE(ZONE,IDX_ZONE_DEBUG_MARKER,VAL)
+#define SET_ZONE_UNIT_TEMPLATE(ZONE,VAL)            SET_ZONE_VALUE(ZONE,IDX_ZONE_UNIT_TEMPLATE,VAL)
+#define SET_ZONE_SPAWNED_GROUPS(ZONE,VAL)           SET_ZONE_VALUE(ZONE,IDX_ZONE_SPAWNED_GROUPS,VAL)
+#define SET_ZONE_POOL(ZONE,VAL)                     SET_ZONE_VALUE(ZONE,IDX_ZONE_POOL,VAL)
+#define SET_ZONE_TEMPLATE(ZONE,VAL)                 SET_ZONE_VALUE(ZONE,IDX_ZONE_TEMPLATE,VAL)
+#define SET_ZONE_INIT_FUNCTION(ZONE,VAL)            SET_ZONE_VALUE(ZONE,IDX_ZONE_INIT_FUNCTION,VAL)
+
+
+#define IDX_CAMP_TYPE                               0
+#define IDX_CAMP_ENABLED                            1
+#define IDX_CAMP_WAVE                               2
+#define IDX_CAMP_PATHS                              3
+#define IDX_CAMP_LAST_SPAWN_TIME                    4
+#define IDX_CAMP_DELAY                              5
+#define IDX_CAMP_GROUP_DELAY                        6
+#define IDX_CAMP_SPAWN_CHANCE                       7
+
+#define IDX_PATROL_FOLLOWING                        0
+
+#define IDX_CQC_MIN_HEIGHT                          0
+#define IDX_CQC_FORCE_FIRE_ENABLED                  1
+#define IDX_CQC_FORCE_FIRE_RUNNING                  2
+
+#define GET_ZONE_SPECIFIC_VALUE(ZONE,IDX)           ((ZONE) select IDX_ZONE_SPECIFIC_VALUES select IDX)
+#define SET_ZONE_SPECIFIC_VALUE(ZONE,IDX,VAL)       ((ZONE) select IDX_ZONE_SPECIFIC_VALUES set [IDX,VAL])
+
+#define GET_CAMP_TYPE(ZONE)                         GET_ZONE_SPECIFIC_VALUE(ZONE,IDX_CAMP_TYPE)
+#define IS_CAMP_ENABLED(ZONE)                       GET_ZONE_SPECIFIC_VALUE(ZONE,IDX_CAMP_ENABLED)
+#define GET_CAMP_WAVE(ZONE)                         GET_ZONE_SPECIFIC_VALUE(ZONE,IDX_CAMP_WAVE)
+#define GET_CAMP_PATHS(ZONE)                        GET_ZONE_SPECIFIC_VALUE(ZONE,IDX_CAMP_PATHS)
+#define GET_CAMP_LAST_SPAWN_TIME(ZONE)              GET_ZONE_SPECIFIC_VALUE(ZONE,IDX_CAMP_LAST_SPAWN_TIME)
+#define GET_CAMP_DELAY(ZONE)                        GET_ZONE_SPECIFIC_VALUE(ZONE,IDX_CAMP_DELAY)
+#define GET_CAMP_GROUP_DELAY(ZONE)                  GET_ZONE_SPECIFIC_VALUE(ZONE,IDX_CAMP_GROUP_DELAY)
+#define GET_CAMP_SPAWN_CHANCE(ZONE)                 GET_ZONE_SPECIFIC_VALUE(ZONE,IDX_CAMP_SPAWN_CHANCE)
+
+#define IS_PATROL_FOLLOWING(ZONE)                   GET_ZONE_SPECIFIC_VALUE(ZONE,IDX_PATROL_FOLLOWING)
+
+#define GET_CQC_MIN_HEIGHT(ZONE)                    GET_ZONE_SPECIFIC_VALUE(ZONE,IDX_CQC_MIN_HEIGHT)
+#define IS_CQC_FORCE_FIRE_ENABLED(ZONE)             GET_ZONE_SPECIFIC_VALUE(ZONE,IDX_CQC_FORCE_FIRE_ENABLED)
+#define IS_CQC_FORCE_FIRE_RUNNING(ZONE)             GET_ZONE_SPECIFIC_VALUE(ZONE,IDX_CQC_FORCE_FIRE_RUNNING)
+
+#define SET_CAMP_TYPE(ZONE,VAL)                     SET_ZONE_SPECIFIC_VALUE(ZONE,IDX_CAMP_TYPE,VAL)
+#define SET_CAMP_ENABLED(ZONE,VAL)                  SET_ZONE_SPECIFIC_VALUE(ZONE,IDX_CAMP_ENABLED,VAL)
+#define SET_CAMP_WAVE(ZONE,VAL)                     SET_ZONE_SPECIFIC_VALUE(ZONE,IDX_CAMP_WAVE,VAL)
+#define SET_CAMP_PATHS(ZONE,VAL)                    SET_ZONE_SPECIFIC_VALUE(ZONE,IDX_CAMP_PATHS,VAL)
+#define SET_CAMP_LAST_SPAWN_TIME(ZONE,VAL)          SET_ZONE_SPECIFIC_VALUE(ZONE,IDX_CAMP_LAST_SPAWN_TIME,VAL)
+#define SET_CAMP_DELAY(ZONE,VAL)                    SET_ZONE_SPECIFIC_VALUE(ZONE,IDX_CAMP_DELAY,VAL)
+#define SET_CAMP_GROUP_DELAY(ZONE,VAL)              SET_ZONE_SPECIFIC_VALUE(ZONE,IDX_CAMP_GROUP_DELAY,VAL)
+#define SET_CAMP_SPAWN_CHANCE(ZONE,VAL)             SET_ZONE_SPECIFIC_VALUE(ZONE,IDX_CAMP_SPAWN_CHANCE,VAL)
+
+#define SET_PATROL_FOLLOWING(ZONE,VAL)              SET_ZONE_SPECIFIC_VALUE(ZONE,IDX_PATROL_FOLLOWING,VAL)
+
+#define SET_CQC_MIN_HEIGHT(ZONE,VAL)                SET_ZONE_SPECIFIC_VALUE(ZONE,IDX_CQC_MIN_HEIGHT,VAL)
+#define SET_CQC_FORCE_FIRE_ENABLED(ZONE,VAL)        SET_ZONE_SPECIFIC_VALUE(ZONE,IDX_CQC_FORCE_FIRE_ENABLED,VAL)
+#define SET_CQC_FORCE_FIRE_RUNNING(ZONE,VAL)        SET_ZONE_SPECIFIC_VALUE(ZONE,IDX_CQC_FORCE_FIRE_RUNNING,VAL)
+
+#define DEFAULT_CAMP_VALUES                         [-1,"","camp",[0,0,0],[0,0,0,false],true,"",adm_camp_defaultUnitTemplate,[[],[],[]],[0,0,0],adm_camp_defaultZoneTemplate,["ondemand",false,[0,0,0],[],[0,0,0],CAMP_DEFAULT_DELAY,[10,10,10],[100,100,100]],adm_camp_fnc_initZone]
+#define DEFAULT_PATROL_VALUES                       [-1,"","patrol",[0,0,0],[0,0,0,false],true,"",adm_patrol_defaultUnitTemplate,[[],[],[]],[0,0,0],adm_patrol_defaultZoneTemplate,[false],adm_patrol_fnc_initZone]
+#define DEFAULT_CQC_VALUES                          [-1,"","cqc",[0,0,0],[0,0,0,false],true,"",adm_cqc_defaultUnitTemplate,[],0,adm_cqc_defaultZoneTemplate,[0,adm_cqc_forceFireEnabled,false],adm_cqc_fnc_initZone]
+
+
+
 // WARNING
 // Macros are sensitive for "," (comma), "(", ")" (parenthese) and " " (space).
 // Provide only the asked numbers of arguments, without additional commas and without spaces beetween commas.
@@ -173,6 +261,52 @@
 #define SELECT_8(ARRAY,VAR1,VAR2,VAR3,VAR4,VAR5,VAR6,VAR7,VAR8) SELECT_7(ARRAY,VAR1,VAR2,VAR3,VAR4,VAR5,VAR6,VAR7); VAR8 = (ARRAY) select 7
 #define SELECT_9(ARRAY,VAR1,VAR2,VAR3,VAR4,VAR5,VAR6,VAR7,VAR8,VAR9) SELECT_8(ARRAY,VAR1,VAR2,VAR3,VAR4,VAR5,VAR6,VAR7,VAR8); VAR9 = (ARRAY) select 8
 
+// Creates private declarations and selection from given array for local variables.
+// Example:
+//      GIVEN:
+//          _array = ["unit", "group", "trigger"];
+//      WHEN:
+//          DECLARE_3(_array,_unit,_group,_trigger);
+//      THEN:
+//          private ["_unit","_group","_trigger"];
+//          _unit == "unit";
+//          _group == "group";
+//          _trigger == "trigger";
+#define DECLARE_1(ARRAY,VAR1) \
+    PVT_1(VAR1); \
+    SELECT_1(ARRAY,VAR1)
+
+#define DECLARE_2(ARRAY,VAR1,VAR2) \
+    PVT_2(VAR1,VAR2); \
+    SELECT_2(ARRAY,VAR1,VAR2)
+
+#define DECLARE_3(ARRAY,VAR1,VAR2,VAR3) \
+    PVT_3(VAR1,VAR2,VAR3); \
+    SELECT_3(ARRAY,VAR1,VAR2,VAR3)
+
+#define DECLARE_4(ARRAY,VAR1,VAR2,VAR3,VAR4) \
+    PVT_4(VAR1,VAR2,VAR3,VAR4); \
+    SELECT_4(ARRAY,VAR1,VAR2,VAR3,VAR4)
+
+#define DECLARE_5(ARRAY,VAR1,VAR2,VAR3,VAR4,VAR5) \
+    PVT_5(VAR1,VAR2,VAR3,VAR4,VAR5); \
+    SELECT_5(ARRAY,VAR1,VAR2,VAR3,VAR4,VAR5)
+
+#define DECLARE_6(ARRAY,VAR1,VAR2,VAR3,VAR4,VAR5,VAR6) \
+    PVT_6(VAR1,VAR2,VAR3,VAR4,VAR5,VAR6); \
+    SELECT_6(ARRAY,VAR1,VAR2,VAR3,VAR4,VAR5,VAR6)
+
+#define DECLARE_7(ARRAY,VAR1,VAR2,VAR3,VAR4,VAR5,VAR6,VAR7) \
+    PVT_7(VAR1,VAR2,VAR3,VAR4,VAR5,VAR6,VAR7); \
+    SELECT_7(ARRAY,VAR1,VAR2,VAR3,VAR4,VAR5,VAR6,VAR7)
+
+#define DECLARE_8(ARRAY,VAR1,VAR2,VAR3,VAR4,VAR5,VAR6,VAR7,VAR8) \
+    PVT_8(VAR1,VAR2,VAR3,VAR4,VAR5,VAR6,VAR7,VAR8); \
+    SELECT_8(ARRAY,VAR1,VAR2,VAR3,VAR4,VAR5,VAR6,VAR7,VAR8)
+
+#define DECLARE_9(ARRAY,VAR1,VAR2,VAR3,VAR4,VAR5,VAR6,VAR7,VAR8,VAR9) \
+    PVT_9(VAR1,VAR2,VAR3,VAR4,VAR5,VAR6,VAR7,VAR8,VAR9); \
+    SELECT_9(ARRAY,VAR1,VAR2,VAR3,VAR4,VAR5,VAR6,VAR7,VAR8,VAR9)
 
 // Creates private declarations and selection from _this array for arguments.
 // Recommended for function/script argument processing.
@@ -187,40 +321,31 @@
 //          _group == "group";
 //          _trigger == "trigger";
 #define FUN_ARGS_1(VAR1) \
-    PVT_1(VAR1); \
-    SELECT_1(_this,VAR1)
-    
+    DECLARE_1(_this,VAR1);
+
 #define FUN_ARGS_2(VAR1,VAR2) \
-    PVT_2(VAR1,VAR2); \
-    SELECT_2(_this,VAR1,VAR2)
-    
+    DECLARE_2(_this,VAR1,VAR2)
+
 #define FUN_ARGS_3(VAR1,VAR2,VAR3) \
-    PVT_3(VAR1,VAR2,VAR3); \
-    SELECT_3(_this,VAR1,VAR2,VAR3)
-    
+    DECLARE_3(_this,VAR1,VAR2,VAR3)
+
 #define FUN_ARGS_4(VAR1,VAR2,VAR3,VAR4) \
-    PVT_4(VAR1,VAR2,VAR3,VAR4); \
-    SELECT_4(_this,VAR1,VAR2,VAR3,VAR4)
-    
+    DECLARE_4(_this,VAR1,VAR2,VAR3,VAR4)
+
 #define FUN_ARGS_5(VAR1,VAR2,VAR3,VAR4,VAR5) \
-    PVT_5(VAR1,VAR2,VAR3,VAR4,VAR5); \
-    SELECT_5(_this,VAR1,VAR2,VAR3,VAR4,VAR5)
-    
+    DECLARE_5(_this,VAR1,VAR2,VAR3,VAR4,VAR5)
+
 #define FUN_ARGS_6(VAR1,VAR2,VAR3,VAR4,VAR5,VAR6) \
-    PVT_6(VAR1,VAR2,VAR3,VAR4,VAR5,VAR6); \
-    SELECT_6(_this,VAR1,VAR2,VAR3,VAR4,VAR5,VAR6)
-    
+    DECLARE_6(_this,VAR1,VAR2,VAR3,VAR4,VAR5,VAR6)
+
 #define FUN_ARGS_7(VAR1,VAR2,VAR3,VAR4,VAR5,VAR6,VAR7) \
-    PVT_7(VAR1,VAR2,VAR3,VAR4,VAR5,VAR6,VAR7); \
-    SELECT_7(_this,VAR1,VAR2,VAR3,VAR4,VAR5,VAR6,VAR7)
-    
+    DECLARE_7(_this,VAR1,VAR2,VAR3,VAR4,VAR5,VAR6,VAR7)
+
 #define FUN_ARGS_8(VAR1,VAR2,VAR3,VAR4,VAR5,VAR6,VAR7,VAR8) \
-    PVT_8(VAR1,VAR2,VAR3,VAR4,VAR5,VAR6,VAR7,VAR8); \
-    SELECT_8(_this,VAR1,VAR2,VAR3,VAR4,VAR5,VAR6,VAR7,VAR8)
-    
+    DECLARE_8(_this,VAR1,VAR2,VAR3,VAR4,VAR5,VAR6,VAR7,VAR8)
+
 #define FUN_ARGS_9(VAR1,VAR2,VAR3,VAR4,VAR5,VAR6,VAR7,VAR8,VAR9) \
-    PVT_9(VAR1,VAR2,VAR3,VAR4,VAR5,VAR6,VAR7,VAR8,VAR9); \
-    SELECT_9(_this,VAR1,VAR2,VAR3,VAR4,VAR5,VAR6,VAR7,VAR8,VAR9)
+    DECLARE_9(_this,VAR1,VAR2,VAR3,VAR4,VAR5,VAR6,VAR7,VAR8,VAR9)
 
 // Adds a value to the end of an array.
 // Example:
@@ -256,6 +381,19 @@
 //      THEN:
 //          _numbers == [2, 6, 8];
 #define FILTER_PUSH_ALL(TO,FROM,COND) { if (call COND) then { PUSH(TO,_x); }; } foreach (FROM)
+
+// Finds the first element in FROM array that returns true for the COND condition. Returns nil otherwise.
+// The values from the FROM array can be referenced by variable "_x".
+// Example:
+//      GIVEN:
+//          _numbers = [];
+//          _otherNumbers = [1, 2, 3, 6, 8];
+//          _condition = {_x % 2 == 0};
+//      WHEN:
+//          
+//      THEN:
+//          FIND(_numbers,_condition) == 2;
+#define FIRST(FROM,COND) { if (call COND) exitWith {_x}; } foreach (FROM)
 
 // Selects a random value from an array.
 // Example:
