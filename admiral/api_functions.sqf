@@ -64,19 +64,6 @@ adm_api_fnc_initZone = {
     [_trigger, _configEntries] call adm_common_fnc_setConfig;
 };
 
-/**
- * Returns if a player is closer to the zone, than the given distance.
- * The zone's longest axis is added to the distance.
- * @param _trigger Trigger object representing a zone
- * @param _distance The distance to check for players
- * @return Wether a player is close enough to the zone or not
- */
-adm_api_fnc_isPlayerNearTrigger = {
-    FUN_ARGS_2(_trigger,_distance);
-
-    [_trigger, _distance] call adm_common_fnc_isPlayerNearZone;
-};
-
 
 
 // Settings
@@ -344,4 +331,74 @@ adm_api_fnc_getCampArmUnits = {
  */
 adm_api_fnc_getCampUnits = {
     [] call adm_camp_fnc_getAliveUnits;
+};
+
+
+
+// Common
+
+/**
+ * Generates a random position in a given area. Exclude positions above water, does not
+ * guarantee the function will return and can take multiple tries to find a suitable position.
+ * @param _area Trigger area array containing the size, angle and shape of the area
+ * @param _areaPosition Position array that will be the center of the area
+ * @param _canBeWater (optional) True by default for allowing position above water, false for disallowing
+ * @return A random position array from the given area
+ */
+adm_api_fnc_getRandomPositionInArea = {
+    FUN_ARGS_3(_area,_areaPosition,_canBeWater);
+
+    [_area, _areaPosition, _canBeWater] call adm_common_fnc_getRandomPositionInArea;
+};
+
+/**
+ * Returns if a position is in the given area.
+ * @param _position Position array to check
+ * @param _area Trigger area array containing the size, angle and shape of the area
+ * @param _areaPosition Position array that will be the center of the area
+ * @return Wheter the position is in the area
+ */
+adm_api_fnc_isPositionInArea = {
+    FUN_ARGS_3(_position,_area,_areaPosition);
+
+    [_position, _area, _areaPosition] call adm_common_fnc_isPositionInArea;
+};
+
+/**
+ * Returns if a player is closer to a trigger, than the given distance.
+ * The trigger's longest axis is added to the distance.
+ * @param _trigger Trigger object
+ * @param _distance The distance to check for players
+ * @return Wether a player is close enough to the trigger or not
+ */
+adm_api_fnc_isPlayerNearTrigger = {
+    FUN_ARGS_2(_trigger,_distance);
+
+    [_trigger, _distance] call adm_common_fnc_isPlayerNearZone;
+};
+
+/**
+ * Sorts a given array with the given compare function using insertion sort.
+ * A new sorted array is retuned, while the original array is left intact.
+ * @param _array Array to be sorted
+ * @param _compareFunc Code that returns true if _x is greater, than _y, where
+ * _x and _y are elements from the array
+ * @return Sorted array
+ */
+adm_api_fnc_insertionSort = {
+    FUN_ARGS_2(_array,_compareFunc);
+
+    [_array, _compareFunc] call adm_common_fnc_insertionSort;
+};
+
+/**
+ * Shuffles a given array. A new shuffled array is retuned, while the
+ * original array is left intact.
+ * @param _array Array to be shuffled
+ * @return Shuffled array
+ */
+adm_api_fnc_shuffle = {
+    FUN_ARGS_1(_array);
+
+    [_array] call adm_common_fnc_shuffle;
 };
