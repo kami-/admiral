@@ -138,7 +138,7 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			expCond="adm_isInitialized";
-			expActiv="[thisTrigger, [[""type"", ""cqc""],[""pool"", 20]]] call adm_zone_fnc_initZone;";
+			expActiv="[thisTrigger, [[""type"", ""cqc""],[""pool"", 20]]] call adm_api_fnc_initZone;";
 			class Effects
 			{
 			};
@@ -152,7 +152,7 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			expCond="adm_isInitialized";
-			expActiv="[thisTrigger, [[""type"", ""patrol""],[""pool"", [3,2,1]]]] call adm_zone_fnc_initZone;";
+			expActiv="[thisTrigger, [[""type"", ""patrol""],[""pool"", [3,2,1]]]] call adm_api_fnc_initZone;";
 			class Effects
 			{
 			};
@@ -164,7 +164,7 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			expCond="adm_isInitialized";
-			expActiv="[thisTrigger, [[""type"", ""camp""],[""campType"", ""periodic""],[""groupDelay"", [3,6,0]],[""pool"", [6,2,0]],[""wave"",[3,1,0]]]] call adm_zone_fnc_initZone;";
+			expActiv="[thisTrigger, [[""type"", ""camp""],[""campType"", ""periodic""],[""groupDelay"", [3,6,0]],[""pool"", [6,2,0]],[""wave"",[3,1,0]]]] call adm_api_fnc_initZone;";
 			class Effects
 			{
 			};
