@@ -6,13 +6,36 @@
 
 adm_zone_fnc_init = {
     adm_zones = [];
+    adm_uninitializedZones = [];
+    [] call adm_zone_fnc_addEventHandlers;
+};
+
+adm_zone_fnc_addEventHandlers = {
+    ["admiral.initialized", { { _x call adm_zone_fnc_initZone; } foreach adm_uninitializedZones; }] call adm_event_fnc_addEventHandler
+};
+
+adm_zone_fnc_tryInitZone = {
+    DECLARE(_id) = [] call adm_id_fnc_nextId;
+    if (adm_isInitialized) then {
+        DEBUG("admiral.zone.tryinit",FMT_2("Admiral is initialized. Initializing zone with ID '%1' and configs '%2'.",_id,_this));
+        [_id, _this] call adm_zone_fnc_initZone;
+    } else {
+        DEBUG("admiral.zone.tryinit",FMT_2("Admiral is not initialized. Adding zone with ID '%1' and configs '%2' to uninitialized zones.",_id,_this));
+        PUSH(adm_uninitializedZones,AS_ARRAY_2(_id,_this));
+    };
+
+    _id;
 };
 
 adm_zone_fnc_initZone = {
-    DECLARE(_zone) = if (typeName (_this select 0) == "OBJECT") then {
-        _this call adm_zone_fnc_createTriggerZone;
+    FUN_ARGS_2(_id,_configs);
+
+    DECLARE(_zone) = if (typeName (_configs select 0) == "OBJECT") then {
+        DEBUG("admiral.zone.init",FMT_3("Initializing zone from trigger '%1' with ID '%2' and configs '%3'.",_configs select 0,_id,_configs select 1));
+        [_id, _configs select 0, _configs select 1] call adm_zone_fnc_createTriggerZone;
     } else {
-        [_this] call adm_zone_fnc_createZone;
+        DEBUG("admiral.zone.init",FMT_2("Initializing zone with ID '%1' and configs '%2'.",_id,_configs));
+        [_id, _configs] call adm_zone_fnc_createZone;
     };
     ["zone.initialized", [_zone]] call adm_event_fnc_emitEvent;
     [_zone] spawn GET_ZONE_INIT_FUNCTION(_zone);
@@ -21,12 +44,12 @@ adm_zone_fnc_initZone = {
 };
 
 adm_zone_fnc_createTriggerZone = {
-    FUN_ARGS_2(_trigger,_configs);
+    FUN_ARGS_3(_id,_trigger,_configs);
 
     PUSH(_configs,AS_ARRAY_2("position",getPosATL _trigger));
     PUSH(_configs,AS_ARRAY_2("area",triggerArea _trigger));
 
-    [_configs] call adm_zone_fnc_createZone;
+    [_id, _configs] call adm_zone_fnc_createZone;
 };
 
 adm_zone_fnc_getDefaultZoneFromType = {
@@ -42,15 +65,16 @@ adm_zone_fnc_getDefaultZoneFromType = {
 };
 
 adm_zone_fnc_createZone = {
-    FUN_ARGS_1(_configs);
+    FUN_ARGS_2(_id,_configs);
 
     DECLARE(_zone) = [_configs] call adm_zone_fnc_getDefaultZoneFromType;
-    SET_ZONE_ID(_zone,[] call adm_id_fnc_nextId);
+    SET_ZONE_ID(_zone,_id);
     {
         [_zone,_x] call adm_zone_fnc_setZoneValueFromConfig;
     } foreach _configs;
     [_zone] call adm_zone_fnc_initZoneName;
     PUSH(adm_zones,_zone);
+    DEBUG("admiral.zone.create",FMT_2("Created zone with ID '%1' and configs '%2'.",_id,_configs));
 
     _zone;
 };
