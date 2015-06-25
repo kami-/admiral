@@ -126,7 +126,9 @@ adm_debug_fnc_updateCqcGroupMarkers = {
                 [_x, _group] call adm_debug_fnc_createCqcUnitMarker;
             };
         } else {
-            [_x, _debugMarker] call adm_debug_fnc_deleteCqcUnitMarker;
+            if (!isNil {_debugMarker}) then {
+                [_x, _debugMarker] call adm_debug_fnc_deleteCqcUnitMarker;
+            };
         };
     } foreach units _group;
 };
