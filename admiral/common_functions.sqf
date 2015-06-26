@@ -187,6 +187,11 @@ adm_common_fnc_getAliveSideUnits = {
     _aliveSideUnits;
 };
 
+adm_common_fnc_getAllAliveSideUnits = {
+    FUN_ARGS_1(_side);
+    [[adm_cqc_groups, adm_patrol_infGroups, adm_patrol_techGroups, adm_patrol_armourGroups, adm_camp_infGroups, adm_camp_techGroups, adm_camp_armourGroups],_side] call adm_common_fnc_getAliveSideUnits;
+};
+
 adm_common_fnc_getAdmiralUnits = {
     [[adm_cqc_groups, adm_patrol_infGroups, adm_patrol_techGroups, adm_patrol_armourGroups, adm_camp_infGroups, adm_camp_techGroups, adm_camp_armourGroups]] call adm_common_fnc_getAliveUnits;
 };

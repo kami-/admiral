@@ -288,31 +288,30 @@ adm_debug_fnc_updateLineMarker = {
 };
 
 adm_debug_fnc_createDebugCounterMarkers = {
-    FUN_ARGS_2(_side,_y_position);
-    PVT_3(_marker,_x_position,_debugMarkers);
+    FUN_ARGS_2(_side,_xPos);
+    PVT_2(_marker,_debugMarkers);
     
     _debugMarkers = [];
-    _x_position = 100; // can be moved to adm_macros
-    _marker = [format ["adm_counter_%1", _side], [_x_position,_y_position,0], "ICON", COUNTER_DEBUG_MARKER, [_side] call adm_debug_fnc_getSideColor, COUNTER_DEBUG_MARKER_SIZE] call adm_common_fnc_createLocalMarker;
-    _marker setMarkerTextLocal STR(_side);
-    _debugMarkers pushBack _marker;
-    _y_position = _y_position - 100; // move down a row to do the type markers
     {
-        _marker = [format ["adm_counter_%1_%2", _side,_x], [_x_position,_y_position,0], "ICON", _x, [_side] call adm_debug_fnc_getSideColor, COUNTER_DEBUG_MARKER_SIZE] call adm_common_fnc_createLocalMarker;
+        if (_x == "total") then {
+            // set proper marker type for the total marker since "total" doesn't exist
+            _x = COUNTER_DEBUG_MARKER_TOTAL;
+        };
+        _marker = [format ["adm_counter_%1_%2", _side,_x], [_xPos,50,0], "ICON", _x, [_side] call adm_debug_fnc_getSideColor, COUNTER_DEBUG_MARKER_SIZE] call adm_common_fnc_createLocalMarker;
         _marker setMarkerTextLocal "0";
         _debugMarkers pushBack _marker;
-        _x_position = _x_position + 50; // move a column per type
-    } foreach GROUP_TYPE_DEBUG_MARKERS;
+        _xPos = _xPos + COUNTER_DEBUG_MARKER_X_INCREMENT; // move a column for every marker
+    } foreach COUNTER_DEBUG_MARKER_TYPES;
     DEBUG("admiral.debug",FMT_2("Created counter Markers '%1' for side '%2'.",_debugMarkers,_side));
 };
 
 adm_debug_fnc_createAllFactionDebugCounterMarkers = {
-    PVT_1(_y_position);
+    PVT_1(_xPos);
     
-    _y_position = 800;
+    _xPos = COUNTER_DEBUG_MARKER_X_POS;;
     {
-        [_x,_y_position] call adm_debug_fnc_createDebugCounterMarkers;
-        _y_position = _y_position - 200; // moving down two rows per faction
+        [_x,_xPos] call adm_debug_fnc_createDebugCounterMarkers;
+        _xPos = _xPos + (5 * COUNTER_DEBUG_MARKER_X_INCREMENT); // 0 -> 800 taken up by previous markers, so start from 1000 (example with increment of 200)
     } foreach SIDE_ARRAY;
 };
 
@@ -323,11 +322,12 @@ adm_debug_fnc_updateDebugCounterMarkers = {
     _marker_names = [];
     {
         _marker_names pushBack format ["adm_counter_%1_%2", _side,_x];
-    } foreach GROUP_TYPE_DEBUG_MARKERS;
+    } foreach COUNTER_DEBUG_MARKER_TYPES;
     
     (_marker_names select 0) setMarkerTextLocal STR(count ([[adm_cqc_groups, adm_patrol_infGroups,adm_camp_infGroups],_side] call adm_common_fnc_getAliveSideUnits));
     (_marker_names select 1) setMarkerTextLocal STR(count ([[adm_patrol_techGroups, adm_camp_techGroups],_side] call adm_common_fnc_getAliveSideUnits));
     (_marker_names select 2) setMarkerTextLocal STR(count ([[adm_patrol_armourGroups,adm_camp_armourGroups],_side] call adm_common_fnc_getAliveSideUnits));
+    (_marker_names select 3) setMarkerTextLocal STR(count ([_side] call adm_common_fnc_getAllAliveSideUnits));
     DEBUG("admiral.debug",FMT_1("Updated counter markers for side '%1'.",_side));
 };
 
@@ -342,17 +342,11 @@ adm_debug_fnc_deleteAllDebugCounterMarkers = {
     
     _marker_names = [];
     {
-        _marker_names pushBack format ["adm_counter_EAST_%1",_x];
-        _marker_names pushBack format ["adm_counter_WEST_%1",_x];
-        _marker_names pushBack format ["adm_counter_RESISTANCE_%1",_x];
-        _marker_names pushBack format ["adm_counter_CIVILIAN_%1",_x];
-    } foreach GROUP_TYPE_DEBUG_MARKERS;
-    {
-        deleteMarkerLocal _x;
-    } foreach _marker_names;
-    {
-        deleteMarkerLocal _x;
-    } foreach COUNTER_DEBUG_MARKER_NAMES;
+        deleteMarkerLocal format ["adm_counter_EAST_%1",_x];
+        deleteMarkerLocal format ["adm_counter_WEST_%1",_x];
+        deleteMarkerLocal format ["adm_counter_RESISTANCE_%1",_x];
+        deleteMarkerLocal format ["adm_counter_CIVILIAN_%1",_x];
+    } foreach COUNTER_DEBUG_MARKER_TYPES;
 };
 
 adm_debug_fnc_getSideColor = {

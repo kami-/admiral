@@ -49,9 +49,11 @@
 #define WAYPOINT_DEBUG_MARKER_SIZE          [0.5,0.5]
 #define CQC_DEBUG_MARKER_SIZE               [0.5,0.5]
 #define CQC_DEBUG_MARKER                    "mil_triangle"
-#define COUNTER_DEBUG_MARKER                "mil_warning"
+#define COUNTER_DEBUG_MARKER_TYPES          ["b_inf", "b_motor_inf", "b_armor","total"]
+#define COUNTER_DEBUG_MARKER_TOTAL          "mil_destroy"
 #define COUNTER_DEBUG_MARKER_SIZE           [1.5,1.5]
-#define COUNTER_DEBUG_MARKER_NAMES          ["adm_counter_EAST","adm_counter_WEST","adm_counter_RESISTANCE","adm_counter_CIVILIAN"]
+#define COUNTER_DEBUG_MARKER_X_POS          100
+#define COUNTER_DEBUG_MARKER_X_INCREMENT    200
 #define SIDE_DEBUG_MARKER_COLORS            ["ColorRed", "ColorBlue", "ColorGreen", "ColorPink"]
 
 #define BEHAVIOR_MAX_REINFORCEMENT_DIST         750
