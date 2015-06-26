@@ -214,10 +214,6 @@ adm_patrol_fnc_spawnGroups = {
 adm_patrol_fnc_initZone = {
     FUN_ARGS_1(_zone);
 
-    waitUntil {
-        adm_isInitialized;
-    };
-
     [_zone] call adm_patrol_fnc_spawnGroups;
     PUSH(adm_patrol_zones, _zone);
     INFO("admiral.patrol",FMT_1("Patrol Zone '%1' has been succesfully initialized.",GET_ZONE_ID(_zone)));

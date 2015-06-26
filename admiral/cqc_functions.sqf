@@ -255,10 +255,6 @@ adm_cqc_fnc_enableForceFire = {
 adm_cqc_fnc_initZone = {
     FUN_ARGS_1(_zone);
 
-    waitUntil {
-        adm_isInitialized;
-    };
-
     DECLARE(_spawnedGroups) = [_zone] call adm_cqc_fnc_spawnGarrison;
     PUSH_ALL(adm_cqc_groups, _spawnedGroups);
     [_spawnedGroups] call adm_rupture_fnc_initGroups;
