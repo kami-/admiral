@@ -287,21 +287,36 @@ adm_debug_fnc_updateLineMarker = {
     DEBUG("admiral.debug",FMT_3("Updated line marker '%1' position between '%2' and '%3'.",_markerName,_posFrom,_posTo));
 };
 
+adm_debug_fnc_createDebugCounterMarker = {
+    FUN_ARGS_3(_side,_type,_xPos);
+    
+    PVT_2(_marker,_markerType);
+    _markerType = if (_type != "total") then {
+        _type;
+    } else {
+        COUNTER_DEBUG_MARKER_TOTAL;
+    };
+    _marker = [format ["adm_counter_%1_%2", _side,_type], [_xPos, 50, 0], "ICON", _markerType, [_side] call adm_debug_fnc_getSideColor, COUNTER_DEBUG_MARKER_SIZE] call adm_common_fnc_createLocalMarker;
+    _marker setMarkerTextLocal "0";
+    
+    _marker;
+};
+
 adm_debug_fnc_createDebugCounterMarkers = {
     FUN_ARGS_2(_side,_xPos);
 
-    PVT_2(_marker,_markerType);
     DECLARE(_debugMarkers) = [];
     {
-        _markerType = _x;
-        if (_markerType == "total") then {
-            _markerType = COUNTER_DEBUG_MARKER_TOTAL; // set proper marker type for the total marker since "total" doesn't exist in cfgMarkers
-        };
-        _marker = [format ["adm_counter_%1_%2", _side,_x], [_xPos,50,0], "ICON", _markerType, [_side] call adm_debug_fnc_getSideColor, COUNTER_DEBUG_MARKER_SIZE] call adm_common_fnc_createLocalMarker;
-        _marker setMarkerTextLocal "0";
+        DECLARE(_side) = _x;
+        {
+            DECLARE(_marker) = [_side, _x, _xPos] call adm_debug_fnc_createDebugCounterMarker;
+            _debugMarkers pushBack _marker;
+            _xPos = _xPos + COUNTER_DEBUG_MARKER_X_INCREMENT;
+        } foreach GROUP_TYPE_DEBUG_MARKERS;
+        DECLARE(_marker) = [_side, "total", _xPos] call adm_debug_fnc_createDebugCounterMarker;
         _debugMarkers pushBack _marker;
-        _xPos = _xPos + COUNTER_DEBUG_MARKER_X_INCREMENT; // move a column for every marker
-    } foreach COUNTER_DEBUG_MARKER_TYPES;
+        _xPos = _xPos + COUNTER_DEBUG_MARKER_X_INCREMENT;
+    } foreach SIDE_TEXT_ARRAY;
     DEBUG("admiral.debug",FMT_2("Created counter Markers '%1' for side '%2'.",_debugMarkers,_side));
 };
 
@@ -316,14 +331,14 @@ adm_debug_fnc_createAllDebugCounterMarkers = {
 adm_debug_fnc_updateDebugCounterMarkers = {
     FUN_ARGS_1(_side);
     
-    DECLARE(_marker_names) = [];
+    DECLARE(_markerNames) = [];
     {
-        _marker_names pushBack format ["adm_counter_%1_%2", _side,_x];
+        _markerNames pushBack format ["adm_counter_%1_%2", _side, _x];
     } foreach COUNTER_DEBUG_MARKER_TYPES;
-    (_marker_names select 0) setMarkerTextLocal STR(count ([[adm_cqc_groups, adm_patrol_infGroups,adm_camp_infGroups],_side] call adm_common_fnc_getAliveSideUnits));
-    (_marker_names select 1) setMarkerTextLocal STR(count ([[adm_patrol_techGroups, adm_camp_techGroups],_side] call adm_common_fnc_getAliveSideGroups));
-    (_marker_names select 2) setMarkerTextLocal STR(count ([[adm_patrol_armourGroups,adm_camp_armourGroups],_side] call adm_common_fnc_getAliveSideGroups));
-    (_marker_names select 3) setMarkerTextLocal STR(count ([_side] call adm_common_fnc_getAllAliveSideUnits));
+    (_markerNames select 0) setMarkerTextLocal str(count ([[adm_cqc_groups, adm_patrol_infGroups,adm_camp_infGroups],_side] call adm_common_fnc_getAliveSideUnits));
+    (_markerNames select 1) setMarkerTextLocal str(count ([[adm_patrol_techGroups, adm_camp_techGroups],_side] call adm_common_fnc_getAliveSideGroups));
+    (_markerNames select 2) setMarkerTextLocal str(count ([[adm_patrol_armourGroups,adm_camp_armourGroups],_side] call adm_common_fnc_getAliveSideGroups));
+    (_markerNames select 3) setMarkerTextLocal str(count ([_side] call adm_common_fnc_getAllAliveSideUnits));
     DEBUG("admiral.debug",FMT_1("Updated counter markers for side '%1'.",_side));
 };
 
@@ -337,7 +352,7 @@ adm_debug_fnc_deleteAllDebugCounterMarkers = {
     {
         DECLARE(_side) = _x;
         {
-            deleteMarkerLocal format ["adm_counter_%1_%2",_side,_x]
+            deleteMarkerLocal format ["adm_counter_%1_%2", _side, _x]
         } foreach COUNTER_DEBUG_MARKER_TYPES;
     } foreach SIDE_ARRAY;
 };

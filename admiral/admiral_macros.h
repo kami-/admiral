@@ -49,7 +49,6 @@
 #define WAYPOINT_DEBUG_MARKER_SIZE          [0.5,0.5]
 #define CQC_DEBUG_MARKER_SIZE               [0.5,0.5]
 #define CQC_DEBUG_MARKER                    "mil_triangle"
-#define COUNTER_DEBUG_MARKER_TYPES          ["b_inf", "b_motor_inf", "b_armor","total"]
 #define COUNTER_DEBUG_MARKER_TOTAL          "hd_dot"
 #define COUNTER_DEBUG_MARKER_SIZE           [1,1]
 #define COUNTER_DEBUG_MARKER_X_POS          100
