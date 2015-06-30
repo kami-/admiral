@@ -334,15 +334,12 @@ adm_debug_fnc_updateAllDebugCounterMarkers = {
 };
 
 adm_debug_fnc_deleteAllDebugCounterMarkers = {
-    PVT_1(_marker_names);
-    
-    _marker_names = [];
     {
-        deleteMarkerLocal format ["adm_counter_EAST_%1",_x];
-        deleteMarkerLocal format ["adm_counter_WEST_%1",_x];
-        deleteMarkerLocal format ["adm_counter_RESISTANCE_%1",_x];
-        deleteMarkerLocal format ["adm_counter_CIVILIAN_%1",_x];
-    } foreach COUNTER_DEBUG_MARKER_TYPES;
+        DECLARE(_side) = _x;
+        {
+            deleteMarkerLocal format ["adm_counter_%1_%2",_side,_x]
+        } foreach COUNTER_DEBUG_MARKER_TYPES;
+    } foreach SIDE_ARRAY;
 };
 
 adm_debug_fnc_getSideColor = {
