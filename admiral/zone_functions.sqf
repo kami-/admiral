@@ -1,8 +1,12 @@
 #include "admiral_macros.h"
+#include "admiral_modules_macros.h"
 
 #include "\userconfig\admiral\log\zone.h"
 #include "logbook.h"
 
+adm_zone_initZoneFromModule = {
+    diag_log str ["adm_zone_initZoneFromModule", _this];
+};
 
 adm_zone_fnc_init = {
     adm_zones = [];
@@ -115,4 +119,181 @@ adm_zone_fnc_getZoneById = {
     FUN_ARGS_1(_id);
 
     FIRST(adm_zones,{GET_ZONE_ID(_x) == _id});
+};
+
+adm_zone_initZoneFromModule = {
+    FUN_ARGS_2(_module,_configFunc);
+
+    private ["_moduleConfigs", "_defaultConfigs", "_triggers"];
+    _moduleConfigs = [_module] call _configFunc;
+    _defaultConfigs = [_module] call adm_zone_getModuleDefaultConfigs;
+    PUSH_ALL(_moduleConfigs,_defaultConfigs);
+    _triggers = [];
+    FILTER_PUSH_ALL(_triggers,synchronizedObjects _module,{count triggerArea _x > 0});
+    if (count _triggers == 0) then {
+        DECLARE(_configs) = +_moduleConfigs;
+        _configs pushBack ["area", [_module] call adm_zone_getModuleArea];
+        _configs pushBack ["position", getPosATL _module];
+        _configs call adm_zone_fnc_tryInitZone;
+        DEBUG("admiral.module.init",FMT_2("Initialized zone from module '%1' with configs '%2'.",_module,_configs));
+    } else {
+        {
+            DECLARE(_configs) = +_moduleConfigs;
+            _configs pushBack ["area", triggerArea _x];
+            _configs pushBack ["position", getPosATL _x];
+            [_x, _configs] call adm_zone_fnc_tryInitZone;
+            DEBUG("admiral.module.init",FMT_3("Initialized zone from module '%1' using trigger '%2' with configs '%3'.",_module,_x,_configs));
+        } foreach _triggers;
+    };
+};
+
+adm_zone_initCqcZoneFromModule = {
+    FUN_ARGS_1(_module);
+
+    [_module, adm_zone_getCqcModuleConfigs] call adm_zone_initZoneFromModule;
+};
+
+adm_zone_initPatrolZoneFromModule = {
+    FUN_ARGS_1(_module);
+
+    [_module, adm_zone_getPatrolModuleConfigs] call adm_zone_initZoneFromModule;
+};
+
+adm_zone_initPeriodicCampZoneFromModule = {
+    FUN_ARGS_1(_module);
+
+    [_module, adm_zone_getPeriodicCampModuleConfigs] call adm_zone_initZoneFromModule;
+};
+
+adm_zone_initOndemandCampZoneFromModule = {
+    FUN_ARGS_1(_module);
+
+    [_module, adm_zone_getOndemandCampModuleConfigs] call adm_zone_initZoneFromModule;
+};
+
+adm_zone_initRandomCampZoneFromModule = {
+    FUN_ARGS_1(_module);
+
+    [_module, adm_zone_getRandomCampModuleConfigs] call adm_zone_initZoneFromModule;
+};
+
+adm_zone_getModuleDefaultConfigs = {
+    FUN_ARGS_1(_module);
+
+    DECLARE(_configs) = [];
+    {
+        private ["_moduleVariableName", "_value"];
+        _moduleVariableName = _x select 0;
+        _value = _module getVariable _moduleVariableName;
+        if (!isNil {_value} && {_value != ""}) then {
+            _configs pushBack [_x select 1, _value];
+        };
+    } foreach DEFAULT_ARGS;
+
+    _configs;
+};
+
+adm_zone_getModuleArea = {
+    FUN_ARGS_1(_module);
+
+    DECLARE(_area) = [];
+    _area pushBack (_module getVariable QUOTE(AXIS_A_ARG_CLASS));
+    _area pushBack (_module getVariable QUOTE(AXIS_B_ARG_CLASS));
+    _area pushBack (_module getVariable QUOTE(ANGLE_ARG_CLASS));
+    _area pushBack (_module getVariable QUOTE(SHAPE_ARG_CLASS));
+
+    _area;
+};
+
+adm_zone_getCqcModuleConfigs = {
+    FUN_ARGS_1(_module);
+
+    DECLARE(_configs) = [];
+    {
+        private ["_moduleVariableName", "_value"];
+        _moduleVariableName = _x select 0;
+        _value = _module getVariable _moduleVariableName;
+        _configs pushBack [_x select 1, _value];
+    } foreach CQC_VARS;
+    _configs pushBack ["type", "cqc"];
+
+    _configs;
+};
+
+adm_zone_getPatrolModuleConfigs = {
+    FUN_ARGS_1(_module);
+
+    private ["_configs", "_pool"];
+    _configs = [];
+    _pool = [0, 0, 0];
+    {
+        private ["_moduleVariableName", "_value"];
+        _moduleVariableName = _x select 0;
+        _value = _module getVariable _moduleVariableName;
+        call {
+            if (_moduleVariableName == QUOTE(PATROL_INFANTRY_POOL_ARG_CLASS))   exitWith { _pool set [0, _value] };
+            if (_moduleVariableName == QUOTE(PATROL_TECHNICAL_POOL_ARG_CLASS))  exitWith { _pool set [1, _value] };
+            if (_moduleVariableName == QUOTE(PATROL_ARMOUR_POOL_ARG_CLASS))     exitWith { _pool set [2, _value] };
+            _configs pushBack [_x select 1, _value];
+        };
+    } foreach PATROL_VARS;
+    _configs pushBack ["pool", _pool];
+    _configs pushBack ["type", "patrol"];
+
+    _configs;
+};
+
+adm_zone_getPeriodicCampModuleConfigs = {
+    FUN_ARGS_1(_module);
+
+    DECLARE(_configs) = [_module, PERIODIC_VARS] call adm_zone_getCampModuleConfigs;
+    _configs pushBack ["campType", "periodic"];
+
+    _configs;
+};
+
+adm_zone_getOndemandCampModuleConfigs = {
+    FUN_ARGS_1(_module);
+
+    DECLARE(_configs) = [_module, ONDEMAND_VARS] call adm_zone_getCampModuleConfigs;
+    _configs pushBack ["campType", "ondemand"];
+
+    _configs;
+};
+
+adm_zone_getRandomCampModuleConfigs = {
+    FUN_ARGS_1(_module);
+
+    DECLARE(_configs) = [_module, RANDOM_VARS] call adm_zone_getCampModuleConfigs;
+    _configs pushBack ["campType", "random"];
+
+    _configs;
+};
+
+adm_zone_getCampModuleConfigs = {
+    FUN_ARGS_2(_module,_moduleVariables);
+
+    private ["_configs", "_pool", "_wave"];
+    _configs = [];
+    _pool = [0, 0, 0];
+    _wave = [0, 0, 0];
+    {
+        private ["_moduleVariableName", "_value"];
+        _moduleVariableName = _x select 0;
+        _value = _module getVariable _moduleVariableName;
+        call {
+            if (_moduleVariableName == QUOTE(CAMP_INFANTRY_POOL_ARG_CLASS))     exitWith { _pool set [0, _value] };
+            if (_moduleVariableName == QUOTE(CAMP_TECHNICAL_POOL_ARG_CLASS))    exitWith { _pool set [1, _value] };
+            if (_moduleVariableName == QUOTE(CAMP_ARMOUR_POOL_ARG_CLASS))       exitWith { _pool set [2, _value] };
+            if (_moduleVariableName == QUOTE(INFANTRY_WAVE_ARG_CLASS))          exitWith { _wave set [0, _value] };
+            if (_moduleVariableName == QUOTE(TECHNICAL_WAVE_ARG_CLASS))         exitWith { _wave set [1, _value] };
+            if (_moduleVariableName == QUOTE(ARMOUR_WAVE_ARG_CLASS))            exitWith { _wave set [2, _value] };
+            _configs pushBack [_x select 1, _value];
+        };
+    } foreach _moduleVariables;
+    _configs pushBack ["pool", _pool];
+    _configs pushBack ["wave", _wave];
+    _configs pushBack ["type", "camp"];
+
+    _configs;
 };
