@@ -326,18 +326,30 @@ adm_debug_fnc_createAllDebugCounterMarkers = {
     } foreach SIDE_ARRAY;
 };
 
+adm_debug_fnc_returnUnitCount = {
+    FUN_ARGS_1(_type);
+    
+    DECLARE(_aliveGroups) = switch (_type) do {
+        case (GROUP_TYPE_DEBUG_MARKERS select 0): {[[adm_cqc_groups, adm_patrol_infGroups,adm_camp_infGroups],_side] call adm_common_fnc_getAliveSideUnits;}; 
+        case (GROUP_TYPE_DEBUG_MARKERS select 1): {[[adm_patrol_techGroups, adm_camp_techGroups],_side] call adm_common_fnc_getAliveSideGroups;}; 
+        case (GROUP_TYPE_DEBUG_MARKERS select 2): {[[adm_patrol_armourGroups,adm_camp_armourGroups],_side] call adm_common_fnc_getAliveSideGroups;}; 
+        case "total": {[_side] call adm_common_fnc_getAllAliveSideUnits;};
+        default {[]};
+    };
+    
+    (str(count _aliveGroups));
+};
+
 adm_debug_fnc_updateDebugCounterMarkers = {
     FUN_ARGS_1(_side);
     
     DECLARE(_markerNames) = [];
     {
-        _markerNames pushBack format ["adm_counter_%1_%2", _side, _x];
+        DECLARE(_count) = [_x] call adm_debug_fnc_returnUnitCount;
+        (format ["adm_counter_%1_%2", _side, _x]) setMarkerTextLocal _count;
     } foreach GROUP_TYPE_DEBUG_MARKERS;
-    _markerNames pushBack format ["adm_counter_%1_%2", _side, "total"];
-    (_markerNames select 0) setMarkerTextLocal str(count ([[adm_cqc_groups, adm_patrol_infGroups,adm_camp_infGroups],_side] call adm_common_fnc_getAliveSideUnits));
-    (_markerNames select 1) setMarkerTextLocal str(count ([[adm_patrol_techGroups, adm_camp_techGroups],_side] call adm_common_fnc_getAliveSideGroups));
-    (_markerNames select 2) setMarkerTextLocal str(count ([[adm_patrol_armourGroups,adm_camp_armourGroups],_side] call adm_common_fnc_getAliveSideGroups));
-    (_markerNames select 3) setMarkerTextLocal str(count ([_side] call adm_common_fnc_getAllAliveSideUnits));
+    DECLARE(_countTotal) = ["total"] call adm_debug_fnc_returnUnitCount;
+    (format ["adm_counter_%1_%2", _side, "total"]) setMarkerTextLocal _countTotal;
     DEBUG("admiral.debug",FMT_1("Updated counter markers for side '%1'.",_side));
 };
 
