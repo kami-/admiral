@@ -302,28 +302,26 @@ adm_debug_fnc_createDebugCounterMarker = {
     _marker;
 };
 
-adm_debug_fnc_createDebugCounterMarkers = {
+adm_debug_fnc_createDebugFactionCounterMarkers = {
     FUN_ARGS_2(_side,_xPos);
 
     DECLARE(_debugMarkers) = [];
+    PVT_1(_marker);
     {
-        DECLARE(_side) = _x;
-        {
-            DECLARE(_marker) = [_side, _x, _xPos] call adm_debug_fnc_createDebugCounterMarker;
-            _debugMarkers pushBack _marker;
-            _xPos = _xPos + COUNTER_DEBUG_MARKER_X_INCREMENT;
-        } foreach GROUP_TYPE_DEBUG_MARKERS;
-        DECLARE(_marker) = [_side, "total", _xPos] call adm_debug_fnc_createDebugCounterMarker;
+        _marker = [_side, _x, _xPos] call adm_debug_fnc_createDebugCounterMarker;
         _debugMarkers pushBack _marker;
         _xPos = _xPos + COUNTER_DEBUG_MARKER_X_INCREMENT;
-    } foreach SIDE_TEXT_ARRAY;
+    } foreach GROUP_TYPE_DEBUG_MARKERS;
+    _marker = [_side, "total", _xPos] call adm_debug_fnc_createDebugCounterMarker;
+    _debugMarkers pushBack _marker;
+    _xPos = _xPos + COUNTER_DEBUG_MARKER_X_INCREMENT;
     DEBUG("admiral.debug",FMT_2("Created counter Markers '%1' for side '%2'.",_debugMarkers,_side));
 };
 
 adm_debug_fnc_createAllDebugCounterMarkers = {
     DECLARE(_xPos) = COUNTER_DEBUG_MARKER_X_POS;
     {
-        [_x,_xPos] call adm_debug_fnc_createDebugCounterMarkers;
+        [_x,_xPos] call adm_debug_fnc_createDebugFactionCounterMarkers;
         _xPos = _xPos + (4 * COUNTER_DEBUG_MARKER_X_INCREMENT);
     } foreach SIDE_ARRAY;
 };
@@ -334,7 +332,8 @@ adm_debug_fnc_updateDebugCounterMarkers = {
     DECLARE(_markerNames) = [];
     {
         _markerNames pushBack format ["adm_counter_%1_%2", _side, _x];
-    } foreach COUNTER_DEBUG_MARKER_TYPES;
+    } foreach GROUP_TYPE_DEBUG_MARKERS;
+    _markerNames pushBack format ["adm_counter_%1_%2", _side, "total"];
     (_markerNames select 0) setMarkerTextLocal str(count ([[adm_cqc_groups, adm_patrol_infGroups,adm_camp_infGroups],_side] call adm_common_fnc_getAliveSideUnits));
     (_markerNames select 1) setMarkerTextLocal str(count ([[adm_patrol_techGroups, adm_camp_techGroups],_side] call adm_common_fnc_getAliveSideGroups));
     (_markerNames select 2) setMarkerTextLocal str(count ([[adm_patrol_armourGroups,adm_camp_armourGroups],_side] call adm_common_fnc_getAliveSideGroups));
@@ -352,8 +351,9 @@ adm_debug_fnc_deleteAllDebugCounterMarkers = {
     {
         DECLARE(_side) = _x;
         {
-            deleteMarkerLocal format ["adm_counter_%1_%2", _side, _x]
-        } foreach COUNTER_DEBUG_MARKER_TYPES;
+            deleteMarkerLocal format ["adm_counter_%1_%2", _side, _x];
+        } foreach GROUP_TYPE_DEBUG_MARKERS;
+        deleteMarkerLocal format ["adm_counter_%1_%2", _side, "total"];
     } foreach SIDE_ARRAY;
 };
 
