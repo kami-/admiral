@@ -163,7 +163,7 @@ adm_common_fnc_getAliveSideGroups = {
     DECLARE(_aliveGroups) = [];
     {
         DECLARE(_groups) = _x;
-        FILTER_PUSH_ALL(_aliveGroups,_groups,{IS_GROUP_ALIVE(_x) && {side _x == _side})};
+        FILTER_PUSH_ALL(_aliveGroups,_groups,{IS_GROUP_ALIVE(_x) && {side _x == _side}});
     } foreach _groupsArray;
 
     _aliveGroups;
