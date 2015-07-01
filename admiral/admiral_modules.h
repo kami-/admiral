@@ -28,7 +28,9 @@
 #define INFANTRY_GROUP_DELAY_ARG    MODULE_ARG(INFANTRY_GROUP_DELAY_ARG_CLASS,"Infantry group delay","Delay in seconds times Camp delay between infantry waves.","NUMBER", 0)
 #define TECHNICAL_GROUP_DELAY_ARG   MODULE_ARG(TECHNICAL_GROUP_DELAY_ARG_CLASS,"Technical group delay","Delay in seconds times Camp delay between infantry waves.","NUMBER", 0)
 #define ARMOUR_GROUP_DELAY_ARG      MODULE_ARG(ARMOUR_GROUP_DELAY_ARG_CLASS,"Armour group delay","Delay in seconds times Camp delay between infantry waves.","NUMBER", 0)
-#define SPAWN_CHANCE_ARG            MODULE_ARG(SPAWN_CHANCE_ARG_CLASS,"Spawn chance","Chance from 0 to 100 percent to spawn a group.","NUMBER", 100)
+#define INFANTRY_SPAWN_CHANCE_ARG   MODULE_ARG(INFANTRY_SPAWN_CHANCE_ARG_CLASS,"Infantry spawn chance","Chance from 0 to 100 percent to spawn an infantry group for each group in a wave.","NUMBER", 100)
+#define TECHNICAL_SPAWN_CHANCE_ARG  MODULE_ARG(PATROL_SPAWN_CHANCE_ARG_CLASS,"Technical spawn chance","Chance from 0 to 100 percent to spawn a technical group for each group in a wave.","NUMBER", 100)
+#define ARMOUR_SPAWN_CHANCE_ARG     MODULE_ARG(ARMOUR_SPAWN_CHANCE_ARG_CLASS,"Armour spawn chance","Chance from 0 to 100 percent to spawn an armour group for each group in a wave.","NUMBER", 100)
 
 #define SHAPE_ARG class SHAPE_ARG_CLASS { \
     displayName = "Shape"; \
@@ -47,7 +49,7 @@
     }; \
 }
 
-#define ZONE_MODULE(CLASS,DISPLAY,ICON,FUNC,ARGS) class CLASS : Module_F { \
+#define ZONE_MODULE(CLASS,DISPLAY,ICON,FUNC,ARGS,DESC) class CLASS : Module_F { \
     scope = 2; \
     displayName = DISPLAY; \
     icon = ICON; \
@@ -57,7 +59,28 @@
     isGlobal = 1; \
     isTriggerActivated = 1; \
     ARGS; \
-}
+ \
+    class ModuleDescription : ModuleDescription { \
+        description = DESC; \
+        position = 1; \
+        sync[] = {"Admiral_Trigger"}; \
+ \
+        class Admiral_Trigger { \
+            description[] = { \
+                "Each synchronized trigger will create a zone using the trigger's position, area and direction.", \
+                "The zones will be created when ALL triggers have been activated!" \
+            }; \
+            displayName = "Trigger"; \
+            icon = "iconLogic"; \
+            vehicle = "EmptyDetector"; \
+            position = 1; \
+            direction = 1; \
+            optional = 1; \
+            duplicate = 1; \
+            synced[] = {}; \
+        }; \
+    }; \
+} \
 
 #define CQC_ARGS class Arguments { \
     ZONE_NAME_ARG; \
@@ -133,7 +156,9 @@
     INFANTRY_WAVE_ARG; \
     TECHNICAL_WAVE_ARG; \
     ARMOUR_WAVE_ARG; \
-    SPAWN_CHANCE_ARG; \
+    INFANTRY_SPAWN_CHANCE_ARG; \
+    TECHNICAL_SPAWN_CHANCE_ARG; \
+    ARMOUR_SPAWN_CHANCE_ARG; \
     CAMP_DELAY_ARG; \
     UNIT_TEMPLATE_ARG; \
     ZONE_TEMPLATE_ARG; \
@@ -143,10 +168,12 @@
 
 class Logic;
 class Module_F : Logic {
+    class ModuleDescription {
+    };
 };
 
-ZONE_MODULE(Admiral_CqcZone,"CQC Zone",ADDON_PATH(resources\module_icons\Cqc.paa),"adm_zone_initCqcZoneFromModule",CQC_ARGS);
-ZONE_MODULE(Admiral_PatrolZone,"Patrol Zone",ADDON_PATH(resources\module_icons\Camp.paa),"adm_zone_initPatrolZoneFromModule",PATROL_ARGS);
-ZONE_MODULE(Admiral_PeriodicCampZone,"Periodic Camp Zone",ADDON_PATH(resources\module_icons\Periodic.paa),"adm_zone_initPeriodicCampZoneFromModule",PERIODIC_CAMP_ARGS);
-ZONE_MODULE(Admiral_OndemandCampZone,"Ondemand Camp Zone",ADDON_PATH(resources\module_icons\Ondemand.paa),"adm_zone_initOndemandCampZoneFromModule",ONDEMAND_CAMP_ARGS);
-ZONE_MODULE(Admiral_RandomCampZone,"Random Camp Zone",ADDON_PATH(resources\module_icons\Random.paa),"adm_zone_initRandomCampZoneFromModule",RANDOM_CAMP_ARGS);
+ZONE_MODULE(Admiral_CqcZone,"CQC Zone",ADDON_PATH(resources\module_icons\Cqc.paa),"adm_zone_initCqcZoneFromModule",CQC_ARGS,"Spawn units in buildings in the given area.");
+ZONE_MODULE(Admiral_PatrolZone,"Patrol Zone",ADDON_PATH(resources\module_icons\Patrol.paa),"adm_zone_initPatrolZoneFromModule",PATROL_ARGS,"Spawn groups patrolling the given area.");
+ZONE_MODULE(Admiral_PeriodicCampZone,"Periodic Camp Zone",ADDON_PATH(resources\module_icons\Periodic.paa),"adm_zone_initPeriodicCampZoneFromModule",PERIODIC_CAMP_ARGS,"Spawn groups in waves that follow waypoints to given area. A new wave is spawned after given amount of time.");
+ZONE_MODULE(Admiral_OndemandCampZone,"Ondemand Camp Zone",ADDON_PATH(resources\module_icons\Ondemand.paa),"adm_zone_initOndemandCampZoneFromModule",ONDEMAND_CAMP_ARGS,"Spawn groups in waves that follow waypoints to given area. Ensures that there are at maximum a given amount of groups are alive.");
+ZONE_MODULE(Admiral_RandomCampZone,"Random Camp Zone",ADDON_PATH(resources\module_icons\Random.paa),"adm_zone_initRandomCampZoneFromModule",RANDOM_CAMP_ARGS,"Spawn groups in waves that follow waypoints to given area. Spawns groups with given chance.");

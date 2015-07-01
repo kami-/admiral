@@ -209,13 +209,9 @@ adm_zone_getCqcModuleConfigs = {
     FUN_ARGS_1(_module);
 
     DECLARE(_configs) = [];
-    {
-        private ["_moduleVariableName", "_value"];
-        _moduleVariableName = _x select 0;
-        _value = _module getVariable _moduleVariableName;
-        _configs pushBack [_x select 1, _value];
-    } foreach CQC_VARS;
     _configs pushBack ["type", "cqc"];
+    _configs pushBack ["pool", _module getVariable QUOTE(CQC_POOL_ARG_CLASS)];
+    _configs pushBack ["minHeight", _module getVariable QUOTE(MIN_HEIGHT_ARG_CLASS)];
 
     _configs;
 };
@@ -223,21 +219,8 @@ adm_zone_getCqcModuleConfigs = {
 adm_zone_getPatrolModuleConfigs = {
     FUN_ARGS_1(_module);
 
-    private ["_configs", "_pool"];
-    _configs = [];
-    _pool = [0, 0, 0];
-    {
-        private ["_moduleVariableName", "_value"];
-        _moduleVariableName = _x select 0;
-        _value = _module getVariable _moduleVariableName;
-        call {
-            if (_moduleVariableName == QUOTE(PATROL_INFANTRY_POOL_ARG_CLASS))   exitWith { _pool set [0, _value] };
-            if (_moduleVariableName == QUOTE(PATROL_TECHNICAL_POOL_ARG_CLASS))  exitWith { _pool set [1, _value] };
-            if (_moduleVariableName == QUOTE(PATROL_ARMOUR_POOL_ARG_CLASS))     exitWith { _pool set [2, _value] };
-            _configs pushBack [_x select 1, _value];
-        };
-    } foreach PATROL_VARS;
-    _configs pushBack ["pool", _pool];
+    DECLARE(_configs) = [];
+    PUSH_GROUP_TYPE_CONFIG("pool",_module,PATROL_POOL_MODULE_VARS,_configs);
     _configs pushBack ["type", "patrol"];
 
     _configs;
@@ -248,6 +231,7 @@ adm_zone_getPeriodicCampModuleConfigs = {
 
     DECLARE(_configs) = [_module, PERIODIC_VARS] call adm_zone_getCampModuleConfigs;
     _configs pushBack ["campType", "periodic"];
+    PUSH_GROUP_TYPE_CONFIG("groupDelay",_module,PERIODIC_GROUP_DELAY_MODULE_VARS,_configs);
 
     _configs;
 };
@@ -257,6 +241,7 @@ adm_zone_getOndemandCampModuleConfigs = {
 
     DECLARE(_configs) = [_module, ONDEMAND_VARS] call adm_zone_getCampModuleConfigs;
     _configs pushBack ["campType", "ondemand"];
+    PUSH_GROUP_TYPE_CONFIG("spawnChance",_module,RANDOM_SPAWN_CHANCE_MODULE_VARS,_configs);
 
     _configs;
 };
@@ -266,6 +251,7 @@ adm_zone_getRandomCampModuleConfigs = {
 
     DECLARE(_configs) = [_module, RANDOM_VARS] call adm_zone_getCampModuleConfigs;
     _configs pushBack ["campType", "random"];
+    PUSH_GROUP_TYPE_CONFIG("spawnChance",_module,RANDOM_SPAWN_CHANCE_MODULE_VARS,_configs);
 
     _configs;
 };
@@ -273,27 +259,11 @@ adm_zone_getRandomCampModuleConfigs = {
 adm_zone_getCampModuleConfigs = {
     FUN_ARGS_2(_module,_moduleVariables);
 
-    private ["_configs", "_pool", "_wave"];
-    _configs = [];
-    _pool = [0, 0, 0];
-    _wave = [0, 0, 0];
-    {
-        private ["_moduleVariableName", "_value"];
-        _moduleVariableName = _x select 0;
-        _value = _module getVariable _moduleVariableName;
-        call {
-            if (_moduleVariableName == QUOTE(CAMP_INFANTRY_POOL_ARG_CLASS))     exitWith { _pool set [0, _value] };
-            if (_moduleVariableName == QUOTE(CAMP_TECHNICAL_POOL_ARG_CLASS))    exitWith { _pool set [1, _value] };
-            if (_moduleVariableName == QUOTE(CAMP_ARMOUR_POOL_ARG_CLASS))       exitWith { _pool set [2, _value] };
-            if (_moduleVariableName == QUOTE(INFANTRY_WAVE_ARG_CLASS))          exitWith { _wave set [0, _value] };
-            if (_moduleVariableName == QUOTE(TECHNICAL_WAVE_ARG_CLASS))         exitWith { _wave set [1, _value] };
-            if (_moduleVariableName == QUOTE(ARMOUR_WAVE_ARG_CLASS))            exitWith { _wave set [2, _value] };
-            _configs pushBack [_x select 1, _value];
-        };
-    } foreach _moduleVariables;
-    _configs pushBack ["pool", _pool];
-    _configs pushBack ["wave", _wave];
+    DECLARE(_configs) = [];
     _configs pushBack ["type", "camp"];
+    _configs pushBack ["campDelay", _module getVariable QUOTE(CAMP_DELAY_ARG_CLASS)];
+    PUSH_GROUP_TYPE_CONFIG("pool",_module,CAMP_POOL_MODULE_VARS,_configs);
+    PUSH_GROUP_TYPE_CONFIG("wave",_module,CAMP_WAVE_MODULE_VARS,_configs);
 
     _configs;
 };
