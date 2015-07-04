@@ -1,5 +1,7 @@
 #include "admiral_macros.h"
 
+//#define LOGGING_LEVEL_DEBUG
+//#define LOGGING_TO_RPT
 #include "logbook.h"
 
 #define ADDON_NS                        adm
@@ -13,8 +15,6 @@
 #define FNC_INIT                        ADD_ADDON_NS_TO_ID(ADDON_NS,_event_fnc_init)
 #define EVENTS_ARRAY                    ADD_ADDON_NS_TO_ID(ADDON_NS,_event_events)
 
-//#define LOGGING_LEVEL_TRACE
-//#define LOGGING_TO_RPT
 
 FNC_ADD_EVENT_HANDLER = {
     FUN_ARGS_2(_eventName,_code);
@@ -54,6 +54,7 @@ FNC_EMIT_EVENT = {
     FUN_ARGS_2(_eventName,_arguments);
 
     DECLARE(_eventIndex) = [_eventName] call FNC_FIND_EVENT;
+    DEBUG("admiral.event.emit",FMT_2("Emiting event '%1' with found index '%2'.",_eventName,_eventIndex));
     TRACE("admiral.event.emit",FMT_3("Emiting event '%1' with arguments '%2' and found index '%3'.",_eventName,_arguments,_eventIndex));
     if (_eventIndex != -1) then {
         {

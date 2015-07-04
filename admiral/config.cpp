@@ -23,4 +23,15 @@ class Extended_PostInit_EventHandlers {
     };
 };
 
+class CfgFactionClasses {
+    class NO_CATEGORY;
+    class Admiral : NO_CATEGORY {
+        displayName = "Admiral";
+    };
+};
+
+class CfgVehicles {
+    #include "admiral_modules.h"
+};
+
 #include "admiral.h"

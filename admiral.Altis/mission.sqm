@@ -4,11 +4,13 @@ class Mission
 	addOns[]=
 	{
 		"A3_Modules_F",
-		"a3_map_altis"
+		"a3_map_altis",
+		"admiral"
 	};
 	addOnsAuto[]=
 	{
 		"A3_Modules_F",
+		"admiral",
 		"a3_map_altis"
 	};
 	randomSeed=14408051;
@@ -32,7 +34,7 @@ class Mission
 	};
 	class Groups
 	{
-		items=1;
+		items=17;
 		class Item0
 		{
 			side="LOGIC";
@@ -41,7 +43,7 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={13999.957,20.331635,16055.928};
+					position[]={13999.957,20.331924,16056.146};
 					id=0;
 					side="LOGIC";
 					vehicle="Logic";
@@ -51,10 +53,1085 @@ class Mission
 			};
 			class Waypoints
 			{
+				items=2;
+				class Item0
+				{
+					position[]={13964.206,-81.39933,16691.221};
+					type="AND";
+					class Effects
+					{
+					};
+					showWP="NEVER";
+				};
+				class Item1
+				{
+					position[]={13781.313,15.382854,17061.098};
+					type="AND";
+					class Effects
+					{
+					};
+					showWP="NEVER";
+				};
+			};
+		};
+		class Item1
+		{
+			side="LOGIC";
+			class Vehicles
+			{
 				items=1;
 				class Item0
 				{
-					position[]={13995.039,-77.421608,17206.676};
+					position[]={13133.336,12.556484,15726.228};
+					azimut=34.764874;
+					id=1;
+					side="LOGIC";
+					vehicle="Logic";
+					leader=1;
+					skill=0.60000002;
+				};
+			};
+			class Waypoints
+			{
+				items=2;
+				class Item0
+				{
+					position[]={13405.104,14.772391,16520.98};
+					type="AND";
+					class Effects
+					{
+					};
+					showWP="NEVER";
+				};
+				class Item1
+				{
+					position[]={13119.528,17.816206,17624.621};
+					type="AND";
+					class Effects
+					{
+					};
+					showWP="NEVER";
+				};
+			};
+		};
+		class Item2
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={14023.038,19.998991,16055.71};
+					id=2;
+					side="LOGIC";
+					vehicle="Logic";
+					leader=1;
+					skill=0.60000002;
+				};
+			};
+			class Waypoints
+			{
+				items=2;
+				class Item0
+				{
+					position[]={14062.846,13.416965,16674.848};
+					type="AND";
+					class Effects
+					{
+					};
+					showWP="NEVER";
+				};
+				class Item1
+				{
+					position[]={14274.565,26.149481,17253.066};
+					type="AND";
+					class Effects
+					{
+					};
+					showWP="NEVER";
+				};
+			};
+		};
+		class Item3
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={13175.595,12.282376,15693.776};
+					azimut=34.764874;
+					id=3;
+					side="LOGIC";
+					vehicle="Logic";
+					leader=1;
+					skill=0.60000002;
+					init="this setVariable [""usedBy"", [false,false,true]];";
+				};
+			};
+			class Waypoints
+			{
+				items=2;
+				class Item0
+				{
+					position[]={13603.073,9.9840822,16381.896};
+					type="AND";
+					class Effects
+					{
+					};
+					showWP="NEVER";
+				};
+				class Item1
+				{
+					position[]={13779.628,15.423195,17060.939};
+					type="AND";
+					class Effects
+					{
+					};
+					showWP="NEVER";
+				};
+			};
+		};
+		class Item4
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={21339.293,20.578627,16347.704};
+					class args
+					{
+						items=9;
+						class Item0
+						{
+							value="";
+							parentCls="Admiral_CqcZone";
+							typeName="Admiral_ZoneName";
+						};
+						class Item1
+						{
+							value="300";
+							parentCls="Admiral_CqcZone";
+							typeName="Admiral_AxisA";
+						};
+						class Item2
+						{
+							value="200";
+							parentCls="Admiral_CqcZone";
+							typeName="Admiral_AxisB";
+						};
+						class Item3
+						{
+							value="0";
+							parentCls="Admiral_CqcZone";
+							typeName="Admiral_Angle";
+						};
+						class Item4
+						{
+							value="1";
+							parentCls="Admiral_CqcZone";
+							typeName="Admiral_Shape";
+						};
+						class Item5
+						{
+							value="12";
+							parentCls="Admiral_CqcZone";
+							typeName="Admiral_CqcPool";
+						};
+						class Item6
+						{
+							value="0";
+							parentCls="Admiral_CqcZone";
+							typeName="Admiral_MinHeight";
+						};
+						class Item7
+						{
+							value="";
+							parentCls="Admiral_CqcZone";
+							typeName="Admiral_UnitTemplate";
+						};
+						class Item8
+						{
+							value="";
+							parentCls="Admiral_CqcZone";
+							typeName="Admiral_ZoneTemplate";
+						};
+					};
+					id=4;
+					side="LOGIC";
+					vehicle="Admiral_CqcZone";
+					leader=1;
+					lock="UNLOCKED";
+					skill=0.60000002;
+				};
+			};
+		};
+		class Item5
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={21021.107,37.380566,16993.805};
+					class args
+					{
+						items=9;
+						class Item0
+						{
+							value="";
+							parentCls="Admiral_CqcZone";
+							typeName="Admiral_ZoneName";
+						};
+						class Item1
+						{
+							value="100";
+							parentCls="Admiral_CqcZone";
+							typeName="Admiral_AxisA";
+						};
+						class Item2
+						{
+							value="100";
+							parentCls="Admiral_CqcZone";
+							typeName="Admiral_AxisB";
+						};
+						class Item3
+						{
+							value="0";
+							parentCls="Admiral_CqcZone";
+							typeName="Admiral_Angle";
+						};
+						class Item4
+						{
+							value="0";
+							parentCls="Admiral_CqcZone";
+							typeName="Admiral_Shape";
+						};
+						class Item5
+						{
+							value="4";
+							parentCls="Admiral_CqcZone";
+							typeName="Admiral_CqcPool";
+						};
+						class Item6
+						{
+							value="0";
+							parentCls="Admiral_CqcZone";
+							typeName="Admiral_MinHeight";
+						};
+						class Item7
+						{
+							value="";
+							parentCls="Admiral_CqcZone";
+							typeName="Admiral_UnitTemplate";
+						};
+						class Item8
+						{
+							value="";
+							parentCls="Admiral_CqcZone";
+							typeName="Admiral_ZoneTemplate";
+						};
+					};
+					id=5;
+					side="LOGIC";
+					vehicle="Admiral_CqcZone";
+					leader=1;
+					lock="UNLOCKED";
+					skill=0.60000002;
+					syncId=0;
+					synchronizations[]={4,3};
+				};
+			};
+		};
+		class Item6
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={15251.305,17.91,16849.531};
+					id=6;
+					side="LOGIC";
+					vehicle="Logic";
+					leader=1;
+					skill=0.60000002;
+				};
+			};
+			class Waypoints
+			{
+				items=5;
+				class Item0
+				{
+					position[]={15855.727,15.109744,17177.32};
+					type="AND";
+					class Effects
+					{
+					};
+					showWP="NEVER";
+				};
+				class Item1
+				{
+					position[]={15756.475,14.205566,17445.834};
+					type="AND";
+					class Effects
+					{
+					};
+					showWP="NEVER";
+				};
+				class Item2
+				{
+					position[]={15086.666,15.07502,17498.713};
+					type="AND";
+					class Effects
+					{
+					};
+					showWP="NEVER";
+				};
+				class Item3
+				{
+					position[]={14400.488,16.065805,16792.391};
+					type="AND";
+					class Effects
+					{
+					};
+					showWP="NEVER";
+				};
+				class Item4
+				{
+					position[]={13780.534,15.38984,17060.23};
+					type="AND";
+					class Effects
+					{
+					};
+					showWP="NEVER";
+				};
+			};
+		};
+		class Item7
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={21193.102,22.611294,19083.66};
+					class args
+					{
+						items=10;
+						class Item0
+						{
+							value="";
+							parentCls="Admiral_PatrolZone";
+							typeName="Admiral_ZoneName";
+						};
+						class Item1
+						{
+							value="200";
+							parentCls="Admiral_PatrolZone";
+							typeName="Admiral_AxisA";
+						};
+						class Item2
+						{
+							value="400";
+							parentCls="Admiral_PatrolZone";
+							typeName="Admiral_AxisB";
+						};
+						class Item3
+						{
+							value="30";
+							parentCls="Admiral_PatrolZone";
+							typeName="Admiral_Angle";
+						};
+						class Item4
+						{
+							value="0";
+							parentCls="Admiral_PatrolZone";
+							typeName="Admiral_Shape";
+						};
+						class Item5
+						{
+							value="2";
+							parentCls="Admiral_PatrolZone";
+							typeName="Admiral_PatrolInfantryPool";
+						};
+						class Item6
+						{
+							value="1";
+							parentCls="Admiral_PatrolZone";
+							typeName="Admiral_PatrolTechnicalPool";
+						};
+						class Item7
+						{
+							value="1";
+							parentCls="Admiral_PatrolZone";
+							typeName="Admiral_PatrolArmourPool";
+						};
+						class Item8
+						{
+							value="";
+							parentCls="Admiral_PatrolZone";
+							typeName="Admiral_UnitTemplate";
+						};
+						class Item9
+						{
+							value="";
+							parentCls="Admiral_PatrolZone";
+							typeName="Admiral_ZoneTemplate";
+						};
+					};
+					id=7;
+					side="LOGIC";
+					vehicle="Admiral_PatrolZone";
+					leader=1;
+					lock="UNLOCKED";
+					skill=0.60000002;
+				};
+			};
+		};
+		class Item8
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={21021.248,25.951637,18493.436};
+					class args
+					{
+						items=10;
+						class Item0
+						{
+							value="";
+							parentCls="Admiral_PatrolZone";
+							typeName="Admiral_ZoneName";
+						};
+						class Item1
+						{
+							value="100";
+							parentCls="Admiral_PatrolZone";
+							typeName="Admiral_AxisA";
+						};
+						class Item2
+						{
+							value="100";
+							parentCls="Admiral_PatrolZone";
+							typeName="Admiral_AxisB";
+						};
+						class Item3
+						{
+							value="0";
+							parentCls="Admiral_PatrolZone";
+							typeName="Admiral_Angle";
+						};
+						class Item4
+						{
+							value="0";
+							parentCls="Admiral_PatrolZone";
+							typeName="Admiral_Shape";
+						};
+						class Item5
+						{
+							value="1";
+							parentCls="Admiral_PatrolZone";
+							typeName="Admiral_PatrolInfantryPool";
+						};
+						class Item6
+						{
+							value="0";
+							parentCls="Admiral_PatrolZone";
+							typeName="Admiral_PatrolTechnicalPool";
+						};
+						class Item7
+						{
+							value="0";
+							parentCls="Admiral_PatrolZone";
+							typeName="Admiral_PatrolArmourPool";
+						};
+						class Item8
+						{
+							value="";
+							parentCls="Admiral_PatrolZone";
+							typeName="Admiral_UnitTemplate";
+						};
+						class Item9
+						{
+							value="";
+							parentCls="Admiral_PatrolZone";
+							typeName="Admiral_ZoneTemplate";
+						};
+					};
+					id=8;
+					side="LOGIC";
+					vehicle="Admiral_PatrolZone";
+					leader=1;
+					lock="UNLOCKED";
+					skill=0.60000002;
+					syncId=1;
+					synchronizations[]={6,5,7};
+				};
+			};
+		};
+		class Item9
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={23125.396,3.1900001,17625.545};
+					class args
+					{
+						items=14;
+						class Item0
+						{
+							value="";
+							parentCls="Admiral_OndemandCampZone";
+							typeName="Admiral_ZoneName";
+						};
+						class Item1
+						{
+							value="100";
+							parentCls="Admiral_OndemandCampZone";
+							typeName="Admiral_AxisA";
+						};
+						class Item2
+						{
+							value="100";
+							parentCls="Admiral_OndemandCampZone";
+							typeName="Admiral_AxisB";
+						};
+						class Item3
+						{
+							value="0";
+							parentCls="Admiral_OndemandCampZone";
+							typeName="Admiral_Angle";
+						};
+						class Item4
+						{
+							value="0";
+							parentCls="Admiral_OndemandCampZone";
+							typeName="Admiral_Shape";
+						};
+						class Item5
+						{
+							value="-1";
+							parentCls="Admiral_OndemandCampZone";
+							typeName="Admiral_CampInfantryPool";
+						};
+						class Item6
+						{
+							value="0";
+							parentCls="Admiral_OndemandCampZone";
+							typeName="Admiral_CampTechnicalPool";
+						};
+						class Item7
+						{
+							value="0";
+							parentCls="Admiral_OndemandCampZone";
+							typeName="Admiral_CampArmourPool";
+						};
+						class Item8
+						{
+							value="1";
+							parentCls="Admiral_OndemandCampZone";
+							typeName="Admiral_InfantryWave";
+						};
+						class Item9
+						{
+							value="0";
+							parentCls="Admiral_OndemandCampZone";
+							typeName="Admiral_TechnicalWave";
+						};
+						class Item10
+						{
+							value="0";
+							parentCls="Admiral_OndemandCampZone";
+							typeName="Admiral_ArmourWave";
+						};
+						class Item11
+						{
+							value="10";
+							parentCls="Admiral_OndemandCampZone";
+							typeName="Admiral_CampDelay";
+						};
+						class Item12
+						{
+							value="";
+							parentCls="Admiral_OndemandCampZone";
+							typeName="Admiral_UnitTemplate";
+						};
+						class Item13
+						{
+							value="";
+							parentCls="Admiral_OndemandCampZone";
+							typeName="Admiral_ZoneTemplate";
+						};
+					};
+					id=9;
+					side="LOGIC";
+					vehicle="Admiral_OndemandCampZone";
+					leader=1;
+					lock="UNLOCKED";
+					skill=0.60000002;
+				};
+			};
+		};
+		class Item10
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={23112.332,3.1900001,17639.971};
+					id=10;
+					side="LOGIC";
+					vehicle="LocationBase_F";
+					leader=1;
+					skill=0.60000002;
+				};
+			};
+			class Waypoints
+			{
+				items=2;
+				class Item0
+				{
+					position[]={22937.014,3.1900001,18271.373};
+					type="AND";
+					class Effects
+					{
+					};
+					showWP="NEVER";
+				};
+				class Item1
+				{
+					position[]={23348.084,3.1900001,19240.799};
+					type="AND";
+					class Effects
+					{
+					};
+					showWP="NEVER";
+				};
+			};
+		};
+		class Item11
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={23144.957,3.1900001,17631.668};
+					id=11;
+					side="LOGIC";
+					vehicle="LocationBase_F";
+					leader=1;
+					skill=0.60000002;
+				};
+			};
+			class Waypoints
+			{
+				items=3;
+				class Item0
+				{
+					position[]={23926.469,3.1900001,17674.111};
+					type="AND";
+					class Effects
+					{
+					};
+					showWP="NEVER";
+				};
+				class Item1
+				{
+					position[]={24269.553,3.1900001,18324.471};
+					type="AND";
+					class Effects
+					{
+					};
+					showWP="NEVER";
+				};
+				class Item2
+				{
+					position[]={24988.242,9.0851994,19068.207};
+					type="AND";
+					class Effects
+					{
+					};
+					showWP="NEVER";
+				};
+			};
+		};
+		class Item12
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={23643.537,3.1900001,17751.035};
+					class args
+					{
+						items=17;
+						class Item0
+						{
+							value="";
+							parentCls="Admiral_PeriodicCampZone";
+							typeName="Admiral_ZoneName";
+						};
+						class Item1
+						{
+							value="100";
+							parentCls="Admiral_PeriodicCampZone";
+							typeName="Admiral_AxisA";
+						};
+						class Item2
+						{
+							value="100";
+							parentCls="Admiral_PeriodicCampZone";
+							typeName="Admiral_AxisB";
+						};
+						class Item3
+						{
+							value="0";
+							parentCls="Admiral_PeriodicCampZone";
+							typeName="Admiral_Angle";
+						};
+						class Item4
+						{
+							value="0";
+							parentCls="Admiral_PeriodicCampZone";
+							typeName="Admiral_Shape";
+						};
+						class Item5
+						{
+							value="10";
+							parentCls="Admiral_PeriodicCampZone";
+							typeName="Admiral_CampInfantryPool";
+						};
+						class Item6
+						{
+							value="0";
+							parentCls="Admiral_PeriodicCampZone";
+							typeName="Admiral_CampTechnicalPool";
+						};
+						class Item7
+						{
+							value="0";
+							parentCls="Admiral_PeriodicCampZone";
+							typeName="Admiral_CampArmourPool";
+						};
+						class Item8
+						{
+							value="1";
+							parentCls="Admiral_PeriodicCampZone";
+							typeName="Admiral_InfantryWave";
+						};
+						class Item9
+						{
+							value="0";
+							parentCls="Admiral_PeriodicCampZone";
+							typeName="Admiral_TechnicalWave";
+						};
+						class Item10
+						{
+							value="0";
+							parentCls="Admiral_PeriodicCampZone";
+							typeName="Admiral_ArmourWave";
+						};
+						class Item11
+						{
+							value="4";
+							parentCls="Admiral_PeriodicCampZone";
+							typeName="Admiral_InfantryGroupDelay";
+						};
+						class Item12
+						{
+							value="0";
+							parentCls="Admiral_PeriodicCampZone";
+							typeName="Admiral_TechnicalGroupDelay";
+						};
+						class Item13
+						{
+							value="0";
+							parentCls="Admiral_PeriodicCampZone";
+							typeName="Admiral_ArmourGroupDelay";
+						};
+						class Item14
+						{
+							value="10";
+							parentCls="Admiral_PeriodicCampZone";
+							typeName="Admiral_CampDelay";
+						};
+						class Item15
+						{
+							value="";
+							parentCls="Admiral_PeriodicCampZone";
+							typeName="Admiral_UnitTemplate";
+						};
+						class Item16
+						{
+							value="";
+							parentCls="Admiral_PeriodicCampZone";
+							typeName="Admiral_ZoneTemplate";
+						};
+					};
+					id=12;
+					side="LOGIC";
+					vehicle="Admiral_PeriodicCampZone";
+					leader=1;
+					lock="UNLOCKED";
+					skill=0.60000002;
+					syncId=2;
+					synchronizations[]={8,9};
+				};
+			};
+		};
+		class Item13
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={23556.197,3.1900001,17873.469};
+					id=13;
+					side="LOGIC";
+					vehicle="LocationBase_F";
+					leader=1;
+					skill=0.60000002;
+				};
+			};
+			class Waypoints
+			{
+				items=2;
+				class Item0
+				{
+					position[]={23549.379,3.1900001,18675.398};
+					type="AND";
+					class Effects
+					{
+					};
+					showWP="NEVER";
+				};
+				class Item1
+				{
+					position[]={23349.438,3.1900001,19241.301};
+					type="AND";
+					class Effects
+					{
+					};
+					showWP="NEVER";
+				};
+			};
+		};
+		class Item14
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={23759.336,3.1900001,17846};
+					id=14;
+					side="LOGIC";
+					vehicle="LocationBase_F";
+					leader=1;
+					skill=0.60000002;
+				};
+			};
+			class Waypoints
+			{
+				items=2;
+				class Item0
+				{
+					position[]={24091.291,3.1900001,18369.082};
+					type="AND";
+					class Effects
+					{
+					};
+					showWP="NEVER";
+				};
+				class Item1
+				{
+					position[]={24229.949,12.61,19752.527};
+					type="AND";
+					class Effects
+					{
+					};
+					showWP="NEVER";
+				};
+			};
+		};
+		class Item15
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={23301.262,3.1900001,18102.193};
+					class args
+					{
+						items=17;
+						class Item0
+						{
+							value="";
+							parentCls="Admiral_RandomCampZone";
+							typeName="Admiral_ZoneName";
+						};
+						class Item1
+						{
+							value="100";
+							parentCls="Admiral_RandomCampZone";
+							typeName="Admiral_AxisA";
+						};
+						class Item2
+						{
+							value="100";
+							parentCls="Admiral_RandomCampZone";
+							typeName="Admiral_AxisB";
+						};
+						class Item3
+						{
+							value="0";
+							parentCls="Admiral_RandomCampZone";
+							typeName="Admiral_Angle";
+						};
+						class Item4
+						{
+							value="0";
+							parentCls="Admiral_RandomCampZone";
+							typeName="Admiral_Shape";
+						};
+						class Item5
+						{
+							value="0";
+							parentCls="Admiral_RandomCampZone";
+							typeName="Admiral_CampInfantryPool";
+						};
+						class Item6
+						{
+							value="-1";
+							parentCls="Admiral_RandomCampZone";
+							typeName="Admiral_CampTechnicalPool";
+						};
+						class Item7
+						{
+							value="-1";
+							parentCls="Admiral_RandomCampZone";
+							typeName="Admiral_CampArmourPool";
+						};
+						class Item8
+						{
+							value="0";
+							parentCls="Admiral_RandomCampZone";
+							typeName="Admiral_InfantryWave";
+						};
+						class Item9
+						{
+							value="2";
+							parentCls="Admiral_RandomCampZone";
+							typeName="Admiral_TechnicalWave";
+						};
+						class Item10
+						{
+							value="2";
+							parentCls="Admiral_RandomCampZone";
+							typeName="Admiral_ArmourWave";
+						};
+						class Item11
+						{
+							value="0";
+							parentCls="Admiral_RandomCampZone";
+							typeName="Admiral_InfantrySpawnChance";
+						};
+						class Item12
+						{
+							value="10";
+							parentCls="Admiral_RandomCampZone";
+							typeName="Admiral_PatrolSpawnChance";
+						};
+						class Item13
+						{
+							value="10";
+							parentCls="Admiral_RandomCampZone";
+							typeName="Admiral_ArmourSpawnChance";
+						};
+						class Item14
+						{
+							value="20";
+							parentCls="Admiral_RandomCampZone";
+							typeName="Admiral_CampDelay";
+						};
+						class Item15
+						{
+							value="";
+							parentCls="Admiral_RandomCampZone";
+							typeName="Admiral_UnitTemplate";
+						};
+						class Item16
+						{
+							value="";
+							parentCls="Admiral_RandomCampZone";
+							typeName="Admiral_ZoneTemplate";
+						};
+					};
+					id=15;
+					side="LOGIC";
+					vehicle="Admiral_RandomCampZone";
+					leader=1;
+					lock="UNLOCKED";
+					skill=0.60000002;
+				};
+			};
+		};
+		class Item16
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={23294.605,3.1900001,18132.498};
+					id=16;
+					side="LOGIC";
+					vehicle="LocationBase_F";
+					leader=1;
+					skill=0.60000002;
+				};
+			};
+			class Waypoints
+			{
+				items=2;
+				class Item0
+				{
+					position[]={23158.031,3.1900001,18353.295};
+					type="AND";
+					class Effects
+					{
+					};
+					showWP="NEVER";
+				};
+				class Item1
+				{
+					position[]={23349.303,3.1900001,19239.551};
 					type="AND";
 					class Effects
 					{
@@ -66,31 +1143,31 @@ class Mission
 	};
 	class Markers
 	{
-		items=7;
+		items=42;
 		class Item0
 		{
-			position[]={15068.124,36.91259,20420.85};
+			position[]={14945.813,40.775681,19942.727};
 			name="patrol";
-			text="This is a patrol zone";
+			text="This is a Patrol zone created by trigger and script";
 			type="mil_box";
 		};
 		class Item1
 		{
-			position[]={15062.703,38.712139,18609.973};
-			name="patrol_1";
-			text="This is a cqc zone";
+			position[]={14382.293,29.656649,18680.15};
+			name="cqc";
+			text="This is a CQC zone created by trigger and script";
 			type="mil_box";
 		};
 		class Item2
 		{
-			position[]={15066.486,17.91,17119.611};
-			name="patrol_1_1";
-			text="This is a periodic camp";
+			position[]={13994.918,16.904829,15961.104};
+			name="periodic_trigger";
+			text="This is a Periodic Camp created by trigger and script";
 			type="mil_box";
 		};
 		class Item3
 		{
-			position[]={14052.72,17.91696,15721.193};
+			position[]={16980.074,17.053764,15112.363};
 			name="44";
 			text="Please see Admiral wiki for further information";
 			type="mil_triangle";
@@ -98,13 +1175,13 @@ class Mission
 		};
 		class Item4
 		{
-			position[]={13997.199,19.771606,17213.783};
-			name="123123";
+			position[]={14272.111,26.860443,17264.514};
+			name="default_camp_patrol_trigger";
 			markerType="ELLIPSE";
 			type="Empty";
-			colorName="ColorRed";
-			a=200;
-			b=200;
+			colorName="ColorYellow";
+			a=400;
+			b=400;
 		};
 		class Item5
 		{
@@ -118,18 +1195,324 @@ class Mission
 		};
 		class Item6
 		{
-			position[]={14136.746,42.898689,20415.119};
+			position[]={14014.436,26.728371,19936.996};
 			name="123123_1_1";
 			markerType="RECTANGLE";
 			type="Empty";
-			colorName="ColorGUER";
+			colorName="ColorGreen";
 			a=800;
 			b=400;
+		};
+		class Item7
+		{
+			position[]={14043.718,19.80504,16054.691};
+			name="periodic_trigger_usedby";
+			text="This path will be taken only by infantry groups";
+			type="mil_box";
+		};
+		class Item8
+		{
+			position[]={13787.435,15.364892,17029.611};
+			name="periodic_trigger_usedby_1";
+			text="These paths will use the preplaced trigger to patrol the area";
+			type="mil_box";
+		};
+		class Item9
+		{
+			position[]={14283.694,25.647781,17242.479};
+			name="periodic_trigger_default";
+			text="This path will use a default trigger to patrol";
+			type="mil_box";
+		};
+		class Item10
+		{
+			position[]={13156.155,16.41305,17611.729};
+			name="periodic_trigger_default_1";
+			text="This path will use a default trigger to patrol";
+			type="mil_box";
+		};
+		class Item11
+		{
+			position[]={13112.671,17.864019,17634.785};
+			name="default_camp_patrol_trigger_1";
+			markerType="ELLIPSE";
+			type="Empty";
+			colorName="ColorYellow";
+			a=400;
+			b=400;
+		};
+		class Item12
+		{
+			position[]={13780.855,15.403533,17061.719};
+			name="preplaced_camp_patrol_trigger_2";
+			markerType="ELLIPSE";
+			type="Empty";
+			colorName="ColorKhaki";
+			a=300;
+			b=300;
+		};
+		class Item13
+		{
+			position[]={13205.076,12.252728,15680.03};
+			name="periodic_trigger_usedby_2";
+			text="This path will be taken only by armour groups";
+			type="mil_box";
+		};
+		class Item14
+		{
+			position[]={13141.672,12.095025,15696.311};
+			name="default_camp_patrol_trigger_2";
+			markerType="RECTANGLE";
+			type="Empty";
+			colorName="ColorOrange";
+			a=100;
+			b=100;
+			angle=34.7929;
+		};
+		class Item15
+		{
+			position[]={14006.465,19.33758,16030.488};
+			name="default_camp_patrol_trigger_2_1";
+			markerType="RECTANGLE";
+			type="Empty";
+			colorName="ColorOrange";
+			a=50;
+			b=50;
+		};
+		class Item16
+		{
+			position[]={13091.942,13.246488,15536.356};
+			name="cqc_module";
+			text="This is a Ondemand Camp created by trigger and script";
+			type="mil_box";
+		};
+		class Item17
+		{
+			position[]={21340.443,20.552765,16352.176};
+			name="123123_1_2";
+			markerType="RECTANGLE";
+			type="Empty";
+			colorName="ColorWEST";
+			a=300;
+			b=200;
+		};
+		class Item18
+		{
+			position[]={21680.098,17.120001,16349.472};
+			name="cqc_module2";
+			text="This is a CQC zone created by a module";
+			type="mil_box";
+		};
+		class Item19
+		{
+			position[]={21167.773,31.373968,17101.533};
+			name="123123_1_2_1";
+			markerType="RECTANGLE";
+			type="Empty";
+			colorName="ColorWEST";
+			a=150;
+			b=100;
+			angle=-128.65601;
+		};
+		class Item20
+		{
+			position[]={20847.256,49.80875,17066.18};
+			name="123123_1_2_2";
+			markerType="RECTANGLE";
+			type="Empty";
+			colorName="ColorWEST";
+			a=150;
+			b=100;
+			angle=-218.814;
+		};
+		class Item21
+		{
+			position[]={21445.982,25.834448,16998.947};
+			name="cqc_module2_1";
+			text="These triggers are synchronized to a CQC module";
+			type="mil_box";
+		};
+		class Item22
+		{
+			position[]={15308.685,17.91,16782.209};
+			name="periodic_trigger_1";
+			text="This is a Random Camp created by trigger and script";
+			type="mil_box";
+		};
+		class Item23
+		{
+			position[]={21195.754,22.424444,19086.932};
+			name="123123_1_1_1";
+			markerType="ELLIPSE";
+			type="Empty";
+			colorName="ColorGreen";
+			a=200;
+			b=400;
+			angle=30;
+		};
+		class Item24
+		{
+			position[]={21473.928,22.996885,19099.02};
+			name="cqc_module2_2";
+			text="This is a Patrol zone created by a module";
+			type="mil_box";
+		};
+		class Item25
+		{
+			position[]={20821.682,31.618114,18455.184};
+			name="123123_1_1_1_1";
+			markerType="RECTANGLE";
+			type="Empty";
+			colorName="ColorGreen";
+			a=100;
+			b=100;
+			angle=53.8339;
+		};
+		class Item26
+		{
+			position[]={21188.865,29.600565,18346.379};
+			name="123123_1_1_1_1_1";
+			markerType="RECTANGLE";
+			type="Empty";
+			colorName="ColorGreen";
+			a=100;
+			b=100;
+			angle=53.8339;
+		};
+		class Item27
+		{
+			position[]={20759.139,38.76112,18184.898};
+			name="cqc_module2_1_1";
+			text="These triggers are synchronized to a Patrol module";
+			type="mil_box";
+		};
+		class Item28
+		{
+			position[]={20943.051,27.399874,18663.9};
+			name="123123_1_1_1_1_1_1";
+			markerType="RECTANGLE";
+			type="Empty";
+			colorName="ColorGreen";
+			a=50;
+			b=50;
+			angle=53.8339;
+		};
+		class Item29
+		{
+			position[]={23112.516,3.1900001,17563.086};
+			name="cqc_module2_3";
+			text="This is an Ondemand Camp zone created by a module";
+			type="mil_box";
+		};
+		class Item30
+		{
+			position[]={23354.141,3.1900001,18102.762};
+			name="cqc_module2_3_1";
+			text="This is an Random Camp zone created by a module";
+			type="mil_box";
+		};
+		class Item31
+		{
+			position[]={23680.533,3.1900001,17733.059};
+			name="cqc_module2_1_1_1";
+			text="These triggers are synchronized to a Periodic Camp module";
+			type="mil_box";
+		};
+		class Item32
+		{
+			position[]={24992.4,9.2545433,19064.199};
+			name="default_camp_patrol_trigger_3";
+			markerType="ELLIPSE";
+			type="Empty";
+			colorName="ColorYellow";
+			a=400;
+			b=400;
+		};
+		class Item33
+		{
+			position[]={24242.959,12.660294,19758.182};
+			name="default_camp_patrol_trigger_4";
+			markerType="ELLIPSE";
+			type="Empty";
+			colorName="ColorYellow";
+			a=400;
+			b=400;
+		};
+		class Item34
+		{
+			position[]={23348.48,3.1900001,19240.061};
+			name="preplaced_camp_patrol_trigger_2_1";
+			markerType="RECTANGLE";
+			type="Empty";
+			colorName="ColorKhaki";
+			a=200;
+			b=300;
+		};
+		class Item35
+		{
+			position[]={23371.633,3.1900001,19225.279};
+			name="periodic_trigger_usedby_1_1";
+			text="These paths will use the preplaced trigger to patrol the area";
+			type="mil_box";
+		};
+		class Item36
+		{
+			position[]={24264.438,12.824488,19701.828};
+			name="periodic_trigger_default_1_1";
+			text="This path will use a default trigger to patrol";
+			type="mil_box";
+		};
+		class Item37
+		{
+			position[]={25017.146,11.308609,18993.055};
+			name="periodic_trigger_default_1_2";
+			text="This path will use a default trigger to patrol";
+			type="mil_box";
+		};
+		class Item38
+		{
+			position[]={23559.945,3.1900001,17836.863};
+			name="default_camp_patrol_trigger_2_2";
+			markerType="ELLIPSE";
+			type="Empty";
+			colorName="ColorOrange";
+			a=50;
+			b=50;
+		};
+		class Item39
+		{
+			position[]={23754.979,3.1900001,17821.096};
+			name="default_camp_patrol_trigger_2_2_1";
+			markerType="ELLIPSE";
+			type="Empty";
+			colorName="ColorOrange";
+			a=50;
+			b=50;
+		};
+		class Item40
+		{
+			position[]={23125.432,3.1900001,17624.611};
+			name="default_camp_patrol_trigger_2_2_1_1";
+			markerType="ELLIPSE";
+			type="Empty";
+			colorName="ColorOrange";
+			a=100;
+			b=100;
+		};
+		class Item41
+		{
+			position[]={23301.607,3.1900001,18102.406};
+			name="default_camp_patrol_trigger_2_2_1_2";
+			markerType="ELLIPSE";
+			type="Empty";
+			colorName="ColorOrange";
+			a=100;
+			b=100;
 		};
 	};
 	class Sensors
 	{
-		items=3;
+		items=14;
 		class Item0
 		{
 			position[]={13997.568,25.810057,18700.156};
@@ -137,22 +1520,22 @@ class Mission
 			b=300;
 			interruptable=1;
 			age="UNKNOWN";
-			expCond="adm_isInitialized";
-			expActiv="[thisTrigger, [[""type"", ""cqc""],[""pool"", 20]]] call adm_api_fnc_initZone;";
+			expCond="";
+			expActiv="[thisTrigger, [[""type"", ""cqc""],[""pool"", 10]]] call adm_api_fnc_initZone;";
 			class Effects
 			{
 			};
 		};
 		class Item1
 		{
-			position[]={14124.452,43.247616,20414.012};
+			position[]={14012.68,26.782583,19935.889};
 			a=800;
 			b=400;
 			rectangular=1;
 			interruptable=1;
 			age="UNKNOWN";
-			expCond="adm_isInitialized";
-			expActiv="[thisTrigger, [[""type"", ""patrol""],[""pool"", [3,2,1]]]] call adm_api_fnc_initZone;";
+			expCond="";
+			expActiv="[thisTrigger, [[""type"", ""patrol""],[""pool"", [2,2,1]]]] call adm_api_fnc_initZone;";
 			class Effects
 			{
 			};
@@ -163,8 +1546,158 @@ class Mission
 			rectangular=1;
 			interruptable=1;
 			age="UNKNOWN";
-			expCond="adm_isInitialized";
+			expCond="";
 			expActiv="[thisTrigger, [[""type"", ""camp""],[""campType"", ""periodic""],[""groupDelay"", [3,6,0]],[""pool"", [6,2,0]],[""wave"",[3,1,0]]]] call adm_api_fnc_initZone;";
+			class Effects
+			{
+			};
+		};
+		class Item3
+		{
+			position[]={13141.063,12.087722,15696.515};
+			a=100;
+			b=100;
+			angle=34.7649;
+			rectangular=1;
+			interruptable=1;
+			age="UNKNOWN";
+			expCond="";
+			expActiv="[thisTrigger, [[""type"", ""camp""],[""campType"", ""ondemand""],[""pool"", [8,0,3]],[""wave"",[2,0,1]]]] call adm_api_fnc_initZone;";
+			class Effects
+			{
+			};
+		};
+		class Item4
+		{
+			position[]={13780.431,15.404359,17061.041};
+			a=300;
+			b=300;
+			interruptable=1;
+			age="UNKNOWN";
+			class Effects
+			{
+			};
+		};
+		class Item5
+		{
+			position[]={21167.207,31.41395,17101.537};
+			a=150;
+			b=100;
+			angle=-128.65601;
+			rectangular=1;
+			interruptable=1;
+			age="UNKNOWN";
+			expCond="true";
+			class Effects
+			{
+			};
+			synchronizations[]={0};
+			syncId=3;
+		};
+		class Item6
+		{
+			position[]={20846.963,49.809227,17066.113};
+			a=150;
+			b=100;
+			angle=-218.814;
+			rectangular=1;
+			interruptable=1;
+			age="UNKNOWN";
+			expCond="true";
+			class Effects
+			{
+			};
+			synchronizations[]={0};
+			syncId=4;
+		};
+		class Item7
+		{
+			position[]={15281.744,17.91,16857.629};
+			interruptable=1;
+			age="UNKNOWN";
+			expCond="";
+			expActiv="[thisTrigger, [[""type"", ""camp""],[""campType"", ""random""],[""pool"", [-1,-1,0]],[""wave"",[2,1,0]],[""campDelay"",40],[""spawnChance"", [50,50,0]]]] call adm_api_fnc_initZone;";
+			class Effects
+			{
+			};
+		};
+		class Item8
+		{
+			position[]={21188.893,29.597599,18346.525};
+			a=100;
+			b=100;
+			angle=53.8339;
+			rectangular=1;
+			interruptable=1;
+			age="UNKNOWN";
+			expCond="true";
+			class Effects
+			{
+			};
+			synchronizations[]={1};
+			syncId=5;
+		};
+		class Item9
+		{
+			position[]={20821.861,31.607759,18455.029};
+			a=100;
+			b=100;
+			angle=53.8339;
+			rectangular=1;
+			interruptable=1;
+			age="UNKNOWN";
+			class Effects
+			{
+			};
+			synchronizations[]={1};
+			syncId=6;
+		};
+		class Item10
+		{
+			position[]={20942.967,27.401329,18663.936};
+			angle=53.8339;
+			rectangular=1;
+			interruptable=1;
+			age="UNKNOWN";
+			expCond="true";
+			class Effects
+			{
+			};
+			synchronizations[]={1};
+			syncId=7;
+		};
+		class Item11
+		{
+			position[]={23559.959,3.1900001,17836.85};
+			interruptable=1;
+			age="UNKNOWN";
+			expCond="true";
+			class Effects
+			{
+			};
+			synchronizations[]={2};
+			syncId=8;
+		};
+		class Item12
+		{
+			position[]={23754.91,3.1900001,17821.041};
+			interruptable=1;
+			age="UNKNOWN";
+			expCond="true";
+			class Effects
+			{
+			};
+			synchronizations[]={2};
+			syncId=9;
+		};
+		class Item13
+		{
+			position[]={23348.461,3.1900001,19240.201};
+			a=200;
+			b=300;
+			rectangular=1;
+			interruptable=1;
+			age="UNKNOWN";
 			class Effects
 			{
 			};

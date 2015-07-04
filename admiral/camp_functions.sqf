@@ -483,15 +483,12 @@ adm_camp_setGroupDelay = {
 adm_camp_fnc_initZone = {
     FUN_ARGS_1(_zone);
 
-    waitUntil {
-        adm_isInitialized;
-    };
     [_zone] call adm_camp_setGroupDelay;
     [_zone, adm_camp_possiblePaths] call adm_camp_fnc_tryAddPossiblePaths;
     INFO("admiral.camp",FMT_1("Camp Zone '%1' has been succesfully initialized.",GET_ZONE_ID(_zone)));
     SET_CAMP_ENABLED(_zone,true);
     PUSH(adm_camp_zones,_zone);
-    [_zone] call ([_zone] call adm_camp_fnc_getSpawnFunction);
+    [_zone] spawn ([_zone] call adm_camp_fnc_getSpawnFunction);
 };
 
 adm_camp_fnc_getAliveInfGroups = {
