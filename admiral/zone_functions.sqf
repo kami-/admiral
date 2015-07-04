@@ -229,7 +229,7 @@ adm_zone_getPatrolModuleConfigs = {
 adm_zone_getPeriodicCampModuleConfigs = {
     FUN_ARGS_1(_module);
 
-    DECLARE(_configs) = [_module, PERIODIC_VARS] call adm_zone_getCampModuleConfigs;
+    DECLARE(_configs) = [_module] call adm_zone_getCampModuleConfigs;
     _configs pushBack ["campType", "periodic"];
     PUSH_GROUP_TYPE_CONFIG("groupDelay",_module,PERIODIC_GROUP_DELAY_MODULE_VARS,_configs);
 
@@ -239,7 +239,7 @@ adm_zone_getPeriodicCampModuleConfigs = {
 adm_zone_getOndemandCampModuleConfigs = {
     FUN_ARGS_1(_module);
 
-    DECLARE(_configs) = [_module, ONDEMAND_VARS] call adm_zone_getCampModuleConfigs;
+    DECLARE(_configs) = [_module] call adm_zone_getCampModuleConfigs;
     _configs pushBack ["campType", "ondemand"];
     PUSH_GROUP_TYPE_CONFIG("spawnChance",_module,RANDOM_SPAWN_CHANCE_MODULE_VARS,_configs);
 
@@ -249,7 +249,7 @@ adm_zone_getOndemandCampModuleConfigs = {
 adm_zone_getRandomCampModuleConfigs = {
     FUN_ARGS_1(_module);
 
-    DECLARE(_configs) = [_module, RANDOM_VARS] call adm_zone_getCampModuleConfigs;
+    DECLARE(_configs) = [_module] call adm_zone_getCampModuleConfigs;
     _configs pushBack ["campType", "random"];
     PUSH_GROUP_TYPE_CONFIG("spawnChance",_module,RANDOM_SPAWN_CHANCE_MODULE_VARS,_configs);
 
@@ -257,7 +257,7 @@ adm_zone_getRandomCampModuleConfigs = {
 };
 
 adm_zone_getCampModuleConfigs = {
-    FUN_ARGS_2(_module,_moduleVariables);
+    FUN_ARGS_1(_module);
 
     DECLARE(_configs) = [];
     _configs pushBack ["type", "camp"];

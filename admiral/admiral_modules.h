@@ -172,8 +172,8 @@ class Module_F : Logic {
     };
 };
 
-ZONE_MODULE(Admiral_CqcZone,"CQC Zone",ADDON_PATH(resources\module_icons\Cqc.paa),"adm_zone_initCqcZoneFromModule",CQC_ARGS,"Spawn units in buildings in the given area.");
-ZONE_MODULE(Admiral_PatrolZone,"Patrol Zone",ADDON_PATH(resources\module_icons\Patrol.paa),"adm_zone_initPatrolZoneFromModule",PATROL_ARGS,"Spawn groups patrolling the given area.");
-ZONE_MODULE(Admiral_PeriodicCampZone,"Periodic Camp Zone",ADDON_PATH(resources\module_icons\Periodic.paa),"adm_zone_initPeriodicCampZoneFromModule",PERIODIC_CAMP_ARGS,"Spawn groups in waves that follow waypoints to given area. A new wave is spawned after given amount of time.");
-ZONE_MODULE(Admiral_OndemandCampZone,"Ondemand Camp Zone",ADDON_PATH(resources\module_icons\Ondemand.paa),"adm_zone_initOndemandCampZoneFromModule",ONDEMAND_CAMP_ARGS,"Spawn groups in waves that follow waypoints to given area. Ensures that there are at maximum a given amount of groups are alive.");
-ZONE_MODULE(Admiral_RandomCampZone,"Random Camp Zone",ADDON_PATH(resources\module_icons\Random.paa),"adm_zone_initRandomCampZoneFromModule",RANDOM_CAMP_ARGS,"Spawn groups in waves that follow waypoints to given area. Spawns groups with given chance.");
+ZONE_MODULE(Admiral_CqcZone,"CQC Zone",ADDON_PATH(resources\module_icons\cqc.paa),"adm_zone_initCqcZoneFromModule",CQC_ARGS,"Spawn units in buildings in the given area.");
+ZONE_MODULE(Admiral_PatrolZone,"Patrol Zone",ADDON_PATH(resources\module_icons\patrol.paa),"adm_zone_initPatrolZoneFromModule",PATROL_ARGS,"Spawn groups patrolling the given area.");
+ZONE_MODULE(Admiral_PeriodicCampZone,"Periodic Camp Zone",ADDON_PATH(resources\module_icons\periodic.paa),"adm_zone_initPeriodicCampZoneFromModule",PERIODIC_CAMP_ARGS,"Spawn groups in waves that follow waypoints to given area. A new wave is spawned after given amount of time.");
+ZONE_MODULE(Admiral_OndemandCampZone,"Ondemand Camp Zone",ADDON_PATH(resources\module_icons\ondemand.paa),"adm_zone_initOndemandCampZoneFromModule",ONDEMAND_CAMP_ARGS,"Spawn groups in waves that follow waypoints to given area. Ensures that there are at maximum a given amount of groups are alive.");
+ZONE_MODULE(Admiral_RandomCampZone,"Random Camp Zone",ADDON_PATH(resources\module_icons\random.paa),"adm_zone_initRandomCampZoneFromModule",RANDOM_CAMP_ARGS,"Spawn groups in waves that follow waypoints to given area. Spawns groups with given chance.");
