@@ -337,7 +337,7 @@ adm_debug_fnc_returnUnitCount = {
         default {[]};
     };
     
-    (str(count _aliveGroups));
+    str(count _aliveGroups);
 };
 
 adm_debug_fnc_updateDebugCounterMarkers = {
