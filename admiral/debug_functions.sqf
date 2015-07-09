@@ -322,7 +322,7 @@ adm_debug_fnc_createDebugFactionCounterMarkers = {
 adm_debug_fnc_createAllDebugCounterMarkers = {
     DECLARE(_xPos) = COUNTER_DEBUG_MARKER_X_POS;
     {
-        [_x,_xPos] call adm_debug_fnc_createDebugFactionCounterMarkers;
+        [_x, _xPos] call adm_debug_fnc_createDebugFactionCounterMarkers;
         _xPos = _xPos + (4 * COUNTER_DEBUG_MARKER_X_INCREMENT);
     } foreach SIDE_ARRAY;
 };
