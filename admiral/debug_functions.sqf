@@ -306,15 +306,16 @@ adm_debug_fnc_createDebugFactionCounterMarkers = {
     FUN_ARGS_2(_side,_xPos);
 
     DECLARE(_debugMarkers) = [];
+    DECLARE(_currentXPos) = _xPos;
     PVT_1(_marker);
     {
-        _marker = [_side, _x, _xPos] call adm_debug_fnc_createDebugCounterMarker;
+        _marker = [_side, _x, _currentXPos] call adm_debug_fnc_createDebugCounterMarker;
         _debugMarkers pushBack _marker;
-        _xPos = _xPos + COUNTER_DEBUG_MARKER_X_INCREMENT;
+        _currentXPos = _currentXPos + COUNTER_DEBUG_MARKER_X_INCREMENT;
     } foreach GROUP_TYPE_DEBUG_MARKERS;
-    _marker = [_side, "total", _xPos] call adm_debug_fnc_createDebugCounterMarker;
+    _marker = [_side, "total", _currentXPos] call adm_debug_fnc_createDebugCounterMarker;
     _debugMarkers pushBack _marker;
-    _xPos = _xPos + COUNTER_DEBUG_MARKER_X_INCREMENT;
+    _currentXPos = _currentXPos + COUNTER_DEBUG_MARKER_X_INCREMENT;
     DEBUG("admiral.debug",FMT_2("Created counter Markers '%1' for side '%2'.",_debugMarkers,_side));
 };
 
