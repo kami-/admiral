@@ -288,14 +288,9 @@ adm_debug_fnc_updateLineMarker = {
 };
 
 adm_debug_fnc_createDebugCounterMarker = {
-    FUN_ARGS_3(_side,_type,_xPos);
+    FUN_ARGS_4(_side,_type,_xPos,_markerType);
     
-    PVT_2(_marker,_markerType);
-    _markerType = if (_type != "total") then {
-        _type;
-    } else {
-        COUNTER_DEBUG_MARKER_TOTAL;
-    };
+    PVT_1(_marker);
     _marker = [format ["adm_counter_%1_%2", _side,_type], [_xPos, 50, 0], "ICON", _markerType, [_side] call adm_debug_fnc_getSideColor, COUNTER_DEBUG_MARKER_SIZE] call adm_common_fnc_createLocalMarker;
     _marker setMarkerTextLocal "0";
     
@@ -309,11 +304,11 @@ adm_debug_fnc_createDebugFactionCounterMarkers = {
     DECLARE(_currentXPos) = _xPos;
     PVT_1(_marker);
     {
-        _marker = [_side, _x, _currentXPos] call adm_debug_fnc_createDebugCounterMarker;
+        _marker = [_side, _x, _currentXPos, _x] call adm_debug_fnc_createDebugCounterMarker;
         _debugMarkers pushBack _marker;
         _currentXPos = _currentXPos + COUNTER_DEBUG_MARKER_X_INCREMENT;
     } foreach GROUP_TYPE_DEBUG_MARKERS;
-    _marker = [_side, "total", _currentXPos] call adm_debug_fnc_createDebugCounterMarker;
+    _marker = [_side, "total", _currentXPos, COUNTER_DEBUG_MARKER_TOTAL] call adm_debug_fnc_createDebugCounterMarker;
     _debugMarkers pushBack _marker;
     _currentXPos = _currentXPos + COUNTER_DEBUG_MARKER_X_INCREMENT;
     DEBUG("admiral.debug",FMT_2("Created counter Markers '%1' for side '%2'.",_debugMarkers,_side));
