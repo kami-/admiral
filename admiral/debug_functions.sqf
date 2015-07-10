@@ -333,10 +333,10 @@ adm_debug_fnc_updateDebugCounterMarkers = {
         [[adm_patrol_armourGroups, adm_camp_armourGroups], adm_common_fnc_getAliveSideGroups]
     ];
     {
-        DECLARE(_count) = [(_groupTypeCountArray select _forEachIndex) select 0, _side] call ((_groupTypeCountArray select _forEachIndex) select 1);
-        (format ["adm_counter_%1_%2", _side, _x]) setMarkerTextLocal str(count _count);
+        DECLARE(_count) = [_groupTypeCountArray select _forEachIndex select 0, _side] call (_groupTypeCountArray select _forEachIndex select 1);
+        (format ["adm_counter_%1_%2", _side, _x]) setMarkerTextLocal str count _count;
     } foreach GROUP_TYPE_DEBUG_MARKERS;
-    (format ["adm_counter_%1_total", _side]) setMarkerTextLocal str(count([_side] call adm_common_fnc_getAllAliveSideUnits));
+    (format ["adm_counter_%1_total", _side]) setMarkerTextLocal str count ([_side] call adm_common_fnc_getAllAliveSideUnits);
     DEBUG("admiral.debug",FMT_1("Updated counter markers for side '%1'.",_side));
 };
 
