@@ -289,7 +289,7 @@ adm_debug_fnc_updateLineMarker = {
 
 adm_debug_fnc_createDebugCounterMarker = {
     FUN_ARGS_4(_side,_type,_xPos,_markerType);
-    
+
     PVT_1(_marker);
     _marker = [format ["adm_counter_%1_%2", _side,_type], [_xPos, 50, 0], "ICON", _markerType, [_side] call adm_debug_fnc_getSideColor, COUNTER_DEBUG_MARKER_SIZE] call adm_common_fnc_createLocalMarker;
     _marker setMarkerTextLocal "0";
@@ -299,7 +299,7 @@ adm_debug_fnc_createDebugCounterMarker = {
 
 adm_debug_fnc_createDebugFactionCounterMarkers = {
     FUN_ARGS_2(_side,_xPos);
-    
+
     PVT_3(_marker,_debugMarkers,_currentXPos);
     _debugMarkers = [];
     _currentXPos = _xPos;
