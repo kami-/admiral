@@ -157,6 +157,18 @@ adm_common_fnc_getAliveGroups = {
     _aliveGroups;
 };
 
+adm_common_fnc_getAliveSideGroups = {
+    FUN_ARGS_2(_groupsArray,_side);
+
+    DECLARE(_aliveGroups) = [];
+    {
+        DECLARE(_groups) = _x;
+        FILTER_PUSH_ALL(_aliveGroups,_groups,{IS_GROUP_ALIVE(_x) && {side _x == _side}});
+    } foreach _groupsArray;
+
+    _aliveGroups;
+};
+
 adm_common_fnc_getAliveUnits = {
     FUN_ARGS_1(_groupsArray);
 
@@ -170,6 +182,27 @@ adm_common_fnc_getAliveUnits = {
     } foreach _groupsArray;
 
     _aliveUnits;
+};
+
+adm_common_fnc_getAliveSideUnits = {
+    FUN_ARGS_2(_groupsArray,_side);
+    
+    DECLARE(_aliveSideUnits) = [];
+    {
+        DECLARE(_groups) = _x;
+        {
+            DECLARE(_groupUnits) = units _x;
+            FILTER_PUSH_ALL(_aliveSideUnits,_groupUnits,{alive _x && {side _x == _side}});
+        } foreach _groups;
+    } foreach _groupsArray;
+
+    _aliveSideUnits;
+};
+
+adm_common_fnc_getAllAliveSideUnits = {
+    FUN_ARGS_1(_side);
+    
+    [[adm_cqc_groups, adm_patrol_infGroups, adm_patrol_techGroups, adm_patrol_armourGroups, adm_camp_infGroups, adm_camp_techGroups, adm_camp_armourGroups],_side] call adm_common_fnc_getAliveSideUnits;
 };
 
 adm_common_fnc_getAdmiralUnits = {

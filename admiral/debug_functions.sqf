@@ -285,6 +285,75 @@ adm_debug_fnc_updateLineMarker = {
     DEBUG("admiral.debug",FMT_3("Updated line marker '%1' position between '%2' and '%3'.",_markerName,_posFrom,_posTo));
 };
 
+adm_debug_fnc_createDebugCounterMarker = {
+    FUN_ARGS_4(_side,_type,_xPos,_markerType);
+
+    PVT_1(_marker);
+    _marker = [format ["adm_counter_%1_%2", _side,_type], [_xPos, 50, 0], "ICON", _markerType, [_side] call adm_debug_fnc_getSideColor, COUNTER_DEBUG_MARKER_SIZE] call adm_common_fnc_createLocalMarker;
+    _marker setMarkerTextLocal "0";
+    
+    _marker;
+};
+
+adm_debug_fnc_createDebugFactionCounterMarkers = {
+    FUN_ARGS_2(_side,_xPos);
+
+    PVT_3(_marker,_debugMarkers,_currentXPos);
+    _debugMarkers = [];
+    _currentXPos = _xPos;
+    {
+        _marker = [_side, _x, _currentXPos, _x] call adm_debug_fnc_createDebugCounterMarker;
+        _debugMarkers pushBack _marker;
+        _currentXPos = _currentXPos + COUNTER_DEBUG_MARKER_X_INCREMENT;
+    } foreach GROUP_TYPE_DEBUG_MARKERS;
+    _marker = [_side, "total", _currentXPos, COUNTER_DEBUG_MARKER_TOTAL] call adm_debug_fnc_createDebugCounterMarker;
+    _debugMarkers pushBack _marker;
+    _currentXPos = _currentXPos + COUNTER_DEBUG_MARKER_X_INCREMENT;
+    DEBUG("admiral.debug",FMT_2("Created counter Markers '%1' for side '%2'.",_debugMarkers,_side));
+};
+
+adm_debug_fnc_createAllDebugCounterMarkers = {
+    DECLARE(_xPos) = COUNTER_DEBUG_MARKER_X_POS;
+    {
+        [_x, _xPos] call adm_debug_fnc_createDebugFactionCounterMarkers;
+        _xPos = _xPos + (4 * COUNTER_DEBUG_MARKER_X_INCREMENT);
+    } foreach SIDE_ARRAY;
+};
+
+adm_debug_fnc_updateDebugCounterMarkers = {
+    FUN_ARGS_1(_side);
+    
+    PVT_2(_makerNames,_groupTypeCountArray);
+    _markerNames = [];
+    _groupTypeCountArray = [
+        [[adm_cqc_groups, adm_patrol_infGroups, adm_camp_infGroups], adm_common_fnc_getAliveSideUnits], 
+        [[adm_patrol_techGroups, adm_camp_techGroups], adm_common_fnc_getAliveSideGroups], 
+        [[adm_patrol_armourGroups, adm_camp_armourGroups], adm_common_fnc_getAliveSideGroups]
+    ];
+    {
+        DECLARE(_count) = [_groupTypeCountArray select _forEachIndex select 0, _side] call (_groupTypeCountArray select _forEachIndex select 1);
+        (format ["adm_counter_%1_%2", _side, _x]) setMarkerTextLocal str count _count;
+    } foreach GROUP_TYPE_DEBUG_MARKERS;
+    (format ["adm_counter_%1_total", _side]) setMarkerTextLocal str count ([_side] call adm_common_fnc_getAllAliveSideUnits);
+    DEBUG("admiral.debug",FMT_1("Updated counter markers for side '%1'.",_side));
+};
+
+adm_debug_fnc_updateAllDebugCounterMarkers = {
+    {
+        [_x] call adm_debug_fnc_updateDebugCounterMarkers;
+    } foreach SIDE_ARRAY;
+};
+
+adm_debug_fnc_deleteAllDebugCounterMarkers = {
+    {
+        DECLARE(_side) = _x;
+        {
+            deleteMarkerLocal format ["adm_counter_%1_%2", _side, _x];
+        } foreach GROUP_TYPE_DEBUG_MARKERS;
+        deleteMarkerLocal format ["adm_counter_%1_%2", _side, "total"];
+    } foreach SIDE_ARRAY;
+};
+
 adm_debug_fnc_getSideColor = {
     FUN_ARGS_1(_side);
 
@@ -298,6 +367,7 @@ adm_debug_fnc_getSideColor = {
 
 adm_debug_fnc_debugMonitor = {
     sleep 1;
+    [] call adm_debug_fnc_createAllDebugCounterMarkers;
     waitUntil {
         [] call adm_debug_fnc_debugGroups;
         [] call adm_debug_fnc_debugZones;
@@ -305,6 +375,7 @@ adm_debug_fnc_debugMonitor = {
         sleep 2;
         !adm_isDebuggingEnabled;
     };
+    [] call adm_debug_fnc_deleteAllDebugCounterMarkers;
     [] call adm_debug_fnc_deleteAllMovingGroupMarkers;
     [] call adm_debug_fnc_deleteAllCqcGroupMarkers;
     [] call adm_debug_fnc_deleteAllZoneMarkers;
@@ -320,6 +391,7 @@ adm_debug_fnc_debugGroups = {
     {
         [_x] call adm_debug_fnc_updateCqcGroupMarkers;
     } foreach adm_cqc_groups;
+    [] call adm_debug_fnc_updateAllDebugCounterMarkers;
 };
 
 adm_debug_fnc_debugZones = {

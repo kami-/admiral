@@ -49,6 +49,10 @@
 #define WAYPOINT_DEBUG_MARKER_SIZE          [0.5,0.5]
 #define CQC_DEBUG_MARKER_SIZE               [0.5,0.5]
 #define CQC_DEBUG_MARKER                    "mil_triangle"
+#define COUNTER_DEBUG_MARKER_TOTAL          "hd_dot"
+#define COUNTER_DEBUG_MARKER_SIZE           [1,1]
+#define COUNTER_DEBUG_MARKER_X_POS          100
+#define COUNTER_DEBUG_MARKER_X_INCREMENT    200
 #define SIDE_DEBUG_MARKER_COLORS            ["ColorRed", "ColorBlue", "ColorGreen", "ColorPink"]
 
 #define BEHAVIOR_MAX_REINFORCEMENT_DIST         750
