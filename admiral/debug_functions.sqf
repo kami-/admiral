@@ -322,30 +322,21 @@ adm_debug_fnc_createAllDebugCounterMarkers = {
     } foreach SIDE_ARRAY;
 };
 
-adm_debug_fnc_returnUnitCount = {
-    FUN_ARGS_1(_type);
-    
-    DECLARE(_aliveGroups) = switch (_type) do {
-        case (GROUP_TYPE_DEBUG_MARKERS select 0): {[[adm_cqc_groups, adm_patrol_infGroups,adm_camp_infGroups],_side] call adm_common_fnc_getAliveSideUnits;}; 
-        case (GROUP_TYPE_DEBUG_MARKERS select 1): {[[adm_patrol_techGroups, adm_camp_techGroups],_side] call adm_common_fnc_getAliveSideGroups;}; 
-        case (GROUP_TYPE_DEBUG_MARKERS select 2): {[[adm_patrol_armourGroups,adm_camp_armourGroups],_side] call adm_common_fnc_getAliveSideGroups;}; 
-        case "total": {[_side] call adm_common_fnc_getAllAliveSideUnits;};
-        default {[]};
-    };
-    
-    str(count _aliveGroups);
-};
-
 adm_debug_fnc_updateDebugCounterMarkers = {
     FUN_ARGS_1(_side);
     
-    DECLARE(_markerNames) = [];
+    PVT_2(_makerNames,_groupTypeCountArray);
+    _markerNames = [];
+    _groupTypeCountArray = [
+        [[adm_cqc_groups, adm_patrol_infGroups, adm_camp_infGroups], adm_common_fnc_getAliveSideUnits], 
+        [[adm_patrol_techGroups, adm_camp_techGroups], adm_common_fnc_getAliveSideGroups], 
+        [[adm_patrol_armourGroups, adm_camp_armourGroups], adm_common_fnc_getAliveSideGroups]
+    ];
     {
-        DECLARE(_count) = [_x] call adm_debug_fnc_returnUnitCount;
-        (format ["adm_counter_%1_%2", _side, _x]) setMarkerTextLocal _count;
+        DECLARE(_count) = [(_groupTypeCountArray select _forEachIndex) select 0, _side] call ((_groupTypeCountArray select _forEachIndex) select 1);
+        (format ["adm_counter_%1_%2", _side, _x]) setMarkerTextLocal str(count _count);
     } foreach GROUP_TYPE_DEBUG_MARKERS;
-    DECLARE(_countTotal) = ["total"] call adm_debug_fnc_returnUnitCount;
-    (format ["adm_counter_%1_%2", _side, "total"]) setMarkerTextLocal _countTotal;
+    (format ["adm_counter_%1_total", _side]) setMarkerTextLocal str(count([_side] call adm_common_fnc_getAllAliveSideUnits));
     DEBUG("admiral.debug",FMT_1("Updated counter markers for side '%1'.",_side));
 };
 
