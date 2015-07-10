@@ -299,10 +299,10 @@ adm_debug_fnc_createDebugCounterMarker = {
 
 adm_debug_fnc_createDebugFactionCounterMarkers = {
     FUN_ARGS_2(_side,_xPos);
-
-    DECLARE(_debugMarkers) = [];
-    DECLARE(_currentXPos) = _xPos;
-    PVT_1(_marker);
+    
+    PVT_3(_marker,_debugMarkers,_currentXPos);
+    _debugMarkers = [];
+    _currentXPos = _xPos;
     {
         _marker = [_side, _x, _currentXPos, _x] call adm_debug_fnc_createDebugCounterMarker;
         _debugMarkers pushBack _marker;
