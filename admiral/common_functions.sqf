@@ -27,7 +27,7 @@ adm_common_fnc_placeMan = {
 };
 
 adm_common_fnc_placeVehicle = {
-    FUN_ARGS_2(_vehicleClassNames,_zone);
+    FUN_ARGS_3(_vehicleClassNames,_area,_position);
 
     private ["_classNameData", "_className", "_classNameArguments", "_vehiclePosition", "_vehicle"];
     _classNameData = SELECT_RAND(_vehicleClassNames);
@@ -40,7 +40,7 @@ adm_common_fnc_placeVehicle = {
     } else {
         _className = _classNameData;
     };
-    _vehiclePosition = [GET_ZONE_AREA(_zone), GET_ZONE_POSITION(_zone), _className] call adm_common_fnc_getRandomEmptyPositionInArea;
+    _vehiclePosition = [_area, _position, _className] call adm_common_fnc_getRandomEmptyPositionInArea;
     _vehicle = createVehicle [_className, _vehiclePosition, [], 0, "NONE"];
     _vehicle setVariable ["adm_classNameArguments", _classNameArguments, false];
     DEBUG("admiral.common.create",FMT_4("Created vehicle '%1' at position '%2', with classname '%3' and '%4'.",_vehicle,_vehiclePosition,_className,_classNameArguments));

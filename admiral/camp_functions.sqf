@@ -148,7 +148,7 @@ adm_camp_fnc_spawnVehicleGroup = {
     private ["_unitTemplate", "_zoneTemplate", "_vehiclePosition", "_vehicle", "_crew", "_group"];
     _unitTemplate = GET_ZONE_UNIT_TEMPLATE(_zone);
     _zoneTemplate = GET_ZONE_TEMPLATE(_zone);
-    _vehicle = [[_unitTemplate, GROUP_TYPE_ARRAY select _groupType] call adm_common_fnc_getUnitTemplateArray, _zone] call adm_common_fnc_placeVehicle;
+    _vehicle = [[_unitTemplate, GROUP_TYPE_ARRAY select _groupType] call adm_common_fnc_getUnitTemplateArray, GET_ZONE_AREA(_zone), GET_ZONE_POSITION(_zone)] call adm_common_fnc_placeVehicle;
     [format ["%1.spawned.vehicle", GET_ZONE_TYPE(_zone)], [_vehicle, GROUP_TYPE_ARRAY select _groupType, _zone]] call adm_event_fnc_emitEvent;
     ["zone.spawned.vehicle", [_vehicle, GROUP_TYPE_ARRAY select _groupType, _zone]] call adm_event_fnc_emitEvent;
     _group = createGroup ([_unitTemplate] call adm_common_fnc_getUnitTemplateSide);
