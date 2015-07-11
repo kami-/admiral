@@ -49,6 +49,13 @@ adm_api_fnc_isHc = {
     [] call adm_hc_fnc_isHc;
 };
 
+/*
+ * Returns wheter the current machine is running Admiral.
+ */
+adm_api_fnc_isAdmiralMachine = {
+    [] call adm_hc_fnc_isAdmiralMachine;
+};
+
 
 
 // Zone

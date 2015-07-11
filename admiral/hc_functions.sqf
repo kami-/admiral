@@ -37,7 +37,7 @@ adm_hc_fnc_startAdmiral = {
 adm_hc_fnc_executeIfAdmiralMachine = {
     FUN_ARGS_2(_arguments,_code);
 
-    if (([] call adm_hc_fnc_isHc) || {!([] call adm_hc_fnc_isHcPresent) && {isServer}}) then {
+    if ([] call adm_hc_fnc_isAdmiralMachine) then {
         _arguments call _code;
     };
 };
@@ -60,6 +60,10 @@ adm_hc_fnc_getHcName = {
 
 adm_hc_fnc_isHc = {
     adm_hc_present select 0 && {name player == adm_hc_present select 1};
+};
+
+adm_hc_fnc_isAdmiralMachine = {
+    [] call adm_hc_fnc_isHc || {!([] call adm_hc_fnc_isHcPresent) && {isServer}};
 };
 
 adm_hc_fnc_init = {
