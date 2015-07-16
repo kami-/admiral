@@ -289,7 +289,7 @@ class UnitTemplates {
 
     class MNP_MIL_WD {
         side = "resistance";
-        infantry[] = {"MNP_Militia_Soldier_F", "MNP_Militia_Soldier_F", "MNP_Militia_Soldier_F", "MNP_Militia_Soldier_AR", "MNP_Militia_Soldier_O", "NP_Militia_Soldier_MG", "MNP_Militia_Soldier_M", "MNP_Militia_Soldier_AR", "MNP_Militia_Soldier_RAT"};
+        infantry[] = {"MNP_Militia_Soldier_F", "MNP_Militia_Soldier_F", "MNP_Militia_Soldier_F", "MNP_Militia_Soldier_AR", "MNP_Militia_Soldier_O", "MNP_Militia_Soldier_G", "MNP_Militia_Soldier_M", "MNP_Militia_Soldier_AR", "MNP_Militia_Soldier_RAT"};
         crewmen[] = {"MNP_Militia_Soldier_F", "MNP_Militia_Soldier_O"};
         technicals[] = {"B_G_Offroad_01_armed_F"};
         armour[] = {"B_G_Offroad_01_armed_F"};
