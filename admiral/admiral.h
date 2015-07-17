@@ -30,7 +30,7 @@ class Admiral {
         defaultZoneTemplate = "Cqc";
         forceFireEnabled = true;
         forceFireDelay = 5;
-        buildingBlacklist[] = {"Land_dum_mesto2l", "Land_dum_mesto3"};
+        buildingBlacklist[] = {"Land_dum_mesto2l", "Land_dum_mesto3", "dum_mesto3"};
         buildingCapacity[] = {
             {"Land_House_C_2_EP1", 4},
             {"Land_House_K_6_EP1", 4},
