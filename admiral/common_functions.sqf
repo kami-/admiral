@@ -93,19 +93,14 @@ adm_common_fnc_setGear = {
 adm_common_fnc_tryRemoveNVGs = {
     FUN_ARGS_1(_unit);
 
-    if (!adm_areNVGsEnabled) then {
-        if (isNil {call compile "blufor"}) then {
-            _unit removeWeapon "NVGoggles";
-        } else {
-            [_unit, ARMA3_NVGS] call compile "
-            private ['_unit', '_nvgs'];
-            _unit = _this select 0;
-            _nvg = _this select 1;
-            {
-                _unit unassignItem _x;
-                _unit removeItem _x;
-            } foreach _nvg;";
-        };
+    if (adm_areNVGsEnabled) then {
+        _unit addItem "ACE_NVG_Gen1";
+        _unit assignItem "ACE_NVG_Gen1";
+    } else {
+        {
+            _unit unassignItem _x;
+            _unit removeItem _x;
+        } foreach ARMA3_NVGS;
     };
 };
 

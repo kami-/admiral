@@ -20,7 +20,7 @@
 #define CQC_MAX_ENGAGE_DIST                 50
 
 #define ZONE_SKILLS                         ["aimingAccuracy", "aimingShake", "aimingSpeed", "endurance", "spotDistance", "spotTime", "courage", "reloadSpeed", "commanding", "general"]
-#define ARMA3_NVGS                          ["NVGoggles", "NVGoggles_OPFOR", "NVGoggles_INDEP"]
+#define ARMA3_NVGS                          ["NVGoggles", "NVGoggles_OPFOR", "NVGoggles_INDEP", "ACE_NVG_Gen1", "ACE_NVG_Gen2", "ACE_NVG_Gen3", "ACE_NVG_Gen4", "ACE_NVG_Wide"]
 
 #define SIDE_ARRAY                          [EAST, WEST, RESISTANCE, CIVILIAN]
 #define SIDE_TEXT_ARRAY                     ["EAST", "WEST", "RESISTANCE", "CIVILIAN"]
