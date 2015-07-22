@@ -27,7 +27,6 @@ if (adm_isEnabled) then {
         [] call compile preProcessFileLineNumbers ADDON_PATH(cqc_functions.sqf); DEBUG("admiral.compile","Compiled 'cqc_functions.sqf'.");
         [] call compile preProcessFileLineNumbers ADDON_PATH(camp_functions.sqf); DEBUG("admiral.compile","Compiled 'camp_functions.sqf'.");
         [] call compile preProcessFileLineNumbers ADDON_PATH(patrol_functions.sqf); DEBUG("admiral.compile","Compiled 'patrol_functions.sqf'.");
-        [] call compile preProcessFileLineNumbers ADDON_PATH(rupture_functions.sqf); DEBUG("admiral.compile","Compiled 'rupture_functions.sqf'.");
         [] call compile preProcessFileLineNumbers ADDON_PATH(behavior_functions.sqf); DEBUG("admiral.compile","Compiled 'behavior_functions.sqf'.");
     };
 

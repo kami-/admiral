@@ -14,7 +14,6 @@ if (isMultiplayer) then {
 [] call adm_cqc_fnc_init; DEBUG("admiral.cqc","Init function 'adm_cqc_fnc_init' called.");
 [] call adm_camp_fnc_init; DEBUG("admiral.camp","Init function 'adm_camp_fnc_init' called.");
 [] call adm_patrol_fnc_init; DEBUG("admiral.patrol","Init function 'adm_patrol_fnc_init' called.");
-[] call adm_rupture_fnc_checkUnits; DEBUG("admiral.rupture","Init function 'adm_rupture_fnc_checkUnits' called.");
 
 if (adm_isBehaviorEnabled) then {
     INFO("admiral.behavior","Admiral Behavior system is enabled.");

@@ -296,7 +296,6 @@ adm_camp_fnc_periodicSpawn = {
         PUSH_ALL(adm_camp_infGroups,_spawnedGroups);
         PUSH_ALL(_zoneInfGroups,_spawnedGroups);
         INFO("admiral.camp",FMT_2("Periodic Camp Zone '%1' spawned '%2' infantry group(s).",GET_ZONE_ID(_zone),count _spawnedGroups));
-        [_spawnedGroups] call adm_rupture_fnc_initGroups;
         _spawnedGroups = [];
         _spawnedGroups = [_zone, GROUP_TYPE_TECH, adm_camp_fnc_periodicCanSpawnGroups, adm_camp_fnc_periodicSpawnTechGroups] call adm_camp_fnc_trySpawnGroups;
         PUSH_ALL(adm_camp_techGroups,_spawnedGroups);
@@ -373,7 +372,6 @@ adm_camp_fnc_onDemandSpawn = {
         PUSH_ALL(adm_camp_infGroups, _spawnedGroups);
         PUSH_ALL(_zoneInfGroups, _spawnedGroups);
         INFO("admiral.camp",FMT_2("On-demand Camp Zone '%1' spawned '%2' infantry group(s).",GET_ZONE_ID(_zone),count _spawnedGroups));
-        [_spawnedGroups] call adm_rupture_fnc_initGroups;
         _spawnedGroups = [];
         _spawnedGroups = [_zone, GROUP_TYPE_TECH, adm_camp_fnc_onDemandCanSpawnGroups, adm_camp_fnc_onDemandSpawnTechGroups] call adm_camp_fnc_trySpawnGroups;
         PUSH_ALL(adm_camp_techGroups, _spawnedGroups);
@@ -449,7 +447,6 @@ adm_camp_fnc_randomSpawn = {
         PUSH_ALL(adm_camp_infGroups, _spawnedGroups);
         PUSH_ALL(_zoneInfGroups, _spawnedGroups);
         INFO("admiral.camp",FMT_2("Random Camp Zone '%1' spawned '%2' infantry group(s).",GET_ZONE_ID(_zone),count _spawnedGroups));
-        [_spawnedGroups] call adm_rupture_fnc_initGroups;
         _spawnedGroups = [];
         _spawnedGroups = [_zone, GROUP_TYPE_TECH, adm_camp_fnc_randomCanSpawnGroups, adm_camp_fnc_randomSpawnTechGroups] call adm_camp_fnc_trySpawnGroups;
         PUSH_ALL(adm_camp_techGroups, _spawnedGroups);

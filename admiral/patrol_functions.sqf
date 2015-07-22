@@ -190,7 +190,6 @@ adm_patrol_fnc_spawnGroups = {
     };
     PUSH_ALL(adm_patrol_infGroups,_spawnedGroups);
     PUSH_ALL(_zoneInfGroups,_spawnedGroups);
-    [adm_patrol_infGroups] call adm_rupture_fnc_initGroups;
     INFO("admiral.patrol",FMT_2("Patrol Zone '%1' spawned '%2' infantry group(s).",GET_ZONE_ID(_zone),count _spawnedGroups));
 
     _spawnedGroups = [];
