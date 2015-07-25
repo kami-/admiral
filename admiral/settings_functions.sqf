@@ -76,9 +76,6 @@ adm_settings_fnc_init = {
     adm_cqc_buildingBlacklist = ["Cqc", "buildingBlacklist"] call adm_config_fnc_getArray;
     adm_cqc_buildingCapacity = ["Cqc", "buildingCapacity"] call adm_config_fnc_getArray;
 
-    adm_rupture_updateTick = ["Rupture", "updateTick"] call adm_config_fnc_getNumber;
-    adm_rupture_maxDuration = ["Rupture", "maxDuration"] call adm_config_fnc_getNumber;
-
     [] call adm_settings_fnc_createCenters;
     [] call adm_settings_fnc_initSideRelations;
     [] call adm_settings_fnc_setSideRelations;

@@ -257,7 +257,6 @@ adm_cqc_fnc_initZone = {
 
     DECLARE(_spawnedGroups) = [_zone] call adm_cqc_fnc_spawnGarrison;
     PUSH_ALL(adm_cqc_groups, _spawnedGroups);
-    [_spawnedGroups] call adm_rupture_fnc_initGroups;
     SET_ZONE_SPAWNED_GROUPS(_zone,_spawnedGroups);
     SET_CQC_FORCE_FIRE_ENABLED(_zone,adm_cqc_forceFireEnabled);
     SET_CQC_FORCE_FIRE_RUNNING(_zone,false);

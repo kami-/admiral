@@ -39,11 +39,6 @@ class Admiral {
         };
     };
 
-    class Rupture {
-        updateTick = 30;
-        maxDuration = 120;
-    };
-
     #include "unit_templates.h"
     #include "zone_templates.h"
 };
