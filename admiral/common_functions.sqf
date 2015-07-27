@@ -95,8 +95,7 @@ adm_common_fnc_tryRemoveNVGs = {
 
     {
         if (_x in assignedItems _unit) exitWith {
-            _unit unassignItem _x;
-            _unit removeItem _x;
+            _unit unlinkItem  _x;
         };
     } forEach ARMA3_NVGS;
     if (adm_areNVGsEnabled) then {
