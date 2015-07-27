@@ -93,14 +93,14 @@ adm_common_fnc_setGear = {
 adm_common_fnc_tryRemoveNVGs = {
     FUN_ARGS_1(_unit);
 
-    if (adm_areNVGsEnabled) then {
-        _unit addItem "ACE_NVG_Gen1";
-        _unit assignItem "ACE_NVG_Gen1";
-    } else {
-        {
+    {
+        if (_x in assignedItems _unit) exitWith {
             _unit unassignItem _x;
             _unit removeItem _x;
-        } foreach ARMA3_NVGS;
+        };
+    } forEach ARMA3_NVGS;
+    if (adm_areNVGsEnabled) then {
+        _unit linkItem "ACE_NVG_Gen1";
     };
 };
 
