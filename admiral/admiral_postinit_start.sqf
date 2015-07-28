@@ -8,6 +8,7 @@
 
 if (isMultiplayer) then {
     adm_isDebuggingEnabled = false;
+    publicVariable "adm_isDebuggingEnabled";
 };
 
 [] call adm_settings_fnc_init; DEBUG("admiral.settings","Init function 'adm_settings_fnc_init' called.");
