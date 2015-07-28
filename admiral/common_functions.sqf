@@ -87,14 +87,15 @@ adm_common_fnc_initUnit = {
 adm_common_fnc_setGear = {
     FUN_ARGS_1(_unit);
 
-    [_unit] call adm_common_fnc_tryRemoveNVGs;
+    [_unit] call adm_common_fnc_assignNVG;
 };
 
-adm_common_fnc_tryRemoveNVGs = {
+adm_common_fnc_assignNVG = {
     FUN_ARGS_1(_unit);
 
+    DECLARE(_assignedItems) = assignedItems _unit;
     {
-        if (_x in assignedItems _unit) exitWith {
+        if (_x in _assignedItems) exitWith {
             _unit unlinkItem _x;
         };
     } forEach ARMA3_NVGS;
