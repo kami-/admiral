@@ -87,20 +87,20 @@ adm_common_fnc_initUnit = {
 adm_common_fnc_setGear = {
     FUN_ARGS_1(_unit);
 
-    [_unit] call adm_common_fnc_tryRemoveNVGs;
+    [_unit] call adm_common_fnc_assignNVG;
 };
 
-adm_common_fnc_tryRemoveNVGs = {
+adm_common_fnc_assignNVG = {
     FUN_ARGS_1(_unit);
 
+    DECLARE(_assignedItems) = assignedItems _unit;
+    {
+        if (_x in _assignedItems) exitWith {
+            _unit unlinkItem _x;
+        };
+    } forEach ARMA3_NVGS;
     if (adm_areNVGsEnabled) then {
-        _unit addItem "ACE_NVG_Gen1";
-        _unit assignItem "ACE_NVG_Gen1";
-    } else {
-        {
-            _unit unassignItem _x;
-            _unit removeItem _x;
-        } foreach ARMA3_NVGS;
+        _unit linkItem "ACE_NVG_Gen1";
     };
 };
 
