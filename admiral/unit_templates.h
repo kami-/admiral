@@ -9,7 +9,7 @@ class UnitTemplates {
 
     class NATO_WOODLAND {
         side = "west";
-        infantry[] = {"B_Soldier_F", "B_Soldier_02_f", "B_Soldier_03_f", "B_soldier_AR_F", "B_Soldier_TL_F", "B_HeavyGunner_F", "B_medic_F", "B_soldier_AR_F", "B_soldier_LAT_F"};
+        infantry[] = {"B_Soldier_TL_F", "B_soldier_AR_F", "B_Soldier_F", "B_soldier_LAT_F", "B_HeavyGunner_F", "B_soldier_AR_F", "B_soldier_LAT_F", "B_soldier_AR_F", "B_soldier_LAT_F"};
         crewmen[] = {"B_crew_F", "B_engineer_F"};
         technicals[] = {"B_MRAP_01_hmg_F"};
         armour[] = {"B_APC_Wheeled_01_cannon_F", "B_MBT_01_TUSK_F"};
@@ -17,7 +17,7 @@ class UnitTemplates {
 
     class MNP_USMC_WD {
         side = "west";
-        infantry[] = {"MNP_USMC_Soldier_F", "MNP_USMC_Soldier_F", "MNP_USMC_Soldier_F", "MNP_USMC_Soldier_AR", "MNP_USMC_Soldier_O", "MNP_USMC_Soldier_MG", "MNP_USMC_Soldier_Med", "MNP_USMC_Soldier_AR", "MNP_USMC_Soldier_AT"};
+        infantry[] = {"MNP_USMC_Soldier_O", "MNP_USMC_Soldier_AR", "MNP_USMC_Soldier_F", "MNP_USMC_Soldier_AT", "MNP_USMC_Soldier_MG", "MNP_USMC_Soldier_AR", "MNP_USMC_Soldier_AT", "MNP_USMC_Soldier_AR", "MNP_USMC_Soldier_AT"};
         crewmen[] = {"MNP_USMC_Soldier_F", "MNP_USMC_Soldier_O"};
         technicals[] = {"B_MRAP_01_hmg_F"};
         armour[] = {"B_APC_Wheeled_01_cannon_F", "B_MBT_01_TUSK_F"};
@@ -25,7 +25,7 @@ class UnitTemplates {
 
     class MNP_USMC_DE {
         side = "west";
-        infantry[] = {"MNP_USMC_Soldier_DF", "MNP_USMC_Soldier_DF", "MNP_USMC_Soldier_DF", "MNP_USMC_Soldier_DAR", "MNP_USMC_Soldier_DO", "MNP_USMC_Soldier_DMG", "MNP_USMC_Soldier_DMed", "MNP_USMC_Soldier_DAR", "MNP_USMC_Soldier_DAT"};
+        infantry[] = {"MNP_USMC_Soldier_DO", "MNP_USMC_Soldier_DAR", "MNP_USMC_Soldier_DF", "MNP_USMC_Soldier_DAT", "MNP_USMC_Soldier_DMG", "MNP_USMC_Soldier_DAR", "MNP_USMC_Soldier_DAT", "MNP_USMC_Soldier_DAR", "MNP_USMC_Soldier_DAT"};
         crewmen[] = {"MNP_USMC_Soldier_DF", "MNP_USMC_Soldier_DO"};
         technicals[] = {"B_MRAP_01_hmg_F"};
         armour[] = {"B_APC_Wheeled_01_cannon_F", "B_MBT_01_TUSK_F"};
@@ -33,7 +33,7 @@ class UnitTemplates {
 
     class MNP_USMC_SN {
         side = "west";
-        infantry[] = {"MNP_USMCA_Soldier_F", "MNP_USMCA_Soldier_F", "MNP_USMCA_Soldier_F", "MNP_USMCA_Soldier_AR", "MNP_USMCA_Soldier_O", "MNP_USMCA_Soldier_MG", "MNP_USMCA_Soldier_MD", "MNP_USMCA_Soldier_AR", "MNP_USMCA_Soldier_AT"};
+        infantry[] = {"MNP_USMCA_Soldier_O", "MNP_USMCA_Soldier_AR", "MNP_USMCA_Soldier_F", "MNP_USMCA_Soldier_AT", "MNP_USMCA_Soldier_MG", "MNP_USMCA_Soldier_AR", "MNP_USMCA_Soldier_AT", "MNP_USMCA_Soldier_AR", "MNP_USMCA_Soldier_AT"};
         crewmen[] = {"MNP_USMCA_Soldier_F", "MNP_USMCA_Soldier_O"};
         technicals[] = {"B_MRAP_01_hmg_F"};
         armour[] = {"B_APC_Wheeled_01_cannon_F", "B_MBT_01_TUSK_F"};
@@ -41,7 +41,7 @@ class UnitTemplates {
 
     class MNP_US_RAN {
         side = "west";
-        infantry[] = {"MNP_USR_Soldier_F", "MNP_USR_Soldier_F", "MNP_USR_Soldier_F", "MNP_USR_Soldier_AR", "MNP_USR_Soldier_O", "MNP_USR_Soldier_MG", "MNP_USR_Soldier_M", "MNP_USR_Soldier_AR", "MNP_USR_Soldier_AT"};
+        infantry[] = {"MNP_USR_Soldier_O", "MNP_USR_Soldier_AR", "MNP_USR_Soldier_F", "MNP_USR_Soldier_AT", "MMG", "MNP_USR_Soldier_AR", "MNP_USR_Soldier_AT", "MNP_USR_Soldier_AR", "MNP_USR_Soldier_AT"};
         crewmen[] = {"MNP_USR_Soldier_F", "MNP_USR_Soldier_O"};
         technicals[] = {"B_MRAP_01_hmg_F"};
         armour[] = {"B_APC_Wheeled_01_cannon_F", "B_MBT_01_TUSK_F"};
@@ -49,7 +49,7 @@ class UnitTemplates {
 
     class MNP_US_ACU {
         side = "west";
-        infantry[] = {"MNP_USA_Soldier_F", "MNP_USA_Soldier_F", "MNP_USA_Soldier_F", "MNP_USA_Soldier_AR", "MNP_USA_Soldier_O", "MNP_USA_Soldier_MG", "MNP_USA_Soldier_MED", "MNP_USA_Soldier_AR", "MNP_USA_Soldier_AT"};
+        infantry[] = {"MNP_USA_Soldier_O", "MNP_USA_Soldier_AR", "MNP_USA_Soldier_F", "MNP_USA_Soldier_AT", "MNP_USA_Soldier_MG", "MNP_USA_Soldier_AR", "MNP_USA_Soldier_AT", "MNP_USA_Soldier_AR", "MNP_USA_Soldier_AT"};
         crewmen[] = {"MNP_USA_Soldier_F", "MNP_USA_Soldier_O"};
         technicals[] = {"B_MRAP_01_hmg_F"};
         armour[] = {"B_APC_Wheeled_01_cannon_F", "B_MBT_01_TUSK_F"};
@@ -57,7 +57,7 @@ class UnitTemplates {
 
     class MNP_US_WD {
         side = "west";
-        infantry[] = {"MNP_Wood_Soldier_F", "MNP_M81_Soldier_F", "MNP_Wood_Soldier_F", "MNP_M81_Soldier_AR", "MNP_Wood_Soldier_O", "MNP_M81_Soldier_MG", "MNP_M81_Soldier_Md", "MNP_M81_Soldier_AR", "MNP_M81_Soldier_AT"};
+        infantry[] = {"MNP_Wood_Soldier_O", "MNP_M81_Soldier_AR", "MNP_Wood_Soldier_F", "MNP_M81_Soldier_AT", "MNP_M81_Soldier_MG", "MNP_M81_Soldier_AR", "MNP_M81_Soldier_AT", "MNP_M81_Soldier_AR", "MNP_M81_Soldier_AT"};
         crewmen[] = {"MNP_M81_Soldier_F", "MNP_M81_Soldier_O"};
         technicals[] = {"B_MRAP_01_hmg_F"};
         armour[] = {"B_APC_Wheeled_01_cannon_F", "B_MBT_01_TUSK_F"};
@@ -65,7 +65,7 @@ class UnitTemplates {
 
     class MNP_US_DE {
         side = "west";
-        infantry[] = {"MNP_3Co_Soldier_F2", "MNP_3Co_Soldier_F", "MNP_3Co_Soldier_F2", "MNP_3Co_Soldier_AR", "MNP_3Co_Soldier_O2", "MNP_3Co_Soldier_MG", "MNP_3Co_Soldier_Md", "MNP_3Co_Soldier_AR", "MNP_3Co_Soldier_AT"};
+        infantry[] = {"MNP_3Co_Soldier_O2", "MNP_3Co_Soldier_AR", "MNP_3Co_Soldier_F2", "MNP_3Co_Soldier_AT", "MNP_3Co_Soldier_MG", "MNP_3Co_Soldier_AR", "MNP_3Co_Soldier_AT", "MNP_3Co_Soldier_AR", "MNP_3Co_Soldier_AT"};
         crewmen[] = {"MNP_3Co_Soldier_F", "MNP_3Co_Soldier_O"};
         technicals[] = {"B_MRAP_01_hmg_F"};
         armour[] = {"B_APC_Wheeled_01_cannon_F", "B_MBT_01_TUSK_F"};
@@ -73,7 +73,7 @@ class UnitTemplates {
 
     class MNP_GE_WD {
         side = "west";
-        infantry[] = {"MNP_GER_Soldier_F", "MNP_GER_Soldier_F", "MNP_GER_Soldier_F", "MNP_GER_Soldier_AR", "MNP_GER_Soldier_S", "MNP_GER_Soldier_MG", "MNP_GER_Soldier_MED", "MNP_GER_Soldier_AR", "MNP_GER_Soldier_AT"};
+        infantry[] = {"MNP_GER_Soldier_S", "MNP_GER_Soldier_AR", "MNP_GER_Soldier_F", "MNP_GER_Soldier_AT", "MNP_GER_Soldier_MG", "MNP_GER_Soldier_AR", "MNP_GER_Soldier_AT", "MNP_GER_Soldier_AR", "MNP_GER_Soldier_AT"};
         crewmen[] = {"MNP_GER_Soldier_F", "MNP_GER_Soldier_S"};
         technicals[] = {"B_MRAP_01_hmg_F"};
         armour[] = {"B_APC_Wheeled_01_cannon_F", "B_MBT_01_TUSK_F"};
@@ -81,7 +81,7 @@ class UnitTemplates {
 
     class MNP_GE_DE {
         side = "west";
-        infantry[] = {"MNP_GER_Soldier_DF", "MNP_GER_Soldier_DF", "MNP_GER_Soldier_DF", "MNP_GER_Soldier_AR_D", "MNP_GER_Soldier_DS", "MNP_GER_Soldier_MG_D", "MNP_GER_Soldier_MED_D", "MNP_GER_Soldier_AR_D", "MNP_GER_Soldier_AT_D"};
+        infantry[] = {"MNP_GER_Soldier_DS", "MNP_GER_Soldier_AR_D", "MNP_GER_Soldier_DF", "MNP_GER_Soldier_AT_D", "MNP_GER_Soldier_MG_D", "MNP_GER_Soldier_AR_D", "MNP_GER_Soldier_AT_D", "MNP_GER_Soldier_AR_D", "MNP_GER_Soldier_AT_D"};
         crewmen[] = {"MNP_GER_Soldier_DF", "MNP_GER_Soldier_DS"};
         technicals[] = {"B_MRAP_01_hmg_F"};
         armour[] = {"B_APC_Wheeled_01_cannon_F", "B_MBT_01_TUSK_F"};
@@ -89,7 +89,7 @@ class UnitTemplates {
 
     class MNP_CA_WD {
         side = "west";
-        infantry[] = {"MNP_Canada_Soldier_F", "MNP_Canada_Soldier_F", "MNP_Canada_Soldier_F", "MNP_Canada_Soldier_AR", "MNP_Canada_Soldier_S", "MNP_Canada_Soldier_MG", "MNP_Canada_Soldier_M", "MNP_Canada_Soldier_AR", "MNP_Canada_Soldier_AT"};
+        infantry[] = {"MNP_Canada_Soldier_S", "MNP_Canada_Soldier_AR", "MNP_Canada_Soldier_F", "MNP_Canada_Soldier_AT", "MNP_Canada_Soldier_MG", "MNP_Canada_Soldier_AR", "MNP_Canada_Soldier_AT", "MNP_Canada_Soldier_AR", "MNP_Canada_Soldier_AT"};
         crewmen[] = {"MNP_Canada_Soldier_F", "MNP_Canada_Soldier_S"};
         technicals[] = {"B_MRAP_01_hmg_F"};
         armour[] = {"B_APC_Wheeled_01_cannon_F", "B_MBT_01_TUSK_F"};
@@ -97,7 +97,7 @@ class UnitTemplates {
 
     class MNP_CA_DE {
         side = "west";
-        infantry[] = {"MNP_Canada_Soldier_DF", "MNP_Canada_Soldier_DF", "MNP_Canada_Soldier_DF", "MNP_Canada_Soldier_DAR", "MNP_Canada_Soldier_DS", "MNP_Canada_Soldier_DMG", "MNP_Canada_Soldier_DM", "MNP_Canada_Soldier_DAR", "MNP_Canada_Soldier_DAT"};
+        infantry[] = {"MNP_Canada_Soldier_DS", "MNP_Canada_Soldier_DAR", "MNP_Canada_Soldier_DF", "MNP_Canada_Soldier_DAT", "MNP_Canada_Soldier_DMG", "MNP_Canada_Soldier_DAR", "MNP_Canada_Soldier_DAT", "MNP_Canada_Soldier_DAR", "MNP_Canada_Soldier_DAT"};
         crewmen[] = {"MNP_Canada_Soldier_DF", "MNP_Canada_Soldier_DS"};
         technicals[] = {"B_MRAP_01_hmg_F"};
         armour[] = {"B_APC_Wheeled_01_cannon_F", "B_MBT_01_TUSK_F"};
@@ -105,7 +105,7 @@ class UnitTemplates {
 
     class MNP_AUS {
         side = "west";
-        infantry[] = {"MNP_AUS_Soldier_F", "MNP_AUS_Soldier_F", "MNP_AUS_Soldier_F", "MNP_AUS_Soldier_AR", "MNP_AUS_Soldier_S", "MNP_AUS_Soldier_MG", "MNP_AUS_Soldier_MD", "MNP_AUS_Soldier_AR", "MNP_AUS_Soldier_AT"};
+        infantry[] = {"MNP_AUS_Soldier_S", "MNP_AUS_Soldier_AR", "MNP_AUS_Soldier_F", "MNP_AUS_Soldier_AT", "MNP_AUS_Soldier_MG", "MNP_AUS_Soldier_AR", "MNP_AUS_Soldier_AT", "MNP_AUS_Soldier_AR", "MNP_AUS_Soldier_AT"};
         crewmen[] = {"MNP_AUS_Soldier_F", "MNP_AUS_Soldier_S"};
         technicals[] = {"B_MRAP_01_hmg_F"};
         armour[] = {"B_APC_Wheeled_01_cannon_F", "B_MBT_01_TUSK_F"};
@@ -113,7 +113,7 @@ class UnitTemplates {
 
     class MNP_ROK {
         side = "west";
-        infantry[] = {"MNP_ROK_Soldier_F", "MNP_ROK_Soldier_F", "MNP_ROK_Soldier_F", "MNP_ROK_Soldier_AR", "MNP_ROK_Soldier_O", "MNP_ROK_Soldier_MG", "MNP_ROK_Soldier_M", "MNP_ROK_Soldier_AR", "MNP_ROK_Soldier_AT"};
+        infantry[] = {"MNP_ROK_Soldier_O", "MNP_ROK_Soldier_AR", "MNP_ROK_Soldier_F", "MNP_ROK_Soldier_AT", "MNP_ROK_Soldier_MG", "MNP_ROK_Soldier_AR", "MNP_ROK_Soldier_AT", "MNP_ROK_Soldier_AR", "MNP_ROK_Soldier_AT"};
         crewmen[] = {"MNP_ROK_Soldier_F", "MNP_ROK_Soldier_O"};
         technicals[] = {"B_MRAP_01_hmg_F"};
         armour[] = {"B_APC_Wheeled_01_cannon_F", "B_MBT_01_TUSK_F"};
@@ -121,7 +121,7 @@ class UnitTemplates {
 
     class MNP_PMC {
         side = "west";
-        infantry[] = {"MNP_OD_Soldier_F", "MNP_OD_Soldier_F", "MNP_OD_Soldier_F", "MNP_OD_Soldier_AR", "MNP_OD_Soldier_O", "MNP_OD_Soldier_MG", "MNP_OD_Soldier_Md", "MNP_OD_Soldier_AR", "MNP_OD_Soldier_AT"};
+        infantry[] = {"MNP_OD_Soldier_O", "MNP_OD_Soldier_AR", "MNP_OD_Soldier_F", "MNP_OD_Soldier_AT", "MNP_OD_Soldier_MG", "MNP_OD_Soldier_AR", "MNP_OD_Soldier_AT", "MNP_OD_Soldier_AR", "MNP_OD_Soldier_AT"};
         crewmen[] = {"MNP_OD_Soldier_F", "MNP_OD_Soldier_O"};
         technicals[] = {"B_MRAP_01_hmg_F"};
         armour[] = {"B_APC_Wheeled_01_cannon_F", "B_MBT_01_TUSK_F"};
@@ -129,7 +129,7 @@ class UnitTemplates {
 
     class FIA_GUER {
         side = "west";
-        infantry[] = {"B_G_Soldier_F", "B_G_Soldier_lite_F", "B_G_Soldier_A_F", "B_G_Soldier_AR_F", "B_G_Soldier_TL_F", "B_G_Soldier_GL_F", "B_G_medic_F", "B_G_Soldier_AR_F", "B_G_Soldier_LAT_F"};
+        infantry[] = {"B_G_Soldier_TL_F", "B_G_Soldier_AR_F", "B_G_Soldier_lite_F", "B_G_Soldier_LAT_F", "B_G_Soldier_M_F", "B_G_Soldier_AR_F", "B_G_Soldier_LAT_F", "B_G_Soldier_AR_F", "B_G_Soldier_LAT_F"};
         crewmen[] = {"B_G_Soldier_F", "B_G_engineer_F"};
         technicals[] = {"B_G_Offroad_01_armed_F"};
         armour[] = {"B_G_Offroad_01_armed_F"};
