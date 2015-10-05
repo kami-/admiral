@@ -51,11 +51,12 @@ adm_cqc_fnc_getBuildingPositions = {
 adm_cqc_fnc_isPositionInBuilding = {
     FUN_ARGS_1(_pos);
 
-    private["_pos", "_posAbove", "_isValidPos"];
+    private["_pos", "_posAbove", "_hasRoof", "_isValidPos"];
     _posAbove = [_pos select 0, _pos select 1, (_pos select 2) + 30];
+    _hasRoof = lineIntersects [ATLtoASL _pos, ATLtoASL _posAbove];
     _isValidPos = !(lineIntersects [ATLtoASL _pos, ATLtoASL _pos]);
 
-    _isValidPos;
+    _hasRoof && _isValidPos;
 };
 
 adm_cqc_fnc_getMinHeightBuildingPositions = {
