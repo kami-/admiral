@@ -273,7 +273,7 @@ class UnitTemplates {
 
     class AAF_WOODLAND {
         side = "resistance";
-        infantry[] = {"I_soldier_F", "I_Soldier_lite_F", "I_Soldier_A_F", "I_Soldier_AR_F", "I_Soldier_TL_F", "I_Soldier_GL_F", "I_medic_F", "I_Soldier_AR_F", "I_Soldier_LAT_F"};
+        infantry[] = {"I_Soldier_TL_F", "I_Soldier_AR_F", "I_Soldier_lite_F", "I_Soldier_LAT_F", "I_Soldier_M_F", "I_Soldier_AR_F", "I_Soldier_LAT_F", "I_Soldier_AR_F", "I_Soldier_LAT_F"};
         crewmen[] = {"I_crew_F", "I_engineer_F"};
         technicals[] = {"I_MRAP_03_hmg_F"};
         armour[] = {"I_APC_tracked_03_cannon_F", "I_MBT_03_cannon_F"};
@@ -281,7 +281,7 @@ class UnitTemplates {
 
     class AAF_DESERT {
         side = "resistance";
-        infantry[] = {"AAF_D_Soldier_F", "AAF_D_Soldier_lite_F", "AAF_D_Soldier_F", "AAF_D_Soldier_AR_F", "AAF_D_Soldier_TL_F", "AAF_D_Soldier_GL_F", "AAF_D_Soldier_medic_F", "AAF_D_Soldier_AR_F", "AAF_D_Soldier_LAT_F"};
+        infantry[] = {"AAF_D_Soldier_TL_F", "AAF_D_Soldier_AR_F", "AAF_D_Soldier_lite_F", "AAF_D_Soldier_LAT_F", "AAF_D_Soldier_M_F", "AAF_D_Soldier_AR_F", "AAF_D_Soldier_LAT_F", "AAF_D_Soldier_AR_F", "AAF_D_Soldier_LAT_F"};
         crewmen[] = {"AAF_D_Soldier_crew_F", "AAF_D_Soldier_repair_F"};
         technicals[] = {"AAF_D_MRAP_03_hmg_F"};
         armour[] = {"AAF_D_APC_tracked_03_cannon_F", "AAF_D_MBT_03_cannon_F"};
@@ -289,7 +289,7 @@ class UnitTemplates {
 
     class MNP_MIL_WD {
         side = "resistance";
-        infantry[] = {"MNP_Militia_Soldier_F", "MNP_Militia_Soldier_F", "MNP_Militia_Soldier_F", "MNP_Militia_Soldier_AR", "MNP_Militia_Soldier_O", "MNP_Militia_Soldier_G", "MNP_Militia_Soldier_M", "MNP_Militia_Soldier_AR", "MNP_Militia_Soldier_RAT"};
+        infantry[] = {"MNP_Militia_Soldier_O", "MNP_Militia_Soldier_AR", "MNP_Militia_Soldier_F", "MNP_Militia_Soldier_RAT", "MNP_Militia_Soldier_MG", "MNP_Militia_Soldier_AR", "MNP_Militia_Soldier_RAT", "MNP_Militia_Soldier_AR", "MNP_Militia_Soldier_RAT"};
         crewmen[] = {"MNP_Militia_Soldier_F", "MNP_Militia_Soldier_O"};
         technicals[] = {"B_G_Offroad_01_armed_F"};
         armour[] = {"B_G_Offroad_01_armed_F"};
@@ -297,7 +297,7 @@ class UnitTemplates {
 
     class MNP_MIL_DE {
         side = "resistance";
-        infantry[] = {"MNP_Militia_Soldier_DF", "MNP_Militia_Soldier_DF", "MNP_Militia_Soldier_DF", "MNP_Militia_Soldier_DAR", "MNP_Militia_Soldier_DO", "MNP_Militia_Soldier_DMG", "MNP_Militia_Soldier_DM", "MNP_Militia_Soldier_DAR", "MNP_Militia_Soldier_DRAT"};
+        infantry[] = {"MNP_Militia_Soldier_DO", "MNP_Militia_Soldier_DAR", "MNP_Militia_Soldier_DF", "MNP_Militia_Soldier_DRAT", "MNP_Militia_Soldier_DMG", "MNP_Militia_Soldier_DAR", "MNP_Militia_Soldier_DRAT", "MNP_Militia_Soldier_DAR", "MNP_Militia_Soldier_DRAT"};
         crewmen[] = {"MNP_Militia_Soldier_DF", "MNP_Militia_Soldier_DO"};
         technicals[] = {"B_G_Offroad_01_armed_F"};
         armour[] = {"B_G_Offroad_01_armed_F"};
@@ -305,7 +305,7 @@ class UnitTemplates {
 
     class MNP_NPA_WD {
         side = "resistance";
-        infantry[] = {"MNP_DPM_Soldier_D", "MNP_DPM_Soldier_D", "MNP_DPM_Soldier_D", "MNP_DPM_Soldier_AR", "MNP_DPM_Soldier_O", "MNP_DPM_Soldier_MG", "MNP_DPM_Soldier_M", "MNP_DPM_Soldier_AR", "MNP_DPM_Soldier_AT"};
+        infantry[] = {"MNP_DPM_Soldier_O", "MNP_DPM_Soldier_AR", "MNP_DPM_Soldier_D", "MNP_DPM_Soldier_AT", "MNP_DPM_Soldier_MG", "MNP_DPM_Soldier_AR", "MNP_DPM_Soldier_AT", "MNP_DPM_Soldier_AR", "MNP_DPM_Soldier_AT"};
         crewmen[] = {"MNP_DPM_Soldier_D", "MNP_DPM_Soldier_O"};
         technicals[] = {"B_G_Offroad_01_armed_F"};
         armour[] = {"B_G_Offroad_01_armed_F"};
@@ -313,7 +313,7 @@ class UnitTemplates {
 
     class MNP_NPA_DE {
         side = "resistance";
-        infantry[] = {"MNP_SixCo_Soldier_D", "MNP_SixCo_Soldier_D", "MNP_SixCo_Soldier_D", "MNP_SixCo_Soldier_AR", "MNP_SixCo_Soldier_O", "MNP_SixCo_Soldier_MG", "MNP_SixCo_Soldier_M", "MNP_SixCo_Soldier_AR", "MNP_SixCo_Soldier_AT"};
+        infantry[] = {"MNP_SixCo_Soldier_O", "MNP_SixCo_Soldier_AR", "MNP_SixCo_Soldier_D", "MNP_SixCo_Soldier_AT", "MNP_SixCo_Soldier_MG", "MNP_SixCo_Soldier_AR", "MNP_SixCo_Soldier_AT", "MNP_SixCo_Soldier_AR", "MNP_SixCo_Soldier_AT"};
         crewmen[] = {"MNP_SixCo_Soldier_D", "MNP_SixCo_Soldier_O"};
         technicals[] = {"I_MRAP_03_hmg_F"};
         armour[] = {"I_APC_tracked_03_cannon_F", "I_MBT_03_cannon_F"};
@@ -321,7 +321,7 @@ class UnitTemplates {
 
     class MNP_ASA {
         side = "resistance";
-        infantry[] = {"MNP_ASA_Soldier_F", "MNP_ASA_Soldier_F", "MNP_ASA_Soldier_F", "MNP_ASA_Soldier_AR", "MNP_ASA_Soldier_O", "MNP_ASA_Soldier_MG", "MNP_ASA_Soldier_M", "MNP_ASA_Soldier_AR", "MNP_ASA_Soldier_AT"};
+        infantry[] = {"MNP_ASA_Soldier_O", "MNP_ASA_Soldier_AR", "MNP_ASA_Soldier_F", "MNP_ASA_Soldier_AT", "MNP_ASA_Soldier_MG", "MNP_ASA_Soldier_AR", "MNP_ASA_Soldier_AT", "MNP_ASA_Soldier_AR", "MNP_ASA_Soldier_AT"};
         crewmen[] = {"MNP_ASA_Soldier_F", "MNP_ASA_Soldier_O"};
         technicals[] = {"B_G_Offroad_01_armed_F"};
         armour[] = {"B_G_Offroad_01_armed_F"};
@@ -329,7 +329,7 @@ class UnitTemplates {
 
     class MNP_ARC {
         side = "resistance";
-        infantry[] = {"MNP_Rev_Soldier_F", "MNP_Rev_Soldier_F", "MNP_Rev_Soldier_F", "MNP_Rev_Soldier_AR", "MNP_Rev_Soldier_O", "MNP_Rev_Soldier_MG", "MNP_Rev_Soldier_M", "MNP_Rev_Soldier_AR", "MNP_Rev_Soldier_AT"};
+        infantry[] = {"MNP_Rev_Soldier_O", "MNP_Rev_Soldier_AR", "MNP_Rev_Soldier_F", "MNP_Rev_Soldier_AT", "MNP_Rev_Soldier_MG", "MNP_Rev_Soldier_AR", "MNP_Rev_Soldier_AT", "MNP_Rev_Soldier_AR", "MNP_Rev_Soldier_AT"};
         crewmen[] = {"MNP_Rev_Soldier_F", "MNP_Rev_Soldier_O"};
         technicals[] = {"B_G_Offroad_01_armed_F"};
         armour[] = {"B_G_Offroad_01_armed_F"};
@@ -337,7 +337,7 @@ class UnitTemplates {
 
     class MNP_IRE_WD {
         side = "resistance";
-        infantry[] = {"MNP_Irish_Soldier_F", "MNP_Irish_Soldier_F", "MNP_Irish_Soldier_F", "MNP_Irish_Soldier_AR", "MNP_Irish_Soldier_S", "MNP_Irish_Soldier_MG", "MNP_Irish_Soldier_Medic", "MNP_Irish_Soldier_AR", "MNP_Irish_Soldier_RAT"};
+        infantry[] = {"MNP_Irish_Soldier_S", "MNP_Irish_Soldier_AR", "MNP_Irish_Soldier_F", "MNP_Irish_Soldier_RAT", "MNP_Irish_Soldier_MG", "MNP_Irish_Soldier_AR", "MNP_Irish_Soldier_RAT", "MNP_Irish_Soldier_AR", "MNP_Irish_Soldier_RAT"};
         crewmen[] = {"MNP_Irish_Soldier_F", "MNP_Irish_Soldier_S"};
         technicals[] = {"I_MRAP_03_hmg_F"};
         armour[] = {"I_APC_tracked_03_cannon_F", "I_MBT_03_cannon_F"};
@@ -345,7 +345,7 @@ class UnitTemplates {
 
     class MNP_IRE_DE {
         side = "resistance";
-        infantry[] = {"MNP_Irish_Soldier_D", "MNP_Irish_Soldier_D", "MNP_Irish_Soldier_D", "MNP_Irish_Soldier_DAR", "MNP_Irish_Soldier_DS", "MNP_Irish_Soldier_DMG", "MNP_Irish_Soldier_DMedic", "MNP_Irish_Soldier_DAR", "MNP_Irish_Soldier_DRAT"};
+        infantry[] = {"MNP_Irish_Soldier_DS", "MNP_Irish_Soldier_DAR", "MNP_Irish_Soldier_D", "MNP_Irish_Soldier_DRAT", "MNP_Irish_Soldier_DMG", "MNP_Irish_Soldier_DAR", "MNP_Irish_Soldier_DRAT", "MNP_Irish_Soldier_DAR", "MNP_Irish_Soldier_DRAT"};
         crewmen[] = {"MNP_Irish_Soldier_D", "MNP_Irish_Soldier_DS"};
         technicals[] = {"I_MRAP_03_hmg_F"};
         armour[] = {"I_APC_tracked_03_cannon_F", "I_MBT_03_cannon_F"};
@@ -353,7 +353,7 @@ class UnitTemplates {
 
     class MNP_NZ {
         side = "resistance";
-        infantry[] = {"MNP_NZ_Soldier_F", "MNP_NZ_Soldier_F", "MNP_NZ_Soldier_F", "MNP_NZ_Soldier_AR", "MNP_NZ_Soldier_O", "MNP_NZ_Soldier_MG", "MNP_NZ_Soldier_Md", "MNP_NZ_Soldier_AR", "MNP_NZ_Soldier_AT"};
+        infantry[] = {"MNP_NZ_Soldier_O", "MNP_NZ_Soldier_AR", "MNP_NZ_Soldier_F", "MNP_NZ_Soldier_AT", "MNP_NZ_Soldier_MG", "MNP_NZ_Soldier_AR", "MNP_NZ_Soldier_AT", "MNP_NZ_Soldier_AR", "MNP_NZ_Soldier_AT"};
         crewmen[] = {"MNP_NZ_Soldier_F", "MNP_NZ_Soldier_O"};
         technicals[] = {"I_MRAP_03_hmg_F"};
         armour[] = {"I_APC_tracked_03_cannon_F", "I_MBT_03_cannon_F"};
@@ -361,7 +361,7 @@ class UnitTemplates {
 
     class MNP_FIN_WD {
         side = "resistance";
-        infantry[] = {"MNP_FIN_Soldier_F", "MNP_FIN_Soldier_F", "MNP_FIN_Soldier_F", "MNP_FIN_Soldier_AR", "MNP_FIN_Soldier_O", "MNP_FIN_Soldier_MG", "MNP_FIN_Soldier_MD", "MNP_FIN_Soldier_AR", "MNP_FIN_Soldier_AT"};
+        infantry[] = {"MNP_FIN_Soldier_O", "MNP_FIN_Soldier_AR", "MNP_FIN_Soldier_F", "MNP_FIN_Soldier_AT", "MNP_FIN_Soldier_MG", "MNP_FIN_Soldier_AR", "MNP_FIN_Soldier_AT", "MNP_FIN_Soldier_AR", "MNP_FIN_Soldier_AT"};
         crewmen[] = {"MNP_FIN_Soldier_F", "MNP_FIN_Soldier_O"};
         technicals[] = {"I_MRAP_03_hmg_F"};
         armour[] = {"I_APC_tracked_03_cannon_F", "I_MBT_03_cannon_F"};
@@ -369,7 +369,7 @@ class UnitTemplates {
 
     class MNP_FIN_SN {
         side = "resistance";
-        infantry[] = {"MNP_AFIN_Soldier_F", "MNP_AFIN_Soldier_F", "MNP_AFIN_Soldier_F", "MNP_AFIN_Soldier_AR", "MNP_AFIN_Soldier_O", "MNP_AFIN_Soldier_MG", "MNP_AFIN_Soldier_MD", "MNP_AFIN_Soldier_AR", "MNP_AFIN_Soldier_AT"};
+        infantry[] = {"MNP_AFIN_Soldier_O", "MNP_AFIN_Soldier_AR", "MNP_AFIN_Soldier_F", "MNP_AFIN_Soldier_AT", "MNP_AFIN_Soldier_MG", "MNP_AFIN_Soldier_AR", "MNP_AFIN_Soldier_AT", "MNP_AFIN_Soldier_AR", "MNP_AFIN_Soldier_AT"};
         crewmen[] = {"MNP_AFIN_Soldier_F", "MNP_AFIN_Soldier_O"};
         technicals[] = {"I_MRAP_03_hmg_F"};
         armour[] = {"I_APC_tracked_03_cannon_F", "I_MBT_03_cannon_F"};
@@ -377,7 +377,7 @@ class UnitTemplates {
 
     class MNP_NOR_WD {
         side = "resistance";
-        infantry[] = {"MNP_NOR_Soldier_F", "MNP_NOR_Soldier_F", "MNP_NOR_Soldier_F", "MNP_NOR_Soldier_AR", "MNP_NOR_Soldier_O", "MNP_NOR_Soldier_MG", "MNP_NOR_Soldier_Md", "MNP_NOR_Soldier_AR", "MNP_NOR_Soldier_AT"};
+        infantry[] = {"MNP_NOR_Soldier_O", "MNP_NOR_Soldier_AR", "MNP_NOR_Soldier_F", "MNP_NOR_Soldier_AT", "MNP_NOR_Soldier_MG", "MNP_NOR_Soldier_AR", "MNP_NOR_Soldier_AT", "MNP_NOR_Soldier_AR", "MNP_NOR_Soldier_AT"};
         crewmen[] = {"MNP_NOR_Soldier_F", "MNP_NOR_Soldier_O"};
         technicals[] = {"I_MRAP_03_hmg_F"};
         armour[] = {"I_APC_tracked_03_cannon_F", "I_MBT_03_cannon_F"};
@@ -385,7 +385,7 @@ class UnitTemplates {
 
     class MNP_NOR_DE {
         side = "resistance";
-        infantry[] = {"MNP_NOR_D_Soldier_F", "MNP_NOR_D_Soldier_F", "MNP_NOR_D_Soldier_F", "MNP_NOR_D_Soldier_AR", "MNP_NOR_D_Soldier_O", "MNP_NOR_D_Soldier_MG", "MNP_NOR_D_Soldier_Md", "MNP_NOR_D_Soldier_AR", "MNP_NOR_D_Soldier_AT"};
+        infantry[] = {"MNP_NOR_D_Soldier_O", "MNP_NOR_D_Soldier_AR", "MNP_NOR_D_Soldier_F", "MNP_NOR_D_Soldier_AT", "MNP_NOR_D_Soldier_MG", "MNP_NOR_D_Soldier_AR", "MNP_NOR_D_Soldier_AT", "MNP_NOR_D_Soldier_AR", "MNP_NOR_D_Soldier_AT"};
         crewmen[] = {"MNP_NOR_D_Soldier_F", "MNP_NOR_D_Soldier_O"};
         technicals[] = {"I_MRAP_03_hmg_F"};
         armour[] = {"I_APC_tracked_03_cannon_F", "I_MBT_03_cannon_F"};
@@ -393,7 +393,7 @@ class UnitTemplates {
 
     class AAF_GUER {
         side = "resistance";
-        infantry[] = {"I_G_Soldier_F", "I_G_Soldier_lite_F", "I_G_Soldier_F", "I_G_Soldier_TL_F", "I_G_Soldier_lite_F", "I_G_Soldier_SL_F", "I_G_soldier_AR_F", "I_G_soldier_LAT_F"};
+        infantry[] = {"I_G_Soldier_TL_F", "I_G_soldier_AR_F", "I_G_Soldier_lite_F", "I_G_soldier_LAT_F", "I_G_soldier_M_F", "I_G_soldier_AR_F", "I_G_soldier_LAT_F", "I_G_soldier_AR_F", "I_G_soldier_LAT_F"};
         crewmen[] = {"I_G_Soldier_lite_F", "I_G_engineer_F"};
         technicals[] = {"I_G_Offroad_01_armed_F"};
         armour[] = {"I_G_Offroad_01_armed_F"};
