@@ -17,7 +17,7 @@ class UnitTemplates {
 
     class MNP_USMC_WD {
         side = "west";
-        infantry[] = {"MNP_USMC_Soldier_O", "MNP_USMC_Soldier_AR", "MNP_USMC_Soldier_F", "MNP_USMC_Soldier_AT", "MNP_USMC_Soldier_MG", "MNP_USMC_Soldier_AR", "MNP_USMC_Soldier_AT", "MNP_USMC_Soldier_AR", "MNP_USMC_Soldier_AT"};
+        infantry[] = {"MNP_USMC_Soldier_O", "MNP_USMC_Soldier_AR", "MNP_USMC_Soldier_F", "MNP_USMC_Soldier_AT", "MNP_USMC_Soldier_MG", "MNP_USMC_Soldier_DIAR", "MNP_USMC_Soldier_AT", "MNP_USMC_Soldier_DIAR", "MNP_USMC_Soldier_AT"};
         crewmen[] = {"MNP_USMC_Soldier_F", "MNP_USMC_Soldier_O"};
         technicals[] = {"B_MRAP_01_hmg_F"};
         armour[] = {"B_APC_Wheeled_01_cannon_F", "B_MBT_01_TUSK_F"};
@@ -25,7 +25,7 @@ class UnitTemplates {
 
     class MNP_USMC_DE {
         side = "west";
-        infantry[] = {"MNP_USMC_Soldier_DO", "MNP_USMC_Soldier_DAR", "MNP_USMC_Soldier_DF", "MNP_USMC_Soldier_DAT", "MNP_USMC_Soldier_DMG", "MNP_USMC_Soldier_DAR", "MNP_USMC_Soldier_DAT", "MNP_USMC_Soldier_DAR", "MNP_USMC_Soldier_DAT"};
+        infantry[] = {"MNP_USMC_Soldier_DO", "MNP_USMC_Soldier_DAR", "MNP_USMC_Soldier_DF", "MNP_USMC_Soldier_DAT", "MNP_USMC_Soldier_DMG", "MNP_USMC_Soldier_DIAR", "MNP_USMC_Soldier_DAT", "MNP_USMC_Soldier_DIAR", "MNP_USMC_Soldier_DAT"};
         crewmen[] = {"MNP_USMC_Soldier_DF", "MNP_USMC_Soldier_DO"};
         technicals[] = {"B_MRAP_01_hmg_F"};
         armour[] = {"B_APC_Wheeled_01_cannon_F", "B_MBT_01_TUSK_F"};
@@ -33,7 +33,7 @@ class UnitTemplates {
 
     class MNP_USMC_SN {
         side = "west";
-        infantry[] = {"MNP_USMCA_Soldier_O", "MNP_USMCA_Soldier_AR", "MNP_USMCA_Soldier_F", "MNP_USMCA_Soldier_AT", "MNP_USMCA_Soldier_MG", "MNP_USMCA_Soldier_AR", "MNP_USMCA_Soldier_AT", "MNP_USMCA_Soldier_AR", "MNP_USMCA_Soldier_AT"};
+        infantry[] = {"MNP_USMCA_Soldier_O", "MNP_USMCA_Soldier_AR", "MNP_USMCA_Soldier_F", "MNP_USMCA_Soldier_AT", "MNP_USMCA_Soldier_MG", "MNP_USMC_Soldier_DIAR", "MNP_USMCA_Soldier_AT", "MNP_USMC_Soldier_DIAR", "MNP_USMCA_Soldier_AT"};
         crewmen[] = {"MNP_USMCA_Soldier_F", "MNP_USMCA_Soldier_O"};
         technicals[] = {"B_MRAP_01_hmg_F"};
         armour[] = {"B_APC_Wheeled_01_cannon_F", "B_MBT_01_TUSK_F"};
