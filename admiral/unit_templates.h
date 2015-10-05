@@ -9,7 +9,7 @@ class UnitTemplates {
 
     class NATO_WOODLAND {
         side = "west";
-        infantry[] = {"B_Soldier_TL_F", "B_soldier_AR_F", "B_Soldier_F", "B_soldier_LAT_F", "B_HeavyGunner_F", "B_soldier_AR_F", "B_soldier_LAT_F", "B_soldier_AR_F", "B_soldier_LAT_F"};
+        infantry[] = {"B_Soldier_SL_F", "B_soldier_AR_F", "B_Soldier_F", "B_soldier_LAT_F", "B_HeavyGunner_F", "B_soldier_AR_F", "B_soldier_LAT_F", "B_soldier_AR_F", "B_soldier_LAT_F"};
         crewmen[] = {"B_crew_F", "B_engineer_F"};
         technicals[] = {"B_MRAP_01_hmg_F"};
         armour[] = {"B_APC_Wheeled_01_cannon_F", "B_MBT_01_TUSK_F"};
@@ -129,7 +129,7 @@ class UnitTemplates {
 
     class FIA_GUER {
         side = "west";
-        infantry[] = {"B_G_Soldier_TL_F", "B_G_Soldier_AR_F", "B_G_Soldier_lite_F", "B_G_Soldier_LAT_F", "B_G_Soldier_M_F", "B_G_Soldier_AR_F", "B_G_Soldier_LAT_F", "B_G_Soldier_AR_F", "B_G_Soldier_LAT_F"};
+        infantry[] = {"B_G_Soldier_SL_F", "B_G_Soldier_AR_F", "B_G_Soldier_lite_F", "B_G_Soldier_LAT_F", "B_G_Soldier_M_F", "B_G_Soldier_AR_F", "B_G_Soldier_LAT_F", "B_G_Soldier_AR_F", "B_G_Soldier_LAT_F"};
         crewmen[] = {"B_G_Soldier_F", "B_G_engineer_F"};
         technicals[] = {"B_G_Offroad_01_armed_F"};
         armour[] = {"B_G_Offroad_01_armed_F"};
@@ -137,7 +137,7 @@ class UnitTemplates {
 
     class CSAT_WOODLAND {
         side = "east";
-        infantry[] = {"O_Soldier_TL_F", "O_Soldier_AR_F", "O_Soldier_lite_F", "O_Soldier_LAT_F", "O_support_MG_F", "O_Soldier_AR_F", "O_Soldier_LAT_F", "O_Soldier_AR_F", "O_Soldier_LAT_F"};
+        infantry[] = {"O_Soldier_SL_F", "O_Soldier_AR_F", "O_Soldier_lite_F", "O_Soldier_LAT_F", "O_support_MG_F", "O_Soldier_AR_F", "O_Soldier_LAT_F", "O_Soldier_AR_F", "O_Soldier_LAT_F"};
         crewmen[] = {"O_crew_F", "O_engineer_F"};
         technicals[] = {"O_MRAP_02_hmg_F"};
         armour[] = {"O_APC_Tracked_02_cannon_F", "O_MBT_02_cannon_F"};
@@ -145,7 +145,7 @@ class UnitTemplates {
 
     class CSAT_URBAN {
         side = "east";
-        infantry[] = {"O_soldierU_TL_F", "O_soldierU_AR_F", "O_soldierU_F", "O_soldierU_LAT_F", "O_soldierU_M_F", "O_soldierU_AR_F", "O_soldierU_LAT_F", "O_soldierU_AR_F", "O_soldierU_LAT_F"};
+        infantry[] = {"O_soldierU_SL_F", "O_soldierU_AR_F", "O_soldierU_F", "O_soldierU_LAT_F", "O_soldierU_M_F", "O_soldierU_AR_F", "O_soldierU_LAT_F", "O_soldierU_AR_F", "O_soldierU_LAT_F"};
         crewmen[] = {"O_soldierU_F", "O_engineer_U_F"};
         technicals[] = {"O_MRAP_02_hmg_F"};
         armour[] = {"O_APC_Tracked_02_cannon_F", "O_MBT_02_cannon_F"};
@@ -273,7 +273,7 @@ class UnitTemplates {
 
     class AAF_WOODLAND {
         side = "resistance";
-        infantry[] = {"I_Soldier_TL_F", "I_Soldier_AR_F", "I_Soldier_lite_F", "I_Soldier_LAT_F", "I_Soldier_M_F", "I_Soldier_AR_F", "I_Soldier_LAT_F", "I_Soldier_AR_F", "I_Soldier_LAT_F"};
+        infantry[] = {"I_Soldier_SL_F", "I_Soldier_AR_F", "I_Soldier_lite_F", "I_Soldier_LAT_F", "I_Soldier_M_F", "I_Soldier_AR_F", "I_Soldier_LAT_F", "I_Soldier_AR_F", "I_Soldier_LAT_F"};
         crewmen[] = {"I_crew_F", "I_engineer_F"};
         technicals[] = {"I_MRAP_03_hmg_F"};
         armour[] = {"I_APC_tracked_03_cannon_F", "I_MBT_03_cannon_F"};
@@ -281,7 +281,7 @@ class UnitTemplates {
 
     class AAF_DESERT {
         side = "resistance";
-        infantry[] = {"AAF_D_Soldier_TL_F", "AAF_D_Soldier_AR_F", "AAF_D_Soldier_lite_F", "AAF_D_Soldier_LAT_F", "AAF_D_Soldier_M_F", "AAF_D_Soldier_AR_F", "AAF_D_Soldier_LAT_F", "AAF_D_Soldier_AR_F", "AAF_D_Soldier_LAT_F"};
+        infantry[] = {"AAF_D_Soldier_SL_F", "AAF_D_Soldier_AR_F", "AAF_D_Soldier_lite_F", "AAF_D_Soldier_LAT_F", "AAF_D_Soldier_M_F", "AAF_D_Soldier_AR_F", "AAF_D_Soldier_LAT_F", "AAF_D_Soldier_AR_F", "AAF_D_Soldier_LAT_F"};
         crewmen[] = {"AAF_D_Soldier_crew_F", "AAF_D_Soldier_repair_F"};
         technicals[] = {"AAF_D_MRAP_03_hmg_F"};
         armour[] = {"AAF_D_APC_tracked_03_cannon_F", "AAF_D_MBT_03_cannon_F"};
@@ -393,7 +393,7 @@ class UnitTemplates {
 
     class AAF_GUER {
         side = "resistance";
-        infantry[] = {"I_G_Soldier_TL_F", "I_G_soldier_AR_F", "I_G_Soldier_lite_F", "I_G_soldier_LAT_F", "I_G_soldier_M_F", "I_G_soldier_AR_F", "I_G_soldier_LAT_F", "I_G_soldier_AR_F", "I_G_soldier_LAT_F"};
+        infantry[] = {"I_G_Soldier_SL_F", "I_G_soldier_AR_F", "I_G_Soldier_lite_F", "I_G_soldier_LAT_F", "I_G_soldier_M_F", "I_G_soldier_AR_F", "I_G_soldier_LAT_F", "I_G_soldier_AR_F", "I_G_soldier_LAT_F"};
         crewmen[] = {"I_G_Soldier_lite_F", "I_G_engineer_F"};
         technicals[] = {"I_G_Offroad_01_armed_F"};
         armour[] = {"I_G_Offroad_01_armed_F"};
