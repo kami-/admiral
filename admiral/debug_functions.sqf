@@ -227,7 +227,7 @@ adm_debug_fnc_createAllCampPathMarkers = {
 
     DECLARE(_paths) = GET_CAMP_PATHS(_zone);
     {
-        if (isNil {_x getVariable "adm_logic_debugMarkers"}) then {
+        if (isNil {GET_PATH_DEBUG_MARKERS(_x)}) then {
             [_x] call adm_debug_fnc_createCampPathMarkers;
         };
     } foreach _paths;
@@ -236,32 +236,32 @@ adm_debug_fnc_createAllCampPathMarkers = {
 adm_debug_fnc_createCampPathMarkers = {
     FUN_ARGS_1(_path);
 
-    private ["_waypoints", "_lineMarkers", "_endTriggerMarker"];
-    _waypoints = waypoints _path;
+    private ["_pathPositions", "_lineMarkers", "_endTriggerMarker"];
+    _pathPositions = GET_PATH_POSITIONS(_path);
     _lineMarkers = [];
-    for "_i" from 0 to count _waypoints - 2 do {
-        private ["_wpPosFrom", "_wpPosTo", "_lineMarker"];
-        _wpPosFrom = getWPPos (_waypoints select _i);
-        _wpPosTo = getWPPos (_waypoints select (_i + 1));
-        _lineMarker = [format ["adm_logic_lineMarker_%1", _wpPosFrom], _wpPosFrom, _wpPosTo, "ColorOrange", 3] call adm_debug_fnc_createLineMarker;
+    for "_i" from 0 to count _pathPositions - 2 do {
+        private ["_fromPos", "_toPos", "_lineMarker"];
+        _fromPos = _pathPositions select _i;
+        _toPos = _pathPositions select (_i + 1);
+        _lineMarker = [format ["adm_logic_lineMarker_%1%2", _fromPos, _i], _fromPos, _toPos, "ColorOrange", 3] call adm_debug_fnc_createLineMarker;
         PUSH(_lineMarkers,_lineMarker);
-        DEBUG("admiral.debug",FMT_2("Created line marker between '%1' and '%2' waypoints for camp path '%3'.",_waypoints select _i,_waypoints select (_i + 1),_path));
+        DEBUG("admiral.debug",FMT_2("Created line marker between '%1' and '%2' path positions for camp path '%3'.",_fromPos,_toPos,_path));
     };
-    _endTriggerMarker = [_path getVariable "adm_camp_endTrigger", "ColorOrange"] call adm_debug_fnc_createTriggerMarker;
-    _path setVariable ["adm_logic_debugMarkers", [_lineMarkers, _endTriggerMarker], false];
+    _endTriggerMarker = [GET_PATH_END_TRIGGER(_path), "ColorOrange"] call adm_debug_fnc_createTriggerMarker;
+    SET_PATH_DEBUG_MARKERS(_path,AS_ARRAY_2([_lineMarkers, _endTriggerMarker]));
     DEBUG("admiral.debug",FMT_1("Created end trigger marker for camp path '%1'.",_path));
 };
 
 adm_debug_fnc_deleteCampPathMarkers = {
     FUN_ARGS_1(_path);
 
-    DECLARE(_debugMarkers) = _path getVariable "adm_logic_debugMarkers";
+    DECLARE(_debugMarkers) = GET_PATH_DEBUG_MARKERS(_path);
     if (!isNil {_debugMarkers}) then {
         {
             deleteMarkerLocal _x;
         } foreach (_debugMarkers select 0);
         deleteMarkerLocal (_debugMarkers select 1);
-        _path setVariable ["adm_logic_debugMarkers", nil, false];
+        SET_PATH_DEBUG_MARKERS(_path,nil);
     };
 };
 

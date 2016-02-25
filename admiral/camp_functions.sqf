@@ -32,30 +32,58 @@ adm_camp_fnc_spawnCrew = {
     _crew;
 };
 
-adm_camp_initPossiblePaths = {
-    adm_camp_possiblePaths = [allMissionObjects "Logic", {count (waypoints _x) > 1}] call BIS_fnc_conditionalSelect;
-    {
-        _x setVariable ["adm_camp_usedBy", _x getVariable ["usedBy", [true,true,true]]];
-    } foreach adm_camp_possiblePaths;
+adm_camp_getLogicPaths = {
+    entities "Logic"
+        select { count (waypoints _x) > 1 }
+        apply {
+            [ waypoints _x apply { waypointPosition _x }
+            , _x getVariable ["usedBy", [true, true, true]]
+            , nil
+            , nil
+            ];
+        };
 };
 
-adm_camp_fnc_tryAddPossiblePaths = {
-    FUN_ARGS_2(_zone,_possiblePaths);
+adm_camp_getPaths = {
+    entities "B_Soldier_VR_F"
+        select { count (waypoints _x) > 1 }
+        select { _x getVariable ["admiral_path", true] }
+        apply {
+            private _path = [ waypoints _x apply { waypointPosition _x }
+            , _x getVariable ["usedBy", [true, true, true]]
+            , nil
+            , nil
+            ];
+            deleteVehicle _x;
+            _path;
+        };
+};
+
+adm_camp_initPaths = {
+    adm_camp_paths = [];
+    adm_camp_paths append ([] call adm_camp_getPaths);
+    adm_camp_paths append ([] call adm_camp_getLogicPaths);
+};
+
+adm_camp_fnc_tryAddPaths = {
+    FUN_ARGS_2(_zone,_paths);
 
     {
-        if ([getWPPos (waypoints _x select 0), GET_ZONE_AREA(_zone), GET_ZONE_POSITION(_zone)] call adm_common_fnc_isPositionInArea) then {
+        private _pathPositions = GET_PATH_POSITIONS(_x);
+        private _pathEndTrigger = [_pathPositions select (count _pathPositions - 1)] call adm_camp_fnc_getLogicEndTrigger;
+        SET_PATH_END_TRIGGER(_x,_pathEndTrigger);
+        if ([_pathPositions select 0, GET_ZONE_AREA(_zone), GET_ZONE_POSITION(_zone)] call adm_common_fnc_isPositionInArea) then {
             DECLARE(_zonePaths) = GET_CAMP_PATHS(_zone);
             PUSH(_zonePaths,_x);
-            DEBUG("admiral.camp.create",FMT_2("Path logic '%1' is inside Camp Zone '%2'. Adding it to zone logics.",_x,GET_ZONE_ID(_zone)));
+            DEBUG("admiral.camp.create",FMT_2("Path '%1' is inside Camp Zone '%2'. Adding it to zone paths.",_x,GET_ZONE_ID(_zone)));
         };
-        _x setVariable ["adm_camp_endTrigger", [getWPPos ((waypoints _x) select (count (waypoints _x) - 1))] call adm_camp_fnc_getLogicEndTrigger, false];
-    } foreach _possiblePaths;
+    } foreach _paths;
 };
 
 adm_camp_fnc_getGroupPaths = {
     FUN_ARGS_2(_zone,_groupType);
 
-    [GET_CAMP_PATHS(_zone), {(_x getVariable ["adm_camp_usedBy", [true,true,true]]) select _groupType}] call BIS_fnc_conditionalSelect;
+    [GET_CAMP_PATHS(_zone), { GET_PATH_USED_BY(_x) select _groupType }] call BIS_fnc_conditionalSelect;
 };
 
 adm_camp_fnc_getLogicEndTrigger = {
@@ -91,15 +119,15 @@ adm_camp_fnc_createPatrolWaypoints = {
 adm_camp_fnc_createCampWaypoints = {
     FUN_ARGS_5(_group,_unitType,_paths,_waypointBehaviours,_noOfWaypoints);
 
-    private ["_path", "_pathWaypoints", "_endTrigger"];
+    private ["_path", "_pathPositions", "_endTrigger"];
     _path = SELECT_RAND(_paths);
-    _pathWaypoints = waypoints _path;
+    _pathPositions = GET_PATH_POSITIONS(_path);
     {
-        [_group, [getWPPos _x, 0], 'MOVE', SELECT_RAND(_waypointBehaviours), 'RED'] call adm_common_fnc_createWaypoint;
-    } foreach _pathWaypoints;
-    _endTrigger = _path getVariable "adm_camp_endTrigger";
+        [_group, [_x, 0], 'MOVE', SELECT_RAND(_waypointBehaviours), 'RED'] call adm_common_fnc_createWaypoint;
+    } foreach _pathPositions;
+    _endTrigger = GET_PATH_END_TRIGGER(_path);
     [_group, _unitType, triggerArea _endTrigger, getPosATL _endTrigger, _waypointBehaviours, _noOfWaypoints] call adm_camp_fnc_createPatrolWaypoints;
-    DEBUG("admiral.camp.create",FMT_2("Created '%1' path waypoint(s) for group with path logic '%2'.",count _pathWaypoints,_group));
+    DEBUG("admiral.camp.create",FMT_3("Created '%1' path waypoint(s) for group '%2' using path '%3'.",count _pathPositions,_group,_path));
 };
 
 adm_camp_fnc_isPoolEmpty = {
@@ -481,7 +509,7 @@ adm_camp_fnc_initZone = {
     FUN_ARGS_1(_zone);
 
     [_zone] call adm_camp_setGroupDelay;
-    [_zone, adm_camp_possiblePaths] call adm_camp_fnc_tryAddPossiblePaths;
+    [_zone, adm_camp_paths] call adm_camp_fnc_tryAddPaths;
     INFO("admiral.camp",FMT_1("Camp Zone '%1' has been succesfully initialized.",GET_ZONE_ID(_zone)));
     SET_CAMP_ENABLED(_zone,true);
     PUSH(adm_camp_zones,_zone);
@@ -525,5 +553,5 @@ adm_camp_fnc_init = {
     adm_camp_techGroups = [];
     adm_camp_armourGroups = [];
     adm_camp_zones = [];
-    [] call adm_camp_initPossiblePaths;
+    [] call adm_camp_initPaths;
 };
