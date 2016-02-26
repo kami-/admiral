@@ -209,7 +209,7 @@ class UnitTemplates {
 
     class CSAT_WOODLAND {
         side = "east";
-        infantry[] = {"O_Soldier_SL_F", "O_Soldier_AR_F", "O_Soldier_lite_F", "O_Soldier_LAT_F", "O_support_MG_F", "O_Soldier_AR_F", "O_Soldier_LAT_F", "O_Soldier_AR_F", "O_Soldier_LAT_F"};
+        infantry[] = {"O_Soldier_SL_F", "O_Soldier_AR_F", "O_Soldier_lite_F", "O_Soldier_RPG18", "O_support_MG_F", "O_Soldier_AR_F", "O_Soldier_RPG18", "O_Soldier_AR_F", "O_Soldier_LAT_F"};
         crewmen[] = {"O_crew_F", "O_engineer_F"};
         technicals[] = {"O_MRAP_02_hmg_F"};
         armour[] = {"O_APC_Tracked_02_cannon_F", "O_MBT_02_cannon_F"};
@@ -449,7 +449,7 @@ class UnitTemplates {
 
     class AAF_WOODLAND {
         side = "resistance";
-        infantry[] = {"I_Soldier_SL_F", "I_Soldier_AR_F", "I_Soldier_lite_F", "I_Soldier_LAT_F", "I_Soldier_M_F", "I_Soldier_AR_F", "I_Soldier_LAT_F", "I_Soldier_AR_F", "I_Soldier_LAT_F"};
+        infantry[] = {"I_Soldier_SL_F", "I_Soldier_AR_F", "I_Soldier_lite_F", "I_Soldier_AT4", "I_Soldier_M_F", "I_Soldier_AR_F", "I_Soldier_AT4", "I_Soldier_AR_F", "I_Soldier_AT4"};
         crewmen[] = {"I_crew_F", "I_engineer_F"};
         technicals[] = {"I_MRAP_03_hmg_F"};
         armour[] = {"I_APC_tracked_03_cannon_F", "I_MBT_03_cannon_F"};
@@ -457,7 +457,7 @@ class UnitTemplates {
 
     class AAF_DESERT {
         side = "resistance";
-        infantry[] = {"AAF_D_Soldier_SL_F", "AAF_D_Soldier_AR_F", "AAF_D_Soldier_lite_F", "AAF_D_Soldier_LAT_F", "AAF_D_Soldier_M_F", "AAF_D_Soldier_AR_F", "AAF_D_Soldier_LAT_F", "AAF_D_Soldier_AR_F", "AAF_D_Soldier_LAT_F"};
+        infantry[] = {"AAF_D_Soldier_SL_F", "AAF_D_Soldier_AR_F", "AAF_D_Soldier_lite_F", "AF_D_Soldier_AT4", "AAF_D_Soldier_M_F", "AAF_D_Soldier_AR_F", "AF_D_Soldier_AT4", "AAF_D_Soldier_AR_F", "AF_D_Soldier_AT4"};
         crewmen[] = {"AAF_D_Soldier_crew_F", "AAF_D_Soldier_repair_F"};
         technicals[] = {"AAF_D_MRAP_03_hmg_F"};
         armour[] = {"AAF_D_APC_tracked_03_cannon_F", "AAF_D_MBT_03_cannon_F"};
