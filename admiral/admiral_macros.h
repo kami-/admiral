@@ -118,6 +118,24 @@
 
 
 
+#define IDX_PATH_POSITIONS                          0
+#define IDX_PATH_USED_BY                            1
+#define IDX_PATH_END_TRIGGER                        2
+#define IDX_PATH_DEBUG_MARKERS                      3
+
+#define GET_PATH_VALUE(PATH,IDX)                    ((PATH) select IDX)
+#define SET_PATH_VALUE(PATH,IDX,VAL)                ((PATH) set [IDX,VAL])
+
+#define GET_PATH_POSITIONS(PATH)                    GET_PATH_VALUE(PATH,IDX_PATH_POSITIONS)
+#define GET_PATH_USED_BY(PATH)                      GET_PATH_VALUE(PATH,IDX_PATH_USED_BY)
+#define GET_PATH_END_TRIGGER(PATH)                  GET_PATH_VALUE(PATH,IDX_PATH_END_TRIGGER)
+#define GET_PATH_DEBUG_MARKERS(PATH)                GET_PATH_VALUE(PATH,IDX_PATH_DEBUG_MARKERS)
+
+#define SET_PATH_END_TRIGGER(PATH,VAL)              SET_PATH_VALUE(PATH,IDX_PATH_END_TRIGGER,VAL)
+#define SET_PATH_DEBUG_MARKERS(PATH,VAL)            SET_PATH_VALUE(PATH,IDX_PATH_DEBUG_MARKERS,VAL)
+
+
+
 #define IDX_ZONE_ID                                 0
 #define IDX_ZONE_NAME                               1
 #define IDX_ZONE_TYPE                               2
