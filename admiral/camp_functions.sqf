@@ -45,7 +45,7 @@ adm_camp_getLogicPaths = {
 };
 
 adm_camp_getPaths = {
-    entities "B_Soldier_VR_F"
+    entities "C_Bob_VR"
         select { count (waypoints _x) > 1 }
         select { _x getVariable ["admiral_path", true] }
         apply {
