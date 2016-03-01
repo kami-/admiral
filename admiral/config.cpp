@@ -50,7 +50,7 @@ class CfgVehicles {
 
     class C_Bob_VR : C_Soldier_VR_F {
         author = "Admiral";
-        displayName = "Camp Path Bases";
+        displayName = "Camp Path Base";
         faction = "Admiral";
         side = 3;
         vehicleClass = "Admiral_Camps";
