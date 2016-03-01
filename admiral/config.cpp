@@ -29,7 +29,7 @@ class CfgFactionClasses {
         displayName = "Admiral";
     };
     class Admiral_Camps {
-	    displayName = "Admiral Waypoints";
+	    displayName = "Admiral Camp Bases";
 	    author = "Admiral";
 	    icon = "x\ark\addons\ark_inhouse\resources\ark_star.paa";
 	    priority = 1;
@@ -39,7 +39,7 @@ class CfgFactionClasses {
 
 class CfgVehicleClasses {
     class Admiral_Camps {
-        displayName = "Camp Path";
+        displayName = "Camp Bases";
     };
 };
 
@@ -50,7 +50,7 @@ class CfgVehicles {
 
     class C_Bob_VR : C_Soldier_VR_F {
         author = "Admiral";
-        displayName = "Camp Base Path";
+        displayName = "Camp Path Bases";
         faction = "Admiral";
         side = 3;
         vehicleClass = "Admiral_Camps";
