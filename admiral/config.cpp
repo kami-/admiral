@@ -5,7 +5,7 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = 1.0;
-        requiredAddons[] = {"CBA_MAIN"};
+        requiredAddons[] = {"CBA_MAIN", "A3_Characters_F_Common", "A3_Characters_F"};
         author[] = {"Kami", "Cam", "Ark"};
         authorUrl = "https://github.com/kami-";
     };
@@ -28,10 +28,33 @@ class CfgFactionClasses {
     class Admiral : NO_CATEGORY {
         displayName = "Admiral";
     };
+    class Admiral_Camps {
+	    displayName = "Admiral Waypoints";
+	    author = "Admiral";
+	    icon = "x\ark\addons\ark_inhouse\resources\ark_star.paa";
+	    priority = 1;
+	    side = 3;
+	};
+};
+
+class CfgVehicleClasses {
+    class Admiral_Camps {
+        displayName = "Camp Path";
+    };
 };
 
 class CfgVehicles {
     #include "admiral_modules.h"
+
+    class C_Soldier_VR_F;
+
+    class C_Bob_VR : C_Soldier_VR_F {
+        author = "Admiral";
+        displayName = "Camp Base Path";
+        faction = "Admiral";
+        side = 3;
+        vehicleClass = "Admiral_Camps";
+    };
 };
 
 #include "admiral.h"
