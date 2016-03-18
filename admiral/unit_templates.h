@@ -457,7 +457,7 @@ class UnitTemplates {
 
     class AAF_DESERT {
         side = "resistance";
-        infantry[] = {"AAF_D_Soldier_SL_F", "AAF_D_Soldier_AR_F", "AAF_D_Soldier_lite_F", "AF_D_Soldier_AT4", "AAF_D_Soldier_M_F", "AAF_D_Soldier_AR_F", "AF_D_Soldier_AT4", "AAF_D_Soldier_AR_F", "AF_D_Soldier_AT4"};
+        infantry[] = {"AAF_D_Soldier_SL_F", "AAF_D_Soldier_AR_F", "AAF_D_Soldier_lite_F", "AAF_D_Soldier_AT4", "AAF_D_Soldier_M_F", "AAF_D_Soldier_AR_F", "AAF_D_Soldier_AT4", "AAF_D_Soldier_AR_F", "AAF_D_Soldier_AT4"};
         crewmen[] = {"AAF_D_Soldier_crew_F", "AAF_D_Soldier_repair_F"};
         technicals[] = {"AAF_D_MRAP_03_hmg_F"};
         armour[] = {"AAF_D_APC_tracked_03_cannon_F", "AAF_D_MBT_03_cannon_F"};
