@@ -457,7 +457,7 @@ class UnitTemplates {
 
     class AAF_DESERT {
         side = "resistance";
-        infantry[] = {"AAF_D_Soldier_SL_F", "AAF_D_Soldier_AR_F", "AAF_D_Soldier_lite_F", "AF_D_Soldier_AT4", "AAF_D_Soldier_M_F", "AAF_D_Soldier_AR_F", "AF_D_Soldier_AT4", "AAF_D_Soldier_AR_F", "AF_D_Soldier_AT4"};
+        infantry[] = {"AAF_D_Soldier_SL_F", "AAF_D_Soldier_AR_F", "AAF_D_Soldier_lite_F", "AAF_D_Soldier_AT4", "AAF_D_Soldier_M_F", "AAF_D_Soldier_AR_F", "AAF_D_Soldier_AT4", "AAF_D_Soldier_AR_F", "AAF_D_Soldier_AT4"};
         crewmen[] = {"AAF_D_Soldier_crew_F", "AAF_D_Soldier_repair_F"};
         technicals[] = {"AAF_D_MRAP_03_hmg_F"};
         armour[] = {"AAF_D_APC_tracked_03_cannon_F", "AAF_D_MBT_03_cannon_F"};
@@ -593,8 +593,8 @@ class UnitTemplates {
 
     class CUP_NAPA_WD {
         side = "resistance";
-        infantry[] = {"CUP_I_GUE_Officer", "CUP_I_GUE_Soldier_AR", "UP_I_GUE_Soldier_AKM", "CUP_I_GUE_Soldier_AKS74", "CUP_I_GUE_Soldier_AKSU", "CUP_I_GUE_Soldier_MG", "CUP_I_TK_GUE_Soldier_AT", "CUP_I_GUE_Soldier_AR", "CUP_I_TK_GUE_Soldier_AT"};
-        crewmen[] = {"UP_I_GUE_Soldier_AKM", "CUP_I_GUE_Officer"};
+        infantry[] = {"CUP_I_GUE_Officer", "CUP_I_GUE_Soldier_AR", "CUP_I_GUE_Soldier_AKM", "CUP_I_GUE_Soldier_AKS74", "CUP_I_GUE_Soldier_AKSU", "CUP_I_GUE_Soldier_MG", "CUP_I_GUE_Soldier_AT", "CUP_I_GUE_Soldier_AR", "CUP_I_GUE_Soldier_AT"};
+        crewmen[] = {"CUP_I_GUE_Soldier_AKM", "CUP_I_GUE_Officer"};
         technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU"};
         armour[] = {"CUP_O_BRDM2_SLA", "CUP_O_BRDM2_SLA", "CUP_I_T34_TK_GUE", "CUP_I_BMP1_TK_GUE", "CUP_O_BMP2_SLA", "CUP_O_T72_SLA"};
     };
