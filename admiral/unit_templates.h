@@ -593,7 +593,7 @@ class UnitTemplates {
 
     class CUP_NAPA_WD {
         side = "resistance";
-        infantry[] = {"CUP_I_GUE_Officer", "CUP_I_GUE_Soldier_AR", "UP_I_GUE_Soldier_AKM", "CUP_I_GUE_Soldier_AKS74", "CUP_I_GUE_Soldier_AKSU", "CUP_I_GUE_Soldier_MG", "CUP_I_TK_GUE_Soldier_AT", "CUP_I_GUE_Soldier_AR", "CUP_I_TK_GUE_Soldier_AT"};
+        infantry[] = {"CUP_I_GUE_Officer", "CUP_I_GUE_Soldier_AR", "UP_I_GUE_Soldier_AKM", "CUP_I_GUE_Soldier_AKS74", "CUP_I_GUE_Soldier_AKSU", "CUP_I_GUE_Soldier_MG", "CUP_I_GUE_Soldier_AT", "CUP_I_GUE_Soldier_AR", "CUP_I_GUE_Soldier_AT"};
         crewmen[] = {"UP_I_GUE_Soldier_AKM", "CUP_I_GUE_Officer"};
         technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU"};
         armour[] = {"CUP_O_BRDM2_SLA", "CUP_O_BRDM2_SLA", "CUP_I_T34_TK_GUE", "CUP_I_BMP1_TK_GUE", "CUP_O_BMP2_SLA", "CUP_O_T72_SLA"};
