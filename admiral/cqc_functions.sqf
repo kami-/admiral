@@ -59,6 +59,16 @@ adm_cqc_fnc_isPositionInBuilding = {
     _hasRoof && _isValidPos;
 };
 
+adm_cqc_fnc_isPositionOnBuilding = {
+    FUN_ARGS_1(_pos);
+
+    private["_pos", "_posAbove", "_isValidPos"];
+    _posAbove = [_pos select 0, _pos select 1, (_pos select 2) + 30];
+    _isValidPos = !(lineIntersects [ATLtoASL _pos, ATLtoASL _pos]);
+
+    _isValidPos;
+};
+
 adm_cqc_fnc_getMinHeightBuildingPositions = {
     FUN_ARGS_3(_building,_positions,_minHeight);
 
