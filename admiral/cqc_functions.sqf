@@ -56,7 +56,7 @@ adm_cqc_fnc_isPositionInBuilding = {
     _hasRoof = lineIntersects [ATLtoASL _pos, ATLtoASL _posAbove];
     _isValidPos = !(lineIntersects [ATLtoASL _pos, ATLtoASL _pos]);
 
-    _hasRoof && _isValidPos;
+    _isValidPos && {adm_canSpawnOnRoof || _hasRoof};
 };
 
 adm_cqc_fnc_getMinHeightBuildingPositions = {

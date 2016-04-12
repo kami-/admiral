@@ -5,6 +5,7 @@ class Admiral {
     isDebuggingEnabled = true;
     areNVGsEnabled = true;
     isBehaviorEnabled = true;
+    canSpawnOnRoof = false;
 
     sideRelations[] = {
         {"west", "east", "enemy"},
