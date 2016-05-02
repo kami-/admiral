@@ -12,7 +12,7 @@ class ZoneTemplates {
         spotDistance = 0.65;
         spotTime = 0.2;
         courage = 0.4;
-        reloadSpeed = 0.3;
+        reloadSpeed = 1;
         commanding = 0.5;
         general = 0.7;
     };
@@ -30,7 +30,7 @@ class ZoneTemplates {
         spotDistance = 0.65;
         spotTime = 0.2;
         courage = 0.4;
-        reloadSpeed = 0.3;
+        reloadSpeed = 1;
         commanding = 0.5;
         general = 0.7;
     };
@@ -44,7 +44,7 @@ class ZoneTemplates {
         spotDistance = 0.4;
         spotTime = 0.1;
         courage = 0.4;
-        reloadSpeed = 0.1;
+        reloadSpeed = 1;
         commanding = 1;
         general = 1;
     };
