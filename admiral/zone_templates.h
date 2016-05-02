@@ -8,7 +8,6 @@ class ZoneTemplates {
         aimingAccuracy = 0.2;
         aimingShake = 0.2;
         aimingSpeed = 0.65;
-        endurance = 0.5;
         spotDistance = 0.65;
         spotTime = 0.2;
         courage = 0.4;
@@ -26,7 +25,6 @@ class ZoneTemplates {
         aimingAccuracy = 0.2;
         aimingShake = 0.2;
         aimingSpeed = 0.65;
-        endurance = 0.5;
         spotDistance = 0.65;
         spotTime = 0.2;
         courage = 0.4;
@@ -40,7 +38,6 @@ class ZoneTemplates {
         aimingAccuracy = 0.2;
         aimingShake = 0.1;
         aimingSpeed = 1;
-        endurance = 0.5;
         spotDistance = 0.4;
         spotTime = 0.1;
         courage = 0.4;
