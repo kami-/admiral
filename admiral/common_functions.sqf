@@ -100,7 +100,7 @@ adm_common_fnc_assignNVG = {
         };
     } forEach ARMA3_NVGS;
     if (adm_areNVGsEnabled) then {
-        _unit linkItem "ACE_NVG_Gen1";
+        _unit linkItem "NVGoggles_AI";
     };
 };
 
