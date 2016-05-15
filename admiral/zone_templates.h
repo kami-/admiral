@@ -37,7 +37,7 @@ class ZoneTemplates {
         infFireteamSize = 4;
         aimingAccuracy = 0.2;
         aimingShake = 0.1;
-        aimingSpeed = 1;
+        aimingSpeed = 0.7;
         spotDistance = 0.4;
         spotTime = 1;
         courage = 1;
