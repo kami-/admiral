@@ -25,7 +25,8 @@ adm_camp_fnc_spawnCrew = {
         _vehicle,
         _group,
         [_unitTemplate, _unitType] call adm_common_fnc_getUnitTemplateArray,
-        [_zoneTemplate] call adm_common_fnc_getZoneTemplateSkillValues
+        [_zoneTemplate] call adm_common_fnc_getZoneTemplateSkillValues,
+        ["ZoneTemplates", _zoneTemplate, "canSpawnFfvCrew"] call adm_config_fnc_getBool
     ] call adm_common_fnc_spawnCrew;
     DEBUG("admiral.camp.create",FMT_4("Spawned crew '%1' for vehicle '%2', in group '%3' with type '%4'.",_crew,_vehicle,_group,_unitType));
 

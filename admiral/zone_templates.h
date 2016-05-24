@@ -5,6 +5,7 @@ class ZoneTemplates {
         techWaypointAmount = 3;
         armourWaypointAmount = 3;
         waypointBehaviours[] = {"AWARE"};
+        canSpawnFfvCrew = 0;
         aimingAccuracy = 0.2;
         aimingShake = 0.2;
         aimingSpeed = 0.65;
@@ -22,6 +23,7 @@ class ZoneTemplates {
         techWaypointAmount = 3;
         armourWaypointAmount = 3;
         waypointBehaviours[] = {"AWARE", "SAFE"};
+        canSpawnFfvCrew = 0;
         aimingAccuracy = 0.2;
         aimingShake = 0.2;
         aimingSpeed = 0.65;

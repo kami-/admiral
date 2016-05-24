@@ -49,13 +49,17 @@ adm_common_fnc_placeVehicle = {
 };
 
 adm_common_fnc_spawnCrew = {
-    FUN_ARGS_4(_vehicle,_group,_crewClassNames,_skillArray);
+    FUN_ARGS_5(_vehicle,_group,_crewClassNames,_skillArray,_canSpawnFfvCrew);
 
     private ["_driver", "_allTurrets", "_leader"];
     _driver = [getPosATL _vehicle, _group, _crewClassNames, _skillArray] call adm_common_fnc_placeMan;
     _driver assignAsDriver _vehicle;
     _driver moveInDriver _vehicle;
-    _allTurrets = allTurrets [_vehicle, true];
+    _allTurrets = if (_canSpawnFfvCrew) then {
+        allTurrets [_vehicle, true];
+    } else {
+        allTurrets _vehicle;
+    };
     {
         DECLARE(_crewman) = [getPosATL _vehicle, _group, _crewClassNames, _skillArray] call adm_common_fnc_placeMan;
         _crewman assignAsTurret [_vehicle, _x];
@@ -68,7 +72,7 @@ adm_common_fnc_spawnCrew = {
         driver _vehicle;
     };
     _group selectLeader _leader;
-    DEBUG("admiral.common.create",FMT_3("Created crew '%1' for vehicle '%2' in group '%3'.",crew _vehicle,_vehicle,_group));
+    DEBUG("admiral.common.create",FMT_4("Created crew '%1' with FFV '%2' for vehicle '%3' in group '%4'.",crew _vehicle,_canSpawnFfvCrew,_vehicle,_group));
 
     crew _vehicle;
 };
