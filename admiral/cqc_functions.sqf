@@ -28,6 +28,7 @@ adm_cqc_fnc_initMan = {
     _group setCurrentWaypoint _wp;
     _unit setDir (random 360);
     doStop _unit;
+    _unit disableAI "FSM";
     _unit setUnitPos 'UP';
 };
 
