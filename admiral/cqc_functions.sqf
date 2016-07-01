@@ -28,6 +28,7 @@ adm_cqc_fnc_initMan = {
     _group setCurrentWaypoint _wp;
     _unit setDir (random 360);
     doStop _unit;
+    _unit disableAI "FSM";
     _unit setUnitPos 'UP';
 };
 
@@ -56,7 +57,7 @@ adm_cqc_fnc_isPositionInBuilding = {
     _hasRoof = lineIntersects [ATLtoASL _pos, ATLtoASL _posAbove];
     _isValidPos = !(lineIntersects [ATLtoASL _pos, ATLtoASL _pos]);
 
-    _hasRoof && _isValidPos;
+    _isValidPos && {adm_canSpawnOnRoof || _hasRoof};
 };
 
 adm_cqc_fnc_getMinHeightBuildingPositions = {

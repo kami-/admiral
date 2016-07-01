@@ -114,15 +114,15 @@ adm_patrol_fnc_moveUpdateAllGroupWaypoints = {
 
     {
         [_zone, _x, "SoldierWB", ["ZoneTemplates", GET_ZONE_TEMPLATE(_zone), "infWaypointAmount"] call adm_config_fnc_getNumber] call adm_patrol_fnc_moveUpdateGroupWaypoints;
-    } foreach (_zone getVariable ["adm_zone_infGroups", []]);
+    } foreach (GET_ZONE_SPAWNED_GROUPS(_zone) select 0);
 
     {
         [_zone, _x, typeof vehicle leader _x, ["ZoneTemplates", GET_ZONE_TEMPLATE(_zone), "techWaypointAmount"] call adm_config_fnc_getNumber] call adm_patrol_fnc_moveUpdateGroupWaypoints;
-    } foreach (_zone getVariable ["adm_zone_techGroups", []]);
+    } foreach (GET_ZONE_SPAWNED_GROUPS(_zone) select 1);
 
     {
         [_zone, _x, typeof vehicle leader _x, ["ZoneTemplates", GET_ZONE_TEMPLATE(_zone), "armourWaypointAmount"] call adm_config_fnc_getNumber] call adm_patrol_fnc_moveUpdateGroupWaypoints;
-    } foreach (_zone getVariable ["adm_zone_armourGroups", []]);
+    } foreach (GET_ZONE_SPAWNED_GROUPS(_zone) select 2);
 };
 
 adm_patrol_fnc_followUpdateAllGroupWaypoints = {
