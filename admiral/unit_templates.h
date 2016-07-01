@@ -248,7 +248,16 @@ class UnitTemplates {
         technicals[] = {"CUP_B_LR_Special_M2_GB_D", "CUP_B_LR_Special_M2_GB_D", "CUP_B_LR_Special_M2_GB_D", "CUP_B_Jackal2_L2A1_GB_D", "CUP_B_BAF_Coyote_L2A1_D", "CUP_B_Jackal2_GMG_GB_D"};
         armour[] = {"CUP_B_Mastiff_HMG_GB_D", "CUP_B_Mastiff_HMG_GB_D", "CUP_B_FV432_Bulldog_GB_D_RWS", "CUP_B_FV432_Bulldog_GB_D", "CUP_B_FV432_Bulldog_GB_D_RWS", "CUP_B_MCV80_GB_D_SLAT", "CUP_B_MCV80_GB_D", "CUP_B_MCV80_GB_D_SLAT"};
     };
-
+    
+    class CUP_US_ACU {
+        side = "west";
+        camouflage[] = {"desert"};
+        infantry[] = {"CUP_B_US_Soldier_TL", "CUP_B_US_Soldier", "CUP_B_US_Soldier", "CUP_B_US_Soldier_TL", "CUP_B_US_Soldier_MG", "CUP_B_US_Soldier_AR", "CUP_B_US_Soldier_LAT", "CUP_B_US_Soldier_AR", "CUP_B_US_Soldier_LAT"};
+        crewmen[] = {"CUP_B_US_Crew"};
+        technicals[] = {"CUP_B_HMMWV_M2_GPK_USA", "CUP_B_HMMWV_Crows_M2_USA", "CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_MK19_USA"};
+        armour[] = {"CUP_B_M2Bradley_USA_D", "CUP_B_M2Bradley_USA_D", "CUP_B_M1A1_DES_US_Army","CUP_B_M1126_ICV_M2_Desert","CUP_B_M1126_ICV_M2_Desert","CUP_B_M1126_ICV_MK19_Desert"};
+    };
+    
     class FIA_GUER {
         side = "west";
         camouflage[] = {"woodland", "desert"};
