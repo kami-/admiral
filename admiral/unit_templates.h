@@ -19,6 +19,7 @@ class UnitTemplates {
 
     class MNP_USMC_WD {
         side = "west";
+        camouflage[] = {"woodland"};
         infantry[] = {"MNP_USMC_Soldier_O", "MNP_USMC_Soldier_AR", "MNP_USMC_Soldier_F", "MNP_USMC_Soldier_AT", "MNP_USMC_Soldier_MG", "MNP_USMC_Soldier_DIAR", "MNP_USMC_Soldier_AT", "MNP_USMC_Soldier_DIAR", "MNP_USMC_Soldier_AT"};
         crewmen[] = {"MNP_USMC_Soldier_F", "MNP_USMC_Soldier_O"};
         technicals[] = {"CUP_B_HMMWV_M1114_USMC", "CUP_B_HMMWV_M1114_USMC", "CUP_B_HMMWV_M2_USMC", "CUP_B_HMMWV_M2_USMC", "CUP_B_HMMWV_MK19_USMC"};
@@ -63,6 +64,7 @@ class UnitTemplates {
 
     class MNP_US_WD {
         side = "west";
+        camouflage[] = {"woodland"};
         infantry[] = {"MNP_Wood_Soldier_O", "MNP_M81_Soldier_AR", "MNP_Wood_Soldier_F", "MNP_M81_Soldier_AT", "MNP_M81_Soldier_MG", "MNP_M81_Soldier_AR", "MNP_M81_Soldier_AT", "MNP_M81_Soldier_AR", "MNP_M81_Soldier_AT"};
         crewmen[] = {"MNP_M81_Soldier_F", "MNP_M81_Soldier_O"};
         technicals[] = {"CUP_B_HMMWV_M1114_USMC", "CUP_B_HMMWV_M1114_USMC", "CUP_B_HMMWV_M2_USMC", "CUP_B_HMMWV_M2_USMC", "CUP_B_HMMWV_MK19_USMC"};
