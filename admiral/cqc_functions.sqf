@@ -27,7 +27,7 @@ adm_cqc_fnc_initMan = {
     DECLARE(_wp) = [_group, [getPosATL _unit, 0], 'GUARD', 'AWARE', 'RED'] call adm_common_fnc_createWaypoint;
     _group setCurrentWaypoint _wp;
     _unit setDir (random 360);
-    doStop _unit;
+    _unit disableAI "PATH";
     _unit disableAI "FSM";
     _unit setUnitPos 'UP';
 };
