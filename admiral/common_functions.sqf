@@ -19,6 +19,7 @@ adm_common_fnc_placeMan = {
         _className = _classNameData;
     };
     _unit = _group createUnit [_className, _position, [], 0, "NONE"];
+    [_unit] joinSilent _group;
     _unit setVariable ["adm_classNameArguments", _classNameArguments, false];
     DEBUG("admiral.common.create",FMT_5("Created unit '%1' at position '%2', in group '%3' with classname '%4' and classNameArguments '%5'.",_unit,_position,_group,_className,_classNameArguments));
     [_unit, _skillArray] call adm_common_fnc_initUnit;
