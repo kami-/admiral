@@ -17,6 +17,15 @@ class UnitTemplates {
         armour[] = {"B_APC_Wheeled_01_cannon_F", "B_MBT_01_TUSK_F"};
     };
 
+    class NATO_JUNGLE {
+        side = "west";
+        camouflage[] = {"woodland"};
+        infantry[] = {"B_T_Soldier_SL_F", "B_T_Soldier_AR_F", "B_T_Soldier_F", "B_T_soldier_AT_F", "B_T_Soldier_TL_F", "B_T_Soldier_AR_F", "B_T_soldier_AT_F", "B_T_Soldier_AR_F", "B_T_soldier_AT_F"};
+        crewmen[] = {"B_T_Crew_F", "B_T_Engineer_F"};
+        technicals[] = {"B_T_LSV_01_armed_F"};
+        armour[] = {"B_T_APC_Wheeled_01_cannon_F", "B_T_MBT_01_TUSK_F"};
+    };
+
     class MNP_USMC_WD {
         side = "west";
         camouflage[] = {"woodland"};
@@ -271,7 +280,7 @@ class UnitTemplates {
 
     class CSAT_WOODLAND {
         side = "east";
-        camouflage[] = {"desert"};
+        camouflage[] = {"woodland", "desert"};
         infantry[] = {"O_Soldier_SL_F", "O_Soldier_AR_F", "O_Soldier_lite_F", "O_Soldier_RPG18", "O_support_MG_F", "O_Soldier_AR_F", "O_Soldier_RPG18", "O_Soldier_AR_F", "O_Soldier_LAT_F"};
         crewmen[] = {"O_crew_F", "O_engineer_F"};
         technicals[] = {"O_MRAP_02_hmg_F"};
@@ -280,11 +289,20 @@ class UnitTemplates {
 
     class CSAT_URBAN {
         side = "east";
-        camouflage[] = {"desert"};
+        camouflage[] = {"woodland", "desert"};
         infantry[] = {"O_soldierU_SL_F", "O_soldierU_AR_F", "O_soldierU_F", "O_soldierU_LAT_F", "O_soldierU_M_F", "O_soldierU_AR_F", "O_soldierU_LAT_F", "O_soldierU_AR_F", "O_soldierU_LAT_F"};
         crewmen[] = {"O_soldierU_F", "O_engineer_U_F"};
         technicals[] = {"O_MRAP_02_hmg_F"};
         armour[] = {"O_APC_Tracked_02_cannon_F", "O_MBT_02_cannon_F"};
+    };
+
+    class CSAT_JUNGLE {
+        side = "east";
+        camouflage[] = {"woodland"};
+        infantry[] = {"O_T_Soldier_SL_F", "O_T_Soldier_AR_F", "O_T_Soldier_TL_F", "O_T_Soldier_LAT_F", "O_T_Support_MG_F", "O_T_Soldier_AR_F", "O_T_Soldier_LAT_F", "O_T_Soldier_AR_F", "O_T_Soldier_LAT_F"};
+        crewmen[] = {"O_T_Crew_F", "O_T_Engineer_F"};
+        technicals[] = {"O_T_LSV_02_armed_F"};
+        armour[] = {"O_T_APC_Tracked_02_cannon_ghex_F", "O_T_MBT_02_cannon_ghex_F"};
     };
 
     class MNP_OPF_F_SN {
