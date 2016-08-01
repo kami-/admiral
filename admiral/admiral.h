@@ -6,7 +6,7 @@ class Admiral {
     areNVGsEnabled = true;
     isBehaviorEnabled = true;
     canSpawnOnRoof = false;
-    canCrewEject = false;
+    allowCrewInImmobile = false;
 
     sideRelations[] = {
         {"west", "east", "enemy"},
