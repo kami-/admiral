@@ -19,6 +19,15 @@ adm_common_fnc_placeMan = {
         _className = _classNameData;
     };
     _unit = _group createUnit [_className, _position, [], 0, "NONE"];
+    if (isNull _unit) exitWith {
+        private _errorMessage = format ["Failed to create unit '%1' at position '%2', in group '%3' with classname '%4' and classNameArguments '%5'!",_unit,_position,_group,_className,_classNameArguments];
+        ERROR("admiral.common.create",_errorMessage);
+        if (hasInterface) then {
+            player globalChat ("Admiral: " + _errorMessage);
+        };
+
+        _unit;
+    };
     [_unit] joinSilent _group;
     _unit setVariable ["adm_classNameArguments", _classNameArguments, false];
     DEBUG("admiral.common.create",FMT_5("Created unit '%1' at position '%2', in group '%3' with classname '%4' and classNameArguments '%5'.",_unit,_position,_group,_className,_classNameArguments));
@@ -44,6 +53,7 @@ adm_common_fnc_placeVehicle = {
     _vehiclePosition = [_area, _position, _className] call adm_common_fnc_getRandomEmptyPositionInArea;
     _vehicle = createVehicle [_className, _vehiclePosition, [], 0, "NONE"];
     _vehicle setVariable ["adm_classNameArguments", _classNameArguments, false];
+    _vehicle allowCrewInImmobile adm_allowCrewInImmobile;
     DEBUG("admiral.common.create",FMT_4("Created vehicle '%1' at position '%2', with classname '%3' and '%4'.",_vehicle,_vehiclePosition,_className,_classNameArguments));
 
     _vehicle;
