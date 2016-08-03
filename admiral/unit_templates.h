@@ -26,6 +26,15 @@ class UnitTemplates {
         armour[] = {"B_T_APC_Wheeled_01_cannon_F", "B_T_MBT_01_TUSK_F", "B_APC_Tracked_01_rcws_F"};
     };
 
+    class CTRG_JUNGLE {
+        side = "west";
+        camouflage[] = {"woodland"};
+        infantry[] = {"B_CTRG_Soldier_JTAC_tna_F", "B_CTRG_Soldier_AR_tna_F", "B_CTRG_Soldier_tna_F", "B_CTRG_Soldier_tna_F", "B_CTRG_Soldier_tna_F", "B_CTRG_Soldier_AR_tna_F", "B_CTRG_Soldier_LAT_tna_F", "B_CTRG_Soldier_AR_tna_F", "B_CTRG_Soldier_LAT_tna_F"};
+        crewmen[] = {"B_CTRG_Soldier_tna_F"};
+        technicals[] = {"B_T_LSV_01_armed_F"};
+        armour[] = {"B_T_APC_Wheeled_01_cannon_F", "B_T_MBT_01_TUSK_F", "B_APC_Tracked_01_rcws_F"};
+    };
+
     class MNP_USMC_WD {
         side = "west";
         camouflage[] = {"woodland"};
@@ -752,6 +761,24 @@ class UnitTemplates {
         infantry[] = {"CUP_I_GUE_Officer", "CUP_I_GUE_Soldier_AR", "CUP_I_GUE_Soldier_AKM", "CUP_I_GUE_Soldier_AKS74", "CUP_I_GUE_Soldier_AKSU", "CUP_I_GUE_Soldier_MG", "CUP_I_GUE_Soldier_AT", "CUP_I_GUE_Soldier_AR", "CUP_I_GUE_Soldier_AT"};
         crewmen[] = {"CUP_I_GUE_Soldier_AKM", "CUP_I_GUE_Officer"};
         technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU"};
+        armour[] = {"CUP_O_BRDM2_SLA", "CUP_O_BRDM2_SLA", "CUP_I_T34_TK_GUE", "CUP_I_BMP1_TK_GUE", "CUP_O_BMP2_SLA", "CUP_O_T72_SLA"};
+    };
+
+    class SYND_BANDIT {
+        side = "resistance";
+        camouflage[] = {"woodland", "desert"};
+        infantry[] = {"I_C_Soldier_Bandit_6_F", "I_C_Soldier_Bandit_3_F", "I_C_Soldier_Bandit_4_F", "I_C_Soldier_Bandit_2_F", "I_C_Soldier_Bandit_7_F", "I_C_Soldier_Bandit_3_F", "I_C_Soldier_Bandit_2_F", "I_C_Soldier_Bandit_5_F", "I_C_Soldier_Bandit_2_F"};
+        crewmen[] = {"I_C_Soldier_Bandit_1_F", "I_C_Soldier_Bandit_8_F"};
+        technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU", "B_G_Offroad_01_armed_F", "B_G_Offroad_01_armed_F"};
+        armour[] = {"CUP_O_BRDM2_SLA", "CUP_O_BRDM2_SLA", "CUP_I_T34_TK_GUE", "CUP_I_BMP1_TK_GUE", "CUP_O_BMP2_SLA", "CUP_O_T72_SLA"};
+    };
+
+    class SYND_REBEL {
+        side = "resistance";
+        camouflage[] = {"woodland"};
+        infantry[] = {"I_C_Soldier_Para_6_F", "I_C_Soldier_Para_4_F", "I_C_Soldier_Para_4_F", "I_C_Soldier_Para_4_F", "I_C_Soldier_Para_4_F", "I_C_Soldier_Para_4_F", "I_C_Soldier_Para_7_F", "I_C_Soldier_Para_2_F", "I_C_Soldier_Para_2_F"};
+        crewmen[] = {"I_C_Soldier_Para_2_F", "I_C_Soldier_Para_2_F"};
+        technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU", "B_G_Offroad_01_armed_F", "B_G_Offroad_01_armed_F"};
         armour[] = {"CUP_O_BRDM2_SLA", "CUP_O_BRDM2_SLA", "CUP_I_T34_TK_GUE", "CUP_I_BMP1_TK_GUE", "CUP_O_BMP2_SLA", "CUP_O_T72_SLA"};
     };
 
