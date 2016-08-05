@@ -122,7 +122,7 @@ class UnitTemplates {
         infantry[] = {"MNP_TS_Soldier_O", "MNP_TS_Soldier_F", "MNP_TS_Soldier_F", "MNP_TS_Soldier_AT", "MNP_TS_Soldier_MG", "MNP_TS_Soldier_AR", "MNP_TS_Soldier_AT", "MNP_TS_Soldier_AR", "MNP_TS_Soldier_AT"};
         crewmen[] = {"MNP_TS_Soldier_F", "MNP_TS_Soldier_O"};
         technicals[] = {"CUP_B_HMMWV_M1114_USMC", "CUP_B_HMMWV_M1114_USMC", "CUP_B_HMMWV_M2_USMC", "CUP_B_HMMWV_M2_USMC", "CUP_B_HMMWV_MK19_USMC", "CUP_B_RG31_M2_OD_USMC", "CUP_B_RG31_Mk19_OD_USMC"};
-        armour[] = {"CUP_B_M113_USA", "CUP_B_M2A3Bradley_USA_W", "CUP_B_M2Bradley_USA_W", "CUP_B_M1A1_Woodland_US_Army"};
+        armour[] = {"CUP_B_M1126_ICV_M2_Woodland_Slat", "CUP_B_M1126_ICV_M2_Woodland_Slat", "CUP_B_M1126_ICV_MK19_Woodland_Slat", "CUP_B_M1128_MGS_Woodland_Slat", "CUP_B_M2A3Bradley_USA_W", "CUP_B_M2A3Bradley_USA_W", "CUP_B_M1A2_TUSK_MG_US_Army"};
     };
 
     class MNP_US_MC {
@@ -131,7 +131,7 @@ class UnitTemplates {
         infantry[] = {"MNP_DS_Soldier_O", "MNP_DS_Soldier_F", "MNP_DS_Soldier_F", "MNP_DS_Soldier_F", "MNP_DS_Soldier_AT", "MNP_DS_Soldier_MG", "MNP_DS_Soldier_AR", "MNP_DS_Soldier_AT", "MNP_DS_Soldier_AR", "MNP_DS_Soldier_AT"};
         crewmen[] = {"MNP_DS_Soldier_F", "MNP_DS_Soldier_O"};
         technicals[] = {"CUP_B_HMMWV_M2_GPK_USA", "CUP_B_HMMWV_Crows_M2_USA", "CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_MK19_USA", "CUP_B_RG31E_M2_USMC", "CUP_B_RG31_M2_USMC", "CUP_B_RG31_Mk19_USMC"};
-        armour[] = {"CUP_B_M1126_ICV_M2_Woodland_Slat", "CUP_B_M1126_ICV_M2_Woodland_Slat", "CUP_B_M1126_ICV_MK19_Woodland_Slat", "CUP_B_M1128_MGS_Woodland_Slat", "CUP_B_M2A3Bradley_USA_W", "CUP_B_M2A3Bradley_USA_W", "CUP_B_M1A2_TUSK_MG_US_Army"};
+        armour[] = {"CUP_B_M1126_ICV_M2_Desert_Slat", "CUP_B_M1126_ICV_M2_Desert_Slat", "CUP_B_M1126_ICV_MK19_Desert_Slat", "CUP_B_M1128_MGS_Desert_Slat", "CUP_B_M2A3Bradley_USA_D", "CUP_B_M2A3Bradley_USA_D", "CUP_B_M1A2_TUSK_MG_DES_US_Army"};
     };
 
     class MNP_GE_WD {
