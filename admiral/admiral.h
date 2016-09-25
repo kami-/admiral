@@ -2,7 +2,7 @@
 
 class Admiral {
     isEnabled = 0;
-    isDebuggingEnabled = true;
+    isDebuggingEnabled = true; // Always disabled on dedicated server
     areNVGsEnabled = true;
     isBehaviorEnabled = true;
     canSpawnOnRoof = true;
