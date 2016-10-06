@@ -602,15 +602,6 @@ class UnitTemplates {
         armour[] = {"I_APC_tracked_03_cannon_F", "I_MBT_03_cannon_F", "I_APC_Wheeled_03_cannon_F", "CUP_I_M113_AAF", "CUP_I_M113_AAF"};
     };
 
-    class AAF_DESERT {
-        side = "resistance";
-        camouflage[] = {"desert"};
-        infantry[] = {"AAF_D_Soldier_SL_F", "AAF_D_Soldier_AR_F", "AAF_D_Soldier_lite_F", "AAF_D_Soldier_AT4", "AAF_D_Soldier_M_F", "AAF_D_Soldier_AR_F", "AAF_D_Soldier_AT4", "AAF_D_Soldier_AR_F", "AAF_D_Soldier_AT4"};
-        crewmen[] = {"AAF_D_Soldier_crew_F", "AAF_D_Soldier_repair_F"};
-        technicals[] = {"AAF_D_MRAP_03_hmg_F"};
-        armour[] = {"AAF_D_APC_tracked_03_cannon_F", "AAF_D_MBT_03_cannon_F"};
-    };
-
     class MNP_MIL_WD {
         side = "resistance";
         camouflage[] = {"woodland"};
