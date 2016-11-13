@@ -20,7 +20,6 @@ if (adm_isEnabled) then {
     [] call adm_zone_fnc_init; DEBUG("admiral.zone","Init function 'adm_zone_fnc_init' called.");
 
     adm_fnc_compile = {
-        [] call compile preProcessFileLineNumbers ADDON_PATH(id_functions.sqf); DEBUG("admiral.compile","Compiled 'id_functions.sqf'.");
         [] call compile preProcessFileLineNumbers ADDON_PATH(settings_functions.sqf); DEBUG("admiral.compile","Compiled 'settings_functions.sqf'.");
         [] call compile preProcessFileLineNumbers ADDON_PATH(common_functions.sqf); DEBUG("admiral.compile","Compiled 'common_functions.sqf'.");
         [] call compile preProcessFileLineNumbers ADDON_PATH(debug_functions.sqf); DEBUG("admiral.compile","Compiled 'debug_functions.sqf'.");

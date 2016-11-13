@@ -36,10 +36,10 @@ adm_api_fnc_isHcPresent = {
 };
 
 /*
- * Returns the player name of HC.
+ * Returns the player object of HC. 'objNull' if there is no HC.
  */
-adm_api_fnc_getHcName = {
-    [] call adm_hc_fnc_getHcName;
+adm_api_fnc_getHcUnit = {
+    [] call adm_hc_fnc_getHcUnit;
 };
 
 /*
