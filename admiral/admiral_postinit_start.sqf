@@ -16,8 +16,8 @@ if (adm_isBehaviorEnabled) then {
     [] call adm_behavior_fnc_init; DEBUG("admiral.behavior","Init function 'adm_behavior_fnc_init' called.");
 };
 
-// Makes no sense to run it on dedicated
-if (isDedicated) then {
+// Makes no sense to run it on dedicated or without an interface
+if (isDedicated || {!hasInterface}) then {
     adm_isDebuggingEnabled = false;
 };
 if (adm_isDebuggingEnabled) then {
