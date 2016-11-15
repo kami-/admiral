@@ -10,7 +10,7 @@ adm_hc_fnc_startAdmiral = {
         if (isServer) then {
             INFO("admiral.hc",FMT_1("Admiral version '%1' started successfully on server!",STR_ADMIRAL_VERSION));
         } else {
-            INFO("admiral.hc",FMT_2("Admiral version '%1' started successfully on player '%1' as Headless Client!",STR_ADMIRAL_VERSION,adm_hc_unit));
+            INFO("admiral.hc",FMT_2("Admiral version '%1' started successfully on player '%2' as Headless Client!",STR_ADMIRAL_VERSION,adm_hc_unit));
         };
     }] call adm_hc_fnc_executeIfAdmiralMachine;
 };
@@ -48,8 +48,8 @@ adm_hc_fnc_isAdmiralMachine = {
 };
 
 adm_hc_fnc_init = {
-    sleep 5;
     if (isServer && {[] call adm_hc_fnc_isHcPresent}) then {
+        sleep 60;
         [] call adm_fnc_compile;
     };
     [] call adm_hc_fnc_startAdmiral;
