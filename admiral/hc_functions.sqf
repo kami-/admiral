@@ -47,10 +47,25 @@ adm_hc_fnc_isAdmiralMachine = {
     [] call adm_hc_fnc_isHc || {!([] call adm_hc_fnc_isHcPresent) && {isServer}};
 };
 
+adm_hc_transferNonPlayableGroupsToHc = {
+    private _hcOwner = owner (call adm_hc_fnc_getHcUnit);
+    {
+        private _group = _x;
+        private _isPlayable = count (units _group select { _x in playableUnits }) > 0;
+        if (!_isPlayable && {local _group}) then {
+            _group setGroupOwner _hcOwner;
+        };
+    } foreach allGroups;
+};
+
 adm_hc_fnc_init = {
+    sleep 5;
     if (isServer && {[] call adm_hc_fnc_isHcPresent}) then {
-        sleep 60;
         [] call adm_fnc_compile;
+        private _canTransfer = ["transferNonPlayableGroupsToHc"] call adm_config_fnc_getBool;
+        if (_canTransfer) then {
+            [] call adm_hc_transferNonPlayableGroupsToHc;
+        };
     };
     [] call adm_hc_fnc_startAdmiral;
 };
