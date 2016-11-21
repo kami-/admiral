@@ -4,25 +4,6 @@
 #include "logbook.h"
 
 
-adm_hc_fnc_startAdmiral = {
-    [[], {
-        [] call compile preProcessFileLineNumbers ADDON_PATH(admiral_postinit_start.sqf);
-        if (isServer) then {
-            INFO("admiral.hc",FMT_1("Admiral version '%1' started successfully on server!",STR_ADMIRAL_VERSION));
-        } else {
-            INFO("admiral.hc",FMT_2("Admiral version '%1' started successfully on player '%2' as Headless Client!",STR_ADMIRAL_VERSION,adm_hc_unit));
-        };
-    }] call adm_hc_fnc_executeIfAdmiralMachine;
-};
-
-adm_hc_fnc_executeIfAdmiralMachine = {
-    FUN_ARGS_2(_arguments,_code);
-
-    if ([] call adm_hc_fnc_isAdmiralMachine) then {
-        _arguments call _code;
-    };
-};
-
 adm_hc_fnc_executeIfHc = {
     FUN_ARGS_2(_arguments,_code);
 
@@ -43,29 +24,61 @@ adm_hc_fnc_isHc = {
     [] call adm_hc_fnc_isHcPresent && {player == [] call adm_hc_fnc_getHcUnit};
 };
 
-adm_hc_fnc_isAdmiralMachine = {
-    [] call adm_hc_fnc_isHc || {!([] call adm_hc_fnc_isHcPresent) && {isServer}};
+adm_hc_transferNonPlayableGroupToHc = {
+    params ["_group"];
+
+    private _owner = owner (call adm_hc_fnc_getHcUnit);
+    if (_owner == 0) exitWith {};
+    private _isPlayable = count (units _group select { _x in playableUnits }) > 0;
+    if (!_isPlayable && {local _group}) then {
+        _group setGroupOwner _owner;
+    };
 };
 
 adm_hc_transferNonPlayableGroupsToHc = {
-    private _hcOwner = owner (call adm_hc_fnc_getHcUnit);
     {
-        private _group = _x;
-        private _isPlayable = count (units _group select { _x in playableUnits }) > 0;
-        if (!_isPlayable && {local _group}) then {
-            _group setGroupOwner _hcOwner;
-        };
+        [_x] call adm_hc_transferNonPlayableGroupToHc;
     } foreach allGroups;
 };
 
+adm_hc_initAdmiralGroupTransfer = {
+    ["cqc.spawned.groups", {
+        params ["_spawnedGroups"];
+
+        { [_x] call adm_hc_transferNonPlayableGroupToHc } foreach _spawnedGroups;
+        [_spawnedGroups, {
+            adm_cqc_groups append _this;
+        }] remoteExec ["bis_fnc_call", owner (call adm_hc_fnc_getHcUnit)];
+    }] call adm_event_fnc_addEventHandler;
+
+    ["patrol.spawned.groups", {
+        params ["_zoneInfGroups", "_zoneTechGroups", "_zoneArmourGroups"];
+
+        { [_x] call adm_hc_transferNonPlayableGroupToHc } foreach _zoneInfGroups;
+        { [_x] call adm_hc_transferNonPlayableGroupToHc } foreach _zoneTechGroups;
+        { [_x] call adm_hc_transferNonPlayableGroupToHc } foreach _zoneArmourGroups;
+    }] call adm_event_fnc_addEventHandler;
+
+    ["camp.spawned.groups", {
+        params ["_zoneInfGroups", "_zoneTechGroups", "_zoneArmourGroups"];
+
+        { [_x] call adm_hc_transferNonPlayableGroupToHc } foreach _zoneInfGroups;
+        { [_x] call adm_hc_transferNonPlayableGroupToHc } foreach _zoneTechGroups;
+        { [_x] call adm_hc_transferNonPlayableGroupToHc } foreach _zoneArmourGroups;
+    }] call adm_event_fnc_addEventHandler;
+};
+
 adm_hc_fnc_init = {
-    sleep 5;
-    if (isServer && {[] call adm_hc_fnc_isHcPresent}) then {
-        [] call adm_fnc_compile;
-        private _canTransfer = ["transferNonPlayableGroupsToHc"] call adm_config_fnc_getBool;
-        if (_canTransfer) then {
+    if (isServer) then {
+        if (call adm_hc_fnc_isHcPresent) then {
             [] call adm_hc_transferNonPlayableGroupsToHc;
+            [] call adm_hc_initAdmiralGroupTransfer;
         };
+        [] call compile preProcessFileLineNumbers ADDON_PATH(admiral_postinit_server.sqf);
+        INFO("admiral.hc",FMT_1("Admiral version '%1' started successfully on server!",STR_ADMIRAL_VERSION));
     };
-    [] call adm_hc_fnc_startAdmiral;
+    if ([] call adm_hc_fnc_isHc) then {
+        [] call compile preProcessFileLineNumbers ADDON_PATH(admiral_postinit_hc.sqf);
+        INFO("admiral.hc",FMT_2("Admiral version '%1' started successfully on player '%2' as Headless Client!",STR_ADMIRAL_VERSION,adm_hc_unit));
+    };
 };

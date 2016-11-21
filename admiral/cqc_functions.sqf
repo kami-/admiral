@@ -212,6 +212,9 @@ adm_cqc_fnc_getForceFireEnemy = {
 adm_cqc_fnc_forceFire = {
     FUN_ARGS_1(_zone);
 
+    if (call adm_hc_fnc_isHcPresent) exitWith {
+        DEBUG("admiral.cqc.forcefire",FMT_1("Headless Client detected. ForceFire has been disabled for CQC Zone '%1'.",GET_ZONE_ID(_zone)));
+    };
     SET_CQC_FORCE_FIRE_RUNNING(_zone,true);
     waitUntil {
         DECLARE(_aliveGroupLeft) = false;
@@ -236,6 +239,30 @@ adm_cqc_fnc_forceFire = {
     };
     SET_CQC_FORCE_FIRE_RUNNING(_zone,false);
     DEBUG("admiral.cqc.forcefire",FMT_1("ForceFire has been disabled for CQC Zone '%1'.",GET_ZONE_ID(_zone)));
+};
+
+adm_cqc_fnc_globalForceFire = {
+    DEBUG("admiral.cqc.forcefire","Starting global force fire loop.");
+    while {true} do {
+        {
+            private _group = _x;
+            if (!isNull _group) then {
+                {
+                    private _unit = _x;
+                    if (alive _unit) then {
+                        private _enemy = [_unit] call adm_cqc_fnc_getForceFireEnemy;
+                        if (count _enemy > 0) then {
+                            _enemy = _enemy select 0;
+                            _unit lookAt _enemy;
+                            _unit doFire _enemy;
+                            TRACE("admiral.cqc.forcefire",FMT_3("CQC unit '%1' in group '%2' has found an enemy '%3' and is being forced to fire at it.",_unit,_group,_enemy));
+                        };
+                    };
+                } foreach units _group;
+            };
+        } foreach adm_cqc_groups;
+        sleep adm_cqc_forceFireDelay;
+    };
 };
 
 adm_cqc_fnc_disableForceFire = {
