@@ -70,8 +70,10 @@ adm_hc_initAdmiralGroupTransfer = {
 
 adm_hc_fnc_init = {
     if (isServer) then {
-        [] call adm_hc_transferNonPlayableGroupsToHc;
-        [] call adm_hc_initAdmiralGroupTransfer;
+        if (call adm_hc_fnc_isHcPresent) then {
+            [] call adm_hc_transferNonPlayableGroupsToHc;
+            [] call adm_hc_initAdmiralGroupTransfer;
+        };
         [] call compile preProcessFileLineNumbers ADDON_PATH(admiral_postinit_server.sqf);
         INFO("admiral.hc",FMT_1("Admiral version '%1' started successfully on server!",STR_ADMIRAL_VERSION));
     };
