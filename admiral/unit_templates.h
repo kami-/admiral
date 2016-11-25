@@ -56,7 +56,7 @@ class UnitTemplates {
     class MNP_USMC_SN {
         side = "west";
         camouflage[] = {"snow"};
-        infantry[] = {"MNP_USMCA_Soldier_O", "MNP_USMCA_Soldier_AR", "MNP_USMCA_Soldier_F", "MNP_USMCA_Soldier_AT", "MNP_USMCA_Soldier_MG", "MNP_USMC_Soldier_DIAR", "MNP_USMCA_Soldier_AT", "MNP_USMC_Soldier_DIAR", "MNP_USMCA_Soldier_AT"};
+        infantry[] = {"MNP_USMCA_Soldier_O", "MNP_USMCA_Soldier_AR", "MNP_USMCA_Soldier_F", "MNP_USMCA_Soldier_AT", "MNP_USMCA_Soldier_MG", "MNP_USMCA_Soldier_AR", "MNP_USMCA_Soldier_AT", "MNP_USMC_Soldier_DIAR", "MNP_USMCA_Soldier_AT"};
         crewmen[] = {"MNP_USMCA_Soldier_F", "MNP_USMCA_Soldier_O"};
         technicals[] = {"CUP_B_HMMWV_M1114_USMC", "CUP_B_HMMWV_M1114_USMC", "CUP_B_HMMWV_M1114_USMC", "CUP_B_HMMWV_M2_USMC", "CUP_B_HMMWV_MK19_USMC", "CUP_B_RG31_M2_OD_USMC", "CUP_B_RG31_Mk19_OD_USMC"};
         armour[] = {"CUP_B_LAV25_USMC", "CUP_B_LAV25_USMC", "CUP_B_AAV_USMC", "CUP_B_M1A1_Woodland_USMC"};
