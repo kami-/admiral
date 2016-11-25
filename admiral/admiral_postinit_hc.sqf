@@ -17,6 +17,4 @@ if (adm_isBehaviorEnabled) then {
 };
 */
 
-adm_isInitialized = true;
-//["admiral.initialized", []] call adm_event_fnc_emitEvent;
 INFO("admiral",FMT_1("Admiral version '%1' has been successfully initialized on HC.",STR_ADMIRAL_VERSION));
