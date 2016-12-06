@@ -2,11 +2,12 @@
 
 class Admiral {
     isEnabled = 0;
-    isDebuggingEnabled = true; // Always disabled on dedicated server
-    areNVGsEnabled = true;
-    isBehaviorEnabled = true;
-    canSpawnOnRoof = true;
-    allowCrewInImmobile = true;
+    isDebuggingEnabled = 1; // Always disabled on dedicated server
+    areNVGsEnabled = 1;
+    isBehaviorEnabled = 1;
+    canSpawnOnRoof = 1;
+    allowCrewInImmobile = 1;
+    transferNonPlayableGroupsToHc = 1; // Non-playable groups are that do not have playable units in them
 
     sideRelations[] = {
         {"west", "east", "enemy"},
@@ -30,7 +31,7 @@ class Admiral {
     class Cqc {
         defaultUnitTemplate = "Base";
         defaultZoneTemplate = "Cqc";
-        forceFireEnabled = true;
+        forceFireEnabled = 1;
         forceFireDelay = 5;
         buildingBlacklist[] = {"Land_dum_mesto2l", "Land_dum_mesto3", "dum_mesto3"};
         buildingCapacity[] = {

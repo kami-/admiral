@@ -7,17 +7,6 @@
 // HC
 
 /**
- * Executes code if the current machine is running Admiral. This can be the HC (if present), or the server (if not).
- * @param _arguments Arguments for the code to be executed
- * @param _code The code to be executed
- */
-adm_api_fnc_executeIfAdmiralMachine = {
-    FUN_ARGS_2(_arguments,_code);
-
-    [_arguments, _code] call adm_hc_fnc_executeIfAdmiralMachine;
-};
-
-/**
  * Executes code if the current machine is HC. If not present, the code is not executed.
  * @param _arguments Arguments for the code to be executed
  * @param _code The code to be executed
@@ -36,10 +25,10 @@ adm_api_fnc_isHcPresent = {
 };
 
 /*
- * Returns the player name of HC.
+ * Returns the player object of HC. 'objNull' if there is no HC.
  */
-adm_api_fnc_getHcName = {
-    [] call adm_hc_fnc_getHcName;
+adm_api_fnc_getHcUnit = {
+    [] call adm_hc_fnc_getHcUnit;
 };
 
 /*
@@ -49,12 +38,6 @@ adm_api_fnc_isHc = {
     [] call adm_hc_fnc_isHc;
 };
 
-/*
- * Returns wheter the current machine is running Admiral.
- */
-adm_api_fnc_isAdmiralMachine = {
-    [] call adm_hc_fnc_isAdmiralMachine;
-};
 
 
 

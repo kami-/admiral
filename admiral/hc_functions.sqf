@@ -4,44 +4,6 @@
 #include "logbook.h"
 
 
-adm_hc_fnc_initDefaultNames = {
-    if (isNil {adm_hc_defaultNames}) then {
-        adm_hc_defaultNames = ["HC", "HeadlessClient"];
-        DEBUG("admiral.hc","'adm_hc_defaultNames' was not defined. HC won't be used.");
-    };
-};
-
-adm_hc_fnc_findHcPlayer = {
-    adm_hc_present = [false, ""];
-    DECLARE(_units) = [];
-    FILTER_PUSH_ALL(_units,playableUnits,{isPlayer _x && {name _x in adm_hc_defaultNames}});
-    if (count _units > 0) then {
-        adm_hc_present = [true, name (_units select 0)]
-        DEBUG("admiral.hc",FMT_2("Found player '%1' with name '%2' in HC list.",_units select 0,adm_hc_present select 0));
-    };
-    publicVariable "adm_hc_present";
-    DEBUG("admiral.hc",FMT_1("Published adm_hc_present='%1'.",adm_hc_present));
-};
-
-adm_hc_fnc_startAdmiral = {
-    [[], {
-        [] call compile preProcessFileLineNumbers ADDON_PATH(admiral_postinit_start.sqf);
-        if (isServer) then {
-            INFO("admiral.hc",FMT_1("Admiral version '%1' started successfully on server!",STR_ADMIRAL_VERSION));
-        } else {
-            INFO("admiral.hc",FMT_2("Admiral version '%1' started successfully on player '%1' as Headless Client!",STR_ADMIRAL_VERSION,adm_hc_present select 1));
-        };
-    }] call adm_hc_fnc_executeIfAdmiralMachine;
-};
-
-adm_hc_fnc_executeIfAdmiralMachine = {
-    FUN_ARGS_2(_arguments,_code);
-
-    if ([] call adm_hc_fnc_isAdmiralMachine) then {
-        _arguments call _code;
-    };
-};
-
 adm_hc_fnc_executeIfHc = {
     FUN_ARGS_2(_arguments,_code);
 
@@ -51,29 +13,72 @@ adm_hc_fnc_executeIfHc = {
 };
 
 adm_hc_fnc_isHcPresent = {
-    adm_hc_present select 0;
+    !isNil {adm_hc_unit} && {!isNull adm_hc_unit} && {isPlayer adm_hc_unit};
 };
 
-adm_hc_fnc_getHcName = {
-    adm_hc_present select 1;
+adm_hc_fnc_getHcUnit = {
+    if (isNil {adm_hc_unit}) then { objNull } else { adm_hc_unit };
 };
 
 adm_hc_fnc_isHc = {
-    adm_hc_present select 0 && {name player == adm_hc_present select 1};
+    [] call adm_hc_fnc_isHcPresent && {player == [] call adm_hc_fnc_getHcUnit};
 };
 
-adm_hc_fnc_isAdmiralMachine = {
-    [] call adm_hc_fnc_isHc || {!([] call adm_hc_fnc_isHcPresent) && {isServer}};
+adm_hc_transferNonPlayableGroupToHc = {
+    params ["_group"];
+
+    private _owner = owner (call adm_hc_fnc_getHcUnit);
+    if (_owner == 0) exitWith {};
+    private _isPlayable = count (units _group select { _x in playableUnits }) > 0;
+    if (!_isPlayable && {local _group}) then {
+        _group setGroupOwner _owner;
+    };
+};
+
+adm_hc_transferNonPlayableGroupsToHc = {
+    {
+        [_x] call adm_hc_transferNonPlayableGroupToHc;
+    } foreach allGroups;
+};
+
+adm_hc_initAdmiralGroupTransfer = {
+    ["cqc.spawned.groups", {
+        params ["_spawnedGroups"];
+
+        { [_x] call adm_hc_transferNonPlayableGroupToHc } foreach _spawnedGroups;
+        [_spawnedGroups, {
+            adm_cqc_groups append _this;
+        }] remoteExec ["bis_fnc_call", owner (call adm_hc_fnc_getHcUnit)];
+    }] call adm_event_fnc_addEventHandler;
+
+    ["patrol.spawned.groups", {
+        params ["_zoneInfGroups", "_zoneTechGroups", "_zoneArmourGroups"];
+
+        { [_x] call adm_hc_transferNonPlayableGroupToHc } foreach _zoneInfGroups;
+        { [_x] call adm_hc_transferNonPlayableGroupToHc } foreach _zoneTechGroups;
+        { [_x] call adm_hc_transferNonPlayableGroupToHc } foreach _zoneArmourGroups;
+    }] call adm_event_fnc_addEventHandler;
+
+    ["camp.spawned.groups", {
+        params ["_zoneInfGroups", "_zoneTechGroups", "_zoneArmourGroups"];
+
+        { [_x] call adm_hc_transferNonPlayableGroupToHc } foreach _zoneInfGroups;
+        { [_x] call adm_hc_transferNonPlayableGroupToHc } foreach _zoneTechGroups;
+        { [_x] call adm_hc_transferNonPlayableGroupToHc } foreach _zoneArmourGroups;
+    }] call adm_event_fnc_addEventHandler;
 };
 
 adm_hc_fnc_init = {
-    [] call adm_hc_fnc_initDefaultNames;
     if (isServer) then {
-        [] call adm_hc_fnc_findHcPlayer;
-        [] call adm_hc_fnc_startAdmiral;
-    } else {
-        "adm_hc_present" addPublicVariableEventHandler {
-            [] call adm_hc_fnc_startAdmiral;
+        if (call adm_hc_fnc_isHcPresent) then {
+            [] call adm_hc_transferNonPlayableGroupsToHc;
+            [] call adm_hc_initAdmiralGroupTransfer;
         };
+        [] call compile preProcessFileLineNumbers ADDON_PATH(admiral_postinit_server.sqf);
+        INFO("admiral.hc",FMT_1("Admiral version '%1' started successfully on server!",STR_ADMIRAL_VERSION));
+    };
+    if ([] call adm_hc_fnc_isHc) then {
+        [] call compile preProcessFileLineNumbers ADDON_PATH(admiral_postinit_hc.sqf);
+        INFO("admiral.hc",FMT_2("Admiral version '%1' started successfully on player '%2' as Headless Client!",STR_ADMIRAL_VERSION,adm_hc_unit));
     };
 };
