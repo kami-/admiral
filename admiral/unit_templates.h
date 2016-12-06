@@ -290,19 +290,19 @@ class UnitTemplates {
     class IF44_GER_WD {
         side = "west";
         camouflage[] = {};
-        infantry[] = {"LIB_GER_ober_lieutenant", "LIB_GER_mgunner", "LIB_GER_soldier_K98", "LIB_GER_AT_grenadier", "LIB_GER_smgunner", "LIB_GER_mgunner", "LIB_GER_AT_grenadier", "LIB_GER_mgunner", "LIB_GER_AT_soldier"};
+        infantry[] = {"LIB_GER_rifleman", "LIB_GER_rifleman", "LIB_GER_rifleman", "LIB_GER_rifleman", "LIB_GER_rifleman", "LIB_GER_mgunner", "LIB_GER_AT_grenadier", "LIB_GER_mgunner", "LIB_GER_AT_soldier", "LIB_GER_smgunner", "LIB_GER_smgunner", "LIB_GER_ober_rifleman", "LIB_GER_ober_rifleman", "LIB_GER_stggunner", "LIB_GER_ober_lieutenant"};
         crewmen[] = {"LIB_GER_tank_officer", "LIB_GER_spg_crew"};
-        technicals[] = {"LIB_Kfz1"};
-        armour[] = {"LIB_StuG_III_G", "LIB_PzKpfwIV_H", "LIB_PzKpfwVI_E"};
+        technicals[] = {"LIB_Kfz1_MG42", "LIB_Kfz1_MG42", "LIB_Kfz1_MG42", "LIB_SdKfz251"};
+        armour[] = {"LIB_StuG_III_G", "LIB_StuG_III_G", "LIB_StuG_III_G", "LIB_PzKpfwIV_H", "LIB_PzKpfwIV_H", "LIB_PzKpfwV", "LIB_PzKpfwVI_E"};
     };
 
     class IF44_GER_SN {
         side = "west";
         camouflage[] = {};
-        infantry[] = {"LIB_GER_ober_lieutenant_w", "LIB_GER_mgunner_w", "LIB_GER_soldier_K98_w", "LIB_GER_AT_grenadier_w", "LIB_GER_smgunner_w", "LIB_GER_mgunner_w", "LIB_GER_AT_grenadier_w", "LIB_GER_mgunner_w", "LIB_GER_AT_soldier_w"};
-        crewmen[] = {"LIB_GER_tank_officer_w", "LIB_GER_Spg_crew_w"};
-        technicals[] = {"LIB_Kfz1_w"};
-        armour[] = {"LIB_StuG_III_G_w", "LIB_PzKpfwIV_H_w", "LIB_PzKpfwVI_E_w"};
+        infantry[] = {"LIB_GER_rifleman_w", "LIB_GER_rifleman_w", "LIB_GER_rifleman_w", "LIB_GER_rifleman_w", "LIB_GER_rifleman_w", "LIB_GER_mgunner_w", "LIB_GER_AT_grenadier_w", "LIB_GER_mgunner_w", "LIB_GER_AT_soldier_w", "LIB_GER_smgunner_w", "LIB_GER_smgunner_w", "LIB_GER_ober_rifleman_w", "LIB_GER_ober_rifleman_w", "LIB_GER_stggunner_w", "LIB_GER_ober_lieutenant_w"};
+        crewmen[] = {"LIB_GER_tank_officer", "LIB_GER_spg_crew"};
+        technicals[] = {"LIB_Kfz1_MG42", "LIB_Kfz1_MG42", "LIB_Kfz1_MG42", "LIB_SdKfz251"};
+        armour[] = {"LIB_StuG_III_G_w", "LIB_StuG_III_G_w", "LIB_StuG_III_G_w", "LIB_PzKpfwIV_H_w", "LIB_PzKpfwIV_H_w", "LIB_PzKpfwV_w", "LIB_PzKpfwVI_E_w"};
     };
 
     class CSAT_WOODLAND {
@@ -614,19 +614,19 @@ class UnitTemplates {
     class IF44_USSR_WD {
         side = "east";
         camouflage[] = {};
-        infantry[] = {"LIB_SOV_first_lieutenant", "LIB_SOV_mgunner", "LIB_SOV_rifleman", "LIB_SOV_AT_grenadier", "LIB_SOV_smgunner", "LIB_SOV_mgunner", "LIB_SOV_AT_grenadier", "LIB_SOV_mgunner", "LIB_SOV_AT_soldier"};
+        infantry[] = {"LIB_SOV_first_lieutenant", "LIB_SOV_mgunner", "LIB_SOV_rifleman", "LIB_SOV_AT_grenadier", "LIB_SOV_smgunner", "LIB_SOV_mgunner", "LIB_SOV_rifleman", "LIB_SOV_rifleman", "LIB_SOV_rifleman", "LIB_SOV_rifleman"};
         crewmen[] = {"LIB_SOV_tank_crew", "LIB_SOV_tank_sergeant"};
-        technicals[] = {"LIB_Scout_M3_FFV", "LIB_Willys_MB"};
-        armour[] = {"LIB_SU85", "LIB_T34_76", "LIB_JS2_43"};
+        technicals[] = {"LIB_Scout_M3_FFV", "LIB_SOV_M3_Halftrack"};
+        armour[] = {"LIB_SU85", "LIB_T34_76", "LIB_T34_76", "LIB_T34_76", "LIB_T34_85", "LIB_T34_85", "LIB_T34_85", "LIB_M4A2_SOV", "LIB_M4A2_SOV", "LIB_JS2_43"};
     };
 
     class IF44_USSR_SN {
         side = "east";
         camouflage[] = {};
         infantry[] = {"LIB_SOV_first_lieutenant_w", "LIB_SOV_mgunner_w", "LIB_SOV_rifleman_w", "LIB_SOV_AT_grenadier_w", "LIB_SOV_smgunner_w", "LIB_SOV_mgunner_w", "LIB_SOV_AT_grenadier_w", "LIB_SOV_mgunner_w", "LIB_SOV_AT_soldier_w"};
-        crewmen[] = {"LIB_SOV_tank_crew_w", "LIB_SOV_tank_sergeant_w"};
-        technicals[] = {"LIB_Scout_M3_FFV_w", "LIB_Willys_MB_w"};
-        armour[] = {"LIB_SU85_w", "LIB_T34_76_w", "LIB_JS2_43_w"};
+        crewmen[] = {"LIB_SOV_tank_crew", "LIB_SOV_tank_sergeant"};
+        technicals[] = {"LIB_Scout_M3_FFV", "LIB_SOV_M3_Halftrack"};
+        armour[] = {"LIB_SU85_w", "LIB_T34_76_w", "LIB_T34_76_w", "LIB_T34_76_w", "LIB_T34_85_w", "LIB_T34_85_w", "LIB_T34_85_w", "LIB_M4A2_SOV_w", "LIB_M4A2_SOV_w", "LIB_JS2_43_w"};
     };
 
     class AAF_WOODLAND {
@@ -812,18 +812,28 @@ class UnitTemplates {
     class IF44_USA_WD {
         side = "resistance";
         camouflage[] = {};
-        infantry[] = {"LIB_US_first_lieutenant", "LIB_US_mgunner", "LIB_US_rifleman", "LIB_US_grenadier", "LIB_US_smgunner", "LIB_US_mgunner", "LIB_US_grenadier", "LIB_US_mgunner", "LIB_US_AT_soldier"};
+        infantry[] = {"LIB_US_first_lieutenant", "LIB_US_mgunner", "LIB_US_rifleman", "LIB_US_grenadier", "LIB_US_smgunner", "LIB_US_mgunner", "LIB_US_grenadier", "LIB_US_mgunner", "LIB_US_AT_soldier", "LIB_US_rifleman", "LIB_US_rifleman", "LIB_US_rifleman", "LIB_US_FC_rifleman", "LIB_US_FC_rifleman"};
         crewmen[] = {"LIB_US_tank_crew", "LIB_US_tank_sergeant"};
-        technicals[] = {"LIB_US_Willys_MB", "LIB_US_M3_Halftrack"};
-        armour[] = {"LIB_M4A3_75", "LIB_US_Scout_M3_FFV"};
+        technicals[] = {"LIB_US_Scout_M3_FFV", "LIB_US_M3_Halftrack"};
+        armour[] = {"LIB_M4A3_75"};
     };
 
     class IF44_USA_SN {
         side = "resistance";
         camouflage[] = {};
-        infantry[] = {"LIB_US_first_lieutenant_w", "LIB_US_mgunner_w", "LIB_US_rifleman_w", "LIB_US_grenadier_w", "LIB_US_smgunner_w", "LIB_US_mgunner_w", "LIB_US_grenadier_w", "LIB_US_mgunner_w", "LIB_US_AT_soldier_w"};
-        crewmen[] = {"LIB_US_tank_crew_w", "LIB_US_tank_sergeant_w"};
-        technicals[] = {"LIB_US_Willys_MB_w", "LIB_US_M3_Halftrack_w"};
-        armour[] = {"LIB_M4A3_75_w", "LIB_US_Scout_M3_FFV_w"};
+        infantry[] = {"LIB_US_first_lieutenant_w", "LIB_US_mgunner_w", "LIB_US_rifleman_w", "LIB_US_grenadier_w", "LIB_US_smgunner_w", "LIB_US_mgunner_w", "LIB_US_grenadier_w", "LIB_US_mgunner_w", "LIB_US_AT_soldier_w", "LIB_US_rifleman_w", "LIB_US_rifleman_w", "LIB_US_rifleman_w", "LIB_US_FC_rifleman_w", "LIB_US_FC_rifleman_w"};
+        crewmen[] = {"LIB_US_tank_crew", "LIB_US_tank_sergeant"};
+        technicals[] = {"LIB_US_Scout_M3_FFV", "LIB_US_M3_Halftrack"};
+        armour[] = {"LIB_M4A3_75"};
     };
+
+    class IF44_POL_WD {
+        side = "resistance";
+        camouflage[] = {};
+        infantry[] = {"LIB_WP_Strzelec", "LIB_WP_Strzelec", "LIB_WP_Strzelec", "LIB_WP_Strzelec", "LIB_WP_Strzelec", "LIB_WP_Strzelec", "LIB_WP_Sierzant", "LIB_WP_Sierzant", "LIB_WP_AT_grenadier", "LIB_WP_AT_grenadier", "LIB_WP_Mgunner", "LIB_WP_Stggunner", "LIB_WP_Starszy_strzelec", "LIB_WP_Starszy_strzelec"};
+        crewmen[] = {"LIB_WP_Strzelec", "LIB_WP_Strzelec"};
+        technicals[] = {"LIB_Kfz1_MG42"};
+        armour[] = {"LIB_StuG_III_G"};
+    };
+
 };
