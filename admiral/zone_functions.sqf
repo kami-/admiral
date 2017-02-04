@@ -4,10 +4,6 @@
 #include "\userconfig\admiral\log\zone.h"
 #include "logbook.h"
 
-adm_zone_initZoneFromModule = {
-    diag_log str ["adm_zone_initZoneFromModule", _this];
-};
-
 adm_zone_fnc_init = {
     adm_zones = [];
     adm_uninitializedZones = [];
@@ -122,8 +118,11 @@ adm_zone_fnc_getZoneById = {
 };
 
 adm_zone_initZoneFromModule = {
-    FUN_ARGS_2(_module,_configFunc);
+    FUN_ARGS_3(_module,_activated,_configFunc);
 
+    if (!_activated) exitWith {
+        DEBUG("admiral.module.init",FMT_1("NOT initializing zone from module '%1', it was deactivated.",_module));
+    };
     private ["_moduleConfigs", "_defaultConfigs", "_triggers"];
     _moduleConfigs = [_module] call _configFunc;
     _defaultConfigs = [_module] call adm_zone_getModuleDefaultConfigs;
@@ -148,33 +147,33 @@ adm_zone_initZoneFromModule = {
 };
 
 adm_zone_initCqcZoneFromModule = {
-    FUN_ARGS_1(_module);
+    FUN_ARGS_3(_module,_ignored,_activated);
 
-    [_module, adm_zone_getCqcModuleConfigs] call adm_zone_initZoneFromModule;
+    [_module, _activated, adm_zone_getCqcModuleConfigs] call adm_zone_initZoneFromModule;
 };
 
 adm_zone_initPatrolZoneFromModule = {
-    FUN_ARGS_1(_module);
+    FUN_ARGS_3(_module,_ignored,_activated);
 
-    [_module, adm_zone_getPatrolModuleConfigs] call adm_zone_initZoneFromModule;
+    [_module, _activated, adm_zone_getPatrolModuleConfigs] call adm_zone_initZoneFromModule;
 };
 
 adm_zone_initPeriodicCampZoneFromModule = {
-    FUN_ARGS_1(_module);
+    FUN_ARGS_3(_module,_ignored,_activated);
 
-    [_module, adm_zone_getPeriodicCampModuleConfigs] call adm_zone_initZoneFromModule;
+    [_module, _activated, adm_zone_getPeriodicCampModuleConfigs] call adm_zone_initZoneFromModule;
 };
 
 adm_zone_initOndemandCampZoneFromModule = {
-    FUN_ARGS_1(_module);
+    FUN_ARGS_3(_module,_ignored,_activated);
 
-    [_module, adm_zone_getOndemandCampModuleConfigs] call adm_zone_initZoneFromModule;
+    [_module, _activated, adm_zone_getOndemandCampModuleConfigs] call adm_zone_initZoneFromModule;
 };
 
 adm_zone_initRandomCampZoneFromModule = {
-    FUN_ARGS_1(_module);
+    FUN_ARGS_3(_module,_ignored,_activated);
 
-    [_module, adm_zone_getRandomCampModuleConfigs] call adm_zone_initZoneFromModule;
+    [_module, _activated, adm_zone_getRandomCampModuleConfigs] call adm_zone_initZoneFromModule;
 };
 
 adm_zone_getModuleDefaultConfigs = {
