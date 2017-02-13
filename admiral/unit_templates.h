@@ -10,7 +10,7 @@ class UnitTemplates {
 
     class NATO_WOODLAND {
         side = "west";
-        camouflage[] = {"woodland", "desert"};
+        camouflage[] = {};
         infantry[] = {"B_Soldier_SL_F", "B_soldier_AR_F", "B_Soldier_F", "B_solider_AT4_F", "B_HeavyGunner_F", "B_soldier_AR_F", "B_solider_AT4_F", "B_soldier_AR_F", "B_solider_AT4_F"};
         crewmen[] = {"B_crew_F", "B_engineer_F"};
         technicals[] = {"B_MRAP_01_hmg_F"};
@@ -19,7 +19,7 @@ class UnitTemplates {
 
     class NATO_JUNGLE {
         side = "west";
-        camouflage[] = {"woodland"};
+        camouflage[] = {};
         infantry[] = {"B_T_Soldier_SL_F", "B_T_Soldier_AR_F", "B_T_Soldier_F", "B_T_solider_AT4_F", "B_T_Soldier_TL_F", "B_T_Soldier_AR_F", "B_T_solider_AT4_F", "B_T_Soldier_AR_F", "B_T_solider_AT4_F"};
         crewmen[] = {"B_T_Crew_F", "B_T_Engineer_F"};
         technicals[] = {"B_T_LSV_01_armed_F"};
@@ -28,7 +28,7 @@ class UnitTemplates {
 
     class CTRG_JUNGLE {
         side = "west";
-        camouflage[] = {"woodland"};
+        camouflage[] = {};
         infantry[] = {"B_CTRG_Soldier_JTAC_tna_F", "B_CTRG_Soldier_AR_tna_F", "B_CTRG_Soldier_tna_F", "B_CTRG_Soldier_tna_F", "B_CTRG_Soldier_tna_F", "B_CTRG_Soldier_AR_tna_F", "B_CTRG_Soldier_AT4_tna_F", "B_CTRG_Soldier_AR_tna_F", "B_CTRG_Soldier_AT4_tna_F"};
         crewmen[] = {"B_CTRG_Soldier_tna_F"};
         technicals[] = {"B_T_LSV_01_armed_F"};
@@ -307,7 +307,7 @@ class UnitTemplates {
 
     class CSAT_WOODLAND {
         side = "east";
-        camouflage[] = {"woodland", "desert"};
+        camouflage[] = {};
         infantry[] = {"O_Soldier_SL_F", "O_Soldier_AR_F", "O_Soldier_lite_F", "O_Soldier_RPG18_F", "O_support_MG_F", "O_Soldier_AR_F", "O_Soldier_RPG18_F", "O_Soldier_AR_F", "O_Soldier_LAT_F"};
         crewmen[] = {"O_crew_F", "O_engineer_F"};
         technicals[] = {"O_MRAP_02_hmg_F", "O_LSV_02_armed_F", "O_LSV_02_armed_F"};
@@ -316,7 +316,7 @@ class UnitTemplates {
 
     class CSAT_URBAN {
         side = "east";
-        camouflage[] = {"woodland", "desert"};
+        camouflage[] = {};
         infantry[] = {"O_soldierU_SL_F", "O_soldierU_AR_F", "O_soldierU_F", "O_soldierU_RPG18_F", "O_soldierU_M_F", "O_soldierU_AR_F", "O_soldierU_RPG18_F", "O_soldierU_AR_F", "O_soldierU_RPG18_F"};
         crewmen[] = {"O_soldierU_F", "O_engineer_U_F"};
         technicals[] = {"O_MRAP_02_hmg_F", "O_LSV_02_armed_F", "O_LSV_02_armed_F"};
@@ -325,7 +325,7 @@ class UnitTemplates {
 
     class CSAT_JUNGLE {
         side = "east";
-        camouflage[] = {"woodland"};
+        camouflage[] = {};
         infantry[] = {"O_T_Soldier_SL_F", "O_T_Soldier_AR_F", "O_T_Soldier_TL_F", "O_T_Soldier_RPG18_F", "O_T_Support_MG_F", "O_T_Soldier_AR_F", "O_T_Soldier_RPG18_F", "O_T_Soldier_AR_F", "O_T_Soldier_RPG18_F"};
         crewmen[] = {"O_T_Crew_F", "O_T_Engineer_F"};
         technicals[] = {"O_T_MRAP_02_hmg_ghex_F", "O_LSV_02_armed_F", "O_LSV_02_armed_F"};
@@ -377,24 +377,6 @@ class UnitTemplates {
         armour[] = {"CUP_O_BRDM2_SLA", "CUP_O_BTR60_SLA", "CUP_O_BRDM2_SLA", "CUP_I_BMP1_TK_GUE", "CUP_I_T55_TK_GUE", "CUP_O_T72_SLA"};
     };
 
-    class MNP_CH_HWD {
-        side = "east";
-        camouflage[] = {"woodland"};
-        infantry[] = {"MNP_CN_Soldier_heavy_O", "MNP_CN_Soldier_Heavy_AR", "MNP_CN_Soldier_heavy_F", "MNP_CN_Soldier_Heavy_AT", "MNP_CN_Soldier_Heavy_MG", "MNP_CN_Soldier_Heavy_AR", "MNP_CN_Soldier_Heavy_AT", "MNP_CN_Soldier_Heavy_AR", "MNP_CN_Soldier_Heavy_AT"};
-        crewmen[] = {"MNP_CN_Soldier_heavy_F", "MNP_CN_Soldier_heavy_O"};
-        technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU"};
-        armour[] = {"CUP_O_BRDM2_SLA", "CUP_O_BTR60_SLA", "CUP_O_BRDM2_SLA", "CUP_I_BMP1_TK_GUE", "CUP_I_T55_TK_GUE", "CUP_O_T72_SLA"};
-    };
-
-    class MNP_CH_HDE {
-        side = "east";
-        camouflage[] = {"desert"};
-        infantry[] = {"MNP_CN_Soldier_heavy_DO", "MNP_CN_Soldier_Heavy_DAR", "MNP_CN_Soldier_heavy_D", "MNP_CN_Soldier_Heavy_DAT", "MNP_CN_Soldier_Heavy_DMG", "MNP_CN_Soldier_Heavy_DAR", "MNP_CN_Soldier_Heavy_DAT", "MNP_CN_Soldier_Heavy_DAR", "MNP_CN_Soldier_Heavy_DAT"};
-        crewmen[] = {"MNP_CN_Soldier_heavy_D", "MNP_CN_Soldier_heavy_DO"};
-        technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU"};
-        armour[] = {"CUP_O_BRDM2_SLA", "CUP_O_BTR60_SLA", "CUP_O_BRDM2_SLA", "CUP_I_BMP1_TK_GUE", "CUP_I_T55_TK_GUE", "CUP_O_T72_SLA"};
-    };
-
     class MNP_RU_VDV_WD {
         side = "east";
         camouflage[] = {"woodland"};
@@ -411,24 +393,6 @@ class UnitTemplates {
         crewmen[] = {"MNP_RU_Soldier_MEDIUM_D", "MNP_RU_Soldier_O_D"};
         technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU"};
         armour[] = {"CUP_O_BRDM2_SLA", "CUP_O_BRDM2_SLA", "CUP_O_BTR90_RU", "CUP_O_BMP2_RU", "CUP_O_T72_RU", "CUP_O_T90_RU"};
-    };
-
-    class MNP_RU_HWD {
-        side = "east";
-        camouflage[] = {"woodland"};
-        infantry[] = {"MNP_RU_Soldier_heavy_O", "MNP_RU_Soldier_heavy_AR", "MNP_RU_Soldier_heavy_F", "MNP_RU_Soldier_heavy_AT", "MNP_RU_Soldier_heavy_MG", "MNP_RU_Soldier_heavy_AR", "MNP_RU_Soldier_heavy_AT", "MNP_RU_Soldier_heavy_AR", "MNP_RU_Soldier_heavy_AT"};
-        crewmen[] = {"MNP_RU_Soldier_heavy_F", "MNP_RU_Soldier_heavy_O"};
-        technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU"};
-        armour[] = {"CUP_O_BRDM2_SLA", "CUP_O_BRDM2_SLA", "CUP_O_BMP3_RU", "CUP_O_BTR90_RU", "CUP_O_T72_RU", "CUP_O_T90_RU"};
-    };
-
-    class MNP_RU_HDE {
-        side = "east";
-        camouflage[] = {"desert"};
-        infantry[] = {"MNP_RU_Soldier_heavy_DO", "MNP_RU_Soldier_heavy_DAR", "MNP_RU_Soldier_heavy_D", "MNP_RU_Soldier_heavy_DAT", "MNP_RU_Soldier_heavy_DMG", "MNP_RU_Soldier_heavy_DAR", "MNP_RU_Soldier_heavy_DAT", "MNP_RU_Soldier_heavy_DAR", "MNP_RU_Soldier_heavy_DAT"};
-        crewmen[] = {"MNP_RU_Soldier_heavy_D", "MNP_RU_Soldier_heavy_DO"};
-        technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU"};
-        armour[] = {"CUP_O_BRDM2_SLA", "CUP_O_BRDM2_SLA", "CUP_O_BMP3_RU", "CUP_O_BTR90_RU", "CUP_O_T72_RU", "CUP_O_T90_RU"};
     };
 
     class MNP_KOR_OD {
@@ -635,7 +599,7 @@ class UnitTemplates {
         infantry[] = {"I_Soldier_SL_F", "I_Soldier_AR_F", "I_Soldier_lite_F", "I_Soldier_AT4_F", "I_Soldier_M_F", "I_Soldier_AR_F", "I_Soldier_AT4_F", "I_Soldier_AR_F", "I_Soldier_AT4_F"};
         crewmen[] = {"I_crew_F", "I_engineer_F"};
         technicals[] = {"I_MRAP_03_hmg_F", "CUP_I_LR_MG_AAF", "CUP_I_LR_MG_AAF"};
-        armour[] = {"I_APC_tracked_03_cannon_F", "I_MBT_03_cannon_F", "I_APC_Wheeled_03_cannon_F", "CUP_I_M113_AAF", "CUP_I_M113_AAF"};
+        armour[] = {"I_APC_tracked_03_cannon_F", "I_APC_Wheeled_03_cannon_F", "CUP_I_M113_AAF", "CUP_I_M113_AAF"};
     };
 
     class MNP_MIL_WD {
@@ -802,7 +766,7 @@ class UnitTemplates {
 
     class SYND_REBEL {
         side = "resistance";
-        camouflage[] = {"woodland"};
+        camouflage[] = {};
         infantry[] = {"I_C_Soldier_Para_6_F", "I_C_Soldier_Para_4_F", "I_C_Soldier_Para_4_F", "I_C_Soldier_Para_4_F", "I_C_Soldier_Para_4_F", "I_C_Soldier_Para_4_F", "I_C_Soldier_Para_7_F", "I_C_Soldier_Para_2_F", "I_C_Soldier_Para_2_F"};
         crewmen[] = {"I_C_Soldier_Para_2_F", "I_C_Soldier_Para_2_F"};
         technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU", "B_G_Offroad_01_armed_F", "B_G_Offroad_01_armed_F"};
