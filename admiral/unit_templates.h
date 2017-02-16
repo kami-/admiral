@@ -353,7 +353,7 @@ class UnitTemplates {
     class MNP_CH_WD2 {
         side = "east";
         camouflage[] = {"woodland"};
-        infantry[] = {"MNP_CN_WD2_Soldier_O", "MNP_CN_WD2_Soldier_F", "MNP_CN_WD2_Soldier_F", "MNP_CN_WD2_Soldier_G", "MNP_CN_WD2_Soldier_MG", "NP_CN_WD2_Soldier_AR", "MNP_CN_WD2_Soldier_RAT", "NP_CN_WD2_Soldier_AR", "MNP_CN_WD2_Soldier_RAT"};
+        infantry[] = {"MNP_CN_WD2_Soldier_O", "MNP_CN_WD2_Soldier_F", "MNP_CN_WD2_Soldier_F", "MNP_CN_WD2_Soldier_G", "MNP_CN_WD2_Soldier_MG", "MNP_CN_WD2_Soldier_AR", "MNP_CN_WD2_Soldier_RAT", "MNP_CN_WD2_Soldier_AR", "MNP_CN_WD2_Soldier_RAT"};
         crewmen[] = {"MNP_CN_WD2_Soldier_F", "MNP_CN_WD2_Soldier_O"};
         technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU"};
         armour[] = {"CUP_O_BRDM2_SLA", "CUP_O_BTR60_SLA", "CUP_O_BRDM2_SLA", "CUP_I_BMP1_TK_GUE", "CUP_I_T55_TK_GUE", "CUP_O_T72_SLA"};
