@@ -620,24 +620,6 @@ class UnitTemplates {
         armour[] = {"CUP_O_BRDM2_SLA", "CUP_O_BTR60_SLA", "CUP_O_BRDM2_SLA", "CUP_I_BMP1_TK_GUE", "UP_O_BMP2_SLA", "CUP_I_T55_TK_GUE", "CUP_O_T72_SLA"};
     };
 
-    class MNP_ASA {
-        side = "resistance";
-        camouflage[] = {"woodland"};
-        infantry[] = {"MNP_ASA_Soldier_O", "MNP_ASA_Soldier_AR", "MNP_ASA_Soldier_F", "MNP_ASA_Soldier_AT", "MNP_ASA_Soldier_MG", "MNP_ASA_Soldier_AR", "MNP_ASA_Soldier_AT", "MNP_ASA_Soldier_AR", "MNP_ASA_Soldier_AT"};
-        crewmen[] = {"MNP_ASA_Soldier_F", "MNP_ASA_Soldier_O"};
-        technicals[] = {"CUP_B_HMMWV_M1114_USMC", "CUP_B_HMMWV_M1114_USMC", "CUP_B_HMMWV_M2_USMC", "CUP_B_HMMWV_M2_USMC", "CUP_B_HMMWV_MK19_USMC"};
-        armour[] = {"CUP_B_M113_USA", "CUP_B_M113_USA", "CUP_B_M163_USA", "CUP_B_M1A1_Woodland_US_Army"};
-    };
-
-    class MNP_ARC {
-        side = "resistance";
-        camouflage[] = {"woodland"};
-        infantry[] = {"MNP_Rev_Soldier_O", "MNP_Rev_Soldier_AR", "MNP_Rev_Soldier_F", "MNP_Rev_Soldier_AT", "MNP_Rev_Soldier_MG", "MNP_Rev_Soldier_AR", "MNP_Rev_Soldier_AT", "MNP_Rev_Soldier_AR", "MNP_Rev_Soldier_AT"};
-        crewmen[] = {"MNP_Rev_Soldier_F", "MNP_Rev_Soldier_O"};
-        technicals[] = {"B_G_Offroad_01_armed_F"};
-        armour[] = {"CUP_O_BRDM2_SLA", "CUP_B_M113_USA", "CUP_O_BRDM2_SLA", "CUP_I_BMP1_TK_GUE", "UP_O_BMP2_SLA", "CUP_I_T55_TK_GUE", "CUP_O_T72_SLA"};
-    };
-
     class MNP_IRE_WD {
         side = "resistance";
         camouflage[] = {"woodland"};
