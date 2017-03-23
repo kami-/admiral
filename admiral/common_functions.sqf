@@ -88,6 +88,22 @@ adm_common_fnc_spawnCrew = {
     crew _vehicle;
 };
 
+adm_common_fnc_delayGroupSpawn = {
+    params ["_args", "_func"];
+
+    if (canSuspend) then {
+        while { time < adm_lastGroupSpawnTime + adm_groupSpawnDelay } do {
+            TRACE("admiral.common.delay",FMT_2("Waiting for group delay time '%1s' at current time '%2s'.",adm_lastGroupSpawnTime + adm_groupSpawnDelay,time));
+            sleep adm_groupSpawnDelay;
+        };
+        adm_lastGroupSpawnTime = time;
+    };
+    private _group = _args call _func;
+    DEBUG("admiral.common.delay",FMT_1("Spawning delayed group '%1'.",_group));
+
+    _group;
+};
+
 adm_common_fnc_initUnit = {
     FUN_ARGS_2(_unit,_skillArray);
 

@@ -180,10 +180,11 @@ adm_cqc_fnc_spawnGarrison = {
             private ["_numOfUnits", "_group"];
             _numOfUnits = [[_building] call adm_cqc_fnc_getBuildingCapacity, count _possiblePositions, _zone] call adm_cqc_fnc_getGarrisonGroupSize;
             _currentAmount = _currentAmount + _numOfUnits;
-            _group = [_zone, _numOfUnits, _possiblePositions, _building] call adm_cqc_fnc_spawnGarrisonGroup;
+            _group = [[_zone, _numOfUnits, _possiblePositions, _building], adm_cqc_fnc_spawnGarrisonGroup] call adm_common_fnc_delayGroupSpawn;
             ["cqc.spawned.group", [_group, _building, _zone]] call adm_event_fnc_emitEvent;
             ["zone.spawned.group", [_group, "cqc", _zone]] call adm_event_fnc_emitEvent;
-            PUSH(_spawnedGroups, _group);
+            _spawnedGroups pushBack _group;
+            adm_cqc_groups pushBack _group;
         };
     } foreach _buildings;
     ["cqc.spawned.groups", [_spawnedGroups, _zone]] call adm_event_fnc_emitEvent;
@@ -283,13 +284,12 @@ adm_cqc_fnc_enableForceFire = {
 adm_cqc_fnc_initZone = {
     FUN_ARGS_1(_zone);
 
-    DECLARE(_spawnedGroups) = [_zone] call adm_cqc_fnc_spawnGarrison;
-    PUSH_ALL(adm_cqc_groups, _spawnedGroups);
+    private _spawnedGroups = [_zone] call adm_cqc_fnc_spawnGarrison;
     SET_ZONE_SPAWNED_GROUPS(_zone,_spawnedGroups);
     SET_CQC_FORCE_FIRE_ENABLED(_zone,adm_cqc_forceFireEnabled);
     SET_CQC_FORCE_FIRE_RUNNING(_zone,false);
+    adm_cqc_zones pushBack _zone;
     [_zone] spawn adm_cqc_fnc_forceFire;
-    PUSH(adm_cqc_zones,_zone);
     INFO("admiral.cqc",FMT_1("CQC Zone '%1' has been succesfully initialized.",GET_ZONE_ID(_zone)));
 };
 

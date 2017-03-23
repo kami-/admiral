@@ -64,6 +64,8 @@ adm_settings_fnc_init = {
     adm_isBehaviorEnabled = ["isBehaviorEnabled"] call adm_config_fnc_getBool;
     adm_canSpawnOnRoof = ["canSpawnOnRoof"] call adm_config_fnc_getBool;
     adm_allowCrewInImmobile = ["allowCrewInImmobile"] call adm_config_fnc_getBool;
+    adm_groupSpawnDelay = ["groupSpawnDelay"] call adm_config_fnc_getNumber;
+    adm_lastGroupSpawnTime = 0;
 
     adm_camp_defaultUnitTemplate = ["Camp", "defaultUnitTemplate"] call adm_config_fnc_getText;
     adm_camp_defaultZoneTemplate = ["Camp", "defaultZoneTemplate"] call adm_config_fnc_getText;

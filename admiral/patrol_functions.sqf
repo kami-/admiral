@@ -178,34 +178,36 @@ adm_patrol_fnc_updateDefaultWaypoint = {
 adm_patrol_fnc_spawnGroups = {
     FUN_ARGS_1(_zone);
 
-    private ["_pool", "_spawnedGroups", "_zoneInfGroups", "_zoneTechGroups", "_zoneArmourGroups"];
-    _zoneInfGroups = GET_ZONE_SPAWNED_GROUPS(_zone) select 0;
-    _zoneTechGroups = GET_ZONE_SPAWNED_GROUPS(_zone) select 1;
-    _zoneArmourGroups = GET_ZONE_SPAWNED_GROUPS(_zone) select 2;
-    _pool = GET_ZONE_POOL(_zone);
+    private _zoneInfGroups = GET_ZONE_SPAWNED_GROUPS(_zone) select 0;
+    private _zoneTechGroups = GET_ZONE_SPAWNED_GROUPS(_zone) select 1;
+    private _zoneArmourGroups = GET_ZONE_SPAWNED_GROUPS(_zone) select 2;
+    private _pool = GET_ZONE_POOL(_zone);
 
-    _spawnedGroups = [];
+    private _spawnedGroups = [];
     for "_i" from 1 to (_pool select 0) do {
-        PUSH(_spawnedGroups, [_zone] call adm_patrol_fnc_spawnInfGroup);
+        private _group = [[_zone], adm_patrol_fnc_spawnInfGroup] call adm_common_fnc_delayGroupSpawn;
+        _spawnedGroups pushBack _group;
+        adm_patrol_infGroups pushBack _group;
+        _zoneInfGroups pushBack _group;
     };
-    PUSH_ALL(adm_patrol_infGroups,_spawnedGroups);
-    PUSH_ALL(_zoneInfGroups,_spawnedGroups);
     INFO("admiral.patrol",FMT_2("Patrol Zone '%1' spawned '%2' infantry group(s).",GET_ZONE_ID(_zone),count _spawnedGroups));
 
     _spawnedGroups = [];
     for "_i" from 1 to (_pool select 1) do {
-        PUSH(_spawnedGroups, [_zone] call adm_patrol_fnc_spawnTechGroup);
+        private _group = [[_zone], adm_patrol_fnc_spawnTechGroup] call adm_common_fnc_delayGroupSpawn;
+        _spawnedGroups pushBack _group;
+        adm_patrol_techGroups pushBack _group;
+        _zoneTechGroups pushBack _group;
     };
-    PUSH_ALL(adm_patrol_techGroups,_spawnedGroups);
-    PUSH_ALL(_zoneTechGroups,_spawnedGroups);
     INFO("admiral.patrol",FMT_2("Patrol Zone '%1' spawned '%2' technical group(s).",GET_ZONE_ID(_zone),count _spawnedGroups));
 
     _spawnedGroups = [];
     for "_i" from 1 to (_pool select 2) do {
-        PUSH(_spawnedGroups, [_zone] call adm_patrol_fnc_spawnArmorGroup);
+        private _group = [[_zone], adm_patrol_fnc_spawnArmorGroup] call adm_common_fnc_delayGroupSpawn;
+        _spawnedGroups pushBack _group;
+        adm_patrol_armourGroups pushBack _group;
+        _zoneArmourGroups pushBack _group;
     };
-    PUSH_ALL(adm_patrol_armourGroups,_spawnedGroups);
-    PUSH_ALL(_zoneArmourGroups,_spawnedGroups);
     INFO("admiral.patrol",FMT_2("Patrol Zone '%1' spawned '%2' armour group(s).",GET_ZONE_ID(_zone),count _spawnedGroups));
     ["patrol.spawned.groups", [_zoneInfGroups, _zoneTechGroups, _zoneArmourGroups, _zone]] call adm_event_fnc_emitEvent;
 };
@@ -213,8 +215,8 @@ adm_patrol_fnc_spawnGroups = {
 adm_patrol_fnc_initZone = {
     FUN_ARGS_1(_zone);
 
+    adm_patrol_zones pushBack _zone;
     [_zone] call adm_patrol_fnc_spawnGroups;
-    PUSH(adm_patrol_zones, _zone);
     INFO("admiral.patrol",FMT_1("Patrol Zone '%1' has been succesfully initialized.",GET_ZONE_ID(_zone)));
 };
 

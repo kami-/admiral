@@ -206,23 +206,25 @@ adm_camp_fnc_trySpawnGroups = {
 adm_camp_fnc_spawnGroups = {
     FUN_ARGS_5(_zone,_groupType,_unitType,_groupCount,_placeManFunc);
 
-    private ["_spawnedGroups", "_group", "_waypointAmount"];
-    _spawnedGroups = [];
+    private _spawnedGroups = [];
     for "_i" from 1 to _groupCount do {
+        private _spawnGroupFunc = adm_camp_fnc_spawnInfGroup;
+        private _waypointAmount = "infWaypointAmount";
+        private _groupsByType = adm_camp_infGroups;
         call {
-            if (_groupType == GROUP_TYPE_INF) exitWith {
-                _group = [_zone, _groupType, _unitType, _placeManFunc] call adm_camp_fnc_spawnInfGroup;
-                _waypointAmount = "infWaypointAmount";
-            };
-            if (_groupType in [GROUP_TYPE_TECH, GROUP_TYPE_ARMOUR]) exitWith {
-                _group = [_zone, _groupType, _unitType, _placeManFunc] call adm_camp_fnc_spawnVehicleGroup;
+            if (_groupType == GROUP_TYPE_TECH) exitWith {
+                _spawnGroupFunc = adm_camp_fnc_spawnVehicleGroup;
                 _waypointAmount = "techWaypointAmount";
+                _groupsByType = adm_camp_techGroups;
             };
-            if (_groupType in [GROUP_TYPE_TECH, GROUP_TYPE_ARMOUR]) exitWith {
-                _group = [_zone, _groupType, _unitType, _placeManFunc] call adm_camp_fnc_spawnVehicleGroup;
+            if (_groupType == GROUP_TYPE_ARMOUR) exitWith {
+                _spawnGroupFunc = adm_camp_fnc_spawnVehicleGroup;
                 _waypointAmount = "armourWaypointAmount";
+                _groupsByType = adm_camp_armourGroups;
             };
         };
+        private _group = [[_zone, _groupType, _unitType, _placeManFunc], _spawnGroupFunc] call adm_common_fnc_delayGroupSpawn;
+        _groupsByType pushBack _group;
         DECLARE(_zoneTemplate) = GET_ZONE_TEMPLATE(_zone);
         [
             _group,
@@ -231,7 +233,7 @@ adm_camp_fnc_spawnGroups = {
             ["ZoneTemplates", _zoneTemplate, "waypointBehaviours"] call adm_config_fnc_getArray,
             ["ZoneTemplates", _zoneTemplate, _waypointAmount] call adm_config_fnc_getNumber
         ] call adm_camp_fnc_createCampWaypoints;
-        PUSH(_spawnedGroups,_group);
+        _spawnedGroups pushBack _group;
     };
 
     _spawnedGroups
@@ -322,18 +324,15 @@ adm_camp_fnc_periodicSpawn = {
     waitUntil {
         DECLARE(_spawnedGroups) = [];
         _spawnedGroups = [_zone, GROUP_TYPE_INF, adm_camp_fnc_periodicCanSpawnGroups, adm_camp_fnc_periodicSpawnInfGroups] call adm_camp_fnc_trySpawnGroups;
-        PUSH_ALL(adm_camp_infGroups,_spawnedGroups);
-        PUSH_ALL(_zoneInfGroups,_spawnedGroups);
+        _zoneInfGroups append _spawnedGroups;
         INFO("admiral.camp",FMT_2("Periodic Camp Zone '%1' spawned '%2' infantry group(s).",GET_ZONE_ID(_zone),count _spawnedGroups));
         _spawnedGroups = [];
         _spawnedGroups = [_zone, GROUP_TYPE_TECH, adm_camp_fnc_periodicCanSpawnGroups, adm_camp_fnc_periodicSpawnTechGroups] call adm_camp_fnc_trySpawnGroups;
-        PUSH_ALL(adm_camp_techGroups,_spawnedGroups);
-        PUSH_ALL(_zoneTechGroups,_spawnedGroups);
+        _zoneTechGroups append _spawnedGroups;
         INFO("admiral.camp",FMT_2("Periodic Camp Zone '%1' spawned '%2' technical group(s).",GET_ZONE_ID(_zone),count _spawnedGroups));
         _spawnedGroups = [];
         _spawnedGroups = [_zone, GROUP_TYPE_ARMOUR, adm_camp_fnc_periodicCanSpawnGroups, adm_camp_fnc_periodicSpawnArmourGroups] call adm_camp_fnc_trySpawnGroups;
-        PUSH_ALL(adm_camp_armourGroups,_spawnedGroups);
-        PUSH_ALL(_zoneArmourGroups,_spawnedGroups);
+        _zoneArmourGroups append _spawnedGroups;
         INFO("admiral.camp",FMT_2("Periodic Camp Zone '%1' spawned '%2' armour group(s).",GET_ZONE_ID(_zone),count _spawnedGroups));
         ["camp.spawned.groups", [_zoneInfGroups, _zoneTechGroups, _zoneArmourGroups, _zone]] call adm_event_fnc_emitEvent;
 
@@ -398,18 +397,15 @@ adm_camp_fnc_onDemandSpawn = {
     waitUntil {
         DECLARE(_spawnedGroups) = [];
         _spawnedGroups = [_zone, GROUP_TYPE_INF, adm_camp_fnc_onDemandCanSpawnGroups, adm_camp_fnc_onDemandSpawnInfGroups] call adm_camp_fnc_trySpawnGroups;
-        PUSH_ALL(adm_camp_infGroups, _spawnedGroups);
-        PUSH_ALL(_zoneInfGroups, _spawnedGroups);
+        _zoneInfGroups append _spawnedGroups;
         INFO("admiral.camp",FMT_2("On-demand Camp Zone '%1' spawned '%2' infantry group(s).",GET_ZONE_ID(_zone),count _spawnedGroups));
         _spawnedGroups = [];
         _spawnedGroups = [_zone, GROUP_TYPE_TECH, adm_camp_fnc_onDemandCanSpawnGroups, adm_camp_fnc_onDemandSpawnTechGroups] call adm_camp_fnc_trySpawnGroups;
-        PUSH_ALL(adm_camp_techGroups, _spawnedGroups);
-        PUSH_ALL(_zoneTechGroups, _spawnedGroups);
+        _zoneTechGroups append _spawnedGroups;
         INFO("admiral.camp",FMT_2("On-demand Camp Zone '%1' spawned '%2' technical group(s).",GET_ZONE_ID(_zone),count _spawnedGroups));
         _spawnedGroups = [];
         _spawnedGroups = [_zone, GROUP_TYPE_ARMOUR, adm_camp_fnc_onDemandCanSpawnGroups, adm_camp_fnc_onDemandSpawnArmourGroups] call adm_camp_fnc_trySpawnGroups;
-        PUSH_ALL(adm_camp_armourGroups, _spawnedGroups);
-        PUSH_ALL(_zoneArmourGroups, _spawnedGroups);
+        _zoneArmourGroups append _spawnedGroups;
         INFO("admiral.camp",FMT_2("On-demand Camp Zone '%1' spawned '%2' armour group(s).",GET_ZONE_ID(_zone),count _spawnedGroups));
         ["camp.spawned.groups", [_zoneInfGroups, _zoneTechGroups, _zoneArmourGroups, _zone]] call adm_event_fnc_emitEvent;
 
@@ -473,18 +469,15 @@ adm_camp_fnc_randomSpawn = {
     waitUntil {
         DECLARE(_spawnedGroups) = [];
         _spawnedGroups = [_zone, GROUP_TYPE_INF, adm_camp_fnc_randomCanSpawnGroups, adm_camp_fnc_randomSpawnInfGroups] call adm_camp_fnc_trySpawnGroups;
-        PUSH_ALL(adm_camp_infGroups, _spawnedGroups);
-        PUSH_ALL(_zoneInfGroups, _spawnedGroups);
+        _zoneInfGroups append _spawnedGroups;
         INFO("admiral.camp",FMT_2("Random Camp Zone '%1' spawned '%2' infantry group(s).",GET_ZONE_ID(_zone),count _spawnedGroups));
         _spawnedGroups = [];
         _spawnedGroups = [_zone, GROUP_TYPE_TECH, adm_camp_fnc_randomCanSpawnGroups, adm_camp_fnc_randomSpawnTechGroups] call adm_camp_fnc_trySpawnGroups;
-        PUSH_ALL(adm_camp_techGroups, _spawnedGroups);
-        PUSH_ALL(_zoneTechGroups, _spawnedGroups);
+        _zoneTechGroups append _spawnedGroups;
         INFO("admiral.camp",FMT_2("Random Camp Zone '%1' spawned '%2' technical group(s).",GET_ZONE_ID(_zone),count _spawnedGroups));
         _spawnedGroups = [];
         _spawnedGroups = [_zone, GROUP_TYPE_ARMOUR, adm_camp_fnc_randomCanSpawnGroups, adm_camp_fnc_randomSpawnArmourGroups] call adm_camp_fnc_trySpawnGroups;
-        PUSH_ALL(adm_camp_armourGroups, _spawnedGroups);
-        PUSH_ALL(_zoneArmourGroups, _spawnedGroups);
+        _zoneArmourGroups append _spawnedGroups;
         INFO("admiral.camp",FMT_2("Random Camp Zone '%1' spawned '%2' armour group(s).",GET_ZONE_ID(_zone),count _spawnedGroups));
         ["camp.spawned.groups", [_zoneInfGroups, _zoneTechGroups, _zoneArmourGroups, _zone]] call adm_event_fnc_emitEvent;
 
