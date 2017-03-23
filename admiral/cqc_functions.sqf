@@ -284,11 +284,11 @@ adm_cqc_fnc_enableForceFire = {
 adm_cqc_fnc_initZone = {
     FUN_ARGS_1(_zone);
 
-    private _spawnedGroups = [_zone] call adm_cqc_fnc_spawnGarrison;
-    SET_ZONE_SPAWNED_GROUPS(_zone,_spawnedGroups);
+    adm_cqc_zones pushBack _zone;
     SET_CQC_FORCE_FIRE_ENABLED(_zone,adm_cqc_forceFireEnabled);
     SET_CQC_FORCE_FIRE_RUNNING(_zone,false);
-    adm_cqc_zones pushBack _zone;
+    private _spawnedGroups = [_zone] call adm_cqc_fnc_spawnGarrison;
+    SET_ZONE_SPAWNED_GROUPS(_zone,_spawnedGroups);
     [_zone] spawn adm_cqc_fnc_forceFire;
     INFO("admiral.cqc",FMT_1("CQC Zone '%1' has been succesfully initialized.",GET_ZONE_ID(_zone)));
 };
