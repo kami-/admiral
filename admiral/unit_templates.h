@@ -38,9 +38,9 @@ class UnitTemplates {
     class MNP_USMC_SN {
         side = "west";
         camouflage[] = {"snow"};
-        infantry[] = {"MNP_USMCA_Soldier_O", "MNP_USMCA_Soldier_AR", "MNP_USMCA_Soldier_F", "MNP_USMCA_Soldier_AT", "MNP_USMCA_Soldier_MG", "MNP_USMCA_Soldier_AR", "MNP_USMCA_Soldier_AT", "MNP_USMC_Soldier_DIAR", "MNP_USMCA_Soldier_AT"};
+        infantry[] = {"MNP_USMCA_Soldier_O", "MNP_USMCA_Soldier_AR", "MNP_USMCA_Soldier_F", "MNP_USMCA_Soldier_AT", "MNP_USMCA_Soldier_MG", "MNP_USMCA_Soldier_AR", "MNP_USMCA_Soldier_AT", "MNP_USMCA_Soldier_AT"};
         crewmen[] = {"MNP_USMCA_Soldier_F", "MNP_USMCA_Soldier_O"};
-        technicals[] = {"CUP_B_HMMWV_M1114_USMC", "CUP_B_HMMWV_M1114_USMC", "CUP_B_HMMWV_M1114_USMC", "CUP_B_HMMWV_M2_USMC", "CUP_B_HMMWV_MK19_USMC", "CUP_B_RG31_M2_OD_USMC", "CUP_B_RG31_Mk19_OD_USMC"};
+        technicals[] = {"CUP_B_HMMWV_M2_NATO_T", "CUP_B_HMMWV_MK19_NATO_T", "CUP_B_HMMWV_M2_GPK_NATO_T", "CUP_B_HMMWV_SOV_M2_NATO_T", "CUP_B_HMMWV_SOV_NATO_T"};
         armour[] = {"CUP_B_LAV25_USMC", "CUP_B_LAV25_USMC", "CUP_B_AAV_USMC", "CUP_B_M1A1_Woodland_USMC"};
     };
 
@@ -49,7 +49,7 @@ class UnitTemplates {
         camouflage[] = {"desert"};
         infantry[] = {"MNP_USR_Soldier_O", "MNP_USR_Soldier_AR", "MNP_USR_Soldier_F", "MNP_USR_Soldier_AT", "MNP_USR_Soldier_MG", "MNP_USR_Soldier_AR", "MNP_USR_Soldier_AT", "MNP_USR_Soldier_AR", "MNP_USR_Soldier_AT"};
         crewmen[] = {"MNP_USR_Soldier_F", "MNP_USR_Soldier_O"};
-        technicals[] = {"CUP_B_HMMWV_M2_GPK_USA", "CUP_B_HMMWV_M2_GPK_USA", "CUP_B_HMMWV_Crows_MK19_USA", "CUP_B_HMMWV_SOV_USA", "CUP_B_RG31E_M2_USMC", "CUP_B_RG31_M2_USMC", "CUP_B_RG31_Mk19_USMC"};
+        technicals[] = {"CUP_B_HMMWV_M2_GPK_USA", "CUP_B_HMMWV_M2_GPK_USA", "CUP_B_HMMWV_SOV_USA", "CUP_B_RG31E_M2_USMC", "CUP_B_RG31_M2_USMC", "CUP_B_RG31_Mk19_USMC"};
         armour[] = {"CUP_B_M1126_ICV_M2_Desert_Slat", "CUP_B_M1126_ICV_M2_Desert_Slat", "CUP_B_M1126_ICV_MK19_Desert_Slat", "CUP_B_M1128_MGS_Desert_Slat", "CUP_B_M2A3Bradley_USA_D", "CUP_B_M2A3Bradley_USA_D", "CUP_B_M1A2_TUSK_MG_DES_US_Army"};
     };
 
@@ -58,7 +58,7 @@ class UnitTemplates {
         camouflage[] = {"desert"};
         infantry[] = {"MNP_USA_Soldier_O", "MNP_USA_Soldier_AR", "MNP_USA_Soldier_F", "MNP_USA_Soldier_AT", "MNP_USA_Soldier_MG", "MNP_USA_Soldier_AR", "MNP_USA_Soldier_AT", "MNP_USA_Soldier_AR", "MNP_USA_Soldier_AT"};
         crewmen[] = {"MNP_USA_Soldier_F", "MNP_USA_Soldier_O"};
-        technicals[] = {"CUP_B_HMMWV_M2_GPK_USA", "CUP_B_HMMWV_Crows_M2_USA", "CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_MK19_USA", "CUP_B_RG31E_M2_USMC", "CUP_B_RG31_M2_USMC", "CUP_B_RG31_Mk19_USMC"};
+        technicals[] = {"CUP_B_HMMWV_M2_GPK_USA", "CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_MK19_USA", "CUP_B_RG31E_M2_USMC", "CUP_B_RG31_M2_USMC", "CUP_B_RG31_Mk19_USMC"};
         armour[] = {"CUP_B_M1126_ICV_M2_Desert", "CUP_B_M1126_ICV_M2_Desert", "CUP_B_M1126_ICV_MK19_Desert", "CUP_B_M1128_MGS_Desert", "CUP_B_M2Bradley_USA_D", "CUP_B_M2Bradley_USA_D", "CUP_B_M1A1_DES_US_Army"};
     };
 
@@ -85,7 +85,7 @@ class UnitTemplates {
         camouflage[] = {"woodland", "desert"};
         infantry[] = {"MNP_Scorpion_Soldier_O", "MNP_Scorpion_Soldier_F", "MNP_Scorpion_Soldier_F", "MNP_Scorpion_Soldier_F", "MNP_Scorpion_Soldier_AT", "NP_Scorpion_Soldier_MG", "MNP_Scorpion_Soldier_AR", "MNP_Scorpion_Soldier_AT", "MNP_Scorpion_Soldier_AR", "MNP_Scorpion_Soldier_AT"};
         crewmen[] = {"MNP_Scorpion_Soldier_F", "MNP_Scorpion_Soldier_O"};
-        technicals[] = {"CUP_B_HMMWV_M2_GPK_USA", "CUP_B_HMMWV_M2_GPK_USA", "CUP_B_HMMWV_Crows_MK19_USA", "CUP_B_HMMWV_SOV_USA", "CUP_B_RG31E_M2_USMC", "CUP_B_RG31_M2_USMC", "CUP_B_RG31_Mk19_USMC"};
+        technicals[] = {"CUP_B_HMMWV_M2_GPK_USA", "CUP_B_HMMWV_M2_GPK_USA", "CUP_B_HMMWV_SOV_USA", "CUP_B_RG31E_M2_USMC", "CUP_B_RG31_M2_USMC", "CUP_B_RG31_Mk19_USMC"};
         armour[] = {"CUP_B_M1126_ICV_M2_Desert_Slat", "CUP_B_M1126_ICV_M2_Desert_Slat", "CUP_B_M1126_ICV_MK19_Desert_Slat", "CUP_B_M1128_MGS_Desert_Slat", "CUP_B_M2A3Bradley_USA_D", "CUP_B_M2A3Bradley_USA_D", "CUP_B_M1A2_TUSK_MG_DES_US_Army"};
     };
 
@@ -94,7 +94,7 @@ class UnitTemplates {
         camouflage[] = {"woodland", "desert"};
         infantry[] = {"MNP_USR_Sco_Soldier_O", "MNP_USR_Sco_Soldier_F", "MNP_USR_Sco_Soldier_F", "MNP_USR_Sco_Soldier_AT", "MNP_USR_Sco_Soldier_MG", "MNP_USR_Sco_Soldier_AR", "MNP_USR_Sco_Soldier_AT", "MNP_USR_Sco_Soldier_AR", "MNP_USR_Sco_Soldier_AT"};
         crewmen[] = {"MNP_USR_Sco_Soldier_F", "MNP_USR_Sco_Soldier_O"};
-        technicals[] = {"CUP_B_HMMWV_M2_GPK_USA", "CUP_B_HMMWV_M2_GPK_USA", "CUP_B_HMMWV_Crows_MK19_USA", "CUP_B_HMMWV_SOV_USA", "CUP_B_RG31E_M2_USMC", "CUP_B_RG31_M2_USMC", "CUP_B_RG31_Mk19_USMC"};
+        technicals[] = {"CUP_B_HMMWV_M2_GPK_USA", "CUP_B_HMMWV_M2_GPK_USA", "CUP_B_HMMWV_SOV_USA", "CUP_B_RG31E_M2_USMC", "CUP_B_RG31_M2_USMC", "CUP_B_RG31_Mk19_USMC"};
         armour[] = {"CUP_B_M1126_ICV_M2_Desert_Slat", "CUP_B_M1126_ICV_M2_Desert_Slat", "CUP_B_M1126_ICV_MK19_Desert_Slat", "CUP_B_M1128_MGS_Desert_Slat", "CUP_B_M2A3Bradley_USA_D", "CUP_B_M2A3Bradley_USA_D", "CUP_B_M1A2_TUSK_MG_DES_US_Army"};
     };
 
@@ -238,7 +238,7 @@ class UnitTemplates {
         camouflage[] = {"desert"};
         infantry[] = {"CUP_B_US_Soldier_TL", "CUP_B_US_Soldier", "CUP_B_US_Soldier", "CUP_B_US_Soldier_TL", "CUP_B_US_Soldier_MG", "CUP_B_US_Soldier_AR", "CUP_B_US_Soldier_LAT", "CUP_B_US_Soldier_AR", "CUP_B_US_Soldier_LAT"};
         crewmen[] = {"CUP_B_US_Crew"};
-        technicals[] = {"CUP_B_HMMWV_M2_GPK_USA", "CUP_B_HMMWV_Crows_M2_USA", "CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_MK19_USA", "CUP_B_RG31E_M2_USMC", "CUP_B_RG31_M2_USMC", "CUP_B_RG31_Mk19_USMC"};
+        technicals[] = {"CUP_B_HMMWV_M2_GPK_USA", "CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_MK19_USA", "CUP_B_RG31E_M2_USMC", "CUP_B_RG31_M2_USMC", "CUP_B_RG31_Mk19_USMC"};
         armour[] = {"CUP_B_M1126_ICV_M2_Desert", "CUP_B_M1126_ICV_M2_Desert", "CUP_B_M1126_ICV_MK19_Desert", "CUP_B_M1128_MGS_Desert", "CUP_B_M2Bradley_USA_D", "CUP_B_M2Bradley_USA_D", "CUP_B_M1A1_DES_US_Army"};
     };
 
@@ -753,6 +753,33 @@ class UnitTemplates {
         crewmen[] = {"CUP_B_USMC_Crewman_FROG_DES"};
         technicals[] = {"CUP_B_HMMWV_M2_GPK_USA", "CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_MK19_USA", "CUP_B_RG31_Mk19_USMC", "CUP_B_RG31_M2_USMC"};
         armour[] = {"CUP_B_LAV25_desert_USMC", "CUP_B_LAV25_desert_USMC", "CUP_B_AAV_USMC", "CUP_B_M1A1_DES_USMC"};
+    };
+
+    class CUP_ION_PMC_WD {
+        side = "resistance";
+        camouflage[] = {"woodland"};
+        infantry[] = {"CUP_I_PMC_Contractor1", "CUP_I_PMC_Contractor2", "CUP_I_PMC_Bodyguard_M4", "CUP_I_PMC_Medic", "CUP_I_PMC_Soldier_MG", "CUP_I_PMC_Soldier_MG_PKM", "CUP_I_PMC_Soldier_AT", "CUP_I_PMC_Soldier_GL_M16A2", "CUP_I_PMC_Soldier_M4A3"};
+        crewmen[] = {"CUP_I_PMC_Contractor2", "CUP_I_PMC_Bodyguard_M4"};
+        technicals[] = {"CUP_B_HMMWV_M2_NATO_T", "CUP_B_HMMWV_MK19_NATO_T", "CUP_B_HMMWV_M2_GPK_NATO_T", "CUP_B_HMMWV_SOV_M2_NATO_T", "CUP_B_HMMWV_SOV_NATO_T"};
+        armour[] = {"CUP_B_M1126_ICV_M2_Woodland_Slat", "CUP_B_M1126_ICV_M2_Woodland_Slat", "CUP_B_M1126_ICV_MK19_Woodland_Slat", "CUP_B_M1128_MGS_Woodland_Slat"};
+    };
+
+    class CUP_ION_PMC_DE {
+        side = "resistance";
+        camouflage[] = {"desert"};
+        infantry[] = {"CUP_I_PMC_Contractor1", "CUP_I_PMC_Contractor2", "CUP_I_PMC_Bodyguard_M4", "CUP_I_PMC_Medic", "CUP_I_PMC_Soldier_MG", "CUP_I_PMC_Soldier_MG_PKM", "CUP_I_PMC_Soldier_AT", "CUP_I_PMC_Soldier_GL_M16A2", "CUP_I_PMC_Soldier_M4A3"};
+        crewmen[] = {"CUP_I_PMC_Contractor2", "CUP_I_PMC_Bodyguard_M4"};
+        technicals[] = {"CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_MK19_USA", "CUP_B_HMMWV_M2_GPK_USA", "CUP_B_HMMWV_SOV_M2_USA", "CUP_B_HMMWV_SOV_USA"};
+        armour[] = {"CUP_B_M1126_ICV_M2_Desert_Slat", "CUP_B_M1126_ICV_M2_Desert_Slat", "CUP_B_M1126_ICV_MK19_Desert_Slat", "CUP_B_M1128_MGS_Desert_Slat"};
+    };
+
+    class CUP_ION_PMC_SN {
+        side = "resistance";
+        camouflage[] = {"snow"};
+        infantry[] = {"CUP_I_PMC_Winter_Soldier_MG", "CUP_I_PMC_Winter_Soldier_MG_PKM", "CUP_I_PMC_Winter_Soldier_AT", "CUP_I_PMC_Winter_Soldier", "CUP_I_PMC_Winter_Soldier_GL", "CUP_I_PMC_Winter_Soldier_TL", "CUP_I_PMC_Winter_Soldier", "CUP_I_PMC_Winter_Soldier", "CUP_I_PMC_Winter_Soldier"};
+        crewmen[] = {"CUP_I_PMC_Winter_Engineer", "CUP_I_PMC_Winter_Crew"};
+        technicals[] = {"CUP_B_HMMWV_M2_NATO_T", "CUP_B_HMMWV_MK19_NATO_T", "CUP_B_HMMWV_M2_GPK_NATO_T", "CUP_B_HMMWV_SOV_M2_NATO_T", "CUP_B_HMMWV_SOV_NATO_T"};
+        armour[] = {"CUP_B_M1126_ICV_M2_Woodland_Slat", "CUP_B_M1126_ICV_M2_Woodland_Slat", "CUP_B_M1126_ICV_MK19_Woodland_Slat", "CUP_B_M1128_MGS_Woodland_Slat"};
     };
 
 };
