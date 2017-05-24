@@ -144,7 +144,7 @@ adm_cqc_fnc_getZoneBuildings = {
 
     private ["_zoneRadius", "_buildings"];
     _zoneRadius = (GET_ZONE_AREA(_zone) select 0) max (GET_ZONE_AREA(_zone) select 1);
-    _buildings = [nearestObjects [GET_ZONE_POSITION(_zone), ["Building"], _zoneRadius], {[getPosATL _x, GET_ZONE_AREA(_zone), GET_ZONE_POSITION(_zone)] call adm_common_fnc_isPositionInArea}] call BIS_fnc_conditionalSelect;
+    _buildings = [GET_ZONE_POSITION(_zone) nearObjects ["Building", _zoneRadius], {[getPosATL _x, GET_ZONE_AREA(_zone), GET_ZONE_POSITION(_zone)] call adm_common_fnc_isPositionInArea}] call BIS_fnc_conditionalSelect;
     [_buildings] call adm_common_fnc_shuffle;
 };
 
