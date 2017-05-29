@@ -34,7 +34,7 @@ class Admiral {
         defaultZoneTemplate = "Cqc";
         forceFireEnabled = 1;
         forceFireDelay = 5;
-        buildingBlacklist[] = {"Land_dum_mesto2l", "Land_dum_mesto3", "dum_mesto3"};
+        buildingBlacklist[] = {"Land_dum_mesto2l", "Land_dum_mesto3", "dum_mesto3","CUP_A1_dum_mesto_in","CUP_A1_Dum_m2","CUP_A1_Dum_mesto2L","CUP_A1_Dum_mesto3","CUP_A1_stanice","CUP_A2_dum_m2","CUP_A2_dum_mesto2l","CUP_A2_dum_mesto3","CUP_A2_housev_1i1_dam","CUP_A2_housev_2l_dam_ruins","Land_cwa_stanice","Land_cwa_dum_m2","Land_cwa_dum_mesto2l"};
         buildingCapacity[] = {
             {"Land_House_C_2_EP1", 4},
             {"Land_House_K_6_EP1", 4},
