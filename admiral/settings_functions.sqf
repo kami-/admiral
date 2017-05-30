@@ -51,13 +51,6 @@ adm_settings_fnc_setFriend = {
     DEBUG("admiral.settings.siderelation",FMT_2("Side '%1' is friendly towards side '%2'.",SIDE_TEXT_ARRAY select _side,SIDE_TEXT_ARRAY select _friendlySide));
 };
 
-adm_settings_fnc_createCenters = {
-    {
-        createCenter _x;
-    } foreach SIDE_ARRAY;
-    DEBUG("admiral.settings","AI centers have created.");
-};
-
 adm_settings_fnc_init = {
     adm_isDebuggingEnabled = ["isDebuggingEnabled"] call adm_config_fnc_getBool;
     adm_areNVGsEnabled = ["areNVGsEnabled"] call adm_config_fnc_getBool;
@@ -80,7 +73,6 @@ adm_settings_fnc_init = {
     adm_cqc_buildingBlacklist = ["Cqc", "buildingBlacklist"] call adm_config_fnc_getArray;
     adm_cqc_buildingCapacity = ["Cqc", "buildingCapacity"] call adm_config_fnc_getArray;
 
-    [] call adm_settings_fnc_createCenters;
     [] call adm_settings_fnc_initSideRelations;
     [] call adm_settings_fnc_setSideRelations;
 };
