@@ -13,7 +13,7 @@ class ZoneTemplates {
         spotTime = 0.7;
         courage = 1;
         reloadSpeed = 1;
-        commanding = 0.5;
+        commanding = 1;
         general = 0.7;
     };
 
@@ -28,10 +28,10 @@ class ZoneTemplates {
         aimingShake = 0.2;
         aimingSpeed = 0.65;
         spotDistance = 0.65;
-        spotTime = 0.7;
+        spotTime = 1;
         courage = 1;
         reloadSpeed = 1;
-        commanding = 0.5;
+        commanding = 1;
         general = 0.7;
     };
 
