@@ -12,7 +12,7 @@ class UnitTemplates {
     class NATO_WOODLAND {
         side = "west";
         camouflage[] = {};
-        infantry[] = {"B_Soldier_SL_F", "B_soldier_AR_F", "B_Soldier_F", "B_solider_AT4_F", "B_HeavyGunner_F", "B_soldier_AR_F", "B_solider_AT4_F", "B_soldier_AR_F", "B_solider_AT4_F"};
+        infantry[] = {"B_Soldier_SL_F", "B_soldier_AR_F", "B_Soldier_F", "B_Soldier_AT4_F", "B_HeavyGunner_F", "B_soldier_AR_F", "B_Soldier_AT4_F", "B_soldier_AR_F", "B_Soldier_AT4_F"};
         crewmen[] = {"B_crew_F", "B_engineer_F"};
         pilots[]= {"B_Helipilot_F"};
         technicals[] = {"B_MRAP_01_hmg_F"};
@@ -22,7 +22,7 @@ class UnitTemplates {
     class NATO_JUNGLE {
         side = "west";
         camouflage[] = {};
-        infantry[] = {"B_T_Soldier_SL_F", "B_T_Soldier_AR_F", "B_T_Soldier_F", "B_T_solider_AT4_F", "B_T_Soldier_TL_F", "B_T_Soldier_AR_F", "B_T_solider_AT4_F", "B_T_Soldier_AR_F", "B_T_solider_AT4_F"};
+        infantry[] = {"B_T_Soldier_SL_F", "B_T_Soldier_AR_F", "B_T_Soldier_F", "B_T_Soldier_AT4_F", "B_T_Soldier_TL_F", "B_T_Soldier_AR_F", "B_T_Soldier_AT4_F", "B_T_Soldier_AR_F", "B_T_Soldier_AT4_F"};
         crewmen[] = {"B_T_Crew_F", "B_T_Engineer_F"};
         pilots[]= {"B_T_Helipilot_F"};
         technicals[] = {"B_T_LSV_01_armed_F"};
