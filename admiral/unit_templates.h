@@ -83,7 +83,7 @@ class UnitTemplates {
         crewmen[] = {"MNP_M81_Soldier_F", "MNP_M81_Soldier_O"};
         pilots[]= {"CUP_B_US_Pilot"};
         technicals[] = {"CUP_B_HMMWV_M1114_USMC", "CUP_B_HMMWV_M1114_USMC", "CUP_B_HMMWV_M2_USMC", "CUP_B_HMMWV_M2_USMC", "CUP_B_HMMWV_MK19_USMC"};
-        armour[] = {"CUP_B_M113_USA", "CUP_B_M113_USA", "CUP_B_M2Bradley_USA_W", "CUP_B_M1A1_Woodland_US_Army"};
+        armour[] = {"CUP_B_M113_USA", "CUP_B_M113_USA", "CUP_B_M2Bradley_USA_W", "CUP_B_M60A3_USMC"};
         ah[] = {"CUP_B_AH64D_USA"};
     };
 
@@ -753,7 +753,7 @@ class UnitTemplates {
         crewmen[] = {"CUP_I_RACS_Soldier", "CUP_I_RACS_Engineer"};
         pilots[]= {"CUP_B_RACS_Pilot"};
         technicals[] = {"CUP_I_LR_MG_RACS"};
-        armour[] = {"CUP_I_M113_RACS", "CUP_I_M113_RACS", "CUP_I_AAV_RACS", "CUP_I_T72_RACS", "CUP_I_T72_RACS"};
+        armour[] = {"CUP_I_M113_RACS", "CUP_I_M113_RACS", "CUP_I_AAV_RACS", "CUP_I_M60A3_RACS", "CUP_I_M60A3_RACS"};
         ah[] = {"CUP_B_AH1Z"};
     };
 
@@ -874,7 +874,7 @@ class UnitTemplates {
         crewmen[] = {"CUP_I_RACS_Soldier_Mech", "CUP_I_RACS_Engineer_Mech"};
         pilots[]= {"CUP_B_RACS_Pilot"};
         technicals[] = {"CUP_I_LR_MG_RACS"};
-        armour[] = {"CUP_I_M113_RACS", "CUP_I_M113_RACS", "CUP_I_AAV_RACS", "CUP_I_T72_RACS", "CUP_I_T72_RACS"};
+        armour[] = {"CUP_I_M113_RACS", "CUP_I_M113_RACS", "CUP_I_AAV_RACS", "CUP_I_M60A3_RACS", "CUP_I_M60A3_RACS"};
         ah[] = {"CUP_B_AH1Z"};
     };
 
@@ -885,7 +885,7 @@ class UnitTemplates {
         crewmen[] = {"CUP_I_RACS_Soldier_Urban", "CUP_I_RACS_Engineer_Urban"};
         pilots[]= {"CUP_B_RACS_Pilot"};
         technicals[] = {"CUP_I_LR_MG_RACS"};
-        armour[] = {"CUP_I_M113_RACS", "CUP_I_M113_RACS", "CUP_I_AAV_RACS", "CUP_I_T72_RACS", "CUP_I_T72_RACS"};
+        armour[] = {"CUP_I_M113_RACS", "CUP_I_M113_RACS", "CUP_I_AAV_RACS", "CUP_I_M60A3_RACS", "CUP_I_M60A3_RACS"};
         ah[] = {"CUP_B_AH1Z"};
     };
 
