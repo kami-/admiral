@@ -649,7 +649,7 @@ class UnitTemplates {
 
     class AAF_CBRN {
         side = "resistance";
-        camouflage[] = {"woodland"};
+        camouflage[] = {};
         infantry[] = {"skn_i_nbc_sl", "skn_i_nbc_AR", "skn_i_nbc_rf", "skn_i_nbc_LAT", "skn_i_nbc_m", "skn_i_nbc_AR", "skn_i_nbc_LAT", "skn_i_nbc_AR", "skn_i_nbc_LAT"};
         crewmen[] = {"skn_i_nbc_crew", "skn_i_nbc_medic"};
         pilots[]= {"skn_i_nbc_crew"};
