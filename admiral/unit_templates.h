@@ -32,6 +32,17 @@ class UnitTemplates {
         ah[] = {"B_Heli_Attack_01_F"};
     };
 
+    class NATO_CBRN {
+        side = "west";
+        camouflage[] = {};
+        infantry[] = {"skn_b_nbc_sl", "skn_b_nbc_AR", "skn_b_nbc_rf", "skn_b_nbc_AT4", "skn_b_nbc_tl", "skn_b_nbc_AR", "skn_b_nbc_AT4", "skn_b_nbc_AR", "skn_b_nbc_AT4"};
+        crewmen[] = {"skn_b_nbc_crew", "skn_b_nbc_eng"};
+        pilots[]= {"skn_b_nbc_crew"};
+        technicals[] = {"B_MRAP_01_hmg_F"};
+        armour[] = {"B_APC_Wheeled_01_cannon_F", "B_MBT_01_TUSK_F", "B_APC_Tracked_01_rcws_F"};
+        ah[] = {"B_Heli_Attack_01_F"};
+    };
+
     class CTRG_JUNGLE {
         side = "west";
         camouflage[] = {};
@@ -339,6 +350,17 @@ class UnitTemplates {
         ah[] = {"O_Heli_Attack_02_F"};
     };
 
+    class CSAT_CBRN {
+        side = "east";
+        camouflage[] = {};
+        infantry[] = {"skn_o_nbc_sl", "skn_o_nbc_ar", "skn_o_nbc_rf", "skn_o_nbc_RPG18", "skn_o_nbc_a", "skn_o_nbc_ar", "skn_o_nbc_RPG18", "skn_o_nbc_ar", "skn_o_nbc_tl"};
+        crewmen[] = {"skn_o_nbc_crew", "skn_o_nbc_eng"};
+        pilots[]= {"skn_o_nbc_crew"};
+        technicals[] = {"O_MRAP_02_hmg_F", "O_LSV_02_armed_F", "O_LSV_02_armed_F"};
+        armour[] = {"O_APC_Tracked_02_cannon_F", "O_MBT_02_cannon_F", "O_APC_Wheeled_02_rcws_F"};
+        ah[] = {"O_Heli_Attack_02_F"};
+    };
+
     class CSAT_URBAN {
         side = "east";
         camouflage[] = {};
@@ -620,6 +642,17 @@ class UnitTemplates {
         infantry[] = {"I_Soldier_SL_F", "I_Soldier_AR_F", "I_Soldier_lite_F", "I_Soldier_AT4_F", "I_Soldier_M_F", "I_Soldier_AR_F", "I_Soldier_AT4_F", "I_Soldier_AR_F", "I_Soldier_AT4_F"};
         crewmen[] = {"I_crew_F", "I_engineer_F"};
         pilots[]= {"I_Helipilot_F"};
+        technicals[] = {"I_MRAP_03_hmg_F", "CUP_I_LR_MG_AAF", "CUP_I_LR_MG_AAF"};
+        armour[] = {"I_APC_tracked_03_cannon_F", "I_APC_Wheeled_03_cannon_F", "CUP_I_M113_AAF", "CUP_I_M113_AAF"};
+        ah[] = {"I_Heli_light_03_F"};
+    };
+
+    class AAF_CBRN {
+        side = "resistance";
+        camouflage[] = {};
+        infantry[] = {"skn_i_nbc_sl", "skn_i_nbc_AR", "skn_i_nbc_rf", "skn_i_nbc_AT4", "skn_i_nbc_m", "skn_i_nbc_AR", "skn_i_nbc_AT4", "skn_i_nbc_AR", "skn_i_nbc_AT4"};
+        crewmen[] = {"skn_i_nbc_crew", "skn_i_nbc_medic"};
+        pilots[]= {"skn_i_nbc_crew"};
         technicals[] = {"I_MRAP_03_hmg_F", "CUP_I_LR_MG_AAF", "CUP_I_LR_MG_AAF"};
         armour[] = {"I_APC_tracked_03_cannon_F", "I_APC_Wheeled_03_cannon_F", "CUP_I_M113_AAF", "CUP_I_M113_AAF"};
         ah[] = {"I_Heli_light_03_F"};
