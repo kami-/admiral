@@ -35,7 +35,7 @@ class UnitTemplates {
     class NATO_CBRN {
         side = "west";
         camouflage[] = {};
-        infantry[] = {"skn_b_nbc_sl", "skn_b_nbc_AR", "skn_b_nbc_rf", "skn_b_nbc_LAT", "skn_b_nbc_tl", "skn_b_nbc_AR", "skn_b_nbc_LAT", "skn_b_nbc_AR", "skn_b_nbc_LAT"};
+        infantry[] = {"skn_b_nbc_sl", "skn_b_nbc_AR", "skn_b_nbc_rf", "skn_b_nbc_AT4", "skn_b_nbc_tl", "skn_b_nbc_AR", "skn_b_nbc_AT4", "skn_b_nbc_AR", "skn_b_nbc_AT4"};
         crewmen[] = {"skn_b_nbc_crew", "skn_b_nbc_eng"};
         pilots[]= {"skn_b_nbc_crew"};
         technicals[] = {"B_MRAP_01_hmg_F"};
@@ -353,7 +353,7 @@ class UnitTemplates {
     class CSAT_CBRN {
         side = "east";
         camouflage[] = {};
-        infantry[] = {"skn_o_nbc_sl", "skn_o_nbc_ar", "skn_o_nbc_rf", "skn_o_nbc_lat", "skn_o_nbc_a", "skn_o_nbc_ar", "skn_o_nbc_lat", "skn_o_nbc_ar", "skn_o_nbc_tl"};
+        infantry[] = {"skn_o_nbc_sl", "skn_o_nbc_ar", "skn_o_nbc_rf", "skn_o_nbc_RPG18", "skn_o_nbc_a", "skn_o_nbc_ar", "skn_o_nbc_RPG18", "skn_o_nbc_ar", "skn_o_nbc_tl"};
         crewmen[] = {"skn_o_nbc_crew", "skn_o_nbc_eng"};
         pilots[]= {"skn_o_nbc_crew"};
         technicals[] = {"O_MRAP_02_hmg_F", "O_LSV_02_armed_F", "O_LSV_02_armed_F"};
@@ -650,7 +650,7 @@ class UnitTemplates {
     class AAF_CBRN {
         side = "resistance";
         camouflage[] = {};
-        infantry[] = {"skn_i_nbc_sl", "skn_i_nbc_AR", "skn_i_nbc_rf", "skn_i_nbc_LAT", "skn_i_nbc_m", "skn_i_nbc_AR", "skn_i_nbc_LAT", "skn_i_nbc_AR", "skn_i_nbc_LAT"};
+        infantry[] = {"skn_i_nbc_sl", "skn_i_nbc_AR", "skn_i_nbc_rf", "skn_i_nbc_AT4", "skn_i_nbc_m", "skn_i_nbc_AR", "skn_i_nbc_AT4", "skn_i_nbc_AR", "skn_i_nbc_AT4"};
         crewmen[] = {"skn_i_nbc_crew", "skn_i_nbc_medic"};
         pilots[]= {"skn_i_nbc_crew"};
         technicals[] = {"I_MRAP_03_hmg_F", "CUP_I_LR_MG_AAF", "CUP_I_LR_MG_AAF"};
