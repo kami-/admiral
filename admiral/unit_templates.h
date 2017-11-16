@@ -650,7 +650,7 @@ class UnitTemplates {
     class AAF_CBRN {
         side = "resistance";
         camouflage[] = {};
-        infantry[] = {"skn_i_nbc_sl", "skn_i_nbc_AR", "skn_i_nbc_rf", "skn_i_nbc_AT4", "skn_i_nbc_m", "skn_i_nbc_AR", "skn_i_nbc_AT4", "skn_i_nbc_AR", "skn_i_nbc_AT4"};
+        infantry[] = {"skn_i_nbc_sl", "skn_i_nbc_AR", "skn_i_nbc_rf", "skn_i_nbc_AT4", "skn_i_nbc_a", "skn_i_nbc_AR", "skn_i_nbc_AT4", "skn_i_nbc_AR", "skn_i_nbc_AT4"};
         crewmen[] = {"skn_i_nbc_crew", "skn_i_nbc_medic"};
         pilots[]= {"skn_i_nbc_crew"};
         technicals[] = {"I_MRAP_03_hmg_F", "CUP_I_LR_MG_AAF", "CUP_I_LR_MG_AAF"};
