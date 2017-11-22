@@ -912,4 +912,224 @@ class UnitTemplates {
         ah[] = {"CUP_I_Mi24_Mk4_AT_ION"};
     };
 
+    class FOW_USMC {
+        side = "resistance";
+        camouflage[] = {};
+        infantry[] = {"fow_s_usmc_teamleader", "fow_s_usmc_rifleman_m1903", "fow_s_usmc_rifleman", "fow_s_usmc_rifleman", "fow_s_usmc_rifleman", "fow_s_usmc_rifleman_m1_carbine", "fow_s_usmc_rifleman_m1_carbine", "fow_s_usmc_nco", "fow_s_usmc_officer", "fow_s_usmc_m1919a6_gunner", "fow_s_usmc_m1919a6_asst", "fow_s_usmc_bar_gunner", "fow_s_usmc_bar_gunner_asst", "fow_s_usmc_at", "fow_s_usmc_at_asst"};
+        crewmen[] = {"fow_s_usmc_crewman", "fow_s_usmc_crewman"};
+        pilots[] = {"fow_s_us_pilot"};
+        technicals[] = {"LIB_US_Scout_M3_FFV", "LIB_US_Scout_M3_FFV", "LIB_M8_Greyhound", "LIB_US_M3_Halftrack", "LIB_US_M3_Halftrack"};
+        armour[] = {"LIB_M3A3_Stuart", "LIB_M4A3_75_Tubes", "LIB_M5A1_Stuart", "LIB_M4A3_75"};
+        ah[] = {"LIB_P47"};
+    };
+
+    class FOW_USA {
+        side = "resistance";
+        camouflage[] = {};
+        infantry[] = {"fow_s_us_m37_smg_m3", "fow_s_us_m37_smg_m1a1", "fow_s_us_m37_teamleader_asst", "fow_s_us_m37_teamleader", "fow_s_us_m37_rifleman_scout", "fow_s_us_m37_rifleman_m1_carbine", "fow_s_us_m37_rifleman_gl", "fow_s_us_m37_rifleman", "fow_s_us_m37_radio_operator", "fow_s_us_m37_officer", "fow_s_us_m37_nco", "fow_s_us_m37_m1919a6_gunner", "fow_s_us_m37_1919a6_asst", "fow_s_us_m37_bar_gunner", "fow_s_us_m37_bar_asst", "fow_s_us_m37_at", "fow_s_us_m37_at_asst"};
+        crewmen[] = {"fow_s_us_crewman", "fow_s_us_crewman"};
+        pilots[] = {"fow_s_us_pilot_green"};
+        technicals[] = {"LIB_US_Scout_M3_FFV", "LIB_US_Scout_M3_FFV", "LIB_M8_Greyhound", "LIB_US_M3_Halftrack", "LIB_US_M3_Halftrack"};
+        armour[] = {"LIB_M3A3_Stuart", "LIB_M4A3_76", "LIB_M5A1_Stuart", "LIB_M4A3_75", "LIB_M4A3_76_HVSS"};
+        ah[] = {"LIB_P47"};
+    };
+
+    class FOW_USA_PARA {
+        side = "resistance";
+        camouflage[] = {};
+        infantry[] = {"fow_s_us_ab_m42_smg_m3", "fow_s_us_ab_m42_smg_m1a1", "fow_s_us_ab_m42_teamleader_asst", "fow_s_us_ab_m42_teamleader", "fow_s_us_ab_m42_rifleman_scout", "fow_s_us_ab_m42_rifleman_m1_carbine", "fow_s_us_ab_m42_rifleman_gl", "fow_s_us_ab_m42_rifleman", "fow_s_us_ab_m42_radio_operator", "fow_s_us_ab_m42_officer", "fow_s_us_ab_m42_nco", "fow_s_us_ab_m42_m1919a6_gunner", "fow_s_us_ab_m42_m1919a6_gunner_asst", "fow_s_us_ab_m42_bar_gunner", "fow_s_us_ab_m42_bar_asst", "fow_s_us_ab_m42_at", "fow_s_us_ab_m42_at_asst"};
+        crewmen[] = {"fow_s_us_crewman", "fow_s_us_crewman"};
+        pilots[] = {"fow_s_us_pilot_green"};
+        technicals[] = {"LIB_US_Scout_M3_FFV", "LIB_US_Scout_M3_FFV", "LIB_M8_Greyhound", "LIB_US_M3_Halftrack", "LIB_US_M3_Halftrack"};
+        armour[] = {"LIB_M3A3_Stuart", "LIB_M4A3_76", "LIB_M5A1_Stuart", "LIB_M4A3_75", "LIB_M4A3_76_HVSS"};
+        ah[] = {"LIB_P47"};
+    };
+
+    class FOW_USA_PAC {
+        side = "resistance";
+        camouflage[] = {};
+        infantry[] = {"fow_s_us_p_smg_m3", "fow_s_us_p_smg_m1a1", "fow_s_us_p_teamleader_asst", "fow_s_us_p_teamleader", "fow_s_us_p_rifleman_scout", "fow_s_us_p_rifleman_m1_carbine", "fow_s_us_p_rifleman_gl", "fow_s_us_p_rifleman", "fow_s_us_p_radio_operator", "fow_s_us_p_officer", "fow_s_us_p_nco", "fow_s_us_p_m1919a6_gunner", "fow_s_us_p_1919a6_asst", "fow_s_us_p_bar_gunner", "fow_s_us_p_bar_asst", "fow_s_us_p_at", "fow_s_us_p_at_asst"};
+        crewmen[] = {"fow_s_us_p_crewman", "fow_s_us_p_crewman"};
+        pilots[] = {"fow_s_us_pilot_green"};
+        technicals[] = {"LIB_US_Scout_M3_FFV", "LIB_US_Scout_M3_FFV", "LIB_M8_Greyhound", "LIB_US_M3_Halftrack", "LIB_US_M3_Halftrack"};
+        armour[] = {"LIB_M3A3_Stuart", "LIB_M4A3_75_Tubes", "LIB_M5A1_Stuart", "LIB_M4A3_75"};
+        ah[] = {"LIB_P47"};
+    };
+
+    class FOW_BAF_ESX {
+        side = "resistance";
+        camouflage[] = {};
+        infantry[] = {"fow_s_uk_teamleader", "fow_s_uk_section_commander", "fow_s_uk_rifleman", "fow_s_uk_radio_operator", "fow_s_uk_officer", "fow_s_uk_bren", "fow_s_uk_bren_asst", "fow_s_uk_at", "fow_s_uk_at_asst", "fow_s_uk_rifleman", "fow_s_uk_rifleman"};
+        crewmen[] = {"fow_s_uk_crewman", "fow_s_uk_crewman"};
+        pilots[] = {"fow_s_us_pilot"};
+        technicals[] = {"fow_v_universalCarrier", "fow_v_universalCarrier", "LIB_M8_Greyhound", "LIB_US_M3_Halftrack", "LIB_US_M3_Halftrack"};
+        armour[] = {"LIB_M3A3_Stuart", "LIB_M4A4_FIREFLY", "LIB_M5A1_Stuart", "fow_v_cromwell_uk"};
+        ah[] = {"LIB_P47"};
+    };
+
+    class FOW_BAF_PARA {
+        side = "resistance";
+        camouflage[] = {};
+        infantry[] = {"fow_s_uk_para_teamleader", "fow_s_uk_para_section_commander", "fow_s_uk_para_rifleman", "fow_s_uk_para_radio_operator", "fow_s_uk_para_officer", "fow_s_uk_para_bren", "fow_s_uk_para_bren_asst", "fow_s_uk_para_at", "fow_s_uk_para_at_asst", "fow_s_uk_para_rifleman", "fow_s_uk_para_rifleman"};
+        crewmen[] = {"fow_s_uk_crewman", "fow_s_uk_crewman"};
+        pilots[] = {"fow_s_us_pilot"};
+        technicals[] = {"fow_v_universalCarrier", "fow_v_universalCarrier", "LIB_M8_Greyhound", "LIB_US_M3_Halftrack", "LIB_US_M3_Halftrack"};
+        armour[] = {"LIB_M3A3_Stuart", "LIB_M4A4_FIREFLY", "LIB_M5A1_Stuart", "fow_v_cromwell_uk"};
+        ah[] = {"LIB_P47"};
+    };
+
+    class FOW_BAF_COM {
+        side = "resistance";
+        camouflage[] = {};
+        infantry[] = {"fow_s_uk_cdo_teamleader", "fow_s_uk_cdo_section_commander", "fow_s_uk_cdo_rifleman", "fow_s_uk_cdo_radio_operator", "fow_s_uk_cdo_officer", "fow_s_uk_cdo_bren", "fow_s_uk_cdo_bren_asst", "fow_s_uk_cdo_at", "fow_s_uk_cdo_at_asst", "fow_s_uk_cdo_rifleman", "fow_s_uk_cdo_rifleman"};
+        crewmen[] = {"fow_s_uk_crewman", "fow_s_uk_crewman"};
+        pilots[] = {"fow_s_us_pilot"};
+        technicals[] = {"fow_v_universalCarrier", "fow_v_universalCarrier", "LIB_M8_Greyhound", "LIB_US_M3_Halftrack", "LIB_US_M3_Halftrack"};
+        armour[] = {"LIB_M3A3_Stuart", "LIB_M4A4_FIREFLY", "LIB_M5A1_Stuart", "fow_v_cromwell_uk"};
+        ah[] = {"LIB_P47"};
+    };
+
+    class FOW_BAF_PAC {
+        side = "resistance";
+        camouflage[] = {};
+        infantry[] = {"fow_s_uk_seac_teamleader", "fow_s_uk_seac_section_commander", "fow_s_uk_seac_rifleman", "fow_s_uk_seac_radio_operator", "fow_s_uk_seac_officer", "fow_s_uk_seac_bren", "fow_s_uk_seac_bren_asst", "fow_s_uk_seac_at", "fow_s_uk_seac_at_asst", "fow_s_uk_seac_rifleman", "fow_s_uk_seac_rifleman"};
+        crewmen[] = {"fow_s_uk_crewman", "fow_s_uk_crewman"};
+        pilots[] = {"fow_s_us_pilot"};
+        technicals[] = {"fow_v_universalCarrier", "fow_v_universalCarrier", "LIB_M8_Greyhound", "LIB_US_M3_Halftrack", "LIB_US_M3_Halftrack"};
+        armour[] = {"LIB_M3A3_Stuart", "LIB_M4A3_75_Tubes", "LIB_M5A1_Stuart", "LIB_M4A3_75"};
+        ah[] = {"LIB_P47"};
+    };
+
+    class FOW_AUS {
+        side = "resistance";
+        camouflage[] = {};
+        infantry[] = {"fow_s_uk_seac_teamleader_l", "fow_s_uk_seac_section_commander_l", "fow_s_uk_seac_rifleman_l", "fow_s_uk_seac_radio_operator_l", "fow_s_uk_seac_officer_l", "fow_s_uk_seac_bren_l", "fow_s_uk_seac_bren_asst_l", "fow_s_uk_seac_at_l", "fow_s_uk_seac_at_asst_l", "fow_s_uk_seac_rifleman_l", "fow_s_uk_seac_rifleman_l"};
+        crewmen[] = {"fow_s_uk_crewman", "fow_s_uk_crewman"};
+        pilots[] = {"fow_s_us_pilot"};
+        technicals[] = {"fow_v_universalCarrier", "fow_v_universalCarrier", "LIB_M8_Greyhound", "LIB_US_M3_Halftrack", "LIB_US_M3_Halftrack"};
+        armour[] = {"LIB_M3A3_Stuart", "LIB_M4A3_75_Tubes", "LIB_M5A1_Stuart", "LIB_M4A3_75"};
+        ah[] = {"LIB_P47"};
+    };
+
+    class FOW_CAN {
+        side = "resistance";
+        camouflage[] = {};
+        infantry[] = {"fow_s_uk_can_01_teamleader", "fow_s_uk_can_01_section_commander", "fow_s_uk_can_01_rifleman", "fow_s_uk_can_01_radio_operator", "fow_s_uk_can_01_officer", "fow_s_uk_can_01_bren", "fow_s_uk_can_01_bren_asst", "fow_s_uk_can_01_at", "fow_s_uk_can_01_at_asst", "fow_s_uk_can_01_rifleman", "fow_s_uk_can_01_rifleman"};
+        crewmen[] = {"fow_s_uk_crewman", "fow_s_uk_crewman"};
+        pilots[] = {"fow_s_us_pilot"};
+        technicals[] = {"fow_v_universalCarrier", "fow_v_universalCarrier", "LIB_M8_Greyhound", "LIB_US_M3_Halftrack", "LIB_US_M3_Halftrack"};
+        armour[] = {"LIB_M3A3_Stuart", "LIB_M4A4_FIREFLY", "LIB_M5A1_Stuart", "fow_v_cromwell_uk"};
+        ah[] = {"LIB_P47"};
+    };
+
+    class IF44_POL {
+        side = "resistance";
+        camouflage[] = {};
+        infantry[] = {"LIB_WP_Stggunner", "LIB_WP_Sierzant", "LIB_WP_Porucznic", "LIBWP_Starszy_strzelec", "LIB_WP_Strzelec", "LIB_WP_Mgunner", "LIB_WP_AT_grenadier"};
+        crewmen[] = {"LIB_WP_Strzelec", "LIB_WP_Sierzant"};
+        pilots[] = {"LIB_WP_Sierzant"};
+        technicals[] = {"LIB_Kfz1_MG42", "LIB_SdKfz252", "LIB_Sdkfz251_FFV", "LIB_SdKfz222", "LIB_SdKfz234_1"};
+        armour[] = {"LIB_PzKpfwIV_H", "LIB_StuG_III_G", "LIB_SdKfz124", "LIB_SdKfz234_2"};
+        ah[] = {"LIB_Ju87"};
+    };
+
+    class IF44_GER_SN {
+        side = "west";
+        camouflage[] = {};
+        infantry[] = {"LIB_GER_Stggunner_w", "LIB_GER_Scout_unterofficer_w", "LIB_GER_Unterofficer_w", "LIB_GER_Lieutenant_w", "LIB_GER_Scout_rifleman_w", "LIB_GER_Rifleman_w", "LIB_GER_Scout_ober_rifleman_w", "LIB_GER_Ober_rifleman_w", "LIB_GER_Scout_mgunner_w", "LIB_GER_AT_soldier_w", "LIB_GER_AT_grenadier_w", "LIB_GER_Scout_smgunner_w"};
+        crewmen[] = {"LIB_GER_Scout_smgunner_w", "LIB_GER_Scout_unterofficer_w"};
+        pilots[] = {"LIB_GER_pilot"};
+        technicals[] = {"LIB_Sdkfz251_w", "LIB_Sdkfz251_FFV_w"};
+        armour[] = {"LIB_PzKpfwIV_H_w", "LIB_StuG_III_G_w", "LIB_PzKpfwV_w", "LIB_PzKpfwVI_E_w"};
+        ah[] = {"LIB_Ju87_w"};
+    };
+
+    class FOW_GER {
+        side = "west";
+        camouflage[] = {};
+        infantry[] = {"fow_s_ger_heer_rifleman_mp40", "fow_s_ger_heer_rifleman_mp40_pzf", "fow_s_ger_heer_rifleman_g43", "fow_s_ger_heer_rifleman", "fow_s_ger_heer_radio_operator", "fow_s_ger_heer_nco_mp40", "fow_s_ger_heer_mg42_gunner", "fow_s_ger_heer_mg34_gunner", "fow_s_ger_heer_tl_asst", "fow_s_ger_heer_tl_stg", "fow_s_ger_heer_tl_mp40", "fow_s_ger_heer_mg42_sparebarrel", "fow_s_ger_heer_mg42_asst"};
+        crewmen[] = {"fow_ger_heer_tankcrew_o1_2nd_leutnant", "fow_s_ger_heer_tankcrew_01_shutz"};
+        pilots[] = {"LIB_GER_pilot"};
+        technicals[] = {"LIB_SdKfz222", "LIB_Kfz1_MG42", "LIB_SdKfz251", "LIB_Sdkfz251_FFV"};
+        armour[] = {"LIB_StuG_III_G", "LIB_SdKfz124", "LIB_PzKpfwVI_E_1", "LIB_PzKpfwIV_H", "LIB_PzKpfwV"};
+        ah[] = {"LIB_Ju87"};
+    };
+
+    class FOW_GER_SS {
+        side = "west";
+        camouflage[] = {};
+        infantry[] = {"fow_s_ger_ss_tl_stg", "fow_s_ger_ss_tl_mp40", "fow_s_ger_ss_rifleman_mp40", "fow_s_ger_ss_rifleman_g43", "fow_s_ger_ss_rifleman", "fow_s_ger_ss_radio_operator", "fow_s_ger_ss_nco_mp40", "fow_s_ger_ss_mg42_gunner", "fow_s_ger_ss_mg43_gunner", "fow_s_ger_ss_mg42_sparebarrel", "fow_s_ger_ss_mg42_asst"};
+        crewmen[] = {"fow_ger_heer_tankcrew_o1_2nd_leutnant", "fow_s_ger_heer_tankcrew_01_shutz"};
+        pilots[] = {"LIB_GER_pilot"};
+        technicals[] = {"LIB_SdKfz222", "LIB_Kfz1_MG42", "LIB_SdKfz251", "LIB_Sdkfz251_FFV"};
+        armour[] = {"LIB_StuG_III_G", "LIB_SdKfz124", "LIB_PzKpfwVI_E_1", "LIB_PzKpfwIV_H", "LIB_PzKpfwV"};
+        ah[] = {"LIB_Ju87"};
+    };
+
+    class FOW_GER_PARA {
+        side = "west";
+        camouflage[] = {};
+        infantry[] = {"fow_s_ger_luft_camo_tl_stg", "fow_s_ger_luft_camo_tl_mp40", "fow_s_ger_luft_camo_rifleman_mp40", "fow_s_ger_luft_camo_rifleman_g43", "fow_s_ger_luft_camo_rifleman_fg42", "fow_s_ger_luft_camo_rifleman", "fow_s_ger_luft_camo_radio_operator", "fow_s_ger_luft_camo_nco_mp40", "fow_s_ger_luft_camo_mg34_gunner", "fow_s_ger_luft_camo_mg42_gunner", "fow_s_ger_luft_camo_mg42_sparebarrel", "fow_s_ger_luft_camo_mg42_asst"};
+        crewmen[] = {"fow_ger_heer_tankcrew_o1_2nd_leutnant", "fow_s_ger_heer_tankcrew_01_shutz"};
+        pilots[] = {"LIB_GER_pilot"};
+        technicals[] = {"LIB_SdKfz222", "LIB_Kfz1_MG42", "LIB_SdKfz251", "LIB_Sdkfz251_FFV"};
+        armour[] = {"LIB_StuG_III_G", "LIB_SdKfz124", "LIB_PzKpfwVI_E_1", "LIB_PzKpfwIV_H", "LIB_PzKpfwV"};
+        ah[] = {"LIB_Ju87"};
+    };
+
+    class FOW_IJA {
+        side = "west";
+        camouflage[] = {};
+        infantry[] = {"fow_s_ija_rifleman_at", "fow_s_ija_rifleman", "fow_s_ija_officer", "fow_s_ija_nco", "fow_s_ija_type99_gunner", "fow_s_ija_type99_asst", "fow_s_ija_rifleman", "fow_s_ija_rifleman"};
+        crewmen[] = {"fow_s_ija_crewman", "fow_s_ija_crewman"};
+        pilots[] = {"fow_s_ija_pilot"};
+        technicals[] = {"fow_v_type97_truck_open_ija", "fow_v_type97_truck_ija"};
+        armour[] = {"fow_ija_type95_HaGo_1_ija", "fow_ija_type95_HaGo_2_ija", "fow_ija_type95_HaGo_3_ija"};
+        ah[] = {"LIB_RBAF_Ju87"};
+    };
+
+    class FOW_IJA_SNLF {
+        side = "west";
+        camouflage[] = {};
+        infantry[] = {"fow_s_ija_snlf_rifleman_at", "fow_s_ija_snlf_rifleman", "fow_s_ija_snlf_nco", "fow_s_ija_snlf_type99_gunner", "fow_s_ija_snlf_type99_asst", "fow_s_ija_snlf_rifleman", "fow_s_ija_snlf_rifleman"};
+        crewmen[] = {"fow_s_ija_crewman", "fow_s_ija_crewman"};
+        pilots[] = {"fow_s_ija_pilot"};
+        technicals[] = {"fow_v_type97_truck_open_ija", "fow_v_type97_truck_ija"};
+        armour[] = {"fow_ija_type95_HaGo_1_ija", "fow_ija_type95_HaGo_2_ija", "fow_ija_type95_HaGo_3_ija"};
+        ah[] = {"LIB_RBAF_Ju87"};
+    };
+
+    class IF44_USSR {
+        side = "east";
+        camouflage[] = {};
+        infantry[] = {"LIB_SOV_smgunner", "LIB_SOV_lieutenant", "LIB_SOV_operator", "LIB_SOV_LC_rifleman", "LIB_SOV_mgunner", "LIB_SOV_gun_crew", "LIB_SOV_gun_sergeant", "LIB_SOV_first_lieutenant", "LIB_SOV_captain", "LIB_SOV_LC_rifleman", "LIB_SOV_AT_grenadier", "LIB_SOV_AT_soldier"};
+        crewmen[] = {"LIB_SOV_tank_overall_lieutenant", "LIB_SOV_tank_overall_crew"};
+        pilots[] = {"LIB_SOV_pilot"};
+        technicals[] = {"LIB_Scout_M3", "LIB_Scout_M3_FFV", "LIB_SOV_M3_Halftrack", "LIB_SdKfz251_captured", "LIB_Sdkfz2_FFV"};
+        armour[] = {"LIB_JS2_43", "LIB_M4A2_SOV", "LIB_SU85", "LIB_T34_76", "LIB_T34_85", "LIB_T34_85"};
+        ah[] = {"LIB_Pe2"};
+    };
+
+    class IF44_USSR_NKVD {
+        side = "east";
+        camouflage[] = {};
+        infantry[] = {"LIB_NKVD_smgunner", "LIB_NKVD_sergeant", "LIB_NKVD_p_officer", "LIB_NKVD_rifleman", "LIB_NKVD_LC_rifleman", "LIB_NKVD_firest_lieutenant"};
+        crewmen[] = {"LIB_SOV_tank_overall_lieutenant", "LIB_SOV_tank_overall_crew"};
+        pilots[] = {"LIB_SOV_pilot"};
+        technicals[] = {"LIB_Scout_M3", "LIB_Scout_M3_FFV", "LIB_SOV_M3_Halftrack", "LIB_SdKfz251_captured", "LIB_Sdkfz2_FFV"};
+        armour[] = {"LIB_JS2_43", "LIB_M4A2_SOV", "LIB_SU85", "LIB_T34_76", "LIB_T34_85", "LIB_T34_85"};
+        ah[] = {"LIB_Pe2"};
+    };
+
+    class IF44_USSR_SN {
+        side = "east";
+        camouflage[] = {};
+        infantry[] = {"LIB_SOV_Smgunner_w", "LIB_SOV_Lieutenant_w", "LIB_SOV_Operator_w", "LIB_SOV_Assault_sergeant_w", "LIB_SOV_P_officer_w", "LIB_SOV_Rifleman_w", "LIB_SOV_Mgunner_w", "LIB_SOV_Captain_w", "LIB_SOV_AT_grenadier_w", "LIB_SOV_AT_soldier_W", "LIB_SOV_Rifleman_w", "LIB_SOV_Rifleman_w"};
+        crewmen[] = {"LIB_SOV_tank_captain", "LIB_SOV_tank_crew"};
+        pilots[] = {"LIB_SOV_pilot"};
+        technicals[] = {"LIB_Scout_M3_w", "LIB_Scout_M3_FFV_w", "LIB_SOV_M3_Halftrack_w"};
+        armour[] = {"LIB_JS2_43_w", "LIB_M4A2_SOV_w", "LIB_SU85_w", "LIB_T34_76_w", "LIB_T34_85_w", "LIB_T34_85_w"};
+        ah[] = {"LIB_Pe2_w"};
+    };
+
 };
