@@ -1048,7 +1048,7 @@ class UnitTemplates {
         side = "west";
         camouflage[] = {};
         infantry[] = {"fow_s_ger_heer_rifleman_mp40", "fow_s_ger_heer_rifleman_mp40_pzf", "fow_s_ger_heer_rifleman_g43", "fow_s_ger_heer_rifleman", "fow_s_ger_heer_radio_operator", "fow_s_ger_heer_nco_mp40", "fow_s_ger_heer_mg42_gunner", "fow_s_ger_heer_mg34_gunner", "fow_s_ger_heer_tl_asst", "fow_s_ger_heer_tl_stg", "fow_s_ger_heer_tl_mp40", "fow_s_ger_heer_mg42_sparebarrel", "fow_s_ger_heer_mg42_asst"};
-        crewmen[] = {"fow_ger_heer_tankcrew_o1_2nd_leutnant", "fow_s_ger_heer_tankcrew_01_shutz"};
+        crewmen[] = {"fow_ger_heer_tankcrew_01_2nd_leutnant", "fow_s_ger_heer_tankcrew_01_shutz"};
         pilots[] = {"LIB_GER_pilot"};
         technicals[] = {"LIB_SdKfz222", "LIB_Kfz1_MG42", "LIB_SdKfz251", "LIB_Sdkfz251_FFV"};
         armour[] = {"LIB_StuG_III_G", "LIB_SdKfz124", "LIB_PzKpfwVI_E_1", "LIB_PzKpfwIV_H", "LIB_PzKpfwV"};
@@ -1059,7 +1059,7 @@ class UnitTemplates {
         side = "west";
         camouflage[] = {};
         infantry[] = {"fow_s_ger_ss_tl_stg", "fow_s_ger_ss_tl_mp40", "fow_s_ger_ss_rifleman_mp40", "fow_s_ger_ss_rifleman_g43", "fow_s_ger_ss_rifleman", "fow_s_ger_ss_radio_operator", "fow_s_ger_ss_nco_mp40", "fow_s_ger_ss_mg42_gunner", "fow_s_ger_ss_mg43_gunner", "fow_s_ger_ss_mg42_sparebarrel", "fow_s_ger_ss_mg42_asst"};
-        crewmen[] = {"fow_ger_heer_tankcrew_o1_2nd_leutnant", "fow_s_ger_heer_tankcrew_01_shutz"};
+        crewmen[] = {"fow_ger_heer_tankcrew_01_2nd_leutnant", "fow_s_ger_heer_tankcrew_01_shutz"};
         pilots[] = {"LIB_GER_pilot"};
         technicals[] = {"LIB_SdKfz222", "LIB_Kfz1_MG42", "LIB_SdKfz251", "LIB_Sdkfz251_FFV"};
         armour[] = {"LIB_StuG_III_G", "LIB_SdKfz124", "LIB_PzKpfwVI_E_1", "LIB_PzKpfwIV_H", "LIB_PzKpfwV"};
@@ -1070,7 +1070,7 @@ class UnitTemplates {
         side = "west";
         camouflage[] = {};
         infantry[] = {"fow_s_ger_luft_camo_tl_stg", "fow_s_ger_luft_camo_tl_mp40", "fow_s_ger_luft_camo_rifleman_mp40", "fow_s_ger_luft_camo_rifleman_g43", "fow_s_ger_luft_camo_rifleman_fg42", "fow_s_ger_luft_camo_rifleman", "fow_s_ger_luft_camo_radio_operator", "fow_s_ger_luft_camo_nco_mp40", "fow_s_ger_luft_camo_mg34_gunner", "fow_s_ger_luft_camo_mg42_gunner", "fow_s_ger_luft_camo_mg42_sparebarrel", "fow_s_ger_luft_camo_mg42_asst"};
-        crewmen[] = {"fow_ger_heer_tankcrew_o1_2nd_leutnant", "fow_s_ger_heer_tankcrew_01_shutz"};
+        crewmen[] = {"fow_ger_heer_tankcrew_01_2nd_leutnant", "fow_s_ger_heer_tankcrew_01_shutz"};
         pilots[] = {"LIB_GER_pilot"};
         technicals[] = {"LIB_SdKfz222", "LIB_Kfz1_MG42", "LIB_SdKfz251", "LIB_Sdkfz251_FFV"};
         armour[] = {"LIB_StuG_III_G", "LIB_SdKfz124", "LIB_PzKpfwVI_E_1", "LIB_PzKpfwIV_H", "LIB_PzKpfwV"};
