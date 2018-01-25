@@ -8,9 +8,9 @@ class ZoneTemplates {
         canSpawnFfvCrew = 0;
         aimingAccuracy = 0.2;
         aimingShake = 0.2;
-        aimingSpeed = 0.65;
+        aimingSpeed = 0.5;
         spotDistance = 0.65;
-        spotTime = 0.7;
+        spotTime = 1;
         courage = 1;
         reloadSpeed = 1;
         commanding = 1;
@@ -26,7 +26,7 @@ class ZoneTemplates {
         canSpawnFfvCrew = 0;
         aimingAccuracy = 0.2;
         aimingShake = 0.2;
-        aimingSpeed = 0.65;
+        aimingSpeed = 0.5;
         spotDistance = 0.65;
         spotTime = 1;
         courage = 1;
@@ -38,13 +38,13 @@ class ZoneTemplates {
     class Cqc {
         infFireteamSize = 4;
         aimingAccuracy = 0.2;
-        aimingShake = 0.1;
-        aimingSpeed = 0.7;
+        aimingShake = 0.15;
+        aimingSpeed = 0.5;
         spotDistance = 0.4;
         spotTime = 1;
         courage = 1;
         reloadSpeed = 1;
         commanding = 1;
-        general = 1;
+        general = 0.7;
     };
 };
