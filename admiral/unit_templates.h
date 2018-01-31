@@ -771,23 +771,23 @@ class UnitTemplates {
 
     class SYND_BANDIT {
         side = "resistance";
-        camouflage[] = {"woodland", "desert"};
-        infantry[] = {"I_C_Soldier_Bandit_6_F", "I_C_Soldier_Bandit_3_F", "I_C_Soldier_Bandit_4_F", "I_C_Soldier_Bandit_2_F", "I_C_Soldier_Bandit_7_F", "I_C_Soldier_Bandit_3_F", "I_C_Soldier_Bandit_2_F", "I_C_Soldier_Bandit_5_F", "I_C_Soldier_Bandit_2_F"};
-        crewmen[] = {"I_C_Soldier_Bandit_1_F", "I_C_Soldier_Bandit_8_F"};
-        pilots[] = {"I_C_Pilot_F"};
-        technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU", "B_G_Offroad_01_armed_F", "B_G_Offroad_01_armed_F"};
-        armour[] = {"CUP_O_BRDM2_SLA", "CUP_O_BRDM2_SLA", "CUP_I_T34_TK_GUE", "CUP_I_BMP1_TK_GUE", "CUP_O_BMP2_SLA", "CUP_O_T72_SLA"};
+        camouflage[] = {"desert"};
+        infantry[] = {"I_C_Soldier_Bandit_7_F_ARK", "I_C_Soldier_Bandit_3_F_ARK", "I_C_Soldier_Bandit_4_F_ARK", "I_C_Soldier_Bandit_5_F_ARK", "I_C_Soldier_Bandit_2_F_ARK", "I_C_Soldier_Bandit_2_F_ARK", "I_C_Soldier_Bandit_6_F_ARK", "I_C_Soldier_Bandit_6_F_ARK", "I_C_Soldier_Bandit_7_F_ARK"};
+        crewmen[] = {"I_C_Pilot_F_ARK", "I_C_Pilot_F_ARK"};
+        pilots[] = {"I_C_Pilot_F_ARK"};
+        technicals[] = {"CUP_I_Datsun_PK", "CUP_O_UAZ_AGS30_TKA", "CUP_O_LR_MG_TKA", "CUP_O_LR_SPG9_TKA", "CUP_O_UAZ_SPG9_TKA", "CUP_O_UAZ_MG_TKA", "CUP_I_Datsun_PK_TK_Random"};
+        armour[] = {"CUP_O_BTR60_SLA", "CUP_O_BRDM2_SLA", "CUP_O_BMP2_SLA", "CUP_O_T55_SLA", "CUP_I_T34_NAPA", "CUP_O_T55_SLA"};
         ah[] = {"CUP_O_Mi8_SLA_2"};
     };
 
     class SYND_REBEL {
         side = "resistance";
-        camouflage[] = {};
-        infantry[] = {"I_C_Soldier_Para_6_F", "I_C_Soldier_Para_4_F", "I_C_Soldier_Para_4_F", "I_C_Soldier_Para_4_F", "I_C_Soldier_Para_4_F", "I_C_Soldier_Para_4_F", "I_C_Soldier_Para_7_F", "I_C_Soldier_Para_2_F", "I_C_Soldier_Para_2_F"};
-        crewmen[] = {"I_C_Soldier_Para_2_F", "I_C_Soldier_Para_2_F"};
-        pilots[] = {"I_C_Helipilot_F"};
-        technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU", "B_G_Offroad_01_armed_F", "B_G_Offroad_01_armed_F"};
-        armour[] = {"CUP_O_BRDM2_SLA", "CUP_O_BRDM2_SLA", "CUP_I_T34_TK_GUE", "CUP_I_BMP1_TK_GUE", "CUP_O_BMP2_SLA", "CUP_O_T72_SLA"};
+        camouflage[] = {"desert"};
+        infantry[] = {"I_C_Soldier_Para_2_F_ARK", "I_C_Soldier_Para_2_F_ARK", "I_C_Soldier_Para_1_F_ARK", "I_C_Soldier_Para_1_F_ARK", "I_C_Soldier_Para_6_F_ARK", "I_C_Soldier_Para_1_F_ARK", "I_C_Soldier_Para_1_F_ARK", "I_C_Soldier_Para_7_F_ARK", "I_C_Soldier_Para_4_F_ARK", "I_C_Soldier_Para_4_F_ARK"};
+        crewmen[] = {"I_C_Helipilot_F_ARK", "I_C_Helipilot_F_ARK"};
+        pilots[] = {"I_C_Helipilot_F_ARK"};
+        technicals[] = {"CUP_I_Datsun_PK", "CUP_O_UAZ_AGS30_TKA", "CUP_O_LR_MG_TKA", "CUP_O_LR_SPG9_TKA", "CUP_O_UAZ_SPG9_TKA", "CUP_O_UAZ_MG_TKA", "CUP_I_Datsun_PK_TK_Random"};
+        armour[] = {"CUP_O_BTR60_SLA", "CUP_O_BRDM2_SLA", "CUP_O_BMP2_SLA", "CUP_O_T55_SLA", "CUP_I_T34_NAPA", "CUP_O_T55_SLA"};
         ah[] = {"CUP_O_Mi8_SLA_2"};
     };
 
