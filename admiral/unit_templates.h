@@ -1146,7 +1146,7 @@ class UnitTemplates {
     class USM_USA_90_WD {
         side = "west";
         camouflage[] = {"woodland"};
-        infantry[] = {"usm_soldier_90s_w_h_ftl", "usm_soldier_90s_w_h_gr", "usm_soldier_90s_w_h_mg", "usm_soldier_90s_w_h_mgab", "usm_soldier_90s_w_h_nco", "usm_sldier_w_h_off", "usm_soldier_90s_w_h_rm1", "usm_soldier_90s_w_h_at4", "usm_soldier_90s_w_h_ar"};
+        infantry[] = {"usm_soldier_90s_w_h_ftl", "usm_soldier_90s_w_h_gr", "usm_soldier_90s_w_h_mg", "usm_soldier_90s_w_h_mgab", "usm_soldier_90s_w_h_nco", "usm_soldier_w_h_off", "usm_soldier_90s_w_h_rm1", "usm_soldier_90s_w_h_at4", "usm_soldier_90s_w_h_ar"};
         crewmen[] = {"usm_soldier_90s_w_h_crew1", "usm_soldier_90s_w_h_crew1"};
         pilots[] = {"CUP_B_US_Pilot"};
         technicals[] = {"CUP_B_HMMWV_M1114_USMC", "CUP_B_HMMWV_M1114_USMC", "CUP_B_HMMWV_M2_USMC", "CUP_B_HMMWV_M2_USMC", "CUP_B_HMMWV_MK19_USMC"};
@@ -1168,7 +1168,7 @@ class UnitTemplates {
     class USM_USA_90_DE {
         side = "west";
         camouflage[] = {"desert"};
-        infantry[] = {"usm_soldier_90s_d_h_ftl", "usm_soldier_90s_d_h_gr", "usm_soldier_90s_d_h_mg", "usm_soldier_90s_d_h_mgab", "usm_soldier_90s_d_h_nco", "usm_sldier_d_h_off", "usm_soldier_90s_d_h_rm1", "usm_soldier_90s_d_h_at4", "usm_soldier_90s_d_h_ar"};
+        infantry[] = {"usm_soldier_90s_d_h_ftl", "usm_soldier_90s_d_h_gr", "usm_soldier_90s_d_h_mg", "usm_soldier_90s_d_h_mgab", "usm_soldier_90s_d_h_nco", "usm_soldier_d_h_off", "usm_soldier_90s_d_h_rm1", "usm_soldier_90s_d_h_at4", "usm_soldier_90s_d_h_ar"};
         crewmen[] = {"usm_soldier_90s_d_h_crew1", "usm_soldier_90s_d_h_crew1"};
         pilots[] = {"CUP_B_US_Pilot"};
         technicals[] = {"CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_MK19_USA"};
@@ -1179,7 +1179,7 @@ class UnitTemplates {
     class USM_USA_80_DE {
         side = "west";
         camouflage[] = {"desert"};
-        infantry[] = {"usm_soldier_80s_d_h_ftl", "usm_soldier_80s_d_h_gr", "usm_soldier_80s_d_h_mg", "usm_soldier_80s_d_h_mgab", "usm_soldier_80s_d_h_nco", "usm_sldier_d_h_off", "usm_soldier_80s_d_h_rm1", "usm_soldier_80s_d_h_at4", "usm_soldier_80s_d_h_ar"};
+        infantry[] = {"usm_soldier_80s_d_h_ftl", "usm_soldier_80s_d_h_gr", "usm_soldier_80s_d_h_mg", "usm_soldier_80s_d_h_mgab", "usm_soldier_80s_d_h_nco", "usm_soldier_d_h_off", "usm_soldier_80s_d_h_rm1", "usm_soldier_80s_d_h_at4", "usm_soldier_80s_d_h_ar"};
         crewmen[] = {"usm_soldier_80s_d_h_crew1", "usm_soldier_80s_d_h_crew1"};
         pilots[] = {"CUP_B_US_Pilot"};
         technicals[] = {"CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_MK19_USA"};
@@ -1190,7 +1190,7 @@ class UnitTemplates {
     class USM_USMC_90_DE {
         side = "west";
         camouflage[] = {"desert"};
-        infantry[] = {"usm_marine_90s_d_h_ftl", "usm_marine_90s_d_h_gr", "usm_marine_90s_d_h_mg", "usm_marine_90s_d_h_mgab", "usm_marine_90s_d_h_nco", "usm_sldier_d_h_off", "usm_marine_90s_d_h_rm1", "usm_marine_90s_d_h_at4", "usm_marine_90s_d_h_ar"};
+        infantry[] = {"usm_marine_90s_d_h_ftl", "usm_marine_90s_d_h_gr", "usm_marine_90s_d_h_mg", "usm_marine_90s_d_h_mgab", "usm_marine_90s_d_h_nco", "usm_soldier_d_h_off", "usm_marine_90s_d_h_rm1", "usm_marine_90s_d_h_at4", "usm_marine_90s_d_h_ar"};
         crewmen[] = {"usm_marine_90s_d_h_crew1", "usm_marine_90s_d_h_crew1"};
         pilots[] = {"CUP_B_US_Pilot"};
         technicals[] = {"CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_MK19_USA"};
@@ -1201,7 +1201,7 @@ class UnitTemplates {
     class USM_USMC_80_DE {
         side = "west";
         camouflage[] = {"desert"};
-        infantry[] = {"usm_soldier_80s_d_h_ftl", "usm_soldier_80s_d_h_gr", "usm_soldier_80s_d_h_mg", "usm_soldier_80s_d_h_mgab", "usm_soldier_80s_d_h_nco", "usm_sldier_d_h_off", "usm_soldier_80s_d_h_rm1", "usm_soldier_80s_d_h_at4", "usm_soldier_80s_d_h_ar"};
+        infantry[] = {"usm_soldier_80s_d_h_ftl", "usm_soldier_80s_d_h_gr", "usm_soldier_80s_d_h_mg", "usm_soldier_80s_d_h_mgab", "usm_soldier_80s_d_h_nco", "usm_soldier_d_h_off", "usm_soldier_80s_d_h_rm1", "usm_soldier_80s_d_h_at4", "usm_soldier_80s_d_h_ar"};
         crewmen[] = {"usm_soldier_80s_d_h_crew1", "usm_soldier_80s_d_h_crew1"};
         pilots[] = {"CUP_B_US_Pilot"};
         technicals[] = {"CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_MK19_USA"};
