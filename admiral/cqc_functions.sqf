@@ -120,6 +120,7 @@ adm_cqc_fnc_spawnGarrisonGroupUnits = {
         _position = SELECT_RAND(_possiblePositions);
         _possiblePositions = _possiblePositions - [_position];
         _unit = [_building buildingPos _position, _group, _unitTemplate, _zoneTemplate, UNIT_TYPE_ARRAY select UNIT_TYPE_INF] call adm_cqc_fnc_placeMan;
+        _unit setVariable ["adm_unit_isCqc", true, true];
         ["cqc.spawned.unit", [_unit, _building, _position, UNIT_TYPE_ARRAY select UNIT_TYPE_INF, _zone]] call adm_event_fnc_emitEvent;
         ["zone.spawned.unit", [_unit, UNIT_TYPE_ARRAY select UNIT_TYPE_INF, _zone]] call adm_event_fnc_emitEvent;
     };
