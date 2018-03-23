@@ -167,6 +167,11 @@ adm_common_fnc_createWaypoint = {
     _waypoint setWaypointType _type;
     _waypoint setWaypointBehaviour _behaviour;
     _waypoint setWaypointCombatMode _mode;
+    
+    private _groupType = _group getVariable ["adm_group_type", GROUP_TYPE_INF];
+    private _radius = if (_groupType isEqualTo GROUP_TYPE_INF) then { 50 } else { 250 };
+    [_group, _waypoint] setWaypointCompletionRadius _radius;
+
     DEBUG("admiral.common.create",FMT_6("Created waypoint '%1' at position '%2' for group '%3', with type '%4', behaviour '%5' and combat mode '%6'.",_waypoint,_wpArray,_group,_type,_behaviour,_mode));
 
     _waypoint;
