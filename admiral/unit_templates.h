@@ -1231,4 +1231,26 @@ class UnitTemplates {
         ah[] = {"CUP_O_Mi8_SLA_2"};
     };
 
+    class CUP_CZ_WD {
+        side = "west";
+        camouflage[] = {"woodland"};
+        infantry[] = {"CUP_B_CZ_Soldier_ARPG_WDL", "CUP_B_CZ_Soldier_AT_WDL", "CUP_B_CZ_Soldier_AMG_WDL", "CUP_B_CZ_Soldier_AR_WDL", "CUP_B_CZ_Soldier_805_GL_WDL", "CUP_B_CZ_Soldier_805_WDL", "CUP_B_CZ_Soldier_805_WDL", "CUP_B_CZ_Soldier_805_WDL", "CUP_B_CZ_Soldier_SL_WDL", "CUP_B_CZ_Soldier_MG_WDL", "CUP_B_Soldier_WDL", "CUP_B_CZ_Soldier_backpack_WDL", "CUP_B_CZ_Soldier_RPG_WDL"};
+        crewmen[] = {"CUP_B_CZ_Crew_WDL", "CUP_B_CZ_Crew_WDL"};
+        pilots[] = {"CUP_B_CZ_Pilot_WDL"};
+        technicals[] = {"CUP_B_LR_MG_CZ_W", "CUP_B_LR_Special_CZ_W", "CUP_B_UAZ_AGS30_ACR", "CUP_B_UAZ_MG_ACR", "CUP_B_UAZ_SPG9_ARC", "CUP_B_Dingo_GL_CZ_Wdl", "CUP_B_Dingo_CZ_Wdl"};
+        armour[] = {"CUP_B_BMP2_CZ", "CUP_B_BMP2_CZ", "CUP_B_BRDM2_CZ", "CUP_B_T72_CZ"};
+        ah[] = {"CUP_B_Mi171Sh_ACR", "CUP_B_Mi35_Dynamic_CZ"};
+    };
+
+    class CUP_CZ_DE {
+        side = "west";
+        camouflage[] = {"desert"};
+        infantry[] = {"CUP_B_Soldier_805_DES", "CUP_B_Soldier_805_DES", "CUP_B_CZ_Soldier_805_GL_DES", "CUP_B_CZ_Soldier_AR_DES", "CUP_B_Soldier_SL_DES", "CUP_B_Soldier_RPG_DES", "CUP_B_CZ_Soldier_Backpack_DES", "CUP_B_CZ_Soldier_AT_DES", "CUP_B_CZ_Soldier_DES", "CUP_B_CZ_Soldier_DES", "CUP_B_CZ_Soldier_MG_DES", "CUP_B_CZ_Soldier_AMG_DES", "CUP_B_CZ_Soldier_ARPG_DES"};
+        crewmen[] = {"CUP_B_CZ_Crew_DES", "CUP_B_CZ_Crew_DES"};
+        pilots[] = {"CUP_B_CZ_Pilot_DES"};
+        technicals[] = {"CUP_B_Dingo_GL_CZ_Des", "CUP_B_Dingo_CZ_Des", "CUP_B_HMMWV_AGS_GPK_ACR", "CUP_B_HMMWV_DSHKM_GPK_ACR", "CUP_B_HMMWV_M2_GPK_ACR", "CUP_B_LR_Special_Des_CZ_D", "CUP_B_HMMWV_M2_GPK_ACR"};
+        armour[] = {"CUP_B_BMP2_CZ_Des", "CUP_B_BMP2_CZ_Des", "CUP_B_BRDM2_CZ_Des", "CUP_B_T72_CZ"};
+        ah[] = {"CUP_B_Mi171Sh_ACR", "CUP_B_Mi35_Dynamic_CZ_Des"};
+    };
+
 };
