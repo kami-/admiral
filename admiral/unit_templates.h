@@ -219,7 +219,7 @@ class UnitTemplates {
         ah[] = {"CUP_I_Mi24_D_ION"};
     };
 
-    class UKR_TTSKO {
+    class MNP_UKR_TTSKO {
         side = "west";
         camouflage[] = {"woodland"};
         infantry[] = {"MNP_UKR_G", "MNP_UKR_A", "MNP_UKR_A", "MNP_UKR_O", "MNP_UKR_MG", "MNP_UKR_AR", "MNP_UKR_AT", "MNP_UKR_AR", "MNP_UKR_AT"};
