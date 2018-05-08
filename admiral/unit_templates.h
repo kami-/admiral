@@ -593,6 +593,17 @@ class UnitTemplates {
         ah[] = {"CUP_O_Mi24_V_RU"};
     };
 
+    class ARK_RU_CBRN {
+        side = "east";
+        camouflage[] = {};
+        infantry[] = {"ARK_RU_CBRN_Soldier_TL_F", "ARK_RU_CBRN_Soldier_TL_F", "ARK_RU_CBRN_Soldier_LAT_F", "ARK_RU_CBRN_Soldier_F", "ARK_RU_CBRN_Soldier_F", "ARK_RU_CBRN_Soldier_F", "ARK_RU_CBRN_Soldier_MG_F", "ARK_RU_CBRN_Soldier_AR_F", "ARK_RU_CBRN_Soldier_AR_F", "ARK_RU_CBRN_Soldier_LAT_F"};
+        crewmen[] = {"ARK_RU_CBRN_Crew_F"};
+        pilots[] = {"ARK_RU_CBRN_Pilot_F"};
+        technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU", "CUP_O_GAZ_Vodnik_PK_RU"};
+        armour[] = {"CUP_O_BRDM2_RUS", "CUP_O_BTR60_Green_RU", "CUP_I_BMP1_TK_GUE", "CUP_O_BMP2_RU", "CUP_O_BMP2_RU", "CUP_O_BMP3_RU", "CUP_O_T72_RU", "CUP_O_BTR90_RU", "CUP_O_GAZ_Vodnik_BPPU_RU", "CUP_O_T90_RU"};
+        ah[] = {"CUP_O_Mi24_V_RU"};
+    };
+
     class AAF_WOODLAND {
         side = "resistance";
         camouflage[] = {"woodland"};
