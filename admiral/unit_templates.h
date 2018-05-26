@@ -752,7 +752,7 @@ class UnitTemplates {
         camouflage[] = {"desert"};
         infantry[] = {"CUP_I_RACS_SL", "CUP_I_RACS_MMG", "CUP_I_RACS_Soldier", "CUP_I_RACS_Soldier", "CUP_I_RACS_Soldier", "CUP_I_RACS_MMG", "CUP_I_RACS_Soldier_MAT", "CUP_I_RACS_Soldier", "CUP_I_RACS_Soldier_MAT"};
         crewmen[] = {"CUP_I_RACS_Soldier", "CUP_I_RACS_Engineer"};
-        pilots[] = {"CUP_B_RACS_Pilot"};
+        pilots[] = {"CUP_I_RACS_Pilot"};
         technicals[] = {"CUP_I_LR_MG_RACS"};
         armour[] = {"CUP_I_M113_RACS", "CUP_I_M113_RACS", "CUP_I_AAV_RACS", "CUP_I_M60A3_RACS", "CUP_I_M60A3_RACS"};
         ah[] = {"CUP_B_AH1Z"};
@@ -882,7 +882,7 @@ class UnitTemplates {
     class CUP_USMC_FROG_WD {
         side = "west";
         camouflage[] = {"woodland"};
-        infantry[] = {"CUP_B_USMC_Soldier_GL_FROG_WDL", "CUP_B_USMC_Soldier_FROG_WDL", "CUP_B_USMC_Soldier_FROG_WDL", "CUP_B_USMC_Soldier_TL_FROG_WDL", "CUP_B_USMC_Soldier_FROG_MG_WDL", "CUP_B_USMC_Soldier_AR_FROG_WDL", "CUP_B_USMC_Soldier_LAT_FROG_WDL", "CUP_B_USMC_Soldier_AR_FROG_WDL", "CUP_B_USMC_Soldier_LAT_FROG_WDL"};
+        infantry[] = {"CUP_B_USMC_Soldier_GL_FROG_WDL", "CUP_B_USMC_Soldier_FROG_WDL", "CUP_B_USMC_Soldier_FROG_WDL", "CUP_B_USMC_Soldier_TL_FROG_WDL", "CUP_B_USMC_Soldier_MG_FROG_WDL", "CUP_B_USMC_Soldier_AR_FROG_WDL", "CUP_B_USMC_Soldier_LAT_FROG_WDL", "CUP_B_USMC_Soldier_AR_FROG_WDL", "CUP_B_USMC_Soldier_LAT_FROG_WDL"};
         crewmen[] = {"CUP_B_USMC_Crewman_FROG_WDL"};
         pilots[] = {"CUP_B_USMC_Pilot"};
         technicals[] = {"CUP_B_HMMWV_M1114_USMC", "CUP_B_HMMWV_M1114_USMC", "CUP_B_HMMWV_M2_USMC", "CUP_B_HMMWV_M2_USMC", "CUP_B_HMMWV_MK19_USMC", "CUP_B_RG31_Mk19_OD_USMC", "CUP_B_RG31_M2_OD_USMC"};
