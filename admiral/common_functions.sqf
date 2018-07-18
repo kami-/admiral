@@ -52,6 +52,7 @@ adm_common_fnc_placeVehicle = {
     };
     _vehiclePosition = [_area, _position, _className] call adm_common_fnc_getRandomEmptyPositionInArea;
     _vehicle = createVehicle [_className, _vehiclePosition, [], 0, "NONE"];
+    [_vehicle, true, true, true] call bis_fnc_initVehicle;
     _vehicle setVariable ["adm_classNameArguments", _classNameArguments, false];
     _vehicle allowCrewInImmobile adm_allowCrewInImmobile;
     _vehicle setUnloadInCombat [adm_cargoUnloadInCombat, false];
