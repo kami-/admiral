@@ -1245,7 +1245,7 @@ class UnitTemplates {
     class CUP_CZ_WD {
         side = "west";
         camouflage[] = {"woodland"};
-        infantry[] = {"CUP_B_CZ_Soldier_ARPG_WDL", "CUP_B_CZ_Soldier_AT_WDL", "CUP_B_CZ_Soldier_AMG_WDL", "CUP_B_CZ_Soldier_AR_WDL", "CUP_B_CZ_Soldier_805_GL_WDL", "CUP_B_CZ_Soldier_805_WDL", "CUP_B_CZ_Soldier_805_WDL", "CUP_B_CZ_Soldier_805_WDL", "CUP_B_CZ_Soldier_SL_WDL", "CUP_B_CZ_Soldier_MG_WDL", "CUP_B_Soldier_WDL", "CUP_B_CZ_Soldier_backpack_WDL", "CUP_B_CZ_Soldier_RPG_WDL"};
+        infantry[] = {"CUP_B_CZ_Soldier_ARPG_WDL", "CUP_B_CZ_Soldier_AT_WDL", "CUP_B_CZ_Soldier_AMG_WDL", "CUP_B_CZ_Soldier_AR_WDL", "CUP_B_CZ_Soldier_805_GL_WDL", "CUP_B_CZ_Soldier_805_WDL", "CUP_B_CZ_Soldier_805_WDL", "CUP_B_CZ_Soldier_805_WDL", "CUP_B_CZ_Soldier_SL_WDL", "CUP_B_CZ_Soldier_MG_WDL", "CUP_B_CZ_Soldier_WDL", "CUP_B_CZ_Soldier_backpack_WDL", "CUP_B_CZ_Soldier_RPG_WDL"};
         crewmen[] = {"CUP_B_CZ_Crew_WDL", "CUP_B_CZ_Crew_WDL"};
         pilots[] = {"CUP_B_CZ_Pilot_WDL"};
         technicals[] = {"CUP_B_LR_MG_CZ_W", "CUP_B_LR_Special_CZ_W", "CUP_B_UAZ_AGS30_ACR", "CUP_B_UAZ_MG_ACR", "CUP_B_UAZ_SPG9_ARC", "CUP_B_Dingo_GL_CZ_Wdl", "CUP_B_Dingo_CZ_Wdl"};
