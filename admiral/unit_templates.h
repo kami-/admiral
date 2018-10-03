@@ -1264,4 +1264,25 @@ class UnitTemplates {
         ah[] = {"CUP_B_Mi171Sh_ACR", "CUP_B_Mi35_Dynamic_CZ_Des"};
     };
 
+    class GEND {
+        side = "west";
+        camouflage[] = {};
+        infantry[] = {"B_GEN_Soldier_F", "B_GEN_Soldier_F", "B_GEN_Commander_F", "B_GEN_Soldier_AR_F", "B_GEN_Commander_F", "B_GEN_Soldier_SMG_F", "B_GEN_Soldier_F", "B_GEN_Soldier_SMG_F", "B_GEN_Soldier_Pistol_F", "B_GEN_Soldier_Pistol_F", "B_GEN_Soldier_AR_F"};
+        crewmen[] = {"B_GEN_Soldier_Crew_F", "B_GEN_Soldier_Crew_F"};
+        pilots[] = {"B_GEN_Soldier_Pilot_F"};
+        technicals[] = {"B_GEN_Offroad_01_armed_F"};
+        armour[] = {"B_GEN_APC_Wheeled_02_rcws_F"};
+        ah[] = {"B_Heli_Light_01_armed_F"};
+    };
+
+    class GEND_SWAT {
+        side = "west";
+        camouflage[] = {};
+        infantry[] = {"B_GEN_SWAT_F", "B_GEN_SWAT_F", "B_GEN_SWAT_TL_F", "B_GEN_SWAT_AR_F", "B_GEN_SWAT_Shield_F", "B_GEN_SWAT_LAT_F", "B_GEN_SWAT_AR_F", "B_GEN_SWAT_F", "B_GEN_SWAT_TL_F", "B_GEN_SWAT_Shield_F", "B_GEN_SWAT_MG_F", "B_GEN_SWAT_MG_F", "B_GEN_SWAT_LAT_F"};
+        crewmen[] = {"B_GEN_SWAT_Crew_F", "B_GEN_SWAT_Crew_F"};
+        pilots[] = {"B_GEN_SWAT_Pilot_F"};
+        technicals[] = {"B_GEN_LSV_01_armed_black_F","B_GEN_MRAP_01_hmg_F"};
+        armour[] = {"B_GEN_APC_Wheeled_02_rcws_F"};
+        ah[] = {"CUP_I_Mi24_D_ION"};
+    };
 };
