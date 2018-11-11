@@ -39,10 +39,11 @@ adm_common_fnc_placeMan = {
 adm_common_fnc_placeVehicle = {
     params ["_vehicleClassNames","_area","_position"];
 
+    private ["_className"];
     private _classNameData = SELECT_RAND(_vehicleClassNames);
     private _classNameArguments = [];
     if (typeName _classNameData == "ARRAY") then {
-        private _className = _classNameData #0;
+        _className = _classNameData #0;
         for "_i" from 1 to (count _classNameData) - 1 do {
             PUSH(_classNameArguments,_classNameData select _i);
         };
