@@ -37,25 +37,28 @@ adm_common_fnc_placeMan = {
 };
 
 adm_common_fnc_placeVehicle = {
-    FUN_ARGS_3(_vehicleClassNames,_area,_position);
+    params ["_vehicleClassNames","_area","_position"];
 
-    private ["_classNameData", "_className", "_classNameArguments", "_vehiclePosition", "_vehicle"];
-    _classNameData = SELECT_RAND(_vehicleClassNames);
-    _classNameArguments = [];
+    private _classNameData = SELECT_RAND(_vehicleClassNames);
+    private _classNameArguments = [];
     if (typeName _classNameData == "ARRAY") then {
-        _className = _classNameData select 0;
+        private _className = _classNameData #0;
         for "_i" from 1 to (count _classNameData) - 1 do {
             PUSH(_classNameArguments,_classNameData select _i);
         };
     } else {
         _className = _classNameData;
     };
-    _vehiclePosition = [_area, _position, _className] call adm_common_fnc_getRandomEmptyPositionInArea;
-    _vehicle = createVehicle [_className, _vehiclePosition, [], 0, "NONE"];
+    private _vehiclePosition = [_area, _position, _className] call adm_common_fnc_getRandomEmptyPositionInArea;
+    private _vehicle = createVehicle [_className, _vehiclePosition, [], 0, "NONE"];
     [_vehicle, true, true, true] call bis_fnc_initVehicle;
     _vehicle setVariable ["adm_classNameArguments", _classNameArguments, false];
     _vehicle allowCrewInImmobile adm_allowCrewInImmobile;
     _vehicle setUnloadInCombat [adm_cargoUnloadInCombat, false];
+    clearMagazineCargoGlobal _vehicle;
+    clearWeaponCargoGlobal _vehicle;
+    clearItemCargoGlobal _vehicle;
+    clearBackpackCargoGlobal _vehicle;
     DEBUG("admiral.common.create",FMT_4("Created vehicle '%1' at position '%2', with classname '%3' and '%4'.",_vehicle,_vehiclePosition,_className,_classNameArguments));
 
     _vehicle;
