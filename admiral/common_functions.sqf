@@ -128,16 +128,19 @@ adm_common_fnc_setGear = {
 };
 
 adm_common_fnc_assignNVG = {
-    FUN_ARGS_1(_unit);
+    params ["_unit"];
 
-    DECLARE(_assignedItems) = assignedItems _unit;
-    {
-        if (_x in _assignedItems) exitWith {
-            _unit unlinkItem _x;
-        };
-    } forEach ARMA3_NVGS;
+    private _assignedItems = assignedItems _unit;
+    private _hmd = hmd _unit;
+
     if (adm_areNVGsEnabled) then {
-        _unit linkItem "NVGoggles_AI";
+        if (_hmd isEqualTo "") then {
+            _unit linkItem "NVGoggles_AI";
+        };
+    } else {
+        if !(_hmd isEqualTo "") then {
+            _unit unlinkItem _hmd;
+        };
     };
 };
 
