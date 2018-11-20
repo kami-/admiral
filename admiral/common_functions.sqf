@@ -130,7 +130,6 @@ adm_common_fnc_setGear = {
 adm_common_fnc_assignNVG = {
     params ["_unit"];
 
-    private _assignedItems = assignedItems _unit;
     private _hmd = hmd _unit;
 
     if (adm_areNVGsEnabled) then {
@@ -138,9 +137,7 @@ adm_common_fnc_assignNVG = {
             _unit linkItem "NVGoggles_AI";
         };
     } else {
-        if !(_hmd isEqualTo "") then {
-            _unit unlinkItem _hmd;
-        };
+        _unit unlinkItem _hmd;
     };
 };
 
