@@ -907,7 +907,7 @@ class UnitTemplates {
         infantry[] = {"CUP_I_PMC_Contractor1", "CUP_I_PMC_Contractor2", "CUP_I_PMC_Bodyguard_M4", "CUP_I_PMC_Medic", "CUP_I_PMC_Soldier_MG", "CUP_I_PMC_Soldier_MG_PKM", "CUP_I_PMC_Soldier_AT", "CUP_I_PMC_Soldier_GL_M16A2", "CUP_I_PMC_Soldier_M4A3"};
         crewmen[] = {"CUP_I_PMC_Contractor2", "CUP_I_PMC_Bodyguard_M4"};
         pilots[] = {"CUP_I_PMC_Pilot"};
-        technicals[] = {"CUP_I_SUV_Armored_ION", "CUP_I_4WD_LMG_ION", "CUP_I_$WD_AT_ION", "CUP_I_LSV_02_Minigun_ION", "CUP_I_LSV_02_AT_ION"};
+        technicals[] = {"CUP_I_SUV_Armored_ION", "CUP_I_4WD_LMG_ION", "CUP_I_4WD_AT_ION", "CUP_I_LSV_02_Minigun_ION", "CUP_I_LSV_02_AT_ION"};
         armour[] = {"CUP_I_MATV_HMG_ION", "CUP_I_MATV_GMG_ION", "CUP_I_FENNEK_HMG_ION", "CUP_I_FENNEK_GMG_ION"};
         ah[] = {"CUP_I_Mi24_Mk4_AT_ION"};
     };
@@ -918,7 +918,7 @@ class UnitTemplates {
         infantry[] = {"CUP_I_PMC_Contractor1", "CUP_I_PMC_Contractor2", "CUP_I_PMC_Bodyguard_M4", "CUP_I_PMC_Medic", "CUP_I_PMC_Soldier_MG", "CUP_I_PMC_Soldier_MG_PKM", "CUP_I_PMC_Soldier_AT", "CUP_I_PMC_Soldier_GL_M16A2", "CUP_I_PMC_Soldier_M4A3"};
         crewmen[] = {"CUP_I_PMC_Contractor2", "CUP_I_PMC_Bodyguard_M4"};
         pilots[] = {"CUP_I_PMC_Pilot"};
-        technicals[] = {"CUP_I_SUV_Armored_ION", "CUP_I_4WD_LMG_ION", "CUP_I_$WD_AT_ION", "CUP_I_LSV_02_Minigun_ION", "CUP_I_LSV_02_AT_ION"};
+        technicals[] = {"CUP_I_SUV_Armored_ION", "CUP_I_4WD_LMG_ION", "CUP_I_4WD_AT_ION", "CUP_I_LSV_02_Minigun_ION", "CUP_I_LSV_02_AT_ION"};
         armour[] = {"CUP_I_MATV_HMG_ION", "CUP_I_MATV_GMG_ION", "CUP_I_FENNEK_HMG_ION", "CUP_I_FENNEK_GMG_ION"};
         ah[] = {"CUP_I_Mi24_Mk4_AT_ION"};
     };
@@ -929,7 +929,7 @@ class UnitTemplates {
         infantry[] = {"CUP_I_PMC_Winter_Soldier_MG", "CUP_I_PMC_Winter_Soldier_MG_PKM", "CUP_I_PMC_Winter_Soldier_AT", "CUP_I_PMC_Winter_Soldier", "CUP_I_PMC_Winter_Soldier_GL", "CUP_I_PMC_Winter_Soldier_TL", "CUP_I_PMC_Winter_Soldier", "CUP_I_PMC_Winter_Soldier", "CUP_I_PMC_Winter_Soldier"};
         crewmen[] = {"CUP_I_PMC_Winter_Engineer", "CUP_I_PMC_Winter_Crew"};
         pilots[] = {"CUP_I_PMC_Winter_Pilot"};
-        technicals[] = {"CUP_I_SUV_Armored_ION", "CUP_I_4WD_LMG_ION", "CUP_I_$WD_AT_ION", "CUP_I_LSV_02_Minigun_ION", "CUP_I_LSV_02_AT_ION"};
+        technicals[] = {"CUP_I_SUV_Armored_ION", "CUP_I_4WD_LMG_ION", "CUP_I_4WD_AT_ION", "CUP_I_LSV_02_Minigun_ION", "CUP_I_LSV_02_AT_ION"};
         armour[] = {"CUP_I_MATV_HMG_ION", "CUP_I_MATV_GMG_ION", "CUP_I_FENNEK_HMG_ION", "CUP_I_FENNEK_GMG_ION"};
         ah[] = {"CUP_I_Mi24_Mk4_AT_ION"};
     };
