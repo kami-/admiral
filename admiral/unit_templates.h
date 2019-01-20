@@ -848,10 +848,10 @@ class UnitTemplates {
 
     class CUP_RACS_MECH {
         side = "resistance";
-        camouflage[] = {"desert", "woodland"};
+        camouflage[] = {"woodland"};
         infantry[] = {"CUP_I_RACS_SL_Mech", "CUP_I_RACS_MMG_Mech", "CUP_I_RACS_Soldier_Mech", "CUP_I_RACS_Soldier_Mech", "CUP_I_RACS_Soldier_Mech", "CUP_I_RACS_MMG_Mech", "CUP_I_RACS_Soldier_MAT_Mech", "CUP_I_RACS_Soldier_Mech", "CUP_I_RACS_Soldier_MAT_Mech"};
         crewmen[] = {"CUP_I_RACS_Soldier_Mech", "CUP_I_RACS_Engineer_Mech"};
-        pilots[] = {"CUP_B_RACS_Pilot"};
+        pilots[] = {"CUP_I_RACS_Pilot"};
         technicals[] = {"CUP_I_LR_MG_RACS"};
         armour[] = {"CUP_I_M113_RACS", "CUP_I_M113_RACS", "CUP_I_AAV_RACS", "CUP_I_M60A3_RACS", "CUP_I_M60A3_TTS_RACS"};
         ah[] = {"CUP_B_AH1Z"};
@@ -862,9 +862,9 @@ class UnitTemplates {
         camouflage[] = {"desert"};
         infantry[] = {"CUP_I_RACS_SL_Urban", "CUP_I_RACS_MMG_Urban", "CUP_I_RACS_Soldier_Urban", "CUP_I_RACS_Soldier_Urban", "CUP_I_RACS_Soldier_Urban", "CUP_I_RACS_MMG_Urban", "CUP_I_RACS_Soldier_MAT_Urban", "CUP_I_RACS_Soldier_Urban", "CUP_I_RACS_Soldier_MAT_Urban"};
         crewmen[] = {"CUP_I_RACS_Soldier_Urban", "CUP_I_RACS_Engineer_Urban"};
-        pilots[] = {"CUP_B_RACS_Pilot"};
+        pilots[] = {"CUP_I_RACS_Pilot"};
         technicals[] = {"CUP_I_LR_MG_RACS"};
-        armour[] = {"CUP_I_M113_RACS", "CUP_I_M113_RACS", "CUP_I_AAV_RACS", "CUP_I_M60A3_RACS", "CUP_I_M60A3_TTS_RACS"};
+        armour[] = {"CUP_I_M113_RACS_URB", "CUP_I_M113_RACS_URB", "CUP_I_AAV_RACS", "CUP_I_M60A3_RACS", "CUP_I_M60A3_TTS_RACS"};
         ah[] = {"CUP_B_AH1Z"};
     };
 
