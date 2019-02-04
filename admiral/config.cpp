@@ -47,7 +47,6 @@ class CfgVehicles {
     #include "admiral_modules.h"
 
     class C_Soldier_VR_F;
-
     class C_Bob_VR : C_Soldier_VR_F {
         author = "Admiral";
         displayName = "Camp Path Base";
