@@ -355,7 +355,7 @@ class UnitTemplates {
         pilots[] = {"O_Helipilot_F"};
         technicals[] = {"O_MRAP_02_hmg_F", "O_LSV_02_armed_F", "O_LSV_02_armed_F"};
         armour[] = {"O_APC_Tracked_02_cannon_F", "O_MBT_02_cannon_F", "O_APC_Wheeled_02_rcws_F"};
-        th[] = {"O_Heli_Light_02_F"];
+        th[] = {"O_Heli_Light_02_F"};
         ah[] = {"O_Heli_Attack_02_F"};
     };
 
@@ -367,7 +367,7 @@ class UnitTemplates {
         pilots[] = {"skn_o_nbc_crew"};
         technicals[] = {"O_MRAP_02_hmg_F", "O_LSV_02_armed_F", "O_LSV_02_armed_F"};
         armour[] = {"O_APC_Tracked_02_cannon_F", "O_MBT_02_cannon_F", "O_APC_Wheeled_02_rcws_F"};
-        th[] = {"O_Heli_Light_02_unarmed_F"];
+        th[] = {"O_Heli_Light_02_unarmed_F"};
         ah[] = {"O_Heli_Attack_02_F"};
     };
 
@@ -379,7 +379,7 @@ class UnitTemplates {
         pilots[] = {"O_soldierU_TL_F"};
         technicals[] = {"O_MRAP_02_hmg_F", "O_LSV_02_armed_F", "O_LSV_02_armed_F"};
         armour[] = {"O_APC_Tracked_02_cannon_F", "O_MBT_02_cannon_F", "O_APC_Wheeled_02_rcws_F"};
-        th[] = {"O_Heli_Light_02_v2_F"];
+        th[] = {"O_Heli_Light_02_v2_F"};
         ah[] = {"O_Heli_Attack_02_F"};
     };
 
@@ -391,7 +391,7 @@ class UnitTemplates {
         pilots[] = {"O_T_Pilot_F"};
         technicals[] = {"O_T_MRAP_02_hmg_ghex_F", "O_LSV_02_armed_F", "O_LSV_02_armed_F"};
         armour[] = {"O_T_APC_Tracked_02_cannon_ghex_F", "O_T_MBT_02_cannon_ghex_F", "O_T_APC_Wheeled_02_rcws_ghex_F"};
-        th[] = {"O_Heli_Light_02_F"];
+        th[] = {"O_Heli_Light_02_F"};
         ah[] = {"O_Heli_Attack_02_F"};
     };
 
@@ -403,7 +403,7 @@ class UnitTemplates {
         pilots[] = {"MNP_RU_Soldier_Arctic_F"};
         technicals[] = {"O_MRAP_02_hmg_F", "O_LSV_02_armed_F", "O_LSV_02_armed_F"};
         armour[] = {"O_APC_Tracked_02_cannon_F", "O_MBT_02_cannon_F", "O_APC_Wheeled_02_rcws_F"};
-        th[] = {"O_Heli_Light_02_v2_F"];
+        th[] = {"O_Heli_Light_02_v2_F"};
         ah[] = {"O_Heli_Attack_02_F"};
     };
 
@@ -415,7 +415,7 @@ class UnitTemplates {
         pilots[] = {"MNP_CN_Soldier_O"};
         technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU"};
         armour[] = {"CUP_O_BRDM2_SLA", "CUP_O_BTR60_SLA", "CUP_O_BRDM2_SLA", "CUP_I_BMP1_TK_GUE", "CUP_I_T55_TK_GUE", "CUP_O_T72_SLA"};
-        th[] = {"O_Heli_Light_02_unarmed_F"];
+        th[] = {"O_Heli_Light_02_unarmed_F"};
         ah[] = {"O_Heli_Light_02_v2_F"};
     };
 
@@ -427,7 +427,7 @@ class UnitTemplates {
         pilots[] = {"MNP_CN_WD2_Soldier_O"};
         technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU"};
         armour[] = {"CUP_O_BRDM2_SLA", "CUP_O_BTR60_SLA", "CUP_O_BRDM2_SLA", "CUP_I_BMP1_TK_GUE", "CUP_I_T55_TK_GUE", "CUP_O_T72_SLA"};
-        th[] = {"O_Heli_Light_02_unarmed_F"];
+        th[] = {"O_Heli_Light_02_unarmed_F"};
         ah[] = {"O_Heli_Light_02_v2_F"};
     };
 
@@ -439,7 +439,7 @@ class UnitTemplates {
         pilots[] = {"MNP_CD_Soldier_O"};
         technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU"};
         armour[] = {"CUP_O_BRDM2_SLA", "CUP_O_BRDM2_SLA", "CUP_I_BMP1_TK_GUE", "CUP_I_T55_TK_GUE", "CUP_O_T72_SLA"};
-        th[] = {"O_Heli_Light_02_unarmed_F"];
+        th[] = {"O_Heli_Light_02_unarmed_F"};
         ah[] = {"O_Heli_Light_02_v2_F"};
     };
 
@@ -451,7 +451,7 @@ class UnitTemplates {
         pilots[] = {"MNP_CM_Soldier_O"};
         technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU"};
         armour[] = {"CUP_O_BRDM2_SLA", "CUP_O_BTR60_SLA", "CUP_O_BRDM2_SLA", "CUP_I_BMP1_TK_GUE", "CUP_I_T55_TK_GUE", "CUP_O_T72_SLA"};
-        th[] = {"O_Heli_Light_02_unarmed_F"];
+        th[] = {"O_Heli_Light_02_unarmed_F"};
         ah[] = {"O_Heli_Light_02_v2_F"};
     };
 
