@@ -67,7 +67,7 @@ class UnitTemplates {
         pilots[] = {"CUP_B_USMC_Pilot"};
         technicals[] = {"CUP_B_HMMWV_M2_NATO_T", "CUP_B_HMMWV_MK19_NATO_T", "CUP_B_HMMWV_M2_GPK_NATO_T", "CUP_B_HMMWV_SOV_M2_NATO_T", "CUP_B_HMMWV_SOV_NATO_T"};
         armour[] = {"CUP_B_LAV25_USMC", "CUP_B_LAV25_USMC", "CUP_B_AAV_USMC", "CUP_B_M1A1_Woodland_USMC", "CUP_B_M1A2_TUSK_MG_USMC"};
-        th[] = {"CUP_B_UH60M_US"};
+        th[] = {"CUP_B_UH60S_USN"};
         ah[] = {"CUP_B_AH1Z"};
     };
 
@@ -80,7 +80,7 @@ class UnitTemplates {
         technicals[] = {"CUP_B_HMMWV_M2_GPK_USA", "CUP_B_HMMWV_M2_GPK_USA", "CUP_B_HMMWV_SOV_USA", "CUP_B_RG31E_M2_USMC", "CUP_B_RG31_M2_USMC", "CUP_B_RG31_Mk19_USMC"};
         armour[] = {"CUP_B_M1126_ICV_M2_Desert_Slat", "CUP_B_M1126_ICV_M2_Desert_Slat", "CUP_B_M1126_ICV_MK19_Desert_Slat", "CUP_B_M1128_MGS_Desert_Slat", "CUP_B_M2A3Bradley_USA_D", "CUP_B_M2A3Bradley_USA_D", "CUP_B_M1A2_TUSK_MG_DES_US_Army"};
         th[] = {"CUP_B_UH60M_US"};
-        ah[] = {"CUP_B_AH64D_USA"};
+        ah[] = {"CUP_B_AH64D_DL_USA"};
     };
 
     class MNP_US_ACU {
@@ -92,7 +92,7 @@ class UnitTemplates {
         technicals[] = {"CUP_B_HMMWV_M2_GPK_USA", "CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_MK19_USA", "CUP_B_RG31E_M2_USMC", "CUP_B_RG31_M2_USMC", "CUP_B_RG31_Mk19_USMC"};
         armour[] = {"CUP_B_M1126_ICV_M2_Desert", "CUP_B_M1126_ICV_M2_Desert", "CUP_B_M1126_ICV_MK19_Desert", "CUP_B_M1128_MGS_Desert", "CUP_B_M2Bradley_USA_D", "CUP_B_M2Bradley_USA_D", "CUP_B_M1A1_DES_US_Army", "CUP_B_M1A2_TUSK_MG_DES_US_Army"};
         th[] = {"CUP_B_UH60M_US"};
-        ah[] = {"CUP_B_AH64D_USA"};
+        ah[] = {"CUP_B_AH64D_DL_USA"};
     };
 
     class MNP_US_WD {
@@ -104,7 +104,7 @@ class UnitTemplates {
         technicals[] = {"CUP_B_HMMWV_M1114_USMC", "CUP_B_HMMWV_M1114_USMC", "CUP_B_HMMWV_M2_USMC", "CUP_B_HMMWV_M2_USMC", "CUP_B_HMMWV_MK19_USMC"};
         armour[] = {"CUP_B_M113_USA", "CUP_B_M113_USA", "CUP_B_M2Bradley_USA_W", "CUP_B_M60A3_USMC", "CUP_B_M60A3_TTS_USMC", "CUP_B_M1A1_Woodland_USMC"};
         th[] = {"CUP_B_UH60M_US"};
-        ah[] = {"CUP_B_AH64D_USA"};
+        ah[] = {"CUP_B_AH64D_DL_USA"};
     };
 
     class MNP_US_DE {
@@ -116,7 +116,7 @@ class UnitTemplates {
         technicals[] = {"CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_MK19_USA"};
         armour[] = {"CUP_B_M113_USA", "CUP_B_M113_USA", "CUP_B_M2Bradley_USA_D", "CUP_B_M1A1_DES_US_Army"};
         th[] = {"CUP_B_UH60M_US"};
-        ah[] = {"CUP_B_AH64D_USA"};
+        ah[] = {"CUP_B_AH64D_DL_USA"};
     };
 
     class MNP_US_SCO {
@@ -128,7 +128,7 @@ class UnitTemplates {
         technicals[] = {"CUP_B_HMMWV_M2_GPK_USA", "CUP_B_HMMWV_M2_GPK_USA", "CUP_B_HMMWV_SOV_USA", "CUP_B_RG31E_M2_USMC", "CUP_B_RG31_M2_USMC", "CUP_B_RG31_Mk19_USMC"};
         armour[] = {"CUP_B_M1126_ICV_M2_Desert_Slat", "CUP_B_M1126_ICV_M2_Desert_Slat", "CUP_B_M1126_ICV_MK19_Desert_Slat", "CUP_B_M1128_MGS_Desert_Slat", "CUP_B_M2A3Bradley_USA_D", "CUP_B_M2A3Bradley_USA_D", "CUP_B_M1A2_TUSK_MG_DES_US_Army"};
         th[] = {"CUP_B_UH60M_US"};
-        ah[] = {"CUP_B_AH64D_USA"};
+        ah[] = {"CUP_B_AH64D_DL_USA"};
     };
 
     class MNP_US_RAN_SCO {
@@ -140,7 +140,7 @@ class UnitTemplates {
         technicals[] = {"CUP_B_HMMWV_M2_GPK_USA", "CUP_B_HMMWV_M2_GPK_USA", "CUP_B_HMMWV_SOV_USA", "CUP_B_RG31E_M2_USMC", "CUP_B_RG31_M2_USMC", "CUP_B_RG31_Mk19_USMC"};
         armour[] = {"CUP_B_M1126_ICV_M2_Desert_Slat", "CUP_B_M1126_ICV_M2_Desert_Slat", "CUP_B_M1126_ICV_MK19_Desert_Slat", "CUP_B_M1128_MGS_Desert_Slat", "CUP_B_M2A3Bradley_USA_D", "CUP_B_M2A3Bradley_USA_D", "CUP_B_M1A2_TUSK_MG_DES_US_Army"};
         th[] = {"CUP_B_UH60M_US"};
-        ah[] = {"CUP_B_AH64D_USA"};
+        ah[] = {"CUP_B_AH64D_DL_USA"};
     };
 
     class MNP_GE_WD {
@@ -151,7 +151,7 @@ class UnitTemplates {
         pilots[] = {"MNP_GER_Soldier_S"};
         technicals[] = {"CUP_B_Dingo_GER_Wdl", "CUP_B_Dingo_GER_Wdl", "CUP_B_Dingo_GL_GER_Wdl"};
         armour[] = {"CUP_B_Leopard2A6_GER"};
-        th[] = {"CUP_B_CH53E_GER"};
+        th[] = {"CUP_B_UH1D_slick_GER_KSK"};
         ah[] = {"CUP_B_UH1D_gunship_GER_KSK"};
     };
 
@@ -163,7 +163,7 @@ class UnitTemplates {
         pilots[] = {"MNP_GER_Soldier_DS"};
         technicals[] = {"CUP_B_Dingo_GL_GER_Des", "CUP_B_Dingo_GER_Des", "CUP_B_Dingo_GER_Des"};
         armour[] = {"CUP_B_Leopard2A6_GER"};
-        th[] = {"CUP_B_CH53E_GER"};
+        th[] = {"CUP_B_UH1D_slick_GER_KSK_Des"};
         ah[] = {"CUP_B_UH1D_gunship_GER_KSK_Des"};
     };
 
@@ -175,7 +175,7 @@ class UnitTemplates {
         pilots[] = {"MNP_Canada_Soldier_S"};
         technicals[] = {"CUP_B_RG31_M2_OD_USMC", "CUP_B_RG31_Mk19_OD_USMC"};
         armour[] = {"ARK_M113_CAN", "ARK_LEO2_CAN"};
-        th[] = {"CUP_B_UH60M_US"};
+        th[] = {"CUP_B_UH1D_slick_GER_KSK_Des"};
         ah[] = {"CUP_B_UH1D_gunship_GER_KSK_Des"};
     };
 
@@ -187,7 +187,7 @@ class UnitTemplates {
         pilots[] = {"MNP_Canada_Soldier_DS"};
         technicals[] = {"CUP_B_RG31_M2_OD_USMC", "CUP_B_RG31_Mk19_OD_USMC"};
         armour[] = {"ARK_M113_CAN", "ARK_LEO2_CAN"};
-        th[] = {"CUP_B_UH60M_US"};
+        th[] = {"CUP_B_UH1D_slick_GER_KSK_Des"};
         ah[] = {"CUP_B_UH1D_gunship_GER_KSK_Des"};
     };
 
@@ -199,7 +199,7 @@ class UnitTemplates {
         pilots[] = {"MNP_AUS_Soldier_S"};
         technicals[] = {"ARK_LR_M2_AUS"};
         armour[] = {"ARK_M113_AUS", "ARK_LAV25M240_AUS", "ARK_M1A1_AUS"};
-        th[] = {"CUP_B_UH60M_US"};
+        th[] = {"ARK_MH60_AUS"};
         ah[] = {"CUP_B_UH1D_gunship_GER_KSK_Des"};
     };
 
@@ -211,7 +211,7 @@ class UnitTemplates {
         pilots[] = {"MNP_AMCU_Soldier_O"};
         technicals[] = {"ARK_LR_M2_AUS"};
         armour[] = {"ARK_M113_AUS", "ARK_LAV25M240_AUS", "ARK_M1A1_AUS", "ARK_M1A1_AUS_TUSK"};
-        th[] = {"CUP_B_UH60M_US"};
+        th[] = {"ARK_MH60_AUS"};
         ah[] = {"CUP_B_UH1D_gunship_GER_KSK_Des"};
     };
 
@@ -223,7 +223,7 @@ class UnitTemplates {
         pilots[] = {"MNP_ROK_Soldier_F"};
         technicals[] = {"CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_MK19_USA"};
         armour[] = {"CUP_B_M113_USA", "CUP_B_M113_USA", "CUP_B_M163_USA"};
-        th[] = {"CUP_B_UH60M_US"};
+        th[] = {"CUP_B_UH60S_USN"};
         ah[] = {"CUP_B_AH1Z"};
     };
 
@@ -235,7 +235,7 @@ class UnitTemplates {
         pilots[] = {"MNP_OD_Soldier_O"};
         technicals[] = {"CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_MK19_USA", "CUP_I_SUV_Armored_ION", "CUP_I_SUV_Armored_ION"};
         armour[] = {"CUP_B_M113_USA", "CUP_B_M113_USA", "CUP_I_BMP1_TK_GUE", "CUP_I_BMP1_TK_GUE", "CUP_O_T72_SLA"};
-        th[] = {"CUP_O_Mi8_RU"};
+        th[] = {"CUP_I_Ka60_GL_Blk_ION"};
         ah[] = {"CUP_I_Mi24_D_ION"};
     };
 
@@ -247,7 +247,7 @@ class UnitTemplates {
         pilots[] = {"MNP_UKR_O"};
         technicals[] = {"CUP_B_UAZ_MG_CDF", "CUP_B_UAZ_MG_CDF", "CUP_B_UAZ_MG_CDF", "CUP_B_UAZ_AGS30_CDF", "CUP_B_UAZ_SPG9_CDF"};
         armour[] = {"CUP_B_BRDM2_CDF", "CUP_B_BRDM2_CDF", "CUP_B_BRDM2_CDF", "CUP_B_BMP2_CDF", "CUP_B_BMP2_CDF", "CUP_B_T72_CDF", "CUP_B_BTR60_CDF", "CUP_B_BTR60_CDF"};
-        th[] = {"CUP_O_Mi8_RU"};
+        th[] = {"CUP_B_Mi17_CDF"};
         ah[] = {"CUP_B_Mi24_D_CDF"};
     };
 
@@ -259,7 +259,7 @@ class UnitTemplates {
         pilots[] = {"CUP_B_USMC_Pilot"};
         technicals[] = {"CUP_B_HMMWV_M1114_USMC", "CUP_B_HMMWV_M1114_USMC", "CUP_B_HMMWV_M2_USMC", "CUP_B_HMMWV_M2_USMC", "CUP_B_HMMWV_MK19_USMC", "CUP_B_RG31_Mk19_OD_USMC", "CUP_B_RG31_M2_OD_USMC"};
         armour[] = {"CUP_B_LAV25_USMC", "CUP_B_LAV25_USMC", "CUP_B_AAV_USMC", "CUP_B_M1A1_Woodland_USMC", "CUP_B_M1A2_TUSK_MG_USMC"};
-        th[] = {"CUP_B_UH60M_US"};
+        th[] = {"CUP_B_UH60S_USN"};
         ah[] = {"CUP_B_AH1Z"};
     };
 
@@ -271,7 +271,7 @@ class UnitTemplates {
         pilots[] = {"CUP_B_GER_Fleck_Soldier_TL"};
         technicals[] = {"CUP_B_Dingo_GER_Wdl", "CUP_B_Dingo_GER_Wdl", "CUP_B_Dingo_GL_GER_Wdl"};
         armour[] = {"CUP_B_Leopard2A6_GER"};
-        th[] = {"CUP_B_CH53E_GER"};
+        th[] = {"CUP_B_UH1D_slick_GER_KSK"};
         ah[] = {"CUP_B_UH1D_gunship_GER_KSK"};
     };
 
@@ -283,7 +283,7 @@ class UnitTemplates {
         pilots[] = {"CUP_B_GER_Soldier_TL"};
         technicals[] = {"CUP_B_Dingo_GL_GER_Des", "CUP_B_Dingo_GER_Des", "CUP_B_Dingo_GER_Des"};
         armour[] = {"CUP_B_Leopard2A6_GER"};
-        th[] = {"CUP_B_CH53E_GER"};
+        th[] = {"CUP_B_UH1D_slick_GER_KSK_Des"};
         ah[] = {"CUP_B_UH1D_gunship_GER_KSK_Des"};
     };
 
@@ -319,7 +319,7 @@ class UnitTemplates {
         pilots[] = {"CUP_B_BAF_Pilot_MTP"};
         technicals[] = {"CUP_B_LR_Special_M2_GB_D", "CUP_B_LR_Special_M2_GB_D", "CUP_B_LR_Special_M2_GB_D", "CUP_B_Jackal2_L2A1_GB_D", "CUP_B_BAF_Coyote_L2A1_D", "CUP_B_Jackal2_GMG_GB_D", "CUP_B_Ridgback_LMG_GB_D"};
         armour[] = {"CUP_B_FV432_Bulldog_GB_D_RWS", "CUP_B_FV432_Bulldog_GB_D", "CUP_B_FV432_Bulldog_GB_D_RWS", "CUP_B_MCV80_GB_D_SLAT", "CUP_B_MCV80_GB_D", "CUP_B_Challenger2_2CD_BAF"};
-        th[] = {"CUP_B_CH47F_GB"};
+        th[] = {"CUP_B_Merlin_HC3_Armed_GB"};
         ah[] = {"CUP_B_AH1_BAF"};
     };
 
@@ -511,7 +511,7 @@ class UnitTemplates {
         pilots[] = {"MNP_DPR_T_Soldier_F"};
         technicals[] = {"CUP_O_UAZ_MG_CHDKZ", "CUP_O_UAZ_MG_CHDKZ", "CUP_O_UAZ_MG_CHDKZ", "CUP_O_UAZ_AGS30_CHDKZ", "CUP_O_UAZ_SPG9_CHDKZ"};
         armour[] = {"CUP_O_BTR60_CHDKZ", "CUP_O_T55_CHDKZ", "CUP_O_BRDM2_CHDKZ", "CUP_I_BMP1_TK_GUE", "CUP_O_BMP2_CHDKZ", "CUP_O_MTLB_pk_ChDKZ", "CUP_O_T72_CHDKZ"};
-        th[] = {"CUP_O_Mi8_RU"};
+        th[] = {"CUP_O_Mi8_CHDKZ"};
         ah[] = {"CUP_O_Mi24_V_RU"};
     };
 
@@ -523,7 +523,7 @@ class UnitTemplates {
         pilots[] = {"MNP_DPR_Soldier_F"};
         technicals[] = {"CUP_O_UAZ_MG_CHDKZ", "CUP_O_UAZ_MG_CHDKZ", "CUP_O_UAZ_MG_CHDKZ", "CUP_O_UAZ_AGS30_CHDKZ", "CUP_O_UAZ_SPG9_CHDKZ"};
         armour[] = {"CUP_O_BTR60_CHDKZ", "CUP_O_T55_CHDKZ", "CUP_O_BRDM2_CHDKZ", "CUP_I_BMP1_TK_GUE", "CUP_O_BMP2_CHDKZ", "CUP_O_MTLB_pk_ChDKZ", "CUP_O_T72_CHDKZ"};
-        th[] = {"CUP_O_Mi8_RU"};
+        th[] = {"CUP_O_Mi8_CHDKZ"};
         ah[] = {"CUP_O_Mi24_V_RU"};
     };
 
@@ -535,7 +535,7 @@ class UnitTemplates {
         pilots[] = {"MNP_IRN_WD_Soldier_F"};
         technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU"};
         armour[] = {"CUP_O_BRDM2_SLA", "CUP_O_BTR60_Green_RU", "CUP_O_BRDM2_SLA", "CUP_O_BRDM2_SLA", "CUP_I_BMP1_TK_GUE", "CUP_O_BMP2_SLA", "CUP_O_T72_SLA"};
-        th[] = {"CUP_O_Mi8_RU"};
+        th[] = {"CUP_O_Mi8_SLA_2"};
         ah[] = {"CUP_O_Mi24_V_RU"};
     };
 
@@ -547,7 +547,7 @@ class UnitTemplates {
         pilots[] = {"MNP_IRN_WD_IRGC_Soldier_F"};
         technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU"};
         armour[] = {"CUP_O_BRDM2_SLA", "CUP_O_BTR60_Green_RU", "CUP_O_BRDM2_SLA", "CUP_O_BRDM2_SLA", "CUP_I_BMP1_TK_GUE", "UP_O_BMP2_SLA", "CUP_I_T55_TK_GUE", "CUP_I_T55_TK_GUE"};
-        th[] = {"CUP_O_Mi8_RU"};
+        th[] = {"CUP_O_Mi8_SLA_2"};
         ah[] = {"CUP_O_Mi24_V_RU"};
     };
 
@@ -559,7 +559,7 @@ class UnitTemplates {
         pilots[] = {"MNP_IRN_DE_Soldier_F"};
         technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU"};
         armour[] = {"CUP_O_BRDM2_SLA", "CUP_O_BTR60_RU", "CUP_O_BRDM2_SLA", "CUP_O_BRDM2_SLA", "CUP_I_BMP1_TK_GUE", "UP_O_BMP2_SLA", "CUP_O_T72_SLA"};
-        th[] = {"CUP_O_Mi8_RU"};
+        th[] = {"CUP_O_Mi8_SLA_2"};
         ah[] = {"CUP_O_Mi24_V_RU"};
     };
 
@@ -571,7 +571,7 @@ class UnitTemplates {
         pilots[] = {"MNP_IRN_DE_IRGC_Soldier_F"};
         technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU"};
         armour[] = {"CUP_O_BRDM2_SLA", "CUP_O_BTR60_RU", "CUP_O_BRDM2_SLA", "CUP_O_BRDM2_SLA", "CUP_I_BMP1_TK_GUE", "UP_O_BMP2_SLA", "CUP_I_T55_TK_GUE", "CUP_I_T55_TK_GUE"};
-        th[] = {"CUP_O_Mi8_RU"};
+        th[] = {"CUP_O_Mi8_SLA_2"};
         ah[] = {"CUP_O_Mi24_V_RU"};
     };
 
@@ -583,7 +583,7 @@ class UnitTemplates {
         pilots[] = {"CUP_O_TK_Pilot"};
         technicals[] = {"CUP_O_UAZ_MG_TKA", "CUP_O_UAZ_MG_TKA", "CUP_O_UAZ_MG_TKA", "CUP_O_UAZ_AGS30_TKA", "CUP_O_UAZ_SPG9_TKA", "CUP_O_BTR40_MG_TKA", "CUP_O_LR_SPG9_TKA", "CUP_O_LR_MG_TKA"};
         armour[] = {"CUP_O_M113_TKA", "CUP_O_MTLB_pk_TKA", "CUP_O_BTR60_TK", "CUP_O_BTR60_TK", "CUP_O_BRDM2_TKA", "CUP_O_BRDM2_TKA", "CUP_O_BMP1P_TKA", "CUP_O_BMP2_TKA", "CUP_O_BMP2_ZU_TKA", "CUP_O_T55_TK", "CUP_O_T72_TKA"};
-        th[] = {"CUP_O_Mi8_RU"};
+        th[] = {"CUP_O_Mi17_TK"};
         ah[] = {"CUP_O_Mi24_D_TK"};
     };
 
@@ -595,7 +595,7 @@ class UnitTemplates {
         pilots[] = {"CUP_O_TK_INS_Soldier"};
         technicals[] = {"CUP_O_UAZ_MG_TKA", "CUP_O_UAZ_MG_TKA", "CUP_O_UAZ_MG_TKA", "CUP_O_UAZ_AGS30_TKA", "CUP_O_UAZ_SPG9_TKA", "CUP_O_BTR40_MG_TKA", "CUP_O_LR_SPG9_TKA", "CUP_O_LR_MG_TKA"};
         armour[] = {"CUP_O_BRDM2_TKA", "CUP_O_MTLB_pk_TKA", "CUP_O_BRDM2_TKA", "CUP_O_BMP1P_TKA", "CUP_O_BMP2_TKA", "CUP_O_T55_TK", "CUP_O_M113_TKA", "CUP_O_BTR60_TK", "CUP_O_T34_TKA"};
-        th[] = {"CUP_O_Mi8_RU"};
+        th[] = {"CUP_O_Mi17_TK"};
         ah[] = {"CUP_O_Mi24_D_TK"};
     };
 
@@ -619,7 +619,7 @@ class UnitTemplates {
         pilots[] = {"CUP_O_INS_Pilot"};
         technicals[] = {"CUP_O_UAZ_MG_CHDKZ", "CUP_O_UAZ_MG_CHDKZ", "CUP_O_UAZ_MG_CHDKZ", "CUP_O_UAZ_AGS30_CHDKZ", "CUP_O_UAZ_SPG9_CHDKZ"};
         armour[] = {"CUP_O_BTR60_CHDKZ", "CUP_O_T55_CHDKZ", "CUP_O_BRDM2_CHDKZ", "CUP_O_MTLB_pk_ChDKZ", "CUP_O_BMP2_CHDKZ", "CUP_O_T72_CHDKZ"};
-        th[] = {"CUP_O_Mi8_SLA_2"};
+        th[] = {"CUP_O_Mi8_CHDKZ"};
         ah[] = {"CUP_O_Mi24_V_RU"};
     };
 
@@ -739,7 +739,7 @@ class UnitTemplates {
         pilots[] = {"MNP_Irish_Soldier_F"};
         technicals[] = {"CUP_B_LR_Special_M2_GB_W", "CUP_B_LR_Special_M2_GB_W", "CUP_B_LR_Special_GMG_GB_W", "CUP_B_RG31_M2_OD_USMC", "CUP_B_RG31_Mk19_OD_USMC"};
         armour[] = {"I_APC_tracked_03_cannon_F", "I_MBT_03_cannon_F"};
-        th[] = {"CUP_B_UH60M_US"};
+        th[] = {"CUP_B_UH1D_slick_GER_KSK_Des"};
         ah[] = {"CUP_B_UH1D_gunship_GER_KSK_Des"};
     };
 
@@ -751,7 +751,7 @@ class UnitTemplates {
         pilots[] = {"MNP_Irish_Soldier_D"};
         technicals[] = {"CUP_B_LR_Special_GMG_GB_D", "CUP_B_LR_Special_M2_GB_D", "CUP_B_LR_Special_M2_GB_D", "CUP_B_RG31E_M2_USMC", "CUP_B_RG31_M2_USMC", "CUP_B_RG31_Mk19_USMC"};
         armour[] = {"I_APC_tracked_03_cannon_F", "I_MBT_03_cannon_F"};
-        th[] = {"CUP_B_UH60M_US"};
+        th[] = {"CUP_B_UH1D_slick_GER_KSK_Des"};
         ah[] = {"CUP_B_UH1D_gunship_GER_KSK_Des"};
     };
 
@@ -763,7 +763,7 @@ class UnitTemplates {
         pilots[] = {"MNP_NZ_Soldier_F"};
         technicals[] = {"I_MRAP_03_hmg_F"};
         armour[] = {"I_APC_tracked_03_cannon_F", "I_MBT_03_cannon_F"};
-        th[] = {"CUP_B_UH60M_US"};
+        th[] = {"CUP_B_UH1D_slick_GER_KSK_Des"};
         ah[] = {"CUP_B_UH1D_gunship_GER_KSK_Des"};
     };
 
@@ -799,8 +799,8 @@ class UnitTemplates {
         pilots[] = {"MNP_NOR_Soldier_F"};
         technicals[] = {"CUP_B_Dingo_GER_Wdl", "CUP_B_Dingo_GER_Wdl", "CUP_B_Dingo_GL_GER_Wdl"};
         armour[] = {"CUP_B_M113_USA", "CUP_B_M113_USA", "I_MBT_03_cannon_F"};
-        th[] = {"CUP_B_UH60M_US"};
-        ah[] = {"CUP_B_UH1Y_GUNSHIP_USMC"};
+        th[] = {"ARK_UH1Y_UNA_NOR"};
+        ah[] = {"ARK_UH1Y_GUN_NOR"};
     };
 
     class MNP_NOR_DE {
@@ -811,8 +811,8 @@ class UnitTemplates {
         pilots[] = {"MNP_NOR_D_Soldier_F"};
         technicals[] = {"CUP_B_Dingo_GL_GER_Des", "CUP_B_Dingo_GER_Des", "CUP_B_Dingo_GER_Des"};
         armour[] = {"CUP_B_M113_USA", "CUP_B_M113_USA", "I_MBT_03_cannon_F"};
-        th[] = {"CUP_B_UH60M_US"};
-        ah[] = {"CUP_B_UH1Y_GUNSHIP_USMC"};
+        th[] = {"ARK_UH1Y_UNA_NOR"};
+        ah[] = {"ARK_UH1Y_GUN_NOR"};
     };
 
     class CUP_RACS_DE {
@@ -823,8 +823,8 @@ class UnitTemplates {
         pilots[] = {"CUP_I_RACS_Pilot"};
         technicals[] = {"CUP_I_LR_MG_RACS"};
         armour[] = {"CUP_I_M113_RACS", "CUP_I_M113_RACS", "CUP_I_AAV_RACS", "CUP_I_M60A3_RACS", "CUP_I_M60A3_TTS_RACS"};
-        th[] = {"CUP_B_UH60M_US"};
-        ah[] = {"CUP_B_AH1Z"};
+        th[] = {"CUP_I_UH60L_RACS"};
+        ah[] = {"CUP_I_AH6J_RACS"};
     };
 
     class CUP_TK_LOC {
@@ -835,7 +835,7 @@ class UnitTemplates {
         pilots[] = {"CUP_I_TK_GUE_Soldier"};
         technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU"};
         armour[] = {"CUP_O_MTLB_pk_TK_MILITIA", "CUP_O_BRDM2_SLA", "CUP_I_T34_TK_GUE", "CUP_I_BMP1_TK_GUE", "CUP_O_BMP2_SLA", "CUP_I_T55_TK_GUE"};
-        th[] = {"CUP_O_Mi8_SLA_2"};
+        th[] = {"CUP_O_Mi17_TK"};
         ah[] = {"CUP_O_Mi8_SLA_2"};
     };
 
@@ -847,8 +847,8 @@ class UnitTemplates {
         pilots[] = {"CUP_I_GUE_Pilot"};
         technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU"};
         armour[] = {"CUP_I_MTLB_pk_NAPA", "CUP_O_BRDM2_SLA", "CUP_I_T34_TK_GUE", "CUP_I_BMP1_TK_GUE", "CUP_I_T55_NAPA", "CUP_O_T72_SLA"};
-        th[] = {"CUP_O_Mi8_SLA_2"};
-        ah[] = {"CUP_O_Mi8_SLA_2"};
+        th[] = {"CUP_O_UH1H_slick_TKA"};
+        ah[] = {"CUP_O_UH1H_gunship_SLA_TKA"};
     };
 
     class SYND_BANDIT {
@@ -872,7 +872,7 @@ class UnitTemplates {
         technicals[] = {"CUP_I_Datsun_PK", "CUP_O_UAZ_AGS30_TKA", "CUP_O_LR_MG_TKA", "CUP_O_LR_SPG9_TKA", "CUP_O_UAZ_SPG9_TKA", "CUP_O_UAZ_MG_TKA", "CUP_I_Datsun_PK_TK_Random"};
         armour[] = {"CUP_O_BTR60_RU", "CUP_O_BRDM2_SLA", "CUP_O_BMP2_SLA", "CUP_O_T55_SLA", "CUP_I_T34_NAPA", "CUP_O_T55_SLA", "CUP_I_MTLB_pk_SYNDIKAT"};
         th[] = {"CUP_O_Mi8_SLA_2"};
-        ah[] = {"CUP_O_Mi8_SLA_2"};
+        ah[] = {"CUP_O_Mi24_D_Dynamic_SLA"};
     };
 
     class CUP_CDF_DES {
@@ -883,7 +883,7 @@ class UnitTemplates {
         pilots[] = {"CUP_B_CDF_Pilot_DST"};
         technicals[] = {"CUP_B_UAZ_MG_CDF", "CUP_B_UAZ_MG_CDF", "CUP_B_UAZ_MG_CDF", "CUP_B_UAZ_AGS30_CDF", "CUP_B_UAZ_SPG9_CDF"};
         armour[] = {"CUP_B_MTLB_pk_CDF", "CUP_B_BRDM2_CDF", "CUP_B_BTR60_CDF", "CUP_B_BMP2_CDF", "CUP_B_T72_CDF", "CUP_B_T72_CDF"};
-        th[] = {"CUP_O_Mi8_RU"};
+        th[] = {"CUP_B_Mi17_CDF"};
         ah[] = {"CUP_B_Mi24_D_Dynamic_CDF"};
     };
 
@@ -895,7 +895,7 @@ class UnitTemplates {
         pilots[] = {"CUP_B_CDF_Pilot_FST"};
         technicals[] = {"CUP_B_UAZ_MG_CDF", "CUP_B_UAZ_MG_CDF", "CUP_B_UAZ_MG_CDF", "CUP_B_UAZ_AGS30_CDF", "CUP_B_UAZ_SPG9_CDF"};
         armour[] = {"CUP_B_MTLB_pk_CDF", "CUP_B_BRDM2_CDF", "CUP_B_BTR60_CDF", "CUP_B_BMP2_CDF", "CUP_B_T72_CDF", "CUP_B_T72_CDF"};
-        th[] = {"CUP_O_Mi8_RU"};
+        th[] = {"CUP_B_Mi17_CDF"};
         ah[] = {"CUP_B_Mi24_D_Dynamic_CDF"};
     };
 
@@ -907,7 +907,7 @@ class UnitTemplates {
         pilots[] = {"CUP_B_CDF_Pilot_MNT"};
         technicals[] = {"CUP_B_UAZ_MG_CDF", "CUP_B_UAZ_MG_CDF", "CUP_B_UAZ_MG_CDF", "CUP_B_UAZ_AGS30_CDF", "CUP_B_UAZ_SPG9_CDF"};
         armour[] = {"CUP_B_MTLB_pk_CDF", "CUP_B_BRDM2_CDF", "CUP_B_BTR60_CDF", "CUP_B_BMP2_CDF", "CUP_B_T72_CDF", "CUP_B_T72_CDF"};
-        th[] = {"CUP_O_Mi8_RU"};
+        th[] = {"CUP_B_Mi17_CDF"};
         ah[] = {"CUP_B_Mi24_D_Dynamic_CDF"};
     };
 
@@ -919,7 +919,7 @@ class UnitTemplates {
         pilots[] = {"CUP_B_CDF_Pilot_SNW"};
         technicals[] = {"CUP_B_UAZ_MG_CDF", "CUP_B_UAZ_MG_CDF", "CUP_B_UAZ_MG_CDF", "CUP_B_UAZ_AGS30_CDF", "CUP_B_UAZ_SPG9_CDF"};
         armour[] = {"CUP_B_MTLB_pk_Winter_CDF", "CUP_B_BRDM2_CDF", "CUP_B_BTR60_CDF", "CUP_B_BMP2_CDF", "CUP_B_T72_CDF", "CUP_B_T72_CDF"};
-        th[] = {"CUP_O_Mi8_RU"};
+        th[] = {"CUP_B_Mi17_CDF"};
         ah[] = {"CUP_B_Mi24_D_Dynamic_CDF"};
     };
 
@@ -931,8 +931,8 @@ class UnitTemplates {
         pilots[] = {"CUP_I_RACS_Pilot"};
         technicals[] = {"CUP_I_LR_MG_RACS"};
         armour[] = {"CUP_I_M113_RACS", "CUP_I_M113_RACS", "CUP_I_AAV_RACS", "CUP_I_M60A3_RACS", "CUP_I_M60A3_TTS_RACS"};
-        th[] = {"CUP_O_Mi8_RU"};
-        ah[] = {"CUP_B_AH1Z"};
+        th[] = {"CUP_I_UH60L_RACS"};
+        ah[] = {"CUP_I_AH6J_RACS"};
     };
 
     class CUP_RACS_URB {
@@ -943,8 +943,8 @@ class UnitTemplates {
         pilots[] = {"CUP_I_RACS_Pilot"};
         technicals[] = {"CUP_I_LR_MG_RACS"};
         armour[] = {"CUP_I_M113_RACS_URB", "CUP_I_M113_RACS_URB", "CUP_I_AAV_RACS", "CUP_I_M60A3_RACS", "CUP_I_M60A3_TTS_RACS"};
-        th[] = {"CUP_B_UH60M_US"};
-        ah[] = {"CUP_B_AH1Z"};
+        th[] = {"CUP_I_UH60L_RACS"};
+        ah[] = {"CUP_I_AH6J_RACS"};
     };
 
     class CUP_SLA_DE {
@@ -955,7 +955,7 @@ class UnitTemplates {
         pilots[] = {"CUP_O_sla_Pilot"};
         technicals[] = {"CUP_O_UAZ_MG_SLA", "CUP_O_UAZ_MG_SLA", "CUP_O_UAZ_MG_SLA", "CUP_O_UAZ_AGS30_SLA", "CUP_O_UAZ_SPG9_SLA"};
         armour[] = {"CUP_O_MTLB_pk_SLA", "CUP_O_BTR60_SLA", "CUP_O_BTR60_SLA", "CUP_O_BRDM2_SLA", "CUP_O_T55_SLA", "CUP_I_BMP1_TK_GUE", "CUP_O_BMP2_SLA", "CUP_O_T72_SLA"};
-        th[] = {"CUP_B_UH60M_US"};
+        th[] = {"CUP_O_Mi8_SLA_1"};
         ah[] = {"CUP_O_Mi24_D_SLA"};
     };
 
@@ -967,7 +967,7 @@ class UnitTemplates {
         pilots[] = {"CUP_B_USMC_Pilot"};
         technicals[] = {"CUP_B_HMMWV_M1114_USMC", "CUP_B_HMMWV_M1114_USMC", "CUP_B_HMMWV_M2_USMC", "CUP_B_HMMWV_M2_USMC", "CUP_B_HMMWV_MK19_USMC", "CUP_B_RG31_Mk19_OD_USMC", "CUP_B_RG31_M2_OD_USMC"};
         armour[] = {"CUP_B_LAV25_USMC", "CUP_B_LAV25_USMC", "CUP_B_AAV_USMC", "CUP_B_M1A1_Woodland_USMC", "CUP_B_M1A2_TUSK_MG_USMC"};
-        th[] = {"CUP_B_UH60M_US"};
+        th[] = {"CUP_B_UH60S_USN"};
         ah[] = {"CUP_B_AH1Z"};
     };
 
@@ -979,7 +979,7 @@ class UnitTemplates {
         pilots[] = {"CUP_B_USMC_Pilot"};
         technicals[] = {"CUP_B_HMMWV_M2_GPK_USA", "CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_MK19_USA", "CUP_B_RG31_Mk19_USMC", "CUP_B_RG31_M2_USMC"};
         armour[] = {"CUP_B_LAV25_desert_USMC", "CUP_B_LAV25_desert_USMC", "CUP_B_AAV_USMC", "CUP_B_M1A1_DES_USMC", "CUP_B_M1A2_TUSK_MG_USMC"};
-        th[] = {"CUP_B_UH60M_US"};
+        th[] = {"CUP_B_UH60S_USN"};
         ah[] = {"CUP_B_AH1Z"};
     };
 
@@ -991,7 +991,7 @@ class UnitTemplates {
         pilots[] = {"CUP_I_PMC_Pilot"};
         technicals[] = {"CUP_I_SUV_Armored_ION", "CUP_I_4WD_LMG_ION", "CUP_I_4WD_AT_ION", "CUP_I_LSV_02_Minigun_ION", "CUP_I_LSV_02_AT_ION"};
         armour[] = {"CUP_I_MATV_HMG_ION", "CUP_I_MATV_GMG_ION", "CUP_I_FENNEK_HMG_ION", "CUP_I_FENNEK_GMG_ION"};
-        th[] = {"CUP_O_Mi8_RU"};
+        th[] = {"CUP_I_Ka60_GL_Blk_ION"};
         ah[] = {"CUP_I_Mi24_Mk4_AT_ION"};
     };
 
@@ -1003,7 +1003,7 @@ class UnitTemplates {
         pilots[] = {"CUP_I_PMC_Pilot"};
         technicals[] = {"CUP_I_SUV_Armored_ION", "CUP_I_4WD_LMG_ION", "CUP_I_4WD_AT_ION", "CUP_I_LSV_02_Minigun_ION", "CUP_I_LSV_02_AT_ION"};
         armour[] = {"CUP_I_MATV_HMG_ION", "CUP_I_MATV_GMG_ION", "CUP_I_FENNEK_HMG_ION", "CUP_I_FENNEK_GMG_ION"};
-        th[] = {"CUP_O_Mi8_RU"};
+        th[] = {"CUP_I_Ka60_GL_Blk_ION"};
         ah[] = {"CUP_I_Mi24_Mk4_AT_ION"};
     };
 
@@ -1015,7 +1015,7 @@ class UnitTemplates {
         pilots[] = {"CUP_I_PMC_Winter_Pilot"};
         technicals[] = {"CUP_I_SUV_Armored_ION", "CUP_I_4WD_LMG_ION", "CUP_I_4WD_AT_ION", "CUP_I_LSV_02_Minigun_ION", "CUP_I_LSV_02_AT_ION"};
         armour[] = {"CUP_I_MATV_HMG_ION", "CUP_I_MATV_GMG_ION", "CUP_I_FENNEK_HMG_ION", "CUP_I_FENNEK_GMG_ION"};
-        th[] = {"CUP_O_Mi8_RU"};
+        th[] = {"CUP_I_Ka60_GL_Blk_ION"};
         ah[] = {"CUP_I_Mi24_Mk4_AT_ION"};
     };
 
@@ -1267,8 +1267,8 @@ class UnitTemplates {
         pilots[] = {"CUP_B_US_Pilot"};
         technicals[] = {"CUP_B_HMMWV_M1114_USMC", "CUP_B_HMMWV_M1114_USMC", "CUP_B_HMMWV_M2_USMC", "CUP_B_HMMWV_M2_USMC", "CUP_B_HMMWV_MK19_USMC"};
         armour[] = {"CUP_B_M113_USA", "CUP_B_M113_USA", "CUP_B_M2Bradley_USA_W", "CUP_B_M1A1_Woodland_USMC"};
-        th[] = {"CUP_B_UH60M_US"};
-        ah[] = {"CUP_B_AH64D_USA"};
+        th[] = {"CUP_B_UH60S_USN"};
+        ah[] = {"CUP_B_AH64D_DL_USA"};
     };
 
     class USM_USA_90_WD {
@@ -1279,8 +1279,8 @@ class UnitTemplates {
         pilots[] = {"CUP_B_US_Pilot"};
         technicals[] = {"CUP_B_HMMWV_M1114_USMC", "CUP_B_HMMWV_M1114_USMC", "CUP_B_HMMWV_M2_USMC", "CUP_B_HMMWV_M2_USMC", "CUP_B_HMMWV_MK19_USMC"};
         armour[] = {"CUP_B_M113_USA", "CUP_B_M113_USA", "CUP_B_M2Bradley_USA_W", "CUP_B_M1A1_Woodland_USMC", "CUP_B_M60A3_TTS_USMC"};
-        th[] = {"CUP_B_UH60M_US"};
-        ah[] = {"CUP_B_AH64D_USA"};
+        th[] = {"CUP_B_UH60S_US"};
+        ah[] = {"CUP_B_AH64D_DL_USA"};
     };
 
     class USM_USMC_90_WD {
@@ -1291,7 +1291,7 @@ class UnitTemplates {
         pilots[] = {"CUP_B_USMC_Pilot"};
         technicals[] = {"CUP_B_HMMWV_M1114_USMC", "CUP_B_HMMWV_M1114_USMC", "CUP_B_HMMWV_M2_USMC", "CUP_B_HMMWV_M2_USMC", "CUP_B_HMMWV_MK19_USMC"};
         armour[] = {"CUP_B_LAV24M240_USMC", "CUP_B_LAV24M240_USMC", "CUP_B_AAV_USMC", "CUP_B_M1A1_Woodland_USMC", "CUP_B_M60A3_TTS_USMC"};
-        th[] = {"CUP_B_UH60M_US"};
+        th[] = {"CUP_B_UH60S_USN"};
         ah[] = {"CUP_B_AH1Z_Dynamic_USMC"};
     };
 
@@ -1304,7 +1304,7 @@ class UnitTemplates {
         technicals[] = {"CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_MK19_USA"};
         armour[] = {"CUP_B_M113_USA", "CUP_B_M113_USA", "CUP_B_M2Bradley_USA_D", "CUP_B_M1A1_DES_US_Army"};
         th[] = {"CUP_B_UH60M_US"};
-        ah[] = {"CUP_B_AH64D_USA"};
+        ah[] = {"CUP_B_AH64D_DL_USA"};
     };
 
     class USM_USA_80_DE {
@@ -1315,8 +1315,8 @@ class UnitTemplates {
         pilots[] = {"CUP_B_US_Pilot"};
         technicals[] = {"CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_MK19_USA"};
         armour[] = {"CUP_B_M113_USA", "CUP_B_M113_USA", "CUP_B_M2Bradley_USA_D", "CUP_B_M1A1_DES_US_Army"};
-        th[] = {"CUP_B_UH60M_US"};
-        ah[] = {"CUP_B_AH64D_USA"};
+        th[] = {"CUP_B_UH1D_slick_GER_KSK_Des"};
+        ah[] = {"CUP_B_AH64_DL_USA"};
     };
 
     class USM_USMC_90_DE {
@@ -1339,7 +1339,7 @@ class UnitTemplates {
         pilots[] = {"CUP_B_US_Pilot"};
         technicals[] = {"CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_MK19_USA"};
         armour[] = {"CUP_B_M113_USA", "CUP_B_LAV25M240_desert_USMC", "CUP_B_M1A1_DES_US_Army"};
-        th[] = {"CUP_B_UH60M_US"};
+        th[] = {"CUP_B_UH1D_slick_GER_KSK_Des"};
         ah[] = {"CUP_B_AH1Z"};
     };
 
@@ -1363,7 +1363,7 @@ class UnitTemplates {
         pilots[] = {"CUP_B_CZ_Pilot_WDL"};
         technicals[] = {"CUP_B_LR_MG_CZ_W", "CUP_B_LR_Special_CZ_W", "CUP_B_UAZ_AGS30_ACR", "CUP_B_UAZ_MG_ACR", "CUP_B_UAZ_SPG9_ARC", "CUP_B_Dingo_GL_CZ_Wdl", "CUP_B_Dingo_CZ_Wdl"};
         armour[] = {"CUP_B_BMP2_CZ", "CUP_B_BMP2_CZ", "CUP_B_BRDM2_CZ", "CUP_B_T72_CZ"};
-        th[] = {"CUP_O_Mi8_RU"};
+        th[] = {"CUP_B_Mi171Sh_ACR"};
         ah[] = {"CUP_B_Mi171Sh_ACR", "CUP_B_Mi35_Dynamic_CZ"};
     };
 
@@ -1375,7 +1375,7 @@ class UnitTemplates {
         pilots[] = {"CUP_B_CZ_Pilot_DES"};
         technicals[] = {"CUP_B_Dingo_GL_CZ_Des", "CUP_B_Dingo_CZ_Des", "CUP_B_HMMWV_AGS_GPK_ACR", "CUP_B_HMMWV_DSHKM_GPK_ACR", "CUP_B_HMMWV_M2_GPK_ACR", "CUP_B_LR_Special_Des_CZ_D", "CUP_B_HMMWV_M2_GPK_ACR"};
         armour[] = {"CUP_B_BMP2_CZ_Des", "CUP_B_BMP2_CZ_Des", "CUP_B_BRDM2_CZ_Des", "CUP_B_T72_CZ"};
-        th[] = {"CUP_O_Mi8_RU"};
+        th[] = {"CUP_B_Mi171Sh_ACR"};
         ah[] = {"CUP_B_Mi171Sh_ACR", "CUP_B_Mi35_Dynamic_CZ_Des"};
     };
 
