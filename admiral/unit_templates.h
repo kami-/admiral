@@ -97,9 +97,9 @@ class UnitTemplates {
 
     class MNP_US_MC {
         side = "west";
-        camouflage[] = {};
-        infantry[] = {"", "", "", "", "", "", "", "", "", ""};
-        crewmen[] = {"", ""};
+        camouflage[] = {"woodland", "desert"};
+        infantry[] = {"MNP_US_MC_Soldier_O", "MNP_US_MC_Soldier_O", "MNP_US_MC_Soldier_F", "MNP_US_MC_Soldier_F", "MNP_US_MC_Soldier_AT", "MNP_US_MC_Soldier_AR", "MNP_US_MC_Soldier_MG", "MNP_US_MC_Soldier_M"};
+        crewmen[] = {"MNP_US_MC_Soldier_F", "MNP_US_MC_Soldier_F"};
         pilots[] = {"CUP_B_US_Pilot"};
         technicals[] = {"CUP_B_HMMWV_M2_GPK_USA", "CUP_B_HMMWV_M2_GPK_USA", "CUP_B_HMMWV_SOV_USA", "CUP_B_RG31E_M2_USMC", "CUP_B_RG31_M2_USMC", "CUP_B_RG31_Mk19_USMC"};
         armour[] = {"CUP_B_M1126_ICV_M2_Desert_Slat", "CUP_B_M1126_ICV_M2_Desert_Slat", "CUP_B_M1126_ICV_MK19_Desert_Slat", "CUP_B_M1128_MGS_Desert_Slat", "CUP_B_M2A3Bradley_USA_D", "CUP_B_M2A3Bradley_USA_D", "CUP_B_M1A2_TUSK_MG_DES_US_Army"};
@@ -421,10 +421,10 @@ class UnitTemplates {
 
     class MNP_CH_WD {
         side = "east";
-        camouflage[] = {};
-        infantry[] = {"", "", "", "", "", "", "", "", ""};
-        crewmen[] = {"", ""};
-        pilots[] = {""};
+        camouflage[] = {"woodland"};
+        infantry[] = {"MNP_CW_Soldier_O", "MNP_CW_Soldier_O", "MNP_CW_Soldier_F", "MNP_CW_Soldier_F", "MNP_CW_Soldier_RAT", "MNP_CW_Soldier_AR", "MNP_CW_Soldier_MG", "MNP_CW_Soldier_MED"};
+        crewmen[] = {"MNP_CW_Soldier_F", "MNP_CW_Soldier_F"};
+        pilots[] = {"MNP_CW_Soldier_F"};
         technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU"};
         armour[] = {"CUP_O_BRDM2_SLA", "CUP_O_BTR60_SLA", "CUP_O_BRDM2_SLA", "CUP_I_BMP1_TK_GUE", "CUP_I_T55_TK_GUE", "CUP_O_T72_SLA"};
         th[] = {"O_Heli_Light_02_unarmed_F"};
