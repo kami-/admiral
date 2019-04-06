@@ -626,7 +626,7 @@ class UnitTemplates {
     class CUP_RU_MOD {
         side = "east";
         camouflage[] = {"woodland"};
-        infantry[] = {"CUP_O_RU_Soldier_TL_M_EMR", "CUP_O_RU_Soldier_TL_M_EMR", "CUP_O_RU_Soldier_M_EMR", "CUP_O_RU_Soldier_M_EMR", "CUP_O_RU_Soldier_LAT_M_EMR", "CUP_O_RU_Soldier_AR_M_EMR", "CUP_O_RU_Soldier_MG_M_EMR", "CUP_RU_Medic_M_EMR"};
+        infantry[] = {"CUP_O_RU_Soldier_TL_M_EMR", "CUP_O_RU_Soldier_TL_M_EMR", "CUP_O_RU_Soldier_M_EMR", "CUP_O_RU_Soldier_M_EMR", "CUP_O_RU_Soldier_LAT_M_EMR", "CUP_O_RU_Soldier_AR_M_EMR", "CUP_O_RU_Soldier_MG_M_EMR", "CUP_O_RU_Medic_M_EMR"};
         crewmen[] = {"CUP_O_RU_Crew_M_EMR"};
         pilots[] = {"CUP_O_RU_Pilot_M_EMR"};
         technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU", "CUP_O_GAZ_Vodnik_PK_RU"};
