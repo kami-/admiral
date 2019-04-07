@@ -623,6 +623,30 @@ class UnitTemplates {
         ah[] = {"CUP_O_Mi24_V_RU"};
     };
 
+    class CUP_RU_MOD {
+        side = "east";
+        camouflage[] = {"woodland"};
+        infantry[] = {"CUP_O_RU_Soldier_TL_M_EMR", "CUP_O_RU_Soldier_TL_M_EMR", "CUP_O_RU_Soldier_M_EMR", "CUP_O_RU_Soldier_M_EMR", "CUP_O_RU_Soldier_LAT_M_EMR", "CUP_O_RU_Soldier_AR_M_EMR", "CUP_O_RU_Soldier_MG_M_EMR", "CUP_O_RU_Medic_M_EMR"};
+        crewmen[] = {"CUP_O_RU_Crew_M_EMR"};
+        pilots[] = {"CUP_O_RU_Pilot_M_EMR"};
+        technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU", "CUP_O_GAZ_Vodnik_PK_RU"};
+        armour[] = {"CUP_O_BMP2_RU", "CUP_O_BMP3_RU", "CUP_O_T72_RU", "CUP_O_BTR90_RU", "CUP_O_GAZ_Vodnik_BPPU_RU", "CUP_O_T90_RU"};
+        th[] = {"CUP_O_Mi8_RU"};
+        ah[] = {"CUP_O_Mi24_V_RU"};
+    };
+
+    class CUP_RU_VDV_MOD {
+        side = "east";
+        camouflage[] = {"woodland"};
+        infantry[] = {"CUP_O_RU_Soldier_TL_VDV_M_EMR", "CUP_O_RU_Soldier_TL_VDV_M_EMR", "CUP_O_RU_Soldier_VDV_M_EMR", "CUP_O_RU_Soldier_VDV_M_EMR", "CUP_O_RU_Soldier_LAT_VDV_M_EMR", "CUP_O_RU_Soldier_AR_VDV_M_EMR", "CUP_O_RU_Soldier_MG_VDV_M_EMR", "CUP_O_RU_Medic_VDV_M_EMR", "CUP_O_RU_Officer_VDV_M_EMR"};
+        crewmen[] = {"CUP_O_RU_Crew_VDV_M_EMR"};
+        pilots[] = {"CUP_O_RU_Pilot_VDV_M_EMR"};
+        technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU", "CUP_O_GAZ_Vodnik_PK_RU"};
+        armour[] = {"CUP_O_BMP2_RU", "CUP_O_BMP3_RU", "CUP_O_T72_RU", "CUP_O_BTR90_RU", "CUP_O_GAZ_Vodnik_BPPU_RU", "CUP_O_T90_RU"};
+        th[] = {"CUP_O_Mi8_RU"};
+        ah[] = {"CUP_O_Mi24_V_RU"};
+    };
+
     class ARK_RU_CBRN {
         side = "east";
         camouflage[] = {};
