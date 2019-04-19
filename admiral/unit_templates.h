@@ -554,11 +554,11 @@ class UnitTemplates {
     class CUP_TKA_OD {
         side = "east";
         camouflage[] = {"woodland", "desert"};
-        infantry[] = {"CUP_O_TK_Soldier_GL", "CUP_O_TK_Soldier_SL", "CUP_O_TK_Soldier", "CUP_O_TK_Soldier_LAT", "CUP_O_TK_Soldier_MG", "CUP_O_TK_Soldier_AR", "CUP_O_TK_Soldier_AT", "CUP_O_TK_Soldier_AR", "CUP_O_TK_Soldier_AT"};
-        crewmen[] = {"CUP_O_TK_Soldier_SL", "CUP_O_TK_Soldier"};
+        infantry[] = {"CUP_O_TK_Soldier_GL", "CUP_O_TK_Soldier_GL", "CUP_O_TK_Soldier", "CUP_O_TK_Soldier_Backpack", "CUP_O_TK_Soldier_LAT", "CUP_O_TK_Soldier_AR", "CUP_O_TK_Soldier_MG", "CUP_O_TK_Medic"};
+        crewmen[] = {"CUP_O_TK_Crew"};
         pilots[] = {"CUP_O_TK_Pilot"};
         technicals[] = {"CUP_O_UAZ_MG_TKA", "CUP_O_UAZ_MG_TKA", "CUP_O_UAZ_AGS30_TKA", "CUP_O_UAZ_SPG9_TKA", "CUP_O_BTR40_MG_TKA", "CUP_O_LR_SPG9_TKA", "CUP_O_LR_MG_TKA"};
-        armour[] = {"CUP_O_M113_TKA", "CUP_O_MTLB_pk_TKA", "CUP_O_BTR60_TK", "CUP_O_BTR60_TK", "CUP_O_BRDM2_TKA", "CUP_O_BRDM2_TKA", "CUP_O_BMP1P_TKA", "CUP_O_BMP2_TKA", "CUP_O_BMP2_ZU_TKA", "CUP_O_T55_TK", "CUP_O_T72_TKA"};
+        armour[] = {"CUP_O_M113_TKA", "CUP_O_MTLB_pk_TKA", "CUP_O_BTR60_TK", "CUP_O_BRDM2_TKA", "CUP_O_BMP1P_TKA", "CUP_O_BMP2_TKA", "CUP_O_BMP2_ZU_TKA", "CUP_O_T55_TK", "CUP_O_T72_TKA"};
         th[] = {"CUP_O_Mi17_TK"};
         ah[] = {"CUP_O_Mi24_D_TK"};
     };
@@ -566,11 +566,11 @@ class UnitTemplates {
     class CUP_TK_INS {
         side = "east";
         camouflage[] = {"desert"};
-        infantry[] = {"CUP_O_TK_INS_Soldier_GL", "CUP_O_TK_INS_Commander", "CUP_O_TK_INS_Soldier", "CUP_O_TK_INS_Soldier_FNFAL", "CUP_O_TK_INS_Soldier_MG", "CUP_O_TK_INS_Soldier_AR", "CUP_O_TK_INS_Soldier_Enfield", "CUP_O_TK_INS_Soldier_Enfield", "CUP_O_TK_INS_Soldier_AT", "CUP_O_TK_INS_Soldier_AR", "CUP_O_TK_INS_Soldier_AT"};
-        crewmen[] = {"CUP_O_TK_INS_Soldier_FNFAL", "CUP_O_TK_INS_Soldier"};
-        pilots[] = {"CUP_O_TK_INS_Soldier"};
+        infantry[] = {"CUP_O_TK_INS_Soldier_GL", "CUP_O_TK_INS_Soldier_TL", "CUP_O_TK_INS_Soldier", "CUP_O_TK_INS_Soldier_FNFAL", "CUP_O_TK_INS_Soldier_AT", "CUP_O_TK_Soldier_AR", "CUP_O_TK_INS_Soldier_MG", "CUP_O_TK_INS_Guerilla_Medic", "CUP_O_TK_INS_Commander"};
+        crewmen[] = {"CUP_O_TK_INS_Mechanic"};
+        pilots[] = {"CUP_O_TK_INS_Mechanic"};
         technicals[] = {"CUP_O_UAZ_MG_TKA", "CUP_O_UAZ_MG_TKA", "CUP_O_UAZ_AGS30_TKA", "CUP_O_UAZ_SPG9_TKA", "CUP_O_BTR40_MG_TKA", "CUP_O_LR_SPG9_TKA", "CUP_O_LR_MG_TKA"};
-        armour[] = {"CUP_O_BRDM2_TKA", "CUP_O_MTLB_pk_TKA", "CUP_O_BRDM2_TKA", "CUP_O_BMP1P_TKA", "CUP_O_BMP2_TKA", "CUP_O_T55_TK", "CUP_O_M113_TKA", "CUP_O_BTR60_TK", "CUP_O_T34_TKA"};
+        armour[] = {"CUP_O_BRDM2_TKA", "CUP_O_MTLB_pk_TKA", "CUP_O_BMP1P_TKA", "CUP_O_BMP2_TKA", "CUP_O_T55_TK", "CUP_O_M113_TKA", "CUP_O_BTR60_TK", "CUP_O_T34_TKA"};
         th[] = {"CUP_O_Mi17_TK"};
         ah[] = {"CUP_O_Mi24_D_TK"};
     };
@@ -578,8 +578,8 @@ class UnitTemplates {
     class CUP_SLA_WD {
         side = "east";
         camouflage[] = {"woodland"};
-        infantry[] = {"CUP_O_sla_Soldier_SL", "CUP_O_sla_Soldier", "CUP_O_sla_Soldier", "CUP_O_sla_Soldier_LAT", "CUP_O_sla_Soldier_GL", "CUP_O_sla_Soldier_AR", "CUP_O_sla_Soldier_AT", "CUP_O_sla_Soldier_AR", "CUP_O_sla_Soldier_AT", "CUP_O_sla_Soldier_MG"};
-        crewmen[] = {"CUP_O_sla_Soldier", "CUP_O_sla_Soldier_SL"};
+        infantry[] = {"CUP_O_sla_soldier_GL", "CUP_O_sla_soldier_GL", "CUP_O_sla_soldier", "CUP_O_SLA_Soldier_Backpack", "CUP_O_sla_Soldier_LAT", "CUP_O_sla_Soldier_AR", "CUP_O_sla_Soldier_MG", "CUP_O_sla_Medic", "CUP_O_sla_Officer"};
+        crewmen[] = {"CUP_O_sla_Crew"};
         pilots[] = {"CUP_O_sla_Pilot"};
         technicals[] = {"CUP_O_UAZ_MG_SLA", "CUP_O_UAZ_MG_SLA", "CUP_O_UAZ_AGS30_SLA", "CUP_O_UAZ_SPG9_SLA"};
         armour[] = {"CUP_O_MTLB_pk_SLA", "CUP_O_BTR60_SLA", "CUP_O_BTR60_SLA", "CUP_O_BRDM2_SLA", "CUP_O_T55_SLA", "CUP_I_BMP1_TK_GUE", "CUP_O_BMP2_SLA", "CUP_O_T72_SLA"};
@@ -794,7 +794,7 @@ class UnitTemplates {
     class CUP_RACS_DE {
         side = "resistance";
         camouflage[] = {"desert"};
-        infantry[] = {"CUP_I_RACS_SL", "CUP_I_RACS_SL", "CUP_I_RACS_Soldier", "CUP_I_RACS_Soldier", "CUP_I_RACS_Soldier_MAT", "CUP_I_RACS_Soldier_MMG", "CUP_I_RACS_Soldier_MMG", "CUP_I_RACS_Medic", "CUP_I_RACS_Officer"};
+        infantry[] = {"CUP_I_RACS_SL", "CUP_I_RACS_SL", "CUP_I_RACS_Soldier", "CUP_I_RACS_Soldier", "CUP_I_RACS_Soldier_LAT", "CUP_I_RACS_AR", "CUP_I_RACS_MMG", "CUP_I_RACS_Medic", "CUP_I_RACS_Officer"};
         crewmen[] = {"CUP_I_RACS_Crew"};
         pilots[] = {"CUP_I_RACS_Pilot"};
         technicals[] = {"CUP_I_LR_MG_RACS"};
@@ -806,7 +806,7 @@ class UnitTemplates {
     class CUP_RACS_WD {
         side = "resistance";
         camouflage[] = {"woodland"};
-        infantry[] = {"CUP_I_RACS_SL_wdl", "CUP_I_RACS_SL_wdl", "CUP_I_RACS_Soldier_wdl", "CUP_I_RACS_Soldier_wdl", "CUP_I_RACS_Soldier_MAT_wdl", "CUP_I_RACS_Soldier_MMG_wdl", "CUP_I_RACS_Soldier_MMG_wdl", "CUP_I_RACS_Medic_wdl", "CUP_I_RACS_Officer_wdl"};
+        infantry[] = {"CUP_I_RACS_SL_wdl", "CUP_I_RACS_SL_wdl", "CUP_I_RACS_Soldier_wdl", "CUP_I_RACS_Soldier_wdl", "CUP_I_RACS_Soldier_LAT_wdl", "CUP_I_RACS_AR_wdl", "CUP_I_RACS_MMG_wdl", "CUP_I_RACS_Medic_wdl", "CUP_I_RACS_Officer_wdl"};
         crewmen[] = {"CUP_I_RACS_Crew"};
         pilots[] = {"CUP_I_RACS_Pilot"};
         technicals[] = {"CUP_I_LR_MG_RACS"};
@@ -830,7 +830,7 @@ class UnitTemplates {
     class CUP_NAPA_WD {
         side = "resistance";
         camouflage[] = {"woodland"};
-        infantry[] = {"CUP_I_GUE_Soldier_GL", "CUP_I_GUE_Soldier_GL", "CUP_GUE_Soldier_AKS74", "CUP_I_GUE_Soldier_AKM", "CUP_I_GUE_Soldier_AT", "CUP_I_GUE_Soldier_AR", "CUP_I_GUE_Soldier_MG", "CUP_I_GUE_Medic", "CUP_I_GUE_Commander"};
+        infantry[] = {"CUP_I_GUE_Soldier_GL", "CUP_I_GUE_Soldier_GL", "CUP_GUE_Soldier_AKS74", "CUP_I_GUE_Soldier_AKM", "CUP_I_GUE_Soldier_LAT", "CUP_I_GUE_Soldier_AR", "CUP_I_GUE_Soldier_MG", "CUP_I_GUE_Medic", "CUP_I_GUE_Commander"};
         crewmen[] = {"CUP_I_GUE_Crew"};
         pilots[] = {"CUP_I_GUE_Pilot"};
         technicals[] = {"CUP_I_Datsun_PK_Random", "CUP_I_Datsun_PK_Random", "CUP_I_BRDM2_HQ_NAPA", "CUP_I_BTR40_MG_TKG", "CUP_I_BTR40_MG_TKG", "CUP_I_Ural_ZU23_NAPA"};
@@ -866,7 +866,7 @@ class UnitTemplates {
     class CUP_CDF_DES {
         side = "west";
         camouflage[] = {"desert"};
-        infantry[] = {"CUP_B_CDF_Soldier_GL_DST", "CUP_B_CDF_Soldier_GL_DST", "CUP_B_CDF_Soldier_DST", "CUP_B_CDF_Soldier_DST", "CUP_B_CDF_Soldier_LAT_DST", "CUP_B_CDF_Soldier_AR_DST", "CUP_B_CDF_Soldier_MG_DST", "CUP_B_CDF_Medic_DST", "CUP_B_CDF_Officer_DST"};
+        infantry[] = {"CUP_B_CDF_Soldier_GL_DST", "CUP_B_CDF_Soldier_GL_DST", "CUP_B_CDF_Soldier_DST", "CUP_B_CDF_Soldier_DST", "CUP_B_CDF_Soldier_RPG18_DST", "CUP_B_CDF_Soldier_AR_DST", "CUP_B_CDF_Soldier_MG_DST", "CUP_B_CDF_Medic_DST", "CUP_B_CDF_Officer_DST"};
         crewmen[] = {"CUP_B_CDF_Crew_DST"};
         pilots[] = {"CUP_B_CDF_Pilot_DST"};
         technicals[] = {"CUP_B_UAZ_MG_CDF", "CUP_B_UAZ_MG_CDF", "CUP_B_UAZ_AGS30_CDF", "CUP_B_UAZ_SPG9_CDF"};
@@ -878,7 +878,7 @@ class UnitTemplates {
     class CUP_CDF_FOR {
         side = "west";
         camouflage[] = {"woodland"};
-        infantry[] = {"CUP_B_CDF_Soldier_GL_FST", "CUP_B_CDF_Soldier_GL_FST", "CUP_B_CDF_Soldier_FST", "CUP_B_CDF_Soldier_FST", "CUP_B_CDF_Soldier_LAT_FST", "CUP_B_CDF_Soldier_AR_FST", "CUP_B_CDF_Soldier_MG_FST", "CUP_B_CDF_Medic_FST", "CUP_B_CDF_Officer_FST"};
+        infantry[] = {"CUP_B_CDF_Soldier_GL_FST", "CUP_B_CDF_Soldier_GL_FST", "CUP_B_CDF_Soldier_FST", "CUP_B_CDF_Soldier_FST", "CUP_B_CDF_Soldier_RPG18_FST", "CUP_B_CDF_Soldier_AR_FST", "CUP_B_CDF_Soldier_MG_FST", "CUP_B_CDF_Medic_FST", "CUP_B_CDF_Officer_FST"};
         crewmen[] = {"CUP_B_CDF_Crew_FST"};
         pilots[] = {"CUP_B_CDF_Pilot_FST"};
         technicals[] = {"CUP_B_UAZ_MG_CDF", "CUP_B_UAZ_MG_CDF", "CUP_B_UAZ_AGS30_CDF", "CUP_B_UAZ_SPG9_CDF"};
@@ -890,7 +890,7 @@ class UnitTemplates {
     class CUP_CDF_MOU {
         side = "west";
         camouflage[] = {"desert", "woodland"};
-        infantry[] = {"CUP_B_CDF_Soldier_GL_MNT", "CUP_B_CDF_Soldier_GL_MNT", "CUP_B_CDF_Soldier_MNT", "CUP_B_CDF_Soldier_MNT", "CUP_B_CDF_Soldier_LAT_MNT", "CUP_B_CDF_Soldier_AR_MNT", "CUP_B_CDF_Soldier_MG_MNT", "CUP_B_CDF_Medic_MNT", "CUP_B_CDF_Officer_MNT"};
+        infantry[] = {"CUP_B_CDF_Soldier_GL_MNT", "CUP_B_CDF_Soldier_GL_MNT", "CUP_B_CDF_Soldier_MNT", "CUP_B_CDF_Soldier_MNT", "CUP_B_CDF_Soldier_RPG18_MNT", "CUP_B_CDF_Soldier_AR_MNT", "CUP_B_CDF_Soldier_MG_MNT", "CUP_B_CDF_Medic_MNT", "CUP_B_CDF_Officer_MNT"};
         crewmen[] = {"CUP_B_CDF_Crew_MNT"};
         pilots[] = {"CUP_B_CDF_Pilot_MNT"};
         technicals[] = {"CUP_B_UAZ_MG_CDF", "CUP_B_UAZ_MG_CDF", "CUP_B_UAZ_AGS30_CDF", "CUP_B_UAZ_SPG9_CDF"};
@@ -902,7 +902,7 @@ class UnitTemplates {
     class CUP_CDF_SN {
         side = "west";
         camouflage[] = {"snow"};
-        infantry[] = {"CUP_B_CDF_Soldier_GL_SNW", "CUP_B_CDF_Soldier_GL_SNW", "CUP_B_CDF_Soldier_SNW", "CUP_B_CDF_Soldier_SNW", "CUP_B_CDF_Soldier_LAT_SNW", "CUP_B_CDF_Soldier_AR_SNW", "CUP_B_CDF_Soldier_MG_SNW", "CUP_B_CDF_Medic_SNW", "CUP_B_CDF_Officer_SNW"};
+        infantry[] = {"CUP_B_CDF_Soldier_GL_SNW", "CUP_B_CDF_Soldier_GL_SNW", "CUP_B_CDF_Soldier_SNW", "CUP_B_CDF_Soldier_SNW", "CUP_B_CDF_Soldier_RPG18_SNW", "CUP_B_CDF_Soldier_AR_SNW", "CUP_B_CDF_Soldier_MG_SNW", "CUP_B_CDF_Medic_SNW", "CUP_B_CDF_Officer_SNW"};
         crewmen[] = {"CUP_B_CDF_Crew_SNW"};
         pilots[] = {"CUP_B_CDF_Pilot_SNW"};
         technicals[] = {"CUP_B_UAZ_MG_CDF", "CUP_B_UAZ_MG_CDF", "CUP_B_UAZ_MG_CDF", "CUP_B_UAZ_AGS30_CDF", "CUP_B_UAZ_SPG9_CDF"};
@@ -914,7 +914,7 @@ class UnitTemplates {
     class CUP_RACS_MECH {
         side = "resistance";
         camouflage[] = {"woodland"};
-        infantry[] = {"CUP_I_RACS_SL_Mech", "CUP_I_RACS_SL_Mech", "CUP_I_RACS_Soldier_Mech", "CUP_I_RACS_Soldier_Mech", "CUP_I_RACS_Soldier_MAT_Mech", "CUP_I_RACS_Soldier_MMG_Mech", "CUP_I_RACS_Soldier_MMG_Mech", "CUP_I_RACS_Medic_Mech", "CUP_I_RACS_Officer_Mech"};
+        infantry[] = {"CUP_I_RACS_SL_Mech", "CUP_I_RACS_SL_Mech", "CUP_I_RACS_Soldier_Mech", "CUP_I_RACS_Soldier_Mech", "CUP_I_RACS_Soldier_LAT_Mech", "CUP_I_RACS_AR_Mech", "CUP_I_RACS_MMG_Mech", "CUP_I_RACS_Medic_Mech", "CUP_I_RACS_Officer_Mech"};
         crewmen[] = {"CUP_I_RACS_Crew"};
         pilots[] = {"CUP_I_RACS_Pilot"};
         technicals[] = {"CUP_I_LR_MG_RACS"};
@@ -926,7 +926,7 @@ class UnitTemplates {
     class CUP_RACS_URB {
         side = "resistance";
         camouflage[] = {"desert"};
-        infantry[] = {"CUP_I_RACS_SL_Urban", "CUP_I_RACS_SL_Urban", "CUP_I_RACS_Soldier_Urban", "CUP_I_RACS_Soldier_Urban", "CUP_I_RACS_Soldier_MAT_Urban", "CUP_I_RACS_Soldier_MMG_Urban", "CUP_I_RACS_Soldier_MMG_Urban", "CUP_I_RACS_Medic_Urban", "CUP_I_RACS_Officer_Urban"};
+        infantry[] = {"CUP_I_RACS_SL_Urban", "CUP_I_RACS_SL_Urban", "CUP_I_RACS_Soldier_Urban", "CUP_I_RACS_Soldier_Urban", "CUP_I_RACS_Soldier_LAT_Urban", "CUP_I_RACS_AR_Urban", "CUP_I_RACS_MMG_Urban", "CUP_I_RACS_Medic_Urban", "CUP_I_RACS_Officer_Urban"};
         crewmen[] = {"CUP_I_RACS_Crew"};
         pilots[] = {"CUP_I_RACS_Pilot"};
         technicals[] = {"CUP_I_LR_MG_RACS"};
@@ -938,11 +938,11 @@ class UnitTemplates {
     class CUP_SLA_DE {
         side = "east";
         camouflage[] = {"desert"};
-        infantry[] = {"CUP_O_sla_Soldier_SL_desert", "CUP_O_sla_soldier_desert", "CUP_O_sla_soldier_desert", "CUP_O_sla_Soldier_LAT_desert", "CUP_O_sla_Soldier_GL_desert", "CUP_O_sla_Soldier_AR_desert", "CUP_O_sla_Soldier_AT_desert", "CUP_O_sla_Soldier_AR_desert", "CUP_O_sla_Soldier_AT_desert", "CUP_O_sla_Soldier_MG_desert"};
-        crewmen[] = {"CUP_O_sla_soldier_desert", "CUP_O_sla_Soldier_SL_desert"};
+        infantry[] = {"CUP_O_sla_Soldier_GL_desert", "CUP_O_sla_Soldier_GL_desert", "CUP_O_sla_soldier_desert", "CUP_O_SLA_Soldier_Backpack_desert", "CUP_O_sla_Sldier_LAT_desert", "CUP_O_sla_Soldier_AR_desert", "CUP_O_sla_Soldier_MG_desert", "CUP_O_sla_Medic_Desert", "CUP_O_sla_Officer_desert"};
+        crewmen[] = {"CUP_O_sla_Crew"};
         pilots[] = {"CUP_O_sla_Pilot"};
-        technicals[] = {"CUP_O_UAZ_MG_SLA", "CUP_O_UAZ_MG_SLA", "CUP_O_UAZ_MG_SLA", "CUP_O_UAZ_AGS30_SLA", "CUP_O_UAZ_SPG9_SLA"};
-        armour[] = {"CUP_O_MTLB_pk_SLA", "CUP_O_BTR60_SLA", "CUP_O_BTR60_SLA", "CUP_O_BRDM2_SLA", "CUP_O_T55_SLA", "CUP_I_BMP1_TK_GUE", "CUP_O_BMP2_SLA", "CUP_O_T72_SLA"};
+        technicals[] = {"CUP_O_UAZ_MG_SLA", "CUP_O_UAZ_MG_SLA", "CUP_O_UAZ_AGS30_SLA", "CUP_O_UAZ_SPG9_SLA"};
+        armour[] = {"CUP_O_MTLB_pk_SLA", "CUP_O_BTR60_SLA", "CUP_O_BRDM2_SLA", "CUP_O_T55_SLA", "CUP_I_BMP1_TK_GUE", "CUP_O_BMP2_SLA", "CUP_O_T72_SLA"};
         th[] = {"CUP_O_Mi8_SLA_1"};
         ah[] = {"CUP_O_Mi24_D_SLA"};
     };
