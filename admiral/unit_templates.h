@@ -290,7 +290,7 @@ class UnitTemplates {
     class CUP_BAF_WD {
         side = "west";
         camouflage[] = {"woodland"};
-        infantry[] = {"CUP_B_BAF_Soldier_SquadLeader_DMP", "CUP_B_BAF_Soldier_SquadLeader_DMP", "CUP_B_BAF_Soldier_Rifleman_DPM", "CUP_B_BAF_Soldier_Rifleman_DPM", "CUP_B_BAF_Soldier_RiflemanLAT_DPM", "CUP_B_BAF_Soldier_AutoRifleman_DPM", "CUP_B_BAF_Soldier_HeavyGunner_DPM", "CUP_B_BAF_Soldier_Medic_DPM", "CUP_B_BAF_Soldier_Officer_DPM"};
+        infantry[] = {"CUP_B_BAF_Soldier_SquadLeader_DPM", "CUP_B_BAF_Soldier_SquadLeader_DPM", "CUP_B_BAF_Soldier_Rifleman_DPM", "CUP_B_BAF_Soldier_Rifleman_DPM", "CUP_B_BAF_Soldier_RiflemanLAT_DPM", "CUP_B_BAF_Soldier_AutoRifleman_DPM", "CUP_B_BAF_Soldier_HeavyGunner_DPM", "CUP_B_BAF_Soldier_Medic_DPM", "CUP_B_BAF_Soldier_Officer_DPM"};
         crewmen[] = {"CUP_B_BAF_Soldier_Crew_DPM"};
         pilots[] = {"CUP_B_BAF_Soldier_Pilot_DPM"};
         technicals[] = {"CUP_B_LR_Special_M2_GB_W", "CUP_B_LR_Special_GMG_GB_W", "CUP_B_Jackal2_GMG_GB_W", "CUP_B_Jackal2_L2A1_GB_W"};
