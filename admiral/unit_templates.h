@@ -830,7 +830,7 @@ class UnitTemplates {
     class CUP_NAPA_WD {
         side = "resistance";
         camouflage[] = {"woodland"};
-        infantry[] = {"CUP_I_GUE_Soldier_GL", "CUP_I_GUE_Soldier_GL", "CUP_GUE_Soldier_AKS74", "CUP_I_GUE_Soldier_AKM", "CUP_I_GUE_Soldier_LAT", "CUP_I_GUE_Soldier_AR", "CUP_I_GUE_Soldier_MG", "CUP_I_GUE_Medic", "CUP_I_GUE_Commander"};
+        infantry[] = {"CUP_I_GUE_Soldier_GL", "CUP_I_GUE_Soldier_GL", "CUP_I_GUE_Soldier_AKS74", "CUP_I_GUE_Soldier_AKM", "CUP_I_GUE_Soldier_LAT", "CUP_I_GUE_Soldier_AR", "CUP_I_GUE_Soldier_MG", "CUP_I_GUE_Medic", "CUP_I_GUE_Commander"};
         crewmen[] = {"CUP_I_GUE_Crew"};
         pilots[] = {"CUP_I_GUE_Pilot"};
         technicals[] = {"CUP_I_Datsun_PK_Random", "CUP_I_Datsun_PK_Random", "CUP_I_BRDM2_HQ_NAPA", "CUP_I_BTR40_MG_TKG", "CUP_I_BTR40_MG_TKG", "CUP_I_Ural_ZU23_NAPA"};
