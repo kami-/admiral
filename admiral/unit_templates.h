@@ -938,7 +938,7 @@ class UnitTemplates {
     class CUP_SLA_DE {
         side = "east";
         camouflage[] = {"desert"};
-        infantry[] = {"CUP_O_sla_Soldier_GL_desert", "CUP_O_sla_Soldier_GL_desert", "CUP_O_sla_soldier_desert", "CUP_O_SLA_Soldier_Backpack_desert", "CUP_O_sla_Sldier_LAT_desert", "CUP_O_sla_Soldier_AR_desert", "CUP_O_sla_Soldier_MG_desert", "CUP_O_sla_Medic_Desert", "CUP_O_sla_Officer_desert"};
+        infantry[] = {"CUP_O_sla_Soldier_GL_desert", "CUP_O_sla_Soldier_GL_desert", "CUP_O_sla_soldier_desert", "CUP_O_SLA_Soldier_Backpack_desert", "CUP_O_sla_Soldier_LAT_desert", "CUP_O_sla_Soldier_AR_desert", "CUP_O_sla_Soldier_MG_desert", "CUP_O_sla_Medic_Desert", "CUP_O_sla_Officer_desert"};
         crewmen[] = {"CUP_O_sla_Crew"};
         pilots[] = {"CUP_O_sla_Pilot"};
         technicals[] = {"CUP_O_UAZ_MG_SLA", "CUP_O_UAZ_MG_SLA", "CUP_O_UAZ_AGS30_SLA", "CUP_O_UAZ_SPG9_SLA"};
