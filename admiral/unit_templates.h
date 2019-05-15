@@ -1003,7 +1003,7 @@ class UnitTemplates {
         pilots[] = {"fow_s_us_pilot"};
         technicals[] = {"LIB_US_Scout_M3_FFV", "LIB_US_Scout_M3_FFV", "LIB_M8_Greyhound", "LIB_US_M3_Halftrack", "LIB_US_M3_Halftrack"};
         armour[] = {"LIB_M3A3_Stuart", "LIB_M4A3_75_Tubes", "LIB_M5A1_Stuart", "LIB_M4A3_75"};
-        th[] = {"LIB_Li2﻿"};
+        th[] = {"LIB_C47_Skytrain"};
         ah[] = {"LIB_P47"};
     };
 
@@ -1015,8 +1015,32 @@ class UnitTemplates {
         pilots[] = {"fow_s_us_pilot_green"};
         technicals[] = {"LIB_US_Scout_M3_FFV", "LIB_US_Scout_M3_FFV", "LIB_M8_Greyhound", "LIB_US_M3_Halftrack", "LIB_US_M3_Halftrack"};
         armour[] = {"LIB_M3A3_Stuart", "LIB_M4A3_76", "LIB_M5A1_Stuart", "LIB_M4A3_75", "LIB_M4A3_76_HVSS"};
-        th[] = {"LIB_Li2﻿"};
+        th[] = {"LIB_C47_Skytrain"};
         ah[] = {"LIB_P47"};
+    };
+
+    class IF44_USA_NA {
+        side = "resistance";
+        camouflage[] = {};
+        infantry[] = {"LIB_US_NAC_smgunner", "LIB_US_NAC_Captain", "LIB_US_NAC_first_lieutenant", "LIB_US_NAC_second_lieutenant", "LIB_US_NAC_radioman", "LIB_US_NAC_corporal", "LIB_US_NAC_rifleman", "LIB_US_NAC_medic", "LIB_US_NAC_mgunner", "LIB_US_NAC_grenadier", "LIB_US_NAC_AT_soldier"};
+        crewmen[] = {"LIB_US_Tank_Sergeant", "LIB_US_Tank_Crew"};
+        pilots[] = {"LIB_US_Pilot"};
+        technicals[] = {"LIB_US_NAC_Scout_M3", "LIB_US_NAC_Scout_M3_FFV", "LIB_US_NAC_M3_Halftrack"};
+        armour[] = {"LIB_US_NAC_M4A3_75"};
+        th[] = {"LIB_C47_Skytrain"};
+        ah[] = {"LIB_US_NAC_P39"};
+    };
+
+    class IF44_USA_SN {
+        side = "resistance";
+        camouflage[] = {};
+        infantry[] = {"LIB_US_Smgunner_w", "LIB_US_Second_lieutenant_w", "LIB_US_First_lieetenant_w", "LIB_US_Captain_w", "LIB_US_Rifleman_w", "LIB_US_FC_rifleman_w", "LIB_US_Corporal_w", "LIB_US_Radioman_w", "LIB_US_Medic_w", "LIB_US_Mgunner_w", "LIB_US_Grenadier_W", "LIB_US_AT_solder_W"};
+        crewmen[] = {"LIB_US_Tank_Sergeant", "LIB_US_Tank_Crew"};
+        pilots[] = {"LIB_US_Pilot"};
+        technicals[] = {"LIB_US_M3_Halftrack_w", "LIB_US_Scout_m3_w", "LIB_US_Scout_M3_FFV_w"};
+        armour[] = {"LIB_M4A3_75_w"};
+        th[] = {"LIB_C47_Skytrain"};
+        ah[] = {"LIB_US_NAC_P39"};
     };
 
     class FOW_USA_PARA {
@@ -1027,7 +1051,7 @@ class UnitTemplates {
         pilots[] = {"fow_s_us_pilot_green"};
         technicals[] = {"LIB_US_Scout_M3_FFV", "LIB_US_Scout_M3_FFV", "LIB_M8_Greyhound", "LIB_US_M3_Halftrack", "LIB_US_M3_Halftrack"};
         armour[] = {"LIB_M3A3_Stuart", "LIB_M4A3_76", "LIB_M5A1_Stuart", "LIB_M4A3_75", "LIB_M4A3_76_HVSS"};
-        th[] = {"LIB_Li2﻿"};
+        th[] = {"LIB_C47_Skytrain"};
         ah[] = {"LIB_P47"};
     };
 
@@ -1039,7 +1063,7 @@ class UnitTemplates {
         pilots[] = {"fow_s_us_pilot_green"};
         technicals[] = {"LIB_US_Scout_M3_FFV", "LIB_US_Scout_M3_FFV", "LIB_M8_Greyhound", "LIB_US_M3_Halftrack", "LIB_US_M3_Halftrack"};
         armour[] = {"LIB_M3A3_Stuart", "LIB_M4A3_75_Tubes", "LIB_M5A1_Stuart", "LIB_M4A3_75"};
-        th[] = {"LIB_Li2﻿"};
+        th[] = {"LIB_C47_Skytrain"};
         ah[] = {"LIB_P47"};
     };
 
@@ -1051,7 +1075,7 @@ class UnitTemplates {
         pilots[] = {"fow_s_us_pilot"};
         technicals[] = {"fow_v_universalCarrier", "fow_v_universalCarrier", "LIB_M8_Greyhound", "LIB_US_M3_Halftrack", "LIB_US_M3_Halftrack"};
         armour[] = {"LIB_M3A3_Stuart", "LIB_M4A4_FIREFLY", "LIB_M5A1_Stuart", "fow_v_cromwell_uk"};
-        th[] = {"LIB_Li2﻿"};
+        th[] = {"LIB_C47_RAF"};
         ah[] = {"LIB_P47"};
     };
 
@@ -1063,7 +1087,7 @@ class UnitTemplates {
         pilots[] = {"fow_s_us_pilot"};
         technicals[] = {"fow_v_universalCarrier", "fow_v_universalCarrier", "LIB_M8_Greyhound", "LIB_US_M3_Halftrack", "LIB_US_M3_Halftrack"};
         armour[] = {"LIB_M3A3_Stuart", "LIB_M4A4_FIREFLY", "LIB_M5A1_Stuart", "fow_v_cromwell_uk"};
-        th[] = {"LIB_Li2﻿"};
+        th[] = {"LIB_C47_RAF"};
         ah[] = {"LIB_P47"};
     };
 
@@ -1075,7 +1099,7 @@ class UnitTemplates {
         pilots[] = {"fow_s_us_pilot"};
         technicals[] = {"fow_v_universalCarrier", "fow_v_universalCarrier", "LIB_M8_Greyhound", "LIB_US_M3_Halftrack", "LIB_US_M3_Halftrack"};
         armour[] = {"LIB_M3A3_Stuart", "LIB_M4A4_FIREFLY", "LIB_M5A1_Stuart", "fow_v_cromwell_uk"};
-        th[] = {"LIB_Li2﻿"};
+        th[] = {"LIB_C47_RAF"};
         ah[] = {"LIB_P47"};
     };
 
@@ -1087,7 +1111,7 @@ class UnitTemplates {
         pilots[] = {"fow_s_us_pilot"};
         technicals[] = {"fow_v_universalCarrier", "fow_v_universalCarrier", "LIB_M8_Greyhound", "LIB_US_M3_Halftrack", "LIB_US_M3_Halftrack"};
         armour[] = {"LIB_M3A3_Stuart", "LIB_M4A3_75_Tubes", "LIB_M5A1_Stuart", "LIB_M4A3_75"};
-        th[] = {"LIB_Li2﻿"};
+        th[] = {"LIB_C47_RAF"};
         ah[] = {"LIB_P47"};
     };
 
@@ -1099,7 +1123,7 @@ class UnitTemplates {
         pilots[] = {"fow_s_us_pilot"};
         technicals[] = {"fow_v_universalCarrier", "fow_v_universalCarrier", "LIB_M8_Greyhound", "LIB_US_M3_Halftrack", "LIB_US_M3_Halftrack"};
         armour[] = {"LIB_M3A3_Stuart", "LIB_M4A3_75_Tubes", "LIB_M5A1_Stuart", "LIB_M4A3_75"};
-        th[] = {"LIB_Li2﻿"};
+        th[] = {"LIB_C47_RAF"};
         ah[] = {"LIB_P47"};
     };
 
@@ -1111,7 +1135,31 @@ class UnitTemplates {
         pilots[] = {"fow_s_us_pilot"};
         technicals[] = {"fow_v_universalCarrier", "fow_v_universalCarrier", "LIB_M8_Greyhound", "LIB_US_M3_Halftrack", "LIB_US_M3_Halftrack"};
         armour[] = {"LIB_M3A3_Stuart", "LIB_M4A4_FIREFLY", "LIB_M5A1_Stuart", "fow_v_cromwell_uk"};
-        th[] = {"LIB_Li2﻿"};
+        th[] = {"LIB_C47_RAF"};
+        ah[] = {"LIB_P47"};
+    };
+
+    class IF44_BAF_NA {
+        side = "resistance";
+        camouflage[] = {};
+        infantry[] = {"LIB_UK_DR_AT_Soldier", "LIB_UK_DR_LanceCorporal", "LIB_UK_DR_Radioman", "LIB_UK_DR_Corporal", "LIB_UK_DR_Rifleman", "LIB_UK_DR_Grenadier", "LIB_UK_DR_Medic", "LIB_UK_DR_Officer", "LIB_UK_DR_Sergeant"};
+        crewmen[] = {"LIB_UK_DR_Tank_Crew", "LIB_UK_DR_Tank_Commander"};
+        pilots[] = {"LIB_US_Pilot"};
+        technicals[] = {"LIB_UniversalCarrier_desert", "LIB_UniversalCarrier_desert", "LIB_M8_Greyhound", "LIB_UK_DR_M3_Halftrack", "LIB_UK_DR_M3_Halftrack"};
+        armour[] = {"LIB_M3A3_Stuart", "LIB_Crusader_Mk3_desert", "LIB_UK_DR_M4A3_75"};
+        th[] = {"LIB_C47_RAF"};
+        ah[] = {"LIB_RAF_P39"};
+    };
+
+    class IF44_BAF_SN {
+        side = "resistance";
+        camouflage[] = {};
+        infantry[] = {"LIB_UK_Sergeant_w", "LIB_UK_Officer_w", "LIB_UK_Rifleman_w", "LIB_UK_Radioman_w", "LIB_UK_Corporal_w", "LIB_UK_Medic_w", "LIB_UK_Grenadier_w", "LIB_UK_LanceCorporal_w", "LIB_UK_AT_Soldier_W"};
+        crewmen[] = {"LIB_UK_DR_Tank_Crew", "LIB_UK_DR_Tank_Commander"};
+        pilots[] = {"LIB_US_Pilot"};
+        technicals[] = {"LIB_UniversalCarrier_w"};
+        armour[] = {"LIB_Cromwell_Mk4_w", "LIB_M4A3_75_w"};
+        th[] = {"LIB_C47_RAF"};
         ah[] = {"LIB_P47"};
     };
 
@@ -1135,7 +1183,7 @@ class UnitTemplates {
         pilots[] = {"LIB_GER_pilot"};
         technicals[] = {"LIB_Sdkfz251_w", "LIB_Sdkfz251_FFV_w"};
         armour[] = {"LIB_PzKpfwIV_H_w", "LIB_StuG_III_G_w", "LIB_PzKpfwV_w", "LIB_PzKpfwVI_E_w"};
-        th[] = {"LIB_Li2﻿"};
+        th[] = {"LIB_Ju52"};
         ah[] = {"LIB_Ju87_w"};
     };
 
@@ -1147,8 +1195,20 @@ class UnitTemplates {
         pilots[] = {"LIB_GER_pilot"};
         technicals[] = {"LIB_SdKfz222", "LIB_Kfz1_MG42", "LIB_SdKfz251", "LIB_Sdkfz251_FFV"};
         armour[] = {"LIB_StuG_III_G", "LIB_SdKfz124", "LIB_PzKpfwVI_E_1", "LIB_PzKpfwIV_H", "LIB_PzKpfwV"};
-        th[] = {"LIB_Li2﻿"};
+        th[] = {"LIB_Ju52"};
         ah[] = {"LIB_Ju87"};
+    };
+
+    class IF44_GER_NA {
+        side = "west";
+        camouflage[] = {};
+        infantry[] = {"LIB_DAK_Lieutenant", "LIB_DAK_NCO", "LIB_DAK_Soldier_2", "LIB_DAK_radioman", "LIB_DAK_medic", "LIB_DAK_AT_grenadier", "LIB_DAK_medic", "LIB_DAK_Soldier", "LIB_DAK_Soldier", "LIB_DAK_Soldier", "LIB_DAK_Soldier"};
+        crewmen[] = {"LIB_DAK_spg_crew", "LIB_DAK_spg_lieutenant"};
+        pilots[] = {"LIB_GER_pilot"};
+        technicals[] = {"LIB_SdKfz222", "LIB_Kfz1_MG42", "LIB_SdKfz251", "LIB_Sdkfz251_FFV"};
+        armour[] = {"LIB_StuG_III_G", "LIB_SdKfz124", "LIB_PzKpfwVI_E_1", "LIB_PzKpfwIV_H", "LIB_PzKpfwV"};
+        th[] = {"LIB_Ju52"};
+        ah[] = {"LIB_DAK_Ju87"};
     };
 
     class FOW_GER_SS {
@@ -1159,7 +1219,7 @@ class UnitTemplates {
         pilots[] = {"LIB_GER_pilot"};
         technicals[] = {"LIB_SdKfz222", "LIB_Kfz1_MG42", "LIB_SdKfz251", "LIB_Sdkfz251_FFV"};
         armour[] = {"LIB_StuG_III_G", "LIB_SdKfz124", "LIB_PzKpfwVI_E_1", "LIB_PzKpfwIV_H", "LIB_PzKpfwV"};
-        th[] = {"LIB_Li2﻿"};
+        th[] = {"LIB_Ju52"};
         ah[] = {"LIB_Ju87"};
     };
 
@@ -1171,7 +1231,7 @@ class UnitTemplates {
         pilots[] = {"LIB_GER_pilot"};
         technicals[] = {"LIB_SdKfz222", "LIB_Kfz1_MG42", "LIB_SdKfz251", "LIB_Sdkfz251_FFV"};
         armour[] = {"LIB_StuG_III_G", "LIB_SdKfz124", "LIB_PzKpfwVI_E_1", "LIB_PzKpfwIV_H", "LIB_PzKpfwV"};
-        th[] = {"LIB_Li2﻿"};
+        th[] = {"LIB_Ju52"};
         ah[] = {"LIB_Ju87"};
     };
 
