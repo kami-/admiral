@@ -566,7 +566,7 @@ class UnitTemplates {
     class CUP_TK_INS {
         side = "east";
         camouflage[] = {"desert"};
-        infantry[] = {"CUP_O_TK_INS_Soldier_GL", "CUP_O_TK_INS_Soldier_TL", "CUP_O_TK_INS_Soldier", "CUP_O_TK_INS_Soldier_FNFAL", "CUP_O_TK_INS_Soldier_AT", "CUP_O_TK_Soldier_AR", "CUP_O_TK_INS_Soldier_MG", "CUP_O_TK_INS_Guerilla_Medic", "CUP_O_TK_INS_Commander"};
+        infantry[] = {"CUP_O_TK_INS_Soldier_GL", "CUP_O_TK_INS_Soldier_TL", "CUP_O_TK_INS_Soldier", "CUP_O_TK_INS_Soldier_FNFAL", "CUP_O_TK_INS_Soldier_AT", "CUP_O_TK_INS_Soldier_AR", "CUP_O_TK_INS_Soldier_MG", "CUP_O_TK_INS_Guerilla_Medic", "CUP_O_TK_INS_Commander"};
         crewmen[] = {"CUP_O_TK_INS_Mechanic"};
         pilots[] = {"CUP_O_TK_INS_Mechanic"};
         technicals[] = {"CUP_O_UAZ_MG_TKA", "CUP_O_UAZ_MG_TKA", "CUP_O_UAZ_AGS30_TKA", "CUP_O_UAZ_SPG9_TKA", "CUP_O_BTR40_MG_TKA", "CUP_O_LR_SPG9_TKA", "CUP_O_LR_MG_TKA"};
