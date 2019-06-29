@@ -154,6 +154,7 @@ adm_camp_fnc_spawnInfGroup = {
     _zoneTemplate = GET_ZONE_TEMPLATE(_zone);
     _initialPos = [GET_ZONE_AREA(_zone), GET_ZONE_POSITION(_zone), "SoldierWB"] call adm_common_fnc_getRandomEmptyPositionInArea;
     _group = createGroup ([_unitTemplate] call adm_common_fnc_getUnitTemplateSide);
+    _group deleteGroupWhenEmpty true;
     _groupSize = ["ZoneTemplates", _zoneTemplate, "infFireteamSize"] call adm_config_fnc_getNumber;
     for "_i" from 1 to _groupSize do {
         private ["_position", "_unit"];
@@ -182,6 +183,7 @@ adm_camp_fnc_spawnVehicleGroup = {
     ["zone.spawned.vehicle", [_vehicle, GROUP_TYPE_ARRAY select _groupType, _zone]] call adm_event_fnc_emitEvent;
     _group = createGroup ([_unitTemplate] call adm_common_fnc_getUnitTemplateSide);
     _group setVariable ["adm_group_type", _groupType, false];
+    _group deleteGroupWhenEmpty true;
     _crew = [_vehicle, _group, _unitTemplate, _zoneTemplate, UNIT_TYPE_ARRAY select _unitType] call adm_camp_fnc_spawnCrew;
     [format ["%1.spawned.crew", GET_ZONE_TYPE(_zone)], [_crew, UNIT_TYPE_ARRAY select _unitType, GROUP_TYPE_ARRAY select _groupType, _zone]] call adm_event_fnc_emitEvent;
     ["zone.spawned.crew", [_crew, UNIT_TYPE_ARRAY select _unitType, GROUP_TYPE_ARRAY select _groupType, _zone]] call adm_event_fnc_emitEvent;

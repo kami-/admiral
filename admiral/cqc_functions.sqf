@@ -134,6 +134,7 @@ adm_cqc_fnc_spawnGarrisonGroup = {
     _group = createGroup ([_unitTemplate] call adm_common_fnc_getUnitTemplateSide);
     [_group, _numOfUnits, _unitTemplate, GET_ZONE_TEMPLATE(_zone), _possiblePositions, _building, _zone] call adm_cqc_fnc_spawnGarrisonGroupUnits;
     _group setVariable ["adm_zone_parent", _zone];
+    _group deleteGroupWhenEmpty true;
 
     _group;
 };
@@ -163,7 +164,7 @@ adm_cqc_fnc_getGarrisonGroupSize = {
 
 adm_cqc_fnc_spawnGarrison = {
     FUN_ARGS_1(_zone);
-    
+
     private ["_buildings", "_maxAmount", "_currentAmount", "_spawnedGroups"];
     _buildings = [_zone] call adm_cqc_fnc_getZoneBuildings;
     DEBUG("admiral.cqc",FMT_2("CQC Zone '%1' found '%2' suitable building(s).",GET_ZONE_ID(_zone),count _buildings));
