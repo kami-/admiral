@@ -123,8 +123,8 @@ class UnitTemplates {
         side = "west";
         camouflage[] = {"woodland"};
         infantry[] = {"CUP_B_GER_BW_Fleck_Soldier_GL", "CUP_B_GER_BW_Fleck_Soldier_GLd", "CUP_B_GER_BW_Fleck_soldier_TL", "CUP_B_GER_BW_Fleck_Soldier", "CUP_B_GER_BW_Fleck_Soldier_AT", "CUP_B_GER_BW_Fleck_Soldier_MG", "CUP_B_GER_BW_Fleck_Soldier_MG3", "CUP_B_GER_BW_Fleck_Medic"};
-        crewmen[] = {"CUP_B_GER_BW_Fleck_Soldier"};
-        pilots[] = {"CUP_B_GER_BW_Fleck_Soldier"};
+        crewmen[] = {"CUP_B_GER_Fleck_Crew"};
+        pilots[] = {"CUP_B_GER_Fleck_HPilot"};
         technicals[] = {"CUP_B_Dingo_GER_Wdl", "CUP_B_Dingo_GER_Wdl", "CUP_B_Dingo_GL_GER_Wdl"};
         armour[] = {"CUP_B_Leopard2A6_GER"};
         th[] = {"CUP_B_UH1D_slick_GER_KSK"};
@@ -135,8 +135,8 @@ class UnitTemplates {
         side = "west";
         camouflage[] = {"desert", "snow"};
         infantry[] = {"CUP_B_GER_BW_Soldier_GL", "CUP_B_GER_BW_Soldier_GL", "CUP_B_GER_Soldier_TL", "CUP_B_GER_Soldier", "CUP_B_GER_BW_Soldier_AT", "CUP_B_GER_BW_Soldier_MG", "CUP_B_GER_BW_Soldier_MG3", "CUP_B_GER_BW_Medic"};
-        crewmen[] = {"CUP_B_GER_Soldier"};
-        pilots[] = {"CUP_B_GER_Soldier"};
+        crewmen[] = {"CUP_B_GER_Crew"};
+        pilots[] = {"CUP_B_GER_HPilot"};
         technicals[] = {"CUP_B_Dingo_GL_GER_Des", "CUP_B_Dingo_GER_Des", "CUP_B_Dingo_GER_Des"};
         armour[] = {"CUP_B_Leopard2A6DST_GER"};
         th[] = {"CUP_B_UH1D_slick_GER_KSK_Des"};
@@ -267,8 +267,8 @@ class UnitTemplates {
         side = "west";
         camouflage[] = {"woodland"};
         infantry[] = {"CUP_B_GER_Fleck_Soldier_GL", "CUP_B_GER_Fleck_Soldier_GL", "CUP_B_GER_Fleck_Soldier_GL", "CUP_B_GER_Fleck_Soldier", "CUP_B_GER_Fleck_Soldier_AT", "CUP_B_GER_Fleck_Soldier_MG", "CUP_B_GER_Fleck_Soldier_MG3", "CUP_B_GER_Fleck_Medic"};
-        crewmen[] = {"CUP_B_GER_Fleck_Soldier_GL"};
-        pilots[] = {"CUP_B_GER_Fleck_Soldier_GL"};
+        crewmen[] = {"CUP_B_GER_Fleck_Crew"};
+        pilots[] = {"CUP_B_GER_Fleck_HPilot"};
         technicals[] = {"CUP_B_Dingo_GER_Wdl", "CUP_B_Dingo_GER_Wdl", "CUP_B_Dingo_GL_GER_Wdl"};
         armour[] = {"CUP_B_Leopard2A6_GER"};
         th[] = {"CUP_B_UH1D_slick_GER_KSK"};
@@ -279,8 +279,8 @@ class UnitTemplates {
         side = "west";
         camouflage[] = {"desert"};
         infantry[] = {"CUP_B_GER_Soldier_GL", "CUP_B_GER_Soldier_GL", "CUP_B_GER_Soldier", "CUP_B_GER_Soldier", "CUP_B_GER_Soldier_AT", "CUP_B_GER_Soldier_MG", "CUP_B_GER_Soldier_MG3", "CUP_B_GER_Medic"};
-        crewmen[] = {"CUP_B_GER_Soldier"};
-        pilots[] = {"CUP_B_GER_Soldier"};
+        crewmen[] = {"CUP_B_GER_Crew"};
+        pilots[] = {"CUP_B_GER_HPilot"};
         technicals[] = {"CUP_B_Dingo_GL_GER_Des", "CUP_B_Dingo_GER_Des", "CUP_B_Dingo_GER_Des"};
         armour[] = {"CUP_B_Leopard2A6DST_GER"};
         th[] = {"CUP_B_UH1D_slick_GER_KSK_Des"};
