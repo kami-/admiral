@@ -53,14 +53,13 @@ adm_behavior_fnc_stateEnemyFound = {
 adm_behavior_fnc_stateSeekAndDestroyEnemy = {
     params ["_group"];
 
-    private _enemyPos = _group getVariable "adm_behavior_enemyPos";
-    private _sadWp = [_group, _enemyPos, 'SAD', 'AWARE', 'RED'] call adm_common_fnc_createWaypoint;
+    private _sadWp = [_group, [_group getVariable "adm_behavior_enemyPos", 0], 'SAD', 'AWARE', 'RED'] call adm_common_fnc_createWaypoint;
     _sadWp setWaypointStatements ["true", "[group this] call adm_behavior_fnc_continueMoving;"];
     _group setVariable ["adm_behavior_lastWp", currentWaypoint _group, false];
     _group setVariable ["adm_behavior_state", STATE_COMBAT, false];
     ["behavior.state.change", [_group, STATE_COMBAT]] call adm_event_fnc_emitEvent;
     _group setCurrentWaypoint _sadWp;
-    {_x doMove _enemyPos} forEach units _group;
+    {_x doMove (_group getVariable "adm_behavior_enemyPos")} forEach units _group;
     DEBUG("admiral.behavior",FMT_1("SAD waypoint was assigned to group '%1'.",_group));
 };
 
