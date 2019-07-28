@@ -54,7 +54,7 @@ adm_behavior_fnc_stateEnemyFound = {
 adm_behavior_fnc_stateSeekAndDestroyEnemy = {
     params ["_group"];
 
-    private _enemyPos = [_group getVariable "adm_behavior_enemyPos", [0,0,0]];
+    private _enemyPos = [_group getVariable "adm_behavior_enemyPos", 0];
     private _sadWp = [_group, _enemyPos, 'SAD', 'AWARE', 'RED'] call adm_common_fnc_createWaypoint;
     _sadWp setWaypointStatements ["true", "[group this] call adm_behavior_fnc_continueMoving;"];
     _group setVariable ["adm_behavior_lastWp", currentWaypoint _group, false];
