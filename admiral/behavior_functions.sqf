@@ -40,9 +40,8 @@ adm_behavior_fnc_stateMoving = {
 adm_behavior_fnc_stateEnemyFound = {
     params ["_group"];
 
-    private ["_enemyPos", "_reinforcementGroups"];
-    _enemyPos = _group getVariable "adm_behavior_enemyPos";
-    _reinforcementGroups = [];
+    private _enemyPos = _group getVariable "adm_behavior_enemyPos";
+    private _reinforcementGroups = [];
     if ([_enemyPos, side _group] call adm_behavior_fnc_canCallReinforcement) then {
         _reinforcementGroups = [_group, _enemyPos, [side _group, _enemyPos] call adm_behavior_fnc_getEnemyNumbers] call adm_behavior_fnc_callReinforcement;
         [_enemyPos, side _group] call adm_behavior_fnc_addToFoundEnemyArray;
@@ -54,7 +53,7 @@ adm_behavior_fnc_stateEnemyFound = {
 adm_behavior_fnc_stateSeekAndDestroyEnemy = {
     params ["_group"];
 
-    private _enemyPos = [_group getVariable "adm_behavior_enemyPos", 0];
+    private _enemyPos = _group getVariable "adm_behavior_enemyPos";
     private _sadWp = [_group, _enemyPos, 'SAD', 'AWARE', 'RED'] call adm_common_fnc_createWaypoint;
     _sadWp setWaypointStatements ["true", "[group this] call adm_behavior_fnc_continueMoving;"];
     _group setVariable ["adm_behavior_lastWp", currentWaypoint _group, false];
