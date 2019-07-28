@@ -59,7 +59,11 @@ adm_behavior_fnc_stateSeekAndDestroyEnemy = {
     _group setVariable ["adm_behavior_state", STATE_COMBAT, false];
     ["behavior.state.change", [_group, STATE_COMBAT]] call adm_event_fnc_emitEvent;
     _group setCurrentWaypoint _sadWp;
-    {_x doMove (_group getVariable "adm_behavior_enemyPos")} forEach units _group;
+    private _enemyPos = _group getVariable "adm_behavior_enemyPos";
+    {
+        _x setDestination [_enemyPos, "LEADER PLANNED", true];
+        _x doMove _enemyPos;
+    } forEach units _group;
     DEBUG("admiral.behavior",FMT_1("SAD waypoint was assigned to group '%1'.",_group));
 };
 
