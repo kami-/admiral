@@ -1393,7 +1393,7 @@ class UnitTemplates {
 
     class CUP_CZ_WD {
         side = "west";
-        camouflage[] = {"woodland"};
+        camouflage[] = {};
         infantry[] = {"CUP_B_CZ_soldier_805_GL_WDL", "CUP_B_CZ_soldier_805_GL_WDL", "CUP_B_CZ_Soldier_805_WDL", "CUP_B_CZ_Soldier_AT_WDL", "CUP_B_CZ_Soldier_MG_WDL", "CUP_B_CZ_Soldier_MG_WDL", "CUP_B_CZ_Medic_WDL"};
         crewmen[] = {"CUP_B_CZ_Crew_WDL"};
         pilots[] = {"CUP_B_CZ_Pilot_WDL"};
@@ -1405,7 +1405,7 @@ class UnitTemplates {
 
     class CUP_CZ_DE {
         side = "west";
-        camouflage[] = {"desert"};
+        camouflage[] = {};
         infantry[] = {"CUP_B_CZ_Soldier_SL_DES", "CUP_B_CZ_Soldier_SL_DESCUP_B_CZ_Soldier_DES", "CUP_B_CZ_Soldier_DES", "CUP_B_CZ_Soldier_RPG_DES", "CUP_B_CZ_Soldier_MG_DES", "CUP_B_CZ_Soldier_MG_DES", "CUP_B_CZ_Soldier_Medic_DES"};
         crewmen[] = {"CUP_B_CZ_Crew_DES"};
         pilots[] = {"CUP_B_CZ_Pilot_DES"};
