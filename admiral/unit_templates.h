@@ -1315,7 +1315,7 @@ class UnitTemplates {
         pilots[] = {"CUP_B_US_Pilot"};
         technicals[] = {"CUP_B_HMMWV_M2_USMC", "CUP_B_HMMWV_M1114_USMC", "CUP_B_HMMWV_MK19_USMC"};
         armour[] = {"CUP_B_M113_USA", "CUP_B_M2Bradley_USA_W", "CUP_B_M1A1_Woodland_USMC", "CUP_B_M60A3_TTS_USMC"};
-        th[] = {"CUP_B_UH60S_US"};
+        th[] = {"CUP_B_UH60M_US"};
         ah[] = {"CUP_B_AH64D_DL_USA"};
     };
 
