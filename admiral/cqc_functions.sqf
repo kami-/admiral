@@ -212,13 +212,13 @@ adm_cqc_fnc_forceFire = {
     };
     SET_CQC_FORCE_FIRE_RUNNING(_zone,true);
     waitUntil {
-        DECLARE(_aliveGroupLeft) = false;
+        private _aliveGroupLeft = false;
         {
-            DECLARE(_group) = _x;
+            private _group = _x;
             {
-                DECLARE(_unit) = _x;
+                private _unit = _x;
                 if (alive _unit) then {
-                    DECLARE(_enemy) = [_unit] call adm_cqc_fnc_getForceFireEnemy;
+                    private _enemy = [_unit] call adm_cqc_fnc_getForceFireEnemy;
                     if (count _enemy > 0) then {
                         _enemy = _enemy select 0;
                         _unit lookAt _enemy;
@@ -238,26 +238,29 @@ adm_cqc_fnc_forceFire = {
 
 adm_cqc_fnc_globalForceFire = {
     DEBUG("admiral.cqc.forcefire","Starting global force fire loop.");
-    while {true} do {
+
+    [
         {
-            private _group = _x;
-            if (!isNull _group) then {
-                {
-                    private _unit = _x;
-                    if (alive _unit) then {
-                        private _enemy = [_unit] call adm_cqc_fnc_getForceFireEnemy;
-                        if (count _enemy > 0) then {
-                            _enemy = _enemy select 0;
-                            _unit lookAt _enemy;
-                            _unit doFire _enemy;
-                            TRACE("admiral.cqc.forcefire",FMT_3("CQC unit '%1' in group '%2' has found an enemy '%3' and is being forced to fire at it.",_unit,_group,_enemy));
+            {
+                private _group = _x;
+                if (!isNull _group) then {
+                    {
+                        private _unit = _x;
+                        if (alive _unit) then {
+                            private _enemy = [_unit] call adm_cqc_fnc_getForceFireEnemy;
+                            if (count _enemy > 0) then {
+                                _enemy = _enemy select 0;
+                                _unit lookAt _enemy;
+                                _unit doFire _enemy;
+                                TRACE("admiral.cqc.forcefire",FMT_3("CQC unit '%1' in group '%2' has found an enemy '%3' and is being forced to fire at it.",_unit,_group,_enemy));
+                            };
                         };
-                    };
-                } foreach units _group;
-            };
-        } foreach adm_cqc_groups;
-        sleep adm_cqc_forceFireDelay;
-    };
+                    } foreach units _group;
+                };
+            } foreach adm_cqc_groups;
+        },
+        adm_cqc_forceFireDelay
+    ] call CBA_fnc_addPerFrameHandler;
 };
 
 adm_cqc_fnc_disableForceFire = {
