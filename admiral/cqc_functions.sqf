@@ -210,6 +210,7 @@ adm_cqc_fnc_forceFire = {
     if (call adm_hc_fnc_isHcPresent) exitWith {
         DEBUG("admiral.cqc.forcefire",FMT_1("Headless Client detected. ForceFire has been disabled for CQC Zone '%1'.",GET_ZONE_ID(_zone)));
     };
+
     SET_CQC_FORCE_FIRE_RUNNING(_zone,true);
     private _aliveGroupLeft = false;
 
@@ -218,7 +219,9 @@ adm_cqc_fnc_forceFire = {
             params ["_args", "_id"];
             _args params ["_zone","_aliveGroupLeft"];
 
-            if (!(_aliveGroupLeft && {IS_CQC_FORCE_FIRE_ENABLED(_zone)});) exitWith {
+            if (!IS_CQC_FORCE_FIRE_ENABLED(_zone) || { _aliveGroupLeft } ) exitWith {
+                SET_CQC_FORCE_FIRE_RUNNING(_zone,false);
+                DEBUG("admiral.cqc.forcefire",FMT_1("ForceFire has been disabled for CQC Zone '%1'.",GET_ZONE_ID(_zone)));
                 _id call CBA_fnc_removePerFrameHandler;
             };
 
@@ -243,9 +246,6 @@ adm_cqc_fnc_forceFire = {
         adm_cqc_forceFireDelay,
         [_zone,_aliveGroupLeft]
     ] call CBA_fnc_addPerFrameHandler;
-
-    SET_CQC_FORCE_FIRE_RUNNING(_zone,false);
-    DEBUG("admiral.cqc.forcefire",FMT_1("ForceFire has been disabled for CQC Zone '%1'.",GET_ZONE_ID(_zone)));
 };
 
 adm_cqc_fnc_globalForceFire = {
