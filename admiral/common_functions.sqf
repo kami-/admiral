@@ -8,7 +8,7 @@ adm_common_fnc_placeMan = {
     FUN_ARGS_4(_position,_group,_unitClassNames,_skillArray);
 
     private ["_classNameData", "_className", "_classNameArguments", "_unit"];
-    _classNameData = SELECT_RAND(_unitClassNames);
+    _classNameData = selectRandom _unitClassNames;
     _classNameArguments = [];
     if (typeName _classNameData == "ARRAY") then {
         _className = _classNameData select 0;
@@ -40,7 +40,7 @@ adm_common_fnc_placeVehicle = {
     params ["_vehicleClassNames","_area","_position"];
 
     private ["_className"];
-    private _classNameData = SELECT_RAND(_vehicleClassNames);
+    private _classNameData = selectRandom _vehicleClassNames;
     private _classNameArguments = [];
     if (typeName _classNameData == "ARRAY") then {
         _className = _classNameData #0;
