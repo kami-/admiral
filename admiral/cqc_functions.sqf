@@ -211,27 +211,39 @@ adm_cqc_fnc_forceFire = {
         DEBUG("admiral.cqc.forcefire",FMT_1("Headless Client detected. ForceFire has been disabled for CQC Zone '%1'.",GET_ZONE_ID(_zone)));
     };
     SET_CQC_FORCE_FIRE_RUNNING(_zone,true);
-    waitUntil {
-        private _aliveGroupLeft = false;
+    private _aliveGroupLeft = false;
+
+    [
         {
-            private _group = _x;
+            params ["_args", "_id"];
+            _args params ["_zone","_aliveGroupLeft"];
+
+            if (!(_aliveGroupLeft && {IS_CQC_FORCE_FIRE_ENABLED(_zone)});) exitWith {
+                _id call CBA_fnc_removePerFrameHandler;
+            };
+
             {
-                private _unit = _x;
-                if (alive _unit) then {
-                    private _enemy = [_unit] call adm_cqc_fnc_getForceFireEnemy;
-                    if (count _enemy > 0) then {
-                        _enemy = _enemy select 0;
-                        _unit lookAt _enemy;
-                        _unit doFire _enemy;
-                        TRACE("admiral.cqc.forcefire",FMT_4("CQC unit '%1' in group '%2', in CQC Zone '%3' has found an enemy '%4' and is being forced to fire at it.",_unit,_group,GET_ZONE_ID(_zone),_enemy));
+                private _group = _x;
+                {
+                    private _unit = _x;
+                    if (alive _unit) then {
+                        private _enemy = [_unit] call adm_cqc_fnc_getForceFireEnemy;
+                        if (count _enemy > 0) then {
+                            _enemy = _enemy select 0;
+                            _unit lookAt _enemy;
+                            _unit doFire _enemy;
+                            TRACE("admiral.cqc.forcefire",FMT_4("CQC unit '%1' in group '%2', in CQC Zone '%3' has found an enemy '%4' and is being forced to fire at it.",_unit,_group,GET_ZONE_ID(_zone),_enemy));
+                        };
+                        _aliveGroupLeft = true;
                     };
-                    _aliveGroupLeft = true;
-                };
-            } foreach (units _group);
-        } foreach (GET_ZONE_SPAWNED_GROUPS(_zone));
-        sleep adm_cqc_forceFireDelay;
-        !(_aliveGroupLeft && {IS_CQC_FORCE_FIRE_ENABLED(_zone)});
-    };
+                } foreach (units _group);
+            } foreach (GET_ZONE_SPAWNED_GROUPS(_zone));
+
+        },
+        adm_cqc_forceFireDelay,
+        [_zone,_aliveGroupLeft]
+    ] call CBA_fnc_addPerFrameHandler;
+
     SET_CQC_FORCE_FIRE_RUNNING(_zone,false);
     DEBUG("admiral.cqc.forcefire",FMT_1("ForceFire has been disabled for CQC Zone '%1'.",GET_ZONE_ID(_zone)));
 };
@@ -274,7 +286,7 @@ adm_cqc_fnc_enableForceFire = {
 
     if (!IS_CQC_FORCE_FIRE_RUNNING(_zone)) then {
         SET_CQC_FORCE_FIRE_ENABLED(_zone,true);
-        [_zone] spawn adm_cqc_fnc_forceFire;
+        [_zone] call adm_cqc_fnc_forceFire;
     };
 };
 
@@ -286,7 +298,7 @@ adm_cqc_fnc_initZone = {
     SET_CQC_FORCE_FIRE_RUNNING(_zone,false);
     private _spawnedGroups = [_zone] call adm_cqc_fnc_spawnGarrison;
     SET_ZONE_SPAWNED_GROUPS(_zone,_spawnedGroups);
-    [_zone] spawn adm_cqc_fnc_forceFire;
+    [_zone] call adm_cqc_fnc_forceFire;
     INFO("admiral.cqc",FMT_1("CQC Zone '%1' has been succesfully initialized.",GET_ZONE_ID(_zone)));
 };
 

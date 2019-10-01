@@ -8,7 +8,7 @@
 
 [] call adm_settings_fnc_init; DEBUG("admiral.settings","Init function 'adm_settings_fnc_init' called.");
 [] call adm_cqc_fnc_init; DEBUG("admiral.cqc","Init function 'adm_cqc_fnc_init' called.");
-[] spawn adm_cqc_fnc_globalForceFire;
+[] call adm_cqc_fnc_globalForceFire;
 
 /*
 if (adm_isBehaviorEnabled) then {
