@@ -212,19 +212,13 @@ adm_cqc_fnc_forceFire = {
     };
 
     SET_CQC_FORCE_FIRE_RUNNING(_zone,true);
-    private _aliveGroupLeft = false;
 
     [
         {
             params ["_args", "_id"];
-            _args params ["_zone","_aliveGroupLeft"];
+            _args params ["_zone"];
 
-            if (!IS_CQC_FORCE_FIRE_ENABLED(_zone) || { _aliveGroupLeft } ) exitWith {
-                SET_CQC_FORCE_FIRE_RUNNING(_zone,false);
-                DEBUG("admiral.cqc.forcefire",FMT_1("ForceFire has been disabled for CQC Zone '%1'.",GET_ZONE_ID(_zone)));
-                _id call CBA_fnc_removePerFrameHandler;
-            };
-
+            private _aliveGroupLeft = false;
             {
                 private _group = _x;
                 {
@@ -242,9 +236,14 @@ adm_cqc_fnc_forceFire = {
                 } foreach (units _group);
             } foreach (GET_ZONE_SPAWNED_GROUPS(_zone));
 
+            if (!IS_CQC_FORCE_FIRE_ENABLED(_zone) || { !_aliveGroupLeft } ) exitWith {
+                SET_CQC_FORCE_FIRE_RUNNING(_zone,false);
+                DEBUG("admiral.cqc.forcefire",FMT_1("ForceFire has been disabled for CQC Zone '%1'.",GET_ZONE_ID(_zone)));
+                _id call CBA_fnc_removePerFrameHandler;
+            };
         },
         adm_cqc_forceFireDelay,
-        [_zone,_aliveGroupLeft]
+        [_zone]
     ] call CBA_fnc_addPerFrameHandler;
 };
 
