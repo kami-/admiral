@@ -27,7 +27,7 @@ adm_patrol_fnc_createWaypoints = {
     _defaultWp = (waypoints _group) select 0;
     _defaultWp setWaypointPosition [getPosATL (leader _group), 0];
     _defaultWp setWaypointType 'MOVE';
-    _defaultWp setWaypointBehaviour (SELECT_RAND(_waypointBehaviours));
+    _defaultWp setWaypointBehaviour (selectRandom _waypointBehaviours);
     _defaultWp setWaypointCombatMode 'RED';
     DEBUG("admiral.patrol.create",FMT_3("Created '%1' patrol waypoint(s) for group '%2' in Camp Zone '%3'.",_noOfWaypoints,_group,GET_ZONE_ID(_zone)));
 };

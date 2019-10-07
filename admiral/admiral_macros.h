@@ -424,7 +424,7 @@
 //          _random = SELECT_RAND(_behaviours);
 //      THEN:
 //          _random == 'AWARE' or _random == 'AWARE'
-#define SELECT_RAND(ARRAY) (ARRAY) select (floor (random (count (ARRAY))))
+#define SELECT_RAND(ARRAY) selectRandom (ARRAY)
 
 // Adds 1 to the variable.
 // Example:

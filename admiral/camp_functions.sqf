@@ -111,7 +111,7 @@ adm_camp_fnc_createPatrolWaypoints = {
         _initialWaypointIndex = (count waypoints _group) - 1;
     };
     for "_i" from 1 to _noOfWaypoints do {
-        [_group, [[_area, _areaPosition, _unitType] call adm_common_fnc_getRandomEmptyPositionInArea, 0], 'MOVE', SELECT_RAND(_waypointBehaviours), 'RED'] call adm_common_fnc_createWaypoint;
+        [_group, [[_area, _areaPosition, _unitType] call adm_common_fnc_getRandomEmptyPositionInArea, 0], 'MOVE', selectRandom _waypointBehaviours, 'RED'] call adm_common_fnc_createWaypoint;
     };
     [_group, (count waypoints _group) - 1] setWaypointStatements ["true", format["(group this) setCurrentWaypoint [group this, %1]", _initialWaypointIndex]];
     DEBUG("admiral.camp.create",FMT_2("Created '%1' patrol waypoint(s) for group '%2'.",_noOfWaypoints,_group));
@@ -121,10 +121,10 @@ adm_camp_fnc_createCampWaypoints = {
     FUN_ARGS_5(_group,_unitType,_paths,_waypointBehaviours,_noOfWaypoints);
 
     private ["_path", "_pathPositions", "_endTrigger"];
-    _path = SELECT_RAND(_paths);
+    _path = selectRandom _paths;
     _pathPositions = GET_PATH_POSITIONS(_path);
     {
-        [_group, [_x, 0], 'MOVE', SELECT_RAND(_waypointBehaviours), 'RED'] call adm_common_fnc_createWaypoint;
+        [_group, [_x, 0], 'MOVE', selectRandom _waypointBehaviours, 'RED'] call adm_common_fnc_createWaypoint;
     } foreach _pathPositions;
     _endTrigger = GET_PATH_END_TRIGGER(_path);
     [_group, _unitType, triggerArea _endTrigger, getPosATL _endTrigger, _waypointBehaviours, _noOfWaypoints] call adm_camp_fnc_createPatrolWaypoints;
