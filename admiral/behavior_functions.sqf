@@ -5,14 +5,15 @@
 
 
 adm_behavior_fnc_changeAllGroupState = {
-    waitUntil {
+    [
         {
-            TRACE("admiral.behavior",FMT_2("Group '%1' is in '%2' state.",_x,STATE_TEXT_ARRAY select (_x getVariable AS_ARRAY_2("adm_behavior_state", STATE_INIT))));
-            [_x] call (adm_behavior_states select (_x getVariable ["adm_behavior_state", STATE_INIT]));
-        } foreach ([] call adm_behavior_fnc_getAllGroups);
-        sleep 1;
-        false;
-    };
+            {
+                TRACE("admiral.behavior",FMT_2("Group '%1' is in '%2' state.",_x,STATE_TEXT_ARRAY select (_x getVariable AS_ARRAY_2("adm_behavior_state", STATE_INIT))));
+                [_x] call (adm_behavior_states select (_x getVariable ["adm_behavior_state", STATE_INIT]));
+            } foreach ([] call adm_behavior_fnc_getAllGroups);
+        },
+        1
+    ] call CBA_fnc_addPerFrameHandler;
 };
 
 adm_behavior_fnc_stateInit = {
@@ -276,5 +277,5 @@ adm_behavior_fnc_initFoundEnemies = {
 adm_behavior_fnc_init = {
     adm_behavior_states = [adm_behavior_fnc_stateInit, adm_behavior_fnc_stateMoving, adm_behavior_fnc_stateEnemyFound, adm_behavior_fnc_stateSeekAndDestroyEnemy, adm_behavior_fnc_stateCombat, adm_behavior_fnc_updateWaypointsAndMoving, {}];
     [] call adm_behavior_fnc_initFoundEnemies;
-    [] spawn adm_behavior_fnc_changeAllGroupState;
+    [] call adm_behavior_fnc_changeAllGroupState;
 };
