@@ -192,7 +192,7 @@ adm_camp_fnc_spawnVehicleGroup = {
 
 adm_camp_fnc_trySpawnGroups = {
     params ["_zone","_groupType","_canSpawnFunc","_spawnFunc"];
-    
+
     private _spawnedGroups = [];
     if ([_zone, _groupType] call _canSpawnFunc) then {
         _spawnedGroups = [_zone, _groupType] call _spawnFunc;
@@ -322,11 +322,6 @@ adm_camp_fnc_periodicSpawn = {
             params ["_args", "_id"];
             _args params ["_zone","_zoneInfGroups","_zoneTechGroups","_zoneArmourGroups"];
 
-            if ([_zone] call adm_camp_fnc_isPoolEmpty || {!IS_CAMP_ENABLED(_zone)}) exitWith {
-                INFO("admiral.camp",FMT_1("Periodic Camp Zone '%1' has stopped.",GET_ZONE_ID(_zone)));
-                _id call CBA_fnc_removePerFrameHandler;
-            };
-
             private _spawnedGroups = [];
             _spawnedGroups = [_zone, GROUP_TYPE_INF, adm_camp_fnc_periodicCanSpawnGroups, adm_camp_fnc_periodicSpawnInfGroups] call adm_camp_fnc_trySpawnGroups;
             _zoneInfGroups append _spawnedGroups;
@@ -340,6 +335,11 @@ adm_camp_fnc_periodicSpawn = {
             _zoneArmourGroups append _spawnedGroups;
             INFO("admiral.camp",FMT_2("Periodic Camp Zone '%1' spawned '%2' armour group(s).",GET_ZONE_ID(_zone),count _spawnedGroups));
             ["camp.spawned.groups", [_zoneInfGroups, _zoneTechGroups, _zoneArmourGroups, _zone]] call adm_event_fnc_emitEvent;
+
+            if ([_zone] call adm_camp_fnc_isPoolEmpty || {!IS_CAMP_ENABLED(_zone)}) exitWith {
+                INFO("admiral.camp",FMT_1("Periodic Camp Zone '%1' has stopped.",GET_ZONE_ID(_zone)));
+                _id call CBA_fnc_removePerFrameHandler;
+            };
         },
         GET_CAMP_DELAY(_zone),
         [_zone,_zoneInfGroups,_zoneTechGroups,_zoneArmourGroups]
@@ -401,11 +401,6 @@ adm_camp_fnc_onDemandSpawn = {
             params ["_args", "_id"];
             _args params ["_zone","_zoneInfGroups","_zoneTechGroups","_zoneArmourGroups"];
 
-            if ([_zone] call adm_camp_fnc_isPoolEmpty || {!IS_CAMP_ENABLED(_zone)}) exitWith {
-                INFO("admiral.camp",FMT_1("On-demand Camp Zone '%1' has stopped.",GET_ZONE_ID(_zone)));
-                _id call CBA_fnc_removePerFrameHandler;
-            };
-
             private _spawnedGroups = [];
             _spawnedGroups = [_zone, GROUP_TYPE_INF, adm_camp_fnc_onDemandCanSpawnGroups, adm_camp_fnc_onDemandSpawnInfGroups] call adm_camp_fnc_trySpawnGroups;
             _zoneInfGroups append _spawnedGroups;
@@ -419,6 +414,11 @@ adm_camp_fnc_onDemandSpawn = {
             _zoneArmourGroups append _spawnedGroups;
             INFO("admiral.camp",FMT_2("On-demand Camp Zone '%1' spawned '%2' armour group(s).",GET_ZONE_ID(_zone),count _spawnedGroups));
             ["camp.spawned.groups", [_zoneInfGroups, _zoneTechGroups, _zoneArmourGroups, _zone]] call adm_event_fnc_emitEvent;
+
+            if ([_zone] call adm_camp_fnc_isPoolEmpty || {!IS_CAMP_ENABLED(_zone)}) exitWith {
+                INFO("admiral.camp",FMT_1("On-demand Camp Zone '%1' has stopped.",GET_ZONE_ID(_zone)));
+                _id call CBA_fnc_removePerFrameHandler;
+            };
         },
         GET_CAMP_DELAY(_zone),
         [_zone,_zoneInfGroups,_zoneTechGroups,_zoneArmourGroups]
@@ -479,11 +479,6 @@ adm_camp_fnc_randomSpawn = {
             params ["_args", "_id"];
             _args params ["_zone","_zoneInfGroups","_zoneTechGroups","_zoneArmourGroups"];
 
-            if ([_zone] call adm_camp_fnc_isPoolEmpty || {!IS_CAMP_ENABLED(_zone)}) exitWith {
-                INFO("admiral.camp",FMT_1("Random Camp Zone '%1' has stopped.",GET_ZONE_ID(_zone)));
-                _id call CBA_fnc_removePerFrameHandler;
-            };
-
             private _spawnedGroups = [];
             _spawnedGroups = [_zone, GROUP_TYPE_INF, adm_camp_fnc_randomCanSpawnGroups, adm_camp_fnc_randomSpawnInfGroups] call adm_camp_fnc_trySpawnGroups;
             _zoneInfGroups append _spawnedGroups;
@@ -497,6 +492,11 @@ adm_camp_fnc_randomSpawn = {
             _zoneArmourGroups append _spawnedGroups;
             INFO("admiral.camp",FMT_2("Random Camp Zone '%1' spawned '%2' armour group(s).",GET_ZONE_ID(_zone),count _spawnedGroups));
             ["camp.spawned.groups", [_zoneInfGroups, _zoneTechGroups, _zoneArmourGroups, _zone]] call adm_event_fnc_emitEvent;
+
+            if ([_zone] call adm_camp_fnc_isPoolEmpty || {!IS_CAMP_ENABLED(_zone)}) exitWith {
+                INFO("admiral.camp",FMT_1("Random Camp Zone '%1' has stopped.",GET_ZONE_ID(_zone)));
+                _id call CBA_fnc_removePerFrameHandler;
+            };
         },
         GET_CAMP_DELAY(_zone),
         [_zone,_zoneInfGroups,_zoneTechGroups,_zoneArmourGroups]
