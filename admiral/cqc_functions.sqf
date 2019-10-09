@@ -42,7 +42,7 @@ adm_cqc_fnc_getBuildingPositions = {
         } forEach (_building buildingPos -1);
     };
 
-    _buildingPositions
+    _buildingPositions;
 };
 
 adm_cqc_fnc_isPositionInBuilding = {
