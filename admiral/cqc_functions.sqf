@@ -35,13 +35,11 @@ adm_cqc_fnc_getBuildingPositions = {
 
     private _buildingPositions = [];
     if (!((typeOf _building) in adm_cqc_buildingBlacklist)) then {
-        private _i = 0;
-        while {!([_building buildingPos _i, [0,0,0]] call BIS_fnc_areEqual)} do {
-            if([_building buildingPos _i] call adm_cqc_fnc_isPositionInBuilding) then {
-                _buildingPositions pushBack _i;
+        {
+            if ([_x] call adm_cqc_fnc_isPositionInBuilding) then {
+                _buildingPositions pushBack _x;
             };
-            INC(_i);
-        };
+        } forEach (_building buildingPos -1);
     };
 
     _buildingPositions;
