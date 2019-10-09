@@ -36,7 +36,7 @@ adm_cqc_fnc_getBuildingPositions = {
     private _buildingPositions = [];
     if (!((typeOf _building) in adm_cqc_buildingBlacklist)) then {
         {
-            if (_x call adm_cqc_fnc_isPositionInBuilding) then {
+            if ([_x] call adm_cqc_fnc_isPositionInBuilding) then {
                 _buildingPositions pushBack _x;
             };
         } forEach (_building buildingPos -1);
