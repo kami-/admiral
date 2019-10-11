@@ -167,12 +167,12 @@ adm_common_fnc_getUnitTemplateSide = {
 
 adm_common_fnc_createWaypoint = {
     FUN_ARGS_5(_group,_wpArray,_type,_behaviour,_mode);
-    
+
     DECLARE(_waypoint) = _group addWaypoint _wpArray;
     _waypoint setWaypointType _type;
     _waypoint setWaypointBehaviour _behaviour;
     _waypoint setWaypointCombatMode _mode;
-    
+
     private _groupType = _group getVariable ["adm_group_type", GROUP_TYPE_INF];
     private _radius = if (_groupType isEqualTo GROUP_TYPE_INF) then { 50 } else { 250 };
     _waypoint setWaypointCompletionRadius _radius;
@@ -223,7 +223,7 @@ adm_common_fnc_getAliveUnits = {
 
 adm_common_fnc_getAliveSideUnits = {
     FUN_ARGS_2(_groupsArray,_side);
-    
+
     DECLARE(_aliveSideUnits) = [];
     {
         DECLARE(_groups) = _x;
@@ -238,7 +238,7 @@ adm_common_fnc_getAliveSideUnits = {
 
 adm_common_fnc_getAllAliveSideUnits = {
     FUN_ARGS_1(_side);
-    
+
     [[adm_cqc_groups, adm_patrol_infGroups, adm_patrol_techGroups, adm_patrol_armourGroups, adm_camp_infGroups, adm_camp_techGroups, adm_camp_armourGroups],_side] call adm_common_fnc_getAliveSideUnits;
 };
 
@@ -264,7 +264,7 @@ adm_common_fnc_createLocalMarker = {
 };
 
 adm_common_fnc_getPlayerUnits = {
-    [allUnits, {isPlayer _x}] call BIS_fnc_conditionalSelect;
+    allUnits select {isPlayer _x};
 };
 
 adm_common_fnc_randomFlatEmptyPosInTrigger = {
@@ -397,7 +397,7 @@ adm_common_fnc_isPositionInRectangle = {
 
 adm_common_fnc_isPositionInEllipse = {
     FUN_ARGS_6(_width,_height,_rotatedPx,_rotatedPy,_ax,_ay);
- 
+
      (_rotatedPx - _ax) ^ 2 / _width ^ 2 + (_rotatedPy - _ay) ^ 2 / _height ^ 2 <= 1;
 };
 

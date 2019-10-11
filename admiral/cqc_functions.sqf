@@ -60,7 +60,7 @@ adm_cqc_fnc_getMinHeightBuildingPositions = {
 
     private _buildingHeight = (getPosASL _building) select 2;
 
-    [_positions, {((ATLToASL (_building buildingPos _x)) select 2) - _buildingHeight >= _minHeight}] call BIS_fnc_conditionalSelect;
+    _positions select {((ATLToASL (_building buildingPos _x)) select 2) - _buildingHeight >= _minHeight};
 };
 
 adm_cqc_fnc_getBuildingCapacityPositions = {
@@ -137,7 +137,7 @@ adm_cqc_fnc_getZoneBuildings = {
     params ["_zone"];
 
     private _zoneRadius = (GET_ZONE_AREA(_zone) select 0) max (GET_ZONE_AREA(_zone) select 1);
-    private _buildings = [GET_ZONE_POSITION(_zone) nearObjects ["Building", _zoneRadius], {[getPosATL _x, GET_ZONE_AREA(_zone), GET_ZONE_POSITION(_zone)] call adm_common_fnc_isPositionInArea}] call BIS_fnc_conditionalSelect;
+    private _buildings = GET_ZONE_POSITION(_zone) nearObjects ["Building", _zoneRadius] select {[getPosATL _x, GET_ZONE_AREA(_zone), GET_ZONE_POSITION(_zone)] call adm_common_fnc_isPositionInArea};
     [_buildings] call adm_common_fnc_shuffle;
 };
 
