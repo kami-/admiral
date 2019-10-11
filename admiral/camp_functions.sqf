@@ -84,7 +84,7 @@ adm_camp_fnc_tryAddPaths = {
 adm_camp_fnc_getGroupPaths = {
     params ["_zone","_groupType"];
 
-    [GET_CAMP_PATHS(_zone), { GET_PATH_USED_BY(_x) select _groupType }] call BIS_fnc_conditionalSelect;
+    GET_CAMP_PATHS(_zone) select {GET_PATH_USED_BY(_x) select _groupType};
 };
 
 adm_camp_fnc_getLogicEndTrigger = {
