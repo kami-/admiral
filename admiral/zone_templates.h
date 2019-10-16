@@ -47,4 +47,16 @@ class ZoneTemplates {
         commanding = 1;
         general = 0.7;
     };
+
+    class Vehicles {
+        aimingAccuracy = 0.2;
+        aimingShake = 0.2;
+        aimingSpeed = 0.75;
+        spotDistance = 1;
+        spotTime = 1;
+        courage = 1;
+        reloadSpeed = 1;
+        commanding = 1;
+        general = 0.7;
+    };
 };
