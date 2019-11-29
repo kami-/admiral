@@ -122,7 +122,7 @@ class UnitTemplates {
     class CUP_GER_WD {
         side = "west";
         camouflage[] = {"woodland"};
-        infantry[] = {"CUP_B_GER_BW_Fleck_Soldier_GL", "CUP_B_GER_BW_Fleck_Soldier_GLd", "CUP_B_GER_BW_Fleck_soldier_TL", "CUP_B_GER_BW_Fleck_Soldier", "CUP_B_GER_BW_Fleck_Soldier_AT", "CUP_B_GER_BW_Fleck_Soldier_MG", "CUP_B_GER_BW_Fleck_Soldier_MG3", "CUP_B_GER_BW_Fleck_Medic"};
+        infantry[] = {"CUP_B_GER_BW_Fleck_Soldier_GL", "CUP_B_GER_BW_Fleck_Soldier_GL", "CUP_B_GER_BW_Fleck_soldier_TL", "CUP_B_GER_BW_Fleck_Soldier", "CUP_B_GER_BW_Fleck_Soldier_AT", "CUP_B_GER_BW_Fleck_Soldier_MG", "CUP_B_GER_BW_Fleck_Soldier_MG3", "CUP_B_GER_BW_Fleck_Medic"};
         crewmen[] = {"CUP_B_GER_Fleck_Crew"};
         pilots[] = {"CUP_B_GER_Fleck_HPilot"};
         technicals[] = {"CUP_B_Dingo_GER_Wdl", "CUP_B_Dingo_GER_Wdl", "CUP_B_Dingo_GL_GER_Wdl"};
