@@ -1418,7 +1418,7 @@ class UnitTemplates {
     class GEND {
         side = "west";
         camouflage[] = {};
-        infantry[] = {"B_GEN_Soldier_F", "B_GEN_Soldier_F", "B_GEN_Soldier_F", "B_GEN_Soldier_AR_F", "B_GEN_Soldier_SMG_F", "B_GEN_Soldier_SMG_F", "B_GEN_Commander_F", "B_GEN_Commander_F"};
+        infantry[] = {"B_GEN_Soldier_1_F", "B_GEN_Soldier_F", "B_GEN_Soldier_1_F", "B_GEN_Soldier_AR_F", "B_GEN_Soldier_SMG_F", "B_GEN_Soldier_SG_F", "B_GEN_Soldier_Pistol_F", "B_GEN_Commander_F"};
         crewmen[] = {"B_GEN_Soldier_Crew_F"};
         pilots[] = {"B_GEN_Soldier_Pilot_F"};
         technicals[] = {"B_GEN_Offroad_01_armed_F"};
