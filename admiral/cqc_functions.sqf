@@ -190,7 +190,7 @@ adm_cqc_fnc_spawnGarrison = {
 adm_cqc_fnc_canForceFire = {
     params ["_ai","_unit"];
 
-    alive _unit && {!([side _ai, side _unit] call adm_common_fnc_isFriendlySide)} && {!terrainIntersect [eyePos _ai, eyePos _unit]} && {!lineIntersects [eyePos _ai, eyePos _unit]};
+    alive _unit && {simulationEnabled _unit} && {!([side _ai, side _unit] call adm_common_fnc_isFriendlySide)} && {!terrainIntersect [eyePos _ai, eyePos _unit]} && {!lineIntersects [eyePos _ai, eyePos _unit]};
 };
 
 adm_cqc_fnc_getForceFireEnemy = {
