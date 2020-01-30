@@ -635,6 +635,18 @@ class UnitTemplates {
         ah[] = {"CUP_O_Mi24_V_RU"};
     };
 
+    class SPETSNAZ {
+        side = "east";
+        camouflage[] = {"woodland"};
+        infantry[] = {"O_R_Soldier_TL_F", "O_R_Soldier_TL_F", "O_R_JTAC_F", "O_R_JTAC_F", "O_R_Soldier_RPG7_F", "O_R_Soldier_AR_F", "O_R_Soldier_AR_F", "O_R_medic_F"};
+        crewmen[] = {"CUP_O_RU_Crew_M_EMR"};
+        pilots[] = {"CUP_O_RU_Pilot_M_EMR"};
+        technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU", "CUP_O_GAZ_Vodnik_PK_RU", "CUP_O_GAZ_Vodnik_AGS_RU"};
+        armour[] = {"CUP_O_BMP2_RU", "CUP_O_BMP3_RU", "CUP_O_T72_RU", "CUP_O_BTR90_RU", "CUP_O_GAZ_Vodnik_BPPU_RU", "CUP_O_T90_RU"};
+        th[] = {"CUP_O_Mi8_RU"};
+        ah[] = {"CUP_O_Mi24_V_RU"};
+    };
+
     class CUP_RU_VDV_MOD {
         side = "east";
         camouflage[] = {"woodland"};
@@ -681,6 +693,18 @@ class UnitTemplates {
         armour[] = {"I_LT_01_cannon_F", "I_MBT_03_cannon_F", "CUP_I_M113_AAF", "I_APC_tracked_03_cannon_F", "I_APC_Wheeled_03_cannon_F"};
         th[] = {"I_Heli_Transport_02_F"};
         ah[] = {"CUP_I_AH1Z_Dynamic_AAF"};
+    };
+
+    class LDF {
+        side = "resistance";
+        camouflage[] = {"woodland"};
+        infantry[] = {"I_E_Soldier_SL_F", "I_E_Soldier_GL_F", "I_E_Soldier_F", "I_E_Soldier_F", "I_E_Soldier_AF4_F", "I_E_Soldier_AR_F", "I_E_SoldierAR_F", "I_E_RadioOperator_F", "I_E_Medic_F", "I_E_Soldier_TL_F"};
+        crewmen[] = {"I_E_Crew_F"};
+        pilots[] = {"I_E_Helipilot_F"};
+        technicals[] = {"I_G_Offroad_01_AT_F", "I_G_Offroad_01_armed_F", "I_G_Offroad_01_armed_F"};
+        armour[] = {"I_E_APC_tracked_03_cannon_F"};
+        th[] = {"I_E_Heli_light_03_unarmed_F"};
+        ah[] = {"I_E_Heli_light_03_dynamicLoadout_F"};
     };
 
     class MNP_LVM_WD {
