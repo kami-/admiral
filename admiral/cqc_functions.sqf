@@ -309,14 +309,7 @@ adm_cqc_fnc_getAliveUnits = {
    [[adm_cqc_groups]] call adm_common_fnc_getAliveUnits;
 };
 
-adm_cqc_fnc_setupDynamicSim = {
-    enableDynamicSimulationSystem true;
-    "Group" setDynamicSimulationDistance 500;
-    "IsMoving" setDynamicSimulationDistanceCoef 1.5;
-};
-
 adm_cqc_fnc_init = {
     adm_cqc_zones = [];
     adm_cqc_groups = [];
-    call adm_cqc_fnc_setupDynamicSim;
 };
