@@ -935,6 +935,42 @@ class UnitTemplates {
         ah[] = {"CUP_B_Mi24_D_Dynamic_CDF"};
     };
 
+    class CUP_CDF_UN_DES {
+        side = "resistance";
+        camouflage[] = {"desert"};
+        infantry[] = {"CUP_I_UN_CDF_Soldier_GL_DST", "CUP_I_UN_CDF_Soldier_GL_DST", "CUP_I_UN_CDF_Soldier_DST", "CUP_I_UN_CDF_Soldier_Backpack_DST", "CUP_I_UN_CDF_Soldier_LAT_DST", "CUP_I_UN_CDF_SOldier_AR_DST", "CUP_I_UN_CDF_Soldier_MG_DST"};
+        crewmen[] = {"CUP_I_UN_CDF_Crew_DST"};
+        pilots[] = {"CUP_I_UN_CDF_Pilot_DST"};
+        technicals[] = {"CUP_I_UAZ_MG_UN", "CUP_I_UAZ_MG_UN", "CUP_I_UAZ_MG_UN", "CUP_I_UAZ_AGS30_UN", "CUP_I_UAZ_SPG9_UN"};
+        armour[] = {"CUP_I_BRDM2_UN", "CUP_I_BTR60_UN", "CUP_I_BTR80_UN", "CUP_I_BTR80A_UN", "CUP_I_MTLB_pk_UN", "CUP_I_M113_UN", "CUP_I_BMP2_UN"};
+        th[] = {"CUP_I_Mi17_UN"};
+        ah[] = {"CUP_I_Mi24_D_Dynamic_UN"};
+    };
+
+    class CUP_CDF_UN_FOR {
+        side = "resistance";
+        camouflage[] = {"woodland"};
+        infantry[] = {"CUP_I_UN_CDF_Soldier_GL_FST", "CUP_I_UN_CDF_Soldier_GL_FST", "CUP_I_UN_CDF_Soldier_FST", "CUP_I_UN_CDF_Soldier_Backpack_FST", "CUP_I_UN_CDF_Soldier_LAT_FST", "CUP_I_UN_CDF_SOldier_AR_FST", "CUP_I_UN_CDF_Soldier_MG_FST"};
+        crewmen[] = {"CUP_I_UN_CDF_Crew_FST"};
+        pilots[] = {"CUP_I_UN_CDF_Pilot_FST"};
+        technicals[] = {"CUP_I_UAZ_MG_UN", "CUP_I_UAZ_MG_UN", "CUP_I_UAZ_MG_UN", "CUP_I_UAZ_AGS30_UN", "CUP_I_UAZ_SPG9_UN"};
+        armour[] = {"CUP_I_BRDM2_UN", "CUP_I_BTR60_UN", "CUP_I_BTR80_UN", "CUP_I_BTR80A_UN", "CUP_I_MTLB_pk_UN", "CUP_I_M113_UN", "CUP_I_BMP2_UN"};
+        th[] = {"CUP_I_Mi17_UN"};
+        ah[] = {"CUP_I_Mi24_D_Dynamic_UN"};
+    };
+
+    class CUP_CDF_UN_MOU {
+        side = "resistance";
+        camouflage[] = {"woodland", "desert"};
+        infantry[] = {"CUP_I_UN_CDF_Soldier_GL_MNT", "CUP_I_UN_CDF_Soldier_GL_MNT", "CUP_I_UN_CDF_Soldier_MNT", "CUP_I_UN_CDF_Soldier_Backpack_MNT", "CUP_I_UN_CDF_Soldier_LAT_MNT", "CUP_I_UN_CDF_SOldier_AR_MNT", "CUP_I_UN_CDF_Soldier_MG_MNT"};
+        crewmen[] = {"CUP_I_UN_CDF_Crew_MNT"};
+        pilots[] = {"CUP_I_UN_CDF_Pilot_MNT"};
+        technicals[] = {"CUP_I_UAZ_MG_UN", "CUP_I_UAZ_MG_UN", "CUP_I_UAZ_MG_UN", "CUP_I_UAZ_AGS30_UN", "CUP_I_UAZ_SPG9_UN"};
+        armour[] = {"CUP_I_BRDM2_UN", "CUP_I_BTR60_UN", "CUP_I_BTR80_UN", "CUP_I_BTR80A_UN", "CUP_I_MTLB_pk_UN", "CUP_I_M113_UN", "CUP_I_BMP2_UN"};
+        th[] = {"CUP_I_Mi17_UN"};
+        ah[] = {"CUP_I_Mi24_D_Dynamic_UN"};
+    };
+
     class CUP_RACS_MECH {
         side = "resistance";
         camouflage[] = {"woodland"};
