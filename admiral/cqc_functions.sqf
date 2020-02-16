@@ -116,7 +116,6 @@ adm_cqc_fnc_spawnGarrisonGroupUnits = {
         private _position = selectRandom _possiblePositions;
         _possiblePositions = _possiblePositions - [_position];
         private _unit = [_building buildingPos _position, _group, _unitTemplate, _zoneTemplate, UNIT_TYPE_ARRAY select UNIT_TYPE_INF] call adm_cqc_fnc_placeMan;
-        _unit setVariable ["adm_unit_isCqc", true, true];
         ["cqc.spawned.unit", [_unit, _building, _position, UNIT_TYPE_ARRAY select UNIT_TYPE_INF, _zone]] call adm_event_fnc_emitEvent;
         ["zone.spawned.unit", [_unit, UNIT_TYPE_ARRAY select UNIT_TYPE_INF, _zone]] call adm_event_fnc_emitEvent;
     };
@@ -131,6 +130,7 @@ adm_cqc_fnc_spawnGarrisonGroup = {
     [_group, _numOfUnits, _unitTemplate, GET_ZONE_TEMPLATE(_zone), _possiblePositions, _building, _zone] call adm_cqc_fnc_spawnGarrisonGroupUnits;
     _group setVariable ["adm_zone_parent", _zone];
     _group deleteGroupWhenEmpty true;
+    _group enableDynamicSimulation adm_cqc_dynamicSimEnabled;
 
     _group;
 };
@@ -190,7 +190,7 @@ adm_cqc_fnc_spawnGarrison = {
 adm_cqc_fnc_canForceFire = {
     params ["_ai","_unit"];
 
-    alive _unit && {!([side _ai, side _unit] call adm_common_fnc_isFriendlySide)} && {!terrainIntersect [eyePos _ai, eyePos _unit]} && {!lineIntersects [eyePos _ai, eyePos _unit]};
+    alive _unit && {simulationEnabled _unit} && {!([side _ai, side _unit] call adm_common_fnc_isFriendlySide)} && {!terrainIntersect [eyePos _ai, eyePos _unit]} && {!lineIntersects [eyePos _ai, eyePos _unit]};
 };
 
 adm_cqc_fnc_getForceFireEnemy = {

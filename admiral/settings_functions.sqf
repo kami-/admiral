@@ -71,6 +71,7 @@ adm_settings_fnc_init = {
     adm_cqc_defaultZoneTemplate = ["Cqc", "defaultZoneTemplate"] call adm_config_fnc_getText;
     adm_cqc_forceFireEnabled = ["Cqc", "forceFireEnabled"] call adm_config_fnc_getBool;
     adm_cqc_forceFireDelay = ["Cqc", "forceFireDelay"] call adm_config_fnc_getNumber;
+    adm_cqc_dynamicSimEnabled = ["Cqc", "dynamicSimEnabled"] call adm_config_fnc_getBool;
     adm_cqc_buildingBlacklist = ["Cqc", "buildingBlacklist"] call adm_config_fnc_getArray;
     adm_cqc_buildingCapacity = ["Cqc", "buildingCapacity"] call adm_config_fnc_getArray;
 
