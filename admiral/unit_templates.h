@@ -569,8 +569,8 @@ class UnitTemplates {
         infantry[] = {"CUP_O_TK_INS_Soldier_GL", "CUP_O_TK_INS_Soldier_TL", "CUP_O_TK_INS_Soldier", "CUP_O_TK_INS_Soldier_FNFAL", "CUP_O_TK_INS_Soldier_AT", "CUP_O_TK_INS_Soldier_AR", "CUP_O_TK_INS_Soldier_MG", "CUP_O_TK_INS_Guerilla_Medic", "CUP_O_TK_INS_Commander"};
         crewmen[] = {"CUP_O_TK_INS_Mechanic"};
         pilots[] = {"CUP_O_TK_INS_Mechanic"};
-        technicals[] = {"CUP_O_UAZ_MG_TKA", "CUP_O_UAZ_MG_TKA", "CUP_O_UAZ_AGS30_TKA", "CUP_O_UAZ_SPG9_TKA", "CUP_O_BTR40_MG_TKA", "CUP_O_LR_SPG9_TKA", "CUP_O_LR_MG_TKA"};
-        armour[] = {"CUP_O_BRDM2_TKA", "CUP_O_MTLB_pk_TKA", "CUP_O_BMP1P_TKA", "CUP_O_BMP2_TKA", "CUP_O_T55_TK", "CUP_O_M113_TKA", "CUP_O_BTR60_TK", "CUP_O_T34_TKA", "CUP_O_BTR80_TK", "CUP_O_BTR80A_TK"};
+        technicals[] = {"CUP_O_Hilux_AGS30_TK_INS", "CUP_O_Hilux_DSHKM_TK_INS", "CUP_O_Hilux_SPG9_TK_INS", "CUP_O_Hilux_zu23_TK_INS", "CUP_O_Hilux_armored_AGS30_TK_INS", "CUP_O_Hilux_armored_DSHKM_TK_INS", "CUP_O_Hilux_armored_SPG9_TK_INS", "CUP_O_Hilux_armored_zu23_TK_INS"};
+        armour[] = {"CUP_O_Hilux_armored_BMP1_TK_INS", "CUP_O_Hilux_armored_BTR60_TK_INS", "CUP_O_T55_TK", "CUP_O_T34_TKA"};
         th[] = {"CUP_O_Mi17_TK"};
         ah[] = {"CUP_O_Mi24_D_TK"};
     };
@@ -845,8 +845,8 @@ class UnitTemplates {
         infantry[] = {"CUP_I_TK_GUE_Soldier_GL", "CUP_I_TK_GUE_Soldier_GL", "CUP_I_TK_GUE_Soldier_M16A2", "CUP_I_TK_GUE_Soldier", "CUP_I_TK_GUE_Soldier_AT", "CUP_I_TK_GUE_Soldier_AR", "CUP_I_TK_GUE_Soldier_MG", "CUP_I_TK_GUE_Guerilla_Medic", "CUP_I_TK_GUE_Commander"};
         crewmen[] = {"CUP_I_TK_GUE_Mechanic"};
         pilots[] = {"CUP_I_TK_GUE_Mechanic"};
-        technicals[] = {"CUP_I_Datsun_PK_TK_Random", "CUP_I_Datsun_PK_TK_Random", "CUP_I_BRDM2_HQ_TK_Gue", "CUP_I_BTR40_MG_TKG", "CUP_I_BTR40_MG_TKG", "CUP_I_Ural_ZU23_TK_Gue"};
-        armour[] = {"CUP_I_MTLB_pk_NAPA", "CUP_I_BMP1_TK_GUE", "CUP_I_BRDM2_TK_Gue", "CUP_I_T34_TK_GUE", "CUP_I_T55_TK_GUE", "CUP_I_MTLB_pk_NAPA"};
+        technicals[] = {"CUP_I_Hilux_AGS30_TK", "CUP_I_Hilux_DSHKM_TK", "CUP_I_Hilux_SPG9_TK", "CUP_I_Hilux_zu23_TK", "CUP_I_BTR40_MG_TKG", "CUP_I_Hilux_armored_AGS30_TK", "CUP_I_Hilux_armored_DSHKM_TK", "CUP_I_Hilux_armored_SPG9_TK", "CUP_I_Hilux_armored_zu23_TK"};
+        armour[] = {"CUP_I_Hilux_armored_BMP1_TK", "CUP_I_Hilux_armored_BTR60_TK", "CUP_I_BMP1_TK_GUE", "CUP_I_BRDM2_TK_Gue", "CUP_I_T34_TK_GUE", "CUP_I_T55_TK_GUE"};
         th[] = {"CUP_I_UH1H_slick_TK_GUE"};
         ah[] = {"CUP_I_UH1H_gunship_TK_GUE"};
     };
@@ -869,8 +869,8 @@ class UnitTemplates {
         infantry[] = {"I_C_Soldier_Bandit_6_F_ARK", "I_C_Soldier_Bandit_6_F_ARK", "I_C_Soldier_Bandit_5_F_ARK", "I_C_Soldier_Bandit_4_F_ARK", "I_C_Soldier_Bandit_2_F_ARK", "I_C_Soldier_Bandit_7_F_ARK", "I_C_Soldier_Bandit_3_F_ARK"};
         crewmen[] = {"I_C_Soldier_Bandit_4_F_ARK"};
         pilots[] = {"I_C_Pilot_F_ARK"};
-        technicals[] = {"CUP_I_Datsun_PK", "CUP_O_UAZ_AGS30_TKA", "CUP_O_LR_MG_TKA", "CUP_O_LR_SPG9_TKA", "CUP_O_UAZ_SPG9_TKA", "CUP_O_UAZ_MG_TKA", "CUP_I_Datsun_PK_TK_Random"};
-        armour[] = {"CUP_O_BTR60_RU", "CUP_O_BRDM2_SLA", "CUP_O_BMP2_SLA", "CUP_O_T55_SLA", "CUP_I_T34_NAPA", "CUP_O_T55_SLA", "CUP_I_MTLB_pk_SYNDIKAT"};
+        technicals[] = {"CUP_I_Hilux_AGS30_TK", "CUP_I_Hilux_DSHKM_TK", "CUP_I_Hilux_SPG9_TK", "CUP_I_Hilux_zu23_TK", "CUP_I_BTR40_MG_TKG", "CUP_I_Hilux_armored_AGS30_TK", "CUP_I_Hilux_armored_DSHKM_TK", "CUP_I_Hilux_armored_SPG9_TK", "CUP_I_Hilux_armored_zu23_TK"};
+        armour[] = {"CUP_I_Hilux_armored_BMP1_TK", "CUP_I_Hilux_armored_BTR60_TK", "CUP_I_BMP1_TK_GUE", "CUP_I_BRDM2_TK_Gue", "CUP_I_T34_TK_GUE", "CUP_I_T55_TK_GUE"};
         th[] = {"CUP_I_UH1H_slick_TK_GUE"};
         ah[] = {"CUP_I_UH1H_gunship_TK_GUE"};
     };
@@ -881,8 +881,8 @@ class UnitTemplates {
         infantry[] = {"I_C_Soldier_Para_2_F_ARK", "I_C_Soldier_Para_2_F_ARK", "I_C_Soldier_Para_6_F_ARK", "I_C_Soldier_Para_6_F_ARK", "I_C_Soldier_Para_1_F_ARK", "I_C_Soldier_Para_4_F_ARK", "I_C_Soldier_Para_7_F_ARK"};
         crewmen[] = {"I_C_Soldier_Para_6_F_ARK"};
         pilots[] = {"I_C_Helipilot_F_ARK"};
-        technicals[] = {"CUP_I_Datsun_PK", "CUP_O_UAZ_AGS30_TKA", "CUP_O_LR_MG_TKA", "CUP_O_LR_SPG9_TKA", "CUP_O_UAZ_SPG9_TKA", "CUP_O_UAZ_MG_TKA", "CUP_I_Datsun_PK_TK_Random"};
-        armour[] = {"CUP_O_BTR60_RU", "CUP_O_BRDM2_SLA", "CUP_O_BMP2_SLA", "CUP_O_T55_SLA", "CUP_I_T34_NAPA", "CUP_O_T55_SLA", "CUP_I_MTLB_pk_SYNDIKAT"};
+        technicals[] = {"CUP_I_Hilux_AGS30_TK", "CUP_I_Hilux_DSHKM_TK", "CUP_I_Hilux_SPG9_TK", "CUP_I_Hilux_zu23_TK", "CUP_I_BTR40_MG_TKG", "CUP_I_Hilux_armored_AGS30_TK", "CUP_I_Hilux_armored_DSHKM_TK", "CUP_I_Hilux_armored_SPG9_TK", "CUP_I_Hilux_armored_zu23_TK"};
+        armour[] = {"CUP_I_Hilux_armored_BMP1_TK", "CUP_I_Hilux_armored_BTR60_TK", "CUP_O_BMP2_SLA", "CUP_O_T55_SLA", "CUP_I_T34_NAPA", "CUP_I_MTLB_pk_SYNDIKAT"};
         th[] = {"CUP_I_UH1H_slick_TK_GUE"};
         ah[] = {"CUP_I_UH1H_gunship_TK_GUE"};
     };
