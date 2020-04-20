@@ -1442,7 +1442,7 @@ class UnitTemplates {
     class ARK_NVA {
         side = "east";
         camouflage[] = {"woodland"};
-        infantry[] = {"ARK_NVA_Soldier_TL_F", "ARK_NVA_Soldier_TL_F", "ARK_NVA_Soldier_F", "ARK_NVA_Soldier_F", "ARK_NVA_Soldier_LAT_F", "ARK_NVA_Soldier_AR_F", "ARK_NVA_Soldier_MG_F"};
+        infantry[] = {"ARK_NVA_Soldier_TL_F", "ARK_NVA_Soldier_TL_F", "ARK_NVA_Soldier_F", "ARK_NVA_Soldier_F", "ARK_NVA_Soldier_LAT_F", "ARK_NVA_Soldier_AR_F", "ARK_NVA_Soldier_MG_F", "ARK_NVA_Soldier_F_SKS", "ARK_NVA_Soldier_F_SKS"};
         crewmen[] = {"ARK_NVA_Crew_F"};
         pilots[] = {"ARK_NVA_Pilot_F"};
         technicals[] = {"CUP_O_UAZ_MG_SLA", "CUP_O_UAZ_MG_SLA", "CUP_I_BTR40_MG_TKG", "CUP_O_UAZ_SPG9_SLA", "CUP_O_UAZ_AGS30_SLA"};
