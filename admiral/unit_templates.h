@@ -1094,7 +1094,7 @@ class UnitTemplates {
     class IF44_USA_SN {
         side = "resistance";
         camouflage[] = {};
-        infantry[] = {"LIB_US_Smgunner_w", "LIB_US_Second_lieutenant_w", "LIB_US_First_lieutenant_w", "LIB_US_Captain_w", "LIB_US_Rifleman_w", "LIB_US_FC_rifleman_w", "LIB_US_Corporal_w", "LIB_US_Radioman_w", "LIB_US_Medic_w", "LIB_US_Mgunner_w", "LIB_US_Grenadier_W", "LIB_US_AT_solder_w"};
+        infantry[] = {"LIB_US_Smgunner_w", "LIB_US_Second_lieutenant_w", "LIB_US_First_lieutenant_w", "LIB_US_Captain_w", "LIB_US_Rifleman_w", "LIB_US_FC_rifleman_w", "LIB_US_Corporal_w", "LIB_US_Radioman_w", "LIB_US_Medic_w", "LIB_US_Mgunner_w", "LIB_US_Grenadier_W", "LIB_US_AT_soldier_w"};
         crewmen[] = {"LIB_US_Tank_Sergeant", "LIB_US_Tank_Crew"};
         pilots[] = {"LIB_US_Pilot"};
         technicals[] = {"LIB_US_M3_Halftrack_w", "LIB_US_Scout_m3_w", "LIB_US_Scout_M3_FFV_w"};
