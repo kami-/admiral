@@ -83,36 +83,24 @@ class UnitTemplates {
         ah[] = {"CUP_B_AH64D_DL_USA"};
     };
 
-    class MNP_US_ACU {
+    class CUP_USA_UCP {
         side = "west";
         camouflage[] = {"woodland", "desert"};
-        infantry[] = {"MNP_USACU_Soldier_O", "MNP_USACU_Soldier_O", "MNP_USACU_Soldier_F", "MNP_USACU_Soldier_F", "MNP_USACU_Soldier_AT", "MNP_USACU_Soldier_AR", "MNP_USACU_Soldier_MG", "MNP_USACU_Soldier_M"};
-        crewmen[] = {"MNP_USACU_Soldier_F"};
-        pilots[] = {"MNP_USACU_Soldier_F"};
+        infantry[] = {"CUP_B_US_Soldier_GL_UCP", "CUP_B_US_Soldier_GL_UCP", "CUP_B_US_Soldier_UCP", "CUP_B_US_Soldier_UCP", "CUP_B_US_Soldier_LAT_UCP", "CUP_B_US_Soldier_AR_UCP", "CUP_B_US_Soldier_MG_UCP", "CUP_B_US_Medic_UCP"};
+        crewmen[] = {"CUP_B_US_Crew_UCP"};
+        pilots[] = {"CUP_B_US_Pilot"};
         technicals[] = {"CUP_B_HMMWV_M2_GPK_USA", "CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_MK19_USA", "CUP_B_RG31E_M2_USMC", "CUP_B_RG31_M2_USMC", "CUP_B_RG31_Mk19_USMC"};
         armour[] = {"CUP_B_M1126_ICV_M2_Desert", "CUP_B_M1126_ICV_M2_Desert", "CUP_B_M1126_ICV_MK19_Desert", "CUP_B_M1128_MGS_Desert", "CUP_B_M2Bradley_USA_D", "CUP_B_M2Bradley_USA_D", "CUP_B_M1A1_DES_US_Army", "CUP_B_M1A2_TUSK_MG_DES_US_Army"};
         th[] = {"CUP_B_UH60M_US"};
         ah[] = {"CUP_B_AH64D_DL_USA"};
     };
 
-    class MNP_US_MC {
+    class CUP_USA_OCP {
         side = "west";
         camouflage[] = {"woodland", "desert"};
-        infantry[] = {"MNP_US_MC_Soldier_O", "MNP_US_MC_Soldier_O", "MNP_US_MC_Soldier_F", "MNP_US_MC_Soldier_F", "MNP_US_MC_Soldier_AT", "MNP_US_MC_Soldier_AR", "MNP_US_MC_Soldier_MG", "MNP_US_MC_Soldier_M"};
-        crewmen[] = {"MNP_US_MC_Soldier_F"};
+        infantry[] = {"CUP_B_US_Soldier_GL_OCP", "CUP_B_US_Soldier_GL_OCP", "CUP_B_US_Soldier_OCP", "CUP_B_US_Soldier_OCP", "CUP_B_US_Soldier_LAT_OCP", "CUP_B_US_Soldier_AR_OCP", "CUP_B_US_Soldier_MG_OCP", "CUP_B_US_Medic_OCP"};
+        crewmen[] = {"CUP_B_US_Crew_OCP"};
         pilots[] = {"CUP_B_US_Pilot"};
-        technicals[] = {"CUP_B_HMMWV_M2_GPK_USA", "CUP_B_HMMWV_M2_GPK_USA", "CUP_B_HMMWV_SOV_USA", "CUP_B_RG31E_M2_USMC", "CUP_B_RG31_M2_USMC", "CUP_B_RG31_Mk19_USMC"};
-        armour[] = {"CUP_B_M1126_ICV_M2_Desert_Slat", "CUP_B_M1126_ICV_M2_Desert_Slat", "CUP_B_M1126_ICV_MK19_Desert_Slat", "CUP_B_M1128_MGS_Desert_Slat", "CUP_B_M2A3Bradley_USA_D", "CUP_B_M2A3Bradley_USA_D", "CUP_B_M1A2_TUSK_MG_DES_US_Army"};
-        th[] = {"CUP_B_UH60M_US"};
-        ah[] = {"CUP_B_AH64D_DL_USA"};
-    };
-
-    class MNP_US_RAN_MC {
-        side = "west";
-        camouflage[] = {"woodland", "desert"};
-        infantry[] = {"MNP_TS_Soldier_O", "MNP_TS_Soldier_O", "MNP_TS_Soldier_F", "MNP_TS_Soldier_F", "MNP_TS_Soldier_AT", "MNP_TS_Soldier_AR", "MNP_TS_Soldier_MG", "MNP_TS_Soldier_M"};
-        crewmen[] = {"MNP_TS_Soldier_F"};
-        pilots[] = {"MNP_TS_Soldier_F"};
         technicals[] = {"CUP_B_HMMWV_M2_GPK_USA", "CUP_B_HMMWV_M2_GPK_USA", "CUP_B_HMMWV_SOV_USA", "CUP_B_RG31E_M2_USMC", "CUP_B_RG31_M2_USMC", "CUP_B_RG31_Mk19_USMC"};
         armour[] = {"CUP_B_M1126_ICV_M2_Desert_Slat", "CUP_B_M1126_ICV_M2_Desert_Slat", "CUP_B_M1126_ICV_MK19_Desert_Slat", "CUP_B_M1128_MGS_Desert_Slat", "CUP_B_M2A3Bradley_USA_D", "CUP_B_M2A3Bradley_USA_D", "CUP_B_M1A2_TUSK_MG_DES_US_Army"};
         th[] = {"CUP_B_UH60M_US"};
@@ -321,18 +309,6 @@ class UnitTemplates {
         armour[] = {"CUP_B_FV432_Bulldog_GB_W_RWS", "CUP_B_FV432_Bulldog_GB_W", "CUP_B_MCV80_GB_W_SLAT", "CUP_B_Challenger2_2CW_BAF"};
         th[] = {"CUP_B_MH47E_GB"};
         ah[] = {"CUP_B_AH1_DL_BAF"};
-    };
-
-    class CUP_US_ACU {
-        side = "west";
-        camouflage[] = {"desert"};
-        infantry[] = {"CUP_B_US_Soldier_GL", "CUP_B_US_Soldier_GL", "CUP_B_US_Soldier", "CUP_B_US_Soldier", "CUP_B_US_Soldier_LAT", "CUP_B_US_Soldier_AR", "CUP_B_US_Soldier_MG", "CUP_B_US_Medic"};
-        crewmen[] = {"CUP_B_US_Crew"};
-        pilots[] = {"CUP_B_US_Pilot"};
-        technicals[] = {"CUP_B_M1151_M2_USA", "CUP_B_M1151_Deploy_USA", "CUP_B_M1151_Mk19_USA", "CUP_B_M1165_GMV_USA"};
-        armour[] = {"CUP_B_M1126_ICV_M2_Desert_Slat", "CUP_B_M1126_ICV_MK19_Desert_Slat", "CUP_B_M1128_MGS_Desert_Slat", "CUP_B_M1130CV_M2_Desert_Slat", "CUP_B_M1A1_DES_US_Army", "CUP_B_M1A2_TUSK_MG_DES_US_Army"};
-        th[] = {"CUP_B_UH60M_US"};
-        ah[] = {"CUP_B_AH64D_DL_USA"};
     };
 
     class FIA_GUER {
