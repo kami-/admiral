@@ -59,6 +59,30 @@ class UnitTemplates {
         ah[] = {"B_Heli_Attack_01_F"};
     };
 
+    class CUP_HIL_CCE {
+        side = "west";
+        camouflage[] = {"woodland", "desert"};
+        infantry[] = {"CUP_B_HIL_Officer", "CUP_B_HIL_Soldier", "CUP_B_HIL_Soldier", "CUP_B_HIL_Soldier", "CUP_B_HIL_MMG", "CUP_B_HIL_MMG", "CUP_B_HIL_Soldier_AT4", "CUPB_HIL_Medic"};
+        crewmen[] = {"CUP_B_HIL_Crew"};
+        pilots[] = {"CUP_B_HIL_Pilot"};
+        technicals[] = {"CUP_B_M151_M2_HIL"};
+        armour[] = {"ARK_M113_USA_OD", "CUP_B_LAV25M240_gren", "CUP_B_Challenger2_Woodland_BAF"};
+        th[] = {"CUP_B_CH47F_HIL"};
+        ah[] = {"CUP_B_AW159_HIL"};
+    };
+
+    class CUP_HIL_RES {
+        side = "west";
+        camouflage[] = {"woodland"};
+        infantry[] = {"CUP_B_HIL_SL_Res", "CUP_B_HIL_SL_Res", "CUP_B_HIL_Soldier_Res", "CUP_B_HIL_Soldier_Res", "CUP_B_HIL_MMG_Res", "CUP_B_HIL_MMG_Res", "CUP_B_HIL_LAT_Res", "CUP_B_HIL_Medic_Res", "CUP_B_HIL_Officer_Res"};
+        crewmen[] = {"CUP_B_HIL_Crew"};
+        pilots[] = {"CUP_B_HIL_Pilot"};
+        technicals[] = {"CUP_B_M151_M2_HIL"};
+        armour[] = {"ARK_M113_USA_OD", "CUP_B_LAV25M240_gren", "CUP_B_Challenger2_Woodland_BAF"};
+        th[] = {"CUP_B_CH47F_HIL"};
+        ah[] = {"CUP_B_AW159_HIL"};
+    };
+
     class MNP_USMC_SN {
         side = "west";
         camouflage[] = {"snow"};
@@ -581,7 +605,7 @@ class UnitTemplates {
         infantry[] = {"CUP_O_RU_Soldier_GL", "CUP_O_RU_Soldier_TL", "CUP_O_RU_Soldier", "CUP_O_RU_Soldier", "CUP_O_RU_Soldier_LAT", "CUP_O_RU_Soldier_AR", "CUP_O_RU_Soldier_MG", "CUP_O_RU_Medic"};
         crewmen[] = {"CUP_O_RU_Crew"};
         pilots[] = {"CUP_O_RU_Pilot"};
-        technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU", "CUP_O_GAZ_Vodnik_PK_RU", "CUP_O_GAZ_Vodnik_AGS_RU"};
+        technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU", "CUP_O_GAZ_Vodnik_PK_RU", "CUP_O_GAZ_Vodnik_AGS_RU", "CUP_O_GAZ_Vodnik_KPVT_RU"};
         armour[] = {"CUP_O_BRDM2_RUS", "CUP_O_BTR60_Green_RU", "CUP_O_MTLB_pk_WDL_RU", "CUP_I_BMP1_TK_GUE", "CUP_O_BMP2_RU", "CUP_O_BMP3_RU", "CUP_O_T72_RU", "CUP_O_BTR90_RU", "CUP_O_GAZ_Vodnik_BPPU_RU", "CUP_O_T90_RU", "CUP_O_BTR80_GREEN_RU", "CUP_O_BTR80A_GREEN_RU"};
         th[] = {"CUP_O_Mi8_RU"};
         ah[] = {"CUP_O_Mi24_V_RU"};
@@ -593,7 +617,7 @@ class UnitTemplates {
         infantry[] = {"CUP_O_RU_Soldier_GL_EMR", "CUP_O_RU_Soldier_TL_EMR", "CUP_O_RU_Soldier_EMR", "CUP_O_RU_Soldier_EMR", "CUP_O_RU_Soldier_LAT_EMR", "CUP_O_RU_SOldier_LAT_EMR", "CUP_O_RU_Soldier_AR_EMR", "CUP_O_RU_Soldier_MG_EMR", "CUP_O_RU_Medic_EMR"};
         crewmen[] = {"CUP_O_RU_Crew_EMR"};
         pilots[] = {"CUP_O_RU_Pilot_EMR"};
-        technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU", "CUP_O_GAZ_Vodnik_PK_RU", "CUP_O_GAZ_Vodnik_AGS_RU"};
+        technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU", "CUP_O_GAZ_Vodnik_PK_RU", "CUP_O_GAZ_Vodnik_AGS_RU", "CUP_O_GAZ_Vodnik_KPVT_RU"};
         armour[] = {"CUP_O_BRDM2_RUS", "CUP_O_BTR60_Green_RU", "CUP_O_MTLB_pk_WDL_RU", "CUP_I_BMP1_TK_GUE", "CUP_O_BMP2_RU", "CUP_O_BMP3_RU", "CUP_O_T72_RU", "CUP_O_BTR90_RU", "CUP_O_GAZ_Vodnik_BPPU_RU", "CUP_O_T90_RU", "CUP_O_BTR80_GREEN_RU", "CUP_O_BTR80A_GREEN_RU"};
         th[] = {"CUP_O_Mi8_RU"};
         ah[] = {"CUP_O_Mi24_V_RU"};
@@ -605,7 +629,43 @@ class UnitTemplates {
         infantry[] = {"CUP_O_RU_Soldier_TL_M_EMR", "CUP_O_RU_Soldier_TL_M_EMR", "CUP_O_RU_Soldier_M_EMR", "CUP_O_RU_Soldier_M_EMR", "CUP_O_RU_Soldier_LAT_M_EMR", "CUP_O_RU_Soldier_AR_M_EMR", "CUP_O_RU_Soldier_MG_M_EMR", "CUP_O_RU_Medic_M_EMR"};
         crewmen[] = {"CUP_O_RU_Crew_M_EMR"};
         pilots[] = {"CUP_O_RU_Pilot_M_EMR"};
-        technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU", "CUP_O_GAZ_Vodnik_PK_RU", "CUP_O_GAZ_Vodnik_AGS_RU"};
+        technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU", "CUP_O_GAZ_Vodnik_PK_RU", "CUP_O_GAZ_Vodnik_AGS_RU", "CUP_O_GAZ_Vodnik_KPVT_RU"};
+        armour[] = {"CUP_O_BMP2_RU", "CUP_O_BMP3_RU", "CUP_O_T72_RU", "CUP_O_BTR90_RU", "CUP_O_GAZ_Vodnik_BPPU_RU", "CUP_O_T90_RU", "CUP_O_BTR80_GREEN_RU", "CUP_O_BTR80A_GREEN_RU"};
+        th[] = {"CUP_O_Mi8_RU"};
+        ah[] = {"CUP_O_Mi24_V_RU"};
+    };
+
+    class CUP_RU_RATNIK_WD {
+        side = "east";
+        camouflage[] = {"woodland"};
+        infantry[] = {"CUP_O_RU_Soldier_GL_Ratnik_Summer", "CUP_O_RU_Soldier_GL_Ratnik_Summer", "CUP_O_RU_Soldier_Ratnik_Summer", "CUP_O_RU_Soldier_Ratnik_Summer", "CUP_O_RU_Soldier_AR_Ratnik_Summer", "CUP_O_RU_Soldier_MG_Ratnik_Summer", "CUP_O_RU_Soldier_AT_Ratnik_Summer", "CUP_O_RU_Soldier_Medic_Ratnik_Summer"};
+        crewmen[] = {"CUP_O_RU_Crew_M_EMR"};
+        pilots[] = {"CUP_O_RU_Pilot_M_EMR"};
+        technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU", "CUP_O_GAZ_Vodnik_PK_RU", "CUP_O_GAZ_Vodnik_AGS_RU", "CUP_O_GAZ_Vodnik_KPVT_RU"};
+        armour[] = {"CUP_O_BMP2_RU", "CUP_O_BMP3_RU", "CUP_O_T72_RU", "CUP_O_BTR90_RU", "CUP_O_GAZ_Vodnik_BPPU_RU", "CUP_O_T90_RU", "CUP_O_BTR80_GREEN_RU", "CUP_O_BTR80A_GREEN_RU"};
+        th[] = {"CUP_O_Mi8_RU"};
+        ah[] = {"CUP_O_Mi24_V_RU"};
+    };
+
+    class CUP_RU_RATNIK_DE {
+        side = "east";
+        camouflage[] = {"desert"};
+        infantry[] = {"CUP_O_RU_Soldier_GL_Ratnik_Desert", "CUP_O_RU_Soldier_GL_Ratnik_Desert", "CUP_O_RU_Soldier_Ratnik_Desert", "CUP_O_RU_Soldier_Ratnik_Desert", "CUP_O_RU_Soldier_AR_Ratnik_Desert", "CUP_O_RU_Soldier_MG_Ratnik_Desert", "CUP_O_RU_Soldier_AT_Ratnik_Desert", "CUP_O_RU_Soldier_Medic_Ratnik_Desert"};
+        crewmen[] = {"CUP_O_RU_Crew_M_EMR"};
+        pilots[] = {"CUP_O_RU_Pilot_M_EMR"};
+        technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU", "CUP_O_GAZ_Vodnik_PK_RU", "CUP_O_GAZ_Vodnik_AGS_RU", "CUP_O_GAZ_Vodnik_KPVT_RU"};
+        armour[] = {"CUP_O_BMP2_RU", "CUP_O_BMP3_RU", "CUP_O_T72_RU", "CUP_O_BTR90_RU", "CUP_O_GAZ_Vodnik_BPPU_RU", "CUP_O_T90_RU", "CUP_O_BTR80_GREEN_RU", "CUP_O_BTR80A_GREEN_RU"};
+        th[] = {"CUP_O_Mi8_RU"};
+        ah[] = {"CUP_O_Mi24_V_RU"};
+    };
+
+    class CUP_RU_RATNIK_SN {
+        side = "east";
+        camouflage[] = {"snow"};
+        infantry[] = {"CUP_O_RU_Soldier_GL_Ratnik_Winter", "CUP_O_RU_Soldier_GL_Ratnik_Winter", "CUP_O_RU_Soldier_Ratnik_Winter", "CUP_O_RU_Soldier_Ratnik_Winter", "CUP_O_RU_Soldier_AR_Ratnik_Winter", "CUP_O_RU_Soldier_MG_Ratnik_Winter", "CUP_O_RU_Soldier_AT_Ratnik_Winter", "CUP_O_RU_Soldier_Medic_Ratnik_Winter"};
+        crewmen[] = {"CUP_O_RU_Crew_M_EMR"};
+        pilots[] = {"CUP_O_RU_Pilot_M_EMR"};
+        technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU", "CUP_O_GAZ_Vodnik_PK_RU", "CUP_O_GAZ_Vodnik_AGS_RU", "CUP_O_GAZ_Vodnik_KPVT_RU"};
         armour[] = {"CUP_O_BMP2_RU", "CUP_O_BMP3_RU", "CUP_O_T72_RU", "CUP_O_BTR90_RU", "CUP_O_GAZ_Vodnik_BPPU_RU", "CUP_O_T90_RU", "CUP_O_BTR80_GREEN_RU", "CUP_O_BTR80A_GREEN_RU"};
         th[] = {"CUP_O_Mi8_RU"};
         ah[] = {"CUP_O_Mi24_V_RU"};
@@ -617,7 +677,7 @@ class UnitTemplates {
         infantry[] = {"O_R_Soldier_TL_F", "O_R_Soldier_TL_F", "O_R_JTAC_F", "O_R_JTAC_F", "O_R_Soldier_RPG7_F", "O_R_Soldier_AR_F", "O_R_Soldier_AR_F", "O_R_medic_F"};
         crewmen[] = {"CUP_O_RU_Crew_M_EMR"};
         pilots[] = {"CUP_O_RU_Pilot_M_EMR"};
-        technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU", "CUP_O_GAZ_Vodnik_PK_RU", "CUP_O_GAZ_Vodnik_AGS_RU"};
+        technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU", "CUP_O_GAZ_Vodnik_PK_RU", "CUP_O_GAZ_Vodnik_AGS_RU", "CUP_O_GAZ_Vodnik_KPVT_RU"};
         armour[] = {"CUP_O_BMP2_RU", "CUP_O_BMP3_RU", "CUP_O_T72_RU", "CUP_O_BTR90_RU", "CUP_O_GAZ_Vodnik_BPPU_RU", "CUP_O_T90_RU", "CUP_O_BTR80_GREEN_RU", "CUP_O_BTR80A_GREEN_RU"};
         th[] = {"CUP_O_Mi8_RU"};
         ah[] = {"CUP_O_Mi24_V_RU"};
@@ -629,7 +689,7 @@ class UnitTemplates {
         infantry[] = {"CUP_O_RU_Soldier_TL_VDV_M_EMR", "CUP_O_RU_Soldier_TL_VDV_M_EMR", "CUP_O_RU_Soldier_VDV_M_EMR", "CUP_O_RU_Soldier_VDV_M_EMR", "CUP_O_RU_Soldier_LAT_VDV_M_EMR", "CUP_O_RU_Soldier_AR_VDV_M_EMR", "CUP_O_RU_Soldier_MG_VDV_M_EMR", "CUP_O_RU_Medic_VDV_M_EMR", "CUP_O_RU_Officer_VDV_M_EMR"};
         crewmen[] = {"CUP_O_RU_Crew_VDV_M_EMR"};
         pilots[] = {"CUP_O_RU_Pilot_VDV_M_EMR"};
-        technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU", "CUP_O_GAZ_Vodnik_PK_RU", "CUP_O_GAZ_Vodnik_AGS_RU"};
+        technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU", "CUP_O_GAZ_Vodnik_PK_RU", "CUP_O_GAZ_Vodnik_AGS_RU", "CUP_O_GAZ_Vodnik_KPVT_RU"};
         armour[] = {"CUP_O_BMP2_RU", "CUP_O_BMP3_RU", "CUP_O_T72_RU", "CUP_O_BTR90_RU", "CUP_O_GAZ_Vodnik_BPPU_RU", "CUP_O_T90_RU", "CUP_O_BTR80_GREEN_RU", "CUP_O_BTR80A_GREEN_RU"};
         th[] = {"CUP_O_Mi8_RU"};
         ah[] = {"CUP_O_Mi24_V_RU"};
@@ -641,7 +701,7 @@ class UnitTemplates {
         infantry[] = {"ARK_RU_CBRN_Soldier_TL_F", "ARK_RU_CBRN_Soldier_TL_F", "ARK_RU_CBRN_Soldier_F", "ARK_RU_CBRN_Soldier_F", "ARK_RU_CBRN_Soldier_LAT_F", "ARK_RU_CBRN_Soldier_AR_F", "ARK_RU_CBRN_Soldier_MG_F"};
         crewmen[] = {"ARK_RU_CBRN_Crew_F"};
         pilots[] = {"ARK_RU_CBRN_Pilot_F"};
-        technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU", "CUP_O_GAZ_Vodnik_PK_RU", "CUP_O_GAZ_Vodnik_AGS_RU"};
+        technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU", "CUP_O_GAZ_Vodnik_PK_RU", "CUP_O_GAZ_Vodnik_AGS_RU", "CUP_O_GAZ_Vodnik_KPVT_RU"};
         armour[] = {"CUP_O_BMP2_RU", "CUP_O_BMP3_RU", "CUP_O_T72_RU", "CUP_O_BTR90_RU", "CUP_O_GAZ_Vodnik_BPPU_RU", "CUP_O_T90_RU", "CUP_O_BTR80_GREEN_RU", "CUP_O_BTR80A_GREEN_RU"};
         th[] = {"CUP_O_Mi8_RU"};
         ah[] = {"CUP_O_Mi24_V_RU"};
