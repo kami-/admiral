@@ -1424,7 +1424,7 @@ class UnitTemplates {
         technicals[] = {"CUP_B_HMMWV_M2_USMC", "CUP_B_HMMWV_M1114_USMC", "CUP_B_HMMWV_MK19_USMC"};
         armour[] = {"CUP_B_LAV24M240_USMC", "CUP_B_AAV_USMC", "CUP_B_M1A1_Woodland_USMC", "CUP_B_M60A3_TTS_USMC"};
         th[] = {"CUP_B_UH60S_USN"};
-        ah[] = {"CUP_B_AH1Z_Dynamic_USMC_Dynamic_USMC"};
+        ah[] = {"CUP_B_AH1Z_Dynamic_USMC"};
     };
 
     class USM_USA_90_DE {
@@ -1460,7 +1460,7 @@ class UnitTemplates {
         technicals[] = {"CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_MK19_USA"};
         armour[] = {"CUP_B_M113_desert_USA", "CUP_B_AAV_USMC", "CUP_B_LAV25M240_desert_USMC", "CUP_B_M1A1_DES_US_Army"};
         th[] = {"CUP_B_UH60S_USN"};
-        ah[] = {"CUP_B_AH1Z_Dynamic_USMC_Dynamic_USMC"};
+        ah[] = {"CUP_B_AH1Z_Dynamic_USMC"};
     };
 
     class USM_USMC_80_DE {
@@ -1472,7 +1472,7 @@ class UnitTemplates {
         technicals[] = {"CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_M2_USA", "CUP_B_HMMWV_MK19_USA"};
         armour[] = {"CUP_B_M113_desert_USA", "CUP_B_AAV_USMC", "CUP_B_LAV25M240_desert_USMC", "CUP_B_M1A1_DES_US_Army"};
         th[] = {"CUP_B_UH60S_USN"};
-        ah[] = {"CUP_B_AH1Z_Dynamic_USMC_Dynamic_USMC"};
+        ah[] = {"CUP_B_AH1Z_Dynamic_USMC"};
     };
 
     class ARK_NVA {
