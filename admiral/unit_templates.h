@@ -455,18 +455,6 @@ class UnitTemplates {
         ah[] = {"CUP_O_Ka60_Blk_CSAT"};
     };
 
-    class MNP_RU_VDV_DE {
-        side = "east";
-        camouflage[] = {"desert"};
-        infantry[] = {"MNP_RU_Soldier_O_D", "MNP_RU_Soldier_O_D", "MNP_RU_Soldier_MEDIUM_D", "MNP_RU_Soldier_MEDIUM_D", "MNP_RU_Soldier_AT_D", "MNP_RU_Soldier_AR_D", "MNP_RU_Soldier_MG_D", "MNP_RU_Soldier_M_D"};
-        crewmen[] = {"MNP_RU_Soldier_MEDIUM_D"};
-        pilots[] = {"MNP_RU_Soldier_MEDIUM_D"};
-        technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU"};
-        armour[] = {"CUP_O_BRDM2_SLA", "CUP_O_BTR60_RU", "CUP_O_BTR90_RU", "CUP_O_BMP2_RU", "CUP_O_T72_RU", "CUP_O_T90_RU", "CUP_O_BTR80_DESERT_RU", "CUP_O_BTR80A_DESERT_RU"};
-        th[] = {"CUP_O_Mi8_RU"};
-        ah[] = {"CUP_O_Mi24_V_RU"};
-    };
-
     class MNP_KOR_OD {
         side = "east";
         camouflage[] = {"woodland"};
@@ -501,6 +489,150 @@ class UnitTemplates {
         armour[] = {"CUP_O_MTLB_pk_WDL_RU", "CUP_O_BRDM2_SLA", "CUP_O_BMP2_RU", "CUP_I_BMP1_TK_GUE", "CUP_I_T55_TK_GUE", "CUP_O_BTR60_RU", "CUP_O_BTR80_CAMO_RU"};
         th[] = {"CUP_O_Mi8_RU"};
         ah[] = {"CUP_O_Mi24_V_RU"};
+    };
+
+    class GM_GDR_80_WD {
+        side = "east";
+        camouflage[] = {"woodland"};
+        infantry[] = {"gm_gc_army_squadleader_mpiak74n_80_str", "gm_gc_army_squadleader_mpiak74n_80_str", "gm_gc_army_rifleman_mpiak74n_80_str", "gm_gc_army_rifleman_mpiak74n_80_str", "gm_gc_army_antitank_mpiakn_rpg7_80", "gm_gc_army_machinegunner_lmgrpk_80_str", "gm_gc_army_machinegunner_pk_80_str", "gm_gc_army_medic_mpiak74n_80_str"};
+        crewmen[] = {"gm_gc_army_crew_miiaks74nk_80_blk"};
+        pilots[] = {"gm_gc_airforce_pilot_pm_80_blu"};
+        technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU"};
+        armour[] = {"gm_gc_army_brdm2", "gm_gc_army_btr60pb", "gm_gc_army_bmp1sp2", "gm_gc_army_pt76b", "gm_gc_army_t55", "gm_gc_army_t55a", "gm_gc_army_t55ak", "gm_gc_army_t55am2", "gm_gc_army_t55am2b"};
+        th[] = {"gm_gc_airforce_mi2t"};
+        ah[] = {"gm_gc_airforcemi2urn"};
+    };
+
+    class GM_GDR_80_SN {
+        side = "east";
+        camouflage[] = {"snow"};
+        infantry[] = {"gm_gc_army_squadleader_mpiak74n_80_win", "gm_gc_army_squadleader_mpiak74n_80_win", "gm_gc_army_rifleman_mpiak74n_80_win", "gm_gc_army_rifleman_mpiak74n_80_win", "gm_gc_army_antitank_mpiakn_rpg7_80", "gm_gc_army_machinegunner_lmgrpk_80_win", "gm_gc_army_machinegunner_pk_80_win", "gm_gc_army_medic_mpiak74n_80_win"};
+        crewmen[] = {"gm_gc_army_crew_miiaks74nk_80_blk"};
+        pilots[] = {"gm_gc_airforce_pilot_pm_80_blu"};
+        technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU"};
+        armour[] = {"gm_gc_army_brdm2", "gm_gc_army_btr60pb", "gm_gc_army_bmp1sp2", "gm_gc_army_pt76b", "gm_gc_army_t55", "gm_gc_army_t55a", "gm_gc_army_t55ak", "gm_gc_army_t55am2", "gm_gc_army_t55am2b"};
+        th[] = {"gm_gc_airforce_mi2t"};
+        ah[] = {"gm_gc_airforcemi2urn"};
+    };
+
+    class GM_GDR_80_AIR {
+        side = "east";
+        camouflage[] = {"woodland"};
+        infantry[] = {"gm_gc_army_sf_squadleader_mpikms72_80_str", "gm_gc_army_sf_squadleader_mpikms72_80_str", "gm_gc_army_sf_rifleman_mpikms72_80_str", "gm_gc_army_sf_rifleman_mpikms72_80_str", "gm_gc_army_sf_antitank_mpikms72_rpg7_80_str", "gm_gc_army_sf_machinegunner_lmgrpk_80_str", "gm_gc_army_sf_machinegunner_lmgrpk_80_str", "gm_gc_army_sf_rifleman_pm63_80_str"};
+        crewmen[] = {"gm_gc_army_crew_miiaks74nk_80_blk"};
+        pilots[] = {"gm_gc_airforce_pilot_pm_80_blu"};
+        technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU"};
+        armour[] = {"gm_gc_army_brdm2", "gm_gc_army_btr60pb", "gm_gc_army_bmp1sp2", "gm_gc_army_pt76b", "gm_gc_army_t55", "gm_gc_army_t55a", "gm_gc_army_t55ak", "gm_gc_army_t55am2", "gm_gc_army_t55am2b"};
+        th[] = {"gm_gc_airforce_mi2t"};
+        ah[] = {"gm_gc_airforcemi2urn"};
+    };
+
+    class GM_PRL_80_WD {
+        side = "east";
+        camouflage[] = {"woodland"};
+        infantry[] = {"gm_pl_army_squadleader_akm_80_moro", "gm_pl_army_squadleader_akm_80_moro", "gm_pl_army_rifleman_akm_80_moro", "gm_pl_army_rifleman_akm_80_moro", "gm_pl_army_antitank_akm_rpg7__80_moro", "gm_pl_army_machinegunner_rpklk_80_moro", "gm_pl_army_machinegunner_pk_80_moro", "gm_pl_army_medic_akm_80_moro"};
+        crewmen[] = {"gm_pl_army_crew_pm63_80_moro"};
+        pilots[] = {"gm_pl_airforce_pilot_pm_80_gry"};
+        technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU"};
+        armour[] = {"gm_pl_army_brdm2", "gm_pl_army_ot64a", "gm_pl_army_bmp1sp2", "gm_pl_army_pt76b", "gm_pl_army_t55", "gm_pl_army_t55a", "gm_pl_army_t55ak"};
+        th[] = {"gm_pl_airforce_mi2t"};
+        ah[] = {"gm_pl_airforce_mi2urn"};
+    };
+
+    class GM_PRL_80_SN {
+        side = "east";
+        camouflage[] = {"snow"};
+        infantry[] = {"gm_pl_army_squadleader_akm_80_win", "gm_pl_army_squadleader_akm_80_win", "gm_pl_army_rifleman_akm_80_win", "gm_pl_army_rifleman_akm_80_win", "gm_pl_army_antitank_akm_rpg7__80_win", "gm_pl_army_machinegunner_rpklk_80_win", "gm_pl_army_machinegunner_pk_80_win", "gm_pl_army_medic_akm_80_win"};
+        crewmen[] = {"gm_pl_army_crew_pm63_80_moro"};
+        pilots[] = {"gm_pl_airforce_pilot_pm_80_gry"};
+        technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU"};
+        armour[] = {"gm_pl_army_brdm2", "gm_pl_army_ot64a", "gm_pl_army_bmp1sp2", "gm_pl_army_pt76b", "gm_pl_army_t55", "gm_pl_army_t55a", "gm_pl_army_t55ak"};
+        th[] = {"gm_pl_airforce_mi2t"};
+        ah[] = {"gm_pl_airforce_mi2urn"};
+    };
+
+    class GM_PRL_80_AIR {
+        side = "east";
+        camouflage[] = {"woodland"};
+        infantry[] = {"gm_pl_army_sf_squadleader_akmn_80_moro", "gm_pl_army_sf_squadleader_akmn_80_moro", "gm_pl_army_sf_rifleman_akmn_80_moro", "gm_pl_army_sf_antitank_akmn_rpg7_80_moro", "gm_pl_army_sf_machinegunner_rpk_80_moro", "gm_pl_army_sf_machinegunner_rpk_80_moro", "gm_pl_army_sf_rifleman_pm63_80_moro", "gm_pl_army_sf_rifleman_pm63_80_moro"};
+        crewmen[] = {"gm_pl_army_crew_pm63_80_moro"};
+        pilots[] = {"gm_pl_airforce_pilot_pm_80_gry"};
+        technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU"};
+        armour[] = {"gm_pl_army_brdm2", "gm_pl_army_ot64a", "gm_pl_army_bmp1sp2", "gm_pl_army_pt76b", "gm_pl_army_t55", "gm_pl_army_t55a", "gm_pl_army_t55ak"};
+        th[] = {"gm_pl_airforce_mi2t"};
+        ah[] = {"gm_pl_airforce_mi2urn"};
+    };
+
+    class GM_DNK_80_WD {
+        side = "west";
+        camouflage[] = {"woodland"};
+        infantry[] = {"gm_dk_army_squadleader_g3a3_p2a1_84_m84", "gm_dk_army_squadleader_g3a3_p2a1_84_m84", "gm_dk_army_rifleman_g3a3_84_m84", "gm_dk_army_rifleman_g3a3_84_m84", "gm_dk_army_antitank_g3a3_pzf84_84_m84", "gm_dk_army_machinegunner_mg3_84_m84", "gm_dk_army_machinegunner_mg3_84_m84", "gm_dk_army_medic_g3a3_84_m84"};
+        crewmen[] = {"gm_dk_army_crew_84_oli"};
+        pilots[] = {"gm_dk_army_crew_84_oli"};
+        technicals[] = {"gm_dk_army_u1300l_container"};
+        armour[] = {"gm_dk_army_m113a1dk_apc", "gm_dk_army_m113a1dk_command", "gm_dk_army_m113a1dk_engineer", "gm_dk_army_m113a2dk", "gm_dk_army_Leopard1a3"};
+        th[] = {"CUP_B_MH6M_USA"};
+        ah[] = {"CUP_B_AH6J_USA"};
+    };
+
+    class GM_DNK_80_SN {
+        side = "west";
+        camouflage[] = {"snow"};
+        infantry[] = {"gm_dk_army_squadleader_g3a3_p2a1_84_win", "gm_dk_army_squadleader_g3a3_p2a1_84_win", "gm_dk_army_rifleman_g3a3_84_win", "gm_dk_army_rifleman_g3a3_84_win", "gm_dk_army_antitank_g3a3_pzf84_84_win", "gm_dk_army_machinegunner_mg3_84_win", "gm_dk_army_machinegunner_mg3_84_win", "gm_dk_army_medic_g3a3_84_win"};
+        crewmen[] = {"gm_dk_army_crew_84_oli"};
+        pilots[] = {"gm_dk_army_crew_84_oli"};
+        technicals[] = {"gm_dk_army_u1300l_container"};
+        armour[] = {"gm_dk_army_m113a1dk_apc", "gm_dk_army_m113a1dk_command", "gm_dk_army_m113a1dk_engineer", "gm_dk_army_m113a2dk", "gm_dk_army_Leopard1a3"};
+        th[] = {"CUP_B_MH6M_USA"};
+        ah[] = {"CUP_B_AH6J_USA"};
+    };
+
+    class GM_DNK_90_WD {
+        side = "west";
+        camouflage[] = {"woodland"};
+        infantry[] = {"gm_dk_army_squadleader_gvm95_p2a1_90_m84", "gm_dk_army_squadleader_gvm95_p2a1_90_m84", "gm_dk_army_rifleman_gvm95_90_m84", "gm_dk_army_rifleman_gvm95_90_m84", "gm_dk_army_antitank_gvm95_pzf84_90_m84", "gm_dk_army_machinegunner_mg3_90_m84", "gm_dk_army_machinegunner_mg3_90_m84", "gm_dk_army_medic_gvm95_90_m84"};
+        crewmen[] = {"gm_dk_army_crew_84_oli"};
+        pilots[] = {"gm_dk_army_crew_84_oli"};
+        technicals[] = {"gm_dk_army_u1300l_container"};
+        armour[] = {"gm_dk_army_m113a1dk_apc", "gm_dk_army_m113a1dk_command", "gm_dk_army_m113a1dk_engineer", "gm_dk_army_m113a2dk", "gm_dk_army_Leopard1a3"};
+        th[] = {"CUP_B_MH6M_USA"};
+        ah[] = {"CUP_B_AH6J_USA"};
+    };
+
+    class GM_DNK_90_SN {
+        side = "west";
+        camouflage[] = {"snow"};
+        infantry[] = {"gm_dk_army_squadleader_gvm95_p2a1_90_win", "gm_dk_army_squadleader_gvm95_p2a1_90_win", "gm_dk_army_rifleman_gvm95_90_win", "gm_dk_army_rifleman_gvm95_90_win", "gm_dk_army_antitank_gvm95_pzf84_90_win", "gm_dk_army_machinegunner_mg3_90_win", "gm_dk_army_machinegunner_mg3_90_win", "gm_dk_army_medic_gvm95_90_win"};
+        crewmen[] = {"gm_dk_army_crew_84_oli"};
+        pilots[] = {"gm_dk_army_crew_84_oli"};
+        technicals[] = {"gm_dk_army_u1300l_container"};
+        armour[] = {"gm_dk_army_m113a1dk_apc", "gm_dk_army_m113a1dk_command", "gm_dk_army_m113a1dk_engineer", "gm_dk_army_m113a2dk", "gm_dk_army_Leopard1a3"};
+        th[] = {"CUP_B_MH6M_USA"};
+        ah[] = {"CUP_B_AH6J_USA"};
+    };
+
+    class GM_FRG_80_WD {
+        side = "west";
+        camouflage[] = {"woodland"};
+        infantry[] = {"gm_ge_army_grenadier_g3a3_80_ols", "gm_ge_army_squadleader_g3a3_p2a1_80_ols", "gm_ge_army_rifleman_g3a3_80_ols", "gm_ge_army_rifleman_g3a3_80_ols", "gm_ge_army_antitank_g3a3_pzf44_80_ols", "gm_ge_army_machinegunner_mg3_80_ols", "gm_ge_army_machinegunner_mg3_80_ols", "gm_ge_army_medic_g3a3_80_ols"};
+        crewmen[] = {"gm_ge_army_crew_mp2a1_80_oil"};
+        pilots[] = {"gm_ge_army_pilot_p1_80_oli"};
+        technicals[] = {"gm_g3_army_iltis_mg3", "gm_ge_army_fuchsa0_engineer", "gm_ge_army_fuchsa0_command", "gm_ge_army_u1300l_container"};
+        armour[] = {"gm_ge_armyM113a1g_apc", "gm_ge_army_m113a1g_apc_milan", "gm_ge_army_m113a1g_command", "gm_ge_army_luchsa1", "gm_ge_army_luchsa2", "gm_ge_army_Leopard1a1", "gm_ge_army_Leopard1a1a1", "gm_ge_army_Leopard1a1a2", "gm_ge_army_Leopard1a3", "gm_ge_army_Leopard1a3a1", "gm_ge_army_Leopard1a5"};
+        th[] = {"gm_ge_army_ch53g"};
+        ah[] = {"CUP_B_UH1D_gunship_GER_KSK"};
+    };
+
+    class GM_FRG_80_SN {
+        side = "west";
+        camouflage[] = {"snow"};
+        infantry[] = {"gm_ge_army_grenadier_g3a3_80_win", "gm_ge_army_squadleader_g3a3_p2a1_80_win", "gm_ge_army_rifleman_g3a3_80_win", "gm_ge_army_rifleman_g3a3_80_win", "gm_ge_army_antitank_g3a3_pzf44_80_win", "gm_ge_army_machinegunner_mg3_80_win", "gm_ge_army_machinegunner_mg3_80_win", "gm_ge_army_medic_g3a3_80_win"};
+        crewmen[] = {"gm_ge_army_crew_mp2a1_80_oil"};
+        pilots[] = {"gm_ge_army_pilot_p1_80_oli"};
+        technicals[] = {"gm_g3_army_iltis_mg3", "gm_ge_army_fuchsa0_engineer", "gm_ge_army_fuchsa0_command", "gm_ge_army_u1300l_container"};
+        armour[] = {"gm_ge_armyM113a1g_apc", "gm_ge_army_m113a1g_apc_milan", "gm_ge_army_m113a1g_command", "gm_ge_army_luchsa1", "gm_ge_army_luchsa2", "gm_ge_army_Leopard1a1", "gm_ge_army_Leopard1a1a1", "gm_ge_army_Leopard1a1a2", "gm_ge_army_Leopard1a3", "gm_ge_army_Leopard1a3a1", "gm_ge_army_Leopard1a5"};
+        th[] = {"gm_ge_army_ch53g"};
+        ah[] = {"CUP_B_UH1D_gunship_GER_KSK"};
     };
 
     class MNP_DPR_SUM {
