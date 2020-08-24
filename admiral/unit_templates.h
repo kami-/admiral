@@ -510,7 +510,7 @@ class UnitTemplates {
         crewmen[] = {"gm_gc_army_crew_miiaks74nk_80_blk"};
         pilots[] = {"gm_gc_airforce_pilot_pm_80_blu"};
         technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU"};
-        armour[] = {"gm_gc_army_brdm2", "gm_gc_army_btr60pb", "gm_gc_army_bmp1sp2", "gm_gc_army_pt76b", "gm_gc_army_t55", "gm_gc_army_t55a", "gm_gc_army_t55ak", "gm_gc_army_t55am2", "gm_gc_army_t55am2b"};
+        armour[] = {"gm_gc_army_brdm2_win", "gm_gc_army_btr60pb_win", "gm_gc_army_bmp1sp2_win", "gm_gc_army_pt76b_win", "gm_gc_army_t55_win", "gm_gc_army_t55a_win", "gm_gc_army_t55ak_win", "gm_gc_army_t55am2_win", "gm_gc_army_t55am2b_win"};
         th[] = {"gm_gc_airforce_mi2t"};
         ah[] = {"gm_gc_airforcemi2urn"};
     };
@@ -581,8 +581,8 @@ class UnitTemplates {
         infantry[] = {"gm_dk_army_squadleader_g3a3_p2a1_84_win", "gm_dk_army_squadleader_g3a3_p2a1_84_win", "gm_dk_army_rifleman_g3a3_84_win", "gm_dk_army_rifleman_g3a3_84_win", "gm_dk_army_antitank_g3a3_pzf84_84_win", "gm_dk_army_machinegunner_mg3_84_win", "gm_dk_army_machinegunner_mg3_84_win", "gm_dk_army_medic_g3a3_84_win"};
         crewmen[] = {"gm_dk_army_crew_84_oli"};
         pilots[] = {"gm_dk_army_crew_84_oli"};
-        technicals[] = {"gm_dk_army_u1300l_container"};
-        armour[] = {"gm_dk_army_m113a1dk_apc", "gm_dk_army_m113a1dk_command", "gm_dk_army_m113a1dk_engineer", "gm_dk_army_m113a2dk", "gm_dk_army_Leopard1a3"};
+        technicals[] = {"gm_dk_army_u1300l_container_win"};
+        armour[] = {"gm_dk_army_m113a1dk_apc_win", "gm_dk_army_m113a1dk_command_win", "gm_dk_army_m113a1dk_engineer_win", "gm_dk_army_m113a2dk_win", "gm_dk_army_Leopard1a3_win"};
         th[] = {"CUP_B_MH6M_USA"};
         ah[] = {"CUP_B_AH6J_USA"};
     };
@@ -605,8 +605,8 @@ class UnitTemplates {
         infantry[] = {"gm_dk_army_squadleader_gvm95_p2a1_90_win", "gm_dk_army_squadleader_gvm95_p2a1_90_win", "gm_dk_army_rifleman_gvm95_90_win", "gm_dk_army_rifleman_gvm95_90_win", "gm_dk_army_antitank_gvm95_pzf84_90_win", "gm_dk_army_machinegunner_mg3_90_win", "gm_dk_army_machinegunner_mg3_90_win", "gm_dk_army_medic_gvm95_90_win"};
         crewmen[] = {"gm_dk_army_crew_84_oli"};
         pilots[] = {"gm_dk_army_crew_84_oli"};
-        technicals[] = {"gm_dk_army_u1300l_container"};
-        armour[] = {"gm_dk_army_m113a1dk_apc", "gm_dk_army_m113a1dk_command", "gm_dk_army_m113a1dk_engineer", "gm_dk_army_m113a2dk", "gm_dk_army_Leopard1a3"};
+        technicals[] = {"gm_dk_army_u1300l_container_win"};
+        armour[] = {"gm_dk_army_m113a1dk_apc_win", "gm_dk_army_m113a1dk_command_win", "gm_dk_army_m113a1dk_engineer_win", "gm_dk_army_m113a2dk_win", "gm_dk_army_Leopard1a3_win"};
         th[] = {"CUP_B_MH6M_USA"};
         ah[] = {"CUP_B_AH6J_USA"};
     };
@@ -629,8 +629,8 @@ class UnitTemplates {
         infantry[] = {"gm_ge_army_grenadier_g3a3_80_win", "gm_ge_army_squadleader_g3a3_p2a1_80_win", "gm_ge_army_rifleman_g3a3_80_win", "gm_ge_army_rifleman_g3a3_80_win", "gm_ge_army_antitank_g3a3_pzf44_80_win", "gm_ge_army_machinegunner_mg3_80_win", "gm_ge_army_machinegunner_mg3_80_win", "gm_ge_army_medic_g3a3_80_win"};
         crewmen[] = {"gm_ge_army_crew_mp2a1_80_oil"};
         pilots[] = {"gm_ge_army_pilot_p1_80_oli"};
-        technicals[] = {"gm_g3_army_iltis_mg3", "gm_ge_army_fuchsa0_engineer", "gm_ge_army_fuchsa0_command", "gm_ge_army_u1300l_container"};
-        armour[] = {"gm_ge_armyM113a1g_apc", "gm_ge_army_m113a1g_apc_milan", "gm_ge_army_m113a1g_command", "gm_ge_army_luchsa1", "gm_ge_army_luchsa2", "gm_ge_army_Leopard1a1", "gm_ge_army_Leopard1a1a1", "gm_ge_army_Leopard1a1a2", "gm_ge_army_Leopard1a3", "gm_ge_army_Leopard1a3a1", "gm_ge_army_Leopard1a5"};
+        technicals[] = {"gm_g3_army_iltis_mg3_win", "gm_ge_army_fuchsa0_engineer_win", "gm_ge_army_fuchsa0_command_win", "gm_ge_army_u1300l_container_win"};
+        armour[] = {"gm_ge_armyM113a1g_apc_win", "gm_ge_army_m113a1g_apc_milan_win", "gm_ge_army_m113a1g_command_win", "gm_ge_army_luchsa1_win", "gm_ge_army_luchsa2_win", "gm_ge_army_Leopard1a1_win", "gm_ge_army_Leopard1a1a1_win", "gm_ge_army_Leopard1a1a2_win", "gm_ge_army_Leopard1a3_win", "gm_ge_army_Leopard1a3a1_win", "gm_ge_army_Leopard1a5_win"};
         th[] = {"gm_ge_army_ch53g"};
         ah[] = {"CUP_B_UH1D_gunship_GER_KSK"};
     };
