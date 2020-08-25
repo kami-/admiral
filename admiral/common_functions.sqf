@@ -76,8 +76,10 @@ adm_common_fnc_spawnCrew = {
     } else {
         allTurrets _vehicle;
     };
+    DEBUG("admiral.common.create",FMT_2("Creating crew for '%1' with turrents '%2'.",_vehicle,_allTurrets));
     {
         DECLARE(_crewman) = [getPosATL _vehicle, _group, _crewClassNames, _skillArray] call adm_common_fnc_placeMan;
+        DEBUG("admiral.common.create",FMT_3("Created crew '%1' for turret '%2' in '%3'.",_crewman,_x,_vehicle));
         _crewman assignAsTurret [_vehicle, _x];
         _crewman moveInTurret [_vehicle, _x];
     } foreach _allTurrets;
