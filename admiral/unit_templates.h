@@ -494,7 +494,7 @@ class UnitTemplates {
     class GM_GDR_80_WD {
         side = "east";
         camouflage[] = {"woodland"};
-        infantry[] = {"gm_gc_army_squadleader_mpiak74n_80_str", "gm_gc_army_squadleader_mpiak74n_80_str", "gm_gc_army_rifleman_mpiak74n_80_str", "gm_gc_army_rifleman_mpiak74n_80_str", "gm_gc_army_antitank_mpiakn_rpg7_80", "gm_gc_army_machinegunner_lmgrpk_80_str", "gm_gc_army_machinegunner_pk_80_str", "gm_gc_army_medic_mpiak74n_80_str"};
+        infantry[] = {"gm_gc_army_squadleader_mpiak74n_80_str", "gm_gc_army_squadleader_mpiak74n_80_str", "gm_gc_army_rifleman_mpiak74n_80_str", "gm_gc_army_rifleman_mpiak74n_80_str", "gm_gc_army_antitank_mpiak74n_rpg7_80_str", "gm_gc_army_machinegunner_lmgrpk_80_str", "gm_gc_army_machinegunner_pk_80_str", "gm_gc_army_medic_mpiak74n_80_str"};
         crewmen[] = {"gm_gc_army_crew_miiaks74nk_80_blk"};
         pilots[] = {"gm_gc_airforce_pilot_pm_80_blu"};
         technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU"};
@@ -506,7 +506,7 @@ class UnitTemplates {
     class GM_GDR_80_SN {
         side = "east";
         camouflage[] = {"snow"};
-        infantry[] = {"gm_gc_army_squadleader_mpiak74n_80_win", "gm_gc_army_squadleader_mpiak74n_80_win", "gm_gc_army_rifleman_mpiak74n_80_win", "gm_gc_army_rifleman_mpiak74n_80_win", "gm_gc_army_antitank_mpiakn_rpg7_80", "gm_gc_army_machinegunner_lmgrpk_80_win", "gm_gc_army_machinegunner_pk_80_win", "gm_gc_army_medic_mpiak74n_80_win"};
+        infantry[] = {"gm_gc_army_squadleader_mpiak74n_80_win", "gm_gc_army_squadleader_mpiak74n_80_win", "gm_gc_army_rifleman_mpiak74n_80_win", "gm_gc_army_rifleman_mpiak74n_80_win", "gm_gc_army_antitank_mpiak74n_rpg7_80_win", "gm_gc_army_machinegunner_lmgrpk_80_win", "gm_gc_army_machinegunner_pk_80_win", "gm_gc_army_medic_mpiak74n_80_win"};
         crewmen[] = {"gm_gc_army_crew_miiaks74nk_80_blk"};
         pilots[] = {"gm_gc_airforce_pilot_pm_80_blu"};
         technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU"};
