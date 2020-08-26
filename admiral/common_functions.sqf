@@ -71,17 +71,17 @@ adm_common_fnc_spawnCrew = {
     _driver = [getPosATL _vehicle, _group, _crewClassNames, _skillArray] call adm_common_fnc_placeMan;
     _driver assignAsDriver _vehicle;
     _driver moveInDriver _vehicle;
-    _allTurrets = if (_canSpawnFfvCrew) then {
-        allTurrets [_vehicle, true];
-    } else {
-        allTurrets _vehicle;
-    };
+    _allTurrets = allTurrets [_vehicle, _canSpawnFfvCrew];
     DEBUG("admiral.common.create",FMT_2("Creating crew for '%1' with turrents '%2'.",_vehicle,_allTurrets));
     {
         DECLARE(_crewman) = [getPosATL _vehicle, _group, _crewClassNames, _skillArray] call adm_common_fnc_placeMan;
         DEBUG("admiral.common.create",FMT_3("Created crew '%1' for turret '%2' in '%3'.",_crewman,_x,_vehicle));
         _crewman assignAsTurret [_vehicle, _x];
         _crewman moveInTurret [_vehicle, _x];
+        if (objectParent _crewman != _vehicle) then {
+            DEBUG("admiral.common.create",FMT_3("Crew '%1' will be deleted, because it is not inside turret '%2' in '%3'.",_crewman,_x,_vehicle));
+            deleteVehicle _crewman;
+        };
     } foreach _allTurrets;
     _leader = call {
         if (!isNull (commander _vehicle)) exitWith { commander _vehicle };
