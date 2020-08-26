@@ -77,8 +77,8 @@ adm_common_fnc_spawnCrew = {
         private _turret = _x #3;
         private _personTurret = _x #4;
         call {
-            if (_type == "commander" || {_type == "gunner"}) exitWith { _turretsToFill pushBackUnique _x };
-            if (_canSpawnFfvCrew && {_personTurret}) exitWith { _turretsToFill pushBackUnique _x };
+            if (_type == "commander" || {_type == "gunner"}) exitWith { _turretsToFill pushBackUnique _turret };
+            if (_canSpawnFfvCrew && {_personTurret}) exitWith { _turretsToFill pushBackUnique _turret };
         };
     } foreach fullCrew [_vehicle, "", true];
     DEBUG("admiral.common.create",FMT_2("Creating crew for '%1' with turrents '%2'.",_vehicle,_turretsToFill));
