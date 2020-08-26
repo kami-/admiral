@@ -500,7 +500,7 @@ class UnitTemplates {
         technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU"};
         armour[] = {"gm_gc_army_brdm2", "gm_gc_army_btr60pb", "gm_gc_army_bmp1sp2", "gm_gc_army_pt76b", "gm_gc_army_t55", "gm_gc_army_t55a", "gm_gc_army_t55ak", "gm_gc_army_t55am2", "gm_gc_army_t55am2b"};
         th[] = {"gm_gc_airforce_mi2t"};
-        ah[] = {"gm_gc_airforcemi2_urn"};
+        ah[] = {"gm_gc_airforce_mi2urn"};
     };
 
     class GM_GDR_80_SN {
@@ -512,7 +512,7 @@ class UnitTemplates {
         technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU"};
         armour[] = {"gm_gc_army_brdm2_win", "gm_gc_army_btr60pb_win", "gm_gc_army_bmp1sp2_win", "gm_gc_army_pt76b_win", "gm_gc_army_t55_win", "gm_gc_army_t55a_win", "gm_gc_army_t55ak_win", "gm_gc_army_t55am2_win", "gm_gc_army_t55am2b_win"};
         th[] = {"gm_gc_airforce_mi2t"};
-        ah[] = {"gm_gc_airforcemi2_urn"};
+        ah[] = {"gm_gc_airforce_mi2urn"};
     };
 
     class GM_GDR_80_AIR {
@@ -524,7 +524,7 @@ class UnitTemplates {
         technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU"};
         armour[] = {"gm_gc_army_brdm2", "gm_gc_army_btr60pb", "gm_gc_army_bmp1sp2", "gm_gc_army_pt76b", "gm_gc_army_t55", "gm_gc_army_t55a", "gm_gc_army_t55ak", "gm_gc_army_t55am2", "gm_gc_army_t55am2b"};
         th[] = {"gm_gc_airforce_mi2t"};
-        ah[] = {"gm_gc_airforcemi2_urn"};
+        ah[] = {"gm_gc_airforce_mi2urn"};
     };
 
     class GM_PRL_80_WD {
