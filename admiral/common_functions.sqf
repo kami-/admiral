@@ -71,22 +71,27 @@ adm_common_fnc_spawnCrew = {
     _driver = [getPosATL _vehicle, _group, _crewClassNames, _skillArray] call adm_common_fnc_placeMan;
     _driver assignAsDriver _vehicle;
     _driver moveInDriver _vehicle;
-    _allTurrets = if (_canSpawnFfvCrew) then {
-        allTurrets [_vehicle, true];
-    } else {
-        allTurrets _vehicle;
-    };
-    DEBUG("admiral.common.create",FMT_2("Creating crew for '%1' with turrents '%2'.",_vehicle,_allTurrets));
+    private _turretsToFill = [];
+    {
+        private _type =_x #1;
+        private _turret = _x #3;
+        private _personTurret = _x #4;
+        call {
+            if (_type == "commander" || {_type == "gunner"}) exitWith { _turretsToFill pushBackUnique _x };
+            if (_canSpawnFfvCrew && {_personTurret}) exitWith { _turretsToFill pushBackUnique _x };
+        };
+    } foreach fullCrew [_vehicle, "", true];
+    DEBUG("admiral.common.create",FMT_2("Creating crew for '%1' with turrents '%2'.",_vehicle,_turretsToFill));
     {
         DECLARE(_crewman) = [getPosATL _vehicle, _group, _crewClassNames, _skillArray] call adm_common_fnc_placeMan;
         DEBUG("admiral.common.create",FMT_3("Created crew '%1' for turret '%2' in '%3'.",_crewman,_x,_vehicle));
         _crewman assignAsTurret [_vehicle, _x];
         _crewman moveInTurret [_vehicle, _x];
-    } foreach _allTurrets;
+    } foreach _turretsToFill;
     _leader = call {
         if (!isNull (commander _vehicle)) exitWith { commander _vehicle };
         if (!isNull (gunner _vehicle)) exitWith { gunner _vehicle };
-        if (count _allTurrets > 0) exitWith { _vehicle turretUnit (_allTurrets select 0) };
+        if (count _turretsToFill > 0) exitWith { _vehicle turretUnit (_turretsToFill select 0) };
         driver _vehicle;
     };
     _group selectLeader _leader;
