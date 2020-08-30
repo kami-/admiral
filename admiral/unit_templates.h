@@ -62,11 +62,11 @@ class UnitTemplates {
     class CUP_HIL_CCE {
         side = "west";
         camouflage[] = {"woodland", "desert"};
-        infantry[] = {"CUP_B_HIL_Officer", "CUP_B_HIL_Soldier", "CUP_B_HIL_Soldier", "CUP_B_HIL_Soldier", "CUP_B_HIL_MMG", "CUP_B_HIL_MMG", "CUP_B_HIL_Soldier_AT4", "CUPB_HIL_Medic"};
+        infantry[] = {"CUP_B_HIL_Officer", "CUP_B_HIL_Soldier", "CUP_B_HIL_Soldier", "CUP_B_HIL_Soldier", "CUP_B_HIL_MMG", "CUP_B_HIL_MMG", "CUP_B_HIL_Soldier_AT4", "CUP_B_HIL_Medic"};
         crewmen[] = {"CUP_B_HIL_Crew"};
         pilots[] = {"CUP_B_HIL_Pilot"};
         technicals[] = {"CUP_B_M151_M2_HIL"};
-        armour[] = {"ARK_M113_USA_OD", "CUP_B_LAV25M240_gren", "CUP_B_Challenger2_Woodland_BAF"};
+        armour[] = {"CUP_B_Boxer_GMG_HIL", "CUP_B_Boxer_HMG_HIL", "CUP_B_Leopard2A6_HIL"};
         th[] = {"CUP_B_CH47F_HIL"};
         ah[] = {"CUP_B_AW159_HIL"};
     };
@@ -74,11 +74,11 @@ class UnitTemplates {
     class CUP_HIL_RES {
         side = "west";
         camouflage[] = {"woodland"};
-        infantry[] = {"CUP_B_HIL_SL_Res", "CUP_B_HIL_SL_Res", "CUP_B_HIL_Soldier_Res", "CUP_B_HIL_Soldier_Res", "CUP_B_HIL_MMG_Res", "CUP_B_HIL_MMG_Res", "CUP_B_HIL_LAT_Res", "CUP_B_HIL_Medic_Res", "CUP_B_HIL_Officer_Res"};
+        infantry[] = {"CUP_B_HIL_SL_Res", "CUP_B_HIL_SL_Res", "CUP_B_HIL_Soldier_Res", "CUP_B_HIL_Soldier_Res", "CUP_B_HIL_MMG_Res", "CUP_B_HIL_MMG_Res", "CUP_B_HIL_Soldier_LAT_Res", "CUP_B_HIL_Medic_Res", "CUP_B_HIL_Officer_Res"};
         crewmen[] = {"CUP_B_HIL_Crew"};
         pilots[] = {"CUP_B_HIL_Pilot"};
         technicals[] = {"CUP_B_M151_M2_HIL"};
-        armour[] = {"ARK_M113_USA_OD", "CUP_B_LAV25M240_gren", "CUP_B_Challenger2_Woodland_BAF"};
+        armour[] = {"CUP_B_Boxer_GMG_HIL", "CUP_B_Boxer_HMG_HIL", "CUP_B_Leopard2A6_HIL"};
         th[] = {"CUP_B_CH47F_HIL"};
         ah[] = {"CUP_B_AW159_HIL"};
     };
@@ -138,7 +138,7 @@ class UnitTemplates {
         crewmen[] = {"CUP_B_GER_Fleck_Crew"};
         pilots[] = {"CUP_B_GER_Fleck_HPilot"};
         technicals[] = {"CUP_B_Dingo_GER_Wdl", "CUP_B_Dingo_GER_Wdl", "CUP_B_Dingo_GL_GER_Wdl"};
-        armour[] = {"CUP_B_Leopard2A6_GER"};
+        armour[] = {"CUP_B_Leopard2A6_GER", "CUP_B_Boxer_HMG_GER_WDL", "CUP_B_Boxer_GMG_GER_WDL"};
         th[] = {"CUP_B_UH1D_slick_GER_KSK"};
         ah[] = {"CUP_B_UH1D_gunship_GER_KSK"};
     };
@@ -150,9 +150,9 @@ class UnitTemplates {
         crewmen[] = {"CUP_B_GER_Crew"};
         pilots[] = {"CUP_B_GER_HPilot"};
         technicals[] = {"CUP_B_Dingo_GL_GER_Des", "CUP_B_Dingo_GER_Des", "CUP_B_Dingo_GER_Des"};
-        armour[] = {"CUP_B_Leopard2A6DST_GER"};
-        th[] = {"CUP_B_UH1D_slick_GER_KSK_Des"};
-        ah[] = {"CUP_B_UH1D_gunship_GER_KSK_Des"};
+        armour[] = {"CUP_B_Leopard2A6DST_GER", "CUP_B_Boxer_GMG_GER_DES", "CUP_B_Boxer_HMG_GER_DES"};
+        th[] = {"CUP_B_UH1D_slick_GER_KSK"};
+        ah[] = {"CUP_B_UH1D_gunship_GER_KSK"};
     };
 
     class MNP_CA_WD {
@@ -282,7 +282,7 @@ class UnitTemplates {
         crewmen[] = {"CUP_B_GER_Fleck_Crew"};
         pilots[] = {"CUP_B_GER_Fleck_HPilot"};
         technicals[] = {"CUP_B_Dingo_GER_Wdl", "CUP_B_Dingo_GER_Wdl", "CUP_B_Dingo_GL_GER_Wdl"};
-        armour[] = {"CUP_B_Leopard2A6_GER"};
+        armour[] = {"CUP_B_Leopard2A6_GER", "CUP_B_Boxer_HMG_GER_WDL", "CUP_B_Boxer_GMG_GER_WDL"};
         th[] = {"CUP_B_UH1D_slick_GER_KSK"};
         ah[] = {"CUP_B_UH1D_gunship_GER_KSK"};
     };
@@ -294,9 +294,9 @@ class UnitTemplates {
         crewmen[] = {"CUP_B_GER_Crew"};
         pilots[] = {"CUP_B_GER_HPilot"};
         technicals[] = {"CUP_B_Dingo_GL_GER_Des", "CUP_B_Dingo_GER_Des", "CUP_B_Dingo_GER_Des"};
-        armour[] = {"CUP_B_Leopard2A6DST_GER"};
-        th[] = {"CUP_B_UH1D_slick_GER_KSK_Des"};
-        ah[] = {"CUP_B_UH1D_gunship_GER_KSK_Des"};
+        armour[] = {"CUP_B_Leopard2A6DST_GER", "CUP_B_Boxer_GMG_GER_DES", "CUP_B_Boxer_HMG_GER_DES"};
+        th[] = {"CUP_B_UH1D_slick_GER_KSK"};
+        ah[] = {"CUP_B_UH1D_gunship_GER_KSK"};
     };
 
     class CUP_BAF_WD {
