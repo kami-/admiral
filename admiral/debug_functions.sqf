@@ -121,12 +121,17 @@ adm_debug_fnc_updateCqcGroupMarkers = {
             if (alive _x) then {
                 _debugMarker setMarkerPosLocal (getPosATL _x);
                 _debugMarker setMarkerDirLocal getDir _x;
+                if (simulationEnabled _x) then {
+                    _debugMarker setMarkerAlphaLocal 1;
+                } else {
+                    _debugMarker setMarkerAlphaLocal 0.25;
+                };
                 DEBUG("admiral.debug",FMT_3("Updated CQC unit marker '%1' of unit '%2' in group '%3'.",_debugMarker,_x,_group));
             } else {
                [_x, _debugMarker] call adm_debug_fnc_deleteCqcUnitMarker;
             };
         } else {
-            [_x, _group] call adm_debug_fnc_createCqcUnitMarker; 
+            [_x, _group] call adm_debug_fnc_createCqcUnitMarker;
         };
     } foreach units _group;
 };
@@ -291,7 +296,7 @@ adm_debug_fnc_createDebugCounterMarker = {
     PVT_1(_marker);
     _marker = [format ["adm_counter_%1_%2", _side,_type], [_xPos, 50, 0], "ICON", _markerType, [_side] call adm_debug_fnc_getSideColor, COUNTER_DEBUG_MARKER_SIZE] call adm_common_fnc_createLocalMarker;
     _marker setMarkerTextLocal "0";
-    
+
     _marker;
 };
 
@@ -322,19 +327,19 @@ adm_debug_fnc_createAllDebugCounterMarkers = {
 
 adm_debug_fnc_updateDebugCounterMarkers = {
     FUN_ARGS_1(_side);
-    
+
     PVT_2(_makerNames,_groupTypeCountArray);
     _markerNames = [];
     _groupTypeCountArray = [
-        [[adm_cqc_groups, adm_patrol_infGroups, adm_camp_infGroups], adm_common_fnc_getAliveSideUnits], 
-        [[adm_patrol_techGroups, adm_camp_techGroups], adm_common_fnc_getAliveSideGroups], 
+        [[adm_cqc_groups, adm_patrol_infGroups, adm_camp_infGroups], adm_common_fnc_getAliveSideUnits],
+        [[adm_patrol_techGroups, adm_camp_techGroups], adm_common_fnc_getAliveSideGroups],
         [[adm_patrol_armourGroups, adm_camp_armourGroups], adm_common_fnc_getAliveSideGroups]
     ];
     {
         DECLARE(_count) = [_groupTypeCountArray select _forEachIndex select 0, _side] call (_groupTypeCountArray select _forEachIndex select 1);
         (format ["adm_counter_%1_%2", _side, _x]) setMarkerTextLocal str count _count;
     } foreach GROUP_TYPE_DEBUG_MARKERS;
-    (format ["adm_counter_%1_total", _side]) setMarkerTextLocal str count ([_side] call adm_common_fnc_getAllAliveSideUnits);
+    (format ["adm_counter_%1_total", _side]) setMarkerTextLocal format ["%1 (%2)", count (([_side] call adm_common_fnc_getAllAliveSideUnits) select {enableSimulation _x}), count ([_side] call adm_common_fnc_getAllAliveSideUnits)]
     DEBUG("admiral.debug",FMT_1("Updated counter markers for side '%1'.",_side));
 };
 
