@@ -291,7 +291,7 @@ adm_debug_fnc_updateLineMarker = {
 };
 
 adm_debug_fnc_createDebugCounterMarker = {
-    parmas ["_side","_type","_xPos","_markerType"];
+    params ["_side","_type","_xPos","_markerType"];
 
     private _marker = [format ["adm_counter_%1_%2", _side,_type], [_xPos, 50, 0], "ICON", _markerType, [_side] call adm_debug_fnc_getSideColor, COUNTER_DEBUG_MARKER_SIZE] call adm_common_fnc_createLocalMarker;
     _marker setMarkerTextLocal "0";
@@ -337,7 +337,7 @@ adm_debug_fnc_updateDebugCounterMarkers = {
         DECLARE(_count) = [_groupTypeCountArray select _forEachIndex select 0, _side] call (_groupTypeCountArray select _forEachIndex select 1);
         (format ["adm_counter_%1_%2", _side, _x]) setMarkerTextLocal str count _count;
     } foreach GROUP_TYPE_DEBUG_MARKERS;
-    (format ["adm_counter_%1_total", _side]) setMarkerTextLocal format ["%1 (%2)", count (([_side] call adm_common_fnc_getAllAliveSideUnits) select {simulationEnabled _x}), count ([_side] call adm_common_fnc_getAllAliveSideUnits)]
+    (format ["adm_counter_%1_total", _side]) setMarkerTextLocal format ["%1 (%2)", count (([_side] call adm_common_fnc_getAllAliveSideUnits) select {simulationEnabled _x}), count ([_side] call adm_common_fnc_getAllAliveSideUnits)];
     DEBUG("admiral.debug",FMT_1("Updated counter markers for side '%1'.",_side));
 };
 
