@@ -5,7 +5,7 @@
 
 
 adm_debug_fnc_createMovingGroupMarkers = {
-    FUN_ARGS_1(_group);
+    params ["_group"];
 
     private ["_debugMarkers", "_marker"];
     _groupType = _group getVariable ["adm_group_type", GROUP_TYPE_INF];
@@ -24,7 +24,7 @@ adm_debug_fnc_createMovingGroupMarkers = {
 };
 
 adm_debug_fnc_updateMovingGroupMarkers = {
-    FUN_ARGS_1(_group);
+    params ["_group"];
 
     DECLARE(_debugMarkers) = _group getVariable "adm_group_debugMarkers";
     if (IS_GROUP_ALIVE(_group)) then {
@@ -42,7 +42,7 @@ adm_debug_fnc_updateMovingGroupMarkers = {
 };
 
 adm_debug_fnc_updateMovingGroupWaypointMarkers = {
-    FUN_ARGS_2(_group,_debugMarkers);
+   params ["_group","_debugMarkers"];
 
     (_debugMarkers select 0) setMarkerPosLocal (getPosATL leader _group);
     (_debugMarkers select 0) setMarkerTextLocal format ["%1", count units _group];
@@ -51,7 +51,7 @@ adm_debug_fnc_updateMovingGroupWaypointMarkers = {
 };
 
 adm_debug_fnc_updateMovingGroupsStateMarkers = {
-    FUN_ARGS_2(_group,_lineMarker);
+   params ["_group","_lineMarker"];
 
     DECLARE(_state) = _group getVariable ["adm_behavior_state", STATE_INIT];
     call {
@@ -85,7 +85,7 @@ adm_debug_fnc_deleteAllMovingGroupMarkers = {
 };
 
 adm_debug_fnc_deleteMovingGroupMarkers = {
-    FUN_ARGS_2(_group,_debugMarkers);
+   params ["_group","_debugMarkers"];
 
     _group setVariable ["adm_group_debugMarkers", nil, false];
     {
@@ -95,7 +95,7 @@ adm_debug_fnc_deleteMovingGroupMarkers = {
 };
 
 adm_debug_fnc_createCqcUnitMarker = {
-    FUN_ARGS_2(_unit,_group);
+   params ["_unit","_group"];
 
     DECLARE(_debugMarker) = [format ["adm_unit_cqc_%1", _unit], getPosATL _unit, "ICON", CQC_DEBUG_MARKER, [side _group] call adm_debug_fnc_getSideColor, CQC_DEBUG_MARKER_SIZE] call adm_common_fnc_createLocalMarker;
     _unit setVariable ["adm_unit_debugMarker", _debugMarker, false];
@@ -105,7 +105,7 @@ adm_debug_fnc_createCqcUnitMarker = {
 };
 
 adm_debug_fnc_deleteCqcUnitMarker = {
-    FUN_ARGS_2(_unit,_debugMarker);
+   params ["_unit","_debugMarker"];
 
     deleteMarkerLocal _debugMarker;
     _unit setVariable ["adm_unit_debugMarker", nil, false];
@@ -113,7 +113,7 @@ adm_debug_fnc_deleteCqcUnitMarker = {
 };
 
 adm_debug_fnc_updateCqcGroupMarkers = {
-    FUN_ARGS_1(_group);
+    params ["_group"];
 
     {
         DECLARE(_debugMarker) = _x getVariable "adm_unit_debugMarker";
@@ -121,12 +121,17 @@ adm_debug_fnc_updateCqcGroupMarkers = {
             if (alive _x) then {
                 _debugMarker setMarkerPosLocal (getPosATL _x);
                 _debugMarker setMarkerDirLocal getDir _x;
+                if (simulationEnabled _x) then {
+                    _debugMarker setMarkerAlphaLocal 1;
+                } else {
+                    _debugMarker setMarkerAlphaLocal 0.25;
+                };
                 DEBUG("admiral.debug",FMT_3("Updated CQC unit marker '%1' of unit '%2' in group '%3'.",_debugMarker,_x,_group));
             } else {
                [_x, _debugMarker] call adm_debug_fnc_deleteCqcUnitMarker;
             };
         } else {
-            [_x, _group] call adm_debug_fnc_createCqcUnitMarker; 
+            [_x, _group] call adm_debug_fnc_createCqcUnitMarker;
         };
     } foreach units _group;
 };
@@ -145,7 +150,7 @@ adm_debug_fnc_deleteAllCqcGroupMarkers = {
 };
 
 adm_debug_fnc_updateZoneMarkers = {
-    FUN_ARGS_1(_zone);
+    params ["_zone"];
 
     DECLARE(_debugMarker) = GET_ZONE_DEBUG_MARKER(_zone);
     if (_debugMarker != "") then {
@@ -159,7 +164,7 @@ adm_debug_fnc_updateZoneMarkers = {
 };
 
 adm_debug_fnc_deleteZoneMarkers = {
-    FUN_ARGS_1(_zone);
+    params ["_zone"];
 
     DECLARE(_debugMarker) = GET_ZONE_DEBUG_MARKER(_zone);
     if (_debugMarker != "") then {
@@ -183,7 +188,7 @@ adm_debug_fnc_deleteAllZoneMarkers = {
 };
 
 adm_debug_fnc_createZoneMarker = {
-    FUN_ARGS_2(_zone,_color);
+   params ["_zone","_color"];
 
     private ["_shape", "_debugMarker"];
     _shape = "RECTANGLE";
@@ -205,7 +210,7 @@ adm_debug_fnc_createZoneMarker = {
 };
 
 adm_debug_fnc_createTriggerMarker = {
-    FUN_ARGS_2(_trigger,_color);
+   params ["_trigger","_color)"];
 
     private ["_shape", "_debugMarker"];
     _shape = "RECTANGLE";
@@ -223,7 +228,7 @@ adm_debug_fnc_createTriggerMarker = {
 };
 
 adm_debug_fnc_createAllCampPathMarkers = {
-    FUN_ARGS_1(_zone);
+    params ["_zone"];
 
     DECLARE(_paths) = GET_CAMP_PATHS(_zone);
     {
@@ -234,7 +239,7 @@ adm_debug_fnc_createAllCampPathMarkers = {
 };
 
 adm_debug_fnc_createCampPathMarkers = {
-    FUN_ARGS_1(_path);
+    params ["_path"];
 
     private ["_pathPositions", "_lineMarkers", "_endTriggerMarker"];
     _pathPositions = GET_PATH_POSITIONS(_path);
@@ -253,7 +258,7 @@ adm_debug_fnc_createCampPathMarkers = {
 };
 
 adm_debug_fnc_deleteCampPathMarkers = {
-    FUN_ARGS_1(_path);
+    params ["_path"];
 
     DECLARE(_debugMarkers) = GET_PATH_DEBUG_MARKERS(_path);
     if (!isNil {_debugMarkers}) then {
@@ -266,7 +271,7 @@ adm_debug_fnc_deleteCampPathMarkers = {
 };
 
 adm_debug_fnc_createLineMarker = {
-    FUN_ARGS_5(_markerName,_posFrom,_posTo,_markerColor,_markerWidth);
+    params ["_markerName","_posFrom","_posTo","_markerColor","_markerWidth"];
 
     [_markerName, [_posFrom, (_posFrom distance _posTo) / 2, [_posFrom, _posTo] call BIS_fnc_dirTo] call BIS_fnc_relPos, "RECTANGLE", "DOT", _markerColor] call adm_common_fnc_createLocalMarker;
     _markerName setMarkerSizeLocal [_markerWidth, (_posFrom distance _posTo) / 2];
@@ -277,7 +282,7 @@ adm_debug_fnc_createLineMarker = {
 };
 
 adm_debug_fnc_updateLineMarker = {
-    FUN_ARGS_3(_markerName,_posFrom,_posTo);
+    params ["_markerName","_posFrom","_posTo"];
 
     _markerName setMarkerPosLocal ([_posFrom, (_posFrom distance _posTo) / 2, [_posFrom, _posTo] call BIS_fnc_dirTo] call BIS_fnc_relPos);
     _markerName setMarkerSizeLocal [(getMarkerSize _markerName) select 0, (_posFrom distance _posTo) / 2];
@@ -286,21 +291,20 @@ adm_debug_fnc_updateLineMarker = {
 };
 
 adm_debug_fnc_createDebugCounterMarker = {
-    FUN_ARGS_4(_side,_type,_xPos,_markerType);
+    params ["_side","_type","_xPos","_markerType"];
 
-    PVT_1(_marker);
-    _marker = [format ["adm_counter_%1_%2", _side,_type], [_xPos, 50, 0], "ICON", _markerType, [_side] call adm_debug_fnc_getSideColor, COUNTER_DEBUG_MARKER_SIZE] call adm_common_fnc_createLocalMarker;
+    private _marker = [format ["adm_counter_%1_%2", _side,_type], [_xPos, 50, 0], "ICON", _markerType, [_side] call adm_debug_fnc_getSideColor, COUNTER_DEBUG_MARKER_SIZE] call adm_common_fnc_createLocalMarker;
     _marker setMarkerTextLocal "0";
-    
+
     _marker;
 };
 
 adm_debug_fnc_createDebugFactionCounterMarkers = {
-    FUN_ARGS_2(_side,_xPos);
+   params ["_side","_xPos"];
 
-    PVT_3(_marker,_debugMarkers,_currentXPos);
-    _debugMarkers = [];
-    _currentXPos = _xPos;
+    private ["_marker"];
+    private _debugMarkers = [];
+    private _currentXPos = _xPos;
     {
         _marker = [_side, _x, _currentXPos, _x] call adm_debug_fnc_createDebugCounterMarker;
         _debugMarkers pushBack _marker;
@@ -321,20 +325,19 @@ adm_debug_fnc_createAllDebugCounterMarkers = {
 };
 
 adm_debug_fnc_updateDebugCounterMarkers = {
-    FUN_ARGS_1(_side);
-    
-    PVT_2(_makerNames,_groupTypeCountArray);
-    _markerNames = [];
-    _groupTypeCountArray = [
-        [[adm_cqc_groups, adm_patrol_infGroups, adm_camp_infGroups], adm_common_fnc_getAliveSideUnits], 
-        [[adm_patrol_techGroups, adm_camp_techGroups], adm_common_fnc_getAliveSideGroups], 
+    params ["_side"];
+
+    private _markerNames = [];
+    private _groupTypeCountArray = [
+        [[adm_cqc_groups, adm_patrol_infGroups, adm_camp_infGroups], adm_common_fnc_getAliveSideUnits],
+        [[adm_patrol_techGroups, adm_camp_techGroups], adm_common_fnc_getAliveSideGroups],
         [[adm_patrol_armourGroups, adm_camp_armourGroups], adm_common_fnc_getAliveSideGroups]
     ];
     {
         DECLARE(_count) = [_groupTypeCountArray select _forEachIndex select 0, _side] call (_groupTypeCountArray select _forEachIndex select 1);
         (format ["adm_counter_%1_%2", _side, _x]) setMarkerTextLocal str count _count;
     } foreach GROUP_TYPE_DEBUG_MARKERS;
-    (format ["adm_counter_%1_total", _side]) setMarkerTextLocal str count ([_side] call adm_common_fnc_getAllAliveSideUnits);
+    (format ["adm_counter_%1_total", _side]) setMarkerTextLocal format ["%1 (%2)", count (([_side] call adm_common_fnc_getAllAliveSideUnits) select {simulationEnabled _x}), count ([_side] call adm_common_fnc_getAllAliveSideUnits)];
     DEBUG("admiral.debug",FMT_1("Updated counter markers for side '%1'.",_side));
 };
 
@@ -355,7 +358,7 @@ adm_debug_fnc_deleteAllDebugCounterMarkers = {
 };
 
 adm_debug_fnc_getSideColor = {
-    FUN_ARGS_1(_side);
+    params ["_side"];
 
     DECLARE(_index) = SIDE_ARRAY find _side;
     if (_index >= 0) then {
