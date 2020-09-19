@@ -210,7 +210,7 @@ adm_debug_fnc_createZoneMarker = {
 };
 
 adm_debug_fnc_createTriggerMarker = {
-   params ["_trigger","_color)"];
+   params ["_trigger","_color"];
 
     private ["_shape", "_debugMarker"];
     _shape = "RECTANGLE";
