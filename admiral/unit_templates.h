@@ -546,7 +546,7 @@ class UnitTemplates {
         crewmen[] = {"gm_ge_army_crew_mp2a1_80_oli"};
         pilots[] = {"gm_ge_army_pilot_p1_80_oli"};
         technicals[] = {"gm_g3_army_iltis_mg3", "gm_ge_army_fuchsa0_engineer", "gm_ge_army_fuchsa0_command", "gm_ge_army_u1300l_container"};
-        armour[] = {"gm_ge_armyM113a1g_apc", "gm_ge_army_m113a1g_apc_milan", "gm_ge_army_m113a1g_command", "gm_ge_army_luchsa1", "gm_ge_army_luchsa2", "gm_ge_army_Leopard1a1", "gm_ge_army_Leopard1a1a1", "gm_ge_army_Leopard1a1a2", "gm_ge_army_Leopard1a3", "gm_ge_army_Leopard1a3a1", "gm_ge_army_Leopard1a5"};
+        armour[] = {"gm_ge_army_M113a1g_apc", "gm_ge_army_m113a1g_apc_milan", "gm_ge_army_m113a1g_command", "gm_ge_army_luchsa1", "gm_ge_army_luchsa2", "gm_ge_army_Leopard1a1", "gm_ge_army_Leopard1a1a1", "gm_ge_army_Leopard1a1a2", "gm_ge_army_Leopard1a3", "gm_ge_army_Leopard1a3a1", "gm_ge_army_Leopard1a5"};
         th[] = {"gm_ge_army_ch53g"};
         ah[] = {"CUP_B_UH1D_gunship_GER_KSK"};
     };
@@ -554,11 +554,11 @@ class UnitTemplates {
     class GM_FRG_80_SN {
         side = "west";
         camouflage[] = {"snow"};
-        infantry[] = {"gm_ge_army_grenadier_g3a3_80_win", "gm_ge_army_squadleader_g3a3_p2a1_80_win", "gm_ge_army_rifleman_g3a3_80_win", "gm_ge_army_rifleman_g3a3_80_win", "gm_ge_army_antitank_g3a3_pzf44_80_win", "gm_ge_army_machinegunner_mg3_80_win", "gm_ge_army_machinegunner_mg3_80_win", "gm_ge_army_medic_g3a3_80_win"};
+        infantry[] = {"gm_ge_army_grenadier_g3a3_parka_80_win", "gm_ge_army_squadleader_g3a3_p2a1_parka_80_win", "gm_ge_army_rifleman_g3a3_parka_80_win", "gm_ge_army_rifleman_g3a3_parka_80_win", "gm_ge_army_antitank_g3a3_pzf44_parka_80_win", "gm_ge_army_machinegunner_mg3_parka_80_win", "gm_ge_army_machinegunner_mg3_parka_80_win", "gm_ge_army_medic_g3a3_parka_80_win"};
         crewmen[] = {"gm_ge_army_crew_mp2a1_80_oli"};
         pilots[] = {"gm_ge_army_pilot_p1_80_oli"};
         technicals[] = {"gm_g3_army_iltis_mg3_win", "gm_ge_army_fuchsa0_engineer_win", "gm_ge_army_fuchsa0_command_win", "gm_ge_army_u1300l_container_win"};
-        armour[] = {"gm_ge_armyM113a1g_apc_win", "gm_ge_army_m113a1g_apc_milan_win", "gm_ge_army_m113a1g_command_win", "gm_ge_army_luchsa1_win", "gm_ge_army_luchsa2_win", "gm_ge_army_Leopard1a1_win", "gm_ge_army_Leopard1a1a1_win", "gm_ge_army_Leopard1a1a2_win", "gm_ge_army_Leopard1a3_win", "gm_ge_army_Leopard1a3a1_win", "gm_ge_army_Leopard1a5_win"};
+        armour[] = {"gm_ge_army_M113a1g_apc_win", "gm_ge_army_m113a1g_apc_milan_win", "gm_ge_army_m113a1g_command_win", "gm_ge_army_luchsa1_win", "gm_ge_army_luchsa2_win", "gm_ge_army_Leopard1a1_win", "gm_ge_army_Leopard1a1a1_win", "gm_ge_army_Leopard1a1a2_win", "gm_ge_army_Leopard1a3_win", "gm_ge_army_Leopard1a3a1_win", "gm_ge_army_Leopard1a5_win"};
         th[] = {"gm_ge_army_ch53g"};
         ah[] = {"CUP_B_UH1D_gunship_GER_KSK"};
     };
