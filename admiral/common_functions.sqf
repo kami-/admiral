@@ -23,7 +23,7 @@ adm_common_fnc_placeMan = {
         private _errorMessage = format ["Failed to create unit '%1' at position '%2', in group '%3' with classname '%4' and classNameArguments '%5'!",_unit,_position,_group,_className,_classNameArguments];
         ERROR("admiral.common.create",_errorMessage);
         if (hasInterface) then {
-            player globalChat ("Admiral: " + _errorMessage);
+            systemChat ("[Admiral] " + _errorMessage);
         };
 
         _unit;
