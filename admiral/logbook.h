@@ -48,7 +48,7 @@
 
 #define LB_CHAT_LOGGER(MESSG)
 #ifdef LOGGING_TO_CHAT
-    #define LB_CHAT_LOGGER(MESSG)               player globalChat (MESSG)
+    #define LB_CHAT_LOGGER(MESSG)               systemChat (MESSG)
 #endif //LOGGING_TO_CHAT
 
 #ifndef LOGGING_TO_CUSTOM
