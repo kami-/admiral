@@ -5,7 +5,7 @@
 
 
 adm_common_fnc_placeMan = {
-    FUN_ARGS_4(_position,_group,_unitClassNames,_skillArray);
+    params ["_position","_group","_unitClassNames","_skillArray"];
 
     private ["_classNameData", "_className", "_classNameArguments", "_unit"];
     _classNameData = selectRandom _unitClassNames;
@@ -65,7 +65,7 @@ adm_common_fnc_placeVehicle = {
 };
 
 adm_common_fnc_spawnCrew = {
-    FUN_ARGS_5(_vehicle,_group,_crewClassNames,_skillArray,_canSpawnFfvCrew);
+    params ["_vehicle","_group","_crewClassNames","_skillArray","_canSpawnFfvCrew"];
 
     private ["_driver", "_allTurrets", "_leader"];
     _driver = [getPosATL _vehicle, _group, _crewClassNames, _skillArray] call adm_common_fnc_placeMan;
@@ -77,13 +77,14 @@ adm_common_fnc_spawnCrew = {
         private _turret = _x #3;
         private _personTurret = _x #4;
         call {
+            if (_vehicle lockedTurret _turret) exitWith {};
             if (_type == "commander" || {_type == "gunner"}) exitWith { _turretsToFill pushBackUnique _turret };
             if (_canSpawnFfvCrew && {_personTurret}) exitWith { _turretsToFill pushBackUnique _turret };
         };
     } foreach fullCrew [_vehicle, "", true];
     DEBUG("admiral.common.create",FMT_2("Creating crew for '%1' with turrents '%2'.",_vehicle,_turretsToFill));
     {
-        DECLARE(_crewman) = [getPosATL _vehicle, _group, _crewClassNames, _skillArray] call adm_common_fnc_placeMan;
+        private _crewman = [getPosATL _vehicle, _group, _crewClassNames, _skillArray] call adm_common_fnc_placeMan;
         DEBUG("admiral.common.create",FMT_3("Created crew '%1' for turret '%2' in '%3'.",_crewman,_x,_vehicle));
         _crewman assignAsTurret [_vehicle, _x];
         _crewman moveInTurret [_vehicle, _x];
@@ -117,7 +118,7 @@ adm_common_fnc_delayGroupSpawn = {
 };
 
 adm_common_fnc_initUnit = {
-    FUN_ARGS_2(_unit,_skillArray);
+    params ["_unit","_skillArray"];
 
     {
         _unit setSkill _x;
@@ -128,7 +129,7 @@ adm_common_fnc_initUnit = {
 };
 
 adm_common_fnc_setGear = {
-    FUN_ARGS_1(_unit);
+    params ["_unit"];
 
     [_unit] call adm_common_fnc_assignNVG;
 };
@@ -148,11 +149,11 @@ adm_common_fnc_assignNVG = {
 };
 
 adm_common_fnc_getZoneTemplateSkillValues = {
-    FUN_ARGS_1(_zoneTemplate);
+    params ["_zoneTemplate"];
 
     _skills = [];
     {
-        DECLARE(_value) = ["ZoneTemplates", _zoneTemplate, _x] call adm_config_fnc_getNumber;
+        private _value = ["ZoneTemplates", _zoneTemplate, _x] call adm_config_fnc_getNumber;
         PUSH(_skills,AS_ARRAY_2(_x,_value));
     } foreach ZONE_SKILLS;
 
@@ -160,21 +161,21 @@ adm_common_fnc_getZoneTemplateSkillValues = {
 };
 
 adm_common_fnc_getUnitTemplateArray = {
-    FUN_ARGS_2(_unitTemplate,_field);
+    params ["_unitTemplate","_field"];
 
     ["UnitTemplates", _unitTemplate, _field] call adm_config_fnc_getArray;
 };
 
 adm_common_fnc_getUnitTemplateSide = {
-    FUN_ARGS_1(_unitTemplate);
+    params ["_unitTemplate"];
 
     call compile (["UnitTemplates", _unitTemplate, "side"] call adm_config_fnc_getText);
 };
 
 adm_common_fnc_createWaypoint = {
-    FUN_ARGS_5(_group,_wpArray,_type,_behaviour,_mode);
+    params ["_group","_wpArray","_type","_behaviour","_mode"];
 
-    DECLARE(_waypoint) = _group addWaypoint _wpArray;
+    private _waypoint = _group addWaypoint _wpArray;
     _waypoint setWaypointType _type;
     _waypoint setWaypointBehaviour _behaviour;
     _waypoint setWaypointCombatMode _mode;
@@ -189,11 +190,11 @@ adm_common_fnc_createWaypoint = {
 };
 
 adm_common_fnc_getAliveGroups = {
-    FUN_ARGS_1(_groupsArray);
+    params ["_groupsArray"];
 
-    DECLARE(_aliveGroups) = [];
+    private _aliveGroups = [];
     {
-        DECLARE(_groups) = _x;
+        private _groups = _x;
         FILTER_PUSH_ALL(_aliveGroups,_groups,{IS_GROUP_ALIVE(_x)});
     } foreach _groupsArray;
 
@@ -201,11 +202,11 @@ adm_common_fnc_getAliveGroups = {
 };
 
 adm_common_fnc_getAliveSideGroups = {
-    FUN_ARGS_2(_groupsArray,_side);
+    params ["_groupsArray","_side"];
 
-    DECLARE(_aliveGroups) = [];
+    private _aliveGroups = [];
     {
-        DECLARE(_groups) = _x;
+        private _groups = _x;
         FILTER_PUSH_ALL(_aliveGroups,_groups,{IS_GROUP_ALIVE(_x) && {side _x == _side}});
     } foreach _groupsArray;
 
@@ -213,13 +214,13 @@ adm_common_fnc_getAliveSideGroups = {
 };
 
 adm_common_fnc_getAliveUnits = {
-    FUN_ARGS_1(_groupsArray);
+    params ["_groupsArray"];
 
-    DECLARE(_aliveUnits) = [];
+    private _aliveUnits = [];
     {
-        DECLARE(_groups) = _x;
+        private _groups = _x;
         {
-            DECLARE(_groupUnits) = units _x;
+            private _groupUnits = units _x;
             FILTER_PUSH_ALL(_aliveUnits,_groupUnits,{alive _x});
         } foreach _groups;
     } foreach _groupsArray;
@@ -228,13 +229,13 @@ adm_common_fnc_getAliveUnits = {
 };
 
 adm_common_fnc_getAliveSideUnits = {
-    FUN_ARGS_2(_groupsArray,_side);
+    params ["_groupsArray","_side"];
 
-    DECLARE(_aliveSideUnits) = [];
+    private _aliveSideUnits = [];
     {
-        DECLARE(_groups) = _x;
+        private _groups = _x;
         {
-            DECLARE(_groupUnits) = units _x;
+            private _groupUnits = units _x;
             FILTER_PUSH_ALL(_aliveSideUnits,_groupUnits,{alive _x && {side _x == _side}});
         } foreach _groups;
     } foreach _groupsArray;
@@ -243,7 +244,7 @@ adm_common_fnc_getAliveSideUnits = {
 };
 
 adm_common_fnc_getAllAliveSideUnits = {
-    FUN_ARGS_1(_side);
+    params ["_side"];
 
     [[adm_cqc_groups, adm_patrol_infGroups, adm_patrol_techGroups, adm_patrol_armourGroups, adm_camp_infGroups, adm_camp_techGroups, adm_camp_armourGroups],_side] call adm_common_fnc_getAliveSideUnits;
 };
@@ -253,9 +254,9 @@ adm_common_fnc_getAdmiralUnits = {
 };
 
 adm_common_fnc_createLocalMarker = {
-    FUN_ARGS_6(_name,_position,_shape,_type,_color,_size);
+    params ["_name","_position","_shape","_type","_color","_size"];
 
-    DECLARE(_marker) = createMarkerLocal [_name, _position];
+    private _marker = createMarkerLocal [_name, _position];
     _marker setMarkerShapeLocal _shape;
     _name setMarkerTypeLocal _type;
     _name setMarkerColorLocal _color;
@@ -274,14 +275,14 @@ adm_common_fnc_getPlayerUnits = {
 };
 
 adm_common_fnc_randomFlatEmptyPosInTrigger = {
-    FUN_ARGS_3(_trigger,_unitType,_canBeWater);
+    params ["_trigger","_unitType","_canBeWater"];
 
     if (isNil "_canBeWater") then {_canBeWater = false;};
     [triggerArea _trigger, getPosATL _trigger, _unitType, _canBeWater] call adm_common_fnc_getRandomEmptyPositionInArea;
 };
 
 adm_common_fnc_getRandomEmptyPositionInArea = {
-    FUN_ARGS_4(_area,_areaPosition,_unitType,_canBeWater);
+    params ["_area","_areaPosition","_unitType","_canBeWater"];
 
     if (isNil "_canBeWater") then {_canBeWater = false;};
     private ["_randomPosition", "_emptyPosition"];
@@ -296,7 +297,7 @@ adm_common_fnc_getRandomEmptyPositionInArea = {
 };
 
 adm_common_fnc_getRandomPositionInArea = {
-    FUN_ARGS_3(_area,_areaPosition,_canBeWater);
+    params ["_area","_areaPosition","_canBeWater"];
 
     private ["_randomPosition", "_shapeFunc"];
     DECLARE_4(_area,_width,_height,_angle,_isRectangle);
@@ -317,7 +318,7 @@ adm_common_fnc_getRandomPositionInArea = {
 };
 
 adm_common_fnc_getRandomPositionInRectangle = {
-    FUN_ARGS_4(_width,_height,_angle,_position);
+    params ["_width","_height","_angle","_position"];
 
     private ["_px", "_py"];
     _px = _width - 2 * random _width;
@@ -330,7 +331,7 @@ adm_common_fnc_getRandomPositionInRectangle = {
 };
 
 adm_common_fnc_getRandomPositionInEllipse = {
-    FUN_ARGS_4(_width,_height,_angle,_position);
+    params ["_width","_height","_angle","_position"];
 
     private ["_ellipseAngle", "_px", "_py"];
     _ellipseAngle = deg random (2 * pi);
@@ -344,7 +345,7 @@ adm_common_fnc_getRandomPositionInEllipse = {
 };
 
 adm_common_fnc_isPlayerNearTrigger = {
-    FUN_ARGS_2(_trigger,_distance);
+    params ["_trigger","_distance"];
 
     private ["_width", "_height", "_longestAxis"];
     SELECT_2(triggerArea _trigger,_width,_height);
@@ -354,7 +355,7 @@ adm_common_fnc_isPlayerNearTrigger = {
 };
 
 adm_common_fnc_isPlayersInRange = {
-    FUN_ARGS_2(_position,_distance);
+    params ["_position","_distance"];
 
     private ["_players", "_inRange"];
     _players = [] call adm_common_fnc_getPlayerUnits;
@@ -368,7 +369,7 @@ adm_common_fnc_isPlayersInRange = {
 };
 
 adm_common_fnc_isPositionInArea = {
-    FUN_ARGS_3(_position,_area,_areaPosition);
+    params ["_position","_area","_areaPosition"];
 
     DECLARE_4(_area,_width,_height,_angle,_isRectangle);
     _angle = 180 - _angle;
@@ -390,27 +391,27 @@ adm_common_fnc_isPositionInArea = {
 };
 
 adm_common_fnc_isPosInsideTrigger = {
-    FUN_ARGS_2(_trigger,_position);
+    params ["_trigger","_position"];
 
     [_position,triggerArea _trigger, getPosATL _trigger] call adm_common_fnc_isPositionInArea;
 };
 
 adm_common_fnc_isPositionInRectangle = {
-    FUN_ARGS_6(_width,_height,_rotatedPx,_rotatedPy,_ax,_ay);
+    params ["_width","_height","_rotatedPx","_rotatedPy","_ax","_ay"];
 
     _rotatedPx <= _ax + _width && {_rotatedPx >= _ax - _width} && {_rotatedPy <= _ay + _height} && {_rotatedPy >= _ay - _height};
 };
 
 adm_common_fnc_isPositionInEllipse = {
-    FUN_ARGS_6(_width,_height,_rotatedPx,_rotatedPy,_ax,_ay);
+    params ["_width","_height","_rotatedPx","_rotatedPy","_ax","_ay"];
 
      (_rotatedPx - _ax) ^ 2 / _width ^ 2 + (_rotatedPy - _ay) ^ 2 / _height ^ 2 <= 1;
 };
 
 adm_common_fnc_filterFirst = {
-    FUN_ARGS_2(_array,_filterFunc);
+    params ["_array","_filterFunc"];
 
-    DECLARE(_result) = [];
+    private _result = [];
     {
         if (call _filterFunc) exitWith { _result = [_x] };
     } foreach _array;
@@ -419,9 +420,9 @@ adm_common_fnc_filterFirst = {
 };
 
 adm_common_fnc_insertionSort = {
-    FUN_ARGS_2(_array,_compareFunc);
+    params ["_array","_compareFunc"];
 
-    DECLARE(_sortArray) = +_array;
+    private _sortArray = +_array;
     for "_i" from 1 to (count _sortArray) - 1 do {
         private ["_x", "_j", "_y"];
         _x = _sortArray select _i;
@@ -439,9 +440,9 @@ adm_common_fnc_insertionSort = {
 
 // Implementation of "inside-out" shuffle algorithm
 adm_common_fnc_shuffle = {
-    FUN_ARGS_1(_array);
+    params ["_array"];
 
-    DECLARE(_shuffledArray) = [];
+    private _shuffledArray = [];
     if (count _array > 0) then {
         _shuffledArray set [0, _array select 0];
         for "_i" from 1 to (count _array) - 1 do {
@@ -455,18 +456,18 @@ adm_common_fnc_shuffle = {
 };
 
 adm_common_fnc_getAdmiralSide = {
-    FUN_ARGS_1(_side);
+    params ["_side"];
 
-    DECLARE(_sideIndex) = SIDE_ARRAY find _side;
+    private _sideIndex = SIDE_ARRAY find _side;
     if (_sideIndex == -1) then { _sideIndex = SIDE_CIV; };
 
     _sideIndex;
 };
 
 adm_common_fnc_isFriendlySide = {
-    FUN_ARGS_2(_side,_otherSide);
+    params ["_side","_otherSide"];
 
-    DECLARE(_isFriendly) = true;
+    private _isFriendly = true;
     if (_side == sideEnemy || {_otherSide == sideEnemy}) then {
         _isFriendly = false;
     } else {
