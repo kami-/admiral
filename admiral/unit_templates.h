@@ -1067,6 +1067,54 @@ class UnitTemplates {
         ah[] = {"CUP_B_Mi24_D_Dynamic_CDF"};
     };
 
+    class GMX_CDF {
+        side = "west";
+        camouflage[] = {"woodland"};
+        infantry[] = {"gmx_cdf_army_squadleader_ak74_ttsko", "gmx_cdf_army_squadleader_ak74_ttsko", "gmx_cdf_army_rifleman_ak74_ttsko", "gmx_cdf_army_rifleman_ak74_ttsko", "gmx_cdf_army_antitank_ak74_rpg7_ttsko", "gmx_cdf_army_machinegunner_rpk_ttsko", "gmx_cdf_army_machinegunner_pk_ttsko", "gmx_cdf_army_medic_ak74_ttsko", "gmx_cdf_army_radioman_ak74_ttsko"};
+        crewmen[] = {"gmx_cdf_army_crew_ak74_ttsko"};
+        pilots[] = {"gmx_cdf_army_pilot_pm63_ttsko"};
+        technicals[] = {"gmx_cdf_uaz469_dshkm_wdl", "gmx_cdf_uaz469_dshkm_wdl", "gmx_cdf_uaz469_spg9_wdl"};
+        armour[] = {"gmx_cdf_brdm2_wdl", "gmx_cdf_btr60pb_wdl", "gmx_cdf_bmp1sp2_wdl", "gmx_cdf_pt76b_wdl", "gmx_cdf_t55_wdl", "gmx_cdf_t55a_wdl", "gmx_cdf_t55am2_wdl", "gmx_cdf_t55am2b_wdl"};
+        th[] = {"gmx_cdf_mi2t_wdl"};
+        ah[] = {"gmx_cdf_mi2urn_wdl"};
+    };
+
+    class GMX_CDF_2022 {
+        side = "west";
+        camouflage[] = {"woodland"};
+        infantry[] = {"gmx_cdf2022_army_squadleader_trg21_digittsko", "gmx_cdf2022_army_squadleader_trg21_digittsko", "gmx_cdf2022_army_rifleman_trg21_digittsko", "gmx_cdf2022_army_rifleman_trg21_digittsko", "gmx_cdf2022_army_antitank_trg21_pzf3_digittsko", "gmx_cdf2022_army_machinegunner_pk_digittsko", "gmx_cdf2022_army_medic_trg21_digittsko", "gmx_cdf2022_army_radioman_trg21_digittsko"};
+        crewmen[] = {"gmx_cdf2022_army_crew_trg21_digittsko"};
+        pilots[] = {"gmx_cdf2022_army_pilot_smg_02_digittsko"};
+        technicals[] = {"gmx_cdf2022_uaz469_dshkm_wdl", "gmx_cdf2022_uaz469_dshkm_wdl", "gmx_cdf2022_uaz469_spg9_wdl"};
+        armour[] = {"gmx_cdf2022_brdm2_wdl", "gmx_cdf2022_btr60pb_wdl", "gmx_cdf2022_bmp1sp2_wdl", "gmx_cdf2022_marder1a2_wdl", "gmx_cdf2022_pt76b_wdl", "gmx_cdf2022_kpz1a5_wdl", "gmx_cdf2022_t55am2b_wdl", "gmx_cdf2022_t55am2_wdl"};
+        th[] = {"gmx_cdf2022_mi2t_wdl"};
+        ah[] = {"gmx_cdf2022_mi2urn_wdl"};
+    };
+
+    class GMX_CDF_OREL {
+        side = "west";
+        camouflage[] = {""};
+        infantry[] = {"gmx_cdf2022_orel_squadleader_mp5a2_blu", "gmx_cdf2022_orel_squadleader_mp5a2_blu", "gmx_cdf2022_orel_rifleman_mp5a2_blu", "gmx_cdf2022_orel_rifleman_mp5a2_blu", "gmx_cdf2022_paramilitary_antitank_mp5a2_pzf84_blu", "gmx_cdf2022_paramilitary_machinegunner_pk_blu", "gmx_cdf2022_orel_radioman_mp5a2_blu", "gmx_cdf2022_orel_grenadier_hk69a1_blu"};
+        crewmen[] = {"gmx_cdf2022_orel_rifleman_mp5a2_blu"};
+        pilots[] = {"gmx_cdf2022_orel_rifleman_mp5a2_blu"};
+        technicals[] = {"gmx_cdf2022_brdm2_wdl"};
+        armour[] = {"gmx_cdf2022_btr60pb_wdl"};
+        th[] = {"gmx_cdf2022_mi2t_wdl"};
+        ah[] = {"gmx_cdf2022_mi2urn_wdl"};
+    };
+
+    class GMX_CDF_NG {
+        side = "west";
+        camouflage[] = {""};
+        infantry[] = {"gmx_cdf2022_paramilitary_squadleader_m16a2_oli", "gmx_cdf2022_paramilitary_squadleader_m16a2_oli", "gmx_cdf2022_paramilitary_rifleman_m16a2_oli", "gmx_cdf2022_paramilitary_rifleman_m16a2_oli", "gmx_cdf2022_paramilitary_antitank_m16a2_pzf84_oli", "gmx_cdf2022_paramilitary_machinegunner_pk_oli", "gmx_cdf2022_paramilitary_medic_m16a2_oli", "gmx_cdf2022_paramilitary_radioman_m16a2_oli"};
+        crewmen[] = {"gmx_cdf2022_army_crew_trg21_digittsko"};
+        pilots[] = {"gmx_cdf2022_army_pilot_smg_02_digittsko"};
+        technicals[] = {"gmx_cdf2022_uaz469_dshkm_wdl", "gmx_cdf2022_uaz469_dshkm_wdl", "gmx_cdf2022_uaz469_spg9_wdl"};
+        armour[] = {"gmx_cdf2022_brdm2_wdl", "gmx_cdf2022_btr60pb_wdl", "gmx_cdf2022_bmp1sp2_wdl", "gmx_cdf2022_marder1a2_wdl", "gmx_cdf2022_pt76b_wdl", "gmx_cdf2022_kpz1a5_wdl", "gmx_cdf2022_t55am2b_wdl", "gmx_cdf2022_t55am2_wdl"};
+        th[] = {"gmx_cdf2022_mi2t_wdl"};
+        ah[] = {"gmx_cdf2022_mi2urn_wdl"};
+    };
+
     class CUP_CDF_SN {
         side = "west";
         camouflage[] = {"snow"};
