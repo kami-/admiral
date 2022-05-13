@@ -5,11 +5,11 @@
 
 
 adm_common_fnc_placeMan = {
-    params ["_position","_group","_unitClassNames","_skillArray"];
+    params ["_position","_group","_unitClassNames","_skillArray",["_posSpecial","NONE"]];
 
-    private ["_classNameData", "_className", "_classNameArguments", "_unit"];
-    _classNameData = selectRandom _unitClassNames;
-    _classNameArguments = [];
+    private "_className";
+    private _classNameData = selectRandom _unitClassNames;
+    private _classNameArguments = [];
     if (typeName _classNameData == "ARRAY") then {
         _className = _classNameData select 0;
         for "_i" from 1 to (count _classNameData) - 1 do {
@@ -18,7 +18,7 @@ adm_common_fnc_placeMan = {
     } else {
         _className = _classNameData;
     };
-    _unit = _group createUnit [_className, _position, [], 0, "NONE"];
+    private _unit = _group createUnit [_className, _position, [], 0, _posSpecial];
     if (isNull _unit) exitWith {
         private _errorMessage = format ["Failed to create unit '%1' at position '%2', in group '%3' with classname '%4' and classNameArguments '%5'!",_unit,_position,_group,_className,_classNameArguments];
         ERROR("admiral.common.create",_errorMessage);
