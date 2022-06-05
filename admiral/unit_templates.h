@@ -1010,7 +1010,7 @@ class UnitTemplates {
     class SYND_BANDIT {
         side = "resistance";
         camouflage[] = {"desert"};
-        infantry[] = {"I_C_Soldier_Bandit_6_F_ARK", "I_C_Soldier_Bandit_6_F_ARK", "I_C_Soldier_Bandit_5_F_ARK", "I_C_Soldier_Bandit_4_F_ARK", "I_C_Soldier_Bandit_2_F_ARK", "I_C_Soldier_Bandit_7_F_ARK", "I_C_Soldier_Bandit_3_F_ARK"};
+        infantry[] = {"I_C_Soldier_Bandit_6_F_ARK", "I_C_Soldier_Bandit_8_F_ARK", "I_C_Soldier_Bandit_5_F_ARK", "I_C_Soldier_Bandit_4_F_ARK", "I_C_Soldier_Bandit_2_F_ARK", "I_C_Soldier_Bandit_7_F_ARK", "I_C_Soldier_Bandit_3_F_ARK"};
         crewmen[] = {"I_C_Soldier_Bandit_4_F_ARK"};
         pilots[] = {"I_C_Pilot_F_ARK"};
         technicals[] = {"CUP_I_Hilux_AGS30_TK", "CUP_I_Hilux_DSHKM_TK", "CUP_I_Hilux_SPG9_TK", "CUP_I_Hilux_zu23_TK", "CUP_I_BTR40_MG_TKG", "CUP_I_Hilux_armored_AGS30_TK", "CUP_I_Hilux_armored_DSHKM_TK", "CUP_I_Hilux_armored_SPG9_TK", "CUP_I_Hilux_armored_zu23_TK"};
