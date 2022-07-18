@@ -794,8 +794,8 @@ class UnitTemplates {
     class CUP_RU_VDV_MOD {
         side = "east";
         camouflage[] = {"woodland"};
-        infantry[] = {"CUP_O_RU_Soldier_TL_VDV_M_EMR", "CUP_O_RU_Soldier_TL_VDV_M_EMR", "CUP_O_RU_Soldier_VDV_M_EMR", "CUP_O_RU_Soldier_VDV_M_EMR", "CUP_O_RU_Soldier_LAT_VDV_M_EMR", "CUP_O_RU_Soldier_AR_VDV_M_EMR", "CUP_O_RU_Soldier_MG_VDV_M_EMR", "CUP_O_RU_Medic_VDV_M_EMR", "CUP_O_RU_Officer_VDV_M_EMR"};
-        crewmen[] = {"CUP_O_RU_Crew_VDV_M_EMR"};
+        infantry[] = {"CUP_O_RU_Soldier_TL_M_VDV_EMR_V2", "CUP_O_RU_Soldier_TL_M_VDV_EMR_V2", "CUP_O_RU_Soldier_M_VDV_EMR_V2", "CUP_O_RU_Soldier_M_VDV_EMR_V2", "CUP_O_RU_Soldier_AT_M_VDV_EMR_V2", "CUP_O_RU_Soldier_AR_M_VDV_EMR_V2", "CUP_O_RU_Soldier_MG_M_VDV_EMR_V2", "CUP_O_RU_Soldier_Medic_M_VDV_EMR_V2", "CUP_O_RU_Officer_M_VDV_EMR_V2"};
+        crewmen[] = {"CUP_O_RU_Soldier_Crew_M_VDV_EMR_V2"};
         pilots[] = {"CUP_O_RU_Pilot_VDV_M_EMR"};
         technicals[] = {"CUP_O_UAZ_MG_RU", "CUP_O_UAZ_MG_RU", "CUP_O_UAZ_AGS30_RU", "CUP_O_UAZ_SPG9_RU", "CUP_O_GAZ_Vodnik_PK_RU", "CUP_O_GAZ_Vodnik_AGS_RU", "CUP_O_GAZ_Vodnik_KPVT_RU"};
         armour[] = {"CUP_O_BMP2_RU", "CUP_O_BMP3_RU", "CUP_O_T72_RU", "CUP_O_BTR90_RU", "CUP_O_GAZ_Vodnik_BPPU_RU", "CUP_O_T90_RU", "CUP_O_BTR80_GREEN_RU", "CUP_O_BTR80A_GREEN_RU"};
