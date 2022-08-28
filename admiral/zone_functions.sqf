@@ -92,7 +92,7 @@ adm_zone_fnc_initZoneName = {
 adm_zone_fnc_setZoneValueFromConfig = {
     params ["_zone", "_config"];
 
-    private ["_config", "_configName", "_configValue"];
+    DECLARE_2(_config,_configName,_configValue);
     call {
         if (_configName == "name")              exitWith {SET_ZONE_NAME(_zone,_configValue);};
         if (_configName == "type")              exitWith {SET_ZONE_TYPE(_zone,_configValue);};
