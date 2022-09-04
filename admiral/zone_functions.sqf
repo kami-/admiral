@@ -15,7 +15,7 @@ adm_zone_fnc_addEventHandlers = {
 };
 
 adm_zone_fnc_tryInitZone = {
-    DECLARE(_id) = [] call adm_id_fnc_nextId;
+    private _id = [] call adm_id_fnc_nextId;
     if (adm_isInitialized) then {
         DEBUG("admiral.zone.tryinit",FMT_2("Admiral is initialized. Initializing zone with ID '%1' and configs '%2'.",_id,_this));
         [_id, _this] call adm_zone_fnc_initZone;
@@ -28,9 +28,9 @@ adm_zone_fnc_tryInitZone = {
 };
 
 adm_zone_fnc_initZone = {
-    FUN_ARGS_2(_id,_configs);
+    params ["_id", "_configs"];
 
-    DECLARE(_zone) = if (typeName (_configs select 0) == "OBJECT") then {
+    private _zone = if (typeName (_configs select 0) == "OBJECT") then {
         DEBUG("admiral.zone.init",FMT_3("Initializing zone from trigger '%1' with ID '%2' and configs '%3'.",_configs select 0,_id,_configs select 1));
         [_id, _configs select 0, _configs select 1] call adm_zone_fnc_createTriggerZone;
     } else {
@@ -44,7 +44,7 @@ adm_zone_fnc_initZone = {
 };
 
 adm_zone_fnc_createTriggerZone = {
-    FUN_ARGS_3(_id,_trigger,_configs);
+    params ["_id", "_trigger", "_configs"];
 
     PUSH(_configs,AS_ARRAY_2("position",getPosATL _trigger));
     PUSH(_configs,AS_ARRAY_2("area",triggerArea _trigger));
@@ -53,9 +53,9 @@ adm_zone_fnc_createTriggerZone = {
 };
 
 adm_zone_fnc_getDefaultZoneFromType = {
-    FUN_ARGS_1(_configs);
+    params ["_configs"];
 
-    DECLARE(_zoneType) = (FIRST(_configs,{_x select 0 == "type"})) select 1;
+    private _zoneType = (FIRST(_configs,{_x select 0 == "type"})) select 1;
 
     call {
         if (_zoneType == "camp")    exitWith {DEFAULT_CAMP_VALUES};
@@ -65,9 +65,9 @@ adm_zone_fnc_getDefaultZoneFromType = {
 };
 
 adm_zone_fnc_createZone = {
-    FUN_ARGS_2(_id,_configs);
+    params ["_id", "_configs"];
 
-    DECLARE(_zone) = [_configs] call adm_zone_fnc_getDefaultZoneFromType;
+    private _zone = [_configs] call adm_zone_fnc_getDefaultZoneFromType;
     SET_ZONE_ID(_zone,_id);
     {
         [_zone,_x] call adm_zone_fnc_setZoneValueFromConfig;
@@ -80,9 +80,9 @@ adm_zone_fnc_createZone = {
 };
 
 adm_zone_fnc_initZoneName = {
-    FUN_ARGS_1(_zone);
+    params ["_zone"];
 
-    DECLARE(_zoneName) = GET_ZONE_NAME(_zone);
+    private _zoneName = GET_ZONE_NAME(_zone);
     if (_zoneName != "") then {
         _zone call compile format ["%1 = _this;", _zoneName];
     };
@@ -90,7 +90,7 @@ adm_zone_fnc_initZoneName = {
 };
 
 adm_zone_fnc_setZoneValueFromConfig = {
-    FUN_ARGS_2(_zone,_config);
+    params ["_zone", "_config"];
 
     DECLARE_2(_config,_configName,_configValue);
     call {
@@ -112,13 +112,13 @@ adm_zone_fnc_setZoneValueFromConfig = {
 };
 
 adm_zone_fnc_getZoneById = {
-    FUN_ARGS_1(_id);
+    params ["_id"];
 
     FIRST(adm_zones,{GET_ZONE_ID(_x) == _id});
 };
 
 adm_zone_initZoneFromModule = {
-    FUN_ARGS_3(_module,_activated,_configFunc);
+    params ["_module", "_activated", "_configFunc"];
 
     if (!_activated) exitWith {
         DEBUG("admiral.module.init",FMT_1("NOT initializing zone from module '%1', it was deactivated.",_module));
@@ -130,14 +130,14 @@ adm_zone_initZoneFromModule = {
     _triggers = [];
     FILTER_PUSH_ALL(_triggers,synchronizedObjects _module,{count triggerArea _x > 0});
     if (count _triggers == 0) then {
-        DECLARE(_configs) = +_moduleConfigs;
+        private _configs = +_moduleConfigs;
         _configs pushBack ["area", [_module] call adm_zone_getModuleArea];
         _configs pushBack ["position", getPosATL _module];
         _configs call adm_zone_fnc_tryInitZone;
         DEBUG("admiral.module.init",FMT_2("Initialized zone from module '%1' with configs '%2'.",_module,_configs));
     } else {
         {
-            DECLARE(_configs) = +_moduleConfigs;
+            private _configs = +_moduleConfigs;
             _configs pushBack ["area", triggerArea _x];
             _configs pushBack ["position", getPosATL _x];
             [_x, _configs] call adm_zone_fnc_tryInitZone;
@@ -147,39 +147,49 @@ adm_zone_initZoneFromModule = {
 };
 
 adm_zone_initCqcZoneFromModule = {
-    FUN_ARGS_3(_module,_ignored,_activated);
+    params ["_module", "", "_activated"];
 
     [_module, _activated, adm_zone_getCqcModuleConfigs] call adm_zone_initZoneFromModule;
+
+    true;
 };
 
 adm_zone_initPatrolZoneFromModule = {
-    FUN_ARGS_3(_module,_ignored,_activated);
+    params ["_module", "", "_activated"];
 
     [_module, _activated, adm_zone_getPatrolModuleConfigs] call adm_zone_initZoneFromModule;
+
+    true;
 };
 
 adm_zone_initPeriodicCampZoneFromModule = {
-    FUN_ARGS_3(_module,_ignored,_activated);
+    params ["_module", "", "_activated"];
 
     [_module, _activated, adm_zone_getPeriodicCampModuleConfigs] call adm_zone_initZoneFromModule;
+
+    true;
 };
 
 adm_zone_initOndemandCampZoneFromModule = {
-    FUN_ARGS_3(_module,_ignored,_activated);
+    params ["_module", "", "_activated"];
 
     [_module, _activated, adm_zone_getOndemandCampModuleConfigs] call adm_zone_initZoneFromModule;
+
+    true;
 };
 
 adm_zone_initRandomCampZoneFromModule = {
-    FUN_ARGS_3(_module,_ignored,_activated);
+    params ["_module", "", "_activated"];
 
     [_module, _activated, adm_zone_getRandomCampModuleConfigs] call adm_zone_initZoneFromModule;
+
+    true;
 };
 
 adm_zone_getModuleDefaultConfigs = {
-    FUN_ARGS_1(_module);
+    params ["_module"];
 
-    DECLARE(_configs) = [];
+    private _configs = [];
     {
         private ["_moduleVariableName", "_value"];
         _moduleVariableName = _x select 0;
@@ -193,9 +203,9 @@ adm_zone_getModuleDefaultConfigs = {
 };
 
 adm_zone_getModuleArea = {
-    FUN_ARGS_1(_module);
+    params ["_module"];
 
-    DECLARE(_area) = [];
+    private _area = [];
     _area pushBack (_module getVariable QUOTE(AXIS_A_ARG_CLASS));
     _area pushBack (_module getVariable QUOTE(AXIS_B_ARG_CLASS));
     _area pushBack (_module getVariable QUOTE(ANGLE_ARG_CLASS));
@@ -205,9 +215,9 @@ adm_zone_getModuleArea = {
 };
 
 adm_zone_getCqcModuleConfigs = {
-    FUN_ARGS_1(_module);
+    params ["_module"];
 
-    DECLARE(_configs) = [];
+    private _configs = [];
     _configs pushBack ["type", "cqc"];
     _configs pushBack ["pool", _module getVariable QUOTE(CQC_POOL_ARG_CLASS)];
     _configs pushBack ["minHeight", _module getVariable QUOTE(MIN_HEIGHT_ARG_CLASS)];
@@ -216,9 +226,9 @@ adm_zone_getCqcModuleConfigs = {
 };
 
 adm_zone_getPatrolModuleConfigs = {
-    FUN_ARGS_1(_module);
+    params ["_module"];
 
-    DECLARE(_configs) = [];
+    private _configs = [];
     PUSH_GROUP_TYPE_CONFIG("pool",_module,PATROL_POOL_MODULE_VARS,_configs);
     _configs pushBack ["type", "patrol"];
 
@@ -226,9 +236,9 @@ adm_zone_getPatrolModuleConfigs = {
 };
 
 adm_zone_getPeriodicCampModuleConfigs = {
-    FUN_ARGS_1(_module);
+    params ["_module"];
 
-    DECLARE(_configs) = [_module] call adm_zone_getCampModuleConfigs;
+    private _configs = [_module] call adm_zone_getCampModuleConfigs;
     _configs pushBack ["campType", "periodic"];
     PUSH_GROUP_TYPE_CONFIG("groupDelay",_module,PERIODIC_GROUP_DELAY_MODULE_VARS,_configs);
 
@@ -236,9 +246,9 @@ adm_zone_getPeriodicCampModuleConfigs = {
 };
 
 adm_zone_getOndemandCampModuleConfigs = {
-    FUN_ARGS_1(_module);
+    params ["_module"];
 
-    DECLARE(_configs) = [_module] call adm_zone_getCampModuleConfigs;
+    private _configs = [_module] call adm_zone_getCampModuleConfigs;
     _configs pushBack ["campType", "ondemand"];
     PUSH_GROUP_TYPE_CONFIG("spawnChance",_module,RANDOM_SPAWN_CHANCE_MODULE_VARS,_configs);
 
@@ -246,9 +256,9 @@ adm_zone_getOndemandCampModuleConfigs = {
 };
 
 adm_zone_getRandomCampModuleConfigs = {
-    FUN_ARGS_1(_module);
+    params ["_module"];
 
-    DECLARE(_configs) = [_module] call adm_zone_getCampModuleConfigs;
+    private _configs = [_module] call adm_zone_getCampModuleConfigs;
     _configs pushBack ["campType", "random"];
     PUSH_GROUP_TYPE_CONFIG("spawnChance",_module,RANDOM_SPAWN_CHANCE_MODULE_VARS,_configs);
 
@@ -256,9 +266,9 @@ adm_zone_getRandomCampModuleConfigs = {
 };
 
 adm_zone_getCampModuleConfigs = {
-    FUN_ARGS_1(_module);
+    params ["_module"];
 
-    DECLARE(_configs) = [];
+    private _configs = [];
     _configs pushBack ["type", "camp"];
     _configs pushBack ["campDelay", _module getVariable QUOTE(CAMP_DELAY_ARG_CLASS)];
     PUSH_GROUP_TYPE_CONFIG("pool",_module,CAMP_POOL_MODULE_VARS,_configs);

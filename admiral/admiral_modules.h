@@ -56,7 +56,7 @@
     category = "Admiral"; \
     function = FUNC; \
     functionPriority = 1; \
-    isGlobal = 1; \
+    isGlobal = 0; \
     isTriggerActivated = 1; \
     ARGS; \
  \
