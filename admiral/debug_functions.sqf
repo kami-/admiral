@@ -74,9 +74,10 @@ adm_debug_fnc_updateMovingGroupsStateMarkers = {
 
 adm_debug_fnc_deleteAllMovingGroupMarkers = {
     {
-        DECLARE(_groups) = _x;
+        private _groups = _x;
         {
-            DECLARE(_debugMarkers) = _x getVariable "adm_group_debugMarkers";
+            if (isNull _x) then { continue };
+            private _debugMarkers = _x getVariable "adm_group_debugMarkers";
             if (!isNil {_debugMarkers}) then {
                 [_x, _debugMarkers] call adm_debug_fnc_deleteMovingGroupMarkers;
             };
@@ -138,9 +139,10 @@ adm_debug_fnc_updateCqcGroupMarkers = {
 
 adm_debug_fnc_deleteAllCqcGroupMarkers = {
     {
-        DECLARE(_group) = _x;
+        private _group = _x;
+        if (isNull _x) then { continue };
         {
-            DECLARE(_debugMarker) = _x getVariable "adm_unit_debugMarker";
+            private _debugMarker = _x getVariable "adm_unit_debugMarker";
             if (!isNil {_debugMarker}) then {
                 [_x, _debugMarker] call adm_debug_fnc_deleteCqcUnitMarker;
             } else {
@@ -386,12 +388,14 @@ adm_debug_fnc_debugMonitor = {
 
 adm_debug_fnc_debugGroups = {
     {
-        DECLARE(_groups) = _x;
+        private _groups = _x;
         {
+            if (isNull _x) then { continue };
             [_x] call adm_debug_fnc_updateMovingGroupMarkers;
         } foreach _groups;
     } foreach MOVING_GROUPS;
     {
+        if (isNull _x) then { continue };
         [_x] call adm_debug_fnc_updateCqcGroupMarkers;
     } foreach adm_cqc_groups;
     [] call adm_debug_fnc_updateAllDebugCounterMarkers;
