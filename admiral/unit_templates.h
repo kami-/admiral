@@ -1691,4 +1691,52 @@ class UnitTemplates {
         ah[] = {"CUP_O_Ka60_GL_Blk_CSAT"};
     };
 
+    class WS_ION_PMC {
+        side = "west";
+        camouflage[] = {"woodland", "desert"};
+        infantry[] = {"B_ION_TL_lxWS", "B_ION_TL_lxWS", "B_ION_Soldier_GL_lxWS", "B_ION_Soldier_lxWS", "B_ION_Soldier_lxWS", "B_ION_soldier_AR_lxWS", "B_ION_Soldier_AT4_lxWS", "B_ION_medic_lxWS"};
+        crewmen[] = {"B_ION_crew_lxWS"};
+        pilots[] = {"B_ION_Helipilot_lxWS"};
+        technicals[] = {"B_ION_offroad_armed_lxWS"};
+        armour[] = {"B_ION_APC_Wheeled_01_command_lxWS", "B_ION_APC_Wheeled_02_hmg_lxWS", "B_ION_APC_Wheeled_02_hmg_lxWS"};
+        th[] = {"B_ION_Heli_Light_02_unarmed_lxWS"};
+        ah[] = {"CUP_I_Mi24_Mk4_AT_ION"};
+    };
+
+    class WS_UNA {
+        side = "west";
+        camouflage[] = {"desert"};
+        infantry[] = {"B_UN_Soldier_TL_lxWS", "B_UN_Soldier_TL_lxWS", "B_UN_Soldier_GL_lxWS", "B_UN_Soldier_GL_lxWS", "B_UN_Soldier_lxWS", "B_UN_Soldier_lxWS", "B_UN_HeavyGunner_lxWS", "B_UN_HeavyGunner_lxWS", "B_UN_Soldier_AT4_lxWS", "B_UN_medic_lxWS", "B_UN_officer_lxWS"};
+        crewmen[] = {"B_UN_crew_lxWS"};
+        pilots[] = {"B_UN_Helipilot_lxWS"};
+        technicals[] = {"B_UNA_APC_Wheeled_02_hmg_lxWS"};
+        armour[] = {"B_UN_APC_Wheeled_01_command_lxWS", "B_UN_APC_Wheeled_01_command_lxWS", "B_MBT_03_cannon_lxWS"};
+        th[] = {"B_UN_Heli_transport_02_lxWS"};
+        ah[] = {"CUP_I_Mi24_Mk4_UN"};
+    };
+
+    class WS_SFIA {
+        side = "east";
+        camouflage[] = {"desert"};
+        infantry[] = {"O_SFIA_Soldier_GL_lxWS", "O_SFIA_Soldier_GL_lxWS", "O_SFIA_soldier_lxWS", "O_SFIA_soldier_lxWS", "O_SFIA_Soldier_AR_lxWS", "O_SFIA_Soldier_AR_lxWS", "O_SFIA_soldier_RPG7_lxWS", "O_SFIA_medic_lxWS", "O_SFIA_officer_lxWS"};
+        crewmen[] = {"O_SFIA_crew_lxWS"};
+        pilots[] = {"O_SFIA_pilot_lxWS"};
+        technicals[] = {"O_SFIA_Offroad_armed_lxWS", "O_SFIA_Offroad_armed_lxWS", "O_SFIA_Offroad_AT_lxWS", "O_SFIA_Truck_02_aa_lxWS"};
+        armour[] = {"O_SFIA_APC_Wheeled_02_hmg_lxWS", "O_SFIA_APC_tracked_02_30mm_lxWS", "O_SFIA_APC_Tracked_02_cannon_lxWS", "O_SFIA_MBT_02_cannon_lxWS"};
+        th[] = {"O_Heli_Transport_04_covered_F"};
+        ah[] = {"O_SFIA_Heli_Attack_02_dynamicLoadout_lxWS"};
+    };
+
+    class WS_TURA {
+        side = "resistance";
+        camouflage[] = {"desert"};
+        infantry[] = {"I_SFIA_defector_lxWS", "I_Tura_deserter_lxWS", "I_SFIA_enforcer_lxWS", "I_SFIA_hireling_RPG7_lxWS", "I_Tura_HeavyGunner_lxWS", "I_SFIA_medic2_lxWS", "I_SFIA_watcher_lxWS"};
+        crewmen[] = {"I_SFIA_watcher_lxWS"};
+        pilots[] = {"I_SFIA_watcher_lxWS"};
+        technicals[] = {"I_Tura_Offroad_armor_armed_lxWS", "I_Tura_Offroad_armor_armed_lxWS", "I_Tura_Offroad_armor_AT_lxWS", "I_Tura_Truck_02_aa_lxWS"};
+        armour[] = {"CUP_I_T55_TK_GUE"};
+        th[] = {"CUP_I_UH1H_slick_TK_GUE"};
+        ah[] = {"CUP_I_UH1H_gunship_TK_GUE"};
+    };
+
 };
