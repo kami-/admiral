@@ -1739,4 +1739,316 @@ class UnitTemplates {
         ah[] = {"CUP_I_UH1H_gunship_TK_GUE"};
     };
 
+    class VN_AUS_ARMY {
+        side = "west";
+        camouflage[] = {};
+        infantry[] = {"vn_b_men_aus_army_66_01", "vn_b_men_aus_army_66_02", "vn_b_men_aus_army_66_16", "vn_b_men_aus_army_66_07", "vn_b_men_aus_army_66_17", "vn_b_men_aus_army_66_08", "vn_b_men_aus_army_66_09", "vn_b_men_aus_army_66_11", "vn_b_men_aus_army_66_12", "vn_b_men_aus_army_66_18", "vn_b_men_aus_army_66_21", "vn_b_men_aus_army_66_06", "vn_b_men_aus_army_66_03", "vn_b_men_aus_army_66_15"};
+        crewmen[] = {"vn_b_men_aus_army_66_23", "vn_b_men_aus_army_66_24"};
+        pilots[] = {"vn_b_men_aircrew_27", "vn_b_men_aircrew_34"};
+        technicals[] = {"vn_b_wheeled_m151_mg_02_aus_army", "vn_b_wheeled_m151_mg_02_aus_army", "vn_b_wheeled_m151_mg_06_aus_army"};
+        armour[] = {"vn_b_armor_m113_01_aus_army"};
+        th[] = {"vn_b_air_uh1d_02_06"};
+        ah[] = {"vn_b_air_uh1d_03_06"};
+    };
+
+    class VN_AUS_SAS {
+        side = "west";
+        camouflage[] = {};
+        infantry[] = {"vn_b_men_aus_sas_66_01", "vn_b_men_aus_sas_66_09", "vn_b_men_aus_sas_66_10", "vn_b_men_aus_sas_66_12", "vn_b_men_aus_sas_66_13", "vn_b_men_aus_sas_66_14", "vn_b_men_aus_sas_66_07", "vn_b_men_aus_sas_66_02", "vn_b_men_aus_sas_66_06"};
+        crewmen[] = {"vn_b_men_aus_army_66_23", "vn_b_men_aus_army_66_24"};
+        pilots[] = {"vn_b_men_aircrew_27", "vn_b_men_aircrew_34"};
+        technicals[] = {"vn_b_wheeled_m151_mg_03_aus_army", "vn_b_wheeled_m151_mg_02_aus_army", "vn_b_wheeled_m151_mg_06_aus_army"};
+        armour[] = {"vn_b_armor_m113_01_aus_army"};
+        th[] = {"vn_b_air_uh1d_02_06"};
+        ah[] = {"vn_b_air_uh1d_03_06"};
+    };
+
+    class VN_US_CIDG {
+        side = "west";
+        camouflage[] = {};
+        infantry[] = {"vn_b_men_cidg_01", "vn_b_men_cidg_07", "vn_b_men_cidg_11", "vn_b_men_cidg_17", "vn_b_men_cidg_06", "vn_b_men_cidg_14", "vn_b_men_cidg_19", "vn_b_men_cidg_09", "vn_b_men_cidg_vn_b_men_cidg_08", "vn_b_men_cidg_05", "vn_b_men_cidg_15", "vn_b_men_cidg_18", "vn_b_men_cidg_02", "vn_b_men_cidg_10", "vn_b_men_cidg_20"};
+        crewmen[] = {"vn_b_men_cidg_02"};
+        pilots[] = {"vn_b_men_aircrew_37", "vn_b_men_aircrew_38"};
+        technicals[] = {"vn_b_wheeled_m151_mg_02", "vn_b_wheeled_m151_mg_02", "vn_b_wheeled_m151_mg_06"};
+        armour[] = {"vn_b_wheeled_m151_mg_02", "vn_b_wheeled_m151_mg_02", "vn_b_wheeled_m151_mg_06"};
+        th[] = {"vn_b_air_uh1d_02_03"};
+        ah[] = {"vn_b_air_uh1c_01_03"};
+    };
+
+    class VN_US_SEAL {
+        side = "west";
+        camouflage[] = {};
+        infantry[] = {"vn_b_men_seal_51", "vn_b_men_seal_50", "vn_b_men_seal_43", "vn_b_men_seal_47", "vn_b_men_seal_48", "vn_b_men_seal_49", "vn_b_men_seal_25", "vn_b_men_seal_26", "vn_b_men_seal_45", "vn_b_men_seal_46", "vn_b_men_seal_24", "vn_b_men_seal_27", "vn_b_men_seal_44"};
+        crewmen[] = {"vn_b_men_seal_47"};
+        pilots[] = {"vn_b_men_aircrew_21", "vn_b_men_aircrew_22"};
+        technicals[] = {"vn_b_wheeled_m151_mg_02", "vn_b_wheeled_m151_mg_02", "vn_b_wheeled_m151_mg_06"};
+        armour[] = {"vn_b_wheeled_m151_mg_02", "vn_b_wheeled_m151_mg_02", "vn_b_wheeled_m151_mg_06"};
+        th[] = {"vn_b_air_uh1c_07_05"};
+        ah[] = {"vn_b_air_uh1b_02_05"};
+    };
+
+    class VN_US_SEAL_BLUE {
+        side = "west";
+        camouflage[] = {};
+        infantry[] = {"vn_b_men_seal_07", "vn_b_men_seal_08", "vn_b_men_seal_12", "vn_b_men_seal_10", "vn_b_men_seal_11", "vn_b_men_seal_14", "vn_b_men_seal_15", "vn_b_men_seal_03", "vn_b_men_seal_09", "vn_b_men_seal_05", "vn_b_men_seal_16", "vn_b_men_seal_17", "vn_b_men_seal_02", "vn_b_men_seal_06", "vn_b_men_seal_04"};
+        crewmen[] = {"vn_b_men_seal_10"};
+        pilots[] = {"vn_b_men_aircrew_21", "vn_b_men_aircrew_22"};
+        technicals[] = {"vn_b_wheeled_m151_mg_02", "vn_b_wheeled_m151_mg_02", "vn_b_wheeled_m151_mg_06"};
+        armour[] = {"vn_b_wheeled_m151_mg_02", "vn_b_wheeled_m151_mg_02", "vn_b_wheeled_m151_mg_06"};
+        th[] = {"vn_b_air_uh1c_07_05"};
+        ah[] = {"vn_b_air_uh1b_02_05"};
+    };
+
+    class VN_US_SOG {
+        side = "west";
+        camouflage[] = {};
+        infantry[] = {"vn_b_men_sog_04", "vn_b_men_sog_07", "vn_b_men_sog_11", "vn_b_men_sog_28", "vn_b_men_sog_14", "vn_b_men_sog_08", "vn_b_men_sog_20", "vn_b_men_sog_05", "vn_b_men_sog_16", "vn_b_men_sog_03", "vn_b_men_sog_13", "vn_b_men_sog_06", "vn_b_men_sog_10"};
+        crewmen[] = {"vn_b_men_sog_13"};
+        pilots[] = {"vn_b_men_aircrew_17", "vn_b_men_aircrew_18"};
+        technicals[] = {"vn_b_wheeled_m151_mg_02", "vn_b_wheeled_m151_mg_02", "vn_b_wheeled_m151_mg_06"};
+        armour[] = {"vn_b_wheeled_m151_mg_04", "vn_b_wheeled_m54_mg_01", "vn_b_wheeled_m54_mg_03"};
+        th[] = {"vn_b_air_uh1d_02_01"};
+        ah[] = {"vn_b_air_uh1c_05_01"};
+    };
+
+    class VN_US_MIKE {
+        side = "west";
+        camouflage[] = {};
+        infantry[] = {"vn_b_men_sf_14", "vn_b_men_sf_17", "vn_b_men_sf_01", "vn_b_men_sf_03", "vn_b_men_sf_15", "vn_b_men_sf_16", "vn_b_men_sf_13", "vn_b_men_sf_02"};
+        crewmen[] = {"vn_b_men_sf_14"};
+        pilots[] = {"vn_b_men_aircrew_17", "vn_b_men_aircrew_18"};
+        technicals[] = {"vn_b_wheeled_m151_mg_02", "vn_b_wheeled_m151_mg_02", "vn_b_wheeled_m151_mg_06"};
+        armour[] = {"vn_b_wheeled_m151_mg_04", "vn_b_wheeled_m54_mg_01", "vn_b_wheeled_m54_mg_03"};
+        th[] = {"vn_b_air_uh1d_02_01"};
+        ah[] = {"vn_b_air_uh1c_05_01"};
+    };
+
+    class VN_US_ARMY {
+        side = "west";
+        camouflage[] = {};
+        infantry[] = {"vn_b_men_army_02", "vn_b_men_army_08", "vn_b_men_army_07", "vn_b_men_army_17", "vn_b_men_army_15", "vn_b_men_army_16", "vn_b_men_army_18", "vn_b_men_army_19", "vn_b_men_army_20", "vn_b_men_army_21", "vn_b_men_army_06", "vn_b_men_army_27", "vn_b_men_army_12", "vn_b_men_army_03", "vn_b_men_army_01"};
+        crewmen[] = {"vn_b_men_army_23", "vn_b_men_army_24", "vn_b_men_army_25"};
+        pilots[] = {"vn_b_men_aircrew_05", "vn_b_man_aircrew_06"};
+        technicals[] = {"vn_b_wheeled_m151_mg_02", "vn_b_wheeled_m151_mg_02", "vn_b_wheeled_m151_mg_06"};
+        armour[] = {"vn_b_armor_m113_acav_04", "vn_b_armor_m113_acav_02", "vn_b_armor_m113_acav_01", "vn_b_armor_m113_acav_06", "vn_b_armor_m113_acav_03", "vn_b_armor_m113_acav_05", "vn_b_armor_m113_01", "vn_b_armor_m41_01_01"};
+        th[] = {"vn_b_air_uh1d_02_01"};
+        ah[] = {"vn_b_air_ah1g_04"};
+    };
+
+    class VN_US_USMC {
+        side = "west";
+        camouflage[] = {};
+        infantry[] = {"vn_b_men_army_02", "vn_b_men_army_08", "vn_b_men_army_07", "vn_b_men_army_17", "vn_b_men_army_15", "vn_b_men_army_16", "vn_b_men_army_18", "vn_b_men_army_19", "vn_b_men_army_20", "vn_b_men_army_21", "vn_b_men_army_06", "vn_b_men_army_27", "vn_b_men_army_12", "vn_b_men_army_03", "vn_b_men_army_01"};
+        crewmen[] = {"vn_b_men_army_23", "vn_b_men_army_24", "vn_b_men_army_25"};
+        pilots[] = {"vn_b_men_aircrew_09", "vn_b_man_aircrew_10"};
+        technicals[] = {"vn_b_wheeled_m151_mg_02", "vn_b_wheeled_m151_mg_02", "vn_b_wheeled_m151_mg_06"};
+        armour[] = {"vn_b_armor_m113_acav_04", "vn_b_armor_m113_acav_02", "vn_b_armor_m113_acav_01", "vn_b_armor_m113_acav_06", "vn_b_armor_m113_acav_03", "vn_b_armor_m113_acav_05", "vn_b_armor_m113_01", "vn_b_armor_m41_01_01"};
+        th[] = {"vn_b_air_ch34_03_01"};
+        ah[] = {"vn_b_air_ch34_04_02"};
+    };
+
+    class VN_NZ_SAS {
+        side = "west";
+        camouflage[] = {};
+        infantry[] = {"vn_b_men_nz_sas_70_01", "vn_b_men_nz_sas_70_09", "vn_b_men_nz_sas_70_10", "vn_b_men_nz_sas_70_07", "vn_b_men_nz_sas_70_12", "vn_b_men_nz_sas_70_13", "vn_b_men_nz_sas_70_14", "vn_b_men_nz_sas_70_08", "vn_b_men_nz_sas_70_06"};
+        crewmen[] = {"vn_b_men_aus_army_66_23", "vn_b_men_aus_army_66_24"};
+        pilots[] = {"vn_b_men_aircrew_27", "vn_b_men_aircrew_34"};
+        technicals[] = {"vn_b_wheeled_m151_mg_02_nz_army", "vn_b_wheeled_m151_mg_06_nz_army", "vn_b_wheeled_m151_03_nz_army"};
+        armour[] = {"vn_b_armor_m113_01_aus_army"};
+        th[] = {"vn_b_air_uh1d_02_06"};
+        ah[] = {"vn_b_air_uh1d_03_06"};
+    };
+
+    class VN_NZ_ARMY {
+        side = "west";
+        camouflage[] = {};
+        infantry[] = {"vn_b_men_nz_army_70_02", "vn_b_men_nz_army_70_14", "vn_b_men_nz_army_70_02", "vn_b_men_nz_army_70_07", "vn_b_men_nz_army_70_08", "vn_b_men_nz_army_70_09", "vn_b_men_nz_army_70_12", "vn_b_men_nz_army_70_16", "vn_b_men_nz_army_70_19", "vn_b_men_nz_army_70_06", "vn_b_men_nz_army_70_03", "vn_b_men_nz_army_70_13", "vn_b_men_nz_army_70_01"};
+        crewmen[] = {"vn_b_men_aus_army_66_23", "vn_b_men_aus_army_66_24"};
+        pilots[] = {"vn_b_men_aircrew_27", "vn_b_men_aircrew_34"};
+        technicals[] = {"vn_b_wheeled_m151_mg_02_nz_army", "vn_b_wheeled_m151_mg_02_nz_army", "vn_b_wheeled_m151_mg_06_nz_army"};
+        armour[] = {"vn_b_armor_m113_01_aus_army"};
+        th[] = {"vn_b_air_uh1d_02_06"};
+        ah[] = {"vn_b_air_uh1d_03_06"};
+    };
+
+    class VN_ROK_ARMY_EARLY {
+        side = "west";
+        camouflage[] = {};
+        infantry[] = {"vn_b_men_rok_army_65_02", "vn_b_men_rok_army_65_07", "vn_b_men_rok_army_65_17", "vn_b_men_rok_army_65_15", "vn_b_men_rok_army_65_16", "vn_b_men_rok_army_65_18", "vn_b_men_rok_army_65_19", "vn_b_men_rok_army_65_20", "vn_b_men_rok_army_65_21", "vn_b_men_rok_army_65_12", "vn_b_men_rok_army_65_06", "vn_b_men_rok_army_65_27", "vn_b_men_rok_army_65_03", "vn_b_men_rok_army_65_08", "vn_b_men_rok_army_65_01"};
+        crewmen[] = {"vn_b_men_rok_army_65_14", "vn_b_men_rok_army_65_13"};
+        pilots[] = {"vn_b_men_aircrew_21", "vn_b_men_aircrew_22"};
+        technicals[] = {"vn_b_wheeled_m151_mg_01_rok_army", "vn_b_wheeled_m151_mg_02_rok_army", "vn_b_wheeled_m151_mg_06_rok_army"};
+        armour[] = {"vn_b_armor_m113_acav_01_rok_army", "vn_b_armor_m113_acav_02_rok_army", "vn_b_armor_m113_acav_04_rok_army", "vn_b_armor_m113_acav_06_rok_army", "vn_b_armor_m113_acav_03_rok_army", "vn_b_armor_m113_acav_05_rok_army", "vn_b_armor_m113_01_rok_army"};
+        th[] = {"vn_b_air_uh1c_07_01"};
+        ah[] = {"vn_b_air_uh1c_04_01"};
+    };
+
+    class VN_ROK_ARMY {
+        side = "west";
+        camouflage[] = {};
+        infantry[] = {"vn_b_men_rok_army_68_02", "vn_b_men_rok_army_68_07", "vn_b_men_rok_army_68_17", "vn_b_men_rok_army_68_15", "vn_b_men_rok_army_68_16", "vn_b_men_rok_army_68_18", "vn_b_men_rok_army_68_19", "vn_b_men_rok_army_68_20", "vn_b_men_rok_army_68_21", "vn_b_men_rok_army_68_12", "vn_b_men_rok_army_68_06", "vn_b_men_rok_army_68_27", "vn_b_men_rok_army_68_03", "vn_b_men_rok_army_68_08", "vn_b_men_rok_army_68_01"};
+        crewmen[] = {"vn_b_men_rok_army_68_25", "vn_b_men_rok_army_68_24"};
+        pilots[] = {"vn_b_men_aircrew_21", "vn_b_men_aircrew_22"};
+        technicals[] = {"vn_b_wheeled_m151_mg_01_rok_army", "vn_b_wheeled_m151_mg_02_rok_army", "vn_b_wheeled_m151_mg_06_rok_army"};
+        armour[] = {"vn_b_armor_m113_acav_01_rok_army", "vn_b_armor_m113_acav_02_rok_army", "vn_b_armor_m113_acav_04_rok_army", "vn_b_armor_m113_acav_06_rok_army", "vn_b_armor_m113_acav_03_rok_army", "vn_b_armor_m113_acav_05_rok_army", "vn_b_armor_m113_01_rok_army"};
+        th[] = {"vn_b_air_uh1c_07_01"};
+        ah[] = {"vn_b_air_uh1c_04_01"};
+    };
+
+    class VN_ROK_MARINE_EARLY {
+        side = "west";
+        camouflage[] = {};
+        infantry[] = {"vn_b_men_rok_marine_65_02", "vn_b_men_rok_marine_65_07", "vn_b_men_rok_marine_65_17", "vn_b_men_rok_marine_65_15", "vn_b_men_rok_marine_65_16", "vn_b_men_rok_marine_65_18", "vn_b_men_rok_marine_65_19", "vn_b_men_rok_marine_65_20", "vn_b_men_rok_marine_65_21", "vn_b_men_rok_marine_65_12", "vn_b_men_rok_marine_65_06", "vn_b_men_rok_marine_65_27", "vn_b_men_rok_marine_65_03", "vn_b_men_rok_marine_65_08", "vn_b_men_rok_marine_65_01"};
+        crewmen[] = {"vn_b_men_rok_marine_65_14", "vn_b_men_rok_marine_65_13"};
+        pilots[] = {"vn_b_men_aircrew_21", "vn_b_men_aircrew_22"};
+        technicals[] = {"vn_b_wheeled_m151_mg_01_rok_marines", "vn_b_wheeled_m151_mg_02_rok_marines", "vn_b_wheeled_m151_mg_06_rok_marines"};
+        armour[] = {"vn_b_wheeled_m151_mg_01_rok_marines", "vn_b_wheeled_m151_mg_02_rok_marines", "vn_b_wheeled_m151_mg_06_rok_marines"};
+        th[] = {"vn_b_air_uh1c_07_01"};
+        ah[] = {"vn_b_air_uh1c_04_01"};
+    };
+
+    class VN_ROK_MARINE {
+        side = "west";
+        camouflage[] = {};
+        infantry[] = {"vn_b_men_rok_marine_68_02", "vn_b_men_rok_marine_68_07", "vn_b_men_rok_marine_68_17", "vn_b_men_rok_marine_68_15", "vn_b_men_rok_marine_68_16", "vn_b_men_rok_marine_68_18", "vn_b_men_rok_marine_68_19", "vn_b_men_rok_marine_68_20", "vn_b_men_rok_marine_68_21", "vn_b_men_rok_marine_68_12", "vn_b_men_rok_marine_68_06", "vn_b_men_rok_marine_68_27", "vn_b_men_rok_marine_68_03", "vn_b_men_rok_marine_68_08", "vn_b_men_rok_marine_68_01"};
+        crewmen[] = {"vn_b_men_rok_marine_68_14", "vn_b_men_rok_marine_68_13"};
+        pilots[] = {"vn_b_men_aircrew_21", "vn_b_men_aircrew_22"};
+        technicals[] = {"vn_b_wheeled_m151_mg_01_rok_marines", "vn_b_wheeled_m151_mg_02_rok_marines", "vn_b_wheeled_m151_mg_06_rok_marines"};
+        armour[] = {"vn_b_wheeled_m151_mg_01_rok_marines", "vn_b_wheeled_m151_mg_02_rok_marines", "vn_b_wheeled_m151_mg_06_rok_marines"};
+        th[] = {"vn_b_air_uh1c_07_01"};
+        ah[] = {"vn_b_air_uh1c_04_01"};
+    };
+
+    class VN_LAO_PL {
+        side = "east";
+        camouflage[] = {};
+        infantry[] = {"vn_o_men_pl_21", "vn_o_men_pl_23", "vn_o_men_pl_22", "vn_o_men_pl_07", "vn_o_men_pl_27", "vn_o_men_pl_04", "vn_o_men_pl_05", "vn_o_men_pl_03", "vn_o_men_pl_02", "vn_o_men_pl_06", "vn_o_men_pl_12", "vn_o_men_pl_14", "vn_o_men_pl_26", "vn_o_men_pl_25", "vn_o_men_pl_11", "vn_o_men_pl_28", "vn_o_men_pl_08", "vn_o_men_pl_13", "vn_o_men_pl_01"};
+        crewmen[] = {"vn_o_men_pl_18", "vn_o_men_pl_19", "vn_o_men_pl_20"};
+        pilots[] = {"vn_o_men_aircrew_01", "vn_o_men_aircrew_02"};
+        technicals[] = {"vn_o_wheeled_btr40_mg_01_pl", "vn_o_wheeled_btr40_mg_02_pl", "vn_o_wheeled_btr40_mg_03_pl", "vn_o_wheeled_z157_mg_01_pl", "vn_o_wheeled_z157_mg_02_pl"};
+        armour[] = {"vn_o_armor_pt76a_01_pl"};
+        th[] = {"vn_o_air_mi2_01_03"};
+        ah[] = {"vn_o_air_mi2_04_02"};
+    };
+
+    class VN_NV_NVA_DC {
+        side = "east";
+        camouflage[] = {};
+        infantry[] = {"vn_o_men_nva_dc_07", "vn_o_men_nva_dc_06", "vn_o_men_nva_dc_03", "vn_o_men_nva_dc_04", "vn_o_men_nva_dc_02", "vn_o_men_nva_dc_05", "vn_o_men_nva_dc_12", "vn_o_men_nva_dc_14", "vn_o_men_nva_dc_11", "vn_o_men_nva_dc_09", "vn_o_men_nva_dc_08", "vn_o_men_nva_dc_13", "vn_o_men_nva_dc_01"};
+        crewmen[] = {"vn_o_men_nva_65_38", "vn_o_men_nva_65_39", "vn_o_men_nva_65_40"};
+        pilots[] = {"vn_o_men_aircrew_01", "vn_o_men_aircrew_02"};
+        technicals[] = {"vn_o_wheeled_btr40_mg_01_nva65", "vn_o_wheeled_btr40_mg_02_nva65", "vn_o_wheeled_btr40_mg_03_nva65"};
+        armour[] = {"vn_o_armor_pt76a_01_nva65", "vn_o_armor_pt76b_01_nva65", "vn_o_armor_type63_01_nva65"};
+        th[] = {"vn_o_air_mi2_01_03"};
+        ah[] = {"vn_o_air_mi2_04_02"};
+    };
+
+    class VN_NV_NVA_EARLY {
+        side = "east";
+        camouflage[] = {};
+        infantry[] = {"vn_o_men_nva_65_21", "vn_o_men_nva_65_20", "vn_o_men_nva_65_17", "vn_o_men_nva_65_16", "vn_o_men_nva_65_19", "vn_o_men_nva_65_18", "vn_o_men_nva_65_28", "vn_o_men_nva_65_25", "vn_o_men_nva_65_26", "vn_o_men_nva_65_22", "vn_o_men_nva_65_27", "vn_o_men_nva_65_15"};
+        crewmen[] = {"vn_o_men_nva_65_38", "vn_o_men_nva_65_39", "vn_o_men_nva_65_40"};
+        pilots[] = {"vn_o_men_aircrew_01", "vn_o_men_aircrew_02"};
+        technicals[] = {"vn_o_wheeled_btr40_mg_01_nva65", "vn_o_wheeled_btr40_mg_02_nva65", "vn_o_wheeled_btr40_mg_03_nva65"};
+        armour[] = {"vn_o_armor_pt76a_01_nva65", "vn_o_armor_pt76b_01_nva65", "vn_o_armor_type63_01_nva65"};
+        th[] = {"vn_o_air_mi2_01_03"};
+        ah[] = {"vn_o_air_mi2_04_02"};
+    };
+
+    class VN_NV_NVA {
+        side = "east";
+        camouflage[] = {};
+        infantry[] = {"vn_o_men_nva_07", "vn_o_men_nva_06", "vn_o_men_nva_03", "vn_o_men_nva_02", "vn_o_men_nva_05", "vn_o_men_nva_04", "vn_o_men_nva_12", "vn_o_men_nva_14", "vn_o_men_nva_11", "vn_o_men_nva_13", "vn_o_men_nva_08", "vn_o_men_nva_01"};
+        crewmen[] = {"vn_o_men_nva_37", "vn_o_men_nva_38", "vn_o_men_nva_39"};
+        pilots[] = {"vn_o_men_aircrew_01", "vn_o_men_aircrew_02"};
+        technicals[] = {"vn_o_wheeled_btr40_mg_01_nva65", "vn_o_wheeled_btr40_mg_02_nva65", "vn_o_wheeled_btr40_mg_03_nva65"};
+        armour[] = {"vn_o_armor_pt76a_01_nva65", "vn_o_armor_pt76b_01_nva65", "vn_o_armor_type63_01_nva65"};
+        th[] = {"vn_o_air_mi2_01_03"};
+        ah[] = {"vn_o_air_mi2_04_02"};
+    };
+
+    class VN_NV_VPNM {
+        side = "east";
+        camouflage[] = {};
+        infantry[] = {"vn_o_men_nva_marine_07", "vn_o_men_nva_marine_06", "vn_o_men_nva_marine_03", "vn_o_men_nva_marine_02", "vn_o_men_nva_marine_05", "vn_o_men_nva_marine_04", "vn_o_men_nva_marine_12", "vn_o_men_nva_marine_14", "vn_o_men_nva_marine_11", "vn_o_men_nva_marine_08", "vn_o_men_nva_marine_13", "vn_o_men_nva_marine_01"};
+        crewmen[] = {"vn_o_men_nva_navy_09"};
+        pilots[] = {"vn_o_men_aircrew_01", "vn_o_men_aircrew_02"};
+        technicals[] = {"vn_o_wheeled_btr40_mg_01_nva65", "vn_o_wheeled_btr40_mg_02_nva65", "vn_o_wheeled_btr40_mg_03_nva65"};
+        armour[] = {"vn_o_armor_pt76a_01_nva65", "vn_o_armor_pt76b_01_nva65", "vn_o_armor_type63_01_nva65"};
+        th[] = {"vn_o_air_mi2_01_02"};
+        ah[] = {"vn_o_air_mi2_04_01"};
+    };
+
+    class VN_NV_VC {
+        side = "east";
+        camouflage[] = {};
+        infantry[] = {"vn_o_men_vc_07", "vn_o_men_vc_04", "vn_o_men_vc_05", "vn_o_men_vc_03", "vn_o_men_vc_02", "vn_o_men_vc_06", "vn_o_men_vc_14", "vn_o_men_vc_11", "vn_o_men_vc_08", "vn_o_men_vc_13", "vn_o_men_vc_01", "vn_o_men_vc_regional_07", "vn_o_men_vc_regional_04", "vn_o_men_vc_regional_03", "vn_o_men_vc_regional_02", "vn_o_men_vc_regional_06", "vn_o_men_vc_regional_05", "vn_o_men_vc_regional_14", "vn_o_men_vc_regional_11", "vn_o_men_vc_regional_08", "vn_o_men_vc_regional_13", "vn_o_men_vc_regional_01"};
+        crewmen[] = {"vn_o_men_vc_regional_05"};
+        pilots[] = {"vn_o_men_aircrew_01", "vn_o_men_aircrew_02"};
+        technicals[] = {"vn_o_wheeled_btr40_mg_01_nva65", "vn_o_wheeled_btr40_mg_02_nva65", "vn_o_wheeled_btr40_mg_03_nva65"};
+        armour[] = {"vn_o_armor_pt76a_01_nva65", "vn_o_armor_pt76b_01_nva65", "vn_o_armor_type63_01_nva65"};
+        th[] = {"vn_o_air_mi2_01_03"};
+        ah[] = {"vn_o_air_mi2_04_02"};
+    };
+
+    class VN_SV_ARVN {
+        side = "resistance";
+        camouflage[] = {};
+        infantry[] = {"vn_i_men_army_02", "vn_i_men_army_07", "vn_i_men_army_15", "vn_i_men_army_16", "vn_i_men_army_18", "vn_i_men_army_19", "vn_i_men_army_20", "vn_i_men_army_21", "vn_i_men_army_12", "vn_i_men_army_06", "vn_i_men_army_11", "vn_i_men_army_03", "vn_i_men_army_08", "vn_i_men_army_01"};
+        crewmen[] = {"vn_i_men_army_23", "vn_i_men_army_24", "vn_i_men_army_25"};
+        pilots[] = {"vn_i_men_aircrew_01", "vn_i_men_aircrew_02"};
+        technicals[] = {"vn_i_wheeled_m151_mg_01", "vn_i_wheeled_m151_mg_06", "vn_i_wheeled_m151_mg_02_marines"};
+        armour[] = {"vn_i_armor_m41_01", "vn_armor_m113_acav_04", "vn_armor_m113_acav_02", "vn_armor_m113_acav_01", "vn_armor_m113_acav_06", "vn_armor_m113_acav_03", "vn_armor_m113_acav_05", "vn_i_armor_m113_01"};
+        th[] = {"vn_i_air_ch34_01_02"};
+        ah[] = {"vn_i_air_uh1c_02_01"};
+    };
+
+    class VN_SV_LLDB {
+        side = "resistance";
+        camouflage[] = {};
+        infantry[] = {"vn_i_men_sf_02", "vn_i_men_sf_07", "vn_i_men_sf_12", "vn_i_men_sf_06", "vn_i_men_sf_11", "vn_i_men_sf_03", "vn_i_men_sf_08", "vn_i_men_sf_01"};
+        crewmen[] = {"vn_i_men_sf_02"};
+        pilots[] = {"vn_i_men_aircrew_01", "vn_i_men_aircrew_02"};
+        technicals[] = {"vn_i_wheeled_m151_mg_01", "vn_i_wheeled_m151_mg_06", "vn_i_wheeled_m151_mg_02_marines"};
+        armour[] = {"vn_i_wheeled_m151_mg_01", "vn_i_wheeled_m151_mg_06", "vn_i_wheeled_m151_mg_02_marines"};
+        th[] = {"vn_i_air_uh1d_02_01"};
+        ah[] = {"vn_i_air_uh1c_01_01"};
+    };
+
+    class VN_SV_RANGER {
+        side = "resistance";
+        camouflage[] = {};
+        infantry[] = {"vn_i_men_ranger_02", "vn_i_men_ranger_07", "vn_i_men_ranger_17", "vn_i_men_ranger_15", "vn_i_men_ranger_16", "vn_i_men_ranger_18", "vn_i_men_ranger_19", "vn_i_men_ranger_20", "vn_i_men_ranger_21", "vn_i_men_ranger_12", "vn_i_men_ranger_06", "vn_i_men_ranger_11", "vn_i_men_ranger_03", "vn_i_men_ranger_08", "vn_i_men_ranger_01"};
+        crewmen[] = {"vn_i_men_army_23", "vn_i_men_army_24", "vn_i_men_army_25"};
+        pilots[] = {"vn_i_men_aircrew_01", "vn_i_men_aircrew_02"};
+        technicals[] = {"vn_i_wheeled_m151_mg_01", "vn_i_wheeled_m151_mg_06", "vn_i_wheeled_m151_mg_02_marines"};
+        armour[] = {"vn_i_armor_m41_01", "vn_armor_m113_acav_04", "vn_armor_m113_acav_02", "vn_armor_m113_acav_01", "vn_armor_m113_acav_06", "vn_armor_m113_acav_03", "vn_armor_m113_acav_05", "vn_i_armor_m113_01"};
+        th[] = {"vn_i_air_uh1d_02_01"};
+        ah[] = {"vn_i_air_uh1c_02_01"};
+    };
+
+    class VN_SV_MARINE {
+        side = "resistance";
+        camouflage[] = {};
+        infantry[] = {"vn_i_men_marine_02", "vn_i_men_marine_07", "vn_i_men_marine_17", "vn_i_men_marine_15", "vn_i_men_marine_16", "vn_i_men_marine_18", "vn_i_men_marine_19", "vn_i_men_marine_20", "vn_i_men_marine_21", "vn_i_men_marine_12", "vn_i_men_marine_06", "vn_i_men_marine_11", "vn_i_men_marine_03", "vn_i_men_marine_08", "vn_i_men_marine_01"};
+        crewmen[] = {"vn_i_men_army_23", "vn_i_men_army_24", "vn_i_men_army_25"};
+        pilots[] = {"vn_i_men_aircrew_01", "vn_i_men_aircrew_02"};
+        technicals[] = {"vn_i_wheeled_m151_mg_01", "vn_i_wheeled_m151_mg_06", "vn_i_wheeled_m151_mg_02_marines"};
+        armour[] = {"vn_i_armor_m41_01", "vn_armor_m113_acav_04", "vn_armor_m113_acav_02", "vn_armor_m113_acav_01", "vn_armor_m113_acav_06", "vn_armor_m113_acav_03", "vn_armor_m113_acav_05", "vn_i_armor_m113_01"};
+        th[] = {"vn_i_air_ch32_02_01"};
+        ah[] = {"vn_i_air_uh1c_02_01"};
+    };
+
+    class VN_LAO_RLA {
+        side = "resistance";
+        camouflage[] = {};
+        infantry[] = {"vn_i_men_rla_02", "vn_i_men_rla_07", "vn_i_men_rla_17", "vn_i_men_rla_15", "vn_i_men_rla_16", "vn_i_men_rla_18", "vn_i_men_rla_19", "vn_i_men_rla_20", "vn_i_men_rla_21", "vn_i_men_rla_09", "vn_i_men_rla_12", "vn_i_men_rla_06", "vn_i_men_rla_11", "vn_i_men_rla_03", "vn_i_men_rla_08", "vn_i_men_rla_01"};
+        crewmen[] = {"vn_i_men_rla_14", "vn_i_men_rla_13"};
+        pilots[] = {"vn_i_men_aircrew_01", "vn_i_men_aircrew_02"};
+        technicals[] = {"vn_i_wheeled_m151_mg_01_rla", "vn_i_wheeled_m151_mg_02_rla", "vn_i_wheeled_m151_mg_06_rla"};
+        armour[] = {"vn_i_wheeled_m151_mg_01_rla", "vn_i_wheeled_m151_mg_02_rla", "vn_i_wheeled_m151_mg_06_rla"};
+        th[] = {"vn_b_air_uh1c_07_01"};
+        ah[] = {"vn_b_air_uh1c_04_01"};
+    };
+
 };
