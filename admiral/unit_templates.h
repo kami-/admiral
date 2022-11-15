@@ -1898,7 +1898,7 @@ class UnitTemplates {
     class VN_ROK_MARINE_EARLY {
         side = "west";
         camouflage[] = {};
-        infantry[] = {"vn_b_men_rok_marine_65_02", "vn_b_men_rok_marine_65_07", "vn_b_men_rok_marine_65_17", "vn_b_men_rok_marine_65_15", "vn_b_men_rok_marine_65_16", "vn_b_men_rok_marine_65_18", "vn_b_men_rok_marine_65_19", "vn_b_men_rok_marine_65_20", "vn_b_men_rok_marine_65_21", "vn_b_men_rok_marine_65_12", "vn_b_men_rok_marine_65_06", "vn_b_men_rok_marine_65_27", "vn_b_men_rok_marine_65_03", "vn_b_men_rok_marine_65_08", "vn_b_men_rok_marine_65_01"};
+        infantry[] = {"vn_b_men_rok_marine_65_02", "vn_b_men_rok_marine_65_07", "vn_b_men_rok_marine_65_17", "vn_b_men_rok_marine_65_15", "vn_b_men_rok_marine_65_16", "vn_b_men_rok_marine_65_18", "vn_b_men_rok_marine_65_19", "vn_b_men_rok_marine_65_20", "vn_b_men_rok_marine_65_21", "vn_b_men_rok_marine_65_12", "vn_b_men_rok_marine_65_06", "vn_b_men_rok_marine_65_03", "vn_b_men_rok_marine_65_08", "vn_b_men_rok_marine_65_01"};
         crewmen[] = {"vn_b_men_rok_marine_65_14", "vn_b_men_rok_marine_65_13"};
         pilots[] = {"vn_b_men_aircrew_21", "vn_b_men_aircrew_22"};
         technicals[] = {"vn_b_wheeled_m151_mg_01_rok_marines", "vn_b_wheeled_m151_mg_02_rok_marines", "vn_b_wheeled_m151_mg_06_rok_marines"};
