@@ -1766,7 +1766,7 @@ class UnitTemplates {
     class VN_US_CIDG {
         side = "west";
         camouflage[] = {};
-        infantry[] = {"vn_b_men_cidg_01", "vn_b_men_cidg_07", "vn_b_men_cidg_11", "vn_b_men_cidg_17", "vn_b_men_cidg_06", "vn_b_men_cidg_14", "vn_b_men_cidg_19", "vn_b_men_cidg_09", "vn_b_men_cidg_vn_b_men_cidg_08", "vn_b_men_cidg_05", "vn_b_men_cidg_15", "vn_b_men_cidg_18", "vn_b_men_cidg_02", "vn_b_men_cidg_10", "vn_b_men_cidg_20"};
+        infantry[] = {"vn_b_men_cidg_01", "vn_b_men_cidg_07", "vn_b_men_cidg_11", "vn_b_men_cidg_17", "vn_b_men_cidg_06", "vn_b_men_cidg_14", "vn_b_men_cidg_19", "vn_b_men_cidg_09", "vn_b_men_cidg_08", "vn_b_men_cidg_05", "vn_b_men_cidg_15", "vn_b_men_cidg_18", "vn_b_men_cidg_02", "vn_b_men_cidg_10", "vn_b_men_cidg_20"};
         crewmen[] = {"vn_b_men_cidg_02"};
         pilots[] = {"vn_b_men_aircrew_37", "vn_b_men_aircrew_38"};
         technicals[] = {"vn_b_wheeled_m151_mg_02", "vn_b_wheeled_m151_mg_02", "vn_b_wheeled_m151_mg_06"};
