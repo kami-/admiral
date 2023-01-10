@@ -43,7 +43,7 @@
 
 #define LB_RPT_LOGGER(MESSG)
 #ifdef LOGGING_TO_RPT
-    #define LB_RPT_LOGGER(MESSG)                diag_log (MESSG)
+    #define LB_RPT_LOGGER(MESSG)                diag_log (text MESSG)
 #endif //LOGGING_TO_RPT
 
 #define LB_CHAT_LOGGER(MESSG)
